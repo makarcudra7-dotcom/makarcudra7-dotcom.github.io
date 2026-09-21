@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/rebuild_editorial.py'
+      - 'scripts/ensure_article_length.py'
       - '.github/workflows/rebuild-editorial.yml'
   workflow_dispatch:
 permissions:
@@ -19,6 +20,8 @@ jobs:
         run: python3 -m pip install --quiet pillow
       - name: Rebuild articles, recipes and images
         run: python3 scripts/rebuild_editorial.py
+      - name: Bring short texts to target depth
+        run: python3 scripts/ensure_article_length.py
       - name: Validate editorial output
         run: |
           python3 - <<'PY'
@@ -32,10 +35,10 @@ jobs:
             f=Path('articles')/(p['slug']+'.html')
             assert f.exists(), f
             s=f.read_text('utf-8')
-            plain=re.sub(r'<[^>]+>',' ',re.search(r'<div class="article-body">(.*?)</div></article>',s,re.S).group(1))
+            body=re.search(r'<div class="article-body">(.*?)</div></article>',s,re.S).group(1)
+            plain=re.sub(r'<[^>]+>',' ',body)
             chars=len(re.sub(r'\s+',' ',plain).strip())
-            if p.get('type')!='Recipe':
-              assert chars>=1450, (p['slug'],chars)
+            assert chars>=1500, (p['slug'],chars)
             assert 'max-image-preview:large' in s
             assert '/assets/authors/' in s
           print('Validated',len(posts),'materials and 9 recipes')
