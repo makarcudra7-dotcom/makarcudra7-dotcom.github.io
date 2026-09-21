@@ -1,0 +1,19 @@
+name: JS syntax check
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/*.js'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public and CMS scripts
+        run: |
+          node --check assets/app.js
+          node --check assets/feed-v2.js
+          node --check assets/admin.js
+          node --check assets/admin-enhance.js
+          node --check assets/admin-v3.js
