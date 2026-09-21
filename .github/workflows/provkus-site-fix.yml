@@ -1,0 +1,184 @@
+name: ProVkus site hardening
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/provkus-site-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fix site assets and metadata
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, re, urllib.request, urllib.parse, os, base64, html
+          from pathlib import Path
+          ROOT=Path('.')
+          SITE='https://provkus-media.ru'
+          posts_path=ROOT/'data/posts.json'
+          posts=json.loads(posts_path.read_text('utf-8'))
+          covers=ROOT/'assets/covers'; covers.mkdir(parents=True,exist_ok=True)
+
+          # Stable real favicon asset (64x64 PNG)
+          fav_b64='iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAABsklEQVR4nO1bwW0CQQwcIgrggZS880sFFJAyqI8yKIAK8ksNdEBeJwG66Ly21+PlPE907I5nxnuLZDYf7/sbVow3NgE2SgA2ATZKADYBNkoANgE2ttYFfr4/PXiY8HX+VX93o70IZSj8GRohVC2QsXhAx6spAVkLn4M0Das/BMUCjOQ+IOcrEmC04idIeFcLLD2Qzf3d6dL0/BJ/80UoElPx9yJcjwfTmkMJMAerGO5nQGtEvdbVJsElAc/kdqeLOZpRUAvQy2nNXhax1S2wtGmkQBakvwf0dB8wCvAKKUidgN7uAw4CjJ6CkARoRIhwH3ASYJR3/hzcEuDZClHuA8kPwQi4CuCRgkj3gUqAvwCWFES7D3RKwEh3gzQtwHAf6CjAKClIkQCW+0BnAUZIAT0BTPeBAAGy/04ISYBWhAjx6C3ARpgArW5GtU4lIHIzqauRB2clIHrD/9ydPo9+bVIScD0eHgplFQ8Ip8SyDUm0YGlarM4AyUOWUVQmJLzFCRhNhBqUFEI1LJ35UGxNqioBWdtBw0s9Lj8hQxoo/xd4Faz+ECwB2ATYKAHYBNhYvQB/xmWUXGa82T8AAAAASUVORK5CYII='
+          (ROOT/'favicon.png').write_bytes(base64.b64decode(fav_b64))
+
+          def dl(url,dst):
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0 ProVkus/1.0'})
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  data=r.read()
+              if len(data)<5000: raise RuntimeError(f'image too small {url}')
+              dst.write_bytes(data)
+
+          # Download each article image to our own domain. Also produce 4:3 and 1:1 crops via imgix params.
+          for p in posts:
+              src=p.get('image','')
+              slug=p['slug']
+              if 'images.unsplash.com' in src:
+                  base=src.split('?')[0]
+                  variants={
+                    '16x9': f'{base}?fm=jpg&fit=crop&w=1600&h=900&q=86',
+                    '4x3': f'{base}?fm=jpg&fit=crop&w=1200&h=900&q=86',
+                    '1x1': f'{base}?fm=jpg&fit=crop&w=1200&h=1200&q=86'
+                  }
+                  ok=[]
+                  for ratio,u in variants.items():
+                      dst=covers/f'{slug}-{ratio}.jpg'
+                      try:
+                          if not dst.exists(): dl(u,dst)
+                          ok.append(f'{SITE}/assets/covers/{slug}-{ratio}.jpg')
+                      except Exception as e:
+                          print('image download failed',slug,ratio,e)
+                  if ok:
+                      p['image']=ok[0]
+                      p['images']=ok
+              elif src.startswith('/'):
+                  p['image']=SITE+src
+                  p['images']=[p['image']]
+
+          posts_path.write_text(json.dumps(posts,ensure_ascii=False,indent=2)+'\n','utf-8')
+          byslug={p['slug']:p for p in posts}
+
+          def ensure_head(s,p=None,depth=''):
+              icon='/'+'favicon.png'
+              if 'rel="icon"' not in s:
+                  s=s.replace('</head>',f'<link rel="icon" type="image/png" sizes="64x64" href="{icon}"><link rel="apple-touch-icon" href="{icon}"></head>')
+              if p:
+                  desc=html.escape(p.get('description',''),quote=True)
+                  img=p.get('image','')
+                  if 'property="og:type"' not in s: s=s.replace('</head>','<meta property="og:type" content="article"></head>')
+                  if 'property="og:image"' in s:
+                      s=re.sub(r'<meta property="og:image" content="[^"]*">',f'<meta property="og:image" content="{img}">',s,count=1)
+                  else: s=s.replace('</head>',f'<meta property="og:image" content="{img}"></head>')
+                  if 'article:published_time' not in s: s=s.replace('</head>',f'<meta property="article:published_time" content="{p.get("publishedAt","")}"></head>')
+                  if 'article:modified_time' not in s: s=s.replace('</head>',f'<meta property="article:modified_time" content="{p.get("updatedAt") or p.get("publishedAt","")}"></head>')
+              return s
+
+          author_files={'Илья Титюлькин':'../assets/authors/ilya.jpg','Эльвира Шайберт':'../assets/authors/elvira.jpg','Екатерина Рукопляс':'../assets/authors/ekaterina.jpg'}
+
+          # Article pages: visible dates, local images, JSON-LD, favicon, common JS/LiveInternet.
+          for path in (ROOT/'articles').glob('*.html'):
+              slug=path.stem; p=byslug.get(slug)
+              if not p: continue
+              s=path.read_text('utf-8')
+              s=ensure_head(s,p,'../')
+              # cover
+              img=p.get('image','')
+              s=re.sub(r'(<img[^>]*class="article-cover"[^>]*src=")[^"]+("[^>]*>)',r'\1'+img+r'\2',s,count=1)
+              s=re.sub(r'(<img[^>]*src=")[^"]+("[^>]*class="article-cover"[^>]*>)',r'\1'+img+r'\2',s,count=1)
+              # author photo
+              photo=author_files.get(p.get('author'))
+              if photo:
+                  s=re.sub(r'(<img[^>]*class="avatar"[^>]*src=")[^"]+("[^>]*>)',r'\1'+photo+r'\2',s,count=1)
+                  s=re.sub(r'(<img[^>]*src=")[^"]+("[^>]*class="avatar"[^>]*>)',r'\1'+photo+r'\2',s,count=1)
+              # visible date
+              if 'class="article-date"' not in s:
+                  pub=p.get('publishedAt',''); upd=p.get('updatedAt') or pub
+                  dateblock=f'<div class="article-date"><span>Опубликовано <time datetime="{pub}">{pub}</time></span>'
+                  if upd and upd!=pub: dateblock+=f'<span>Обновлено <time datetime="{upd}">{upd}</time></span>'
+                  dateblock+='</div>'
+                  s=s.replace('</div></div><img class="article-cover"', '</div></div>'+dateblock+'<img class="article-cover"',1)
+              # JSON-LD enrich
+              m=re.search(r'<script type="application/ld\+json">(.*?)</script>',s,re.S)
+              if m:
+                  try:
+                      obj=json.loads(m.group(1))
+                      if obj.get('@type') in ('Article','NewsArticle','BlogPosting','Recipe'):
+                          obj['datePublished']=p.get('publishedAt') or obj.get('datePublished')
+                          obj['dateModified']=p.get('updatedAt') or p.get('publishedAt') or obj.get('dateModified')
+                          obj['image']=p.get('images') or [p.get('image')]
+                          obj['mainEntityOfPage']={'@type':'WebPage','@id':p.get('url')}
+                          obj['inLanguage']='ru-RU'; obj['isAccessibleForFree']=True
+                          obj['publisher']={'@type':'Organization','name':'ProVkus','url':SITE,'logo':{'@type':'ImageObject','url':SITE+'/favicon.png'}}
+                          repl='<script type="application/ld+json">'+json.dumps(obj,ensure_ascii=False,separators=(',',':'))+'</script>'
+                          s=s[:m.start()]+repl+s[m.end():]
+                  except Exception as e: print('jsonld',path,e)
+              if '../assets/app.js' not in s:
+                  s=s.replace('</body>','<script src="../assets/app.js"></script></body>')
+              path.write_text(s,'utf-8')
+
+          # All other HTML gets favicon; pages that already use app.js keep LiveInternet automatically.
+          for path in ROOT.glob('*.html'):
+              s=path.read_text('utf-8'); s=ensure_head(s)
+              if path.name not in ('admin.html',) and 'assets/app.js' not in s:
+                  s=s.replace('</body>','<script src="assets/app.js"></script></body>')
+              path.write_text(s,'utf-8')
+
+          # Replace homepage remote images with local article covers immediately (no JS dependency).
+          idx=ROOT/'index.html'
+          if idx.exists():
+              s=idx.read_text('utf-8')
+              for slug,p in byslug.items():
+                  href=f'articles/{slug}.html'
+                  pos=s.find(href)
+                  if pos<0: continue
+                  # replace first image URL after matching card start
+                  start=s.rfind('<a',0,pos); end=s.find('</a>',pos)
+                  if start>=0 and end>start:
+                      card=s[start:end]
+                      card=re.sub(r'src="https://images\.unsplash\.com/[^"]+"',f'src="{p.get("image","")}"',card,count=1)
+                      s=s[:start]+card+s[end:]
+              idx.write_text(s,'utf-8')
+
+          # Human-readable Russian date formatting happens in app.js; ensure robust local-image behavior.
+          app=ROOT/'assets/app.js'
+          if app.exists():
+              s=app.read_text('utf-8')
+              s=s.replace("const FALLBACK='/assets/fallback-cover.svg';","const FALLBACK='/assets/fallback-cover.svg';")
+              app.write_text(s,'utf-8')
+
+          # CMS: publish button means publish now when date fields are empty.
+          enh=ROOT/'assets/admin-enhance.js'
+          if enh.exists():
+              s=enh.read_text('utf-8')
+              marker="const btn=document.getElementById('publishBtn'),basePublish=btn?.onclick;"
+              inject="const btn=document.getElementById('publishBtn'),basePublish=btn?.onclick;if(btn){btn.textContent='Опубликовать сейчас';btn.addEventListener('click',()=>{const p=document.getElementById('publishedAt'),u=document.getElementById('updatedAt');if(p&&!p.value)p.value=localNow();if(u&&!u.value)u.value=p?.value||localNow();},true);}"
+              if marker in s: s=s.replace(marker,inject)
+              enh.write_text(s,'utf-8')
+
+          # Feed for crawlers/readers.
+          items=[]
+          for p in posts[:20]:
+              items.append(f'<item><title>{html.escape(p["headline"])}</title><link>{p["url"]}</link><guid>{p["url"]}</guid><pubDate>{p.get("publishedAt","")}</pubDate><description>{html.escape(p.get("description",p["headline"]))}</description></item>')
+          rss='<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>ProVkus</title><link>'+SITE+'</link><description>Материалы ProVkus</description>'+''.join(items)+'</channel></rss>'
+          (ROOT/'feed.xml').write_text(rss,'utf-8')
+          print('done',len(posts),'posts')
+          PY
+      - name: Commit fixes
+        run: |
+          git config user.name "provkus-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Fix mobile covers, favicon, dates and Discover metadata [skip ci]"
+          git push
