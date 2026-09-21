@@ -1,0 +1,50 @@
+name: Rebuild editorial content
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/rebuild_editorial.py'
+      - '.github/workflows/rebuild-editorial.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install image tools
+        run: python3 -m pip install --quiet pillow
+      - name: Rebuild articles, recipes and images
+        run: python3 scripts/rebuild_editorial.py
+      - name: Validate editorial output
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          posts=json.loads(Path('data/posts.json').read_text('utf-8'))
+          assert len(posts)==24, len(posts)
+          assert sum(1 for p in posts if p.get('type')=='Recipe')==9
+          assert len({p['image'] for p in posts})==24
+          for p in posts:
+            f=Path('articles')/(p['slug']+'.html')
+            assert f.exists(), f
+            s=f.read_text('utf-8')
+            plain=re.sub(r'<[^>]+>',' ',re.search(r'<div class="article-body">(.*?)</div></article>',s,re.S).group(1))
+            chars=len(re.sub(r'\s+',' ',plain).strip())
+            if p.get('type')!='Recipe':
+              assert chars>=1450, (p['slug'],chars)
+            assert 'max-image-preview:large' in s
+            assert '/assets/authors/' in s
+          print('Validated',len(posts),'materials and 9 recipes')
+          PY
+      - name: Commit generated site
+        run: |
+          git config user.name "provkus-editorial-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add articles assets/covers assets/styles.css data/posts.json authors.html author-*.html index.html editorial.html category.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Rewrite 15 articles and add 9 seasonal recipes"
+          git push
