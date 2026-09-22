@@ -39,11 +39,11 @@
     return `<div class="newsletter-box ${extra}">
       <div class="community-kicker">Рассылка ProVkus</div>
       <h2>Новые материалы — на почту</h2>
-      <p>Подпишитесь отдельно от вопросов автору. На следующем шаге можно выбрать удобный режим: новые публикации сразу или дайджестом.</p>
-      <form class="newsletter-form" action="https://api.follow.it/subscribe" method="post" target="_blank">
+      <p>Подпишитесь отдельно от вопросов автору. После подтверждения сервис рассылки будет автоматически присылать новые публикации ProVkus.</p>
+      <form class="newsletter-form" action="/newsletter.html" method="get">
         <div class="newsletter-row"><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="Ваш e-mail" aria-label="Ваш e-mail" required><button type="submit">Подписаться</button></div>
-        <label class="consent-line"><input type="checkbox" required> <span>Хочу получать новые материалы ProVkus и соглашаюсь с <a href="/privacy.html" target="_blank">политикой конфиденциальности</a> и <a href="/personal-data.html" target="_blank">обработкой e-mail</a>.</span></label>
-        <div class="form-note">Подписку можно отменить из любого письма. Адрес не публикуется на сайте.</div>
+        <label class="consent-line"><input type="checkbox" required> <span>Хочу получать материалы ProVkus и соглашаюсь с <a href="/privacy.html" target="_blank">политикой конфиденциальности</a> и <a href="/personal-data.html" target="_blank">обработкой e-mail</a>. Для доставки адрес будет передан сервису follow.it.</span></label>
+        <div class="form-note">Вопрос автору и подписка — разные действия. Подписку можно отменить из письма.</div>
       </form>
     </div>`
   }
@@ -56,7 +56,7 @@
         <div class="question-grid"><label><span>Как к вам обращаться</span><input name="name" autocomplete="name" maxlength="80" required></label><label><span>Ваш e-mail для ответа</span><input name="email" type="email" autocomplete="email" inputmode="email" required></label></div>
         <label><span>Вопрос</span><textarea name="question" rows="5" maxlength="2500" placeholder="Опишите ситуацию или продукт — чем конкретнее вопрос, тем проще подготовить полезный ответ." required></textarea></label>
         <input class="question-honey" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent-line"><input name="consent" type="checkbox" required> <span>Согласен на обработку имени, e-mail и текста вопроса для ответа редакции. <strong>Это не подписывает меня на рассылку.</strong> <a href="/personal-data.html" target="_blank">Подробнее</a>.</span></label>
+        <label class="consent-line"><input name="consent" type="checkbox" required> <span>Согласен на обработку имени, e-mail и текста вопроса для ответа редакции и понимаю, что форма передаст их через FormSubmit на почту редакции в Gmail. <strong>Это не подписывает меня на рассылку.</strong> <a href="/personal-data.html" target="_blank">Подробнее</a>.</span></label>
         <div class="question-actions"><button type="submit">Отправить вопрос</button><span class="question-status" role="status" aria-live="polite"></span></div>
         <div class="form-note">Ответ может прийти на указанный e-mail. Если вопрос полезен многим читателям, редакция может использовать его как тему материала без публикации вашего e-mail.</div>
       </form>
@@ -106,7 +106,7 @@
         if(!name||!email||!question){status.textContent='Заполните все поля.';return}
         btn.disabled=true;status.textContent='Отправляем…';
         try{
-          const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,_replyto:email,author,question,source_page:location.href,consent:'Да — только для ответа на вопрос',_subject:`Вопрос автору ${author} — ProVkus`,_template:'table'})});
+          const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,_replyto:email,author,question,source_page:location.href,consent:'Да — для ответа на вопрос; передача через FormSubmit/Gmail подтверждена',_subject:`Вопрос автору ${author} — ProVkus`,_template:'table'})});
           const data=await r.json().catch(()=>({}));if(!r.ok||data.success===false)throw new Error(data.message||'Не удалось отправить');
           form.reset();status.textContent='Вопрос отправлен в редакцию. Спасибо!';
         }catch(err){status.textContent='Не удалось отправить. Попробуйте ещё раз чуть позже.'}
@@ -115,7 +115,14 @@
     })
   }
   function setupNewsletterForms(scope=document){
-    scope.querySelectorAll('.newsletter-form').forEach(form=>{if(form.dataset.ready==='1')return;form.dataset.ready='1';form.addEventListener('submit',()=>{const note=form.querySelector('.form-note');if(note)note.textContent='Откроется подтверждение подписки. После подтверждения новые материалы будут приходить автоматически.'})})
+    scope.querySelectorAll('.newsletter-form').forEach(form=>{
+      if(form.dataset.ready==='1')return;form.dataset.ready='1';
+      form.addEventListener('submit',e=>{
+        e.preventDefault();const email=form.querySelector('input[name="email"]')?.value.trim();if(!email)return;
+        try{sessionStorage.setItem('provkusNewsletterEmail',email)}catch(_){}
+        location.href='/newsletter.html'
+      })
+    })
   }
   function injectGlobalNewsletter(){
     if(profile||$('.newsletter-box')||!document.querySelector('footer.site-footer'))return;
