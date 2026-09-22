@@ -30,7 +30,7 @@
       return basePutFile(path,content,message,encoding);
     };
   }
-  const V='20260922-fix3';
+  const V='20260922-fix4';
   const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-editor-ui.css?v='+V;document.head.appendChild(css);
   const b=document.getElementById('photoSourceBtn');if(b)b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select()}});
   const ensurePlacement=()=>{
@@ -40,7 +40,8 @@
     card.innerHTML='<div class="card-title">Размещение на главной</div><div class="card-body"><label class="placement-check"><input id="featuredFlag" type="checkbox"><span><strong>Главная новость</strong><small>Показывать большой первой карточкой.</small></span></label><label class="placement-check"><input id="popularFlag" type="checkbox"><span><strong>Популярное</strong><small>Добавить в блок «Популярное» на главной.</small></span></label></div>';
     aside.insertBefore(card,aside.firstChild);
   };
-  const loadPro=()=>{ensurePlacement();const p=document.createElement('script');p.src='assets/admin-pro-suite.js?v='+V;document.body.appendChild(p)};
+  const loadSeo=()=>{const s=document.createElement('script');s.src='assets/admin-seo.js?v='+V;document.body.appendChild(s)};
+  const loadPro=()=>{ensurePlacement();const p=document.createElement('script');p.src='assets/admin-pro-suite.js?v='+V;p.onload=loadSeo;p.onerror=loadSeo;document.body.appendChild(p)};
   const loadBridge=()=>{const s=document.createElement('script');s.src='assets/admin-global-bridge.js?v='+V;s.onload=loadPro;s.onerror=loadPro;document.body.appendChild(s)};
   const loadFast=()=>{const s=document.createElement('script');s.src='assets/admin-fast-publish.js?v='+V;s.onload=loadBridge;s.onerror=loadBridge;document.body.appendChild(s)};
   const loadEditorUi=()=>{const s=document.createElement('script');s.src='assets/admin-editor-ui.js?v='+V;s.onload=loadFast;s.onerror=loadFast;document.body.appendChild(s)};
