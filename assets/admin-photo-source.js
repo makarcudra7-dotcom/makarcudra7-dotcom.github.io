@@ -37,6 +37,6 @@
   }
   const b=document.getElementById('photoSourceBtn');
   if(b) b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select();}});
-  const loadQuiz=()=>{const quiz=document.createElement('script');quiz.src='assets/admin-quiz.js?v=20260922';document.body.appendChild(quiz)};
+  const loadQuiz=()=>{const quiz=document.createElement('script');quiz.src='assets/admin-quiz.js?v=20260922c';document.body.appendChild(quiz)};
   const server=document.createElement('script');server.src='assets/admin-server.js?v=20260922';server.onload=loadQuiz;server.onerror=loadQuiz;document.body.appendChild(server);
 })();
