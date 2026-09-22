@@ -6,134 +6,45 @@
   const PROFILE_BY_PAGE={
     'author-ilya.html':{
       name:'Илья Титюлькин',role:'Редактор направления «Продукты и выбор»',
-      lead:'Помогает разобраться, что действительно важно при выборе продуктов — от этикетки и даты до условий хранения дома.',
-      bio:'Илья пишет о маркировке, свежести, сезонности и повседневном выборе продуктов. В материалах переводит сложные надписи на упаковке на понятный язык, сравнивает практические признаки качества и объясняет, какие детали действительно стоит проверять в магазине.',
-      topics:['Маркировка','Выбор продуктов','Сезонность','Свежесть','Хранение'],
-      ask:'Можно спросить о составе и маркировке, выборе масла, сыра, кофе, овощей и фруктов, сроках и условиях хранения.'
+      lead:'Помогает покупать продукты осознанно: понимать этикетку, замечать реальные признаки качества и не переплачивать за маркетинг.',
+      bio:'Илья пишет о выборе продуктов в магазине и о том, что с ними происходит уже дома. В центре его материалов — маркировка, свежесть, сезонность, состав, условия хранения и простые признаки, которые можно проверить самому. Задача текста — не перечислить характеристики, а дать читателю понятный алгоритм выбора.',
+      topics:['Маркировка','Состав','Выбор продуктов','Сезонность','Свежесть','Хранение'],
+      method:'Сначала — конкретный вопрос покупателя. Затем — проверяемые признаки и понятное объяснение. В финале — короткий алгоритм, который можно применить у полки магазина или дома.',
+      useful:'Если сомневаетесь между двумя продуктами, не понимаете надпись на упаковке или хотите проверить популярный совет о выборе — это его направление.',
+      ask:'Можно спросить о составе и маркировке, выборе масла, сыра, кофе, овощей и фруктов, сроках и условиях хранения или предложить продукт для отдельного разбора.'
     },
     'author-elvira.html':{
       name:'Эльвира Шайберт',role:'Редактор направления «Дом и хранение»',
-      lead:'Разбирает домашние ситуации, в которых правильное хранение экономит продукты, время и место на кухне.',
-      bio:'Эльвира готовит практические материалы о холодильнике, заморозке, сроках хранения и организации кухни. В рецептах делает акцент на понятной технологии, доступных продуктах и результате, который можно повторить без специального оборудования.',
-      topics:['Холодильник','Заморозка','Сроки хранения','Организация кухни','Домашние рецепты'],
-      ask:'Можно спросить, где и сколько хранить продукт, что можно заморозить, как избежать лишней влаги и как упростить повседневную готовку.'
+      lead:'Разбирает кухню как систему: где хранить продукты, что замораживать, как меньше выбрасывать и как упростить ежедневную готовку.',
+      bio:'Эльвира готовит практические материалы о холодильнике, морозилке, сроках хранения и организации кухни. В рецептах делает акцент на понятной технологии, доступных продуктах и результате, который можно повторить без специального оборудования. Её материалы отвечают на бытовой вопрос «как сделать проще и не испортить продукт».',
+      topics:['Холодильник','Заморозка','Сроки хранения','Организация кухни','Экономия продуктов','Домашние рецепты'],
+      method:'Берёт обычную домашнюю ситуацию, разбирает, где чаще всего ошибаются, и предлагает самый простой рабочий порядок действий без лишних приспособлений.',
+      useful:'Если продукт быстро портится, в холодильнике постоянно не хватает места, непонятно, что можно заморозить, или нужен практичный домашний рецепт — вопрос по адресу.',
+      ask:'Можно спросить, где и сколько хранить продукт, что можно заморозить, как избежать лишней влаги, как использовать остатки и как упростить повседневную готовку.'
     },
     'author-ekaterina.html':{
       name:'Екатерина Рукопляс',role:'Редактор направления «Еда и безопасность»',
-      lead:'Разбирает бытовые вопросы о еде, где привычка, температура или способ хранения могут влиять на качество и безопасность.',
-      bio:'Екатерина пишет о безопасном обращении с продуктами дома: размораживании, мытье, хранении после вскрытия и других повседневных ситуациях. В справочных материалах отделяет распространённые бытовые привычки от проверяемых рекомендаций, а в рецептах уделяет внимание понятной последовательности приготовления.',
-      topics:['Безопасность еды','Размораживание','Гигиена кухни','Хранение после вскрытия','Домашняя кухня'],
-      ask:'Можно спросить о размораживании, мытье продуктов, хранении готовой еды, сроках после вскрытия и безопасной работе с продуктами дома.'
+      lead:'Разбирает спорные бытовые вопросы о еде: что действительно безопасно, где есть риск, а где страхи и привычки преувеличены.',
+      bio:'Екатерина пишет о безопасном обращении с продуктами дома: размораживании, мытье, хранении после вскрытия, температуре и чистоте кухни. В справочных материалах отделяет распространённые бытовые привычки от проверяемых рекомендаций и объясняет не только «как правильно», но и почему это имеет значение.',
+      topics:['Безопасность еды','Размораживание','Гигиена кухни','Температура','Хранение после вскрытия','Домашняя кухня'],
+      method:'Начинает с реальной бытовой ситуации, отделяет риск от мифа и переводит рекомендации в несколько конкретных действий, которые легко соблюдать дома.',
+      useful:'Если вы не уверены, можно ли есть продукт, как его разморозить, сколько хранить после вскрытия или стоит ли верить популярному кухонному совету — это её темы.',
+      ask:'Можно спросить о размораживании, мытье продуктов, хранении готовой еды, сроках после вскрытия, температуре и безопасной работе с продуктами дома.'
     }
   };
   const BY_NAME=Object.fromEntries(Object.entries(PROFILE_BY_PAGE).map(([page,p])=>[p.name,{...p,page}]));
   const page=(location.pathname.split('/').pop()||'index.html').toLowerCase();
   const profile=PROFILE_BY_PAGE[page];
-
-  function addFeedLink(){
-    if(document.querySelector('link[type="application/rss+xml"]'))return;
-    const l=document.createElement('link');l.rel='alternate';l.type='application/rss+xml';l.title='ProVkus — новые материалы';l.href='https://provkus-media.ru/feed.xml';document.head.appendChild(l)
-  }
+  function addFeedLink(){if(document.querySelector('link[type="application/rss+xml"]'))return;const l=document.createElement('link');l.rel='alternate';l.type='application/rss+xml';l.title='ProVkus — новые материалы';l.href='https://provkus-media.ru/feed.xml';document.head.appendChild(l)}
   function topicsMarkup(items){return `<div class="author-topics">${items.map(x=>`<span>${esc(x)}</span>`).join('')}</div>`}
-  function newsletterMarkup(extra=''){
-    return `<div class="newsletter-box ${extra}">
-      <div class="community-kicker">Рассылка ProVkus</div>
-      <h2>Новые материалы — на почту</h2>
-      <p>Подпишитесь отдельно от вопросов автору. После подтверждения сервис рассылки будет автоматически присылать новые публикации ProVkus.</p>
-      <form class="newsletter-form" action="/newsletter.html" method="get">
-        <div class="newsletter-row"><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="Ваш e-mail" aria-label="Ваш e-mail" required><button type="submit">Подписаться</button></div>
-        <label class="consent-line"><input type="checkbox" required> <span>Хочу получать материалы ProVkus и соглашаюсь с <a href="/privacy.html" target="_blank">политикой конфиденциальности</a> и <a href="/personal-data.html" target="_blank">обработкой e-mail</a>. Для доставки адрес будет передан сервису follow.it.</span></label>
-        <div class="form-note">Вопрос автору и подписка — разные действия. Подписку можно отменить из письма.</div>
-      </form>
-    </div>`
-  }
-  function questionMarkup(p){
-    return `<div class="ask-author-box" id="ask-author">
-      <div class="community-kicker">Связь с автором</div>
-      <h2>Задать вопрос ${esc(p.name.split(' ')[0])}</h2>
-      <p>${esc(p.ask)}</p>
-      <form class="author-question-form" data-author="${esc(p.name)}">
-        <div class="question-grid"><label><span>Как к вам обращаться</span><input name="name" autocomplete="name" maxlength="80" required></label><label><span>Ваш e-mail для ответа</span><input name="email" type="email" autocomplete="email" inputmode="email" required></label></div>
-        <label><span>Вопрос</span><textarea name="question" rows="5" maxlength="2500" placeholder="Опишите ситуацию или продукт — чем конкретнее вопрос, тем проще подготовить полезный ответ." required></textarea></label>
-        <input class="question-honey" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="consent-line"><input name="consent" type="checkbox" required> <span>Согласен на обработку имени, e-mail и текста вопроса для ответа редакции и понимаю, что форма передаст их через FormSubmit на почту редакции в Gmail. <strong>Это не подписывает меня на рассылку.</strong> <a href="/personal-data.html" target="_blank">Подробнее</a>.</span></label>
-        <div class="question-actions"><button type="submit">Отправить вопрос</button><span class="question-status" role="status" aria-live="polite"></span></div>
-        <div class="form-note">Ответ может прийти на указанный e-mail. Если вопрос полезен многим читателям, редакция может использовать его как тему материала без публикации вашего e-mail.</div>
-      </form>
-    </div>`
-  }
-  function enhanceAuthorProfile(){
-    if(!profile)return false;
-    const hero=$('.author-hero');if(!hero)return false;
-    hero.classList.add('author-profile-hero');
-    const info=hero.querySelector(':scope > div');
-    if(info){
-      const note=info.querySelector('.photo-credit')?.outerHTML||'';
-      info.innerHTML=`<div class="eyebrow">Автор ProVkus</div><h1>${esc(profile.name)}</h1><div class="author-role">${esc(profile.role)}</div>${note}<p class="author-lead">${esc(profile.lead)}</p><p class="author-bio">${esc(profile.bio)}</p>${topicsMarkup(profile.topics)}<div class="author-method"><strong>Подход к материалам</strong><span>Практический вопрос → понятное объяснение → конкретные действия для читателя.</span></div>`
-    }
-    const materials=[...$$('main.container .section')].find(x=>/Материалы автора/i.test(x.querySelector('.section-title')?.textContent||''));
-    if(materials&&!$('#authorCommunity')){
-      const wrap=document.createElement('section');wrap.id='authorCommunity';wrap.className='author-community';wrap.innerHTML=`<div class="author-interaction-grid">${questionMarkup(profile)}${newsletterMarkup('author-newsletter')}</div>`;materials.parentNode.insertBefore(wrap,materials);setupQuestionForms(wrap);setupNewsletterForms(wrap)
-    }
-    if(window.__pvPostsPromise)window.__pvPostsPromise.then(posts=>paintCounts(posts));
-    return true
-  }
-  function enhanceDirectory(){
-    const grid=$('.author-grid');if(!grid)return;
-    grid.classList.add('author-directory-grid');
-    $$('.author-grid .author-card').forEach(card=>{
-      const href=card.getAttribute('href')||'',key=(href.split('/').pop()||'').toLowerCase(),p=PROFILE_BY_PAGE[key];if(!p)return;
-      const img=card.querySelector('img');const src=img?.getAttribute('src')||'',alt=img?.getAttribute('alt')||p.name;
-      card.innerHTML=`<div class="author-card-top"><img src="${esc(src)}" width="112" height="112" alt="${esc(alt)}"><div><div class="author-card-role">${esc(p.role)}</div><h3>${esc(p.name)}</h3></div></div><p class="author-card-lead">${esc(p.lead)}</p>${topicsMarkup(p.topics.slice(0,4))}<div class="author-card-footer"><span data-author-count="${esc(p.name)}">Материалы автора</span><strong>Открыть профиль →</strong></div>`
-    });
-    if(window.__pvPostsPromise)window.__pvPostsPromise.then(posts=>paintCounts(posts))
-  }
-  function paintCounts(posts){
-    const list=Array.isArray(posts)?posts:[];
-    $$('[data-author-count]').forEach(el=>{
-      const name=el.dataset.authorCount,count=list.filter(p=>p.author===name||(Array.isArray(p.coauthors)&&p.coauthors.includes(name))).length;
-      const n10=count%10,n100=count%100,word=n10===1&&n100!==11?'материал':(n10>=2&&n10<=4&&(n100<12||n100>14)?'материала':'материалов');
-      el.textContent=`${count} ${word}`
-    })
-  }
-  function setupQuestionForms(scope=document){
-    scope.querySelectorAll('.author-question-form').forEach(form=>{
-      if(form.dataset.ready==='1')return;form.dataset.ready='1';
-      form.addEventListener('submit',async e=>{
-        e.preventDefault();const status=form.querySelector('.question-status'),btn=form.querySelector('button[type="submit"]'),fd=new FormData(form);
-        if(fd.get('company'))return;
-        const name=String(fd.get('name')||'').trim(),email=String(fd.get('email')||'').trim(),question=String(fd.get('question')||'').trim(),author=form.dataset.author||'автору ProVkus';
-        if(!name||!email||!question){status.textContent='Заполните все поля.';return}
-        btn.disabled=true;status.textContent='Отправляем…';
-        try{
-          const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,_replyto:email,author,question,source_page:location.href,consent:'Да — для ответа на вопрос; передача через FormSubmit/Gmail подтверждена',_subject:`Вопрос автору ${author} — ProVkus`,_template:'table'})});
-          const data=await r.json().catch(()=>({}));if(!r.ok||data.success===false)throw new Error(data.message||'Не удалось отправить');
-          form.reset();status.textContent='Вопрос отправлен в редакцию. Спасибо!';
-        }catch(err){status.textContent='Не удалось отправить. Попробуйте ещё раз чуть позже.'}
-        finally{btn.disabled=false}
-      })
-    })
-  }
-  function setupNewsletterForms(scope=document){
-    scope.querySelectorAll('.newsletter-form').forEach(form=>{
-      if(form.dataset.ready==='1')return;form.dataset.ready='1';
-      form.addEventListener('submit',e=>{
-        e.preventDefault();const email=form.querySelector('input[name="email"]')?.value.trim();if(!email)return;
-        try{sessionStorage.setItem('provkusNewsletterEmail',email)}catch(_){}
-        location.href='/newsletter.html'
-      })
-    })
-  }
-  function injectGlobalNewsletter(){
-    if(profile||$('.newsletter-box')||!document.querySelector('footer.site-footer'))return;
-    const p=location.pathname;
-    if(!(/^(\/|\/index\.html|\/category\.html|\/authors\.html|\/articles\/.+\.html)$/.test(p)))return;
-    const s=document.createElement('section');s.className='site-newsletter-section';s.innerHTML=`<div class="container">${newsletterMarkup('site-newsletter')}</div>`;document.querySelector('footer.site-footer').before(s);setupNewsletterForms(s)
-  }
-  function addArticleAskLink(){
-    const box=$('.article-author');if(!box||box.querySelector('.ask-author-link'))return;
-    const name=box.querySelector('strong')?.textContent?.trim(),p=BY_NAME[name];if(!p)return;
-    const a=document.createElement('a');a.className='ask-author-link';a.href=`/${p.page}#ask-author`;a.textContent='Задать вопрос автору';box.appendChild(a)
-  }
+  function newsletterMarkup(extra=''){return `<div class="newsletter-box ${extra}"><div class="community-kicker">Рассылка ProVkus</div><h2>Новые материалы — на почту</h2><p>Оставьте e-mail отдельно от формы вопроса. После подтверждения подписки новые публикации ProVkus будут приходить автоматически из RSS-ленты сайта.</p><form class="newsletter-form" action="/newsletter.html" method="get"><div class="newsletter-row"><input type="email" name="email" autocomplete="email" inputmode="email" placeholder="Ваш e-mail" aria-label="Ваш e-mail" required><button type="submit">Подписаться</button></div><label class="consent-line"><input type="checkbox" required> <span>Хочу получать материалы ProVkus и соглашаюсь с <a href="/privacy.html" target="_blank">политикой конфиденциальности</a> и <a href="/personal-data.html" target="_blank">обработкой e-mail</a>. Для доставки адрес будет передан сервису follow.it.</span></label><div class="form-note">Подписка добровольная. Вопрос автору не подписывает на рассылку. Отписаться можно из любого письма.</div></form></div>`}
+  function questionMarkup(p){return `<div class="ask-author-box" id="ask-author"><div class="community-kicker">Вопрос редактору</div><h2>Спросить ${esc(p.name.split(' ')[0])}</h2><p>${esc(p.ask)}</p><form class="author-question-form" data-author="${esc(p.name)}"><div class="question-grid"><label><span>Как к вам обращаться</span><input name="name" autocomplete="name" maxlength="80" placeholder="Имя" required></label><label><span>Ваш e-mail для ответа</span><input name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required></label></div><label><span>Вопрос</span><textarea name="question" rows="5" maxlength="2500" minlength="10" placeholder="Опишите ситуацию, продукт или спорный совет — чем конкретнее вопрос, тем полезнее получится ответ." required></textarea></label><input class="question-honey" name="company" tabindex="-1" autocomplete="off" aria-hidden="true"><label class="consent-line"><input name="consent" type="checkbox" required> <span>Согласен на обработку имени, e-mail и текста вопроса для ответа редакции и понимаю, что данные будут переданы через FormSubmit на редакционную почту в Gmail. <strong>Это не подписка на рассылку.</strong> <a href="/personal-data.html" target="_blank">Подробнее</a>.</span></label><div class="question-actions"><button type="submit">Отправить вопрос</button><a class="question-mail-fallback" href="mailto:makarcudra7@gmail.com?subject=${encodeURIComponent('Вопрос автору '+p.name+' — ProVkus')}">или написать по почте</a><span class="question-status" role="status" aria-live="polite"></span></div><div class="form-note">Все вопросы приходят в редакцию ProVkus. Если тема полезна многим читателям, она может стать основой отдельного материала — без публикации вашего e-mail.</div></form></div>`}
+  function enhanceAuthorProfile(){if(!profile)return false;const hero=$('.author-hero');if(!hero)return false;hero.classList.add('author-profile-hero');const info=hero.querySelector(':scope > div');if(info){const note=info.querySelector('.photo-credit')?.outerHTML||'';info.innerHTML=`<div class="eyebrow">Автор ProVkus</div><h1>${esc(profile.name)}</h1><div class="author-role">${esc(profile.role)}</div>${note}<p class="author-lead">${esc(profile.lead)}</p><p class="author-bio">${esc(profile.bio)}</p>${topicsMarkup(profile.topics)}<div class="author-profile-facts"><div class="author-method"><strong>Как работает с темами</strong><span>${esc(profile.method)}</span></div><div class="author-method"><strong>Когда к автору</strong><span>${esc(profile.useful)}</span></div></div><a class="ask-author-link profile-ask-cta" href="#ask-author">Задать вопрос автору ↓</a>`}const materials=[...$$('main.container .section')].find(x=>/Материалы автора/i.test(x.querySelector('.section-title')?.textContent||''));if(materials&&!$('#authorCommunity')){const wrap=document.createElement('section');wrap.id='authorCommunity';wrap.className='author-community';wrap.innerHTML=`<div class="author-interaction-grid">${questionMarkup(profile)}${newsletterMarkup('author-newsletter')}</div>`;materials.parentNode.insertBefore(wrap,materials);setupQuestionForms(wrap);setupNewsletterForms(wrap)}if(window.__pvPostsPromise)window.__pvPostsPromise.then(posts=>paintCounts(posts));return true}
+  function enhanceDirectory(){const grid=$('.author-grid');if(!grid)return;grid.classList.add('author-directory-grid');$$('.author-grid .author-card').forEach(card=>{const href=card.getAttribute('href')||'',key=(href.split('/').pop()||'').toLowerCase(),p=PROFILE_BY_PAGE[key];if(!p)return;const img=card.querySelector('img');const src=img?.getAttribute('src')||'',alt=img?.getAttribute('alt')||p.name;card.innerHTML=`<div class="author-card-top"><img src="${esc(src)}" width="112" height="112" alt="${esc(alt)}"><div><div class="author-card-role">${esc(p.role)}</div><h3>${esc(p.name)}</h3></div></div><p class="author-card-lead">${esc(p.lead)}</p>${topicsMarkup(p.topics.slice(0,5))}<div class="author-card-promise">В профиле: все публикации, подход к темам и возможность задать вопрос напрямую редакции.</div><div class="author-card-footer"><span data-author-count="${esc(p.name)}">Материалы автора</span><strong>Профиль + вопрос →</strong></div>`});if(window.__pvPostsPromise)window.__pvPostsPromise.then(posts=>paintCounts(posts))}
+  function paintCounts(posts){const list=Array.isArray(posts)?posts:[];$$('[data-author-count]').forEach(el=>{const name=el.dataset.authorCount,count=list.filter(p=>p.author===name||(Array.isArray(p.coauthors)&&p.coauthors.includes(name))).length,n10=count%10,n100=count%100,word=n10===1&&n100!==11?'материал':(n10>=2&&n10<=4&&(n100<12||n100>14)?'материала':'материалов');el.textContent=`${count} ${word}`})}
+  function setupQuestionForms(scope=document){scope.querySelectorAll('.author-question-form').forEach(form=>{if(form.dataset.ready==='1')return;form.dataset.ready='1';form.addEventListener('submit',async e=>{e.preventDefault();const status=form.querySelector('.question-status'),btn=form.querySelector('button[type="submit"]'),fd=new FormData(form);if(fd.get('company'))return;const name=String(fd.get('name')||'').trim(),email=String(fd.get('email')||'').trim(),question=String(fd.get('question')||'').trim(),author=form.dataset.author||'автору ProVkus';if(!name||!email||question.length<10){status.textContent='Заполните имя, e-mail и вопрос.';return}btn.disabled=true;status.textContent='Отправляем…';try{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,_replyto:email,author,question,source_page:location.href,consent:'Да — только для ответа на вопрос',_subject:`Вопрос автору ${author} — ProVkus`,_template:'table'})});const data=await r.json().catch(()=>({}));if(!r.ok||data.success===false)throw new Error(data.message||'Не удалось отправить');form.reset();status.textContent='Вопрос отправлен в редакцию. Спасибо!'}catch(err){status.textContent='Не удалось отправить через форму — используйте ссылку «написать по почте».'}finally{btn.disabled=false}})})}
+  function setupNewsletterForms(scope=document){scope.querySelectorAll('.newsletter-form').forEach(form=>{if(form.dataset.ready==='1')return;form.dataset.ready='1';form.addEventListener('submit',e=>{e.preventDefault();const email=form.querySelector('input[name="email"]')?.value.trim();if(!email)return;try{sessionStorage.setItem('provkusNewsletterEmail',email)}catch(_){}location.href='/newsletter.html'})})}
+  function injectGlobalNewsletter(){if(profile||$('.newsletter-box')||!document.querySelector('footer.site-footer'))return;const p=location.pathname;if(!(/^(\/|\/index\.html|\/category\.html|\/authors\.html|\/articles\/.+\.html)$/.test(p)))return;const s=document.createElement('section');s.className='site-newsletter-section';s.innerHTML=`<div class="container">${newsletterMarkup('site-newsletter')}</div>`;document.querySelector('footer.site-footer').before(s);setupNewsletterForms(s)}
+  function addArticleAskLink(){const box=$('.article-author');if(!box||box.querySelector('.ask-author-link'))return;const name=box.querySelector('strong')?.textContent?.trim(),p=BY_NAME[name];if(!p)return;const a=document.createElement('a');a.className='ask-author-link';a.href=`/${p.page}#ask-author`;a.textContent='Задать вопрос автору';box.appendChild(a)}
   addFeedLink();enhanceDirectory();enhanceAuthorProfile();setupQuestionForms();setupNewsletterForms();addArticleAskLink();injectGlobalNewsletter();
 })();
