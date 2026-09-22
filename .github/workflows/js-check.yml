@@ -23,6 +23,7 @@ jobs:
           node --check assets/app.js
           node --check assets/feed-v2.js
           node --check assets/community.js
+          node --check assets/community-pro.js
           node --check assets/admin.js
           node --check assets/admin-enhance.js
           node --check assets/admin-v3.js
@@ -34,7 +35,10 @@ jobs:
           node --check assets/admin-scheduler.js
           node --check assets/admin-editor-ui.js
           node --check assets/admin-fast-publish.js
+          node --check assets/admin-global-bridge.js
+          node --check assets/admin-pro-suite.js
           node --check assets/home-dynamic.js
+          node --check assets/liveinternet.js
           node --check api/publish.js
           node --check scripts/publish-scheduled.js
           node --check scripts/build-feed.js
