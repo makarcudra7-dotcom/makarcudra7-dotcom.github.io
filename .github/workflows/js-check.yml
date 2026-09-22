@@ -31,6 +31,8 @@ jobs:
           node --check assets/admin-quiz.js
           node --check assets/admin-quiz-toolbar.js
           node --check assets/admin-scheduler.js
+          node --check assets/admin-editor-ui.js
+          node --check assets/admin-fast-publish.js
           node --check assets/home-dynamic.js
           node --check api/publish.js
           node --check scripts/publish-scheduled.js
