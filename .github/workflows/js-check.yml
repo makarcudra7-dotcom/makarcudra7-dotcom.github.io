@@ -6,6 +6,12 @@ on:
       - 'assets/*.js'
       - 'api/*.js'
       - 'scripts/*.js'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets/*.js'
+      - 'api/*.js'
+      - 'scripts/*.js'
   workflow_dispatch:
 jobs:
   check:
