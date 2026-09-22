@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Sync biographies into author pages
+      - name: Sync biographies and site shell
         run: python3 scripts/sync_author_bios.py
       - name: Validate author pages
         run: |
@@ -29,13 +29,17 @@ jobs:
               assert author['bio'] in text, (page, 'bio')
               assert author['metaDescription'] in text, (page, 'meta')
               assert 'Имеет профильное образование' not in text, page
-          print('Validated', len(authors), 'author pages')
+              assert '/assets/community.js?v=20260922-fix2' in text, page
+          assert 'admin-photo-source.js?v=20260922-fix2' in Path('admin.html').read_text('utf-8')
+          index=Path('index.html').read_text('utf-8')
+          assert '/favicon.ico' in index and 'sizes="64x64"' in index
+          print('Validated', len(authors), 'author pages and site shell')
           PY
-      - name: Commit generated author pages
+      - name: Commit generated pages
         run: |
           git config user.name "provkus-author-bio-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add author-*.html
+          git add author-*.html admin.html index.html
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Sync author biographies"
+          git commit -m "Sync author pages and site shell"
           git push
