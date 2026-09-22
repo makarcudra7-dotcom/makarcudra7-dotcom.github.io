@@ -6,7 +6,7 @@ from pathlib import Path
 AUTHORS_PATH = Path("data/authors.json")
 ADMIN_PATH = Path("admin.html")
 INDEX_PATH = Path("index.html")
-ASSET_VERSION = "20260922-fix2"
+ASSET_VERSION = "20260922-fix4"
 
 
 def replace_once(pattern: str, repl: str, text: str, label: str) -> str:
