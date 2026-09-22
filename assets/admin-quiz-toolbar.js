@@ -35,7 +35,7 @@
   }
   function install(){
     const old=$('.quiz-after-toolbar'),ed=$('#quizAfterEditor');if(!old||!ed||$('#quizAfterToolbar'))return false;
-    old.innerHTML=markup();
+    old.outerHTML=markup();
     $('#quizAfterToolbar').querySelectorAll('[data-qcmd]').forEach(b=>b.onclick=e=>{e.preventDefault();cmd(b.dataset.qcmd)});
     $('#quizAfterBlockFormat').onchange=e=>cmd('formatBlock',e.target.value);
     $('#quizAfterFontName').onchange=e=>cmd('fontName',e.target.value);
