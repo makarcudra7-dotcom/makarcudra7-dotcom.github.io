@@ -32,8 +32,9 @@
   }
   const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-editor-ui.css?v=20260922-pro5';document.head.appendChild(css);
   const b=document.getElementById('photoSourceBtn');if(b)b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select()}});
-  const loadPro=()=>{const s=document.createElement('script');s.src='assets/admin-pro-suite.js?v=20260922-pro5';document.body.appendChild(s)};
-  const loadFast=()=>{const s=document.createElement('script');s.src='assets/admin-fast-publish.js?v=20260922-pro5';s.onload=loadPro;s.onerror=loadPro;document.body.appendChild(s)};
+  const loadPro=()=>{const p=document.createElement('script');p.src='assets/admin-pro-suite.js?v=20260922-pro5';document.body.appendChild(p)};
+  const loadBridge=()=>{const s=document.createElement('script');s.src='assets/admin-global-bridge.js?v=20260922-pro5';s.onload=loadPro;s.onerror=loadPro;document.body.appendChild(s)};
+  const loadFast=()=>{const s=document.createElement('script');s.src='assets/admin-fast-publish.js?v=20260922-pro5';s.onload=loadBridge;s.onerror=loadBridge;document.body.appendChild(s)};
   const loadEditorUi=()=>{const s=document.createElement('script');s.src='assets/admin-editor-ui.js?v=20260922-pro5';s.onload=loadFast;s.onerror=loadFast;document.body.appendChild(s)};
   const loadScheduler=()=>{const s=document.createElement('script');s.src='assets/admin-scheduler.js?v=20260922-pro5';s.onload=loadEditorUi;s.onerror=loadEditorUi;document.body.appendChild(s)};
   const loadManager=()=>{const s=document.createElement('script');s.src='assets/admin-content-manager.js?v=20260922-pro5';s.onload=loadScheduler;s.onerror=loadScheduler;document.body.appendChild(s)};
