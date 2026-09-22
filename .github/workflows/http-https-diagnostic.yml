@@ -2,6 +2,8 @@ name: HTTP and HTTPS diagnostic
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
   push:
     paths:
       - '.github/workflows/http-https-diagnostic.yml'
