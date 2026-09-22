@@ -1,5 +1,34 @@
 [
   {
+    "slug": "sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki",
+    "headline": "Шарлотка подождёт: вынимаю серединку из яблок и прячу творожное суфле — 10 минут, и на столе горячие «горшочки»",
+    "description": "Яблоки превращаются в горячие «горшочки» с нежной творожной начинкой: 10 минут в духовке — и простой осенний десерт готов.",
+    "author": "Эльвира Шайберт",
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki-1x1.jpg"
+    ],
+    "imageAlt": "Женщина показывает блюдо",
+    "url": "https://provkus-media.ru/articles/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki.html",
+    "publishedAt": "2026-09-22T16:28:00.000Z",
+    "updatedAt": "2026-09-22T16:28:00.000Z",
+    "tags": [
+      "Десерт",
+      "Еда",
+      "Рецепты",
+      "Готовка",
+      "Яблоня"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": false
+  },
+  {
     "slug": "etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite",
     "headline": "Этот тест по продуктам СССР завалит даже тот, кто стоял за «Докторской»: 8 вопросов о вкусах, ГОСТах и дефиците  ",
     "description": "Сложный тест о продуктах СССР: советские рецептуры, ГОСТы, знаменитые напитки, колбаса, сыр и десерты.",
@@ -30,7 +59,8 @@
       "ГОСТ"
     ],
     "photoSource": "provkus-media.ru",
-    "quizCount": 8
+    "quizCount": 8,
+    "featured": false
   },
   {
     "slug": "tykvennyi-krem-sup-s-yablokom",
@@ -49,7 +79,8 @@
       "https://provkus-media.ru/assets/covers/tykvennyi-krem-sup-s-yablokom-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/tykvennyi-krem-sup-s-yablokom-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "yabloki-s-indeikoi-i-timyanom",
@@ -68,7 +99,8 @@
       "https://provkus-media.ru/assets/covers/yabloki-s-indeikoi-i-timyanom-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/yabloki-s-indeikoi-i-timyanom-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kartoshka-s-gribami-gorchichnyi-sous",
@@ -87,7 +119,8 @@
       "https://provkus-media.ru/assets/covers/kartoshka-s-gribami-gorchichnyi-sous-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kartoshka-s-gribami-gorchichnyi-sous-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "teplyi-salat-grusha-syr-orehi",
@@ -106,7 +139,8 @@
       "https://provkus-media.ru/assets/covers/teplyi-salat-grusha-syr-orehi-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/teplyi-salat-grusha-syr-orehi-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "slivovyi-ketchup-dymok",
@@ -125,7 +159,8 @@
       "https://provkus-media.ru/assets/covers/slivovyi-ketchup-dymok-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/slivovyi-ketchup-dymok-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "vinegret-s-zharenoi-tykvoi",
@@ -144,7 +179,8 @@
       "https://provkus-media.ru/assets/covers/vinegret-s-zharenoi-tykvoi-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/vinegret-s-zharenoi-tykvoi-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kuritsa-s-yablokami-gorchitsa-med",
@@ -163,7 +199,8 @@
       "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "udon-s-tykvoi-i-gribami",
@@ -182,7 +219,8 @@
       "https://provkus-media.ru/assets/covers/udon-s-tykvoi-i-gribami-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/udon-s-tykvoi-i-gribami-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "gribnoi-pirog-obabnik",
@@ -201,7 +239,8 @@
       "https://provkus-media.ru/assets/covers/gribnoi-pirog-obabnik-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/gribnoi-pirog-obabnik-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-bezopasno-razmorazhivat-myaso",
@@ -220,7 +259,8 @@
       "https://provkus-media.ru/assets/covers/kak-bezopasno-razmorazhivat-myaso-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-bezopasno-razmorazhivat-myaso-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "zachem-myt-banany-i-mandariny",
@@ -239,7 +279,8 @@
       "https://provkus-media.ru/assets/covers/zachem-myt-banany-i-mandariny-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/zachem-myt-banany-i-mandariny-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-vybrat-syr-s-plesenyu",
@@ -258,7 +299,8 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-syr-s-plesenyu-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-vybrat-syr-s-plesenyu-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "chto-ne-hranit-na-dverce-holodilnika",
@@ -277,7 +319,8 @@
       "https://provkus-media.ru/assets/covers/chto-ne-hranit-na-dverce-holodilnika-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/chto-ne-hranit-na-dverce-holodilnika-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "nuzhno-li-myt-yayca-posle-magazina",
@@ -296,7 +339,8 @@
       "https://provkus-media.ru/assets/covers/nuzhno-li-myt-yayca-posle-magazina-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/nuzhno-li-myt-yayca-posle-magazina-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "mozhno-li-zamorazhivat-hleb",
@@ -315,7 +359,8 @@
       "https://provkus-media.ru/assets/covers/mozhno-li-zamorazhivat-hleb-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/mozhno-li-zamorazhivat-hleb-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-hranit-kartofel-doma",
@@ -334,7 +379,8 @@
       "https://provkus-media.ru/assets/covers/kak-hranit-kartofel-doma-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-hranit-kartofel-doma-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "zamorozhennye-ovoshi-ne-pustye",
@@ -353,7 +399,8 @@
       "https://provkus-media.ru/assets/covers/zamorozhennye-ovoshi-ne-pustye-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/zamorozhennye-ovoshi-ne-pustye-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-pravilno-hranit-yayca-v-holodilnike",
@@ -372,7 +419,8 @@
       "https://provkus-media.ru/assets/covers/kak-pravilno-hranit-yayca-v-holodilnike-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-pravilno-hranit-yayca-v-holodilnike-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-vybrat-kofe-po-date-obzharki",
@@ -391,7 +439,8 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-kofe-po-date-obzharki-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-vybrat-kofe-po-date-obzharki-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-vybrat-sladkie-mandariny",
@@ -410,7 +459,8 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-sladkie-mandariny-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-vybrat-sladkie-mandariny-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "extra-virgin-kak-vybrat-olivkovoe-maslo",
@@ -429,7 +479,8 @@
       "https://provkus-media.ru/assets/covers/extra-virgin-kak-vybrat-olivkovoe-maslo-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/extra-virgin-kak-vybrat-olivkovoe-maslo-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "chay-v-paketikah-pravda-o-pyli",
@@ -448,7 +499,8 @@
       "https://provkus-media.ru/assets/covers/chay-v-paketikah-pravda-o-pyli-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/chay-v-paketikah-pravda-o-pyli-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "kak-hranit-rastitelnoe-maslo-posle-vskrytiya",
@@ -467,7 +519,8 @@
       "https://provkus-media.ru/assets/covers/kak-hranit-rastitelnoe-maslo-posle-vskrytiya-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-hranit-rastitelnoe-maslo-posle-vskrytiya-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   },
   {
     "slug": "skolko-hranit-plavlenyi-syr-posle-vskrytiya",
@@ -486,6 +539,7 @@
       "https://provkus-media.ru/assets/covers/skolko-hranit-plavlenyi-syr-posle-vskrytiya-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/skolko-hranit-plavlenyi-syr-posle-vskrytiya-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ"
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false
   }
 ]
