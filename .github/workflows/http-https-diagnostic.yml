@@ -32,7 +32,6 @@ jobs:
           dig +short NS provkus-media.ru || true
 
       - name: Read GitHub Pages state
-        id: pages
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -61,6 +60,27 @@ jobs:
           with open('/tmp/https_enforced','w') as f: f.write('true' if p.get('https_enforced') else 'false')
           PY
 
+      - name: Safely verify Pages settings write access
+        if: ${{ github.event_name == 'push' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -u
+          enforced="$(cat /tmp/https_enforced)"
+          payload='{"https_enforced":false}'
+          if [ "$enforced" = 'true' ]; then payload='{"https_enforced":true}'; fi
+          code=$(curl -sS -o /tmp/probe.json -w '%{http_code}' -L \
+            -X PUT \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
+            -d "$payload")
+          echo "Pages settings write probe: HTTP $code"
+          cat /tmp/probe.json || true
+          echo
+
       - name: Enable HTTPS when certificate is approved
         env:
           GH_TOKEN: ${{ github.token }}
@@ -80,9 +100,6 @@ jobs:
               -d '{"https_enforced":true}')
             echo "Enable HTTPS API status: $code"
             cat /tmp/enable.json || true
-            if [ "$code" != '204' ]; then
-              echo 'Automatic HTTPS enforcement was not permitted by the workflow token.'
-            fi
           else
             echo 'No safe automatic switch needed yet.'
           fi
