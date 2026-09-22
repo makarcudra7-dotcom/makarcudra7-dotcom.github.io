@@ -27,5 +27,5 @@
     window.__pvHomeRendered=true;
   }
   const source=window.__pvPostsPromise||fetch('/data/posts.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]);
-  Promise.resolve(source).then(render).catch(()=>{}).finally(()=>document.documentElement.classList.remove('pv-home-loading'));
+  Promise.resolve(source).then(render).catch(()=>{}).finally(()=>{document.documentElement.classList.remove('pv-home-loading');document.documentElement.classList.add('pv-home-ready')});
 })();

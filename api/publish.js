@@ -22,6 +22,8 @@ function safeEqual(a, b) {
 
 function allowedPath(path) {
   return path === 'data/posts.json' ||
+    path === 'data/authors.json' ||
+    path === 'data/newsletter-pushes.json' ||
     path === '.github/scheduled-posts.json' ||
     /^articles\/[a-z0-9-]+\.html$/.test(path) ||
     /^assets\/uploads\/[A-Za-z0-9._-]+$/.test(path);
