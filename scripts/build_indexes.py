@@ -1,8 +1,6 @@
-import json, html
+import json, html, subprocess
 from pathlib import Path
 from datetime import datetime, timezone
-from email.utils import format_datetime
-from urllib.parse import urlparse
 
 site='https://provkus-media.ru'
 root=Path(__file__).resolve().parents[1]
@@ -48,23 +46,5 @@ for p in posts:
   urls.append(f'<url><loc>{html.escape(loc)}</loc>{lm}{image}</url>')
 sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'+'\n'.join(urls)+'\n</urlset>\n'
 (root/'sitemap.xml').write_text(sitemap,'utf-8')
-
-items=[]
-for p in posts[:50]:
-  dt=parse_dt(p.get('publishedAt'))
-  pub=format_datetime(dt) if dt else ''
-  title=html.escape(p.get('headline',''))
-  desc=html.escape(p.get('description') or p.get('headline',''))
-  link=html.escape(p.get('url') or f"{site}/articles/{p['slug']}.html")
-  enc=''
-  img=p.get('image') or ''
-  if img:
-    u=urlparse(img)
-    if u.netloc in ('','provkus-media.ru'):
-      local=root/u.path.lstrip('/')
-      if local.exists():
-        mime='image/png' if local.suffix.lower()=='.png' else 'image/webp' if local.suffix.lower()=='.webp' else 'image/jpeg'
-        enc=f'<enclosure url="{html.escape(img)}" type="{mime}" length="{local.stat().st_size}" />'
-  items.append(f'<item><title>{title}</title><link>{link}</link><guid isPermaLink="true">{link}</guid><pubDate>{pub}</pubDate><description>{desc}</description>{enc}</item>')
-rss='<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel><title>ProVkus</title><link>'+site+'/</link><description>Новые материалы ProVkus</description><language>ru-ru</language><lastBuildDate>'+format_datetime(now)+'</lastBuildDate>'+''.join(items)+'</channel></rss>\n'
-(root/'feed.xml').write_text(rss,'utf-8')
+# RSS and manual newsletter pushes use one canonical generator.
+subprocess.run(['node','scripts/build-feed.js'],cwd=root,check=True)
