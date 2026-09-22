@@ -1,0 +1,51 @@
+name: Relaunch all articles
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/relaunch-articles.trigger'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  relaunch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Clean delete and rebuild all articles
+        run: python3 scripts/relaunch_articles.py
+      - name: Validate clean relaunch
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          posts=json.loads(Path('data/posts.json').read_text())
+          files=list(Path('articles').glob('*.html'))
+          assert len(posts)==24, len(posts)
+          assert len(files)==24, len(files)
+          assert len({p['slug'] for p in posts})==24
+          assert len({p['image'] for p in posts})==24
+          assert all(p.get('photoSource')=='provkus-media.ru' for p in posts)
+          assert sum(p.get('type')=='Recipe' for p in posts)>=9
+          for p in posts:
+              t=(Path('articles')/(p['slug']+'.html')).read_text()
+              assert '<div class="photo-credit">Фото: provkus-media.ru</div>' in t
+              assert 'max-image-preview:large' in t
+              assert p['headline'] in t
+              assert 'images.unsplash.com' not in t
+          assert '/assets/authors/elvira-v2.jpg' in Path('author-elvira.html').read_text()
+          print('validated clean relaunch:',len(files),'articles')
+          PY
+      - name: Commit rebuilt publication set
+        run: |
+          git config user.name "provkus-relaunch-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A articles data/posts.json index.html category.html authors.html author-*.html sitemap.xml feed.xml assets/app.js
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Relaunch all ProVkus articles from clean templates"
+          git push
