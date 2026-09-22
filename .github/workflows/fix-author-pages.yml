@@ -1,0 +1,43 @@
+name: Fix author portraits everywhere
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-author-pages.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize author images and styles
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          paths=[Path('authors.html'),Path('author-ilya.html'),Path('author-elvira.html'),Path('author-ekaterina.html'),Path('scripts/relaunch_articles.py')]
+          paths += list(Path('articles').glob('*.html'))
+          for p in paths:
+              if not p.exists(): continue
+              s=p.read_text('utf-8')
+              s=s.replace('/assets/authors/elvira-v2.jpg','/assets/authors/elvira.jpg')
+              s=s.replace('https://provkus-media.ru/assets/authors/elvira-v2.jpg','https://provkus-media.ru/assets/authors/elvira.jpg')
+              s=s.replace('?v=relaunch','?v=20260922-2')
+              if p.name in {'authors.html','author-ilya.html','author-elvira.html','author-ekaterina.html'} and '/assets/author-fix.css' not in s:
+                  s=s.replace('<link rel="stylesheet" href="/assets/overrides.css">','<link rel="stylesheet" href="/assets/overrides.css"><link rel="stylesheet" href="/assets/author-fix.css?v=20260922-2">')
+              p.write_text(s,'utf-8')
+          PY
+      - name: Validate
+        run: |
+          grep -q 'author-fix.css' authors.html
+          grep -q '/assets/authors/elvira.jpg' author-elvira.html
+          ! grep -R 'elvira-v2.jpg' authors.html author-elvira.html scripts/relaunch_articles.py articles
+      - name: Commit
+        run: |
+          git config user.name "provkus-author-fix-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add authors.html author-*.html articles scripts/relaunch_articles.py
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Normalize author portraits and Elvira image path"
+          git push
