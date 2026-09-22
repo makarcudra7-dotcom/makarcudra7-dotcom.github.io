@@ -1,6 +1,7 @@
 name: Sync author biographies
 on:
   push:
+    branches: [main]
     paths:
       - 'data/authors.json'
       - 'scripts/sync_author_bios.py'
@@ -29,8 +30,8 @@ jobs:
               assert author['bio'] in text, (page, 'bio')
               assert author['metaDescription'] in text, (page, 'meta')
               assert 'Имеет профильное образование' not in text, page
-              assert '/assets/community.js?v=20260922-fix2' in text, page
-          assert 'admin-photo-source.js?v=20260922-fix2' in Path('admin.html').read_text('utf-8')
+              assert '/assets/community.js?v=20260922-fix4' in text, page
+          assert 'admin-photo-source.js?v=20260922-fix4' in Path('admin.html').read_text('utf-8')
           index=Path('index.html').read_text('utf-8')
           assert '/favicon.ico' in index and 'sizes="64x64"' in index
           print('Validated', len(authors), 'author pages and site shell')
