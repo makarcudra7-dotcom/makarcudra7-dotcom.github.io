@@ -5,9 +5,11 @@ on:
     paths:
       - 'data/posts.json'
       - 'data/authors.json'
+      - 'data/newsletter-pushes.json'
       - 'assets/admin-seo.js'
       - 'assets/provkus-logo.svg'
       - 'scripts/seo_hardening.py'
+      - 'scripts/sync_author_bios.py'
       - 'scripts/build_indexes.py'
       - 'scripts/build-feed.js'
       - 'scripts/audit_site.py'
@@ -17,9 +19,11 @@ on:
     paths:
       - 'data/posts.json'
       - 'data/authors.json'
+      - 'data/newsletter-pushes.json'
       - 'assets/admin-seo.js'
       - 'assets/provkus-logo.svg'
       - 'scripts/seo_hardening.py'
+      - 'scripts/sync_author_bios.py'
       - 'scripts/build_indexes.py'
       - 'scripts/build-feed.js'
       - 'scripts/audit_site.py'
@@ -27,25 +31,34 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: provkus-google-generated
+  cancel-in-progress: true
 jobs:
   harden:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
           fetch-depth: 0
       - name: Install audit dependencies
         run: python3 -m pip install --quiet pillow
-      - name: Normalize SEO metadata and indexes
+      - name: Sync author pages and site shell
+        run: python3 scripts/sync_author_bios.py
+      - name: Normalize SEO metadata and discovery indexes
         run: python3 scripts/seo_hardening.py
       - name: Run offline crawl and structured-data audit
         run: python3 scripts/audit_site.py
-      - name: Commit generated SEO output
+      - name: Commit generated site output
         if: github.event_name == 'push'
         run: |
-          git config user.name "provkus-seo-bot"
+          git config user.name "provkus-google-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add articles index.html sitemap.xml feed.xml
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Normalize Google metadata and sitemap"
-          git push
+          git add articles author-*.html admin.html index.html sitemap.xml feed.xml
+          if git diff --cached --quiet; then
+            echo "Generated Google output is already current"
+            exit 0
+          fi
+          git commit -m "Refresh Google-ready site output"
+          git push origin HEAD:main
