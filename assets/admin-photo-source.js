@@ -38,5 +38,5 @@
   const loadManager=()=>{const s=document.createElement('script');s.src='assets/admin-content-manager.js?v=20260922-authors2';s.onload=loadScheduler;s.onerror=loadScheduler;document.body.appendChild(s)};
   const loadQuizToolbar=()=>{const s=document.createElement('script');s.src='assets/admin-quiz-toolbar.js?v=20260922b';s.onload=loadManager;s.onerror=loadManager;document.body.appendChild(s)};
   const loadQuiz=()=>{const s=document.createElement('script');s.src='assets/admin-quiz.js?v=20260922d';s.onload=loadQuizToolbar;s.onerror=loadQuizToolbar;document.body.appendChild(s)};
-  const server=document.createElement('script');server.src='assets/admin-server.js?v=20260922c';server.onload=loadQuiz;server.onerror=loadQuiz;document.body.appendChild(server);
+  const server=document.createElement('script');server.src='assets/admin-server.js?v=20260922-pro4';server.onload=loadQuiz;server.onerror=loadQuiz;document.body.appendChild(server);
 })();
