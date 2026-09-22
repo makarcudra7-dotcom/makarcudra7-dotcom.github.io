@@ -23,6 +23,10 @@ posts.sort(key=lambda p:parse_dt(p.get('publishedAt')) or datetime.min.replace(t
 fixed=[
   (site+'/', None),
   (site+'/category.html', None),
+  (site+'/recipes.html', None),
+  (site+'/products.html', None),
+  (site+'/home-storage.html', None),
+  (site+'/food-safety.html', None),
   (site+'/authors.html', None),
   (site+'/author-ilya.html', None),
   (site+'/author-elvira.html', None),
