@@ -1,9 +1,9 @@
 (function(){
-  if ((location.pathname === '/' || /\/index\.html$/.test(location.pathname)) && !document.querySelector('script[data-home-dynamic]')) {
-    const home = document.createElement('script');
-    home.src = '/assets/home-dynamic.js?v=20260922';
-    home.dataset.homeDynamic = '1';
-    document.body.appendChild(home);
+  if(!document.getElementById('pvCommunityProCss')){
+    const css=document.createElement('link');css.id='pvCommunityProCss';css.rel='stylesheet';css.href='/assets/community-pro.css?v=20260922-pro5';document.head.appendChild(css);
+  }
+  if(!document.getElementById('pvCommunityPro')){
+    const pro=document.createElement('script');pro.id='pvCommunityPro';pro.src='/assets/community-pro.js?v=20260922-pro5';pro.defer=true;document.body.appendChild(pro);
   }
 
   if (location.pathname === '/admin.html' || document.getElementById('licnt2C53')) return;
