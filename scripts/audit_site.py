@@ -67,7 +67,6 @@ for p in posts:
   check(article.get('author',{}).get('url')==author_urls.get(p.get('author'),SITE+'/authors.html'),f'{f.name}: author URL')
   check(article.get('publisher',{}).get('logo',{}).get('url')==LOGO,f'{f.name}: publisher logo')
  check(any(x.get('@type')=='BreadcrumbList' for x in nodes),f'{f.name}: breadcrumb schema')
- # Recipe rich-result markup must not be emitted until dedicated ingredient/instruction fields exist.
  check(not any(x.get('@type')=='Recipe' for x in nodes),f'{f.name}: incomplete Recipe schema')
  for u in p.get('images') or ([p.get('image')] if p.get('image') else []):
   if not u:continue
@@ -86,6 +85,18 @@ check((ROOT/'assets/provkus-logo.svg').exists(),'organization logo missing')
 if (ROOT/'assets/provkus-logo.svg').exists():
  logo=(ROOT/'assets/provkus-logo.svg').read_text('utf-8');check('width="512"' in logo and 'height="512"' in logo,'organization logo dimensions')
 
+hubs=['recipes.html','products.html','home-storage.html','food-safety.html']
+for name in hubs:
+ path=ROOT/name
+ check(path.exists(),f'{name}: missing hub')
+ if not path.exists():continue
+ text=path.read_text('utf-8');s=Page(text)
+ check(len(s.find('h1'))==1,f'{name}: h1')
+ canon=s.find('link',rel='canonical');check(bool(canon),f'{name}: canonical missing')
+ if canon:check(canon[0].get('href')==SITE+'/'+name,f'{name}: canonical mismatch')
+ check(SITE+'/'+name in locs,f'{name}: sitemap')
+ robots=s.find('meta',name='robots');check(bool(robots) and 'index' in robots[0].get('content','').lower(),f'{name}: indexable robots')
+
 for f in ROOT.rglob('*.html'):
  s=Page(f.read_text('utf-8'))
  for tag,a in s.tags:
@@ -97,6 +108,6 @@ for f in ROOT.rglob('*.html'):
    dest=(ROOT/unquote(u.path).lstrip('/')) if u.path.startswith('/') else (f.parent/unquote(u.path))
    check(dest.exists(),f'{f.relative_to(ROOT)}: missing {u.path}')
 
-check(public_count+9==len(locs),f'Sitemap inventory mismatch: public={public_count}, sitemap={len(locs)}')
+check(public_count+13==len(locs),f'Sitemap inventory mismatch: public={public_count}, sitemap={len(locs)}')
 print(json.dumps({'posts':len(posts),'public_articles':public_count,'sitemap_urls':len(locs),'errors':errors},ensure_ascii=False,indent=2))
 raise SystemExit(bool(errors))
