@@ -3,6 +3,10 @@ name: Publish scheduled materials
 on:
   schedule:
     - cron: '*/5 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/scheduled-posts.json'
   workflow_dispatch:
 
 permissions:
@@ -19,16 +23,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Publish due materials
+      - name: Publish or withhold scheduled materials
         run: node scripts/publish-scheduled.js
-      - name: Commit published materials
+      - name: Commit scheduler changes
         run: |
           if git diff --quiet; then
-            echo "Nothing to publish"
+            echo "Nothing to publish or withhold"
             exit 0
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
           git add .github/scheduled-posts.json data/posts.json articles/
-          git commit -m "Publish scheduled materials"
+          git commit -m "Sync scheduled materials"
           git push origin HEAD:main
