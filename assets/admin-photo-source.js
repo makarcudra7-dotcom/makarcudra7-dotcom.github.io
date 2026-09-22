@@ -1,5 +1,5 @@
 (()=>{
-  const escCredit=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+  const escCredit=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   if(typeof articleHTML==='function'){
     const baseArticleHTML=articleHTML;
     articleHTML=function(o,img){
