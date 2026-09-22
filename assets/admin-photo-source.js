@@ -30,11 +30,11 @@
       return basePutFile(path,content,message,encoding);
     };
   }
-  const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-editor-ui.css?v=20260922b';document.head.appendChild(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-editor-ui.css?v=20260922-pro4';document.head.appendChild(css);
   const b=document.getElementById('photoSourceBtn');if(b)b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select()}});
-  const loadFast=()=>{const s=document.createElement('script');s.src='assets/admin-fast-publish.js?v=20260922b';document.body.appendChild(s)};
-  const loadEditorUi=()=>{const s=document.createElement('script');s.src='assets/admin-editor-ui.js?v=20260922b';s.onload=loadFast;s.onerror=loadFast;document.body.appendChild(s)};
-  const loadScheduler=()=>{const s=document.createElement('script');s.src='assets/admin-scheduler.js?v=20260922b';s.onload=loadEditorUi;s.onerror=loadEditorUi;document.body.appendChild(s)};
+  const loadFast=()=>{const s=document.createElement('script');s.src='assets/admin-fast-publish.js?v=20260922-pro4';document.body.appendChild(s)};
+  const loadEditorUi=()=>{const s=document.createElement('script');s.src='assets/admin-editor-ui.js?v=20260922-pro4';s.onload=loadFast;s.onerror=loadFast;document.body.appendChild(s)};
+  const loadScheduler=()=>{const s=document.createElement('script');s.src='assets/admin-scheduler.js?v=20260922-pro4';s.onload=loadEditorUi;s.onerror=loadEditorUi;document.body.appendChild(s)};
   const loadManager=()=>{const s=document.createElement('script');s.src='assets/admin-content-manager.js?v=20260922-authors2';s.onload=loadScheduler;s.onerror=loadScheduler;document.body.appendChild(s)};
   const loadQuizToolbar=()=>{const s=document.createElement('script');s.src='assets/admin-quiz-toolbar.js?v=20260922b';s.onload=loadManager;s.onerror=loadManager;document.body.appendChild(s)};
   const loadQuiz=()=>{const s=document.createElement('script');s.src='assets/admin-quiz.js?v=20260922d';s.onload=loadQuizToolbar;s.onerror=loadQuizToolbar;document.body.appendChild(s)};
