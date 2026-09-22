@@ -14,11 +14,12 @@
     styles();
     const featured=good.find(p=>p.featured) || good[0];
     const side=good.filter(p=>p.slug!==featured.slug).slice(0,3);
+    const heroUsed=new Set([featured.slug,...side.map(p=>p.slug)]);
     const hero=document.querySelector('.hero .hero-grid');if(hero)hero.innerHTML=card(featured,true)+`<div class="hero-side">${side.map(p=>card(p)).join('')}</div>`;
-    const freshCandidates=good.filter(p=>p.slug!==featured.slug).slice(0,12);
-    const marked=good.filter(p=>p.popular&&p.slug!==featured.slug).slice(0,7);
+    const freshCandidates=good.filter(p=>!heroUsed.has(p.slug)).slice(0,12);
+    const marked=good.filter(p=>p.popular).slice(0,7);
     const popular=[...marked];
-    for(const p of good){if(popular.length>=Math.max(5,marked.length))break;if(p.slug===featured.slug||popular.some(x=>x.slug===p.slug))continue;popular.push(p)}
+    for(const p of good){if(popular.length>=Math.max(5,marked.length))break;if((p.slug===featured.slug&&!p.popular)||popular.some(x=>x.slug===p.slug))continue;popular.push(p)}
     const section=document.querySelector('.section .container');if(!section)return;
     const grid=section.querySelector('.story-grid');if(!grid)return;
     let lower=section.querySelector('.home-lower-grid');
