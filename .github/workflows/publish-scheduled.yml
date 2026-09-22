@@ -1,0 +1,34 @@
+name: Publish scheduled materials
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: provkus-scheduled-publishing
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Publish due materials
+        run: node scripts/publish-scheduled.js
+      - name: Commit published materials
+        run: |
+          if git diff --quiet; then
+            echo "Nothing to publish"
+            exit 0
+          fi
+          git config user.name "provkus-scheduler"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/scheduled-posts.json data/posts.json articles/
+          git commit -m "Publish scheduled materials"
+          git push origin HEAD:main

@@ -5,6 +5,13 @@ on:
     paths:
       - 'assets/*.js'
       - 'api/*.js'
+      - 'scripts/*.js'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets/*.js'
+      - 'api/*.js'
+      - 'scripts/*.js'
   workflow_dispatch:
 jobs:
   check:
@@ -23,5 +30,7 @@ jobs:
           node --check assets/admin-content-manager.js
           node --check assets/admin-quiz.js
           node --check assets/admin-quiz-toolbar.js
+          node --check assets/admin-scheduler.js
           node --check assets/home-dynamic.js
           node --check api/publish.js
+          node --check scripts/publish-scheduled.js
