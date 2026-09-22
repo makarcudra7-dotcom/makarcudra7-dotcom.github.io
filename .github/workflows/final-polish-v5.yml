@@ -47,3 +47,4 @@ jobs:
           git commit -m "Final v5: generated covers, headlines and unified feed"
           git push
 # manual refresh 2026-09-22
+# rerun requested 2026-09-22T04:43+04:00
