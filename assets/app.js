@@ -15,7 +15,7 @@
   function slugFromHref(href){try{return(new URL(href,location.href).pathname.split('/').pop()||'').replace(/\.html$/,'')}catch(e){return''}}
   function currentSlug(){return(location.pathname.split('/').pop()||'').replace(/\.html$/,'')}
   function fmt(iso){if(!iso)return'';try{return new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(iso))}catch(e){return iso}}
-  function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))}
+  function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function isPublished(p){const t=new Date(p?.publishedAt||0).getTime();return !Number.isFinite(t)||t<=Date.now()+15000}
   function visiblePosts(posts){return(posts||[]).filter(p=>p&&p.slug&&isPublished(p)).sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0))}
   window.__pvVisiblePosts=visiblePosts;
