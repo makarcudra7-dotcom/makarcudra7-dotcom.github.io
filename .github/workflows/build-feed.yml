@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'data/posts.json'
+      - 'data/newsletter-pushes.json'
       - 'scripts/build-feed.js'
       - '.github/workflows/build-feed.yml'
   workflow_dispatch:
