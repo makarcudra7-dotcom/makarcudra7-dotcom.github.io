@@ -27,17 +27,19 @@
               p.description=o.description||p.description;
               p.category=o.category||p.category;
               p.type=o.type||p.type;
+              p.author=o.author||p.author;
+              p.coauthors=Array.isArray(o.coauthors)?o.coauthors.filter(Boolean):[];
             }
           }
           content=JSON.stringify(posts,null,2);
-        }catch(e){console.warn('photoSource metadata:',e)}
+        }catch(e){console.warn('publication metadata:',e)}
       }
       return basePutFile(path,content,message,encoding);
     };
   }
   const b=document.getElementById('photoSourceBtn');
   if(b) b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select();}});
-  const loadManager=()=>{const manager=document.createElement('script');manager.src='assets/admin-content-manager.js?v=20260922';document.body.appendChild(manager)};
+  const loadManager=()=>{const manager=document.createElement('script');manager.src='assets/admin-content-manager.js?v=20260922-authors';document.body.appendChild(manager)};
   const loadQuizToolbar=()=>{const tools=document.createElement('script');tools.src='assets/admin-quiz-toolbar.js?v=20260922';tools.onload=loadManager;tools.onerror=loadManager;document.body.appendChild(tools)};
   const loadQuiz=()=>{const quiz=document.createElement('script');quiz.src='assets/admin-quiz.js?v=20260922c';quiz.onload=loadQuizToolbar;quiz.onerror=loadQuizToolbar;document.body.appendChild(quiz)};
   const server=document.createElement('script');server.src='assets/admin-server.js?v=20260922b';server.onload=loadQuiz;server.onerror=loadQuiz;document.body.appendChild(server);
