@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 
 AUTHORS_PATH = Path("data/authors.json")
+ASSET_VERSION = "20260922-fix2"
 
 
 def replace_once(pattern: str, repl: str, text: str, label: str) -> str:
@@ -49,6 +50,22 @@ def sync_author(author: dict) -> None:
         text,
         count=1,
     )
+
+    # Critical author interaction code is loaded directly and before app.js.
+    # This prevents an old cached app.js from reviving an outdated question form.
+    fresh_scripts = (
+        f'<script src="/assets/community.js?v={ASSET_VERSION}"></script>'
+        f'<script src="/assets/app.js?v={ASSET_VERSION}"></script>'
+    )
+    text, count = re.subn(
+        r'(?:<script src="/assets/community\.js\?v=[^"]+"></script>)?'
+        r'<script src="/assets/app\.js\?v=[^"]+"></script>',
+        fresh_scripts,
+        text,
+        count=1,
+    )
+    if count != 1:
+        raise RuntimeError(f"Could not refresh author scripts in {page}")
 
     page.write_text(text, "utf-8")
     print(f"Synced {page}")
