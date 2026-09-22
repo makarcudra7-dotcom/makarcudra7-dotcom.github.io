@@ -8,6 +8,7 @@
   const apiBase=()=>String(localStorage.getItem(API_KEY)||'').replace(/\/$/,'');
   const adminHash=()=>localStorage.getItem('provkusAdminHash')||'';
   const useServer=()=>/^https:\/\//i.test(apiBase());
+  let batchQueue=null;
 
   async function serverRequest(payload){
     const base=apiBase();
@@ -29,7 +30,11 @@
 
   window.getToken=function(){return useServer()?'server':(originalGetToken?originalGetToken():'')};
   window.getFile=async function(path){if(!useServer())return originalGetFile(path);return (await serverRequest({action:'get',path})).file};
-  window.putFile=async function(path,content,message,encoding='utf-8'){if(!useServer())return originalPutFile(path,content,message,encoding);return (await serverRequest({action:'put',path,content,message,encoding})).result};
+  window.putFile=async function(path,content,message,encoding='utf-8'){
+    if(!useServer())return originalPutFile(path,content,message,encoding);
+    if(batchQueue){batchQueue.push({path,content,message,encoding});return {queued:true,path}}
+    return (await serverRequest({action:'put',path,content,message,encoding})).result
+  };
   window.deleteFile=async function(path,message='Delete from ProVkus CMS'){
     if(useServer())return (await serverRequest({action:'delete',path,message})).result;
     if(originalDeleteFile)return originalDeleteFile(path,message);
@@ -38,8 +43,20 @@
     return gh(`/repos/makarcudra7-dotcom/makarcudra7-dotcom.github.io/contents/${path}`,{method:'DELETE',body:JSON.stringify({message,branch:'main',sha:old.sha})})
   };
 
+  window.beginPublishBatch=function(){if(!useServer()||batchQueue)return false;batchQueue=[];return true};
+  window.cancelPublishBatch=function(){batchQueue=null};
+  window.commitPublishBatch=async function(message='Publish from ProVkus CMS'){
+    if(!batchQueue)return null;
+    const queued=batchQueue;batchQueue=null;
+    if(!queued.length)return null;
+    const byPath=new Map();queued.forEach(f=>byPath.set(f.path,f));
+    const files=[...byPath.values()].map(({path,content,encoding})=>({path,content,encoding}));
+    return (await serverRequest({action:'batchPut',files,message})).result
+  };
+  window.isPublishBatchActive=()=>Array.isArray(batchQueue);
+
   const loginText=$('.login-card p');
-  if(loginText)loginText.textContent='Введите пароль редакции. Публикация может работать через защищённый сервер без GitHub-токена в браузере.';
+  if(loginText)loginText.textContent='Введите пароль редакции. Публикация работает через защищённый сервер без GitHub-токена в браузере.';
   const stat=$('#githubState');if(stat&&useServer())stat.textContent='SERVER';
   const statLabel=stat?.parentElement?.querySelector('span');if(statLabel)statLabel.textContent='Публикация';
 
@@ -49,13 +66,13 @@
     const title=card.querySelector('.card-title');if(title)title.textContent='Публикация на сайт';
     const body=card.querySelector('.card-body');
     const panel=document.createElement('div');panel.id='serverPublishPanel';panel.innerHTML=`
-      <div class="field"><label>Сервер публикации</label><div class="token-row"><input id="publishApiUrl" placeholder="https://ваш-проект.vercel.app"><button type="button" class="btn green" id="savePublishApi">Сохранить</button></div><div class="hint">После разовой настройки статьи публикуются одной кнопкой, без GitHub-токена в браузере.</div></div>
+      <div class="field"><label>Сервер публикации</label><div class="token-row"><input id="publishApiUrl" placeholder="https://ваш-проект.vercel.app"><button type="button" class="btn green" id="savePublishApi">Сохранить</button></div><div class="hint">При серверном режиме статья, изображения и индекс отправляются одним пакетом — это заметно быстрее нескольких GitHub-коммитов.</div></div>
       <div class="conn" id="serverConn"><i></i><span></span></div>
       <details id="serverSetup"><summary>Разовая настройка сервера</summary><div class="field" style="margin-top:12px"><label>PROVKUS_ADMIN_HASH</label><div class="token-row"><input id="serverAdminHash" readonly><button type="button" class="btn soft" id="copyAdminHash">Копировать</button></div><div class="hint">Этот хэш добавляется в защищённые переменные Vercel один раз. Это не GitHub-токен.</div></div></details>`;
     body.insertBefore(panel,body.firstChild);
     const url=$('#publishApiUrl');url.value=apiBase();
     const hash=$('#serverAdminHash');if(hash)hash.value=adminHash();
-    function paint(){const ok=useServer(),c=$('#serverConn');if(c){c.classList.toggle('ok',ok);c.querySelector('span').textContent=ok?'Сервер публикации настроен':'Сервер ещё не подключён'}if(stat)stat.textContent=ok?'SERVER':'—';const legacy=token?.closest('.field');if(legacy)legacy.style.display=ok?'none':'';}
+    function paint(){const ok=useServer(),c=$('#serverConn');if(c){c.classList.toggle('ok',ok);c.querySelector('span').textContent=ok?'Сервер публикации настроен · быстрый пакетный режим':'Сервер ещё не подключён'}if(stat)stat.textContent=ok?'SERVER':'—';const legacy=token?.closest('.field');if(legacy)legacy.style.display=ok?'none':'';}
     $('#savePublishApi').onclick=()=>{const v=url.value.trim().replace(/\/$/,'');if(v&&!/^https:\/\//i.test(v)){flash?.('Нужен HTTPS-адрес сервера');return}if(v)localStorage.setItem(API_KEY,v);else localStorage.removeItem(API_KEY);paint();flash?.(v?'Сервер сохранён':'Сервер отключён')};
     $('#copyAdminHash').onclick=async()=>{try{await navigator.clipboard.writeText(adminHash());flash?.('Хэш скопирован')}catch(e){hash?.select()}};
     paint();
