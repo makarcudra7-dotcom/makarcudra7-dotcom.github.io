@@ -1,39 +1,22 @@
 name: Build RSS feed
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/posts.json'
-      - 'data/newsletter-pushes.json'
-      - 'scripts/build-feed.js'
-      - '.github/workflows/build-feed.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: provkus-rss-feed
-  cancel-in-progress: true
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-      - name: Build feed.xml
+      - name: Build feed.xml for validation
         run: node scripts/build-feed.js
-      - name: Commit RSS feed
+      - name: Show feed status
         run: |
           if git diff --quiet -- feed.xml; then
             echo "feed.xml is up to date"
-            exit 0
+          else
+            echo "feed.xml would change; canonical Google readiness workflow owns generated commits"
           fi
-          git config user.name "provkus-feed"
-          git config user.email "actions@users.noreply.github.com"
-          git add feed.xml
-          git commit -m "Update RSS feed"
-          git push origin HEAD:main
