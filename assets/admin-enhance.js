@@ -2,7 +2,7 @@
   const localNow=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16)};
   function addNow(id,label){const input=document.getElementById(id);if(!input||input.parentElement.querySelector('.date-now-btn'))return;const b=document.createElement('button');b.type='button';b.className='btn soft date-now-btn';b.textContent=label;b.addEventListener('click',()=>{input.value=localNow();input.dispatchEvent(new Event('input',{bubbles:true}));score()});input.insertAdjacentElement('afterend',b)}
   addNow('publishedAt','Поставить текущие дату и время');addNow('updatedAt','Обновлено сейчас');
-  const photos={'Илья Титюлькин':'assets/authors/ilya.jpg','Эльвира Шайберт':'assets/authors/elvira.jpg','Екатерина Рукопляс':'assets/authors/ekaterina.jpg'};
+  const photos={'Илья Титюлькин':'assets/authors/ilya.jpg','Эльвира Шайберт':'assets/authors/elvira-v2.jpg','Екатерина Рукопляс':'assets/authors/ekaterina.jpg'};
   function syncPhoto(){const a=document.getElementById('author'),p=document.getElementById('authorPhoto');if(a&&p&&photos[a.value])p.src=photos[a.value]}
   document.getElementById('author')?.addEventListener('change',()=>setTimeout(syncPhoto));syncPhoto();
   document.querySelectorAll('img[src$="ilya.svg"]').forEach(i=>i.src=photos['Илья Титюлькин']);document.querySelectorAll('img[src$="elvira.svg"]').forEach(i=>i.src=photos['Эльвира Шайберт']);document.querySelectorAll('img[src$="ekaterina.svg"]').forEach(i=>i.src=photos['Екатерина Рукопляс']);
