@@ -4,6 +4,8 @@
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const decode=f=>{if(!f?.content)return'';return new TextDecoder().decode(Uint8Array.from(atob(f.content.replace(/\n/g,'')),c=>c.charCodeAt(0)))};
   const local=v=>{if(!v)return'';const d=new Date(v);return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16)};
+  const cmsStore=()=>typeof store!=='undefined'?store:null;
+  const normalizedType=t=>({Article:'guide',NewsArticle:'news',Recipe:'recipe'}[t]||t||'guide');
 
   function installPlacement(){
     if($('#placementCard'))return;
@@ -22,28 +24,28 @@
   function sourceValue(note){if(!note)return'';const a=note.querySelector('a');if(a)return a.getAttribute('href')||a.textContent.trim();return note.textContent.replace(/^Источник:\s*/i,'').trim()}
   function parseQuiz(doc){
     const section=doc.querySelector('.pv-quiz');if(!section)return null;
-    const questions=[...section.querySelectorAll('.pv-quiz-question')].map((q,i)=>({question:(q.querySelector('legend')?.textContent||'').replace(/^\s*\d+\.\s*/,''),options:[...q.querySelectorAll('.pv-quiz-option')].map(x=>(x.textContent||'').replace(/^\s*[АБВГA-D]\.?\s*/i,'').trim()),correct:Number(q.dataset.correct||0),explanation:q.dataset.explanation||''}));
+    const questions=[...section.querySelectorAll('.pv-quiz-question')].map(q=>({question:(q.querySelector('legend')?.textContent||'').replace(/^\s*\d+\.\s*/,''),options:[...q.querySelectorAll('.pv-quiz-option')].map(x=>(x.textContent||'').replace(/^\s*[АБВГA-D]\.?\s*/i,'').trim()),correct:Number(q.dataset.correct||0),explanation:q.dataset.explanation||''}));
     const after=doc.querySelector('.quiz-after-content');return {questions,afterContent:after?.innerHTML||''}
   }
   async function materialFromPost(p){
     const file=await window.getFile(`articles/${p.slug}.html`);if(!file)throw new Error('HTML статьи не найден в репозитории');
     const doc=new DOMParser().parseFromString(decode(file),'text/html'),body=doc.querySelector('.article-body');
-    const quiz=parseQuiz(doc), note=body?.querySelector('.note');
+    const quiz=parseQuiz(doc), note=body?.querySelector('.note'),source=sourceValue(note);
     if(body){body.querySelector('.pv-quiz')?.remove();body.querySelector('.quiz-after-content')?.remove();note?.remove()}
-    return {headline:p.headline||doc.querySelector('.article-title')?.textContent||'',category:p.category||doc.querySelector('.article-kicker')?.textContent||'Продукты',type:p.type||'guide',lead:doc.querySelector('.article-dek')?.textContent||'',publishedAt:local(p.publishedAt),updatedAt:local(p.updatedAt||p.publishedAt),seoTitle:doc.title||p.headline||'',description:p.description||doc.querySelector('meta[name="description"]')?.content||'',slug:p.slug,canonical:doc.querySelector('link[rel="canonical"]')?.href||p.url||'',robots:doc.querySelector('meta[name="robots"]')?.content||'index, follow, max-image-preview:large',ogImage:doc.querySelector('meta[property="og:image"]')?.content||p.image||'',source:sourceValue(note),tags:Array.isArray(p.tags)?p.tags.join(', '):(p.tags||''),image:p.image||doc.querySelector('.article-cover')?.src||'',imageAlt:p.imageAlt||doc.querySelector('.article-cover')?.alt||'',photoSource:p.photoSource||'',author:p.author||'',coauthors:[],content:body?.innerHTML||'',quiz,featured:!!p.featured,popular:!!p.popular,_editingSlug:p.slug}
+    return {headline:p.headline||doc.querySelector('.article-title')?.textContent||'',category:p.category||doc.querySelector('.article-kicker')?.textContent||'Продукты',type:normalizedType(p.type),lead:doc.querySelector('.article-dek')?.textContent||'',publishedAt:local(p.publishedAt),updatedAt:local(p.updatedAt||p.publishedAt),seoTitle:doc.title||p.headline||'',description:p.description||doc.querySelector('meta[name="description"]')?.content||'',slug:p.slug,canonical:doc.querySelector('link[rel="canonical"]')?.href||p.url||'',robots:doc.querySelector('meta[name="robots"]')?.content||'index, follow, max-image-preview:large',ogImage:doc.querySelector('meta[property="og:image"]')?.content||p.image||'',source,tags:Array.isArray(p.tags)?p.tags.join(', '):(p.tags||''),image:p.image||doc.querySelector('.article-cover')?.src||'',imageAlt:p.imageAlt||doc.querySelector('.article-cover')?.alt||'',photoSource:p.photoSource||'',author:p.author||'',coauthors:[],content:body?.innerHTML||'',quiz,featured:!!p.featured,popular:!!p.popular,_editingSlug:p.slug}
   }
   async function editPublished(slug){
-    const p=(window.store?.posts||[]).find(x=>x.slug===slug);if(!p)return;
-    try{flash?.('Загружаю материал…');const data=await materialFromPost(p);editingSlug=slug;window.fill(data);document.querySelector('.nav-btn[data-target="material"]')?.click();$('#pageTitle').textContent='Редактирование публикации';const c=$('.crumb');if(c)c.textContent='Материалы / Редактирование';flash?.('Материал открыт для редактирования')}catch(e){flash?.(e.message)}
+    const st=cmsStore(),p=(st?.posts||[]).find(x=>x.slug===slug);if(!p)return;
+    try{flash?.('Загружаю материал…');const data=await materialFromPost(p);editingSlug=slug;const fp=$('#imageFile');if(fp)fp.value='';window.fill(data);document.querySelector('.nav-btn[data-target="material"]')?.click();$('#pageTitle').textContent='Редактирование публикации';const c=$('.crumb');if(c)c.textContent='Материалы / Редактирование';flash?.('Материал открыт для редактирования')}catch(e){flash?.(e.message)}
   }
   async function deletePublished(slug){
-    const p=(window.store?.posts||[]).find(x=>x.slug===slug);if(!p||!confirm(`Удалить опубликованный материал «${p.headline}»?\n\nСтатья исчезнет с сайта после деплоя GitHub Pages.`))return;
+    const st=cmsStore(),p=(st?.posts||[]).find(x=>x.slug===slug);if(!p||!confirm(`Удалить опубликованный материал «${p.headline}»?\n\nСтатья исчезнет с сайта после деплоя GitHub Pages.`))return;
     try{
       await window.deleteFile(`articles/${slug}.html`,`Delete article: ${p.headline}`);
       const pf=await window.getFile('data/posts.json'),posts=pf?.content?JSON.parse(decode(pf)):[];
       const next=posts.filter(x=>x.slug!==slug);
       await window.putFile('data/posts.json',JSON.stringify(next,null,2),`Remove post index: ${p.headline}`);
-      window.store.posts=next;window.saveStore?.();window.renderPosts?.();flash?.('Материал удалён. Главная обновится после деплоя GitHub Pages.')
+      if(st){st.posts=next;if(typeof saveStore==='function')saveStore()}if(typeof renderPosts==='function')renderPosts();flash?.('Материал удалён. Главная обновится после деплоя GitHub Pages.')
     }catch(e){flash?.(e.message||'Не удалось удалить материал')}
   }
   window.editPublishedPost=editPublished;window.deletePublishedPost=deletePublished;
@@ -52,11 +54,11 @@
     if(typeof window.renderPosts!=='function'||window.renderPosts.__managerWrapped)return;
     const base=window.renderPosts;
     const wrapped=function(){
-      base();const tb=$('#postsTable');if(!tb)return;
+      base();const tb=$('#postsTable'),st=cmsStore();if(!tb)return;
       [...tb.querySelectorAll('tr')].filter(tr=>!tr.classList.contains('draft-row')).forEach(tr=>{
         const link=tr.querySelector('a[href*="/articles/"]');if(!link)return;
         let slug='';try{slug=(new URL(link.href,location.href).pathname.split('/').pop()||'').replace(/\.html$/,'')}catch(e){}
-        const p=(window.store?.posts||[]).find(x=>x.slug===slug);if(!p)return;
+        const p=(st?.posts||[]).find(x=>x.slug===slug);if(!p)return;
         const titleCell=tr.children[0];if(titleCell&&!titleCell.querySelector('.cms-badge')){if(p.featured)titleCell.insertAdjacentHTML('beforeend','<br><span class="cms-badge featured">Главная</span>');if(p.popular)titleCell.insertAdjacentHTML('beforeend','<span class="cms-badge popular">Популярное</span>')}
         let actions=tr.querySelector('.row-actions')||tr.lastElementChild;if(!actions||actions===titleCell){actions=document.createElement('td');actions.className='row-actions';tr.appendChild(actions)}else actions.classList.add('row-actions');
         if(!actions.querySelector('[data-edit-published]'))actions.insertAdjacentHTML('beforeend',`<button type="button" class="btn soft" data-edit-published="${esc(slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-published="${esc(slug)}">Удалить</button>`)
@@ -84,5 +86,5 @@
   function bindNew(){document.addEventListener('click',e=>{if(e.target.closest?.('#newArticleBtn'))setTimeout(resetEditing,0)},true)}
 
   function init(){installPlacement();wrapCollectFill();wrapPostIndex();enhancePublishedList();bindNew()}
-  let tries=0,t=setInterval(()=>{tries++;if(typeof window.collect==='function'&&typeof window.fill==='function'&&typeof window.putFile==='function'&&typeof window.renderPosts==='function'&&$('#postsTable')){clearInterval(t);init()}else if(tries>240)clearInterval(t)},50)
+  let tries=0,t=setInterval(()=>{tries++;if(typeof window.collect==='function'&&typeof window.fill==='function'&&typeof window.putFile==='function'&&typeof window.deleteFile==='function'&&typeof window.renderPosts==='function'&&$('#postsTable')&&$('#pvCmsExtrasStyles')){clearInterval(t);init()}else if(tries>240)clearInterval(t)},50)
 })();
