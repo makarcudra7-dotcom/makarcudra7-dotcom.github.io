@@ -100,6 +100,22 @@ module.exports = async function handler(req, res) {
       return json(res, 200, { result: data });
     }
 
+    if (body.action === 'delete') {
+      const current = await github(`${encodedPath}?ref=${encodeURIComponent(BRANCH)}`);
+      if (current.status === 404) return json(res, 200, { result: null, deleted: false });
+      const currentData = await current.json().catch(() => ({}));
+      if (!current.ok) return json(res, current.status, { error: currentData.message || `GitHub ${current.status}` });
+      const payload = {
+        message: String(body.message || 'Delete from ProVkus CMS'),
+        branch: BRANCH,
+        sha: currentData.sha
+      };
+      const r = await github(encodedPath, { method: 'DELETE', body: JSON.stringify(payload) });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) return json(res, r.status, { error: data.message || `GitHub ${r.status}` });
+      return json(res, 200, { result: data, deleted: true });
+    }
+
     return json(res, 400, { error: 'Unknown action' });
   } catch (error) {
     console.error('ProVkus publish API:', error);
