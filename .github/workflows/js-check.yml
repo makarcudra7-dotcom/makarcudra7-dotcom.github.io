@@ -22,6 +22,7 @@ jobs:
         run: |
           node --check assets/app.js
           node --check assets/feed-v2.js
+          node --check assets/community.js
           node --check assets/admin.js
           node --check assets/admin-enhance.js
           node --check assets/admin-v3.js
@@ -36,3 +37,4 @@ jobs:
           node --check assets/home-dynamic.js
           node --check api/publish.js
           node --check scripts/publish-scheduled.js
+          node --check scripts/build-feed.js

@@ -7,7 +7,7 @@
   if(isHome)document.documentElement.classList.add('pv-home-loading');
 
   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
-  function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260922-pro3';document.head.appendChild(l)}
+  function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260922-community1';document.head.appendChild(l)}
   function injectCss(){addCss('/assets/overrides.css');addCss('/assets/author-fix.css');addCss('/assets/site-ui.css')}
   function addFavicon(){if(!document.querySelector('link[rel~="icon"]')){const l=document.createElement('link');l.rel='icon';l.type='image/png';l.href='/favicon.png';document.head.appendChild(l)}if(!document.querySelector('meta[name="theme-color"]')){const m=document.createElement('meta');m.name='theme-color';m.content='#f7f4ee';document.head.appendChild(m)}}
   function normalizeRemoteImage(img){const src=img.getAttribute('src')||'';if(src.includes('images.unsplash.com')){try{const u=new URL(src);u.searchParams.delete('auto');u.searchParams.set('fm','jpg');u.searchParams.set('fit','crop');if(!u.searchParams.has('q'))u.searchParams.set('q','82');img.src=u.toString()}catch(e){}}img.decoding='async';if(!img.closest('.lead-card')&&!img.classList.contains('article-cover'))img.loading='lazy';if(!img.getAttribute('width'))img.setAttribute('width','1600');if(!img.getAttribute('height'))img.setAttribute('height','900');img.addEventListener('error',()=>{if(!img.dataset.fallback){img.dataset.fallback='1';img.src=FALLBACK}},{once:true})}
@@ -40,7 +40,8 @@
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
   injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
   window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
-  if(isHome)loadScript('/assets/home-dynamic.js?v=20260922-pro3','pvHomeDynamic');
-  loadScript('/assets/feed-v2.js?v=20260922-pro3','pvFeedV2');
+  if(isHome)loadScript('/assets/home-dynamic.js?v=20260922-community1','pvHomeDynamic');
+  loadScript('/assets/feed-v2.js?v=20260922-community1','pvFeedV2');
+  loadScript('/assets/community.js?v=20260922-community1','pvCommunity');
   loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet');
 })();

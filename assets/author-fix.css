@@ -1,7 +1,8 @@
 /* Final author portrait fix */
 .author-grid{align-items:start}
 .author-grid .author-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0}
-.author-grid .author-card>img{display:block!important;width:112px!important;height:112px!important;min-width:112px!important;max-width:112px!important;aspect-ratio:1/1!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 35%!important;flex:0 0 112px!important;margin:0 0 14px!important;background:#e9e4db}
+.author-grid .author-card>img,.author-grid .author-card-top img{display:block!important;width:112px!important;height:112px!important;min-width:112px!important;max-width:112px!important;aspect-ratio:1/1!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 35%!important;flex:0 0 112px!important;margin:0!important;background:#e9e4db}
+.author-grid .author-card>img{margin:0 0 14px!important}
 .author-hero .author-photo{display:block!important;width:220px!important;height:220px!important;min-width:220px!important;max-width:220px!important;aspect-ratio:1/1!important;border-radius:28px!important;object-fit:cover!important;object-position:50% 35%!important;background:#e9e4db}
 .article-author .avatar,#authorPhoto{display:block!important;width:46px!important;height:46px!important;min-width:46px!important;max-width:46px!important;aspect-ratio:1/1!important;border-radius:50%!important;object-fit:cover!important;object-position:50% 35%!important}
-@media(max-width:640px){.author-grid .author-card>img{width:96px!important;height:96px!important;min-width:96px!important;max-width:96px!important;flex-basis:96px!important}.author-hero .author-photo{width:160px!important;height:160px!important;min-width:160px!important;max-width:160px!important}}
+@media(max-width:640px){.author-grid .author-card>img,.author-grid .author-card-top img{width:96px!important;height:96px!important;min-width:96px!important;max-width:96px!important;flex-basis:96px!important}.author-hero .author-photo{width:160px!important;height:160px!important;min-width:160px!important;max-width:160px!important}}
