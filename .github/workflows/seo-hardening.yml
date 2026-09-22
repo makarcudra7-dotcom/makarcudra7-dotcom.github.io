@@ -1,0 +1,37 @@
+name: Google readiness hardening
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/posts.json'
+      - 'data/authors.json'
+      - 'assets/admin-seo.js'
+      - 'assets/provkus-logo.svg'
+      - 'scripts/seo_hardening.py'
+      - 'scripts/build_indexes.py'
+      - 'scripts/audit_site.py'
+      - '.github/workflows/seo-hardening.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  harden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install audit dependencies
+        run: python3 -m pip install --quiet pillow
+      - name: Normalize SEO metadata and indexes
+        run: python3 scripts/seo_hardening.py
+      - name: Run offline crawl and structured-data audit
+        run: python3 scripts/audit_site.py
+      - name: Commit generated SEO output
+        run: |
+          git config user.name "provkus-seo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add articles index.html sitemap.xml feed.xml
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Normalize Google metadata and sitemap"
+          git push
