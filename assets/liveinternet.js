@@ -1,4 +1,11 @@
 (function(){
+  if ((location.pathname === '/' || /\/index\.html$/.test(location.pathname)) && !document.querySelector('script[data-home-dynamic]')) {
+    const home = document.createElement('script');
+    home.src = '/assets/home-dynamic.js?v=20260922';
+    home.dataset.homeDynamic = '1';
+    document.body.appendChild(home);
+  }
+
   if (location.pathname === '/admin.html' || document.getElementById('licnt2C53')) return;
 
   const footer = document.querySelector('.site-footer');

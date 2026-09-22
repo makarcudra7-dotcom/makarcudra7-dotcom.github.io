@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'assets/*.js'
+      - 'api/*.js'
   workflow_dispatch:
 jobs:
   check:
@@ -17,3 +18,10 @@ jobs:
           node --check assets/admin.js
           node --check assets/admin-enhance.js
           node --check assets/admin-v3.js
+          node --check assets/admin-server.js
+          node --check assets/admin-photo-source.js
+          node --check assets/admin-content-manager.js
+          node --check assets/admin-quiz.js
+          node --check assets/admin-quiz-toolbar.js
+          node --check assets/home-dynamic.js
+          node --check api/publish.js

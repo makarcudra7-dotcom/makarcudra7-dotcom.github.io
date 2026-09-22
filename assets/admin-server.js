@@ -4,6 +4,7 @@
   const originalGetToken=typeof getToken==='function'?getToken:null;
   const originalGetFile=typeof getFile==='function'?getFile:null;
   const originalPutFile=typeof putFile==='function'?putFile:null;
+  const originalDeleteFile=typeof deleteFile==='function'?deleteFile:null;
   const apiBase=()=>String(localStorage.getItem(API_KEY)||'').replace(/\/$/,'');
   const adminHash=()=>localStorage.getItem('provkusAdminHash')||'';
   const useServer=()=>/^https:\/\//i.test(apiBase());
@@ -29,6 +30,13 @@
   window.getToken=function(){return useServer()?'server':(originalGetToken?originalGetToken():'')};
   window.getFile=async function(path){if(!useServer())return originalGetFile(path);return (await serverRequest({action:'get',path})).file};
   window.putFile=async function(path,content,message,encoding='utf-8'){if(!useServer())return originalPutFile(path,content,message,encoding);return (await serverRequest({action:'put',path,content,message,encoding})).result};
+  window.deleteFile=async function(path,message='Delete from ProVkus CMS'){
+    if(useServer())return (await serverRequest({action:'delete',path,message})).result;
+    if(originalDeleteFile)return originalDeleteFile(path,message);
+    const old=await originalGetFile(path);if(!old?.sha)return null;
+    if(typeof gh!=='function')throw new Error('Удаление требует подключённый сервер публикации');
+    return gh(`/repos/makarcudra7-dotcom/makarcudra7-dotcom.github.io/contents/${path}`,{method:'DELETE',body:JSON.stringify({message,branch:'main',sha:old.sha})})
+  };
 
   const loginText=$('.login-card p');
   if(loginText)loginText.textContent='Введите пароль редакции. Публикация может работать через защищённый сервер без GitHub-токена в браузере.';
