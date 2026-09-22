@@ -1,0 +1,41 @@
+name: Sync author biographies
+on:
+  push:
+    paths:
+      - 'data/authors.json'
+      - 'scripts/sync_author_bios.py'
+      - '.github/workflows/sync-author-bios.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync biographies into author pages
+        run: python3 scripts/sync_author_bios.py
+      - name: Validate author pages
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          authors=json.loads(Path('data/authors.json').read_text('utf-8'))
+          for author in authors:
+              page=Path(author['url'])
+              text=page.read_text('utf-8')
+              assert author['bio'] in text, (page, 'bio')
+              assert author['metaDescription'] in text, (page, 'meta')
+              assert 'Имеет профильное образование' not in text, page
+          print('Validated', len(authors), 'author pages')
+          PY
+      - name: Commit generated author pages
+        run: |
+          git config user.name "provkus-author-bio-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add author-*.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Sync author biographies"
+          git push
