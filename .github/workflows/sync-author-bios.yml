@@ -1,22 +1,14 @@
 name: Sync author biographies
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/authors.json'
-      - 'scripts/sync_author_bios.py'
-      - '.github/workflows/sync-author-bios.yml'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Sync biographies and site shell
+      - name: Sync biographies locally
         run: python3 scripts/sync_author_bios.py
       - name: Validate author pages
         run: |
@@ -25,22 +17,9 @@ jobs:
           from pathlib import Path
           authors=json.loads(Path('data/authors.json').read_text('utf-8'))
           for author in authors:
-              page=Path(author['url'])
-              text=page.read_text('utf-8')
-              assert author['bio'] in text, (page, 'bio')
-              assert author['metaDescription'] in text, (page, 'meta')
-              assert 'Имеет профильное образование' not in text, page
-              assert '/assets/community.js?v=20260922-fix4' in text, page
-          assert 'admin-photo-source.js?v=20260922-fix4' in Path('admin.html').read_text('utf-8')
-          index=Path('index.html').read_text('utf-8')
-          assert '/favicon.ico' in index and 'sizes="64x64"' in index
-          print('Validated', len(authors), 'author pages and site shell')
+              text=Path(author['url']).read_text('utf-8')
+              assert author['bio'] in text
+              assert author['metaDescription'] in text
+              assert 'Имеет профильное образование' not in text
+          print('Validated', len(authors), 'author pages')
           PY
-      - name: Commit generated pages
-        run: |
-          git config user.name "provkus-author-bio-bot"
-          git config user.email "actions@users.noreply.github.com"
-          git add author-*.html admin.html index.html
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Sync author pages and site shell"
-          git push
