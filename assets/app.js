@@ -1,7 +1,7 @@
 (function(){
   const SITE='https://provkus-media.ru';
   const FALLBACK='/assets/fallback-cover.svg';
-  const AUTHOR_PHOTOS={'ilya.svg':'/assets/authors/ilya.jpg','elvira.svg':'/assets/authors/elvira.jpg','ekaterina.svg':'/assets/authors/ekaterina.jpg'};
+  const AUTHOR_PHOTOS={'ilya.svg':'/assets/authors/ilya.jpg','elvira.svg':'/assets/authors/elvira-v2.jpg','ekaterina.svg':'/assets/authors/ekaterina.jpg'};
   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
   function injectCss(){if(!document.querySelector('link[href="/assets/overrides.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='/assets/overrides.css?v=20260922b';document.head.appendChild(l)}}
   function addFavicon(){if(!document.querySelector('link[rel~="icon"]')){const l=document.createElement('link');l.rel='icon';l.type='image/png';l.href='/favicon.png';document.head.appendChild(l)}if(!document.querySelector('meta[name="theme-color"]')){const m=document.createElement('meta');m.name='theme-color';m.content='#181714';document.head.appendChild(m)}}
