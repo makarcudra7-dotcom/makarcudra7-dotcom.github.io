@@ -1,0 +1,40 @@
+name: Final sync v5
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/final_sync_v5.py'
+      - '.github/workflows/final-sync-v5.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Sync headlines, covers, cards and author photo
+        run: python3 scripts/final_sync_v5.py
+      - name: Validate
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          posts=json.loads(Path('data/posts.json').read_text())
+          assert len(posts)==24
+          assert len({p['image'] for p in posts})==24
+          assert all('/assets/covers/' in p['image'] and p['image'].endswith('-16x9.jpg') for p in posts)
+          assert all(p.get('photoSource')=='provkus-media.ru' for p in posts)
+          assert Path('assets/authors/elvira-v2.jpg').exists()
+          print('validated',len(posts),'posts')
+          PY
+      - name: Commit synced site
+        run: |
+          git config user.name "provkus-sync-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/posts.json articles index.html category.html authors.html author-*.html assets/authors/elvira-v2.jpg assets/admin.js assets/admin-enhance.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Sync final headlines, unique covers and photo credits"
+          git push
