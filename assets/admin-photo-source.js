@@ -37,4 +37,5 @@
   }
   const b=document.getElementById('photoSourceBtn');
   if(b) b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select();}});
+  const quiz=document.createElement('script');quiz.src='assets/admin-quiz.js?v=20260922';document.body.appendChild(quiz);
 })();
