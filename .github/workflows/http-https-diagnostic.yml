@@ -1,0 +1,110 @@
+name: HTTP and HTTPS diagnostic
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/http-https-diagnostic.yml'
+
+permissions:
+  contents: read
+  pages: write
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DNS diagnostics
+        shell: bash
+        run: |
+          set -u
+          echo '=== A ==='
+          dig +short A provkus-media.ru || true
+          echo '=== AAAA ==='
+          dig +short AAAA provkus-media.ru || true
+          echo '=== www CNAME ==='
+          dig +short CNAME www.provkus-media.ru || true
+          echo '=== CAA ==='
+          dig +short CAA provkus-media.ru || true
+          echo '=== NS ==='
+          dig +short NS provkus-media.ru || true
+
+      - name: Read GitHub Pages state
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -u
+          curl -sS -L \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
+            -o /tmp/pages.json -w 'HTTP %{http_code}\n'
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/pages.json', encoding='utf-8'))
+          print(json.dumps({
+            'status': p.get('status'),
+            'cname': p.get('cname'),
+            'html_url': p.get('html_url'),
+            'https_enforced': p.get('https_enforced'),
+            'protected_domain_state': p.get('protected_domain_state'),
+            'pending_domain_unverified_at': p.get('pending_domain_unverified_at'),
+            'https_certificate': p.get('https_certificate'),
+          }, ensure_ascii=False, indent=2))
+          cert=(p.get('https_certificate') or {})
+          with open('/tmp/cert_state','w') as f: f.write(str(cert.get('state') or ''))
+          with open('/tmp/https_enforced','w') as f: f.write('true' if p.get('https_enforced') else 'false')
+          PY
+
+      - name: Enable HTTPS when certificate is approved
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -u
+          state="$(cat /tmp/cert_state)"
+          enforced="$(cat /tmp/https_enforced)"
+          echo "certificate_state=$state https_enforced=$enforced"
+          if [ "$state" = 'approved' ] && [ "$enforced" != 'true' ]; then
+            code=$(curl -sS -o /tmp/enable.json -w '%{http_code}' -L \
+              -X PUT \
+              -H 'Accept: application/vnd.github+json' \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              -H 'X-GitHub-Api-Version: 2022-11-28' \
+              "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
+              -d '{"https_enforced":true}')
+            echo "Enable HTTPS API status: $code"
+            cat /tmp/enable.json || true
+            if [ "$code" != '204' ]; then
+              echo 'Automatic HTTPS enforcement was not permitted by the workflow token.'
+            fi
+          else
+            echo 'No safe automatic switch needed yet.'
+          fi
+
+      - name: HTTP and TLS diagnostics
+        shell: bash
+        run: |
+          set -u
+          echo '=== HTTP HEAD ==='
+          curl -sS -I --max-time 20 http://provkus-media.ru/ || true
+          echo '=== HTTPS HEAD ==='
+          curl -sS -I --max-time 20 https://provkus-media.ru/ || true
+          echo '=== TLS certificate ==='
+          timeout 20 openssl s_client -connect provkus-media.ru:443 -servername provkus-media.ru </dev/null 2>/dev/null \
+            | openssl x509 -noout -subject -issuer -dates -ext subjectAltName || true
+
+      - name: Final GitHub Pages state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          curl -sS -L \
+            -H 'Accept: application/vnd.github+json' \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" \
+            | python -c "import sys,json; p=json.load(sys.stdin); print(json.dumps({'cname':p.get('cname'),'https_enforced':p.get('https_enforced'),'https_certificate':p.get('https_certificate'),'protected_domain_state':p.get('protected_domain_state')}, ensure_ascii=False, indent=2))"
