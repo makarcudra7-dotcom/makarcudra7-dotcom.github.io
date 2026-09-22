@@ -1,5 +1,5 @@
 (()=>{
-  const escCredit=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const escCredit=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   if(typeof articleHTML==='function'){
     const baseArticleHTML=articleHTML;
     articleHTML=function(o,img){
@@ -37,5 +37,6 @@
   }
   const b=document.getElementById('photoSourceBtn');
   if(b) b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select();}});
+  const server=document.createElement('script');server.src='assets/admin-server.js?v=20260922';document.body.appendChild(server);
   const quiz=document.createElement('script');quiz.src='assets/admin-quiz.js?v=20260922';document.body.appendChild(quiz);
 })();
