@@ -8,8 +8,13 @@ const SITE='https://provkus-media.ru';
 const esc=v=>String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&apos;');
 const now=Date.now();
 const read=(file,fallback)=>{try{return JSON.parse(fs.readFileSync(file,'utf8'))}catch{return fallback}};
+const articleExists=p=>!!p?.slug&&fs.existsSync(path.join(ROOT,'articles',`${p.slug}.html`));
 let posts=read(POSTS,[]);
-posts=posts.filter(p=>p&&p.slug&&p.headline&&(!Number.isFinite(new Date(p.publishedAt||0).getTime())||new Date(p.publishedAt||0).getTime()<=now+15000)).sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0)).slice(0,50);
+posts=posts.filter(p=>{
+  if(!p||!p.slug||!p.headline||!articleExists(p))return false;
+  const t=new Date(p.publishedAt||0).getTime();
+  return !Number.isFinite(t)||t<=now+15000;
+}).sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0)).slice(0,50);
 const bySlug=new Map(posts.map(p=>[p.slug,p]));
 const itemXml=(p,{manualId='',manualAt=''}={})=>{
   const base=p.url||`${SITE}/articles/${p.slug}.html`;
