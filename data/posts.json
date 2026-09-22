@@ -1,5 +1,38 @@
 [
   {
+    "slug": "etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite",
+    "headline": "Этот тест по продуктам СССР завалит даже тот, кто стоял за «Докторской»: 8 вопросов о вкусах, ГОСТах и дефиците  ",
+    "description": "Сложный тест о продуктах СССР: советские рецептуры, ГОСТы, знаменитые напитки, колбаса, сыр и десерты.",
+    "author": "Екатерина Рукопляс",
+    "category": "Продукты",
+    "type": "quiz",
+    "typeLabel": "Тест / викторина",
+    "image": "https://provkus-media.ru/assets/uploads/etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite-1x1.jpg"
+    ],
+    "imageAlt": "Очередь в Гастроном СССР",
+    "url": "https://provkus-media.ru/articles/etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite.html",
+    "publishedAt": "2026-09-22T05:08:00.000Z",
+    "updatedAt": "2026-09-22T05:08:00.000Z",
+    "tags": [
+      "СССР",
+      "продукты СССР",
+      "советские продукты",
+      "тест СССР",
+      "еда в СССР",
+      "советская кухня",
+      "Докторская колбаса",
+      "Птичье молоко",
+      "Байкал",
+      "ГОСТ"
+    ],
+    "photoSource": "provkus-media.ru",
+    "quizCount": 8
+  },
+  {
     "slug": "tykvennyi-krem-sup-s-yablokom",
     "headline": "Тыквенный крем-суп с яблоком и копчёной паприкой",
     "description": "Осенний тыквенный крем-суп с яблоком, копчёной паприкой и сливками: простой сезонный рецепт на 35 минут с ярким вкусом.",
