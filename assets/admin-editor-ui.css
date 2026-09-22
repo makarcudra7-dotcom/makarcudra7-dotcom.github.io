@@ -1,0 +1,9 @@
+/* Editor ergonomics: compact, resizable text area + always-visible tools */
+.editor-toolbar{position:sticky!important;top:82px!important;z-index:35!important;background:rgba(248,250,248,.98)!important;backdrop-filter:blur(10px);box-shadow:0 8px 20px rgba(20,30,24,.07);max-height:118px;overflow:auto;scrollbar-width:thin}
+.rich-editor{height:420px;min-height:220px!important;max-height:72vh;resize:vertical!important;overflow:auto!important;overscroll-behavior:contain;scrollbar-gutter:stable}
+.source-editor{height:420px;min-height:220px!important;max-height:72vh;resize:vertical!important;overflow:auto!important}
+.editor-size-tools{display:flex;gap:5px;margin-left:auto;align-items:center}.editor-size-tools button{white-space:nowrap}.editor-size-hint{font-size:10px;color:#798078;white-space:nowrap;padding:0 4px}
+.quiz-after-toolbar{position:sticky;top:205px;z-index:22;background:#fff;padding:8px;border:1px solid #e0e5e0;border-radius:8px;box-shadow:0 6px 15px rgba(20,30,24,.05)}
+.quiz-after-content-editor{height:300px;min-height:160px!important;max-height:60vh;resize:vertical!important;overflow:auto!important}
+@media(max-width:1000px){.editor-toolbar{top:0!important;max-height:132px}.quiz-after-toolbar{top:138px}.rich-editor,.source-editor{max-height:68vh}}
+@media(max-width:650px){.editor-toolbar{max-height:145px}.editor-size-hint{display:none}.quiz-after-toolbar{top:150px}.rich-editor,.source-editor{height:340px;min-height:190px!important}}
