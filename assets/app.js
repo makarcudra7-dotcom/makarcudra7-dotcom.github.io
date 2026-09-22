@@ -7,7 +7,7 @@
   if(isHome)document.documentElement.classList.add('pv-home-loading');
 
   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
-  function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260922-speed2';document.head.appendChild(l)}
+  function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260922-pro3';document.head.appendChild(l)}
   function injectCss(){addCss('/assets/overrides.css');addCss('/assets/author-fix.css');addCss('/assets/site-ui.css')}
   function addFavicon(){if(!document.querySelector('link[rel~="icon"]')){const l=document.createElement('link');l.rel='icon';l.type='image/png';l.href='/favicon.png';document.head.appendChild(l)}if(!document.querySelector('meta[name="theme-color"]')){const m=document.createElement('meta');m.name='theme-color';m.content='#f7f4ee';document.head.appendChild(m)}}
   function normalizeRemoteImage(img){const src=img.getAttribute('src')||'';if(src.includes('images.unsplash.com')){try{const u=new URL(src);u.searchParams.delete('auto');u.searchParams.set('fm','jpg');u.searchParams.set('fit','crop');if(!u.searchParams.has('q'))u.searchParams.set('q','82');img.src=u.toString()}catch(e){}}img.decoding='async';if(!img.closest('.lead-card')&&!img.classList.contains('article-cover'))img.loading='lazy';if(!img.getAttribute('width'))img.setAttribute('width','1600');if(!img.getAttribute('height'))img.setAttribute('height','900');img.addEventListener('error',()=>{if(!img.dataset.fallback){img.dataset.fallback='1';img.src=FALLBACK}},{once:true})}
@@ -29,13 +29,18 @@
   function authorCard(p){return `<a class="story-card feed-card" href="/articles/${encodeURIComponent(p.slug)}.html"><img src="${esc(p.image||FALLBACK)}" width="1600" height="900" loading="lazy" decoding="async" alt="${esc(p.imageAlt||p.headline||'')}"><div class="story-body"><span class="badge">${esc(p.category||'Материал')}</span><h3>${esc(p.headline||'')}</h3><div class="story-meta"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(fmt(p.publishedAt))}</time></div></div></a>`}
   function renderAuthorProfile(posts){const page=(location.pathname.split('/').pop()||'').toLowerCase(),authorName=AUTHOR_PAGES[page];if(!authorName)return;const section=[...document.querySelectorAll('main.container .section')].find(x=>/Материалы автора/i.test(x.querySelector('.section-title')?.textContent||''));if(!section)return;const authored=posts.filter(p=>p.author===authorName||(Array.isArray(p.coauthors)&&p.coauthors.includes(authorName)));const sub=section.querySelector('.section-sub');if(sub)sub.textContent=`${authored.length} ${publicationWord(authored.length)}`;const grid=section.querySelector('.story-grid');if(!grid)return;grid.innerHTML=authored.length?authored.map(authorCard).join(''):'<p class="section-sub">У автора пока нет опубликованных материалов.</p>';grid.querySelectorAll('img').forEach(normalizeRemoteImage)}
   function addSiteSchema(){if(!isHome||document.getElementById('pvSiteSchema'))return;const s=document.createElement('script');s.id='pvSiteSchema';s.type='application/ld+json';s.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':SITE+'/#organization',name:'ProVkus',url:SITE+'/',logo:{'@type':'ImageObject',url:SITE+'/favicon.png'}},{'@type':'WebSite','@id':SITE+'/#website',url:SITE+'/',name:'ProVkus',publisher:{'@id':SITE+'/#organization'},inLanguage:'ru-RU'}]});document.head.appendChild(s)}
+  function enhanceNavigation(){
+    const here=new URL(location.href),rubric=here.searchParams.get('rubric')||'';
+    document.querySelectorAll('.main-nav a').forEach(a=>{try{const u=new URL(a.href,location.href);let active=u.pathname===here.pathname;if(here.pathname==='/category.html'&&u.pathname==='/category.html')active=(u.searchParams.get('rubric')||'')===rubric;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}catch(e){}});
+    const main=document.querySelector('main');if(main&&!main.id)main.id='main-content';
+  }
   function loadScript(src,id){if(id&&document.getElementById(id))return;const s=document.createElement('script');if(id)s.id=id;s.src=src;s.defer=true;document.body.appendChild(s)}
 
   const share=document.querySelector('[data-share]');if(share){share.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);share.textContent='Ссылка скопирована'}}catch(e){}})}
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
-  injectCss();addFavicon();addSiteSchema();localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
+  injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
   window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
-  if(isHome)loadScript('/assets/home-dynamic.js?v=20260922-speed2','pvHomeDynamic');
-  loadScript('/assets/feed-v2.js?v=20260922-speed2','pvFeedV2');
+  if(isHome)loadScript('/assets/home-dynamic.js?v=20260922-pro3','pvHomeDynamic');
+  loadScript('/assets/feed-v2.js?v=20260922-pro3','pvFeedV2');
   loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet');
 })();
