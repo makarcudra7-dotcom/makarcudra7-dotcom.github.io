@@ -4,7 +4,7 @@
   const letters=['А','Б','В','Г'];
 
   function escHtml(v=''){
-    return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   }
   function escAttr(v=''){
     return escHtml(v).replace(/`/g,'&#96;');
@@ -12,7 +12,7 @@
   function addEditorStyles(){
     if($('#quizAdminStyles'))return;
     const s=document.createElement('style');s.id='quizAdminStyles';s.textContent=`
-      .quiz-admin-card[hidden]{display:none!important}.quiz-admin-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.quiz-admin-head p{margin:0;color:#74716a;font-size:13px}.quiz-question-editor{border:1px solid #dedbd3;border-radius:12px;padding:14px;margin:0 0 14px;background:#faf9f6}.quiz-question-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.quiz-question-top strong{font-size:15px}.quiz-remove{border:0;background:transparent;color:#a33;cursor:pointer;font-size:13px}.quiz-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quiz-option-row{display:grid;grid-template-columns:32px 1fr;gap:7px;align-items:center}.quiz-option-row span{width:32px;height:32px;border-radius:50%;background:#ece9df;display:grid;place-items:center;font-weight:700}.quiz-admin-card textarea{min-height:76px}.quiz-admin-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.quiz-admin-tools .hint{margin:0}@media(max-width:760px){.quiz-options-grid{grid-template-columns:1fr}}
+      .quiz-admin-card[hidden]{display:none!important}.quiz-admin-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.quiz-admin-head p{margin:0;color:#74716a;font-size:13px}.quiz-question-editor{border:1px solid #dedbd3;border-radius:12px;padding:14px;margin:0 0 14px;background:#faf9f6}.quiz-question-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.quiz-question-top strong{font-size:15px}.quiz-remove{border:0;background:transparent;color:#a33;cursor:pointer;font-size:13px}.quiz-options-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quiz-option-row{display:grid;grid-template-columns:32px 1fr;gap:7px;align-items:center}.quiz-option-row span{width:32px;height:32px;border-radius:50%;background:#ece9df;display:grid;place-items:center;font-weight:700}.quiz-admin-card textarea{min-height:76px}.quiz-admin-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.quiz-admin-tools .hint{margin:0}.quiz-after-block{margin-top:18px;padding-top:18px;border-top:1px solid #dedbd3}.quiz-after-block .rich-editor{min-height:150px}.quiz-after-toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}@media(max-width:760px){.quiz-options-grid{grid-template-columns:1fr}}
     `;document.head.appendChild(s);
   }
   function ensureQuizOption(){
@@ -23,7 +23,7 @@
     if($('#quizAdminCard'))return;
     const left=document.querySelector('#material .grid > div');if(!left)return;
     const card=document.createElement('div');card.className='card quiz-admin-card';card.id='quizAdminCard';card.hidden=true;
-    card.innerHTML=`<div class="card-title">Тест / викторина</div><div class="card-body"><div class="quiz-admin-head"><p>Добавьте вопросы, четыре варианта ответа и отметьте правильный.</p><button type="button" class="btn soft" id="addQuizQuestion">+ Добавить вопрос</button></div><div id="quizQuestions"></div><div class="quiz-admin-tools"><span class="hint">После публикации читатель сможет выбрать ответы и получить итоговый результат.</span></div></div>`;
+    card.innerHTML=`<div class="card-title">Тест / викторина</div><div class="card-body"><div class="quiz-admin-head"><p>Добавьте вопросы, четыре варианта ответа и отметьте правильный.</p><button type="button" class="btn soft" id="addQuizQuestion">+ Добавить вопрос</button></div><div id="quizQuestions"></div><div class="quiz-admin-tools"><span class="hint">После публикации читатель сможет выбрать ответы и получить итоговый результат.</span></div><div class="quiz-after-block"><div class="field"><label>Текст после теста</label><div class="quiz-after-toolbar"><button type="button" class="btn soft" data-inline-photo-target="#quizAfterEditor">📷 Фото с компьютера</button><span class="hint">Необязательно. Можно добавить вывод, пояснение, ссылки или дополнительный текст после вопросов.</span></div><div id="quizAfterEditor" class="rich-editor quiz-after-content-editor" contenteditable="true"><p></p></div></div></div></div>`;
     left.appendChild(card);
     $('#addQuizQuestion').onclick=()=>addQuestion();
   }
@@ -44,6 +44,7 @@
     const box=$('#quizQuestions');if(!box)return;box.innerHTML='';
     const qs=quiz&&Array.isArray(quiz.questions)?quiz.questions:[];
     qs.forEach(addQuestion);if(!qs.length&&$('#type')?.value==='quiz')addQuestion();
+    const after=$('#quizAfterEditor');if(after)after.innerHTML=quiz?.afterContent||'<p></p>';
   }
   function readQuiz(){
     return {questions:$$('#quizQuestions [data-quiz-question]').map(q=>({
@@ -51,7 +52,7 @@
       options:[...q.querySelectorAll('.quiz-option')].map(x=>x.value.trim()),
       correct:Number(q.querySelector('.quiz-correct')?.value||0),
       explanation:q.querySelector('.quiz-explanation')?.value.trim()||''
-    }))};
+    })),afterContent:$('#quizAfterEditor')?.innerHTML||''};
   }
   function validateQuiz(quiz){
     if(!quiz?.questions?.length)return 'Добавьте хотя бы один вопрос в тест';
@@ -70,7 +71,10 @@
   function injectQuiz(html,quiz){
     if(!html||!quiz?.questions?.length)return html;
     if(!html.includes('quiz.css'))html=html.replace('</head>','<link rel="stylesheet" href="../assets/quiz.css"></head>');
-    if(!html.includes('data-pv-quiz'))html=html.replace('</div></article>',publicQuizMarkup(quiz)+'</div></article>');
+    if(!html.includes('data-pv-quiz')){
+      const after=quiz.afterContent&&quiz.afterContent.replace(/<p>(?:<br>)?<\/p>/gi,'').trim()?`<div class="quiz-after-content">${quiz.afterContent}</div>`:'';
+      html=html.replace('</div></article>',publicQuizMarkup(quiz)+after+'</div></article>');
+    }
     if(!html.includes('quiz.js'))html=html.replace('</body>','<script src="../assets/quiz.js"></script></body>');
     return html;
   }
@@ -82,6 +86,10 @@
     const b=$(id);if(!b||b.dataset.quizWrapped==='1'||typeof b.onclick!=='function')return;
     const base=b.onclick;b.dataset.quizWrapped='1';
     b.onclick=function(e){if($('#type')?.value==='quiz'){const msg=validateQuiz(readQuiz());if(msg){if(typeof flash==='function')flash(msg);return false}}return base.call(this,e)};
+  }
+  function loadExtras(){
+    if(document.querySelector('script[data-admin-editor-extras]'))return;
+    const s=document.createElement('script');s.src='assets/admin-editor-extras.js?v=20260922b';s.dataset.adminEditorExtras='1';document.body.appendChild(s);
   }
   function install(){
     addEditorStyles();ensureEditor();ensureQuizOption();
@@ -96,7 +104,10 @@
     if(typeof window.putFile==='function'&&!window.putFile.__quizWrapped){
       const base=window.putFile;const wrapped=async function(path,content,message,encoding='utf-8'){
         const o=typeof window.collect==='function'?window.collect():{};
-        if(/^articles\/.+\.html$/.test(path)&&o.type==='quiz')content=injectQuiz(content,o.quiz);
+        if(/^articles\/.+\.html$/.test(path)&&o.type==='quiz'){
+          content=injectQuiz(content,o.quiz);
+          if(typeof window.processInlineImagesInHtml==='function')content=await window.processInlineImagesInHtml(content,o.slug||'test');
+        }
         if(path==='data/posts.json'&&o.type==='quiz'){
           try{const posts=JSON.parse(content),p=posts.find(x=>x.slug===o.slug);if(p){p.type='quiz';p.typeLabel='Тест / викторина';p.quizCount=o.quiz?.questions?.length||0}content=JSON.stringify(posts,null,2)}catch(e){}
         }
@@ -104,8 +115,9 @@
       };wrapped.__quizWrapped=true;window.putFile=wrapped;
     }
     const preview=$('#previewBtn');if(preview){preview.onclick=()=>{const o=window.collect(),img=o.image||'assets/fallback-cover.svg';let html=typeof window.articleHTML==='function'?window.articleHTML(o,img):'';if(o.type==='quiz')html=injectQuiz(html,o.quiz);const w=open('','_blank');w.document.write(html);w.document.close()}}
-    wrapPublish('#publishBtn');wrapPublish('#saveExitBtn');
+    wrapPublish('#publishBtn');
     if(window.store?.draft?.quiz){renderQuiz(window.store.draft.quiz);if(window.store.draft.type==='quiz'&&type)type.value='quiz';toggleQuiz()}
+    loadExtras();
   }
 
   let tries=0;const timer=setInterval(()=>{
