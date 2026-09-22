@@ -1,11 +1,12 @@
 (()=>{
   const API_KEY='provkusPublishApi';
+  const DEFAULT_API='https://makarcudra7-dotcom-github-io-unep.vercel.app';
   const $=s=>document.querySelector(s);
   const originalGetToken=typeof getToken==='function'?getToken:null;
   const originalGetFile=typeof getFile==='function'?getFile:null;
   const originalPutFile=typeof putFile==='function'?putFile:null;
   const originalDeleteFile=typeof deleteFile==='function'?deleteFile:null;
-  const apiBase=()=>String(localStorage.getItem(API_KEY)||'').replace(/\/$/,'');
+  const apiBase=()=>String(localStorage.getItem(API_KEY)||DEFAULT_API).replace(/\/$/,'');
   const adminHash=()=>localStorage.getItem('provkusAdminHash')||'';
   const useServer=()=>/^https:\/\//i.test(apiBase());
   let batchQueue=null;
@@ -66,14 +67,14 @@
     const title=card.querySelector('.card-title');if(title)title.textContent='Публикация на сайт';
     const body=card.querySelector('.card-body');
     const panel=document.createElement('div');panel.id='serverPublishPanel';panel.innerHTML=`
-      <div class="field"><label>Сервер публикации</label><div class="token-row"><input id="publishApiUrl" placeholder="https://ваш-проект.vercel.app"><button type="button" class="btn green" id="savePublishApi">Сохранить</button></div><div class="hint">При серверном режиме статья, изображения и индекс отправляются одним пакетом — это заметно быстрее нескольких GitHub-коммитов.</div></div>
+      <div class="field"><label>Сервер публикации</label><div class="token-row"><input id="publishApiUrl" placeholder="https://ваш-проект.vercel.app"><button type="button" class="btn green" id="savePublishApi">Сохранить</button></div><div class="hint">Сервер ProVkus уже указан по умолчанию. Менять его нужно только при переносе API.</div></div>
       <div class="conn" id="serverConn"><i></i><span></span></div>
-      <details id="serverSetup"><summary>Разовая настройка сервера</summary><div class="field" style="margin-top:12px"><label>PROVKUS_ADMIN_HASH</label><div class="token-row"><input id="serverAdminHash" readonly><button type="button" class="btn soft" id="copyAdminHash">Копировать</button></div><div class="hint">Этот хэш добавляется в защищённые переменные Vercel один раз. Это не GitHub-токен.</div></div></details>`;
+      <details id="serverSetup"><summary>Технические настройки сервера</summary><div class="field" style="margin-top:12px"><label>PROVKUS_ADMIN_HASH</label><div class="token-row"><input id="serverAdminHash" readonly><button type="button" class="btn soft" id="copyAdminHash">Копировать</button></div><div class="hint">Этот хэш добавляется в защищённые переменные Vercel. Это не GitHub-токен.</div></div></details>`;
     body.insertBefore(panel,body.firstChild);
     const url=$('#publishApiUrl');url.value=apiBase();
     const hash=$('#serverAdminHash');if(hash)hash.value=adminHash();
-    function paint(){const ok=useServer(),c=$('#serverConn');if(c){c.classList.toggle('ok',ok);c.querySelector('span').textContent=ok?'Сервер публикации настроен · быстрый пакетный режим':'Сервер ещё не подключён'}if(stat)stat.textContent=ok?'SERVER':'—';const legacy=token?.closest('.field');if(legacy)legacy.style.display=ok?'none':'';}
-    $('#savePublishApi').onclick=()=>{const v=url.value.trim().replace(/\/$/,'');if(v&&!/^https:\/\//i.test(v)){flash?.('Нужен HTTPS-адрес сервера');return}if(v)localStorage.setItem(API_KEY,v);else localStorage.removeItem(API_KEY);paint();flash?.(v?'Сервер сохранён':'Сервер отключён')};
+    function paint(){const ok=useServer(),c=$('#serverConn');if(c){c.classList.toggle('ok',ok);c.querySelector('span').textContent=ok?'Сервер публикации готов · быстрый пакетный режим':'Сервер ещё не подключён'}if(stat)stat.textContent=ok?'SERVER':'—';const legacy=token?.closest('.field');if(legacy)legacy.style.display=ok?'none':'';}
+    $('#savePublishApi').onclick=()=>{const v=url.value.trim().replace(/\/$/,'');if(v&&!/^https:\/\//i.test(v)){flash?.('Нужен HTTPS-адрес сервера');return}if(v&&v!==DEFAULT_API)localStorage.setItem(API_KEY,v);else localStorage.removeItem(API_KEY);url.value=apiBase();paint();flash?.('Сервер публикации сохранён')};
     $('#copyAdminHash').onclick=async()=>{try{await navigator.clipboard.writeText(adminHash());flash?.('Хэш скопирован')}catch(e){hash?.select()}};
     paint();
     if(token?.closest('.field')){

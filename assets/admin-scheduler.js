@@ -39,15 +39,20 @@
   function makePost(o,img,images){
     return {slug:o.slug,headline:o.headline,description:o.description,author:o.author,coauthors:Array.isArray(o.coauthors)?o.coauthors.filter(Boolean):[],category:o.category,type:o.type,typeLabel:typeLabel(o.type),image:img,images,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:new Date(o.publishedAt).toISOString(),updatedAt:new Date(o.updatedAt||o.publishedAt).toISOString(),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||'',featured:!!o.featured,popular:!!o.popular,quizCount:o.type==='quiz'?(o.quiz?.questions?.length||0):undefined}
   }
+  function lockActions(on,label=''){
+    const pub=$('#publishBtn'),plan=$('#scheduleBtn');
+    if(pub)pub.disabled=on;if(plan)plan.disabled=on;
+    if(on&&plan)plan.textContent=label||'Ставлю в очередь…';
+    if(!on)paintButtons()
+  }
   async function schedule(exitAfter=false){
-    const btn=$('#publishBtn');
     try{
       if(location.protocol!=='https:')throw new Error('Отложенная публикация доступна только через HTTPS');
       if(typeof getToken==='function'&&!getToken())throw new Error('Сначала подключите сервер публикации или GitHub в Настройках');
-      const o=window.collect?.()||{};const err=validate(o);if(err)throw new Error(err);
+      const o=window.collect?.()||{},err=validate(o);if(err)throw new Error(err);
       if(!o.slug)o.slug=slugify(o.headline);if(!o.seoTitle)o.seoTitle=o.headline;if(!o.canonical)o.canonical=`https://provkus-media.ru/articles/${o.slug}.html`;if(!o.updatedAt)o.updatedAt=o.publishedAt;
-      if(!future(o))throw new Error('Для отложенной публикации выберите дату и время в будущем');
-      btn.disabled=true;btn.textContent='Ставлю в очередь…';const pr=$('#publishProgress');if(pr)pr.style.width='15%';
+      if(!future(o))throw new Error('Для планирования выберите дату и время минимум на минуту вперёд');
+      lockActions(true,'Ставлю в очередь…');const pr=$('#publishProgress');if(pr)pr.style.width='15%';
       if(typeof window.processInlineImagesInHtml==='function'){
         o.content=await window.processInlineImagesInHtml(o.content||'',o.slug);
         if(o.quiz?.afterContent)o.quiz.afterContent=await window.processInlineImagesInHtml(o.quiz.afterContent,o.slug+'-quiz');
@@ -61,10 +66,10 @@
       await writeQueue(next,`Schedule: ${o.headline}`);
       if(typeof store!=='undefined'){store.draft=null;saveStore?.()}
       if(pr)pr.style.width='100%';flash?.(`Запланировано на ${fmt(item.publishAt)}`);
-      if(exitAfter||true)document.querySelector('.nav-btn[data-target="publications"]')?.click();
+      document.querySelector('.nav-btn[data-target="publications"]')?.click();
       return true
     }catch(e){flash?.(e.message||'Не удалось запланировать публикацию');return false}
-    finally{btn.disabled=false;paintButton()}
+    finally{lockActions(false)}
   }
   async function removeScheduled(slug,ask=true){
     const queue=await readQueue(),item=queue.find(x=>x.slug===slug);if(!item)return;
@@ -77,9 +82,17 @@
     document.querySelector('.nav-btn[data-target="material"]')?.click();
     flash?.('Запланированный материал открыт для редактирования')
   }
-  function paintButton(){
-    const b=$('#publishBtn'),o=window.collect?.()||{};if(!b)return;
-    if(future(o))b.textContent=`Запланировать на ${fmt(new Date(o.publishedAt))}`;else b.textContent='Опубликовать сейчас'
+  function ensureScheduleButton(){
+    let b=$('#scheduleBtn');if(b)return b;
+    const pub=$('#publishBtn'),actions=pub?.parentElement;if(!pub||!actions)return null;
+    b=document.createElement('button');b.type='button';b.id='scheduleBtn';b.className='btn schedule';b.textContent='Запланировать';b.title='Поставить материал в очередь на выбранную дату и время';actions.insertBefore(b,pub);return b
+  }
+  function paintButtons(){
+    const pub=$('#publishBtn'),plan=ensureScheduleButton(),o=window.collect?.()||{};
+    if(pub){pub.textContent='Опубликовать сейчас';pub.title='Опубликовать материал сразу'}
+    if(!plan)return;
+    if(future(o)){plan.textContent=`Запланировать · ${fmt(new Date(o.publishedAt))}`;plan.classList.add('is-ready');plan.title='Материал выйдет автоматически в выбранное время'}
+    else{plan.textContent='Запланировать';plan.classList.remove('is-ready');plan.title='Сначала выберите дату и время публикации в будущем'}
   }
   function enhanceList(){
     if(typeof window.renderPosts!=='function'||window.renderPosts.__scheduledWrapped)return;
@@ -87,7 +100,7 @@
     const wrapped=function(){
       base();const tb=$('#postsTable'),items=store?.scheduled||[];if(!tb||!items.length)return;
       const placeholder=tb.querySelector('tr td[colspan]');if(placeholder)placeholder.closest('tr')?.remove();
-      const rows=items.map(x=>`<tr class="scheduled-row"><td><strong>${String(x.post?.headline||x.slug).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</strong></td><td><span class="status" style="background:#e8f4ff;color:#1e5d8a">Запланировано</span></td><td>${x.post?.author||''}</td><td>${fmt(x.publishAt)}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-edit-scheduled="${x.slug}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-scheduled="${x.slug}">Удалить</button></div></td></tr>`).join('');
+      const rows=items.map(x=>`<tr class="scheduled-row"><td><strong>${String(x.post?.headline||x.slug).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${x.post?.author||''}</td><td>${fmt(x.publishAt)}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-edit-scheduled="${x.slug}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-scheduled="${x.slug}">Удалить</button></div></td></tr>`).join('');
       tb.insertAdjacentHTML('afterbegin',rows);
       $$('[data-edit-scheduled]').forEach(b=>b.onclick=()=>editScheduled(b.dataset.editScheduled));
       $$('[data-delete-scheduled]').forEach(b=>b.onclick=()=>removeScheduled(b.dataset.deleteScheduled,true));
@@ -95,10 +108,15 @@
   }
   async function loadQueue(){const q=await readQueue();if(typeof store!=='undefined'){store.scheduled=q;saveStore?.();window.renderPosts?.()}}
   function install(){
-    const btn=$('#publishBtn');if(!btn||btn.dataset.schedulerWrapped==='1')return;
-    const base=btn.onclick;btn.dataset.schedulerWrapped='1';
-    btn.onclick=async function(e){const o=window.collect?.()||{};if(future(o))return schedule(false);const result=await base?.call(this,e);if(result===true&&o.slug){try{await removeScheduled(o.slug,false)}catch(err){console.warn('unschedule after immediate publish',err)}}return result};
-    $('#publishedAt')?.addEventListener('input',paintButton);paintButton();enhanceList();loadQueue();
+    const pub=$('#publishBtn'),plan=ensureScheduleButton();if(!pub||!plan||pub.dataset.schedulerWrapped==='1')return;
+    const base=pub.onclick;pub.dataset.schedulerWrapped='1';
+    pub.onclick=async function(e){
+      const o=window.collect?.()||{};
+      if(future(o)){flash?.('Выбрано будущее время — нажмите «Запланировать» или измените дату на текущую');return false}
+      const result=await base?.call(this,e);if(result===true&&o.slug){try{await removeScheduled(o.slug,false)}catch(err){console.warn('unschedule after immediate publish',err)}}return result
+    };
+    plan.onclick=()=>schedule(false);
+    $('#publishedAt')?.addEventListener('input',paintButtons);$('#publishedAt')?.addEventListener('change',paintButtons);paintButtons();enhanceList();loadQueue();
     document.querySelector('.nav-btn[data-target="publications"]')?.addEventListener('click',()=>loadQueue(),true);
   }
   let n=0,t=setInterval(()=>{n++;if(typeof window.collect==='function'&&typeof window.getFile==='function'&&typeof window.putFile==='function'&&typeof $('#publishBtn')?.onclick==='function'&&$('#pvCmsExtrasStyles')&&$('#placementCard')){clearInterval(t);install()}else if(n>240)clearInterval(t)},50)
