@@ -20,4 +20,5 @@
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
   injectCss();addFavicon();localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);loadPosts();
   const ext=document.createElement('script');ext.src='/assets/feed-v2.js?v=images-v2';document.body.appendChild(ext);
+  const li=document.createElement('script');li.src='/assets/liveinternet.js?v=20260922';document.body.appendChild(li);
 })();
