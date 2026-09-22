@@ -9,6 +9,19 @@ on:
       - 'assets/provkus-logo.svg'
       - 'scripts/seo_hardening.py'
       - 'scripts/build_indexes.py'
+      - 'scripts/build-feed.js'
+      - 'scripts/audit_site.py'
+      - '.github/workflows/seo-hardening.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'data/posts.json'
+      - 'data/authors.json'
+      - 'assets/admin-seo.js'
+      - 'assets/provkus-logo.svg'
+      - 'scripts/seo_hardening.py'
+      - 'scripts/build_indexes.py'
+      - 'scripts/build-feed.js'
       - 'scripts/audit_site.py'
       - '.github/workflows/seo-hardening.yml'
   workflow_dispatch:
@@ -28,6 +41,7 @@ jobs:
       - name: Run offline crawl and structured-data audit
         run: python3 scripts/audit_site.py
       - name: Commit generated SEO output
+        if: github.event_name == 'push'
         run: |
           git config user.name "provkus-seo-bot"
           git config user.email "actions@users.noreply.github.com"
