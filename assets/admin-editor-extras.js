@@ -44,7 +44,9 @@
     editor.focus();restoreRange(editor);
     for(const file of files){
       if(!file.type.startsWith('image/'))continue;
-      const data=await compressImage(file), alt=esc(file.name.replace(/\.[^.]+$/,''));
+      const data=await compressImage(file);
+      const description=prompt('Опишите, что изображено на фото (ALT). Для декоративного фото оставьте поле пустым:','');
+      const alt=esc((description||'').trim());
       document.execCommand('insertHTML',false,`<figure class="article-inline-image"><img src="${data}" alt="${alt}"><figcaption></figcaption></figure><p><br></p>`);
     }
     rememberRange();editor.dispatchEvent(new Event('input',{bubbles:true}));
@@ -120,7 +122,7 @@
   }
 
   function makeSourceOptional(){
-    const src=$('#source');if(src){const label=src.closest('.field')?.querySelector('label');if(label)label.textContent='Источник / первоисточник — необязательно'}
+    const src=$('#source');if(src){const label=src.closest('.field')?.querySelector('label');if(label)label.textContent='Источники: организация, материал и ссылка (для безопасности еды — минимум 3)'}
     $$('.checklist .check span:last-child').forEach(x=>{if(/оригинальность и источник/i.test(x.textContent))x.textContent='Проверить оригинальность; источник указать при наличии.'});
     const btn=$('#publishBtn');if(!btn||btn.__sourceOptionalWrapped||typeof btn.onclick!=='function')return;
     const base=btn.onclick;btn.__sourceOptionalWrapped=true;

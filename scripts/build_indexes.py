@@ -128,6 +128,28 @@ for name,match in rubrics.items():
                 lambda m:m.group(1)+str(len(selected))+' материалов'+m.group(2),source,count=1)
   if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
 
+# Generate author archives in HTML as well as in the client-side feed. Crawlers
+# and readers without JavaScript must see the same articles and counts.
+authors=json.loads((root/'data/authors.json').read_text('utf-8'))
+for author in authors:
+  page=root/author['url']
+  source=page.read_text('utf-8')
+  selected=[p for p in posts if p.get('author')==author['name'] or author['name'] in (p.get('coauthors') or [])]
+  count=f'{len(selected)} '+('публикация' if len(selected)%10==1 and len(selected)%100!=11 else
+    'публикации' if len(selected)%10 in (2,3,4) and len(selected)%100 not in (12,13,14) else 'публикаций')
+  content=('<!-- AUTHOR-STATIC-START --><div class="section-head"><h2 class="section-title">Материалы автора</h2>'
+           f'<span class="section-sub">{count}</span></div><div class="story-grid">'
+           +(''.join(map(card,selected)) or '<p class="section-sub">У автора пока нет опубликованных материалов.</p>')
+           +'</div><!-- AUTHOR-STATIC-END -->')
+  if '<!-- AUTHOR-STATIC-START -->' in source:
+    source,n=re.subn(r'<!-- AUTHOR-STATIC-START -->.*?<!-- AUTHOR-STATIC-END -->',
+      lambda _:content,source,count=1,flags=re.S)
+  else:
+    source,n=re.subn(r'<div class="section-head"><h2 class="section-title">Материалы автора</h2>.*?(?=</section>)',
+      lambda _:content,source,count=1,flags=re.S)
+  if n!=1:raise RuntimeError(f'Author grid missing in {author["url"]}')
+  if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
+
 fixed=[
   (site+'/', None),
   (site+'/category.html', None),

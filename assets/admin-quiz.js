@@ -89,7 +89,7 @@
   }
   function loadExtras(){
     if(document.querySelector('script[data-admin-editor-extras]'))return;
-    const s=document.createElement('script');s.src='assets/admin-editor-extras.js?v=20260922b';s.dataset.adminEditorExtras='1';document.body.appendChild(s);
+    const s=document.createElement('script');s.src='assets/admin-editor-extras.js?v=20260923-alt';s.dataset.adminEditorExtras='1';document.body.appendChild(s);
   }
   function install(){
     addEditorStyles();ensureEditor();ensureQuizOption();

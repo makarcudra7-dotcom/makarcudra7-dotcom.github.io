@@ -43,6 +43,7 @@ for p in posts:
  check(f.exists(),f'{f.name}: missing article file')
  if not f.exists():continue
  text=f.read_text('utf-8');s=Page(text)
+ check(not any(re.fullmatch(r'[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}',im.get('alt',''),re.I) for im in s.find('img')),f'{f.name}: UUID used as image alt')
  check(len(s.find('h1'))==1,f'{f.name}: h1')
  check(bool(s.find('h1')) and p.get('headline','').strip() in text,f'{f.name}: visible headline')
  description=s.find('meta',name='description')
@@ -94,6 +95,13 @@ check('site-ui.css' in home,'index: critical styles in head')
 category=Page((ROOT/'category.html').read_text('utf-8'))
 category_links={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in category.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
 check(category_links=={p['slug'] for p in posts if not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now},'category: static inventory')
+for author in authors:
+ name=author['url'];author_html=(ROOT/name).read_text('utf-8');page=Page(author_html)
+ expected={p['slug'] for p in posts if (not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now) and (p.get('author')==author['name'] or author['name'] in (p.get('coauthors') or []))}
+ actual={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in page.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
+ count=re.search(r'<h2 class="section-title">Материалы автора</h2>\s*<span class="section-sub">(\d+) публикац',author_html)
+ check(actual==expected,f'{name}: static author links (missing {expected-actual}, extra {actual-expected})')
+ check(bool(count) and int(count.group(1))==len(expected),f'{name}: publication count')
 check((ROOT/'assets/provkus-logo.svg').exists(),'organization logo missing')
 if (ROOT/'assets/provkus-logo.svg').exists():
  logo=(ROOT/'assets/provkus-logo.svg').read_text('utf-8');check('width="512"' in logo and 'height="512"' in logo,'organization logo dimensions')
