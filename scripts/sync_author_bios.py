@@ -85,22 +85,11 @@ def sync_site_shell() -> None:
     print("Synced admin.html asset version")
 
     index = INDEX_PATH.read_text("utf-8")
-    favicon_markup = (
-        '<link rel="icon" href="/favicon.ico" sizes="any">'
-        '<link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">'
-        '<link rel="shortcut icon" href="/favicon.ico">'
-        '<meta name="theme-color" content="#f7f4ee">'
-    )
-    index, count = re.subn(
-        r'(?:<link rel="icon" href="/favicon\.ico" sizes="any"><link rel="icon" type="image/png" sizes="64x64" href="/favicon\.png"><link rel="shortcut icon" href="/favicon\.ico"><meta name="theme-color" content="#f7f4ee">|<link rel="icon"(?: type="image/png")? href="/favicon\.png">)',
-        favicon_markup,
-        index,
-        count=1,
-    )
-    if count != 1:
-        raise RuntimeError("Could not refresh favicon markup in index.html")
-    INDEX_PATH.write_text(index, "utf-8")
-    print("Synced index.html favicon markup")
+    if not re.search(r'<link rel="icon" href="/favicon\.ico(?:\?[^"]+)?"', index):
+        raise RuntimeError("Home page is missing its browser icon")
+    if 'rel="apple-touch-icon"' not in index:
+        raise RuntimeError("Home page is missing its mobile icon")
+    print("Verified index.html icon markup")
 
 
 def main() -> None:

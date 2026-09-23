@@ -5,7 +5,10 @@ img{max-width:100%;height:auto}.story-card>img,.stack-card>img,.lead-card>img,.a
 /* Accessible rubric navigation on phones and tablets. */
 @media(max-width:1000px){.topbar{flex-wrap:wrap;gap:8px;padding-block:10px}.site-header .main-nav{display:flex;width:100%;overflow-x:auto;gap:18px;order:3;padding:8px 0}.main-nav a{white-space:nowrap;min-height:32px;display:flex;align-items:center}}
 .related{border-top:1px solid var(--line);margin-top:32px;padding-top:20px}.related li{margin:12px 0}.related a{text-decoration:underline}a:focus-visible,button:focus-visible{outline:3px solid #b63b1d;outline-offset:4px}
-/* Never flash stale static homepage cards while JS is loading current posts. */
-@media (scripting:enabled){html:not(.pv-home-ready) body:has(main>.hero) .hero-grid>*,html:not(.pv-home-ready) body:has(main>.hero) main>.section:first-of-type .story-grid>*{visibility:hidden}html:not(.pv-home-ready) body:has(main>.hero) .hero-grid,html:not(.pv-home-ready) body:has(main>.hero) main>.section:first-of-type .story-grid{min-height:260px;background:linear-gradient(100deg,#ece6dc 20%,#f7f4ee 38%,#ece6dc 56%);background-size:200% 100%;animation:pvBootSkeleton 1.15s linear infinite;border-radius:20px}@keyframes pvBootSkeleton{to{background-position:-200% 0}}}
 
 .article-body .pv-sources{margin:.7em 0 0;padding-left:1.4em}.article-body .pv-sources li{padding:.18em 0;overflow-wrap:anywhere}.article-body .pv-sources a{text-decoration:underline;text-underline-offset:2px}
+
+/* Keep reading and navigation comfortable at phone widths. */
+.article-body{overflow-wrap:break-word}.article-body a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:1000px){.site-header .main-nav a{min-height:44px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.story-card{transition:none}.story-card:hover{transform:none}html:not(.pv-home-ready) body:has(main>.hero) .hero-grid,html:not(.pv-home-ready) body:has(main>.hero) main>.section:first-of-type .story-grid{animation:none}}

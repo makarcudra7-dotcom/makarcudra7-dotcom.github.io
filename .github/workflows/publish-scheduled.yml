@@ -25,6 +25,8 @@ jobs:
           ref: main
       - name: Publish or withhold scheduled materials
         run: node scripts/publish-scheduled.js
+      - name: Refresh crawlable pages and indexes
+        run: python3 scripts/seo_hardening.py
       - name: Commit scheduler changes
         run: |
           if git diff --quiet; then
@@ -33,6 +35,6 @@ jobs:
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
-          git add .github/scheduled-posts.json data/posts.json articles/
+          git add .github/scheduled-posts.json data/posts.json articles/ index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
           git commit -m "Sync scheduled materials"
           git push origin HEAD:main

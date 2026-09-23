@@ -44,6 +44,9 @@ for p in posts:
  if not f.exists():continue
  text=f.read_text('utf-8');s=Page(text)
  check(len(s.find('h1'))==1,f'{f.name}: h1')
+ check(bool(s.find('h1')) and p.get('headline','').strip() in text,f'{f.name}: visible headline')
+ description=s.find('meta',name='description')
+ check(bool(description) and description[0].get('content')==p.get('description'),f'{f.name}: description mismatch')
  canon=s.find('link',rel='canonical');check(bool(canon),f'{f.name}: canonical missing')
  if canon:check(canon[0].get('href')==p['url'],f'{f.name}: canonical mismatch')
  check(p['url'].startswith(SITE+'/'),f'{f.name}: non-HTTPS canonical')
@@ -53,7 +56,7 @@ for p in posts:
   public_count+=1;check(p['url'] in locs,f'{f.name}: sitemap')
  robots=s.find('meta',name='robots');check(bool(robots),f'{f.name}: robots meta missing')
  if robots:
-  rv=robots[0].get('content','').lower();check('max-image-preview:large' in rv,f'{f.name}: large previews');check('max-snippet:-1' in rv,f'{f.name}: max snippet')
+  rv=robots[0].get('content','').lower();check('noindex' not in rv,f'{f.name}: noindex');check('max-image-preview:large' in rv,f'{f.name}: large previews');check('max-snippet:-1' in rv,f'{f.name}: max snippet')
  og=s.find('meta',property='og:image');check(bool(og),f'{f.name}: og image missing')
  if og:check(og[0].get('content')==p.get('image'),f'{f.name}: og image mismatch')
  check(bool(s.find('meta',property='og:url')),f'{f.name}: og:url')
@@ -81,12 +84,28 @@ home=(ROOT/'index.html').read_text('utf-8');home_nodes=ld_nodes(home)
 check(any(x.get('@type')=='Organization' and x.get('name')=='ProVkus' for x in home_nodes),'index: Organization schema')
 check(any(x.get('@type')=='WebSite' and x.get('name')=='ProVkus' for x in home_nodes),'index: WebSite schema')
 check('rel="icon"' in home,'index: favicon link')
+featured=next((p for p in posts if p.get('featured')),posts[0] if posts else {})
+home_page=Page(home)
+check(bool(home_page.find('h1')) and home_page.find('h1')[0].get('class') is None,'index: visible featured headline')
+check(featured.get('headline','') in home and featured.get('image','') in home,'index: featured post in crawlable HTML')
+check(bool(home_page.find('meta',property='og:image')) and home_page.find('meta',property='og:image')[0].get('content')==featured.get('image'),'index: representative OG image')
+check('HOME-HERO-START' in home and 'HOME-LOWER-START' in home,'index: static feed')
+check('site-ui.css' in home,'index: critical styles in head')
+category=Page((ROOT/'category.html').read_text('utf-8'))
+category_links={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in category.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
+check(category_links=={p['slug'] for p in posts if not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now},'category: static inventory')
 check((ROOT/'assets/provkus-logo.svg').exists(),'organization logo missing')
 if (ROOT/'assets/provkus-logo.svg').exists():
  logo=(ROOT/'assets/provkus-logo.svg').read_text('utf-8');check('width="512"' in logo and 'height="512"' in logo,'organization logo dimensions')
 
 hubs=['recipes.html','products.html','home-storage.html','food-safety.html']
-for name in hubs:
+rubric_matches=[
+ lambda c:'рецеп' in c,
+ lambda c:'продукт' in c or 'выбор' in c,
+ lambda c:'дом' in c or 'хран' in c,
+ lambda c:'безопас' in c,
+]
+for name,match in zip(hubs,rubric_matches):
  path=ROOT/name
  check(path.exists(),f'{name}: missing hub')
  if not path.exists():continue
@@ -96,6 +115,20 @@ for name in hubs:
  if canon:check(canon[0].get('href')==SITE+'/'+name,f'{name}: canonical mismatch')
  check(SITE+'/'+name in locs,f'{name}: sitemap')
  robots=s.find('meta',name='robots');check(bool(robots) and 'index' in robots[0].get('content','').lower(),f'{name}: indexable robots')
+ expected={p['slug'] for p in posts if (not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now) and match(str(p.get('category') or '').lower())}
+ actual={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in s.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
+ check(expected==actual,f'{name}: static article links (missing {expected-actual}, extra {actual-expected})')
+ check('Загружаем материалы…' not in text,f'{name}: loading placeholder in crawlable HTML')
+
+policy=Page((ROOT/'editorial-policy.html').read_text('utf-8'))
+check(bool(policy.find('link',rel='canonical')) and policy.find('link',rel='canonical')[0].get('href')==SITE+'/editorial-policy.html','editorial policy: canonical')
+check(bool(policy.find('meta',name='description')),'editorial policy: description')
+robots_file=(ROOT/'robots.txt').read_text('utf-8')
+admin=Page((ROOT/'admin.html').read_text('utf-8'))
+check('Disallow: /admin.html' not in robots_file,'admin: robots.txt hides noindex')
+check(bool(admin.find('meta',name='robots')) and 'noindex' in admin.find('meta',name='robots')[0].get('content',''),'admin: noindex meta')
+config=json.loads((ROOT/'vercel.json').read_text('utf-8'))
+check(any(h.get('source')=='/admin.html' and any(x.get('key')=='X-Robots-Tag' and 'noindex' in x.get('value','') for x in h.get('headers',[])) for h in config.get('headers',[])),'admin: noindex header')
 
 for f in ROOT.rglob('*.html'):
  s=Page(f.read_text('utf-8'))

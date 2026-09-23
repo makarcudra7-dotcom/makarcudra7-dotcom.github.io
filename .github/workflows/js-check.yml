@@ -38,6 +38,8 @@ jobs:
           node --check assets/admin-global-bridge.js
           node --check assets/admin-pro-suite.js
           node --check assets/admin-seo.js
+          node --check assets/admin-sources.js
+          node --check assets/category-hub.js
           node --check assets/home-dynamic.js
           node --check assets/liveinternet.js
           node --check api/publish.js

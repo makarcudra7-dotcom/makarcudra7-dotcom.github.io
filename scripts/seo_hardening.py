@@ -77,6 +77,12 @@ def ensure_meta(text, needle, fragment):
     if needle in text:return text
     return text.replace('</head>',fragment+'</head>',1)
 
+def upsert_meta(text, attr, key, value):
+    fragment=f'<meta {attr}="{key}" content="{html.escape(str(value),quote=True)}">'
+    pattern=rf'<meta {attr}="{re.escape(key)}" content="[^"]*">'
+    if re.search(pattern,text):return re.sub(pattern,lambda _:fragment,text,count=1)
+    return text.replace('</head>',fragment+'</head>',1)
+
 def patch_article(p):
     path=ROOT/'articles'/f"{p['slug']}.html"
     if not path.exists():return False
@@ -115,6 +121,16 @@ def patch_home():
     text=ensure_meta(text,'property="og:type"','<meta property="og:type" content="website">')
     text=ensure_meta(text,'property="og:url"','<meta property="og:url" content="https://provkus-media.ru/">')
     text=ensure_meta(text,'property="og:locale"','<meta property="og:locale" content="ru_RU">')
+    featured=next((p for p in posts if p.get('featured')),posts[0] if posts else {})
+    text=upsert_meta(text,'property','og:title','ProVkus — еда, продукты и домашние советы')
+    text=upsert_meta(text,'property','og:description','Практичное медиа о еде, сезонных рецептах, продуктах, хранении и доме.')
+    if featured.get('image'):
+        text=upsert_meta(text,'property','og:image',featured['image'])
+        text=upsert_meta(text,'property','og:image:alt',featured.get('imageAlt') or featured.get('headline',''))
+        text=upsert_meta(text,'property','og:image:width','1600')
+        text=upsert_meta(text,'property','og:image:height','900')
+        text=upsert_meta(text,'name','twitter:card','summary_large_image')
+        text=upsert_meta(text,'name','twitter:image',featured['image'])
     text=ensure_meta(text,'type="application/rss+xml"','<link rel="alternate" type="application/rss+xml" title="ProVkus — новые материалы" href="https://provkus-media.ru/feed.xml">')
     if text!=old:path.write_text(text,'utf-8');return True
     return False

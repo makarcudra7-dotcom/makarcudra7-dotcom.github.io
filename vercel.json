@@ -5,6 +5,9 @@
       "maxDuration": 10
     }
   },
+  "redirects": [
+    { "source": "/article.html", "destination": "/category.html", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/api/(.*)",
