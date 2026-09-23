@@ -1,12 +1,15 @@
-/* Quiet seasonal accents sit behind the content and never receive input. */
+/* Seasonal artwork is decorative and never intercepts controls. */
 .pv-seasonal-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;user-select:none;contain:layout paint;}
 body>main,body>.site-footer{position:relative;z-index:1}
-.pv-seasonal-piece{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);background:var(--piece-color);-webkit-mask:var(--piece-shape) center/contain no-repeat;mask:var(--piece-shape) center/contain no-repeat;opacity:var(--piece-opacity,.28);transform:translate3d(0,0,0) rotate(var(--turn));will-change:transform}
+.pv-seasonal-piece{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);transform:translate3d(0,0,0);will-change:transform}
+.pv-seasonal-leaf{display:block;width:100%;height:100%;background:var(--piece-color);-webkit-mask:var(--piece-shape) center/contain no-repeat;mask:var(--piece-shape) center/contain no-repeat;opacity:var(--piece-opacity,.68);animation:pv-seasonal-spin var(--duration) linear var(--delay) infinite;animation-direction:var(--direction,normal);will-change:transform}
+@keyframes pv-seasonal-spin{0%{transform:translate3d(-8px,-5px,0) rotate(var(--turn))}50%{transform:translate3d(11px,9px,0) rotate(calc(var(--turn) + 180deg))}100%{transform:translate3d(-8px,-5px,0) rotate(calc(var(--turn) + 360deg))}}
 html[data-season="autumn"] .pv-seasonal-layer{background:radial-gradient(ellipse 44% 25% at 95% 12%,rgba(207,124,55,.065),transparent),radial-gradient(ellipse 35% 30% at 1% 76%,rgba(153,99,54,.055),transparent)}
 html[data-season="winter"] .pv-seasonal-layer{background:radial-gradient(ellipse 35% 35% at 90% 20%,rgba(125,172,195,.055),transparent)}
 html[data-season="spring"] .pv-seasonal-layer{background:radial-gradient(ellipse 40% 30% at 5% 15%,rgba(183,142,145,.055),transparent)}
 html[data-season="summer"] .pv-seasonal-layer{background:radial-gradient(ellipse 36% 32% at 93% 21%,rgba(212,164,77,.055),transparent)}
-html[data-theme="dark"] .pv-seasonal-piece{opacity:calc(var(--piece-opacity,.28) * .75)}
+html[data-theme="dark"] .pv-seasonal-leaf{opacity:var(--piece-opacity,.68)}
 html[data-theme="dark"] .pv-seasonal-layer{background:none}
-@media(max-width:760px){.pv-seasonal-piece:nth-child(n+4){display:none}.pv-seasonal-piece{opacity:.16!important}.pv-seasonal-layer{background:none!important}}
-@media(prefers-reduced-motion:reduce){.pv-seasonal-piece{will-change:auto!important;transform:rotate(var(--turn))!important}}
+@media(max-width:760px){.pv-seasonal-layer{z-index:2;background:none!important}.pv-seasonal-piece:nth-child(n+5){display:none}.pv-seasonal-piece{width:calc(var(--size) * .72);height:calc(var(--size) * .72)}.pv-seasonal-leaf{opacity:.32!important}}
+@media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{will-change:auto!important}.pv-seasonal-leaf{animation:none!important;transform:rotate(var(--turn))!important}}
+html.pv-seasonal-static .pv-seasonal-leaf{animation:none;transform:rotate(var(--turn))}

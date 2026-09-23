@@ -7,10 +7,11 @@
     spring:'<path d="M32 34C3 28 13 7 28 14c8 5 7 15 4 20Zm0 0C37 5 61 13 52 28c-5 8-15 9-20 6Zm0 0c29 4 21 29 5 26-9-2-12-15-5-26Zm0 0C28 64 3 54 12 39c5-8 15-9 20-5Z"/>',
     summer:'<circle cx="32" cy="32" r="17"/><path d="M32 3v7m0 44v7M3 32h7m44 0h7M11.5 11.5l5 5m31 31 5 5m0-41-5 5m-31 31-5 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>'
   };
-  const colors={autumn:['#bf6731','#d99642','#a85a40','#cc7d35','#b98b4f','#9e6340','#d29a57'],winter:['#9bbbc5','#bdd2d9','#8baab7'],spring:['#d898a0','#c8858d','#bd9baf'],summer:['#dfb968','#d7a65a','#e3c583']};
-  const positions=[['2%','12%',48,-16,.22,.07],['94%','25%',65,28,.28,-.09],['6%','68%',55,66,.25,.12],['88%','80%',45,-30,.19,-.06],['21%','91%',33,42,.15,.08],['77%','6%',29,-20,.13,-.05],['96%','57%',37,73,.2,.1]];
+  const colors={autumn:['#d66a2d','#edaa38','#c54732','#e77a22','#d59435','#ba4a35','#f0ad46'],winter:['#9bbbc5','#bdd2d9','#8baab7'],spring:['#d898a0','#c8858d','#bd9baf'],summer:['#dfb968','#d7a65a','#e3c583']};
+  const positions=[['0%','11%',106,-16,.68],['91%','25%',124,28,.76],['1%','67%',112,66,.67],['91%','80%',94,-30,.6],['19%','90%',76,42,.42],['79%','5%',78,-20,.45],['94%','56%',104,73,.66]];
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
   const dataSaver=!!navigator.connection?.saveData;
+  if(dataSaver)document.documentElement.classList.add('pv-seasonal-static');
   const layer=document.createElement('div');layer.className='pv-seasonal-layer';layer.setAttribute('aria-hidden','true');
   document.body.insertBefore(layer,document.body.firstChild);
   let pieces=[],season='',pending=false;
@@ -20,19 +21,26 @@
     const next=currentSeason();if(next===season)return;
     season=next;document.documentElement.dataset.season=season;layer.replaceChildren();
     const vector=`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">${shapes[season]}</svg>`)}")`;
-    pieces=positions.map(([x,y,size,turn,opacity,speed],index)=>{
+    pieces=positions.map(([x,y,size,turn,opacity],index)=>{
       const el=document.createElement('span');el.className='pv-seasonal-piece';
+      const leaf=document.createElement('span');leaf.className='pv-seasonal-leaf';
       el.style.setProperty('--x',x);el.style.setProperty('--y',y);el.style.setProperty('--size',size+'px');
       el.style.setProperty('--turn',turn+'deg');el.style.setProperty('--piece-opacity',opacity);
+      el.style.setProperty('--duration',`${10+index*1.6}s`);el.style.setProperty('--delay',`${-index*2.1}s`);
+      el.style.setProperty('--direction',index%2?'reverse':'normal');
       el.style.setProperty('--piece-color',colors[season][index%colors[season].length]);
-      el.style.setProperty('--piece-shape',vector);layer.appendChild(el);return{el,turn,speed};
+      el.style.setProperty('--piece-shape',vector);el.appendChild(leaf);layer.appendChild(el);return{el,index};
     });
     move();
   }
   function move(){
     pending=false;if(reduced.matches||dataSaver)return;
     const scroll=window.scrollY;
-    pieces.forEach(({el,turn,speed})=>{el.style.transform=`translate3d(0,${Math.round(scroll*speed)}px,0) rotate(${turn+Math.round(scroll*speed*.035)}deg)`});
+    pieces.forEach(({el,index})=>{
+      const x=Math.round((Math.sin(scroll/700+index)-Math.sin(index))*18);
+      const y=Math.round((Math.sin(scroll/540+index)-Math.sin(index))*54);
+      el.style.transform=`translate3d(${x}px,${y}px,0)`;
+    });
   }
   function schedule(){if(!pending&&!reduced.matches&&!dataSaver){pending=true;requestAnimationFrame(move)}}
   paint();
