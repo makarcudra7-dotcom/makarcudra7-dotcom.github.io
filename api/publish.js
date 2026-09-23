@@ -26,7 +26,8 @@ function allowedPath(path) {
     path === 'data/newsletter-pushes.json' ||
     path === '.github/scheduled-posts.json' ||
     /^articles\/[a-z0-9-]+\.html$/.test(path) ||
-    /^assets\/uploads\/[A-Za-z0-9._-]+$/.test(path);
+    /^assets\/uploads\/[A-Za-z0-9._-]+$/.test(path) ||
+    /^assets\/authors\/[a-z0-9-]+\.jpg$/.test(path);
 }
 
 async function github(path, options = {}) {
