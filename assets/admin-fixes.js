@@ -27,19 +27,27 @@
   const showFlash=msg=>{if(typeof flash==='function')return flash(msg);const f=document.getElementById('flash');if(f){f.textContent=msg;f.classList.add('show');setTimeout(()=>f.classList.remove('show'),2600)}};
   function paragraphCandidates(root){
     if(!root)return[];
-    return [...root.querySelectorAll('p')].map(p=>clean(p.textContent)).filter(t=>t.length>45&&!/^личное мнение автора/i.test(t)&&!/^источник/i.test(t));
+    return [...root.querySelectorAll('p, div')].filter(p=>
+      !p.matches('.note, .sources, .article-sources, .author-opinion')&&
+      !p.closest('.note, .sources, .article-sources, .author-opinion')&&
+      !p.querySelector('p, div')
+    ).map(p=>clean(p.textContent)).filter(t=>t.length>45&&!/^(?:личное мнение автора|источник|источники)/i.test(t));
   }
   function makeTeaser({title,lead,description,paragraphs,url}){
-    let pool=uniq([clean(lead),clean(description),...(paragraphs||[]).map(clean)]).filter(t=>t.length>45);
+    const body=uniq((paragraphs||[]).map(clean)).filter(t=>t.length>45);
+    let pool=uniq([clean(lead),...body,clean(description)]).filter(t=>t.length>45);
     if(!pool.length)pool=[`В новом материале ProVkus разбираем тему «${clean(title)}» и собираем главное без лишней воды.`];
     if(pool.length===1)pool.push(`В полной версии есть детали, практические нюансы и конкретные шаги, которые помогут применить совет на практике.`);
-    const p1=pool[0],p2=pool.find(x=>x!==p1)||pool[1];
+    const p1=pool[0];
+    const words=s=>new Set((s.toLowerCase().match(/[а-яёa-z]{4,}/g)||[]));
+    const first=words(p1);
+    const p2=pool.slice(1).find(x=>{const second=words(x);return !second.size||[...second].filter(w=>first.has(w)).length/second.size<.65})||pool[1];
     return `${p1}\n\n${p2}\n\nПродолжение — на ProVkus: ${url}`;
   }
   function ensureDzenModal(){
     let modal=document.getElementById('dzenModal');if(modal)return modal;
     const style=document.createElement('style');style.textContent=`
-      .dzen-overlay{position:fixed;inset:0;background:rgba(17,24,39,.58);z-index:9999;display:grid;place-items:center;padding:20px}
+      .dzen-overlay{position:fixed;inset:0;background:rgba(17,24,39,.58);z-index:9999;display:grid;place-items:center;padding:20px}.dzen-overlay[hidden]{display:none}
       .dzen-card{width:min(760px,100%);max-height:92vh;overflow:auto;background:#fff;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.28);padding:22px}
       .dzen-head{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:16px}.dzen-head h2{margin:0;font-size:22px}
       .dzen-card label{display:block;font-weight:700;margin:12px 0 6px}.dzen-card input,.dzen-card textarea{width:100%;box-sizing:border-box;border:1px solid #d8dee8;border-radius:10px;padding:11px 12px;font:inherit}.dzen-card textarea{min-height:210px;resize:vertical;line-height:1.45}
@@ -71,14 +79,14 @@
   const actions=document.querySelector('.top .actions');
   if(actions&&!document.getElementById('dzenPublishBtn')){
     const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.id='dzenPublishBtn';btn.textContent='Опубликовать в Дзен ↗';
-    btn.onclick=()=>{const d=currentDzenData();if(!clean(d.title))return showFlash('Сначала заполните заголовок');openDzenDraft(d)};
+    btn.onclick=()=>{const d=currentDzenData();if(!clean(d.title)||!clean(document.getElementById('slug')?.value))return showFlash('Сначала заполните заголовок и slug');openDzenDraft(d)};
     actions.appendChild(btn);
   }
   async function articleDataFromUrl(url,title){
     try{
       const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error(String(r.status));const html=await r.text(),doc=new DOMParser().parseFromString(html,'text/html');
       return {title:clean(doc.querySelector('h1')?.textContent)||title,lead:clean(doc.querySelector('.article-dek')?.textContent),description:clean(doc.querySelector('meta[name="description"]')?.content),paragraphs:paragraphCandidates(doc.querySelector('.article-body')),url};
-    }catch{return {title,lead:'',description:'',paragraphs:[],url}}
+    }catch{return {title,lead:'',description:'',paragraphs:[],url,loadError:true}}
   }
   function addDzenButtonsToPosts(){
     const table=document.querySelector('#publications table');if(!table)return;
@@ -88,8 +96,31 @@
       if(tr.querySelector('td[colspan]')){tr.querySelector('td')?.setAttribute('colspan','6');return}
       const title=clean(tr.children[0]?.textContent),url=tr.querySelector('a[href]')?.href;if(!url)return;
       const td=document.createElement('td'),b=document.createElement('button');b.type='button';b.className='dzen-mini secondary';b.textContent='Тизер ↗';
-      b.onclick=async()=>{window.open(DZEN_STUDIO,'_blank','noopener');openDzenDraft(await articleDataFromUrl(url,title));showFlash('Тизер готов — Дзен-студия открыта')};td.appendChild(b);tr.appendChild(td);
+      b.onclick=async()=>{openDzenDraft(await articleDataFromUrl(url,title));showFlash('Тизер готов — проверьте текст перед отправкой в Дзен')};td.appendChild(b);tr.appendChild(td);
     });
+  }
+  const publications=document.querySelector('#publications .card-title');
+  if(publications&&!document.getElementById('dzenExportAll')){
+    const button=document.createElement('button');button.id='dzenExportAll';button.type='button';button.className='dzen-mini secondary';button.textContent='Скачать тизеры всех публикаций';
+    button.style.marginLeft='12px';button.style.verticalAlign='middle';publications.appendChild(button);
+    button.onclick=async()=>{
+      const rows=[...document.querySelectorAll('#postsTable tr')].map(tr=>({title:clean(tr.children[0]?.textContent),url:tr.querySelector('a[href]')?.href})).filter(x=>x.url);
+      if(!rows.length)return showFlash('Сначала загрузите список публикаций');
+      button.disabled=true;button.textContent='Готовим тизеры…';
+      try{
+        const drafts=[];
+        for(let i=0;i<rows.length;i+=4){
+          const batch=await Promise.all(rows.slice(i,i+4).map(({url,title})=>articleDataFromUrl(url,title)));
+          if(batch.some(d=>d.loadError))throw new Error('Article unavailable');
+          drafts.push(...batch.map(d=>`${d.title}\n\n${makeTeaser(d)}`));
+          button.textContent=`Готовим тизеры… ${drafts.length}/${rows.length}`;
+        }
+        const blob=new Blob([drafts.join('\n\n'+'═'.repeat(60)+'\n\n')],{type:'text/plain;charset=utf-8'});
+        const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='provkus-dzen-teasers.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),60000);
+        showFlash(`Подготовлены тизеры: ${drafts.length}`);
+      }catch{showFlash('Не удалось подготовить все тизеры — попробуйте ещё раз')}
+      finally{button.disabled=false;button.textContent='Скачать тизеры всех публикаций'}
+    };
   }
   const postsTable=document.getElementById('postsTable');if(postsTable){new MutationObserver(addDzenButtonsToPosts).observe(postsTable,{childList:true,subtree:true});addDzenButtonsToPosts()}
 })();
