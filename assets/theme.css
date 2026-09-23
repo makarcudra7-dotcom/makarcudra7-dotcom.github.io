@@ -18,3 +18,28 @@ html[data-theme="dark"] .author-profile-facts .author-method strong{color:#f0eee
 html[data-theme="dark"] .author-role{color:#a4d3b8}
 html[data-theme="dark"] .author-card-promise{background:#303a33;color:#d0d6cb}
 html[data-theme="dark"] .pv-related-card{background:var(--paper);color:var(--ink);border-color:var(--line)}
+
+/* Dark reader components: quiz, related stories and author directory */
+html[data-theme="dark"] .pv-quiz{background:#222925!important;color:#f2f0e9!important;border-color:#45524a!important}
+html[data-theme="dark"] .pv-quiz-head h2,html[data-theme="dark"] .pv-quiz-question legend{color:#f2f0e9!important}
+html[data-theme="dark"] .pv-quiz-head p{color:#c6cdc4!important}
+html[data-theme="dark"] .pv-quiz-question{border-top-color:#45524a}
+html[data-theme="dark"] .pv-quiz-option{background:#303a33!important;color:#f2f0e9!important;border-color:#55665a!important}
+html[data-theme="dark"] .pv-quiz-option:hover,html[data-theme="dark"] .pv-quiz-option:focus-within{border-color:#f0a187!important;background:#39473c!important}
+html[data-theme="dark"] .pv-quiz-option.is-correct{background:#244c36!important;border-color:#8ac99a!important}
+html[data-theme="dark"] .pv-quiz-option.is-wrong{background:#522d31!important;border-color:#f2a4a4!important}
+html[data-theme="dark"] .pv-quiz-option input{accent-color:#f08b71}
+html[data-theme="dark"] .pv-quiz-feedback.ok{color:#a6e2ac}
+html[data-theme="dark"] .pv-quiz-feedback.bad{color:#ffc1b6}
+html[data-theme="dark"] .pv-quiz-check{background:#f18b6d;color:#1a1715}
+html[data-theme="dark"] .pv-quiz-score.incomplete{color:#efd390}
+html[data-theme="dark"] .pv-related-card{background:#222925!important;color:#f2f0e9!important;border-color:#45524a!important}
+html[data-theme="dark"] .pv-related-card h3{color:#f2f0e9!important}
+html[data-theme="dark"] .pv-related-card span{color:#ff9e80!important}
+html[data-theme="dark"] .pv-related-card small,html[data-theme="dark"] .pv-read-also-head small{color:#c4c9bf!important}
+html[data-theme="dark"] .pv-read-also{border-top-color:#45524a}
+html[data-theme="dark"] .author-grid .author-card h3,html[data-theme="dark"] .author-directory-grid .author-card h3{color:#f2f0e9!important}
+html[data-theme="dark"] .author-card-role{color:#a4d3b8!important}
+html[data-theme="dark"] .author-card-footer{color:#c4c9bf;border-top-color:#566157}
+html[data-theme="dark"] .author-card-footer strong{color:#ff9e80}
+html[data-theme="dark"] .author-card-promise{background:#303a33!important;color:#e8e5dc!important}
