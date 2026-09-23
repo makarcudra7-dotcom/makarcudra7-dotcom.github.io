@@ -1,5 +1,35 @@
 [
   {
+    "slug": "natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy",
+    "headline": "Натираю прямо в тесто — и пирог «Тыковка» получается как в хорошей кулинарии: сырная корочка румяная, мякиш сочный",
+    "description": "Тыква идет прямо в тесто, поэтому пирог получается мягким и сочным, а сыр сверху запекается в румяную корочку.",
+    "author": "Екатерина Рукопляс",
+    "category": "Сезонное",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy-1x1.jpg"
+    ],
+    "imageAlt": "Яркий домашний пирог «Тыковка» с румяной сырной корочкой, сочным тыквенным мякишем и зеленью сверху",
+    "url": "https://provkus-media.ru/articles/natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy.html",
+    "publishedAt": "2026-09-23T15:55:00.000Z",
+    "updatedAt": "2026-09-23T15:55:00.000Z",
+    "tags": [
+      "Рецепты",
+      "Тыква",
+      "Пироги",
+      "Выпечка",
+      "Осенние рецепты"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
     "slug": "pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov",
     "headline": "Почему яблоки нельзя хранить рядом с овощами: одна ошибка ускоряет порчу запасов",
     "description": "Яблоки выделяют этилен, который ускоряет созревание некоторых овощей. Разбираемся, как хранить запасы даже в одном погребе.",
