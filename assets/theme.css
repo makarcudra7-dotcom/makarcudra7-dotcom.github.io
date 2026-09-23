@@ -13,3 +13,8 @@ html[data-theme="dark"] .story-card>img,html[data-theme="dark"] .stack-card>img,
 html[data-theme="dark"] .site-footer{background:#101512}
 @media(max-width:1000px){.pv-theme-toggle{order:2}.site-header .main-nav{order:3}}
 @media(max-width:640px){.pv-theme-toggle{padding:8px 10px;font-size:12px}}
+html[data-theme="dark"] .author-profile-facts .author-method{background:#26312b;border-color:#405449;border-left-color:var(--accent);color:#cbd4ca}
+html[data-theme="dark"] .author-profile-facts .author-method strong{color:#f0eee7}
+html[data-theme="dark"] .author-role{color:#a4d3b8}
+html[data-theme="dark"] .author-card-promise{background:#303a33;color:#d0d6cb}
+html[data-theme="dark"] .pv-related-card{background:var(--paper);color:var(--ink);border-color:var(--line)}
