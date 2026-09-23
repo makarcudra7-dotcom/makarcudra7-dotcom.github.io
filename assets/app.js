@@ -38,6 +38,6 @@
   window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome)loadScript('/assets/home-dynamic.js?v=20260923-image-retry','pvHomeDynamic');
   loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');
-  loadScript('/assets/community.js?v=20260922-community2','pvCommunity');
+  loadScript('/assets/community.js?v=20260923-email','pvCommunity');
   loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet');
 })();

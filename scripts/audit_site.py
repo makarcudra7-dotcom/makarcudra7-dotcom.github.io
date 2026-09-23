@@ -135,6 +135,14 @@ robots_file=(ROOT/'robots.txt').read_text('utf-8')
 admin=Page((ROOT/'admin.html').read_text('utf-8'))
 check('Disallow: /admin.html' not in robots_file,'admin: robots.txt hides noindex')
 check(bool(admin.find('meta',name='robots')) and 'noindex' in admin.find('meta',name='robots')[0].get('content',''),'admin: noindex meta')
+editorial_email='provkus-media@mail.ru'
+community=(ROOT/'assets/community.js').read_text('utf-8')
+check(f"EDITORIAL_EMAIL='{editorial_email}'" in community,'reader questions: recipient mismatch')
+check(f'mailto:{editorial_email}' in (ROOT/'contacts.html').read_text('utf-8'),'contacts: editorial email mismatch')
+check(f'value="{editorial_email}"' in (ROOT/'admin.html').read_text('utf-8'),'admin: editorial email mismatch')
+for page in ROOT.glob('*.html'):
+ check('makarcudra7@' not in page.read_text('utf-8'),f'{page.name}: retired editorial address')
+check('makarcudra7@' not in community,'reader questions: retired recipient')
 config=json.loads((ROOT/'vercel.json').read_text('utf-8'))
 check(any(h.get('source')=='/admin.html' and any(x.get('key')=='X-Robots-Tag' and 'noindex' in x.get('value','') for x in h.get('headers',[])) for h in config.get('headers',[])),'admin: noindex header')
 

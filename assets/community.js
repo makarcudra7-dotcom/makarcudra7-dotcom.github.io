@@ -2,7 +2,7 @@
   if(window.__pvCommunityLoaded)return;window.__pvCommunityLoaded=true;
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
-  const EDITORIAL_EMAIL='makarcudra7@gmail.com';
+  const EDITORIAL_EMAIL='provkus-media@mail.ru';
   const FORM_ENDPOINT='https://formsubmit.co/ajax/'+EDITORIAL_EMAIL;
   const PROFILE_BY_PAGE={
     'author-ilya.html':{

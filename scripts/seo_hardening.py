@@ -111,7 +111,7 @@ def patch_article(p):
 def patch_home():
     path=ROOT/'index.html';old=path.read_text('utf-8');text=replace_nav_links(old)
     graph={'@context':'https://schema.org','@graph':[
-        {'@type':'Organization','@id':ORG_ID,'name':'ProVkus','alternateName':'ProVkus Media','url':SITE+'/','logo':{'@type':'ImageObject','url':LOGO,'contentUrl':LOGO,'width':512,'height':512},'email':'makarcudra7@gmail.com'},
+        {'@type':'Organization','@id':ORG_ID,'name':'ProVkus','alternateName':'ProVkus Media','url':SITE+'/','logo':{'@type':'ImageObject','url':LOGO,'contentUrl':LOGO,'width':512,'height':512},'email':'provkus-media@mail.ru'},
         {'@type':'WebSite','@id':SITE+'/#website','url':SITE+'/','name':'ProVkus','alternateName':'ProVkus Media','inLanguage':'ru-RU','publisher':{'@id':ORG_ID}}
     ]}
     block=json_script(graph,'pv-home-schema')
