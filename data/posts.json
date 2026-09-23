@@ -13,7 +13,7 @@
       "https://provkus-media.ru/assets/uploads/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat-4x3.jpg",
       "https://provkus-media.ru/assets/uploads/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat-1x1.jpg"
     ],
-    "imageAlt": "Банки солений в погребе",
+    "imageAlt": "Соленья в погребе",
     "url": "https://provkus-media.ru/articles/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat.html",
     "publishedAt": "2026-09-23T03:52:00.000Z",
     "updatedAt": "2026-09-23T03:52:00.000Z",
@@ -26,7 +26,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
