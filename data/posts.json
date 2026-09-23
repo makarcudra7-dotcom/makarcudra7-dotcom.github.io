@@ -1,5 +1,35 @@
 [
   {
+    "slug": "pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov",
+    "headline": "Почему яблоки нельзя хранить рядом с овощами: одна ошибка ускоряет порчу запасов",
+    "description": "Яблоки выделяют этилен, который ускоряет созревание некоторых овощей. Разбираемся, как хранить запасы даже в одном погребе.",
+    "author": "Эльвира Шайберт",
+    "category": "Хранение продуктов",
+    "type": "explainer",
+    "typeLabel": "Разбор / объяснение",
+    "image": "https://provkus-media.ru/assets/uploads/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov-1x1.jpg"
+    ],
+    "imageAlt": "Женщина показывает ящик с яблоками в погребе",
+    "url": "https://provkus-media.ru/articles/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov.html",
+    "publishedAt": "2026-09-23T14:59:00.000Z",
+    "updatedAt": "2026-09-23T14:59:00.000Z",
+    "tags": [
+      "Яблоки",
+      "Хранение продуктов",
+      "Овощи",
+      "Урожай",
+      "Полезные советы"
+    ],
+    "photoSource": "",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat",
     "headline": "Не пробуйте «на вкус» такие закрутки: 5 неочевидных признаков, после которых банку лучше не открывать",
     "description": "Вздутие крышки — далеко не единственный тревожный сигнал. Проверить домашнюю заготовку можно еще до того, как брать открывалку.",
@@ -53,7 +83,7 @@
       "Советы"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
