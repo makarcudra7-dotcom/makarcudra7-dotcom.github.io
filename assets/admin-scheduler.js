@@ -16,14 +16,15 @@
     window.renderPosts?.();
     return next
   }
-  async function cropBlob(file,w,h,q=.86){
+  async function cropBlob(file,w,h,q=.86,format='image/jpeg'){
     const bmp=await createImageBitmap(file),scale=Math.max(w/bmp.width,h/bmp.height),sw=w/scale,sh=h/scale,sx=(bmp.width-sw)/2,sy=(bmp.height-sh)/2;
     const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(bmp,sx,sy,sw,sh,0,0,w,h);bmp.close?.();
-    return new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('Не удалось подготовить изображение')),'image/jpeg',q))
+    return new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('Не удалось подготовить изображение')),format,q))
   }
   async function uploadCover(file,slug){
     const specs=[['16x9',1600,900],['4x3',1200,900],['1x1',1200,1200]],urls=[];
     for(const [tag,w,h] of specs){const blob=await cropBlob(file,w,h),path=`assets/uploads/${slug}-${tag}.jpg`;await window.putFile(path,bytesToB64(await blob.arrayBuffer()),`Upload ${tag} cover: ${slug}`,'base64');urls.push(`https://provkus-media.ru/${path}`)}
+    for(const width of [640,1600]){const blob=await cropBlob(file,width,Math.round(width*9/16),.78,'image/webp');if(blob.type!=='image/webp')break;const path=`assets/uploads/${slug}-16x9-${width}.webp`;await window.putFile(path,bytesToB64(await blob.arrayBuffer()),`Upload ${width}px cover: ${slug}`,'base64');urls.optimized=true}
     return urls
   }
   function validate(o){
@@ -37,7 +38,7 @@
     return''
   }
   function makePost(o,img,images){
-    return {slug:o.slug,headline:o.headline,description:o.description,author:o.author,coauthors:Array.isArray(o.coauthors)?o.coauthors.filter(Boolean):[],category:o.category,type:o.type,typeLabel:typeLabel(o.type),image:img,images,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:new Date(o.publishedAt).toISOString(),updatedAt:new Date(o.updatedAt||o.publishedAt).toISOString(),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||'',featured:!!o.featured,popular:!!o.popular,quizCount:o.type==='quiz'?(o.quiz?.questions?.length||0):undefined}
+    return {slug:o.slug,headline:o.headline,description:o.description,author:o.author,coauthors:Array.isArray(o.coauthors)?o.coauthors.filter(Boolean):[],category:o.category,type:o.type,typeLabel:typeLabel(o.type),image:img,images,imageResponsive:!!o.imageResponsive,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:new Date(o.publishedAt).toISOString(),updatedAt:new Date(o.updatedAt||o.publishedAt).toISOString(),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||'',featured:!!o.featured,popular:!!o.popular,quizCount:o.type==='quiz'?(o.quiz?.questions?.length||0):undefined}
   }
   function lockActions(on,label=''){
     const pub=$('#publishBtn'),plan=$('#scheduleBtn');
@@ -59,6 +60,7 @@
       }
       let img=(o.image||'').trim(),images=img?[img]:[],file=$('#imageFile')?.files?.[0];
       if(file){images=await uploadCover(file,o.slug);img=images[0]}else if(!img)throw new Error('Добавьте главное изображение');
+      o.imageResponsive=!!images.optimized||(typeof store!=='undefined'&&!!store.posts?.find(p=>p.slug===o.slug&&p.image===img&&p.imageResponsive));
       if(pr)pr.style.width='55%';
       o.image=img;o.images=images;
       const post=makePost(o,img,images),item={slug:o.slug,publishAt:post.publishedAt,createdAt:new Date().toISOString(),material:o,post};

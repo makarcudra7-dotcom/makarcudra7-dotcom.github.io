@@ -91,7 +91,10 @@ check(bool(home_page.find('h1')) and home_page.find('h1')[0].get('class') is Non
 check(featured.get('headline','') in home and featured.get('image','') in home,'index: featured post in crawlable HTML')
 check(bool(home_page.find('meta',property='og:image')) and home_page.find('meta',property='og:image')[0].get('content')==featured.get('image'),'index: representative OG image')
 check('HOME-HERO-START' in home and 'HOME-LOWER-START' in home,'index: static feed')
-check('site-ui.css' in home,'index: critical styles in head')
+check('public.css' in home or 'site-ui.css' in home,'index: critical styles in head')
+css_names=('styles.css','overrides.css','author-fix.css','site-ui.css','community-extra.css','theme.css','seasonal.css')
+expected_css='\n'.join((ROOT/'assets'/name).read_text('utf-8') for name in css_names).rstrip('\n')+'\n'
+check((ROOT/'assets/public.css').read_text('utf-8')==expected_css,'public stylesheet bundle is stale')
 category=Page((ROOT/'category.html').read_text('utf-8'))
 category_links={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in category.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
 check(category_links=={p['slug'] for p in posts if not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now},'category: static inventory')

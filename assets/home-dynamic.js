@@ -3,11 +3,12 @@
   const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const dateLabel=v=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch{return''}};
   const img=p=>p?.image||p?.images?.[0]||'/assets/fallback-cover.svg';
+  const responsive=(p,kind)=>window.__pvResponsiveImageAttrs?.(p,kind)||'';
   const href=p=>p?.url?new URL(p.url,location.origin).pathname:`/articles/${p.slug}.html`;
   const badge=p=>p?.type==='quiz'?'Тест':(p?.category||p?.typeLabel||'Материал');
   const published=p=>{const t=new Date(p?.publishedAt||0).getTime();return !Number.isFinite(t)||t<=Date.now()+15000};
-  const card=(p,lead=false,priority=false)=>lead?`<a class="lead-card" href="${esc(href(p))}"><img fetchpriority="high" decoding="async" width="1600" height="900" src="${esc(img(p))}" alt="${esc(p.imageAlt||p.headline)}"><div class="lead-copy"><div class="eyebrow">${esc(badge(p))}</div><h1>${esc(p.headline)}</h1><p>${esc(p.description||'')}</p><div class="meta-row"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(dateLabel(p.publishedAt))}</time></div></div></a>`:`<a class="stack-card" href="${esc(href(p))}"><img loading="${priority?'eager':'lazy'}" decoding="async" src="${esc(img(p))}" width="1600" height="900" alt="${esc(p.imageAlt||p.headline)}"><div class="stack-copy"><span class="badge">${esc(badge(p))}</span><h3>${esc(p.headline)}</h3><div class="story-meta"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(dateLabel(p.publishedAt))}</time></div></div></a>`;
-  const feedCard=p=>`<a class="story-card feed-card" href="${esc(href(p))}"><img src="${esc(img(p))}" width="1600" height="900" loading="lazy" decoding="async" alt="${esc(p.imageAlt||p.headline)}"><div class="story-body"><span class="badge">${esc(badge(p))}</span><h3>${esc(p.headline)}</h3><div class="story-meta"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(dateLabel(p.publishedAt))}</time></div></div></a>`;
+  const card=(p,lead=false)=>lead?`<a class="lead-card" href="${esc(href(p))}"><img fetchpriority="high" decoding="async" width="1600" height="900" src="${esc(img(p))}"${responsive(p,'lead')} alt="${esc(p.imageAlt||p.headline)}"><div class="lead-copy"><div class="eyebrow">${esc(badge(p))}</div><h1>${esc(p.headline)}</h1><p>${esc(p.description||'')}</p><div class="meta-row"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(dateLabel(p.publishedAt))}</time></div></div></a>`:`<a class="stack-card" href="${esc(href(p))}"><img loading="lazy" decoding="async" src="${esc(img(p))}"${responsive(p,'stack')} width="1600" height="900" alt="${esc(p.imageAlt||p.headline)}"><div class="stack-copy"><span class="badge">${esc(badge(p))}</span><h3>${esc(p.headline)}</h3><div class="story-meta"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(dateLabel(p.publishedAt))}</time></div></div></a>`;
+  const feedCard=p=>`<a class="story-card feed-card" href="${esc(href(p))}"><img src="${esc(img(p))}"${responsive(p,'card')} width="1600" height="900" loading="lazy" decoding="async" alt="${esc(p.imageAlt||p.headline)}"><div class="story-body"><span class="badge">${esc(badge(p))}</span><h3>${esc(p.headline)}</h3><div class="story-meta"><span>${esc(p.author||'')}</span><span>•</span><time datetime="${esc(p.publishedAt||'')}">${esc(dateLabel(p.publishedAt))}</time></div></div></a>`;
   const popularRow=(p,i)=>`<a class="popular-row" href="${esc(href(p))}"><span class="popular-num">${i+1}</span><div><span class="popular-badge">${esc(badge(p))}</span><strong>${esc(p.headline)}</strong></div></a>`;
   function render(posts){
     const good=(posts||[]).filter(p=>p&&p.slug&&p.headline&&published(p)).sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0));
@@ -15,7 +16,10 @@
     const featured=good.find(p=>p.featured)||good[0];
     const side=good.filter(p=>p.slug!==featured.slug).slice(0,3);
     const heroUsed=new Set([featured.slug,...side.map(p=>p.slug)]);
-    const hero=document.querySelector('.hero .hero-grid');if(hero)hero.innerHTML=card(featured,true)+`<div class="hero-side">${side.map((p,i)=>card(p,false,i===0)).join('')}</div>`;
+    const hero=document.querySelector('.hero .hero-grid');
+    const current=[...hero?.querySelectorAll('.lead-card,.hero-side .stack-card')||[]],desired=[featured,...side];
+    const stale=(element,post)=>new URL(element.href,location.href).pathname!==new URL(href(post),location.href).pathname||element.querySelector('h1,h3')?.textContent?.trim()!==post.headline||element.querySelector('img')?.src!==new URL(img(post),location.href).href;
+    if(hero&&(current.length!==desired.length||current.some((element,i)=>stale(element,desired[i]))))hero.innerHTML=card(featured,true)+`<div class="hero-side">${side.map(p=>card(p)).join('')}</div>`;
     const freshCandidates=good.filter(p=>!heroUsed.has(p.slug)).slice(0,12);
     const marked=good.filter(p=>p.popular).slice(0,7),popular=[...marked];
     for(const p of good){if(popular.length>=7)break;if(popular.some(x=>x.slug===p.slug))continue;popular.push(p)}
@@ -23,7 +27,8 @@
     let lower=section.querySelector('.home-lower-grid');
     if(!lower){lower=document.createElement('div');lower.className='home-lower-grid';grid.parentNode.insertBefore(lower,grid);const pop=document.createElement('aside');pop.className='popular-panel';pop.innerHTML='<div class="popular-kicker">Выбор редакции</div><h2 class="popular-title">Популярное</h2><div class="popular-list"></div>';const fresh=document.createElement('div');fresh.className='fresh-wrap';lower.append(pop,fresh);fresh.appendChild(grid)}
     lower.querySelector('.popular-list').innerHTML=popular.slice(0,7).map(popularRow).join('');
-    lower.querySelector('.story-grid').innerHTML=freshCandidates.map(feedCard).join('');
+    const feed=lower.querySelector('.story-grid'),links=[...feed.querySelectorAll('a.story-card')];
+    if(links.length!==freshCandidates.length||links.some((element,i)=>stale(element,freshCandidates[i])))feed.innerHTML=freshCandidates.map(feedCard).join('');
     window.__pvHomeRendered=true;
   }
   const source=window.__pvPostsPromise||fetch('/data/posts.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]);

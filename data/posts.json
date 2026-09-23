@@ -28,7 +28,8 @@
     "photoSource": "provkus-media.ru",
     "featured": true,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "imageResponsive": true
   },
   {
     "slug": "natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy",
@@ -58,7 +59,8 @@
     "photoSource": "provkus-media.ru",
     "featured": false,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "imageResponsive": true
   },
   {
     "slug": "pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov",
@@ -86,7 +88,8 @@
     "photoSource": "",
     "featured": false,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "imageResponsive": true
   },
   {
     "slug": "ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat",
@@ -116,7 +119,8 @@
     "photoSource": "provkus-media.ru",
     "featured": false,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "imageResponsive": true
   },
   {
     "slug": "sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy",
@@ -144,7 +148,8 @@
     "photoSource": "provkus-media.ru",
     "featured": false,
     "popular": true,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "imageResponsive": true
   },
   {
     "slug": "zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom",
@@ -171,7 +176,8 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": false
+    "popular": false,
+    "imageResponsive": true
   },
   {
     "slug": "sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki",
@@ -200,7 +206,8 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": false
+    "popular": false,
+    "imageResponsive": true
   },
   {
     "slug": "etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite",
@@ -234,7 +241,8 @@
     ],
     "photoSource": "provkus-media.ru",
     "quizCount": 8,
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "tykvennyi-krem-sup-s-yablokom",
@@ -254,7 +262,8 @@
       "https://provkus-media.ru/assets/covers/tykvennyi-krem-sup-s-yablokom-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "yabloki-s-indeikoi-i-timyanom",
@@ -274,7 +283,8 @@
       "https://provkus-media.ru/assets/covers/yabloki-s-indeikoi-i-timyanom-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kartoshka-s-gribami-gorchichnyi-sous",
@@ -294,7 +304,8 @@
       "https://provkus-media.ru/assets/covers/kartoshka-s-gribami-gorchichnyi-sous-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "teplyi-salat-grusha-syr-orehi",
@@ -314,7 +325,8 @@
       "https://provkus-media.ru/assets/covers/teplyi-salat-grusha-syr-orehi-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "slivovyi-ketchup-dymok",
@@ -334,7 +346,8 @@
       "https://provkus-media.ru/assets/covers/slivovyi-ketchup-dymok-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "vinegret-s-zharenoi-tykvoi",
@@ -354,7 +367,8 @@
       "https://provkus-media.ru/assets/covers/vinegret-s-zharenoi-tykvoi-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kuritsa-s-yablokami-gorchitsa-med",
@@ -374,7 +388,8 @@
       "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "udon-s-tykvoi-i-gribami",
@@ -394,7 +409,8 @@
       "https://provkus-media.ru/assets/covers/udon-s-tykvoi-i-gribami-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "gribnoi-pirog-obabnik",
@@ -414,7 +430,8 @@
       "https://provkus-media.ru/assets/covers/gribnoi-pirog-obabnik-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-bezopasno-razmorazhivat-myaso",
@@ -434,7 +451,8 @@
       "https://provkus-media.ru/assets/covers/kak-bezopasno-razmorazhivat-myaso-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "zachem-myt-banany-i-mandariny",
@@ -454,7 +472,8 @@
       "https://provkus-media.ru/assets/covers/zachem-myt-banany-i-mandariny-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-vybrat-syr-s-plesenyu",
@@ -474,7 +493,8 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-syr-s-plesenyu-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "chto-ne-hranit-na-dverce-holodilnika",
@@ -494,7 +514,8 @@
       "https://provkus-media.ru/assets/covers/chto-ne-hranit-na-dverce-holodilnika-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "nuzhno-li-myt-yayca-posle-magazina",
@@ -514,7 +535,8 @@
       "https://provkus-media.ru/assets/covers/nuzhno-li-myt-yayca-posle-magazina-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "mozhno-li-zamorazhivat-hleb",
@@ -534,7 +556,8 @@
       "https://provkus-media.ru/assets/covers/mozhno-li-zamorazhivat-hleb-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-hranit-kartofel-doma",
@@ -554,7 +577,8 @@
       "https://provkus-media.ru/assets/covers/kak-hranit-kartofel-doma-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "zamorozhennye-ovoshi-ne-pustye",
@@ -574,7 +598,8 @@
       "https://provkus-media.ru/assets/covers/zamorozhennye-ovoshi-ne-pustye-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-pravilno-hranit-yayca-v-holodilnike",
@@ -594,7 +619,8 @@
       "https://provkus-media.ru/assets/covers/kak-pravilno-hranit-yayca-v-holodilnike-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-vybrat-kofe-po-date-obzharki",
@@ -614,7 +640,8 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-kofe-po-date-obzharki-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-vybrat-sladkie-mandariny",
@@ -634,7 +661,8 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-sladkie-mandariny-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "extra-virgin-kak-vybrat-olivkovoe-maslo",
@@ -654,7 +682,8 @@
       "https://provkus-media.ru/assets/covers/extra-virgin-kak-vybrat-olivkovoe-maslo-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "chay-v-paketikah-pravda-o-pyli",
@@ -674,7 +703,8 @@
       "https://provkus-media.ru/assets/covers/chay-v-paketikah-pravda-o-pyli-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "kak-hranit-rastitelnoe-maslo-posle-vskrytiya",
@@ -694,7 +724,8 @@
       "https://provkus-media.ru/assets/covers/kak-hranit-rastitelnoe-maslo-posle-vskrytiya-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   },
   {
     "slug": "skolko-hranit-plavlenyi-syr-posle-vskrytiya",
@@ -714,6 +745,7 @@
       "https://provkus-media.ru/assets/covers/skolko-hranit-plavlenyi-syr-posle-vskrytiya-v2-1x1.jpg"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false
+    "featured": false,
+    "imageResponsive": true
   }
 ]

@@ -1,7 +1,7 @@
 import json, html, subprocess, re
 from pathlib import Path
 from datetime import datetime, timezone
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 
 site='https://provkus-media.ru'
 root=Path(__file__).resolve().parents[1]
@@ -29,13 +29,23 @@ rubrics={
   'food-safety.html':lambda c:'безопас' in c,
 }
 months=['','января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря']
+def responsive(p,kind='card'):
+  if not p.get('imageResponsive'):return ''
+  url=urlparse(p.get('image') or '')
+  if url.netloc and url.netloc!='provkus-media.ru':return ''
+  if not url.path.startswith('/assets/') or not url.path.endswith('-16x9.jpg'):return ''
+  base=url.path[:-4]
+  sizes={'lead':'(max-width: 1000px) calc(100vw - 24px), 65vw',
+         'stack':'(max-width: 700px) 120px, 160px',
+         'card':'(max-width: 700px) calc(100vw - 24px), (max-width: 1000px) 48vw, 25vw'}[kind]
+  return f' srcset="{base}-640.webp 640w, {base}-1600.webp 1600w" sizes="{sizes}"'
 def card(p):
   date=parse_dt(p.get('publishedAt'))
   label=f'{date.day} {months[date.month]} {date.year}' if date else ''
   value=lambda key:html.escape(str(p.get(key) or ''),quote=True)
   image=value('image') or '/assets/fallback-cover.svg'
   return (f'<a class="story-card feed-card" href="/articles/{quote(p["slug"])}.html">'
-          f'<img src="{image}" width="1600" height="900" loading="lazy" decoding="async" '
+          f'<img src="{image}"{responsive(p)} width="1600" height="900" loading="lazy" decoding="async" '
           f'alt="{html.escape(str(p.get("imageAlt") or p["headline"]),quote=True)}">'
           f'<div class="story-body"><span class="badge">{value("category")}</span>'
           f'<h3>{value("headline")}</h3><div class="story-meta"><span>{value("author")}</span>'
@@ -45,7 +55,7 @@ def post_link(p):
   return '/articles/'+quote(p['slug'])+'.html'
 def lead_card(p):
   return (f'<a class="lead-card" href="{post_link(p)}"><img fetchpriority="high" '
-          f'decoding="async" width="1600" height="900" src="{html.escape(p.get("image") or "/assets/fallback-cover.svg",quote=True)}" '
+          f'decoding="async" width="1600" height="900" src="{html.escape(p.get("image") or "/assets/fallback-cover.svg",quote=True)}"{responsive(p,"lead")} '
           f'alt="{html.escape(p.get("imageAlt") or p["headline"],quote=True)}">'
           f'<div class="lead-copy"><div class="eyebrow">{html.escape(p.get("category") or "Материал")}</div>'
           f'<h1>{html.escape(p["headline"])}</h1><p>{html.escape(p.get("description") or "")}</p>'
@@ -57,7 +67,7 @@ def date_label(p):
   return f'{date.day} {months[date.month]} {date.year}' if date else ''
 def side_card(p):
   return (f'<a class="stack-card" href="{post_link(p)}"><img loading="lazy" decoding="async" '
-          f'src="{html.escape(p.get("image") or "/assets/fallback-cover.svg",quote=True)}" '
+          f'src="{html.escape(p.get("image") or "/assets/fallback-cover.svg",quote=True)}"{responsive(p,"stack")} '
           f'width="1600" height="900" alt="{html.escape(p.get("imageAlt") or p["headline"],quote=True)}">'
           f'<div class="stack-copy"><span class="badge">{html.escape(p.get("category") or "Материал")}</span>'
           f'<h3>{html.escape(p["headline"])}</h3><div class="story-meta"><span>{html.escape(p.get("author") or "")}</span>'
@@ -96,7 +106,7 @@ def update_home():
     start=source.index('<div class="story-grid">',source.index('<section class="section">'))
     end=source.index('</div></div></section>',start)+len('</div>')
     source=source[:start]+lower+source[end:]
-  if '<link rel="stylesheet" href="/assets/site-ui.css">' not in source:
+  if '/assets/public.css' not in source and '<link rel="stylesheet" href="/assets/site-ui.css">' not in source:
     source=source.replace('</head>','<link rel="stylesheet" href="/assets/site-ui.css"></head>',1)
   if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
 
@@ -112,7 +122,7 @@ else:
   source=source[:start]+grid+source[end:]
 source=re.sub(r'(<div class="section-sub">)\d+ (?:публикаци[яий]+|материалов)(</div>)',
               lambda m:m.group(1)+str(len(posts))+' материалов'+m.group(2),source,count=1)
-if '<link rel="stylesheet" href="/assets/site-ui.css">' not in source:
+if '/assets/public.css' not in source and '<link rel="stylesheet" href="/assets/site-ui.css">' not in source:
   source=source.replace('</head>','<link rel="stylesheet" href="/assets/site-ui.css"></head>',1)
 if source!=category.read_text('utf-8'):category.write_text(source,'utf-8')
 for name,match in rubrics.items():
