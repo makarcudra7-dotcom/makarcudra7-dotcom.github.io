@@ -40,7 +40,7 @@
     card.innerHTML='<div class="card-title">Размещение на главной</div><div class="card-body"><label class="placement-check"><input id="featuredFlag" type="checkbox"><span><strong>Главная новость</strong><small>Показывать большой первой карточкой.</small></span></label><label class="placement-check"><input id="popularFlag" type="checkbox"><span><strong>Популярное</strong><small>Добавить в блок «Популярное» на главной.</small></span></label></div>';
     aside.insertBefore(card,aside.firstChild);
   };
-  const loadSeo=()=>{const s=document.createElement('script');s.src='assets/admin-seo.js?v='+V;document.body.appendChild(s)};
+  const loadSeo=()=>{const s=document.createElement('script');s.src='assets/admin-seo.js?v='+V;const next=()=>{const x=document.createElement('script');x.src='assets/admin-sources.js?v=20260923';document.body.appendChild(x)};s.onload=next;s.onerror=next;document.body.appendChild(s)};
   const loadPro=()=>{ensurePlacement();const p=document.createElement('script');p.src='assets/admin-pro-suite.js?v='+V;p.onload=loadSeo;p.onerror=loadSeo;document.body.appendChild(p)};
   const loadBridge=()=>{const s=document.createElement('script');s.src='assets/admin-global-bridge.js?v='+V;s.onload=loadPro;s.onerror=loadPro;document.body.appendChild(s)};
   const loadFast=()=>{const s=document.createElement('script');s.src='assets/admin-fast-publish.js?v='+V;s.onload=loadBridge;s.onerror=loadBridge;document.body.appendChild(s)};

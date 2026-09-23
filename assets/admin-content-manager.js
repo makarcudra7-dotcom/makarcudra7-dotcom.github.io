@@ -21,7 +21,7 @@
     if(typeof window.fill==='function'&&!window.fill.__placementWrapped){const base=window.fill;const wrapped=function(o={}){base(o);if($('#featuredFlag'))$('#featuredFlag').checked=!!o.featured;if($('#popularFlag'))$('#popularFlag').checked=!!o.popular;editingSlug=o._editingSlug||'';const slug=$('#slug');if(slug)slug.readOnly=!!editingSlug;if(editingSlug){$('#pageTitle').textContent='Редактирование публикации';const c=$('.crumb');if(c)c.textContent='Материалы / Редактирование'}};wrapped.__placementWrapped=true;window.fill=wrapped}
   }
 
-  function sourceValue(note){if(!note)return'';const a=note.querySelector('a');if(a)return a.getAttribute('href')||a.textContent.trim();return note.textContent.replace(/^Источник:\s*/i,'').trim()}
+  function sourceValue(note){if(!note)return'';const copy=note.cloneNode(true);if(/^Источники?:/i.test(copy.querySelector('strong')?.textContent||''))copy.querySelector('strong').remove();return copy.innerHTML.trim()}
   function parseQuiz(doc){
     const section=doc.querySelector('.pv-quiz');if(!section)return null;
     const questions=[...section.querySelectorAll('.pv-quiz-question')].map(q=>({question:(q.querySelector('legend')?.textContent||'').replace(/^\s*\d+\.\s*/,''),options:[...q.querySelectorAll('.pv-quiz-option')].map(x=>(x.textContent||'').replace(/^\s*[АБВГA-D]\.?\s*/i,'').trim()),correct:Number(q.dataset.correct||0),explanation:q.dataset.explanation||''}));
@@ -30,7 +30,7 @@
   async function materialFromPost(p){
     const file=await window.getFile(`articles/${p.slug}.html`);if(!file)throw new Error('HTML статьи не найден в репозитории');
     const doc=new DOMParser().parseFromString(decode(file),'text/html'),body=doc.querySelector('.article-body');
-    const quiz=parseQuiz(doc), note=body?.querySelector('.note'),source=sourceValue(note);
+    const quiz=parseQuiz(doc), note=[...(body?.querySelectorAll('.note')||[])].find(el=>/^Источники?:/i.test(el.querySelector('strong')?.textContent||'')),source=sourceValue(note);
     if(body){body.querySelector('.pv-quiz')?.remove();body.querySelector('.quiz-after-content')?.remove();note?.remove()}
     return {headline:p.headline||doc.querySelector('.article-title')?.textContent||'',category:p.category||doc.querySelector('.article-kicker')?.textContent||'Продукты',type:normalizedType(p.type),lead:doc.querySelector('.article-dek')?.textContent||'',publishedAt:local(p.publishedAt),updatedAt:local(p.updatedAt||p.publishedAt),seoTitle:doc.title||p.headline||'',description:p.description||doc.querySelector('meta[name="description"]')?.content||'',slug:p.slug,canonical:doc.querySelector('link[rel="canonical"]')?.href||p.url||'',robots:doc.querySelector('meta[name="robots"]')?.content||'index, follow, max-image-preview:large',ogImage:doc.querySelector('meta[property="og:image"]')?.content||p.image||'',source,tags:Array.isArray(p.tags)?p.tags.join(', '):(p.tags||''),image:p.image||doc.querySelector('.article-cover')?.src||'',imageAlt:p.imageAlt||doc.querySelector('.article-cover')?.alt||'',photoSource:p.photoSource||'',author:p.author||'',coauthors:Array.isArray(p.coauthors)?p.coauthors:[],content:body?.innerHTML||'',quiz,featured:!!p.featured,popular:!!p.popular,_editingSlug:p.slug}
   }
