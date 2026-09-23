@@ -1,0 +1,15 @@
+/* Reader-selected appearance. Article images and brand colors retain their meaning. */
+.pv-theme-toggle{margin-left:auto;flex:0 0 auto;border:1px solid var(--line);border-radius:999px;padding:9px 13px;background:var(--paper);color:var(--ink);font:750 13px/1.2 Inter,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.pv-theme-toggle:hover,.pv-theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+html[data-theme="dark"]{color-scheme:dark;--bg:#161b19;--paper:#222925;--ink:#f2f0e9;--muted:#b9bdb4;--line:#39443d;--green:#264a3b;--shadow:0 14px 38px rgba(0,0,0,.23)}
+html[data-theme="dark"] .site-header{background:rgba(22,27,25,.96);border-color:var(--line)}
+html[data-theme="dark"] .story-card,html[data-theme="dark"] .stack-card,html[data-theme="dark"] .author-card,html[data-theme="dark"] .legal-card,html[data-theme="dark"] .ask-author-box,html[data-theme="dark"] .chip,html[data-theme="dark"] .article-tools button,html[data-theme="dark"] .ask-author-link,html[data-theme="dark"] .icon-btn{background:var(--paper);color:var(--ink);border-color:var(--line)}
+html[data-theme="dark"] .ask-author-box{background:#222925}
+html[data-theme="dark"] .article-dek,html[data-theme="dark"] .article-date time,html[data-theme="dark"] .author-lead,html[data-theme="dark"] .author-bio,html[data-theme="dark"] .author-method,html[data-theme="dark"] .author-method strong,html[data-theme="dark"] .legal-card p,html[data-theme="dark"] .legal-card li,html[data-theme="dark"] .ask-author-box>p,html[data-theme="dark"] .author-question-form label>span:first-child{color:var(--muted)}
+html[data-theme="dark"] .article-body .note{background:#303329;color:var(--ink)}
+html[data-theme="dark"] .badge,html[data-theme="dark"] .author-topics span{background:#433027;color:#ffa68d}
+html[data-theme="dark"] .photo-credit,html[data-theme="dark"] .form-note{color:var(--muted)}
+html[data-theme="dark"] .story-card>img,html[data-theme="dark"] .stack-card>img,html[data-theme="dark"] .article-cover{background:#26332c}
+html[data-theme="dark"] .site-footer{background:#101512}
+@media(max-width:1000px){.pv-theme-toggle{order:2}.site-header .main-nav{order:3}}
+@media(max-width:640px){.pv-theme-toggle{padding:8px 10px;font-size:12px}}

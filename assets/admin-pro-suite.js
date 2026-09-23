@@ -62,7 +62,7 @@
   }
 
   function syncGlobalAuthors(data){
-    try{if(typeof AUTHORS!=='undefined'&&Array.isArray(AUTHORS)){AUTHORS.splice(0,AUTHORS.length,...data.map(a=>({name:a.name,role:a.role,photo:a.photo,url:a.url,bio:a.bio})));typeof renderAuthors==='function'&&renderAuthors()}}catch(e){console.warn('sync authors',e)}
+    try{if(typeof AUTHORS!=='undefined'&&Array.isArray(AUTHORS)){AUTHORS.splice(0,AUTHORS.length,...data.map(a=>({name:a.name,role:a.role,photo:a.photo+(a.photoVersion?'?v='+a.photoVersion:''),url:a.url,bio:a.bio})));typeof renderAuthors==='function'&&renderAuthors()}}catch(e){console.warn('sync authors',e)}
   }
   async function loadAuthors(){
     const body=$('#authors .card-body');if(body)body.innerHTML='<div class="author-load-note">Загружаем профили авторов…</div>';
@@ -77,14 +77,30 @@
   function renderAuthorEditor(){
     const body=$('#authors .card-body');if(!body)return;
     const note=authorsLoadedFromPublic?'Профили загружены с сайта. Редактирование доступно; при сохранении CMS проверит сервер публикации.':'Изменения сохраняются в общий файл авторов и после деплоя появляются в карточках и профилях сайта.';
-    body.innerHTML=`<div class="author-load-note${authorsLoadedFromPublic?' warn':''}">${esc(note)}</div><div class="author-admin-grid">${authorsData.map((a,i)=>`<article class="author-admin-card" data-author-index="${i}"><div class="author-admin-head"><img src="/${esc((a.photo||'assets/fallback-cover.svg').replace(/^\//,''))}" alt=""><div><h3>${esc(a.name)}</h3><div class="hint">${esc(a.role)}</div></div></div><div class="author-admin-form"><div class="two">${field(a,i,'name','Имя и фамилия')}${field(a,i,'dativeFirst','Имя в дательном падеже')}</div><div class="two">${field(a,i,'role','Должность')}${field(a,i,'photo','Фото URL / путь')}</div>${field(a,i,'lead','Короткое позиционирование',true)}${field(a,i,'bio','Описание автора',true)}${field(a,i,'topics','Темы через запятую')}${field(a,i,'method','Как работает с темами',true)}${field(a,i,'useful','Когда обращаться к автору',true)}${field(a,i,'ask','Подсказка для формы вопроса',true)}<div class="author-save-row"><button type="button" class="btn green" data-save-author="${i}">Сохранить автора</button><span class="hint">Публичная страница: /${esc(a.url||'')}</span></div></div></article>`).join('')}</div>`;
-    $$('[data-save-author]').forEach(b=>b.onclick=()=>saveAuthor(Number(b.dataset.saveAuthor)))
+    body.innerHTML=`<div class="author-load-note${authorsLoadedFromPublic?' warn':''}">${esc(note)}</div><div class="author-admin-grid">${authorsData.map((a,i)=>`<article class="author-admin-card" data-author-index="${i}"><div class="author-admin-head"><img src="/${esc((a.photo||'assets/fallback-cover.svg').replace(/^\//,'')+(a.photoVersion?'?v='+a.photoVersion:''))}" alt=""><div><h3>${esc(a.name)}</h3><div class="hint">${esc(a.role)}</div></div></div><div class="author-admin-form"><div class="two">${field(a,i,'name','Имя и фамилия')}${field(a,i,'dativeFirst','Имя в дательном падеже')}</div><div class="two">${field(a,i,'role','Должность')}${field(a,i,'photo','Фото URL / путь')}</div><label>Заменить фото с компьютера<input type="file" accept="image/jpeg,image/png,image/webp" data-author-upload="${i}"><span class="hint">После сохранения фото появится на страницах сайта.</span></label>${field(a,i,'lead','Короткое позиционирование',true)}${field(a,i,'bio','Описание автора',true)}${field(a,i,'topics','Темы через запятую')}${field(a,i,'method','Как работает с темами',true)}${field(a,i,'useful','Когда обращаться к автору',true)}${field(a,i,'ask','Подсказка для формы вопроса',true)}<div class="author-save-row"><button type="button" class="btn green" data-save-author="${i}">Сохранить автора</button><span class="hint">Публичная страница: /${esc(a.url||'')}</span></div></div></article>`).join('')}</div>`;
+    $$('[data-save-author]').forEach(b=>b.onclick=()=>saveAuthor(Number(b.dataset.saveAuthor)));
+    $$('[data-author-upload]').forEach(input=>input.addEventListener('change',()=>{const file=input.files?.[0],img=input.closest('.author-admin-card')?.querySelector('.author-admin-head img');if(!file||!img)return;const url=URL.createObjectURL(file);img.onload=()=>URL.revokeObjectURL(url);img.src=url}))
   }
   async function saveAuthor(i){
-    const card=$(`[data-author-index="${i}"]`),a=authorsData[i];if(!card||!a)return;card.querySelectorAll('[data-author-field]').forEach(el=>{const k=el.dataset.authorField,v=el.value.trim();a[k]=k==='topics'?v.split(',').map(x=>x.trim()).filter(Boolean):v});
+    const card=$(`[data-author-index="${i}"]`),a=authorsData[i];if(!card||!a)return;const oldPhoto=a.photo;card.querySelectorAll('[data-author-field]').forEach(el=>{const k=el.dataset.authorField,v=el.value.trim();a[k]=k==='topics'?v.split(',').map(x=>x.trim()).filter(Boolean):v});
+    if(a.photo!==oldPhoto)a.photoVersion=Date.now();
     if(!a.name||!a.role)return flash?.('У автора должны быть имя и должность');
     const btn=card.querySelector('[data-save-author]');if(btn){btn.disabled=true;btn.textContent='Сохраняем…'}
-    try{await window.putFile('data/authors.json',JSON.stringify(authorsData,null,2),'Update author: '+a.name);authorsLoadedFromPublic=false;syncGlobalAuthors(authorsData);renderAuthorEditor();flash?.('Профиль автора сохранён')}catch(e){const msg=e.message||'Не удалось сохранить автора';let n=card.querySelector('.author-save-error');if(!n){n=document.createElement('div');n.className='author-load-note warn author-save-error';card.querySelector('.author-save-row')?.insertAdjacentElement('afterend',n)}if(n)n.textContent='Не удалось сохранить: '+msg;flash?.(msg)}finally{if(btn&&document.body.contains(btn)){btn.disabled=false;btn.textContent='Сохранить автора'}}
+    try{
+      const photoFile=card.querySelector('[data-author-upload]')?.files?.[0];
+      if(photoFile){
+        if(photoFile.size>12*1024*1024)throw new Error('Фото должно быть меньше 12 МБ');
+        const bitmap=await createImageBitmap(photoFile),canvas=document.createElement('canvas');
+        canvas.width=800;canvas.height=800;
+        const size=Math.min(bitmap.width,bitmap.height),x=(bitmap.width-size)/2,y=(bitmap.height-size)/2;
+        canvas.getContext('2d').drawImage(bitmap,x,y,size,size,0,0,800,800);bitmap.close?.();
+        const blob=await new Promise((resolve,reject)=>canvas.toBlob(value=>value?resolve(value):reject(new Error('Не удалось обработать фото')),'image/jpeg',.88));
+        const path=/^assets\/authors\/[a-z0-9-]+\.jpg$/.test(a.photo||'')?a.photo:'assets/authors/'+String(a.id||'author').replace(/[^a-z0-9-]/g,'')+'-profile.jpg';
+        await window.putFile(path,bytesToB64(await blob.arrayBuffer()),'Update photo: '+a.name,'base64');
+        a.photo=path;a.photoVersion=Date.now();
+        card.querySelector('[data-author-field="photo"]').value=path;
+      }
+      await window.putFile('data/authors.json',JSON.stringify(authorsData,null,2),'Update author: '+a.name);authorsLoadedFromPublic=false;syncGlobalAuthors(authorsData);renderAuthorEditor();flash?.('Профиль автора сохранён')}catch(e){const msg=e.message||'Не удалось сохранить автора';let n=card.querySelector('.author-save-error');if(!n){n=document.createElement('div');n.className='author-load-note warn author-save-error';card.querySelector('.author-save-row')?.insertAdjacentElement('afterend',n)}if(n)n.textContent='Не удалось сохранить: '+msg;flash?.(msg)}finally{if(btn&&document.body.contains(btn)){btn.disabled=false;btn.textContent='Сохранить автора'}}
   }
 
   function install(){addStyles();installRelatedFlag();wrapPersistence();installSearch();installCtrlK();loadAuthors();const tb=$('#postsTable');if(tb){const mo=new MutationObserver(()=>setTimeout(enhanceRows,0));mo.observe(tb,{childList:true,subtree:true});enhanceRows()}}

@@ -5,9 +5,18 @@
   const AUTHOR_PAGES={'author-ekaterina.html':'Екатерина Рукопляс','author-elvira.html':'Эльвира Шайберт','author-ilya.html':'Илья Титюлькин'};
   const isHome=/^(\/|\/index\.html)$/.test(location.pathname);
 
+  function setTheme(next){
+    document.documentElement.dataset.theme=next;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='dark'?'#161b19':'#f7f4ee');
+    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.textContent=next==='dark'?'☀ Светлая тема':'☾ Тёмная тема';btn.setAttribute('aria-pressed',String(next==='dark'));btn.setAttribute('aria-label',next==='dark'?'Включить светлую тему':'Включить тёмную тему')}
+  }
+  let initial='light';try{initial=localStorage.getItem('provkus-theme')||'light'}catch(e){}
+  setTheme(initial==='dark'?'dark':'light');
+  const bar=document.querySelector('.site-header .topbar');if(bar){const button=document.createElement('button');button.type='button';button.className='pv-theme-toggle';bar.appendChild(button);setTheme(document.documentElement.dataset.theme);button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next);try{localStorage.setItem('provkus-theme',next)}catch(e){}})}
+  fetch('/data/authors.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).then(authors=>{for(const author of authors){if(!author.photoVersion||!author.photo)continue;document.querySelectorAll('img').forEach(img=>{if(img.alt!==author.name)return;img.src='/'+author.photo.replace(/^\//,'')+'?v='+author.photoVersion})}}).catch(()=>{});
   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
   function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260922-community2';document.head.appendChild(l)}
-  function injectCss(){addCss('/assets/overrides.css');addCss('/assets/author-fix.css');addCss('/assets/site-ui.css');addCss('/assets/community-extra.css')}
+  function injectCss(){addCss('/assets/overrides.css');addCss('/assets/author-fix.css');addCss('/assets/site-ui.css');addCss('/assets/community-extra.css');addCss('/assets/theme.css')}
   function addFavicon(){if(!document.querySelector('link[rel~="icon"]')){const l=document.createElement('link');l.rel='icon';l.type='image/png';l.href='/favicon.png';document.head.appendChild(l)}if(!document.querySelector('meta[name="theme-color"]')){const m=document.createElement('meta');m.name='theme-color';m.content='#f7f4ee';document.head.appendChild(m)}}
   function normalizeRemoteImage(img){const src=img.getAttribute('src')||'';if(src.includes('images.unsplash.com')){try{const u=new URL(src);u.searchParams.delete('auto');u.searchParams.set('fm','jpg');u.searchParams.set('fit','crop');if(!u.searchParams.has('q'))u.searchParams.set('q','82');img.src=u.toString()}catch(e){}}img.decoding='async';if(img.closest('.hero-side .stack-card:first-child'))img.loading='eager';else if(!img.closest('.lead-card')&&!img.classList.contains('article-cover'))img.loading='lazy';if(!img.getAttribute('width'))img.setAttribute('width','1600');if(!img.getAttribute('height'))img.setAttribute('height','900')}
   function localizeAuthorPhotos(){document.querySelectorAll('img[src*="assets/authors/"]').forEach(img=>{const raw=(img.getAttribute('src')||'').split('/').pop()||'',file=raw.split('?')[0];if(AUTHOR_PHOTOS[file]){img.src=AUTHOR_PHOTOS[file];img.removeAttribute('onerror')}})}

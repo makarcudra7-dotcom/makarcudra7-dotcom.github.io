@@ -114,7 +114,7 @@
         return base(path,content,message,encoding);
       };wrapped.__quizWrapped=true;window.putFile=wrapped;
     }
-    const preview=$('#previewBtn');if(preview){preview.onclick=()=>{const o=window.collect(),img=o.image||'assets/fallback-cover.svg';let html=typeof window.articleHTML==='function'?window.articleHTML(o,img):'';if(o.type==='quiz')html=injectQuiz(html,o.quiz);const w=open('','_blank');w.document.write(html);w.document.close()}}
+    const preview=$('#previewBtn');if(preview){preview.onclick=()=>{const o=window.collect(),file=document.querySelector('#imageFile')?.files?.[0],img=file?URL.createObjectURL(file):(o.image?(new URL(o.image,location.origin+'/').href):'/assets/fallback-cover.svg');let html=typeof window.enhancedArticleHTML==='function'?window.enhancedArticleHTML(o,img,[img]):(typeof window.articleHTML==='function'?window.articleHTML(o,img):'');if(o.type==='quiz')html=injectQuiz(html,o.quiz);html=html.replace('<head>','<head><base href="'+location.origin+'/articles/">');const w=open('','_blank');if(!w){if(file)URL.revokeObjectURL(img);return flash?.('Разрешите всплывающее окно для предпросмотра')}w.document.write(html);w.document.close();if(file)w.addEventListener('pagehide',()=>URL.revokeObjectURL(img),{once:true})}}
     wrapPublish('#publishBtn');
     if(window.store?.draft?.quiz){renderQuiz(window.store.draft.quiz);if(window.store.draft.type==='quiz'&&type)type.value='quiz';toggleQuiz()}
     loadExtras();

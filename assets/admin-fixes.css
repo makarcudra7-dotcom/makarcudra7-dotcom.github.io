@@ -1,0 +1,13 @@
+/* CMS layout fixes */
+#material .grid > div,#material .grid > aside{min-width:0}
+.after-editor{grid-template-columns:repeat(2,minmax(0,1fr))}
+.after-editor .field{min-width:0}
+.after-editor .field input{min-width:0;width:100%;height:44px}
+#placementCard .card-body{display:grid;gap:0}
+#placementCard .placement-check,#placementCard .related-exclude-check{display:grid!important;grid-template-columns:20px minmax(0,1fr);align-items:start;gap:11px;padding:12px 0;width:100%;line-height:1.4}
+#placementCard .placement-check input,#placementCard .related-exclude-check input{width:18px!important;height:18px!important;margin:2px 0 0!important;min-width:18px;appearance:auto}
+#placementCard .placement-check span,#placementCard .related-exclude-check span{display:grid;gap:4px;min-width:0}
+#placementCard .placement-check strong,#placementCard .related-exclude-check strong{display:block}
+#placementCard .placement-check small,#placementCard .related-exclude-check small{display:block;line-height:1.4}
+.author-admin-form input[type=file]{padding:10px;background:#f8faf8}
+@media(max-width:650px){.after-editor{grid-template-columns:1fr}}
