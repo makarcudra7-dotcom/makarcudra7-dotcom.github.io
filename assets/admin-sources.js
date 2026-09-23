@@ -52,11 +52,12 @@
         editor.focus();
         return window.flash?.('Выделите слово или фразу в источнике');
       }
+      const range = selection.getRangeAt(0).cloneRange();
       const chosen = prompt('Ссылка на выделенный текст (https://...)', 'https://');
       if (chosen === null) return;
       const href = url(chosen.trim());
       if (!href) return window.flash?.('Введите ссылку с http:// или https://');
-      const range = selection.getRangeAt(0), label = range.toString();
+      const label = range.toString();
       range.deleteContents();
       const a = document.createElement('a');
       a.href = href; a.rel = 'noopener noreferrer'; a.target = '_blank'; a.textContent = label;
@@ -106,7 +107,7 @@
     window.collect = function() {
       const result = oldCollect();
       const items = contents();
-      result.source = items.map(item => item.text).join('; ');
+      result.source = items.length ? items.map(item => item.text).join('; ') : field.value;
       result.sourceHtml = items.length
         ? `<ol class="pv-sources">${items.map(item => `<li>${item.html}</li>`).join('')}</ol>`
         : '';
