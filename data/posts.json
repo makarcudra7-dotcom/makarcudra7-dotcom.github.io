@@ -1,5 +1,35 @@
 [
   {
+    "slug": "sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy",
+    "headline": "Сок, нектар или напиток: 5 вещей на упаковке, которые стоит проверить перед покупкой",
+    "description": "Яркие фрукты на коробке еще не говорят, сколько внутри сока. Пять деталей на упаковке помогут быстро понять, что именно вы покупаете.",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "explainer",
+    "typeLabel": "Разбор / объяснение",
+    "image": "https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-1x1.jpg"
+    ],
+    "imageAlt": "Мужчина выбирает сок в магазине",
+    "url": "https://provkus-media.ru/articles/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy.html",
+    "publishedAt": "2026-09-23T01:41:00.000Z",
+    "updatedAt": "2026-09-23T01:41:00.000Z",
+    "tags": [
+      "Продукты",
+      "Напитки",
+      "Покупки",
+      "Маркировка",
+      "Советы"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom",
     "headline": "Жена выпрашивает эту лепешку каждый день: сочно, много начинки и никакой возни с тестом — лучше любой пиццы",
     "description": "Картофельная лепёшка с овощами готовится на одной сковороде без замеса теста: внутри много сочной начинки, сверху плавленый сыр, а рядом — быстрый сметанный соус.",
@@ -52,7 +82,7 @@
       "Яблоня"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": false
   },
   {
