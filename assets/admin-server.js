@@ -1,26 +1,37 @@
 (()=>{
   const API_KEY='provkusPublishApi';
-  const DEFAULT_API='https://makarcudra7-dotcom-github-io-unep.vercel.app';
+  const LEGACY_API='https://makarcudra7-dotcom-github-io-unep.vercel.app';
+  const DEFAULT_API=location.origin;
   const $=s=>document.querySelector(s);
   const originalGetToken=typeof getToken==='function'?getToken:null;
   const originalGetFile=typeof getFile==='function'?getFile:null;
   const originalPutFile=typeof putFile==='function'?putFile:null;
   const originalDeleteFile=typeof deleteFile==='function'?deleteFile:null;
-  const apiBase=()=>String(localStorage.getItem(API_KEY)||DEFAULT_API).replace(/\/$/,'');
+  const savedApi=()=>{const saved=String(localStorage.getItem(API_KEY)||'').replace(/\/$/,'');if(!saved||saved===LEGACY_API)return DEFAULT_API;return saved};
+  const apiBase=()=>savedApi().replace(/\/$/,'');
   const adminHash=()=>localStorage.getItem('provkusAdminHash')||'';
   const useServer=()=>/^https:\/\//i.test(apiBase());
   let batchQueue=null;
+
+  if(localStorage.getItem(API_KEY)===LEGACY_API)localStorage.removeItem(API_KEY);
 
   async function serverRequest(payload){
     const base=apiBase();
     if(!base)throw new Error('Сервер публикации ещё не подключён');
     const hash=adminHash();
     if(!hash)throw new Error('Сначала войдите в админку');
-    const r=await fetch(base+'/api/publish',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','X-ProVkus-Admin':hash},
-      body:JSON.stringify(payload)
-    });
+    let r;
+    try{
+      r=await fetch(base+'/api/publish',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','X-ProVkus-Admin':hash},
+        body:JSON.stringify(payload),
+        cache:'no-store',
+        credentials:'same-origin'
+      });
+    }catch(e){
+      throw new Error('Не удалось связаться с сервером публикации. Обновите страницу и повторите попытку.');
+    }
     let data={};try{data=await r.json()}catch(e){}
     if(!r.ok){
       if(r.status===401)throw new Error('Сервер публикации не принял пароль админки');
@@ -71,7 +82,7 @@
     const title=card.querySelector('.card-title');if(title)title.textContent='Публикация на сайт';
     const body=card.querySelector('.card-body');
     const panel=document.createElement('div');panel.id='serverPublishPanel';panel.innerHTML=`
-      <div class="field"><label>Сервер публикации</label><div class="token-row"><input id="publishApiUrl" placeholder="https://ваш-проект.vercel.app"><button type="button" class="btn green" id="savePublishApi">Сохранить</button></div><div class="hint">Сервер ProVkus уже указан по умолчанию. Менять его нужно только при переносе API.</div></div>
+      <div class="field"><label>Сервер публикации</label><div class="token-row"><input id="publishApiUrl" placeholder="https://provkus-media.ru"><button type="button" class="btn green" id="savePublishApi">Сохранить</button></div><div class="hint">По умолчанию используется сервер публикации на текущем домене ProVkus.</div></div>
       <div class="conn" id="serverConn"><i></i><span></span></div>
       <details id="serverSetup"><summary>Технические настройки сервера</summary><div class="field" style="margin-top:12px"><label>PROVKUS_ADMIN_HASH</label><div class="token-row"><input id="serverAdminHash" readonly><button type="button" class="btn soft" id="copyAdminHash">Копировать</button></div><div class="hint">Этот хэш добавляется в защищённые переменные Vercel. Это не GitHub-токен.</div></div></details>`;
     body.insertBefore(panel,body.firstChild);
