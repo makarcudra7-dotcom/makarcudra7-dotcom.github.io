@@ -3,7 +3,6 @@
   if(window.__pvAdminActionsFixLoaded)return;
   window.__pvAdminActionsFixLoaded=true;
   const $=s=>document.querySelector(s);
-  const esc=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   let scheduled=false;
 
   function postStore(){
@@ -101,6 +100,48 @@
     if(conn){conn.classList.toggle('ok',!!ok);const span=conn.querySelector('span');if(span)span.textContent=text}
     const stat=$('#githubState');if(stat&&ok)stat.textContent='GITHUB';
   }
+  async function connectToken(token,{quiet=false}={}){
+    token=String(token||'').trim();
+    if(!token)return false;
+    const input=$('#githubToken'),button=$('#connectGithubBtn');
+    if(location.protocol!=='https:')throw new Error('GitHub можно подключать только по HTTPS');
+    if(button){button.disabled=true;button.textContent='Проверяю…'}
+    sessionStorage.removeItem(TOKEN_KEY);
+    paintGithubConnection(false,'Проверяю резервный GitHub-доступ…');
+    try{
+      await validateGithubToken(token);
+      sessionStorage.setItem(TOKEN_KEY,token);
+      if(input)input.value='';
+      paintGithubConnection(true,'Резервный GitHub подключён');
+      if(button)button.textContent='Переподключить резервно';
+      if(!quiet)window.flash?.('GitHub-токен принят. Резервная публикация подключена.');
+      return true;
+    }catch(err){
+      sessionStorage.removeItem(TOKEN_KEY);
+      paintGithubConnection(false,'Резервный GitHub не подключён');
+      if(button)button.textContent='Подключить резервно';
+      if(!quiet)window.flash?.(err?.message||'Не удалось подключить GitHub');
+      throw err;
+    }finally{if(button)button.disabled=false}
+  }
+  window.connectGithubFallback=async function(){
+    if(sessionStorage.getItem(TOKEN_KEY))return true;
+    const input=$('#githubToken');
+    const token=String(input?.value||'').trim();
+    if(!token)return false;
+    return connectToken(token,{quiet:false});
+  };
+  function openGithubSettings(){
+    document.querySelector('.nav-btn[data-target="settings"]')?.click();
+    const details=$('#legacyGithubAccess');if(details)details.open=true;
+    setTimeout(()=>{
+      const input=$('#githubToken');
+      input?.scrollIntoView?.({behavior:'smooth',block:'center'});
+      input?.focus?.();
+    },0);
+  }
+  window.openGithubFallbackSettings=openGithubSettings;
+
   function ensureGithubReconnect(){
     const input=$('#githubToken'),button=$('#connectGithubBtn');if(!input||!button)return false;
     if(button.dataset.cmsTokenReconnect!=='1'){
@@ -108,26 +149,22 @@
       button.textContent=sessionStorage.getItem(TOKEN_KEY)?'Переподключить резервно':'Подключить резервно';
       button.onclick=async e=>{
         e.preventDefault();e.stopPropagation();
-        if(location.protocol!=='https:'){window.flash?.('GitHub можно подключать только по HTTPS');return}
         const token=String(input.value||'').trim();
-        if(!token){window.flash?.('Вставьте новый GitHub-токен');return}
-        const old=button.textContent;button.disabled=true;button.textContent='Проверяю…';
-        sessionStorage.removeItem(TOKEN_KEY);
-        paintGithubConnection(false,'Проверяю резервный GitHub-доступ…');
-        try{
-          await validateGithubToken(token);
-          sessionStorage.setItem(TOKEN_KEY,token);
-          input.value='';
-          paintGithubConnection(true,'Резервный GitHub подключён');
-          button.textContent='Переподключить резервно';
-          window.flash?.('GitHub-токен принят. Резервная публикация подключена.');
-        }catch(err){
-          sessionStorage.removeItem(TOKEN_KEY);
-          paintGithubConnection(false,'Резервный GitHub не подключён');
-          button.textContent='Подключить резервно';
-          window.flash?.(err?.message||'Не удалось подключить GitHub');
-        }finally{button.disabled=false;if(button.textContent==='Проверяю…')button.textContent=old}
+        if(!token){window.flash?.('Вставьте новый GitHub-токен');input.focus();return}
+        try{await connectToken(token)}catch(_){}
       };
+      input.addEventListener('paste',()=>{
+        setTimeout(async()=>{
+          const token=String(input.value||'').trim();
+          if(!token)return;
+          try{await connectToken(token)}catch(_){}
+        },0);
+      });
+      input.addEventListener('change',async()=>{
+        const token=String(input.value||'').trim();
+        if(!token)return;
+        try{await connectToken(token)}catch(_){}
+      });
     }
     const field=input.closest('.field');
     if(field&&!field.querySelector('#githubTokenHelp')){
