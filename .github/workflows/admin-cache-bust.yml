@@ -8,6 +8,8 @@ on:
       - 'assets/admin-photo-source.js'
       - 'assets/admin-edit-fix.js'
       - 'assets/admin-publish-recovery.js'
+      - 'assets/admin-content-manager.js'
+      - 'assets/admin-actions-fix.js'
       - '.github/workflows/admin-cache-bust.yml'
 
 permissions:
@@ -52,6 +54,9 @@ jobs:
           text, n = re.subn(r"assets/admin-publish-recovery\.js\?v=[^'\"]+", f"assets/admin-publish-recovery.js?v={version}", text, count=1)
           if n != 1:
               raise SystemExit('Could not refresh publish recovery version')
+          text, n = re.subn(r"assets/admin-actions-fix\.js\?v=[^'\"]+", f"assets/admin-actions-fix.js?v={version}", text, count=1)
+          if n != 1:
+              raise SystemExit('Could not refresh admin actions version')
           edit.write_text(text, encoding='utf-8')
 
           admin = Path('admin.html')
@@ -75,6 +80,8 @@ jobs:
           node --check assets/admin-edit-fix.js
           node --check assets/admin-publish-recovery.js
           node --check assets/admin-fast-publish.js
+          node --check assets/admin-content-manager.js
+          node --check assets/admin-actions-fix.js
       - name: Commit refreshed versions
         run: |
           if git diff --quiet; then exit 0; fi
