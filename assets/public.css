@@ -105,18 +105,16 @@ html[data-theme="dark"] .author-card-footer{color:#c4c9bf;border-top-color:#5661
 html[data-theme="dark"] .author-card-footer strong{color:#ff9e80}
 html[data-theme="dark"] .author-card-promise{background:#303a33!important;color:#e8e5dc!important}
 
-/* Seasonal artwork is decorative and never intercepts controls. */
-.pv-seasonal-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;user-select:none;contain:layout paint;}
-body>main,body>.site-footer{position:relative;z-index:1}
-.pv-seasonal-piece{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);transform:translate3d(0,0,0);will-change:transform}
-.pv-seasonal-leaf{display:block;width:100%;height:100%;background:var(--piece-color);-webkit-mask:var(--piece-shape) center/contain no-repeat;mask:var(--piece-shape) center/contain no-repeat;opacity:var(--piece-opacity,.68);animation:pv-seasonal-spin var(--duration) linear var(--delay) infinite;animation-direction:var(--direction,normal);will-change:transform}
-@keyframes pv-seasonal-spin{0%{transform:translate3d(-8px,-5px,0) rotate(var(--turn))}50%{transform:translate3d(11px,9px,0) rotate(calc(var(--turn) + 180deg))}100%{transform:translate3d(-8px,-5px,0) rotate(calc(var(--turn) + 360deg))}}
-html[data-season="autumn"] .pv-seasonal-layer{background:radial-gradient(ellipse 44% 25% at 95% 12%,rgba(207,124,55,.065),transparent),radial-gradient(ellipse 35% 30% at 1% 76%,rgba(153,99,54,.055),transparent)}
-html[data-season="winter"] .pv-seasonal-layer{background:radial-gradient(ellipse 35% 35% at 90% 20%,rgba(125,172,195,.055),transparent)}
-html[data-season="spring"] .pv-seasonal-layer{background:radial-gradient(ellipse 40% 30% at 5% 15%,rgba(183,142,145,.055),transparent)}
-html[data-season="summer"] .pv-seasonal-layer{background:radial-gradient(ellipse 36% 32% at 93% 21%,rgba(212,164,77,.055),transparent)}
-html[data-theme="dark"] .pv-seasonal-leaf{opacity:var(--piece-opacity,.68)}
+/* Seasonal artwork: natural, decorative and compositor-friendly. */
+.pv-seasonal-layer{position:fixed;inset:0;z-index:44;overflow:hidden;pointer-events:none;user-select:none;contain:strict}
+.pv-seasonal-piece{position:absolute;left:var(--x);top:var(--start-y,-80px);width:var(--size);height:auto;contain:layout paint;will-change:transform;animation:pv-leaf-fall var(--duration,20s) linear var(--delay,0s) infinite}
+.pv-seasonal-leaf{display:block;width:100%;height:auto;opacity:var(--piece-opacity,.72);filter:drop-shadow(0 3px 2px rgba(72,43,25,.14));transform-origin:50% 45%;will-change:transform;animation:pv-leaf-tumble calc(var(--duration,20s)*.58) ease-in-out var(--delay,0s) infinite alternate}
+@keyframes pv-leaf-fall{0%{transform:translate3d(0,-12vh,0)}25%{transform:translate3d(calc(var(--drift)*.35),20vh,0)}55%{transform:translate3d(calc(var(--drift)*-.18),52vh,0)}80%{transform:translate3d(calc(var(--drift)*.7),82vh,0)}100%{transform:translate3d(var(--drift),118vh,0)}}
+@keyframes pv-leaf-tumble{0%{transform:rotate(var(--turn)) rotateY(0deg) scale(.94)}40%{transform:rotate(calc(var(--turn) + 52deg)) rotateY(42deg) scale(1)}75%{transform:rotate(calc(var(--turn) + 110deg)) rotateY(-28deg) scale(.92)}100%{transform:rotate(calc(var(--turn) + 165deg)) rotateY(18deg) scale(.97)}}
+html[data-season="autumn"] .pv-seasonal-layer{background:radial-gradient(ellipse 44% 25% at 95% 12%,rgba(207,124,55,.045),transparent),radial-gradient(ellipse 35% 30% at 1% 76%,rgba(153,99,54,.035),transparent)}
 html[data-theme="dark"] .pv-seasonal-layer{background:none}
-@media(max-width:760px){.pv-seasonal-layer{display:none!important}}
-@media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{will-change:auto!important}.pv-seasonal-leaf{animation:none!important;transform:rotate(var(--turn))!important}}
-html.pv-seasonal-static .pv-seasonal-leaf{animation:none;transform:rotate(var(--turn))}
+.pv-seasonal-no-art{background:none!important}
+@media(max-width:760px){.pv-seasonal-piece:nth-child(n+5){display:none}.pv-seasonal-piece{--piece-opacity:.52!important}}
+@media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{animation:none!important}.pv-seasonal-piece{display:none!important}}
+html.pv-seasonal-static .pv-seasonal-piece,html.pv-seasonal-static .pv-seasonal-leaf{animation:none!important}
+html.pv-seasonal-static .pv-seasonal-piece{display:none!important}
