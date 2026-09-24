@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install audit dependencies
-        run: pip install pillow
+      - name: Install repair and audit dependencies
+        run: pip install pillow imageio-ffmpeg
       - name: Restore catalog entry and normalize cover
         run: python3 scripts/repair_catalog_css.py
       - name: Rebuild public stylesheet
