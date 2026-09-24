@@ -1,5 +1,38 @@
 [
   {
+    "slug": "zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad",
+    "headline": "Закрываю по 50 банок — и всё равно мало: компот «Фруктовый джаз» из яблок и винограда — зимой пьём как лимонад",
+    "description": "Яблоки и виноград дают компоту яркий фруктовый вкус. Простой рецепт на 3-литровую банку с точными пропорциями.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-1x1.jpg"
+    ],
+    "imageResponsive": true,
+    "imageAlt": "Женщина на домашней кухне закатывает компот из яблок и винограда: на столе стоят большие банки с фруктами, рядом лежат свежие яблоки и гроздья винограда.",
+    "url": "https://provkus-media.ru/articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html",
+    "publishedAt": "2026-09-24T16:28:00.000Z",
+    "updatedAt": "2026-09-24T16:28:00.000Z",
+    "tags": [
+      "Компот",
+      "Яблоки",
+      "Виноград",
+      "Заготовки на зиму",
+      "Напитки",
+      "Домашние заготовки"
+    ],
+    "photoSource": "",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false,
+    "newsletterGroup": 1
+  },
+  {
     "slug": "lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net",
     "headline": "Лавровый лист кладут в крупу, холодильник и даже за шкаф: 5 популярных лайфхаков — какие работают, а какие нет",
     "description": "Лавровый лист советуют класть в крупу, холодильник, сахар и даже прятать от тараканов. Проверяем пять популярных домашних советов.",
@@ -28,7 +61,7 @@
       "Полезные советы"
     ],
     "photoSource": "",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
