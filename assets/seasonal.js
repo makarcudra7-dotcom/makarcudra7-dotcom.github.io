@@ -2,12 +2,12 @@
 'use strict';
 
 const supplementalStyles=[
-  ['/assets/overrides.css','20260924-fix1'],
-  ['/assets/author-fix.css','20260924-fix1'],
-  ['/assets/site-ui.css','20260924-fix1'],
-  ['/assets/community-extra.css','20260924-fix1'],
-  ['/assets/theme.css','20260924-fix1'],
-  ['/assets/seasonal.css','20260924-leaves4']
+  ['/assets/overrides.css','rca343a7b74cf'],
+  ['/assets/author-fix.css','rca343a7b74cf'],
+  ['/assets/site-ui.css','rca343a7b74cf'],
+  ['/assets/community-extra.css','rca343a7b74cf'],
+  ['/assets/theme.css','rca343a7b74cf'],
+  ['/assets/seasonal.css','rca343a7b74cf']
 ];
 supplementalStyles.forEach(([href,version])=>{
   if(document.querySelector(`link[href^="${href}"]`))return;
@@ -28,10 +28,10 @@ layer.setAttribute('aria-hidden','true');
 document.body.prepend(layer);
 
 const autumnLeaves=[
-  '/assets/leaves/maple.svg?v=20260924-2',
-  '/assets/leaves/maple-red.svg?v=20260924-1',
-  '/assets/leaves/birch-yellow.svg?v=20260924-1',
-  '/assets/leaves/oak-green.svg?v=20260924-1'
+  '/assets/leaves/maple.svg?v=rca343a7b74cf',
+  '/assets/leaves/maple-red.svg?v=rca343a7b74cf',
+  '/assets/leaves/birch-yellow.svg?v=rca343a7b74cf',
+  '/assets/leaves/oak-green.svg?v=rca343a7b74cf'
 ];
 
 /* Keep the middle of the viewport visually quiet: leaves travel mostly in the side lanes. */
