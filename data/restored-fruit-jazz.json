@@ -7,15 +7,24 @@
   "category": "Рецепты",
   "type": "recipe",
   "typeLabel": "Рецепт",
-  "image": "https://provkus-media.ru/assets/uploads/fruit-jazz-16x9.webp",
-  "images": ["https://provkus-media.ru/assets/uploads/fruit-jazz-16x9.webp"],
+  "image": "https://provkus-media.ru/assets/fallback-cover.svg",
+  "images": [
+    "https://provkus-media.ru/assets/fallback-cover.svg"
+  ],
   "imageResponsive": false,
-  "imageAlt": "Женщина готовит компот из яблок и винограда в банках на домашней кухне",
+  "imageAlt": "Иллюстрация к рецепту компота из яблок и винограда",
   "url": "https://provkus-media.ru/articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html",
   "publishedAt": "2026-09-24T17:01:00.000Z",
   "updatedAt": "2026-09-24T17:01:00.000Z",
-  "tags": ["Компот","Яблоки","Виноград","Заготовки на зиму","Напитки","Домашние заготовки"],
-  "photoSource": "provkus-media.ru",
+  "tags": [
+    "Компот",
+    "Яблоки",
+    "Виноград",
+    "Заготовки на зиму",
+    "Напитки",
+    "Домашние заготовки"
+  ],
+  "photoSource": "ProVkus",
   "featured": false,
   "popular": false,
   "excludeRelated": false
