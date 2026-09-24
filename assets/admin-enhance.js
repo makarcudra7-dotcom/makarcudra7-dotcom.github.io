@@ -1,4 +1,20 @@
 (()=>{
+  const STABLE_BRANCH='provkus-stable-v2';
+  const nativeFetch=window.fetch.bind(window);
+  window.fetch=(input,init)=>{
+    let nextInput=input;
+    let nextInit=init;
+    const url=typeof input==='string'?input:(input&&input.url)||'';
+    if(url.startsWith('https://api.github.com/')){
+      const rewritten=url.replace(/([?&])ref=main(?=(&|$))/,'$1ref='+encodeURIComponent(STABLE_BRANCH));
+      if(typeof input==='string')nextInput=rewritten;
+      else if(rewritten!==url)nextInput=new Request(rewritten,input);
+      if(init&&typeof init.body==='string'&&init.body.includes('"branch":"main"')){
+        nextInit={...init,body:init.body.replace(/"branch":"main"/g,'"branch":"'+STABLE_BRANCH+'"')};
+      }
+    }
+    return nativeFetch(nextInput,nextInit);
+  };
   const localNow=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16)};
   function addNow(id,label){const input=document.getElementById(id);if(!input||input.parentElement.querySelector('.date-now-btn'))return;const b=document.createElement('button');b.type='button';b.className='btn soft date-now-btn';b.textContent=label;b.addEventListener('click',()=>{input.value=localNow();input.dispatchEvent(new Event('input',{bubbles:true}));score()});input.insertAdjacentElement('afterend',b)}
   addNow('publishedAt','Поставить текущие дату и время');addNow('updatedAt','Обновлено сейчас');
