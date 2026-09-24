@@ -107,4 +107,9 @@
     openForEdit(button.dataset.editPublished,button);
   },true);
   window.openPublishedArticleForEdit=openForEdit;
+
+  const recovery=document.createElement('script');
+  recovery.src='assets/admin-publish-recovery.js?v=20260924-publish-recovery1';
+  recovery.async=false;
+  document.body.appendChild(recovery);
 })();
