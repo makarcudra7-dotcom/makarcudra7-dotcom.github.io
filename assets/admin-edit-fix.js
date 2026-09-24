@@ -109,7 +109,7 @@
   window.openPublishedArticleForEdit=openForEdit;
 
   const recovery=document.createElement('script');
-  recovery.src='assets/admin-publish-recovery.js?v=20260924-publish-recovery1';
+  recovery.src='assets/admin-publish-recovery.js?v=cms-0dad0c42d328';
   recovery.async=false;
   document.body.appendChild(recovery);
 })();
