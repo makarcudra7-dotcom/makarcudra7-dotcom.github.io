@@ -50,7 +50,7 @@
         try{const posts=JSON.parse(content),o=window.collect?.()||{};const p=posts.find(x=>x.slug===o.slug);if(p){p.excludeRelated=!!o.excludeRelated;p.newsletterGroup=Number(o.newsletterGroup)||0}content=JSON.stringify(posts,null,2)}catch(e){console.warn('related metadata',e)}
       }
       if(encoding!=='base64'&&path==='.github/scheduled-posts.json'){
-        try{const items=JSON.parse(content);for(const item of items){if(item?.material&&item?.post)item.post.excludeRelated=!!item.material.excludeRelated}content=JSON.stringify(items,null,2)}catch(e){console.warn('scheduled related metadata',e)}
+        try{const items=JSON.parse(content);for(const item of items){if(item?.material&&item?.post){item.post.excludeRelated=!!item.material.excludeRelated;item.post.newsletterGroup=Number(item.material.newsletterGroup)||0}}content=JSON.stringify(items,null,2)}catch(e){console.warn('scheduled related metadata',e)}
       }
       return base(path,content,message,encoding)
     };
@@ -67,7 +67,7 @@
   function findSlug(tr){const a=tr.querySelector('a[href*="/articles/"]');if(!a)return'';try{return(new URL(a.href,location.href).pathname.split('/').pop()||'').replace(/\.html$/,'')}catch{return''}}
   async function sendNewsletter(slug){
     const post=(postsStore()?.posts||[]).find(x=>x.slug===slug);if(!post)return flash?.('Сначала опубликуйте материал на сайте');
-    const group=Number(post.newsletterGroup)||0;
+    const group=Number(post.newsletterGroup)||((slug===$('#slug')?.value.trim())?Number($('#newsletterGroup')?.value):0)||0;
     if(![1,3,5].includes(group))return flash?.('Сначала выберите подборку 1, 3 или 5 и сохраните материал');
     if(!confirm(`Добавить «${post.headline}» в подборку на ${group} материалов?\n\nПосле заполнения подборка появится в отдельной RSS-ленте.`))return;
     try{
