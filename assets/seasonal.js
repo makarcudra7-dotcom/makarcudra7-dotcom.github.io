@@ -35,19 +35,19 @@ const autumnLeaves=[
 ];
 
 /* Exactly 11 leaves on desktop: 7 in the left gutter, 4 in the right gutter.
-   Leaves may overlap the content boundary by a few pixels, while remaining behind content. */
+   Leaves can cross the content edge slightly so their shape stays visually intact. */
 const autumnPieces=[
-  ['left',.10,76,-22,.82,19,-22,0],
-  ['left',.28,64,26,.76,23,18,2],
-  ['left',.46,88,-34,.78,20,-28,1],
-  ['left',.64,58,14,.72,25,20,3],
-  ['left',.80,82,38,.80,21,-24,0],
-  ['left',.92,62,-18,.74,24,18,2],
-  ['left',.58,72,30,.76,22,-20,1],
-  ['right',.14,72,24,.76,22,22,3],
-  ['right',.38,60,-30,.70,26,-18,2],
-  ['right',.66,84,36,.78,20,26,0],
-  ['right',.88,66,-16,.74,24,-20,1]
+  ['left',.10,76,-22,.82,19,-6,0],
+  ['left',.28,64,26,.76,23,6,2],
+  ['left',.46,88,-34,.78,20,-8,1],
+  ['left',.64,58,14,.72,25,5,3],
+  ['left',.80,82,38,.80,21,-7,0],
+  ['left',.92,62,-18,.74,24,5,2],
+  ['left',.58,72,30,.76,22,-6,1],
+  ['right',.14,72,24,.76,22,6,3],
+  ['right',.38,60,-30,.70,26,-5,2],
+  ['right',.66,84,36,.78,20,7,0],
+  ['right',.88,66,-16,.74,24,-6,1]
 ];
 
 const pieces=[];
