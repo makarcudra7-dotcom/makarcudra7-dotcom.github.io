@@ -109,7 +109,7 @@
   window.openPublishedArticleForEdit=openForEdit;
 
   const recovery=document.createElement('script');
-  recovery.src='assets/admin-publish-recovery.js?v=cms-99818f944ac2';
+  recovery.src='assets/admin-publish-recovery.js?v=cms-c18cb5be5062';
   recovery.async=false;
   document.body.appendChild(recovery);
 
