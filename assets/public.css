@@ -105,11 +105,11 @@ html[data-theme="dark"] .author-card-footer{color:#c4c9bf;border-top-color:#5661
 html[data-theme="dark"] .author-card-footer strong{color:#ff9e80}
 html[data-theme="dark"] .author-card-promise{background:#303a33!important;color:#e8e5dc!important}
 
-/* Seasonal artwork: decorative, natural and kept behind site content. */
+/* Seasonal artwork: decorative, natural and kept away from mobile content. */
 body{isolation:isolate}
-.pv-seasonal-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;user-select:none;contain:strict}
-body>main,body>footer{position:relative;z-index:2}
-.site-header{z-index:3}
+.pv-seasonal-layer{position:fixed;inset:0;z-index:1;overflow:hidden;pointer-events:none;user-select:none;contain:strict}
+body>main,body>footer{position:relative;z-index:0}
+.site-header{position:relative;z-index:3}
 .pv-seasonal-piece{position:absolute;left:var(--x);top:0;width:var(--size);height:auto;contain:layout paint;will-change:transform;animation:pv-leaf-fall var(--duration,22s) linear var(--delay,0s) infinite}
 .pv-seasonal-leaf{display:block;width:100%;height:auto;opacity:var(--piece-opacity,.76);filter:drop-shadow(0 4px 3px rgba(72,43,25,.16));transform-origin:50% 45%;will-change:transform;animation:pv-leaf-tumble calc(var(--duration,22s)*.58) ease-in-out var(--delay,0s) infinite alternate}
 @keyframes pv-leaf-fall{0%{transform:translate3d(0,-20vh,0)}22%{transform:translate3d(calc(var(--drift)*.34),8vh,0)}48%{transform:translate3d(calc(var(--drift)*-.16),43vh,0)}74%{transform:translate3d(calc(var(--drift)*.62),78vh,0)}100%{transform:translate3d(var(--drift),112vh,0)}}
@@ -118,7 +118,7 @@ html[data-season="autumn"] .pv-seasonal-layer{background:radial-gradient(ellipse
 html[data-theme="dark"] .pv-seasonal-layer{background:none}
 .pv-seasonal-no-art{background:none!important}
 @media(max-width:1000px){.pv-seasonal-piece{width:min(var(--size),72px);--piece-opacity:.68!important}}
-@media(max-width:760px){.pv-seasonal-piece{width:min(var(--size),62px);--piece-opacity:.66!important}}
+@media(max-width:760px){html[data-season="autumn"] .pv-seasonal-layer{background:none}.pv-seasonal-piece{display:none!important}}
 @media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{animation:none!important}.pv-seasonal-piece{display:none!important}}
 html.pv-seasonal-static .pv-seasonal-piece,html.pv-seasonal-static .pv-seasonal-leaf{animation:none!important}
 html.pv-seasonal-static .pv-seasonal-piece{display:none!important}

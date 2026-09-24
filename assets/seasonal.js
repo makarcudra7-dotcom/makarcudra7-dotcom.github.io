@@ -2,12 +2,12 @@
 'use strict';
 
 const supplementalStyles=[
-  ['/assets/overrides.css','r6f9036348210'],
-  ['/assets/author-fix.css','r6f9036348210'],
-  ['/assets/site-ui.css','r6f9036348210'],
-  ['/assets/community-extra.css','r6f9036348210'],
-  ['/assets/theme.css','r6f9036348210'],
-  ['/assets/seasonal.css','r6f9036348210']
+  ['/assets/overrides.css','rf1843c1ee447'],
+  ['/assets/author-fix.css','rf1843c1ee447'],
+  ['/assets/site-ui.css','rf1843c1ee447'],
+  ['/assets/community-extra.css','rf1843c1ee447'],
+  ['/assets/theme.css','rf1843c1ee447'],
+  ['/assets/seasonal.css','rf1843c1ee447']
 ];
 supplementalStyles.forEach(([href,version])=>{
   if(document.querySelector(`link[href^="${href}"]`))return;
@@ -28,10 +28,10 @@ layer.setAttribute('aria-hidden','true');
 document.body.prepend(layer);
 
 const autumnLeaves=[
-  '/assets/leaves/maple.svg?v=r6f9036348210',
-  '/assets/leaves/maple-red.svg?v=r6f9036348210',
-  '/assets/leaves/birch-yellow.svg?v=r6f9036348210',
-  '/assets/leaves/oak-green.svg?v=r6f9036348210'
+  '/assets/leaves/maple.svg?v=rf1843c1ee447',
+  '/assets/leaves/maple-red.svg?v=rf1843c1ee447',
+  '/assets/leaves/birch-yellow.svg?v=rf1843c1ee447',
+  '/assets/leaves/oak-green.svg?v=rf1843c1ee447'
 ];
 
 /* Exactly 11 leaves on desktop: 7 in the left gutter, 4 in the right gutter.
