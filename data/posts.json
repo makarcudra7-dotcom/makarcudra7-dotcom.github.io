@@ -59,7 +59,7 @@
       "Полезные советы"
     ],
     "photoSource": "",
-    "featured": false,
+    "featured": true,
     "popular": true,
     "excludeRelated": false
   },
@@ -115,9 +115,10 @@
       "Ужин"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "imageResponsive": true
   },
   {
     "slug": "natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy",

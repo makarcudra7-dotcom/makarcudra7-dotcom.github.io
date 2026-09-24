@@ -25,9 +25,22 @@ jobs:
           ref: main
       - name: Publish or withhold scheduled materials
         run: node scripts/publish-scheduled.js
+      - name: Detect publication changes
+        id: publication_changes
+        shell: bash
+        run: |
+          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No publication changes; skip generated-site rebuild"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Publication changes detected"
+          fi
       - name: Refresh crawlable pages and indexes
+        if: steps.publication_changes.outputs.changed == 'true'
         run: python3 scripts/seo_hardening.py
       - name: Commit scheduler changes
+        if: steps.publication_changes.outputs.changed == 'true'
         run: |
           if git diff --quiet; then
             echo "Nothing to publish or withhold"
