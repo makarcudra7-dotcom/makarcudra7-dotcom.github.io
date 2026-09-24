@@ -7,7 +7,7 @@ const supplementalStyles=[
   ['/assets/site-ui.css','20260924-fix1'],
   ['/assets/community-extra.css','20260924-fix1'],
   ['/assets/theme.css','20260924-fix1'],
-  ['/assets/seasonal.css','20260924-leaves3']
+  ['/assets/seasonal.css','20260924-leaves4']
 ];
 supplementalStyles.forEach(([href,version])=>{
   if(document.querySelector(`link[href^="${href}"]`))return;
@@ -27,27 +27,36 @@ layer.className='pv-seasonal-layer';
 layer.setAttribute('aria-hidden','true');
 document.body.prepend(layer);
 
+const autumnLeaves=[
+  '/assets/leaves/maple.svg?v=20260924-2',
+  '/assets/leaves/maple-red.svg?v=20260924-1',
+  '/assets/leaves/birch-yellow.svg?v=20260924-1',
+  '/assets/leaves/oak-green.svg?v=20260924-1'
+];
+
+/* Keep the middle of the viewport visually quiet: leaves travel mostly in the side lanes. */
 const autumnPositions=[
-  ['4%',-90,54,-25,.78,17,-75],
-  ['18%',-160,38,42,.62,21,58],
-  ['36%',-240,62,-15,.72,19,-48],
-  ['55%',-110,44,27,.66,23,72],
-  ['72%',-205,58,-38,.76,18,-60],
-  ['88%',-145,42,18,.64,22,54],
-  ['96%',-270,50,-28,.70,20,-46]
+  ['-3%',-120,88,-24,.80,18,-26,0],
+  ['96%',-210,82,36,.74,22,34,1],
+  ['3%',-330,72,-12,.76,20,-30,2],
+  ['100%',-450,94,24,.70,24,28,3],
+  ['6%',-570,102,-38,.74,19,-34,1],
+  ['93%',-690,86,18,.72,23,32,0],
+  ['0%',-810,78,-28,.68,21,-26,3],
+  ['102%',-930,98,32,.70,25,30,2]
 ];
 
 if(season==='autumn'){
-  autumnPositions.forEach(([x,y,size,turn,opacity,duration,drift],i)=>{
+  autumnPositions.forEach(([x,y,size,turn,opacity,duration,drift,leafIndex],i)=>{
     const piece=document.createElement('span');
     piece.className='pv-seasonal-piece';
-    piece.style.cssText=`--x:${x};--start-y:${y}px;--size:${size}px;--turn:${turn}deg;--piece-opacity:${opacity};--duration:${duration}s;--delay:${-i*3.1}s;--drift:${drift}px`;
+    piece.style.cssText=`--x:${x};--start-y:${y}px;--size:${size}px;--turn:${turn}deg;--piece-opacity:${opacity};--duration:${duration}s;--delay:${-i*2.8}s;--drift:${drift}px`;
     const img=document.createElement('img');
     img.className='pv-seasonal-leaf';
-    img.src='/assets/leaves/maple.svg?v=20260924-1';
+    img.src=autumnLeaves[leafIndex%autumnLeaves.length];
     img.alt='';
     img.width=320;
-    img.height=303;
+    img.height=320;
     img.decoding='async';
     piece.appendChild(img);
     layer.appendChild(piece);
