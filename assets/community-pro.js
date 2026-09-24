@@ -9,7 +9,7 @@
   const fmt=v=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'numeric',month:'long',year:'numeric'}).format(new Date(v))}catch{return''}};
   const href=p=>p?.url?new URL(p.url,location.origin).pathname:`/articles/${p.slug}.html`;
   const img=p=>p?.image||p?.images?.[0]||'/assets/fallback-cover.svg';
-  const NEWS_COPY='Оставьте e-mail — будем присылать новые материалы ProVkus после их выхода. Частоту писем можно выбрать при подтверждении подписки.';
+  const NEWS_COPY='Оставьте e-mail — будем присылать новые материалы ProVkus после их выхода. После подтверждения e-mail доставка выполняется через follow.it.';
   const NEWS_NOTE='Подписка добровольная и оформляется отдельно. Отписаться можно по ссылке в любом письме.';
   function topics(items){return `<div class="author-topics">${(items||[]).map(x=>`<span>${esc(x)}</span>`).join('')}</div>`}
 

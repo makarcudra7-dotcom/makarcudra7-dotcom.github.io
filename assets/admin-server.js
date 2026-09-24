@@ -30,6 +30,10 @@
   }
 
   window.getToken=function(){return useServer()?'server':(originalGetToken?originalGetToken():'')};
+  window.sendNewsletterArticle=async slug=>{
+    if(!useServer())throw new Error('Для рассылки нужен сервер публикации');
+    return (await serverRequest({action:'sendNewsletter',slug})).result;
+  };
   window.getFile=async function(path){if(!useServer())return originalGetFile(path);return (await serverRequest({action:'get',path})).file};
   window.putFile=async function(path,content,message,encoding='utf-8'){
     if(!useServer())return originalPutFile(path,content,message,encoding);

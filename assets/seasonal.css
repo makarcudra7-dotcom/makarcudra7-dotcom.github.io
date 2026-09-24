@@ -10,6 +10,6 @@ html[data-season="spring"] .pv-seasonal-layer{background:radial-gradient(ellipse
 html[data-season="summer"] .pv-seasonal-layer{background:radial-gradient(ellipse 36% 32% at 93% 21%,rgba(212,164,77,.055),transparent)}
 html[data-theme="dark"] .pv-seasonal-leaf{opacity:var(--piece-opacity,.68)}
 html[data-theme="dark"] .pv-seasonal-layer{background:none}
-@media(max-width:760px){.pv-seasonal-layer{z-index:2;background:none!important}.pv-seasonal-piece:nth-child(n+5){display:none}.pv-seasonal-piece{width:calc(var(--size) * .72);height:calc(var(--size) * .72)}.pv-seasonal-leaf{opacity:.32!important}}
+@media(max-width:760px){.pv-seasonal-layer{display:none!important}}
 @media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{will-change:auto!important}.pv-seasonal-leaf{animation:none!important;transform:rotate(var(--turn))!important}}
 html.pv-seasonal-static .pv-seasonal-leaf{animation:none;transform:rotate(var(--turn))}

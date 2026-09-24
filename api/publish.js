@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const {queueArticle, renderGroupFeed, GROUPS} = require('../lib/newsletter');
 
 const OWNER = 'makarcudra7-dotcom';
 const REPO = 'makarcudra7-dotcom.github.io';
@@ -23,7 +24,6 @@ function safeEqual(a, b) {
 function allowedPath(path) {
   return path === 'data/posts.json' ||
     path === 'data/authors.json' ||
-    path === 'data/newsletter-pushes.json' ||
     path === '.github/scheduled-posts.json' ||
     /^articles\/[a-z0-9-]+\.html$/.test(path) ||
     /^assets\/uploads\/[A-Za-z0-9._-]+$/.test(path) ||
@@ -56,12 +56,12 @@ async function githubJson(path, options = {}) {
   return data;
 }
 
-async function batchPut(files, message) {
+async function batchPut(files, message, expectedHead = '', newsletterWrite = false) {
   if (!Array.isArray(files) || !files.length) throw new Error('No files to publish');
   if (files.length > 30) throw new Error('Too many files in one publication');
   const normalized = files.map(file => {
     const path = String(file?.path || '').replace(/^\/+/, '');
-    if (!allowedPath(path)) throw new Error(`Path is not allowed: ${path}`);
+    if (!allowedPath(path) && !(newsletterWrite && (path === 'data/newsletter-pushes.json' || /^newsletter-[135]\.xml$/.test(path)))) throw new Error(`Path is not allowed: ${path}`);
     const encoding = file?.encoding === 'base64' ? 'base64' : 'utf-8';
     const content = String(file?.content || '');
     return { path, encoding, content };
@@ -71,6 +71,11 @@ async function batchPut(files, message) {
 
   const ref = await githubJson(`git/ref/heads/${encodeURIComponent(BRANCH)}`);
   const headSha = ref.object.sha;
+  if (expectedHead && expectedHead !== headSha) {
+    const error = new Error('Рассылка изменилась, повторите отправку');
+    error.status = 409;
+    throw error;
+  }
   const commit = await githubJson(`git/commits/${headSha}`);
   const baseTree = commit.tree.sha;
 
@@ -101,6 +106,43 @@ async function batchPut(files, message) {
   return { commit: next.sha, files: normalized.map(x => x.path) };
 }
 
+async function readJsonAt(path, ref, fallback) {
+  const response = await github(`contents/${path}?ref=${encodeURIComponent(ref)}`);
+  if (response.status === 404) return fallback;
+  const file = await response.json();
+  if (!response.ok) {
+    const error = new Error(file.message || `GitHub ${response.status}`);
+    error.status = response.status;
+    throw error;
+  }
+  return JSON.parse(Buffer.from(file.content.replace(/\s/g, ''), 'base64').toString('utf8'));
+}
+
+async function queueNewsletter(slug) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const ref = await githubJson(`git/ref/heads/${encodeURIComponent(BRANCH)}`);
+    const head = ref.object.sha;
+    const [posts, pushes] = await Promise.all([
+      readJsonAt('data/posts.json', head, []),
+      readJsonAt('data/newsletter-pushes.json', head, [])
+    ]);
+    const result = queueArticle(posts, pushes, slug);
+    const files = [
+      {path: 'data/newsletter-pushes.json', content: JSON.stringify(result.pushes, null, 2)},
+      ...GROUPS.map(group => ({
+        path: `newsletter-${group}.xml`,
+        content: renderGroupFeed(group, posts, result.pushes)
+      }))
+    ];
+    try {
+      await batchPut(files, `Queue newsletter article: ${slug}`, head, true);
+      return {group: result.group, count: result.count, ready: result.ready};
+    } catch (error) {
+      if (attempt === 2 || ![409, 422].includes(error.status)) throw error;
+    }
+  }
+}
+
 module.exports = async function handler(req, res) {
   const origin = req.headers.origin || '';
   if (origin && !ALLOWED_ORIGINS.has(origin)) return json(res, 403, { error: 'Origin not allowed' });
@@ -125,13 +167,18 @@ module.exports = async function handler(req, res) {
   if (body.action === 'ping') return json(res, 200, { ok: true, repo: `${OWNER}/${REPO}` });
 
   try {
+    if (body.action === 'sendNewsletter') {
+      const slug = String(body.slug || '');
+      if (!/^[a-z0-9-]+$/.test(slug)) return json(res, 400, {error: 'Некорректный адрес материала'});
+      return json(res, 200, {result: await queueNewsletter(slug)});
+    }
     if (body.action === 'batchPut') {
       const result = await batchPut(body.files, body.message);
       return json(res, 200, { result });
     }
 
     const path = String(body.path || '').replace(/^\/+/, '');
-    if (!allowedPath(path)) return json(res, 400, { error: 'Path is not allowed' });
+    if (!allowedPath(path) && !(body.action === 'get' && path === 'data/newsletter-pushes.json')) return json(res, 400, { error: 'Path is not allowed' });
     const encodedPath = path.split('/').map(encodeURIComponent).join('/');
 
     if (body.action === 'get') {
