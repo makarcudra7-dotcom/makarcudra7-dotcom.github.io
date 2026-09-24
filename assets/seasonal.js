@@ -55,9 +55,8 @@ if(season==='autumn'){
     img.className='pv-seasonal-leaf';
     img.src=autumnLeaves[leafIndex%autumnLeaves.length];
     img.alt='';
-    img.width=320;
-    img.height=320;
     img.decoding='async';
+    img.draggable=false;
     piece.appendChild(img);
     layer.appendChild(piece);
   });
