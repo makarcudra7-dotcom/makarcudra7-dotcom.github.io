@@ -1,5 +1,30 @@
 [
   {
+    "slug": "nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki",
+    "headline": "Недорогой кофе из «Пятёрочки» обещает вьетнамский характер: яркая банка — не главное, решают 3 строки",
+    "description": "Недорогой растворимый кофе с вьетнамским оформлением может оказаться удачной покупкой. Вот что стоит проверить на банке до кассы.",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki-1x1.jpg"
+    ],
+    "imageResponsive": true,
+    "imageAlt": "Полный бородатый мужчина выбирает растворимый кофе в магазине «Пятёрочка», внимательно рассматривает банку в руке; вокруг длинные полки, плотно заставленные множеством банок и упаковок кофе разных видов, яркое освещение супермаркета.",
+    "url": "https://provkus-media.ru/articles/nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki.html",
+    "publishedAt": "2026-09-24T01:20:00.000Z",
+    "updatedAt": "2026-09-24T01:20:00.000Z",
+    "tags": [],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "kotlety-bol-she-ne-leplyu-pustymi-vnutr-yayco-syr-poluchayutsya-myasnye-matreshki-s-syurprizom-v-razreze",
     "headline": "Котлеты больше не леплю пустыми: внутрь яйцо + сыр — получаются мясные «матрёшки» с сюрпризом в разрезе",
     "description": "Снаружи обычная румяная котлета, а внутри — яйцо, расплавленный сыр и зелёный лук. Особенно аппетитно выглядит в разрезе.",
@@ -26,7 +51,7 @@
       "Ужин"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "excludeRelated": false,
     "imageResponsive": true
