@@ -6,6 +6,7 @@ so the public design remains exactly the composition of the existing source CSS.
 from pathlib import Path
 import json
 import subprocess
+import imageio_ffmpeg
 
 root = Path(__file__).resolve().parents[1]
 posts_path = root / 'data' / 'posts.json'
@@ -14,11 +15,11 @@ article_path = root / 'articles' / 'zakryvayu-po-50-banok-i-vse-ravno-malo-kompo
 webp_path = root / 'assets' / 'uploads' / 'fruit-jazz-16x9.webp'
 jpg_path = root / 'assets' / 'uploads' / 'fruit-jazz-16x9.jpg'
 
-# The restored WebP renders in some browsers but Pillow cannot decode it in CI.
-# Re-encode the same picture as a conventional JPEG with ffmpeg so the website,
-# previews and offline audit all use a broadly compatible asset.
+# Re-encode the same picture as a conventional JPEG using the bundled ffmpeg
+# binary. This avoids CI/browser decoder differences without changing artwork.
+ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
 subprocess.run([
-    'ffmpeg', '-hide_banner', '-loglevel', 'error', '-y',
+    ffmpeg, '-hide_banner', '-loglevel', 'error', '-y',
     '-i', str(webp_path), '-frames:v', '1', '-q:v', '2', str(jpg_path)
 ], check=True)
 
