@@ -12,6 +12,17 @@
     return Number.isFinite(t)&&t>Date.now()+30000;
   }
 
+  async function connectEnteredFallback(){
+    if(sessionStorage.getItem('provkusGithubToken'))return;
+    const field=$('#githubToken'),button=$('#connectGithubBtn');
+    if(!field||!button||!String(field.value||'').trim())return;
+    button.click();
+    for(let i=0;i<50;i++){
+      if(sessionStorage.getItem('provkusGithubToken'))return;
+      await new Promise(resolve=>setTimeout(resolve,100));
+    }
+  }
+
   function install(){
     const current=$('#publishBtn');
     if(!current||current.dataset.publishRecovery==='1')return false;
@@ -33,6 +44,7 @@
         if(location.protocol!=='https:')throw new Error('Публикация доступна только через HTTPS');
         if(isFuture())throw new Error('Выбрано будущее время — нажмите «Запланировать» или поставьте текущее время');
         if(typeof window.publish!=='function')throw new Error('Основной модуль публикации не загрузился. Обновите страницу.');
+        await connectEnteredFallback();
         if(typeof window.getToken==='function'&&!window.getToken())throw new Error('Сервер публикации не подключён');
 
         const material=typeof window.collect==='function'?window.collect():null;
@@ -43,14 +55,12 @@
         if(progress)progress.style.width='8%';
         show('Отправляю материал на сервер…');
 
-        if(typeof window.beginPublishBatch==='function'){
-          batched=window.beginPublishBatch()===true;
-        }
+        if(typeof window.beginPublishBatch==='function')batched=window.beginPublishBatch()===true;
 
         const ok=await window.publish();
         if(ok!==true){
           if(batched)window.cancelPublishBatch?.();
-          return;
+          throw new Error('Основной модуль не подтвердил публикацию');
         }
 
         if(batched&&typeof window.commitPublishBatch==='function'){
