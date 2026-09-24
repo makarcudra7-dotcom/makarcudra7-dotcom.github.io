@@ -1,15 +1,1 @@
-/* Seasonal artwork: natural, decorative and compositor-friendly. */
-.pv-seasonal-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;user-select:none;contain:strict}
-body>main,body>.site-footer{position:relative;z-index:1}
-.pv-seasonal-piece{position:absolute;left:var(--x);top:var(--y);width:var(--size);height:var(--size);contain:layout paint;animation:pv-leaf-drift var(--duration) ease-in-out var(--delay) infinite alternate}
-.pv-seasonal-leaf{display:block;width:100%;height:100%;background:var(--piece-color);-webkit-mask:var(--piece-shape) center/contain no-repeat;mask:var(--piece-shape) center/contain no-repeat;opacity:var(--piece-opacity,.5);filter:drop-shadow(0 3px 2px rgba(72,43,25,.12));animation:pv-leaf-tumble calc(var(--duration)*.72) ease-in-out var(--delay) infinite alternate;transform-origin:48% 43%}
-@keyframes pv-leaf-drift{0%{transform:translate3d(0,-8px,0)}35%{transform:translate3d(calc(var(--drift)*.35),18px,0)}70%{transform:translate3d(calc(var(--drift)*.72),44px,0)}100%{transform:translate3d(var(--drift),72px,0)}}
-@keyframes pv-leaf-tumble{0%{transform:rotate(var(--turn)) scaleX(1)}45%{transform:rotate(calc(var(--turn) + 54deg)) scaleX(.76)}100%{transform:rotate(calc(var(--turn) + 118deg)) scaleX(.94)}}
-html[data-season="autumn"] .pv-seasonal-layer{background:radial-gradient(ellipse 44% 25% at 95% 12%,rgba(207,124,55,.055),transparent),radial-gradient(ellipse 35% 30% at 1% 76%,rgba(153,99,54,.045),transparent)}
-html[data-season="winter"] .pv-seasonal-layer{background:radial-gradient(ellipse 35% 35% at 90% 20%,rgba(125,172,195,.05),transparent)}
-html[data-season="spring"] .pv-seasonal-layer{background:radial-gradient(ellipse 40% 30% at 5% 15%,rgba(183,142,145,.05),transparent)}
-html[data-season="summer"] .pv-seasonal-layer{background:radial-gradient(ellipse 36% 32% at 93% 21%,rgba(212,164,77,.05),transparent)}
-html[data-theme="dark"] .pv-seasonal-layer{background:none}
-@media(max-width:760px){.pv-seasonal-layer{display:none!important}}
-@media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{animation:none!important}.pv-seasonal-leaf{transform:rotate(var(--turn))}}
-html.pv-seasonal-static .pv-seasonal-piece,html.pv-seasonal-static .pv-seasonal-leaf{animation:none!important}
+/* Seasonal decorations disabled. */
