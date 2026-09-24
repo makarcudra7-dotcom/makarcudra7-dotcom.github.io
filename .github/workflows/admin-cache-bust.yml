@@ -1,0 +1,56 @@
+name: Refresh CMS asset cache
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/admin-server.js'
+      - 'assets/admin-photo-source.js'
+      - '.github/workflows/admin-cache-bust.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Refresh CMS cache versions
+        env:
+          VERSION: cms-${{ github.sha }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import os, re
+          version = os.environ['VERSION'][:16]
+
+          loader = Path('assets/admin-photo-source.js')
+          text = loader.read_text(encoding='utf-8')
+          text, n = re.subn(r"const V='[^']+';", f"const V='{version}';", text, count=1)
+          if n != 1:
+              raise SystemExit('Could not refresh admin-photo-source version')
+          loader.write_text(text, encoding='utf-8')
+
+          admin = Path('admin.html')
+          html = admin.read_text(encoding='utf-8')
+          html, n = re.subn(r'assets/admin-photo-source\.js\?v=[^"\']+', f'assets/admin-photo-source.js?v={version}', html, count=1)
+          if n != 1:
+              raise SystemExit('Could not refresh admin.html loader version')
+          admin.write_text(html, encoding='utf-8')
+          PY
+      - name: Check CMS JavaScript
+        run: |
+          node --check assets/admin-server.js
+          node --check assets/admin-photo-source.js
+      - name: Commit refreshed versions
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add admin.html assets/admin-photo-source.js
+          git commit -m 'Refresh CMS asset cache versions'
+          git push
