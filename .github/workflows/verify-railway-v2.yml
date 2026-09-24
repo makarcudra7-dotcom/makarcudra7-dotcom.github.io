@@ -1,4 +1,4 @@
-name: Verify Railway V2
+name: Verify ProVkus Mirrors
 
 on:
   push:
@@ -28,13 +28,44 @@ jobs:
             sleep 5
           done
           test "$ok" = "1"
-          echo "home_bytes=$(wc -c </tmp/home)"
-          echo "home_h1=$(grep -oP '<h1[^>]*>\K[^<]+' /tmp/home | head -1 || true)"
-          echo "fruit_jazz_count=$(grep -o 'Фруктовый джаз' /tmp/home | wc -l)"
           curl -L -sS --fail --max-time 20 "$base/assets/app.js" -o /tmp/app.js
-          echo "app_seasonal_count=$(grep -Eoi 'seasonal|autumn|falling-leaf|falling_leaf' /tmp/app.js | wc -l)"
           curl -L -sS --fail --max-time 20 "$base/assets/public.css" -o /tmp/public.css
-          echo "public_css_bytes=$(wc -c </tmp/public.css)"
-          echo "public_leaf_terms=$(grep -Eoi 'seasonal|autumn|falling-leaf|falling_leaf' /tmp/public.css | wc -l)"
           curl -L -sS --fail --max-time 20 "$base/admin.html" -o /tmp/admin.html
-          echo "admin_status=200"
+
+      - name: Check autonomous GitHub Pages copy
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://makarcudra7-dotcom.github.io'
+          ok=0
+          for i in $(seq 1 30); do
+            code=$(curl -sS -o /tmp/pages-home -w '%{http_code}' --max-time 20 "$base/" || true)
+            marker=$(curl -sS --fail --max-time 20 "$base/deploy-verify-v2.txt" 2>/dev/null || true)
+            echo "attempt=$i pages_status=$code marker=$marker"
+            if [ "$code" = "200" ] && printf '%s' "$marker" | grep -q 'watch-patterns-enabled'; then
+              ok=1
+              break
+            fi
+            sleep 5
+          done
+          test "$ok" = "1"
+          headers=$(mktemp)
+          curl -sS --fail --max-time 20 -D "$headers" "$base/" -o /tmp/pages-home
+          if grep -Eiq '^location:[[:space:]]*https?://(www\.)?provkus-media\.ru' "$headers"; then
+            echo 'GitHub Pages still redirects to legacy custom domain'
+            exit 1
+          fi
+          curl -sS --fail --max-time 20 "$base/assets/app.js" -o /tmp/pages-app.js
+          curl -sS --fail --max-time 20 "$base/assets/public.css" -o /tmp/pages-public.css
+          curl -sS --fail --max-time 20 "$base/admin.html" -o /tmp/pages-admin.html
+          if grep -Eqi 'seasonal|autumn|falling-leaf|falling_leaf' /tmp/pages-app.js; then
+            echo 'Seasonal code found in Pages app.js'
+            exit 1
+          fi
+          if grep -Eqi 'seasonal|autumn|falling-leaf|falling_leaf' /tmp/pages-public.css; then
+            echo 'Seasonal code found in Pages public.css'
+            exit 1
+          fi
+          grep -q '<html' /tmp/pages-home
+          grep -q '<html' /tmp/pages-admin.html
+          echo 'GitHub Pages autonomous copy verified'
