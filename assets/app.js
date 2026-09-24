@@ -15,7 +15,7 @@
   const bar=document.querySelector('.site-header .topbar');if(bar){const button=document.createElement('button');button.type='button';button.className='pv-theme-toggle';bar.appendChild(button);setTheme(document.documentElement.dataset.theme);button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next);try{localStorage.setItem('provkus-theme',next)}catch(e){}})}
   fetch('/data/authors.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).then(authors=>{for(const author of authors){if(!author.photoVersion||!author.photo)continue;document.querySelectorAll('img').forEach(img=>{if(img.alt!==author.name)return;img.src='/'+author.photo.replace(/^\//,'')+'?v='+author.photoVersion})}}).catch(()=>{});
   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
-  function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=r383390e3b479';document.head.appendChild(l)}
+  function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=r6f9036348210';document.head.appendChild(l)}
   function injectCss(){if(document.querySelector('link[href^="/assets/public.css"]'))return;addCss('/assets/overrides.css');addCss('/assets/author-fix.css');addCss('/assets/site-ui.css');addCss('/assets/community-extra.css');addCss('/assets/theme.css');addCss('/assets/seasonal.css')}
   function addFavicon(){if(!document.querySelector('link[rel~="icon"]')){const l=document.createElement('link');l.rel='icon';l.type='image/png';l.href='/favicon.png';document.head.appendChild(l)}if(!document.querySelector('meta[name="theme-color"]')){const m=document.createElement('meta');m.name='theme-color';m.content='#f7f4ee';document.head.appendChild(m)}}
   function normalizeRemoteImage(img){const src=img.getAttribute('src')||'';if(src.includes('images.unsplash.com')){try{const u=new URL(src);u.searchParams.delete('auto');u.searchParams.set('fm','jpg');u.searchParams.set('fit','crop');if(!u.searchParams.has('q'))u.searchParams.set('q','82');img.src=u.toString()}catch(e){}}img.decoding='async';if(!img.closest('.lead-card')&&!img.classList.contains('article-cover'))img.loading='lazy';if(!img.getAttribute('width'))img.setAttribute('width','1600');if(!img.getAttribute('height'))img.setAttribute('height','900')}
@@ -51,10 +51,10 @@
   const share=document.querySelector('[data-share]');if(share){share.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);share.textContent='Ссылка скопирована'}}catch(e){}})}
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
   injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
-  loadScript('/assets/seasonal.js?v=r383390e3b479','pvSeasonal');
+  loadScript('/assets/seasonal.js?v=r6f9036348210','pvSeasonal');
   window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
-  if(isHome)loadScript('/assets/home-dynamic.js?v=r383390e3b479','pvHomeDynamic');
-  loadScript('/assets/feed-v2.js?v=r383390e3b479','pvFeedV2');
-  loadScript('/assets/community.js?v=r383390e3b479','pvCommunity');
-  loadScript('/assets/liveinternet.js?v=r383390e3b479','pvLiveInternet');
+  if(isHome)loadScript('/assets/home-dynamic.js?v=r6f9036348210','pvHomeDynamic');
+  loadScript('/assets/feed-v2.js?v=r6f9036348210','pvFeedV2');
+  loadScript('/assets/community.js?v=r6f9036348210','pvCommunity');
+  loadScript('/assets/liveinternet.js?v=r6f9036348210','pvLiveInternet');
 })();
