@@ -6,6 +6,8 @@ on:
     paths:
       - 'assets/admin-server.js'
       - 'assets/admin-photo-source.js'
+      - 'assets/admin-edit-fix.js'
+      - 'assets/admin-publish-recovery.js'
       - '.github/workflows/admin-cache-bust.yml'
 
 permissions:
@@ -45,14 +47,24 @@ jobs:
               raise SystemExit('Could not refresh admin-photo-source version')
           loader.write_text(text, encoding='utf-8')
 
+          edit = Path('assets/admin-edit-fix.js')
+          text = edit.read_text(encoding='utf-8')
+          text, n = re.subn(r"assets/admin-publish-recovery\.js\?v=[^'\"]+", f"assets/admin-publish-recovery.js?v={version}", text, count=1)
+          if n != 1:
+              raise SystemExit('Could not refresh publish recovery version')
+          edit.write_text(text, encoding='utf-8')
+
           admin = Path('admin.html')
           html = admin.read_text(encoding='utf-8')
-          html, n = re.subn(r'assets/admin-photo-source\.js\?v=[^"\']+', f'assets/admin-photo-source.js?v={version}', html, count=1)
-          if n != 1:
-              raise SystemExit('Could not refresh admin-photo-source loader version')
-          html, n = re.subn(r'assets/admin\.js(?:\?v=[^"\']+)?', f'assets/admin.js?v={version}', html, count=1)
-          if n != 1:
-              raise SystemExit('Could not refresh admin.js version')
+          replacements = [
+              (r'assets/admin-photo-source\.js\?v=[^"\']+', f'assets/admin-photo-source.js?v={version}', 'admin-photo-source'),
+              (r'assets/admin\.js(?:\?v=[^"\']+)?', f'assets/admin.js?v={version}', 'admin.js'),
+              (r'assets/admin-edit-fix\.js(?:\?v=[^"\']+)?', f'assets/admin-edit-fix.js?v={version}', 'admin-edit-fix'),
+          ]
+          for pattern, replacement, label in replacements:
+              html, n = re.subn(pattern, replacement, html, count=1)
+              if n != 1:
+                  raise SystemExit(f'Could not refresh {label} loader version')
           admin.write_text(html, encoding='utf-8')
           PY
       - name: Check CMS JavaScript
@@ -60,12 +72,14 @@ jobs:
           node --check assets/admin.js
           node --check assets/admin-server.js
           node --check assets/admin-photo-source.js
+          node --check assets/admin-edit-fix.js
+          node --check assets/admin-publish-recovery.js
           node --check assets/admin-fast-publish.js
       - name: Commit refreshed versions
         run: |
           if git diff --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add admin.html assets/admin.js assets/admin-photo-source.js
-          git commit -m 'Fix CMS publish completion and refresh cache'
+          git add admin.html assets/admin.js assets/admin-photo-source.js assets/admin-edit-fix.js
+          git commit -m 'Refresh CMS publish recovery cache'
           git push
