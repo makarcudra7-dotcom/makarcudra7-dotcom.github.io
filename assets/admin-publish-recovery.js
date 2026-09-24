@@ -13,14 +13,19 @@
   }
 
   async function connectEnteredFallback(){
-    if(sessionStorage.getItem('provkusGithubToken'))return;
+    if(sessionStorage.getItem('provkusGithubToken'))return true;
+    if(typeof window.connectGithubFallback==='function'){
+      const ok=await window.connectGithubFallback();
+      if(ok)return true;
+    }
     const field=$('#githubToken'),button=$('#connectGithubBtn');
-    if(!field||!button||!String(field.value||'').trim())return;
+    if(!field||!button||!String(field.value||'').trim())return false;
     button.click();
-    for(let i=0;i<50;i++){
-      if(sessionStorage.getItem('provkusGithubToken'))return;
+    for(let i=0;i<80;i++){
+      if(sessionStorage.getItem('provkusGithubToken'))return true;
       await new Promise(resolve=>setTimeout(resolve,100));
     }
+    return false;
   }
 
   function install(){
@@ -44,8 +49,12 @@
         if(location.protocol!=='https:')throw new Error('Публикация доступна только через HTTPS');
         if(isFuture())throw new Error('Выбрано будущее время — нажмите «Запланировать» или поставьте текущее время');
         if(typeof window.publish!=='function')throw new Error('Основной модуль публикации не загрузился. Обновите страницу.');
+
         await connectEnteredFallback();
-        if(typeof window.getToken==='function'&&!window.getToken())throw new Error('Сервер публикации не подключён');
+        if(typeof window.getToken==='function'&&!window.getToken()){
+          window.openGithubFallbackSettings?.();
+          throw new Error('Вставьте новый GitHub-токен в Настройках. После вставки CMS подключит его автоматически.');
+        }
 
         const material=typeof window.collect==='function'?window.collect():null;
         if(!material?.headline||!material?.slug||!material?.description)throw new Error('Заполните заголовок, slug и description');
@@ -74,6 +83,7 @@
         try{window.renderPosts?.()}catch(_){}
       }catch(err){
         if(batched)try{window.cancelPublishBatch?.()}catch(_){}
+        if(/парол|GitHub|токен|AUTH/i.test(err?.message||''))window.openGithubFallbackSettings?.();
         fail(err);
       }finally{
         window.__pvRecoveryPublishing=false;
