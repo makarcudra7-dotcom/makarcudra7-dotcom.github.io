@@ -2,12 +2,12 @@
 'use strict';
 
 const supplementalStyles=[
-  ['/assets/overrides.css','r08bb21de6185'],
-  ['/assets/author-fix.css','r08bb21de6185'],
-  ['/assets/site-ui.css','r08bb21de6185'],
-  ['/assets/community-extra.css','r08bb21de6185'],
-  ['/assets/theme.css','r08bb21de6185'],
-  ['/assets/seasonal.css','r08bb21de6185']
+  ['/assets/overrides.css','r408562d4ddaa'],
+  ['/assets/author-fix.css','r408562d4ddaa'],
+  ['/assets/site-ui.css','r408562d4ddaa'],
+  ['/assets/community-extra.css','r408562d4ddaa'],
+  ['/assets/theme.css','r408562d4ddaa'],
+  ['/assets/seasonal.css','r408562d4ddaa']
 ];
 supplementalStyles.forEach(([href,version])=>{
   if(document.querySelector(`link[href^="${href}"]`))return;
@@ -28,10 +28,10 @@ layer.setAttribute('aria-hidden','true');
 document.body.prepend(layer);
 
 const autumnLeaves=[
-  '/assets/leaves/maple.svg?v=r08bb21de6185',
-  '/assets/leaves/maple-red.svg?v=r08bb21de6185',
-  '/assets/leaves/birch-yellow.svg?v=r08bb21de6185',
-  '/assets/leaves/oak-green.svg?v=r08bb21de6185'
+  '/assets/leaves/maple.svg?v=r408562d4ddaa',
+  '/assets/leaves/maple-red.svg?v=r408562d4ddaa',
+  '/assets/leaves/birch-yellow.svg?v=r408562d4ddaa',
+  '/assets/leaves/oak-green.svg?v=r408562d4ddaa'
 ];
 
 /* Two denser lanes follow the real content edges rather than the viewport edges. */
