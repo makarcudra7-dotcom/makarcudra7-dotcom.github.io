@@ -34,8 +34,8 @@ const autumnLeaves=[
   '/assets/leaves/oak-green.svg?v=r383390e3b479'
 ];
 
-/* Exactly 11 leaves: 7 in the left gutter, 4 in the right gutter.
-   Fractions spread them across the whole free side area, not only at the viewport edge. */
+/* Exactly 11 leaves on desktop: 7 in the left gutter, 4 in the right gutter.
+   Leaves may overlap the content boundary by a few pixels, while remaining behind content. */
 const autumnPieces=[
   ['left',.10,76,-22,.82,19,-22,0],
   ['left',.28,64,26,.76,23,18,2],
@@ -69,12 +69,13 @@ function contentRect(){
 function gutterX(side,fraction,size,r){
   const vw=window.innerWidth;
   const edge=6;
+  const overlap=14;
   if(side==='left'){
     const start=edge;
-    const end=Math.max(start,r.left-size-6);
+    const end=Math.max(start,r.left-size+overlap);
     return start+(end-start)*fraction;
   }
-  const start=Math.min(vw-size-edge,r.right+6);
+  const start=Math.min(vw-size-edge,r.right-overlap);
   const end=Math.max(start,vw-size-edge);
   return start+(end-start)*fraction;
 }
