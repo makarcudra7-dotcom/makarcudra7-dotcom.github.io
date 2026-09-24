@@ -34,32 +34,30 @@ const autumnLeaves=[
   '/assets/leaves/oak-green.svg?v=r408562d4ddaa'
 ];
 
-/* Two denser lanes follow the real content edges rather than the viewport edges. */
+/* Exactly 11 leaves: 7 in the left gutter, 4 in the right gutter.
+   Fractions spread them across the whole free side area, not only at the viewport edge. */
 const autumnPieces=[
-  ['left',-76,82,-22,.80,18,-30,0],
-  ['right',18,74,30,.76,21,34,1],
-  ['left',-36,62,12,.72,24,26,2],
-  ['right',54,92,-34,.74,19,-28,3],
-  ['left',-92,70,38,.78,22,38,1],
-  ['right',6,66,-16,.70,25,24,2],
-  ['left',-50,96,-40,.76,20,-36,0],
-  ['right',42,72,22,.72,23,30,3],
-  ['left',-18,58,-8,.66,27,22,2],
-  ['right',72,86,42,.74,21,-34,1],
-  ['left',-104,78,26,.74,24,28,3],
-  ['right',24,64,-28,.69,26,-24,0],
-  ['left',-60,88,8,.76,22,36,1],
-  ['right',58,60,34,.68,28,-20,2],
-  ['left',-28,68,-36,.72,25,-28,0],
-  ['right',12,98,18,.75,20,38,3],
-  ['left',-86,56,30,.66,29,20,2],
-  ['right',76,76,-22,.72,24,-30,1]
+  ['left',.10,76,-22,.82,19,-22,0],
+  ['left',.28,64,26,.76,23,18,2],
+  ['left',.46,88,-34,.78,20,-28,1],
+  ['left',.64,58,14,.72,25,20,3],
+  ['left',.80,82,38,.80,21,-24,0],
+  ['left',.92,62,-18,.74,24,18,2],
+  ['left',.58,72,30,.76,22,-20,1],
+  ['right',.14,72,24,.76,22,22,3],
+  ['right',.38,60,-30,.70,26,-18,2],
+  ['right',.66,84,36,.78,20,26,0],
+  ['right',.88,66,-16,.74,24,-20,1]
 ];
 
 const pieces=[];
 function contentRect(){
-  const el=document.querySelector('.container');
-  if(el){
+  const candidates=[
+    document.querySelector('.hero .container'),
+    document.querySelector('main .container'),
+    document.querySelector('.container')
+  ].filter(Boolean);
+  for(const el of candidates){
     const r=el.getBoundingClientRect();
     if(r.width>0)return r;
   }
@@ -67,21 +65,35 @@ function contentRect(){
   const left=(window.innerWidth-w)/2;
   return {left,right:left+w,width:w};
 }
+
+function gutterX(side,fraction,size,r){
+  const vw=window.innerWidth;
+  const edge=6;
+  if(side==='left'){
+    const start=edge;
+    const end=Math.max(start,r.left-size-6);
+    return start+(end-start)*fraction;
+  }
+  const start=Math.min(vw-size-edge,r.right+6);
+  const end=Math.max(start,vw-size-edge);
+  return start+(end-start)*fraction;
+}
+
 function placePieces(){
   const r=contentRect();
-  pieces.forEach(({el,side,offset,size})=>{
-    let x=side==='left' ? r.left+offset : r.right+offset;
+  pieces.forEach(({el,side,fraction,size})=>{
+    let x=gutterX(side,fraction,size,r);
     x=Math.max(4,Math.min(window.innerWidth-size-4,x));
     el.style.setProperty('--x',`${Math.round(x)}px`);
   });
 }
 
 if(season==='autumn'){
-  autumnPieces.forEach(([side,offset,size,turn,opacity,duration,drift,leafIndex],i)=>{
+  autumnPieces.forEach(([side,fraction,size,turn,opacity,duration,drift,leafIndex],i)=>{
     const piece=document.createElement('span');
     piece.className='pv-seasonal-piece';
     piece.dataset.lane=side;
-    piece.style.cssText=`--x:0px;--size:${size}px;--turn:${turn}deg;--piece-opacity:${opacity};--duration:${duration}s;--delay:${-(i*1.45+3.2)}s;--drift:${drift}px`;
+    piece.style.cssText=`--x:0px;--size:${size}px;--turn:${turn}deg;--piece-opacity:${opacity};--duration:${duration}s;--delay:${-(i*2.15+2.4)}s;--drift:${drift}px`;
     const img=document.createElement('img');
     img.className='pv-seasonal-leaf';
     img.src=autumnLeaves[leafIndex%autumnLeaves.length];
@@ -90,7 +102,7 @@ if(season==='autumn'){
     img.draggable=false;
     piece.appendChild(img);
     layer.appendChild(piece);
-    pieces.push({el:piece,side,offset,size});
+    pieces.push({el:piece,side,fraction,size});
   });
   placePieces();
   let resizeTimer=0;
