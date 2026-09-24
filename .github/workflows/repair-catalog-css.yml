@@ -16,7 +16,7 @@ jobs:
           python-version: '3.12'
       - name: Install audit dependencies
         run: pip install pillow
-      - name: Restore catalog entry
+      - name: Restore catalog entry and normalize cover
         run: python3 scripts/repair_catalog_css.py
       - name: Rebuild public stylesheet
         run: python3 scripts/build_public_css.py
@@ -26,12 +26,12 @@ jobs:
         run: python3 scripts/audit_site.py
       - name: Commit repaired generated files
         run: |
-          if git diff --quiet; then
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
             echo "No changes needed"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/posts.json assets/public.css index.html category.html recipes.html products.html home-storage.html food-safety.html author-*.html sitemap.xml feed.xml
+          git add data/posts.json data/restored-fruit-jazz.json assets/public.css assets/uploads/fruit-jazz-16x9.jpg articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html index.html category.html recipes.html products.html home-storage.html food-safety.html author-*.html sitemap.xml feed.xml
           git commit -m "Repair Fruit Jazz catalog entry and rebuild public CSS"
           git push
