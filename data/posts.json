@@ -1,5 +1,38 @@
 [
   {
+    "slug": "lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net",
+    "headline": "Лавровый лист кладут в крупу, холодильник и даже за шкаф: 5 популярных лайфхаков — какие работают, а какие нет",
+    "description": "Лавровый лист советуют класть в крупу, холодильник, сахар и даже прятать от тараканов. Проверяем пять популярных домашних советов.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Дом и быт",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net-1x1.jpg"
+    ],
+    "imageResponsive": true,
+    "imageAlt": "Женщина кладёт лавровый лист в прозрачную банку с гречкой среди ёмкостей с крупами на кухонной полке.",
+    "url": "https://provkus-media.ru/articles/lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net.html",
+    "publishedAt": "2026-09-24T04:23:00.000Z",
+    "updatedAt": "2026-09-24T01:34:00.000Z",
+    "tags": [
+      "Лавровый лист",
+      "Лайфхаки",
+      "Хранение продуктов",
+      "Кухня",
+      "Пищевая моль",
+      "Полезные советы"
+    ],
+    "photoSource": "",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki",
     "headline": "Недорогой кофе из «Пятёрочки» обещает вьетнамский характер: яркая банка — не главное, решают 3 строки",
     "description": "Недорогой растворимый кофе с вьетнамским оформлением может оказаться удачной покупкой. Вот что стоит проверить на банке до кассы.",
@@ -20,7 +53,7 @@
     "updatedAt": "2026-09-24T01:20:00.000Z",
     "tags": [],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
