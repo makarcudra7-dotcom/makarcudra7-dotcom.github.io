@@ -10,8 +10,8 @@ body>main,body>footer{position:relative;z-index:2}
 html[data-season="autumn"] .pv-seasonal-layer{background:radial-gradient(ellipse 34% 22% at 98% 12%,rgba(207,124,55,.04),transparent),radial-gradient(ellipse 32% 28% at 0 76%,rgba(153,99,54,.03),transparent)}
 html[data-theme="dark"] .pv-seasonal-layer{background:none}
 .pv-seasonal-no-art{background:none!important}
-@media(max-width:1000px){.pv-seasonal-piece{width:min(var(--size),72px);--piece-opacity:.62!important}}
-@media(max-width:760px){.pv-seasonal-piece:nth-child(n+9){display:none}.pv-seasonal-piece{width:min(var(--size),58px);--piece-opacity:.48!important}}
+@media(max-width:1000px){.pv-seasonal-piece{width:min(var(--size),72px);--piece-opacity:.68!important}}
+@media(max-width:760px){.pv-seasonal-piece{width:min(var(--size),62px);--piece-opacity:.66!important}}
 @media(prefers-reduced-motion:reduce){.pv-seasonal-piece,.pv-seasonal-leaf{animation:none!important}.pv-seasonal-piece{display:none!important}}
 html.pv-seasonal-static .pv-seasonal-piece,html.pv-seasonal-static .pv-seasonal-leaf{animation:none!important}
 html.pv-seasonal-static .pv-seasonal-piece{display:none!important}
