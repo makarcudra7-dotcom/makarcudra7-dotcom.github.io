@@ -39,13 +39,14 @@
     try{flash?.('Загружаю материал…');const data=await materialFromPost(p);editingSlug=slug;const fp=$('#imageFile');if(fp)fp.value='';window.fill(data);document.querySelector('.nav-btn[data-target="material"]')?.click();$('#pageTitle').textContent='Редактирование публикации';const c=$('.crumb');if(c)c.textContent='Материалы / Редактирование';flash?.('Материал открыт для редактирования')}catch(e){flash?.(e.message)}
   }
   async function deletePublished(slug){
-    const st=cmsStore(),p=(st?.posts||[]).find(x=>x.slug===slug);if(!p||!confirm(`Удалить опубликованный материал «${p.headline}»?\n\nСтатья исчезнет с сайта после деплоя GitHub Pages.`))return;
+    const st=cmsStore(),p=(st?.posts||[]).find(x=>x.slug===slug);if(!p)return;
     try{
+      flash?.('Удаляю материал…');
       await window.deleteFile(`articles/${slug}.html`,`Delete article: ${p.headline}`);
       const pf=await window.getFile('data/posts.json'),posts=pf?.content?JSON.parse(decode(pf)):[];
       const next=posts.filter(x=>x.slug!==slug);
       await window.putFile('data/posts.json',JSON.stringify(next,null,2),`Remove post index: ${p.headline}`);
-      if(st){st.posts=next;if(typeof saveStore==='function')saveStore()}if(typeof renderPosts==='function')renderPosts();flash?.('Материал удалён. Главная обновится после деплоя GitHub Pages.')
+      if(st){st.posts=next;if(typeof saveStore==='function')saveStore()}if(typeof renderPosts==='function')renderPosts();flash?.('Материал удалён.')
     }catch(e){flash?.(e.message||'Не удалось удалить материал')}
   }
   window.editPublishedPost=editPublished;window.deletePublishedPost=deletePublished;
