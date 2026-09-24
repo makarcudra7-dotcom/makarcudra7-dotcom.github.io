@@ -109,12 +109,12 @@
   window.openPublishedArticleForEdit=openForEdit;
 
   const recovery=document.createElement('script');
-  recovery.src='assets/admin-publish-recovery.js?v=cms-83b98965170a';
+  recovery.src='assets/admin-publish-recovery.js?v=cms-a428ac8c76a1';
   recovery.async=false;
   document.body.appendChild(recovery);
 
   const actions=document.createElement('script');
-  actions.src='assets/admin-actions-fix.js?v=cms-83b98965170a';
+  actions.src='assets/admin-actions-fix.js?v=cms-a428ac8c76a1';
   actions.async=false;
   document.body.appendChild(actions);
 })();
