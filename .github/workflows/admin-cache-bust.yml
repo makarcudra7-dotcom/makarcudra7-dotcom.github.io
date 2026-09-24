@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
-      - name: Refresh CMS cache versions
+      - name: Fix publish contract and refresh CMS cache versions
         env:
           VERSION: cms-${{ github.sha }}
         run: |
@@ -27,6 +27,16 @@ jobs:
           from pathlib import Path
           import os, re
           version = os.environ['VERSION'][:16]
+
+          core = Path('assets/admin.js')
+          text = core.read_text(encoding='utf-8')
+          old = "flash('Материал отправлен в GitHub Pages')}catch(e){flash(e.message)}finally{"
+          new = "flash('Материал отправлен в GitHub Pages');return true}catch(e){flash(e.message);return false}finally{"
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif new not in text:
+              raise SystemExit('Could not patch publish success contract')
+          core.write_text(text, encoding='utf-8')
 
           loader = Path('assets/admin-photo-source.js')
           text = loader.read_text(encoding='utf-8')
@@ -39,18 +49,23 @@ jobs:
           html = admin.read_text(encoding='utf-8')
           html, n = re.subn(r'assets/admin-photo-source\.js\?v=[^"\']+', f'assets/admin-photo-source.js?v={version}', html, count=1)
           if n != 1:
-              raise SystemExit('Could not refresh admin.html loader version')
+              raise SystemExit('Could not refresh admin-photo-source loader version')
+          html, n = re.subn(r'assets/admin\.js(?:\?v=[^"\']+)?', f'assets/admin.js?v={version}', html, count=1)
+          if n != 1:
+              raise SystemExit('Could not refresh admin.js version')
           admin.write_text(html, encoding='utf-8')
           PY
       - name: Check CMS JavaScript
         run: |
+          node --check assets/admin.js
           node --check assets/admin-server.js
           node --check assets/admin-photo-source.js
+          node --check assets/admin-fast-publish.js
       - name: Commit refreshed versions
         run: |
           if git diff --quiet; then exit 0; fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add admin.html assets/admin-photo-source.js
-          git commit -m 'Refresh CMS asset cache versions'
+          git add admin.html assets/admin.js assets/admin-photo-source.js
+          git commit -m 'Fix CMS publish completion and refresh cache'
           git push
