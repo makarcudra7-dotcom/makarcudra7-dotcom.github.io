@@ -42,7 +42,7 @@ jobs:
             code=$(curl -sS -o /tmp/pages-home -w '%{http_code}' --max-time 20 "$base/" || true)
             marker=$(curl -sS --fail --max-time 20 "$base/deploy-verify-v2.txt" 2>/dev/null || true)
             echo "attempt=$i pages_status=$code marker=$marker"
-            if [ "$code" = "200" ] && printf '%s' "$marker" | grep -q 'watch-patterns-enabled'; then
+            if [ "$code" = "200" ] && printf '%s' "$marker" | grep -q 'clean-css-v2'; then
               ok=1
               break
             fi
