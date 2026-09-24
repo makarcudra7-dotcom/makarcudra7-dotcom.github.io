@@ -30,7 +30,7 @@
       return basePutFile(path,content,message,encoding);
     };
   }
-  const V='cms-c18cb5be5062';
+  const V='cms-42538bc1c07b';
   const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-editor-ui.css?v='+V;document.head.appendChild(css);
   const b=document.getElementById('photoSourceBtn');if(b)b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select()}});
   const ensurePlacement=()=>{
