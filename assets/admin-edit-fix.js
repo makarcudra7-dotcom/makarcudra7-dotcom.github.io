@@ -112,4 +112,9 @@
   recovery.src='assets/admin-publish-recovery.js?v=cms-99818f944ac2';
   recovery.async=false;
   document.body.appendChild(recovery);
+
+  const actions=document.createElement('script');
+  actions.src='assets/admin-actions-fix.js?v=20260924-actions1';
+  actions.async=false;
+  document.body.appendChild(actions);
 })();
