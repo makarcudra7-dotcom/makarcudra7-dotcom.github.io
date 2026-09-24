@@ -31,6 +31,8 @@
   function install(){
     const current=$('#publishBtn');
     if(!current||current.dataset.publishRecovery==='1')return false;
+    const publisher=current.onclick;
+    if(typeof publisher!=='function')return false;
     const btn=current.cloneNode(true);
     btn.dataset.publishRecovery='1';
     btn.disabled=false;
@@ -48,7 +50,6 @@
       try{
         if(location.protocol!=='https:')throw new Error('Публикация доступна только через HTTPS');
         if(isFuture())throw new Error('Выбрано будущее время — нажмите «Запланировать» или поставьте текущее время');
-        if(typeof window.publish!=='function')throw new Error('Основной модуль публикации не загрузился. Обновите страницу.');
 
         await connectEnteredFallback();
         if(typeof window.getToken==='function'&&!window.getToken()){
@@ -66,15 +67,16 @@
 
         if(typeof window.beginPublishBatch==='function')batched=window.beginPublishBatch()===true;
 
-        const ok=await window.publish();
+        const ok=await publisher.call(btn,e);
         if(ok!==true){
-          if(batched)window.cancelPublishBatch?.();
-          throw new Error('Основной модуль не подтвердил публикацию');
+          if(batched){window.cancelPublishBatch?.();batched=false}
+          return;
         }
 
         if(batched&&typeof window.commitPublishBatch==='function'){
           if(progress)progress.style.width='82%';
           await window.commitPublishBatch(`Publish: ${material.headline||material.slug}`);
+          batched=false;
         }
 
         if(progress)progress.style.width='100%';
@@ -97,7 +99,7 @@
   let tries=0;
   const timer=setInterval(()=>{
     tries++;
-    const ready=typeof window.publish==='function'&&typeof window.collect==='function'&&typeof window.putFile==='function'&&$('#placementCard');
+    const ready=typeof window.enhancedArticleHTML==='function'&&typeof window.collect==='function'&&typeof window.putFile==='function'&&$('#placementCard')&&typeof $('#publishBtn')?.onclick==='function';
     if(ready&&install())clearInterval(timer);
     else if(tries>300){clearInterval(timer);install()}
   },50);
