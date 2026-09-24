@@ -1,5 +1,5 @@
 (()=>{
-  const escCredit=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const escCredit=s=>String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   if(typeof articleHTML==='function'){
     const baseArticleHTML=articleHTML;
     articleHTML=function(o,img){
@@ -49,5 +49,37 @@
   const loadManager=()=>{const s=document.createElement('script');s.src='assets/admin-content-manager.js?v='+V;s.onload=loadScheduler;s.onerror=loadScheduler;document.body.appendChild(s)};
   const loadQuizToolbar=()=>{const s=document.createElement('script');s.src='assets/admin-quiz-toolbar.js?v='+V;s.onload=loadManager;s.onerror=loadManager;document.body.appendChild(s)};
   const loadQuiz=()=>{const s=document.createElement('script');s.src='assets/admin-quiz.js?v='+V;s.onload=loadQuizToolbar;s.onerror=loadQuizToolbar;document.body.appendChild(s)};
-  const server=document.createElement('script');server.src='assets/admin-server.js?v='+V;server.onload=loadQuiz;server.onerror=loadQuiz;document.body.appendChild(server);
+
+  const API_KEY='provkusPublishApi';
+  const SERVER_CANDIDATES=[
+    'https://makarcudra7-dotcom-github-io-unep.vercel.app',
+    'https://makarcudra7-dotcom-github-io.vercel.app'
+  ];
+  async function probeOne(base,hash){
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),2500);
+    try{
+      const r=await fetch(base+'/api/publish',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','X-ProVkus-Admin':hash},
+        body:JSON.stringify({action:'ping'}),
+        cache:'no-store',
+        credentials:'omit',
+        signal:controller.signal
+      });
+      return r.ok?base:'';
+    }catch(e){return''}
+    finally{clearTimeout(timer)}
+  }
+  async function selectWorkingServer(){
+    const hash=localStorage.getItem('provkusAdminHash')||'';
+    if(!hash)return;
+    const results=await Promise.all(SERVER_CANDIDATES.map(base=>probeOne(base,hash)));
+    const winner=results.find(Boolean);
+    if(winner)localStorage.setItem(API_KEY,winner);
+  }
+  function loadServer(){
+    const server=document.createElement('script');server.src='assets/admin-server.js?v='+V;server.onload=loadQuiz;server.onerror=loadQuiz;document.body.appendChild(server);
+  }
+  selectWorkingServer().catch(()=>{}).finally(loadServer);
 })();
