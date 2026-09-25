@@ -1,6 +1,6 @@
 name: Verify public discovery architecture
 
-# v2: public verification after archive rollout
+# v3: compare custom domain with the GitHub Pages origin
 on:
   workflow_dispatch:
   push:
@@ -18,19 +18,29 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - name: Check ProVkus public discovery URLs
+      - name: Compare public domain and origin
         run: |
           set -euo pipefail
-          base='https://provkus-media.ru'
-          ok=0
-          for i in $(seq 1 24); do
-            a=$(curl -L -sS -o /tmp/archive -w '%{http_code}' --max-time 20 "$base/archive.html" || true)
-            s=$(curl -L -sS -o /tmp/sitemap -w '%{http_code}' --max-time 20 "$base/sitemap.xml" || true)
-            m=$(curl -L -sS -o /tmp/month -w '%{http_code}' --max-time 20 "$base/archive/2026/09/" || true)
-            echo "attempt=$i archive=$a sitemap=$s month=$m"
-            if [ "$a" = 200 ] && [ "$s" = 200 ] && [ "$m" = 200 ] && grep -q 'Архив публикаций' /tmp/archive && grep -q 'provkus-media.ru/archive/2026/09/' /tmp/sitemap; then ok=1; break; fi
-            sleep 5
+          public='https://provkus-media.ru'
+          origin='https://makarcudra7-dotcom.github.io'
+          for base in "$public" "$origin"; do
+            label=public
+            [ "$base" = "$origin" ] && label=origin
+            curl -L -sS -D "/tmp/${label}-archive.h" -o "/tmp/${label}-archive" --max-time 20 "$base/archive.html?pv=discovery-v3"
+            curl -L -sS -D "/tmp/${label}-sitemap.h" -o "/tmp/${label}-sitemap" --max-time 20 "$base/sitemap.xml?pv=discovery-v3"
+            curl -L -sS -D "/tmp/${label}-month.h" -o "/tmp/${label}-month" --max-time 20 "$base/archive/2026/09/?pv=discovery-v3"
+            echo "=== $label ==="
+            echo "archive bytes=$(wc -c < /tmp/${label}-archive) sha=$(sha256sum /tmp/${label}-archive | cut -d' ' -f1) marker=$(grep -c 'Архив публикаций' /tmp/${label}-archive || true) collection=$(grep -c 'CollectionPage' /tmp/${label}-archive || true)"
+            echo "sitemap bytes=$(wc -c < /tmp/${label}-sitemap) sha=$(sha256sum /tmp/${label}-sitemap | cut -d' ' -f1) archive_marker=$(grep -c 'provkus-media.ru/archive/2026/09/' /tmp/${label}-sitemap || true)"
+            echo "month bytes=$(wc -c < /tmp/${label}-month) sha=$(sha256sum /tmp/${label}-month | cut -d' ' -f1) marker=$(grep -c 'Сентябрь 2026' /tmp/${label}-month || true)"
+            grep -Ei '^(HTTP/|server:|cache-control:|x-vercel|etag:|last-modified:|location:)' "/tmp/${label}-archive.h" || true
           done
-          test "$ok" = 1
-          grep -q 'CollectionPage' /tmp/archive
-          echo 'Public discovery architecture verified'
+          test "$(grep -c 'Архив публикаций' /tmp/origin-archive || true)" -gt 0
+          test "$(grep -c 'provkus-media.ru/archive/2026/09/' /tmp/origin-sitemap || true)" -gt 0
+          test "$(grep -c 'Сентябрь 2026' /tmp/origin-month || true)" -gt 0
+          if grep -q 'Архив публикаций' /tmp/public-archive && grep -q 'provkus-media.ru/archive/2026/09/' /tmp/public-sitemap && grep -q 'Сентябрь 2026' /tmp/public-month; then
+            echo 'Public discovery architecture verified'
+          else
+            echo 'Custom domain is serving stale content while origin is current'
+            exit 1
+          fi
