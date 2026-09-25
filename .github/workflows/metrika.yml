@@ -1,0 +1,42 @@
+name: Inject Yandex Metrica
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - 'assets/metrika.js'
+      - 'scripts/inject_metrika.py'
+      - '.github/workflows/metrika.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Inject Metrica into HTML
+        run: python3 scripts/inject_metrika.py
+      - name: Verify counter
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          pages=[p for p in Path('.').rglob('*.html') if '.git' not in p.parts and 'node_modules' not in p.parts]
+          missing=[str(p) for p in pages if '/assets/metrika.js' not in p.read_text(encoding='utf-8')]
+          if missing:
+              raise SystemExit('Metrica missing: '+', '.join(missing[:20]))
+          print(f'Metrica present on {len(pages)} HTML pages')
+          PY
+      - name: Commit injected pages
+        run: |
+          git config user.name "provkus-metrika-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add '*.html' 'articles/*.html' || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Add Yandex Metrica to site pages"
+          git push
