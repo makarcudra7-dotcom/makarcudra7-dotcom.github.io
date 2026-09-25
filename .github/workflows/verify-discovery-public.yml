@@ -1,5 +1,6 @@
 name: Verify public discovery architecture
 
+# v2: public verification after archive rollout
 on:
   workflow_dispatch:
   push:
