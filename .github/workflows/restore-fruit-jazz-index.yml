@@ -1,0 +1,63 @@
+name: Restore Fruit Jazz index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/restore-fruit-jazz-index.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Restore post metadata
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('data/posts.json')
+          posts = json.loads(path.read_text(encoding='utf-8'))
+          slug = 'zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad'
+          if not any(p.get('slug') == slug for p in posts):
+              posts.insert(0, {
+                  'slug': slug,
+                  'headline': 'Закрываю по 50 банок — и всё равно мало: компот «Фруктовый джаз» из яблок и винограда — зимой пьём как лимонад',
+                  'description': 'Яблоки и виноград дают компоту яркий фруктовый вкус. Домашний напиток с безопасными рекомендациями по хранению.',
+                  'author': 'Екатерина Рукопляс',
+                  'coauthors': [],
+                  'category': 'Рецепты',
+                  'type': 'recipe',
+                  'typeLabel': 'Рецепт',
+                  'image': 'https://provkus-media.ru/assets/fallback-cover.svg',
+                  'images': ['https://provkus-media.ru/assets/fallback-cover.svg'],
+                  'imageResponsive': False,
+                  'imageAlt': 'Иллюстрация к компоту из яблок и винограда',
+                  'url': 'https://provkus-media.ru/articles/' + slug + '.html',
+                  'publishedAt': '2026-09-24T17:01:00.000Z',
+                  'updatedAt': '2026-09-25T00:00:00.000Z',
+                  'tags': ['Компот', 'Яблоки', 'Виноград', 'Напитки', 'Домашние рецепты'],
+                  'photoSource': 'ProVkus',
+                  'featured': False,
+                  'popular': False,
+                  'excludeRelated': False
+              })
+              path.write_text(json.dumps(posts, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Commit restored index
+        shell: bash
+        run: |
+          if git diff --quiet -- data/posts.json; then
+            echo 'Index already contains Fruit Jazz'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/posts.json
+          git commit -m 'Restore Fruit Jazz post index'
+          git push
