@@ -1,5 +1,37 @@
 [
   {
+    "slug": "govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily",
+    "headline": "Говяжью тушёнку больше не беру наугад: 10 марок, где внутри — мясо кусками, а не жир и жилы",
+    "description": "Собрали 10 марок говяжьей тушёнки, на которые стоит обратить внимание, и простую проверку банки перед покупкой.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Покупки и выбор",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily-1x1.jpg"
+    ],
+    "imageAlt": "Крупный бородатый мужчина выбирает банку говяжьей тушёнки среди полок с мясными консервами в магазине «Магнит»",
+    "url": "https://provkus-media.ru/articles/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily.html",
+    "publishedAt": "2026-09-25T08:00:00.000Z",
+    "updatedAt": "2026-09-25T08:00:00.000Z",
+    "tags": [
+      "Тушёнка",
+      "Говядина",
+      "Мясные консервы",
+      "Выбор продуктов",
+      "ГОСТ",
+      "Продукты"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih",
     "headline": "Суп скисает раньше времени: 3 ошибки хранения — половник в кастрюле только одна из них",
     "description": "Даже свежий суп может испортиться раньше времени. Разбираемся, почему нельзя долго держать кастрюлю в тепле и оставлять внутри половник.",
@@ -56,7 +88,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": []
   },
