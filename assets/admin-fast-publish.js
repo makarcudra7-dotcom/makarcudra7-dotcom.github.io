@@ -1,4 +1,6 @@
 (()=>{
+  'use strict';
+  if(window.__pvFastPublishLoaded)return;window.__pvFastPublishLoaded=true;
   const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
   function slugFrom(href){try{return(new URL(href,location.href).pathname.split('/').pop()||'').replace(/\.html$/,'')}catch{return''}}
   function installDedupe(){
@@ -8,7 +10,7 @@
     wrapped.__scheduledDedupe=true;window.renderPosts=wrapped;window.renderPosts()
   }
   function wrapButton(btn,mode){
-    if(!btn||btn.dataset.fastPublishWrapped==='1'||typeof btn.onclick!=='function')return;
+    if(!btn||btn.dataset.fastPublishWrapped==='1'||typeof btn.onclick!=='function')return false;
     const base=btn.onclick;btn.dataset.fastPublishWrapped='1';
     btn.onclick=async function(e){
       if(window.__pvPublishing)return false;
@@ -19,18 +21,26 @@
         if(result===true&&batched){
           const o=window.collect?.()||{},label=mode==='schedule'?'Schedule':'Publish';
           await window.commitPublishBatch?.(`${label}: ${o.headline||o.slug||'material'}`);
-          if(typeof flash==='function')flash(mode==='schedule'?'Материал поставлен в очередь одним пакетом':'Материал опубликован одним пакетом');
+          if(typeof flash==='function')flash(mode==='schedule'?'Запланировано — изменения сохранены одним пакетом':'Опубликовано — изменения сохранены одним пакетом');
+          if(mode==='schedule'&&typeof window.reloadScheduledQueue==='function')await window.reloadScheduledQueue();
           window.renderPosts?.();
         }else if(batched){window.cancelPublishBatch?.()}
         return result
       }catch(err){if(batched)window.cancelPublishBatch?.();if(typeof flash==='function')flash(err.message||'Не удалось завершить публикацию');return false}
       finally{window.__pvPublishing=false}
+    };
+    return true
+  }
+  let ticks=0;
+  const t=setInterval(()=>{
+    ticks++;
+    if(typeof window.beginPublishBatch==='function'){
+      installDedupe();
+      wrapButton($('#publishBtn'),'publish');
+      wrapButton($('#scheduleBtn'),'schedule');
+      const p=$('#publishBtn'),s=$('#scheduleBtn');
+      if(p?.dataset.fastPublishWrapped==='1'&&s?.dataset.fastPublishWrapped==='1')clearInterval(t);
     }
-  }
-  function install(){
-    installDedupe();
-    wrapButton($('#publishBtn'),'publish');
-    wrapButton($('#scheduleBtn'),'schedule');
-  }
-  let n=0,t=setInterval(()=>{n++;if(typeof window.beginPublishBatch==='function'&&typeof $('#publishBtn')?.onclick==='function'&&typeof $('#scheduleBtn')?.onclick==='function'&&$('#placementCard')){clearInterval(t);install()}else if(n>240)clearInterval(t)},50)
+    if(ticks>400)clearInterval(t)
+  },50);
 })();
