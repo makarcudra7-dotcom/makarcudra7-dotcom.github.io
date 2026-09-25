@@ -139,51 +139,5 @@
       "popular": true,
       "excludeRelated": false
     }
-  },
-  {
-    "slug": "yaichnitsa-v-kruzhke-za-8-minut",
-    "publishAt": "2099-12-31T23:58:00.000Z",
-    "createdAt": "2026-09-25T08:08:00.000Z",
-    "pausedRecovery": true,
-    "recoveryNote": "Восстановлено после потерянного локального планирования. Открыть в CMS, проверить все поля и заново выбрать дату публикации.",
-    "material": {
-      "headline": "Яичница на сковороде — прошлый век: разбиваю 2 яйца в кружку — через 8 минут нежный завтрак как суфле",
-      "category": "Рецепты",
-      "type": "recipe",
-      "slug": "yaichnitsa-v-kruzhke-za-8-minut",
-      "seoTitle": "Яичница на сковороде — прошлый век: разбиваю 2 яйца в кружку — через 8 минут нежный завтрак как суфле",
-      "canonical": "https://provkus-media.ru/articles/yaichnitsa-v-kruzhke-za-8-minut.html",
-      "robots": "index, follow, max-image-preview:large",
-      "publishedAt": "2099-12-31T23:58",
-      "updatedAt": "2099-12-31T23:58",
-      "lead": "",
-      "description": "",
-      "content": "",
-      "author": "",
-      "tags": "",
-      "image": "",
-      "imageAlt": "",
-      "photoSource": ""
-    },
-    "post": {
-      "slug": "yaichnitsa-v-kruzhke-za-8-minut",
-      "headline": "Яичница на сковороде — прошлый век: разбиваю 2 яйца в кружку — через 8 минут нежный завтрак как суфле",
-      "description": "",
-      "author": "",
-      "category": "Рецепты",
-      "type": "recipe",
-      "typeLabel": "Рецепт",
-      "image": "",
-      "images": [],
-      "imageAlt": "",
-      "url": "https://provkus-media.ru/articles/yaichnitsa-v-kruzhke-za-8-minut.html",
-      "publishedAt": "2099-12-31T23:58:00.000Z",
-      "updatedAt": "2099-12-31T23:58:00.000Z",
-      "tags": [],
-      "photoSource": "",
-      "featured": false,
-      "popular": false,
-      "excludeRelated": false
-    }
   }
 ]
