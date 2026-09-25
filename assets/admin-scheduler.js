@@ -15,7 +15,7 @@
   async function writeQueue(items,message='Update scheduled publications'){
     const next=[...items].sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt));
     await window.putFile(QUEUE_PATH,JSON.stringify(next,null,2),message);
-    if(typeof store!=='undefined'){store.scheduled=next;saveStore?.()}
+    if(typeof store!=='undefined'){store.scheduled=next.filter(x=>!x?.pausedRecovery);saveStore?.()}
     window.renderPosts?.();
     return next
   }
@@ -104,7 +104,7 @@
     if(typeof window.renderPosts!=='function'||window.renderPosts.__scheduledWrapped)return;
     const base=window.renderPosts;
     const wrapped=function(){
-      base();const tb=$('#postsTable'),items=(typeof store!=='undefined'&&Array.isArray(store.scheduled))?store.scheduled:[];if(!tb||!items.length)return;
+      base();const tb=$('#postsTable'),items=(typeof store!=='undefined'&&Array.isArray(store.scheduled))?store.scheduled.filter(x=>!x?.pausedRecovery):[];if(!tb||!items.length)return;
       const placeholder=tb.querySelector('tr td[colspan]');if(placeholder)placeholder.closest('tr')?.remove();
       const rows=items.map(x=>`<tr class="scheduled-row"><td><strong>${String(x.post?.headline||x.slug).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${x.post?.author||''}</td><td>${fmt(x.publishAt)}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-edit-scheduled="${x.slug}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-scheduled="${x.slug}">Удалить</button></div></td></tr>`).join('');
       tb.insertAdjacentHTML('afterbegin',rows);
@@ -115,7 +115,8 @@
   async function loadQueue(){
     const q=await readQueue();
     if(!Array.isArray(q))return false;
-    if(typeof store!=='undefined'){store.scheduled=q;saveStore?.();window.store=store;window.renderPosts?.()}
+    const visible=q.filter(x=>!x?.pausedRecovery);
+    if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store;window.renderPosts?.()}
     return true
   }
   window.reloadScheduledQueue=loadQueue;
