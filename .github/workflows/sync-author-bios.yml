@@ -1,14 +1,20 @@
 name: Sync author biographies
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/authors.json'
+      - 'scripts/sync_author_bios.py'
+      - 'assets/author-trust.css'
 permissions:
-  contents: read
+  contents: write
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Sync biographies locally
+      - name: Sync author profiles
         run: python3 scripts/sync_author_bios.py
       - name: Validate author pages
         run: |
@@ -20,6 +26,19 @@ jobs:
               text=Path(author['url']).read_text('utf-8')
               assert author['bio'] in text
               assert author['metaDescription'] in text
+              assert 'author-trust-panel' in text
+              assert 'knowsAbout' in text
               assert 'Имеет профильное образование' not in text
           print('Validated', len(authors), 'author pages')
           PY
+      - name: Commit generated author pages
+        run: |
+          if git diff --quiet; then
+            echo 'No generated changes'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add author-*.html
+          git commit -m 'Sync author trust profiles'
+          git push
