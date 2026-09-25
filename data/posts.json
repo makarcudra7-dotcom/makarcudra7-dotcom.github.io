@@ -1,5 +1,36 @@
 [
   {
+    "slug": "kompot-iz-tykvy-s-limonom-zolotoy-oktyabr",
+    "headline": "Тыква + лимон — и по банкам: зимой открываю «Золотой октябрь» — будто осеннее солнце налили в стакан",
+    "description": "Тыква даёт напитку густой золотистый цвет, а лимон убирает приторность. Но с хранением такой заготовки есть важный нюанс.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Сезонное",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr-1x1.jpg"
+    ],
+    "imageAlt": "Женщина на домашней кухне разливает яркий компот из тыквы и лимона по стеклянным банкам, рядом лежат кусочки тыквы и свежие лимоны",
+    "url": "https://provkus-media.ru/articles/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr.html",
+    "publishedAt": "2026-09-25T12:26:00.000Z",
+    "updatedAt": "2026-09-25T08:28:00.000Z",
+    "tags": [
+      "Тыква",
+      "Напитки",
+      "Заготовки",
+      "Рецепты",
+      "Полезное"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle",
     "headline": "Яичница на сковороде — прошлый век: разбиваю 2 яйца в кружку — через 8 минут нежный завтрак как суфле",
     "description": "Два яйца, ложка молока и кружка: на водяной бане получается нежный порционный омлет без жарки и масляных брызг.",
@@ -25,7 +56,7 @@
       "Простые рецепты"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -208,7 +239,7 @@
     "tags": [],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
