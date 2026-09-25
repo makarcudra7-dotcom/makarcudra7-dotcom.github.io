@@ -1,0 +1,28 @@
+name: Verify CMS fallback UI
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-admin-fallback-ui.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check live admin fallback UI
+        run: |
+          set -euo pipefail
+          base='https://provkus-media.ru'
+          ok=0
+          for i in $(seq 1 24); do
+            code=$(curl -L -sS -o /tmp/admin -w '%{http_code}' --max-time 20 "$base/admin.html" || true)
+            echo "attempt=$i admin=$code"
+            if [ "$code" = 200 ] && grep -q 'admin-server.js?v=20260925-adminfix2' /tmp/admin; then ok=1; break; fi
+            sleep 5
+          done
+          test "$ok" = 1
+          js=$(grep -o 'assets/admin-server.js?v=20260925-adminfix2' /tmp/admin | head -1)
+          curl -L -sS --fail "$base/$js" -o /tmp/admin-server.js
+          grep -q 'Рабочий способ: GitHub-доступ' /tmp/admin-server.js
+          grep -q 'Серверный режим временно недоступен' /tmp/admin-server.js
+          node --check /tmp/admin-server.js
