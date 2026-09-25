@@ -1,5 +1,36 @@
 [
   {
+    "slug": "miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku",
+    "headline": "«Миледи» — салат с королевским характером: курица, ананас и копчёный сыр — за столом сразу просят добавку",
+    "description": "Сочная курица, сладкий ананас, копчёный сыр и хрустящие сухарики собираются в эффектный слоёный салат с чесночным соусом.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-1x1.jpg"
+    ],
+    "imageAlt": "Слоёный салат «Миледи» с курицей, ананасом, копчёным сыром и хрустящими сухариками на праздничной тарелке.",
+    "url": "https://provkus-media.ru/articles/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku.html",
+    "publishedAt": "2026-09-25T04:00:00.000Z",
+    "updatedAt": "2026-09-25T04:00:00.000Z",
+    "tags": [
+      "Салат",
+      "Рецепты",
+      "Готовка",
+      "Еда",
+      "Праздники"
+    ],
+    "photoSource": "provkus-media.ru",
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true,
+    "coauthors": []
+  },
+  {
     "slug": "zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad",
     "headline": "Закрываю по 50 банок — и всё равно мало: компот «Фруктовый джаз» из яблок и винограда — зимой пьём как лимонад",
     "description": "Яблоки и виноград дают компоту яркий фруктовый вкус. Домашний напиток с безопасными рекомендациями по хранению.",
@@ -26,7 +57,7 @@
     ],
     "photoSource": "ProVkus",
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": []
   },
