@@ -7,9 +7,15 @@ on:
     paths:
       - 'data/posts.json'
       - 'articles/**'
+      - 'calculators.html'
+      - 'grams-spoons-cups.html'
+      - 'portion-calculator.html'
+      - 'assets/calculators.css'
+      - 'assets/calculators.js'
       - 'scripts/build_indexes.py'
       - 'scripts/build_discovery_archives.py'
       - 'scripts/enhance_article_links.py'
+      - 'scripts/build_calculators_integration.py'
       - 'assets/admin-discover-guard.js'
       - '.github/workflows/discovery-architecture.yml'
 
@@ -33,22 +39,32 @@ jobs:
         run: python3 scripts/build_discovery_archives.py
       - name: Add static article cross-links and normalize dates
         run: python3 scripts/enhance_article_links.py
+      - name: Integrate calculators
+        run: python3 scripts/build_calculators_integration.py
       - name: Validate generated structure
         run: |
           set -euo pipefail
           test -f archive.html
           test -f sitemap.xml
           test -f feed.xml
+          test -f calculators.html
+          test -f grams-spoons-cups.html
+          test -f portion-calculator.html
           grep -q 'Архив публикаций' archive.html
           grep -q 'provkus-media.ru/archive' sitemap.xml
+          grep -q 'provkus-media.ru/calculators.html' sitemap.xml
+          grep -q 'provkus-media.ru/grams-spoons-cups.html' sitemap.xml
+          grep -q 'provkus-media.ru/portion-calculator.html' sitemap.xml
+          grep -q 'href="/calculators.html"' index.html
           grep -q 'admin-discover-guard.js' admin.html
           grep -q 'DISCOVERY-LINKS-START' articles/*.html
-          python3 -m py_compile scripts/build_discovery_archives.py scripts/enhance_article_links.py
+          node --check assets/calculators.js
+          python3 -m py_compile scripts/build_discovery_archives.py scripts/enhance_article_links.py scripts/build_calculators_integration.py
       - name: Commit generated discovery files
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html category.html recipes.html products.html home-storage.html food-safety.html author-*.html admin.html sitemap.xml feed.xml archive.html archive/ articles/
+          git add '*.html' sitemap.xml feed.xml archive/ articles/
           if git diff --cached --quiet; then
             echo 'Discovery architecture already up to date'
             exit 0
