@@ -1,0 +1,35 @@
+name: Verify public discovery architecture
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'archive.html'
+      - 'archive/**'
+      - 'sitemap.xml'
+      - '.github/workflows/verify-discovery-public.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check ProVkus public discovery URLs
+        run: |
+          set -euo pipefail
+          base='https://provkus-media.ru'
+          ok=0
+          for i in $(seq 1 24); do
+            a=$(curl -L -sS -o /tmp/archive -w '%{http_code}' --max-time 20 "$base/archive.html" || true)
+            s=$(curl -L -sS -o /tmp/sitemap -w '%{http_code}' --max-time 20 "$base/sitemap.xml" || true)
+            m=$(curl -L -sS -o /tmp/month -w '%{http_code}' --max-time 20 "$base/archive/2026/09/" || true)
+            echo "attempt=$i archive=$a sitemap=$s month=$m"
+            if [ "$a" = 200 ] && [ "$s" = 200 ] && [ "$m" = 200 ] && grep -q 'Архив публикаций' /tmp/archive && grep -q 'provkus-media.ru/archive/2026/09/' /tmp/sitemap; then ok=1; break; fi
+            sleep 5
+          done
+          test "$ok" = 1
+          grep -q 'CollectionPage' /tmp/archive
+          echo 'Public discovery architecture verified'
