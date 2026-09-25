@@ -1,2 +1,3 @@
 /* ProVkus compatibility stylesheet: stable public design. */
 @import url('/assets/styles.css');
+.pv-\73 easonal-layer,.pv-\73 easonal-piece,.pv-\73 easonal-leaf{display:none!important;visibility:hidden!important;opacity:0!important;animation:none!important;pointer-events:none!important}
