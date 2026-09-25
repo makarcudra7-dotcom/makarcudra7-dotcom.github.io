@@ -1,5 +1,35 @@
 [
   {
+    "slug": "dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki",
+    "headline": "Для чего посыпают солью банановую кожуру, апельсиновые корки и лавровый лист: пашут и здесь и там — проверяем хитовые лайфхаки",
+    "description": "Банановую кожуру несут на грядки, апельсиновыми корками чистят кухню, а лавровый лист ставят на подоконник. Разбираемся, что действительно работает. ",
+    "author": "Эльвира Шайберт",
+    "category": "Советы и лайфхаки",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki-1x1.jpg"
+    ],
+    "imageAlt": "Женщина на обычной домашней кухне посыпает солью банановую кожуру, рядом лежат апельсиновые корки и банка с лавровым листом и солью",
+    "url": "https://provkus-media.ru/articles/dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki.html",
+    "publishedAt": "2026-09-25T20:05:00.000Z",
+    "updatedAt": "2026-09-25T20:05:00.000Z",
+    "tags": [
+      "Дом",
+      "Лайфхаки",
+      "Уборка",
+      "Соль"
+    ],
+    "photoSource": "provkus-media.ru",
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true,
+    "coauthors": []
+  },
+  {
     "slug": "k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas",
     "headline": "К Новому году начинаю закупаться уже сейчас: Роскачество назвало продукты, которые можно брать заранее",
     "description": "Часть продуктов для новогоднего стола можно купить за несколько месяцев. Главное — проверить срок годности и условия хранения.",
@@ -23,7 +53,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": []
   },
@@ -209,7 +239,7 @@
     "photoSource": "",
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
