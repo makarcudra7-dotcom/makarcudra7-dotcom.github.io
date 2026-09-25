@@ -1,5 +1,37 @@
 [
   {
+    "slug": "kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu",
+    "headline": "Какой водой заливать рис для плова — горячей или холодной: запомните раз и навсегда, чтобы крупа не превратилась в кашу",
+    "description": "Для плова рис лучше заливать кипятком: так температура в казане не падает, крупа начинает готовиться сразу и проще контролировать количество жидкости.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Советы и лайфхаки",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu-1x1.jpg"
+    ],
+    "imageAlt": "Крупный бородатый мужчина с женой едят горячий домашний плов на обычной российской кухне, на переднем плане большая тарелка рассыпчатого риса с мясом, морковью и чесноком",
+    "url": "https://provkus-media.ru/articles/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu.html",
+    "publishedAt": "2026-09-25T16:15:00.000Z",
+    "updatedAt": "2026-09-25T09:41:00.000Z",
+    "tags": [
+      "Еда",
+      "Рецепт",
+      "Плов",
+      "Рис",
+      "Лайфхак",
+      "Полезное"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache",
     "headline": "Варю целую кастрюлю, а супа всё равно мало: готовлю нежнейший польский «Огуречник» — проще рассольника, а вкус богаче",
     "description": "Польский огуречный суп варят на мясном бульоне с картофелем, солёными огурцами и сметанной заправкой: получается густо, нежно и с приятной кислинкой.",
@@ -25,7 +57,7 @@
       "Интересное"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -211,7 +243,7 @@
     "photoSource": "ProVkus",
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
