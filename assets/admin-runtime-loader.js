@@ -3,13 +3,14 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260925-schedule-fast2';
+  const VERSION='20260925-schedule-fast3';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
     'admin-content-manager.js',
     'admin-scheduler.js',
-    'admin-fast-publish.js'
+    'admin-fast-publish.js',
+    'admin-live-refresh.js'
   ];
 
   function existing(name){
