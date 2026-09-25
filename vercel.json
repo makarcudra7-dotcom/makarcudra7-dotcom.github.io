@@ -1,13 +1,16 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
-    { "handle": "filesystem" },
+    {
+      "src": "/api/publish",
+      "dest": "/api/publish.js"
+    },
     {
       "src": "/",
       "dest": "https://makarcudra7-dotcom.github.io/",
       "headers": {
         "Cache-Control": "no-store, max-age=0",
-        "X-Provkus-Origin": "github-pages-fallback",
+        "X-Provkus-Origin": "github-pages",
         "X-Provkus-Revive": "2026-09-25",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -19,7 +22,7 @@
       "dest": "https://makarcudra7-dotcom.github.io/$path",
       "headers": {
         "Cache-Control": "no-store, max-age=0",
-        "X-Provkus-Origin": "github-pages-fallback",
+        "X-Provkus-Origin": "github-pages",
         "X-Provkus-Revive": "2026-09-25",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "strict-origin-when-cross-origin",
