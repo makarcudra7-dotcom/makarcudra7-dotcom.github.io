@@ -58,7 +58,9 @@ jobs:
           grep -q 'provkus-media.ru/grams-spoons-cups.html' sitemap.xml
           grep -q 'provkus-media.ru/portion-calculator.html' sitemap.xml
           grep -q 'HOME-TOOLS-START' index.html
-          grep -q 'Калькуляторы ProVkus' index.html
+          grep -q 'Что нужно посчитать?' index.html
+          grep -q 'Перевести меру' index.html
+          grep -q 'Пересчитать порции' index.html
           grep -q '<a href="/category.html"' index.html
           grep -q '<a href="/calculators.html"' index.html
           grep -q '<a href="/authors.html"' index.html
