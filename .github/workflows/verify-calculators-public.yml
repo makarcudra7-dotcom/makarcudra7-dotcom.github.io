@@ -12,6 +12,7 @@ on:
       - 'assets/calculators.css'
       - 'assets/calculators.js'
       - 'assets/home-tools.css'
+      - 'scripts/build_calculators_integration.py'
       - '.github/workflows/verify-calculators-public.yml'
 
 permissions:
@@ -27,22 +28,24 @@ jobs:
           for base in https://makarcudra7-dotcom.github.io https://provkus-media.ru; do
             echo "=== $base ==="
             for path in index.html calculators.html grams-spoons-cups.html portion-calculator.html assets/calculators.css assets/calculators.js assets/home-tools.css; do
-              code=$(curl -L -sS -o /tmp/pv -w '%{http_code}' --max-time 25 "$base/$path?pv=calc-nav-2" || true)
+              code=$(curl -L -sS -o /tmp/pv -w '%{http_code}' --max-time 25 "$base/$path?pv=quick-actions-3" || true)
               echo "$path -> $code"
               test "$code" = 200
             done
-            curl -L -sS --max-time 25 "$base/index.html?pv=calc-nav-2" > /tmp/home
-            grep -q 'Калькуляторы ProVkus' /tmp/home
-            grep -q 'Граммы ↔ ложки ↔ стаканы' /tmp/home
-            grep -q 'Калькулятор порций' /tmp/home
+            curl -L -sS --max-time 25 "$base/index.html?pv=quick-actions-3" > /tmp/home
+            grep -q 'Что нужно посчитать?' /tmp/home
+            grep -q 'Перевести меру' /tmp/home
+            grep -q 'Пересчитать порции' /tmp/home
+            grep -q 'href="/grams-spoons-cups.html"' /tmp/home
+            grep -q 'href="/portion-calculator.html"' /tmp/home
             grep -q 'href="/category.html"' /tmp/home
             grep -q 'href="/calculators.html"' /tmp/home
             grep -q 'href="/authors.html"' /tmp/home
             grep -q 'href="/archive.html"' /tmp/home
-            curl -L -sS --max-time 25 "$base/calculators.html?pv=calc-nav-2" | grep -q 'Кулинарные калькуляторы'
-            curl -L -sS --max-time 25 "$base/grams-spoons-cups.html?pv=calc-nav-2" | grep -q 'Граммы ↔ ложки ↔ стаканы'
-            curl -L -sS --max-time 25 "$base/portion-calculator.html?pv=calc-nav-2" | grep -q 'Калькулятор порций рецепта'
-            curl -L -sS --max-time 25 "$base/assets/calculators.js?pv=calc-nav-2" | grep -q 'Сгущённое молоко'
-            curl -L -sS --max-time 25 "$base/assets/calculators.js?pv=calc-nav-2" | grep -q 'Кускус'
+            curl -L -sS --max-time 25 "$base/calculators.html?pv=quick-actions-3" | grep -q 'Кулинарные калькуляторы'
+            curl -L -sS --max-time 25 "$base/grams-spoons-cups.html?pv=quick-actions-3" | grep -q 'Граммы ↔ ложки ↔ стаканы'
+            curl -L -sS --max-time 25 "$base/portion-calculator.html?pv=quick-actions-3" | grep -q 'Калькулятор порций рецепта'
+            curl -L -sS --max-time 25 "$base/assets/calculators.js?pv=quick-actions-3" | grep -q 'Сгущённое молоко'
+            curl -L -sS --max-time 25 "$base/assets/calculators.js?pv=quick-actions-3" | grep -q 'Кускус'
           done
-          echo 'Public ProVkus navigation and calculators verified'
+          echo 'Public ProVkus quick calculator actions verified'
