@@ -1,0 +1,48 @@
+name: Verify admin and clean UI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-admin-clean.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check admin JavaScript syntax
+        run: |
+          node --check assets/admin.js
+          node --check assets/admin-enhance.js
+          node --check assets/admin-v3.js
+          node --check assets/admin-server.js
+          node --check assets/admin-fixes.js
+      - name: Check public admin and decoration cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://provkus-media.ru'
+          ok=0
+          for i in $(seq 1 24); do
+            acode=$(curl -L -sS -o /tmp/admin -w '%{http_code}' --max-time 20 "$base/admin.html" || true)
+            ccode=$(curl -L -sS -o /tmp/css -w '%{http_code}' --max-time 20 "$base/assets/public.css?v=20260925-clean1" || true)
+            jcode=$(curl -L -sS -o /tmp/app -w '%{http_code}' --max-time 20 "$base/assets/app.js?v=20260925-clean1" || true)
+            echo "attempt=$i admin=$acode css=$ccode app=$jcode"
+            if [ "$acode" = 200 ] && [ "$ccode" = 200 ] && [ "$jcode" = 200 ] && grep -q 'admin-server.js?v=20260925-adminfix1' /tmp/admin; then ok=1; break; fi
+            sleep 5
+          done
+          test "$ok" = 1
+          ! grep -Eqi 'seasonal\.js|seasonal\.css|pvSeasonal|falling-leaf|falling_leaf|autumn' /tmp/app
+          ! grep -Eqi 'seasonal\.js|seasonal\.css|falling-leaf|falling_leaf|autumn' /tmp/admin
+          grep -q 'display:none!important' /tmp/css
+      - name: Diagnose publish API route
+        shell: bash
+        run: |
+          code=$(curl -sS -o /tmp/api -w '%{http_code}' --max-time 20 -X POST -H 'Content-Type: application/json' --data '{"action":"ping"}' https://provkus-media.ru/api/publish || true)
+          echo "publish_api_status=$code"
+          cat /tmp/api || true
+          if [ "$code" = 401 ]; then echo 'publish API route is live'; else echo 'publish API is not live yet; CMS will use GitHub fallback'; fi
