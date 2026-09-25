@@ -60,6 +60,9 @@ if home.exists():
         if hero_end!=-1:
             hero_end+=len('</section>')
             source=source[:hero_end]+tools+source[hero_end:]
+    css='<link rel="stylesheet" href="/assets/home-tools.css?v=20260925-1">'
+    if '/assets/home-tools.css' not in source:
+        source=source.replace('</head>',css+'</head>',1)
     home.write_text(source,'utf-8')
 
 # build_indexes.py and build_discovery_archives.py rebuild sitemap.xml. Re-attach
