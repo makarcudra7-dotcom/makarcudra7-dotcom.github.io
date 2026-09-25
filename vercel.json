@@ -3,10 +3,10 @@
   "routes": [
     {
       "src": "/",
-      "dest": "https://provkus-media-production.up.railway.app/",
+      "dest": "https://makarcudra7-dotcom.github.io/",
       "headers": {
         "Cache-Control": "no-store, max-age=0",
-        "X-Provkus-Origin": "railway",
+        "X-Provkus-Origin": "github-pages",
         "X-Provkus-Revive": "2026-09-25",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "strict-origin-when-cross-origin",
@@ -15,10 +15,10 @@
     },
     {
       "src": "/(?<path>.*)",
-      "dest": "https://provkus-media-production.up.railway.app/$path",
+      "dest": "https://makarcudra7-dotcom.github.io/$path",
       "headers": {
         "Cache-Control": "no-store, max-age=0",
-        "X-Provkus-Origin": "railway",
+        "X-Provkus-Origin": "github-pages",
         "X-Provkus-Revive": "2026-09-25",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "strict-origin-when-cross-origin",
