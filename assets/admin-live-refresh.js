@@ -39,13 +39,12 @@
 
   function renderScheduledRows(items=scheduled){
     const tb=document.getElementById('postsTable');if(!tb)return;
-    tb.querySelectorAll('tr[data-live-scheduled="1"]').forEach(x=>x.remove());
-    const visible=(Array.isArray(items)?items:[]).filter(x=>!x?.pausedRecovery);
-    if(!visible.length)return;
-    const html=visible.map(x=>{
+    tb.querySelectorAll('tr[data-live-scheduled="1"],tr.scheduled-row').forEach(x=>x.remove());
+    if(!Array.isArray(items)||!items.length)return;
+    const html=items.map(x=>{
       const h=esc(x.post?.headline||x.material?.headline||x.slug);
       const a=esc(x.post?.author||x.material?.author||'—');
-      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button></div></td></tr>`
+      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-live-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`
     }).join('');
     tb.insertAdjacentHTML('afterbegin',html);
   }
@@ -55,6 +54,30 @@
     if(typeof window.fill==='function')window.fill({...item.material,_editingSlug:''});
     document.querySelector('.nav-btn[data-target="material"]')?.click();
     if(typeof window.flash==='function')window.flash('Запланированный материал открыт для редактирования');
+  }
+
+  async function deleteScheduled(slug){
+    const item=scheduled.find(x=>x.slug===slug);if(!item)return;
+    if(!confirm(`Удалить из очереди «${item.post?.headline||item.material?.headline||slug}»?`))return;
+    if(typeof window.putFile!=='function'){
+      if(typeof window.flash==='function')window.flash('Для удаления подключите сервер публикации или GitHub');
+      return;
+    }
+    try{
+      let full=scheduled;
+      if(typeof window.getFile==='function'){
+        const f=await window.getFile(QUEUE);full=f?.content?JSON.parse(decode(f)):[];
+      }
+      const next=(Array.isArray(full)?full:[]).filter(x=>x.slug!==slug);
+      await window.putFile(QUEUE,JSON.stringify(next,null,2),`Unschedule: ${item.post?.headline||item.material?.headline||slug}`);
+      scheduled=next.filter(x=>!x?.pausedRecovery);
+      if(window.store)window.store.scheduled=scheduled;
+      renderScheduledRows(scheduled);
+      if(typeof window.flash==='function')window.flash('Публикация снята с очереди');
+    }catch(e){
+      console.warn('delete scheduled',e);
+      if(typeof window.flash==='function')window.flash('Не удалось удалить публикацию из очереди');
+    }
   }
 
   async function refreshAll(showMessage=false){
@@ -78,6 +101,8 @@
   document.addEventListener('click',e=>{
     const edit=e.target.closest?.('[data-live-edit-scheduled]');
     if(edit){editScheduled(edit.dataset.liveEditScheduled);return}
+    const del=e.target.closest?.('[data-live-delete-scheduled]');
+    if(del){deleteScheduled(del.dataset.liveDeleteScheduled);return}
     if(e.target.closest?.('.nav-btn[data-target="publications"],#allMaterialsBtn'))setTimeout(()=>refreshAll(false),0);
   },true);
   window.addEventListener('focus',()=>{if(active())refreshAll(false)});
