@@ -9,6 +9,7 @@ on:
       - 'articles/**'
       - 'scripts/build_indexes.py'
       - 'scripts/build_discovery_archives.py'
+      - 'scripts/enhance_article_links.py'
       - 'assets/admin-discover-guard.js'
       - '.github/workflows/discovery-architecture.yml'
 
@@ -30,6 +31,8 @@ jobs:
         run: python3 scripts/build_indexes.py
       - name: Build date archives and strengthen metadata
         run: python3 scripts/build_discovery_archives.py
+      - name: Add static article cross-links and normalize dates
+        run: python3 scripts/enhance_article_links.py
       - name: Validate generated structure
         run: |
           set -euo pipefail
@@ -39,7 +42,8 @@ jobs:
           grep -q 'Архив публикаций' archive.html
           grep -q 'provkus-media.ru/archive' sitemap.xml
           grep -q 'admin-discover-guard.js' admin.html
-          python3 -m py_compile scripts/build_discovery_archives.py
+          grep -q 'DISCOVERY-LINKS-START' articles/*.html
+          python3 -m py_compile scripts/build_discovery_archives.py scripts/enhance_article_links.py
       - name: Commit generated discovery files
         run: |
           git config user.name 'github-actions[bot]'
