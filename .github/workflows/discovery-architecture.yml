@@ -1,0 +1,53 @@
+name: Rebuild discovery architecture
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/posts.json'
+      - 'articles/**'
+      - 'scripts/build_indexes.py'
+      - 'scripts/build_discovery_archives.py'
+      - 'assets/admin-discover-guard.js'
+      - '.github/workflows/discovery-architecture.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: provkus-discovery-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build canonical indexes
+        run: python3 scripts/build_indexes.py
+      - name: Build date archives and strengthen metadata
+        run: python3 scripts/build_discovery_archives.py
+      - name: Validate generated structure
+        run: |
+          set -euo pipefail
+          test -f archive.html
+          test -f sitemap.xml
+          test -f feed.xml
+          grep -q 'Архив публикаций' archive.html
+          grep -q 'provkus-media.ru/archive' sitemap.xml
+          grep -q 'admin-discover-guard.js' admin.html
+          python3 -m py_compile scripts/build_discovery_archives.py
+      - name: Commit generated discovery files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html category.html recipes.html products.html home-storage.html food-safety.html author-*.html admin.html sitemap.xml feed.xml archive.html archive/ articles/
+          if git diff --cached --quiet; then
+            echo 'Discovery architecture already up to date'
+            exit 0
+          fi
+          git commit -m 'Rebuild ProVkus discovery architecture'
+          git push
