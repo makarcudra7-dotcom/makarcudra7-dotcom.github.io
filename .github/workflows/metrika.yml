@@ -26,11 +26,11 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          pages=[p for p in Path('.').rglob('*.html') if '.git' not in p.parts and 'node_modules' not in p.parts]
+          pages=[p for p in Path('.').rglob('*.html') if '.git' not in p.parts and 'node_modules' not in p.parts and not p.name.lower().startswith('yandex_')]
           missing=[str(p) for p in pages if '/assets/metrika.js' not in p.read_text(encoding='utf-8')]
           if missing:
               raise SystemExit('Metrica missing: '+', '.join(missing[:20]))
-          print(f'Metrica present on {len(pages)} HTML pages')
+          print(f'Metrica present on {len(pages)} HTML pages; Yandex verification files excluded')
           PY
       - name: Commit injected pages
         run: |
