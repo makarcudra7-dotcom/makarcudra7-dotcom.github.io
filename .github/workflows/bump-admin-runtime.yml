@@ -1,0 +1,31 @@
+name: Bump admin runtime cache
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bump-admin-runtime.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump runtime version
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('admin.html')
+          s=p.read_text()
+          s=s.replace('admin-runtime-loader.js?v=20260925-schedule-fast3','admin-runtime-loader.js?v=20260925-schedule-fast4')
+          p.write_text(s)
+          PY
+      - name: Commit
+        run: |
+          git config user.name "provkus-admin-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add admin.html
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Load fixed scheduled publications runtime"
+          git push
