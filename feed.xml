@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Fri, 25 Sep 2026 08:28:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 25 Sep 2026 09:24:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Варю целую кастрюлю, а супа всё равно мало: готовлю нежнейший польский «Огуречник» — проще рассольника, а вкус богаче</title>
+    <link>https://provkus-media.ru/articles/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache.html</guid>
+    <pubDate>Fri, 25 Sep 2026 14:10:00 GMT</pubDate>
+    <description>Польский огуречный суп варят на мясном бульоне с картофелем, солёными огурцами и сметанной заправкой: получается густо, нежно и с приятной кислинкой.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache-16x9.jpg" medium="image"/>
+  </item>
   <item>
     <title>Тыква + лимон — и по банкам: зимой открываю «Золотой октябрь» — будто осеннее солнце налили в стакан</title>
     <link>https://provkus-media.ru/articles/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr.html</link>

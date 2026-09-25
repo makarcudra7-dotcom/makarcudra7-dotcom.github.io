@@ -1,5 +1,35 @@
 [
   {
+    "slug": "varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache",
+    "headline": "Варю целую кастрюлю, а супа всё равно мало: готовлю нежнейший польский «Огуречник» — проще рассольника, а вкус богаче",
+    "description": "Польский огуречный суп варят на мясном бульоне с картофелем, солёными огурцами и сметанной заправкой: получается густо, нежно и с приятной кислинкой.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache-16x9.jpg"
+    ],
+    "imageAlt": "Крупный бородатый мужчина готовит огуречник в большой кастрюле на обычной российской кухне, рядом лежат солёные огурцы, зелень и овощи",
+    "url": "https://provkus-media.ru/articles/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache.html",
+    "publishedAt": "2026-09-25T14:10:00.000Z",
+    "updatedAt": "2026-09-25T09:24:00.000Z",
+    "tags": [
+      "Еда",
+      "Рецепт",
+      "Суп",
+      "Рассольник",
+      "Необычное",
+      "Интересное"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "kompot-iz-tykvy-s-limonom-zolotoy-oktyabr",
     "headline": "Тыква + лимон — и по банкам: зимой открываю «Золотой октябрь» — будто осеннее солнце налили в стакан",
     "description": "Тыква даёт напитку густой золотистый цвет, а лимон убирает приторность. Но с хранением такой заготовки есть важный нюанс.",
@@ -26,7 +56,7 @@
       "Полезное"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -214,7 +244,7 @@
     ],
     "photoSource": "",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
