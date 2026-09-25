@@ -1,0 +1,42 @@
+name: Build recipe tools index
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/posts.json'
+      - 'articles/**.html'
+      - 'scripts/build_recipe_tools.py'
+      - 'assets/provkus-tools.js'
+      - 'assets/provkus-tools.css'
+      - '.github/workflows/build-recipe-tools.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    if: github.actor != 'github-actions[bot]' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build recipe index and inject tools
+        run: python3 scripts/build_recipe_tools.py
+      - name: Validate index
+        run: |
+          python3 - <<'PY'
+          import json
+          data=json.load(open('data/recipe-index.json',encoding='utf-8'))
+          assert isinstance(data,list) and data, 'recipe index is empty'
+          assert all(x.get('slug') and x.get('url') for x in data)
+          print('recipes',len(data),'with ingredients',sum(bool(x.get('ingredients')) for x in data))
+          PY
+      - name: Commit generated recipe tools data
+        run: |
+          if git diff --quiet -- data/recipe-index.json articles; then
+            echo 'No generated changes'
+            exit 0
+          fi
+          git config user.name 'provkus-cms-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/recipe-index.json articles
+          git commit -m 'Refresh recipe tools index'
+          git push
