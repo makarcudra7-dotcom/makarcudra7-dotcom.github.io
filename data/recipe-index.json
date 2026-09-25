@@ -5,11 +5,11 @@
     "url": "https://provkus-media.ru/articles/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku.html",
     "image": "https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-16x9.jpg",
     "ingredients": [
-      "майонеза",
-      "сметаны",
-      "3 зубчика чеснока",
-      "2 чайные ложки лимонного сока",
-      "5 чайных ложек соевого соуса"
+      "майонез",
+      "сметана",
+      "чеснок",
+      "лимонный сок",
+      "соевый соус"
     ],
     "ingredientLines": [
       "200 г майонеза",
@@ -47,7 +47,7 @@
     "ingredients": [
       "мясной фарш",
       "яйца",
-      "лук репчатый",
+      "лук",
       "батон",
       "сыр",
       "панировочные сухари",
@@ -78,7 +78,7 @@
       "яйца",
       "сметана",
       "мука",
-      "твердый сыр",
+      "сыр",
       "растительное масло",
       "разрыхлитель",
       "соль — ½ ч. ложки",
@@ -103,12 +103,12 @@
     "url": "https://provkus-media.ru/articles/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom.html",
     "image": "https://provkus-media.ru/assets/uploads/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom-16x9.jpg",
     "ingredients": [
-      "картофелины",
-      "лук репчатый",
+      "картофель",
+      "лук",
       "болгарский перец",
       "яйца",
-      "муки",
-      "сыра",
+      "мука",
+      "сыр",
       "петрушка",
       "соль, перец и паприка",
       "растительное масло"
@@ -131,8 +131,14 @@
     "headline": "Яблоки с творожной начинкой в духовке",
     "url": "https://provkus-media.ru/articles/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki.html",
     "image": "https://provkus-media.ru/assets/uploads/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki-16x9.jpg",
-    "ingredients": [],
-    "ingredientLines": [],
+    "ingredients": [
+      "яблока",
+      "творог"
+    ],
+    "ingredientLines": [
+      "4 яблока",
+      "200 г творога"
+    ],
     "updatedAt": "2026-09-23T02:21:01Z"
   },
   {
@@ -220,7 +226,7 @@
     "ingredients": [
       "груша",
       "салатный микс",
-      "мягкий или полутвердый сыр",
+      "сыр",
       "грецкие орехи",
       "горчица",
       "мед",
@@ -303,7 +309,7 @@
     "url": "https://provkus-media.ru/articles/kuritsa-s-yablokami-gorchitsa-med.html",
     "image": "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-16x9.jpg",
     "ingredients": [
-      "куриная грудка",
+      "курица",
       "яблоки",
       "лук",
       "горчица",
@@ -361,7 +367,7 @@
       "грибы",
       "лук",
       "сметана",
-      "яйцо",
+      "яйца",
       "сыр",
       "масло, соль, перец"
     ],
