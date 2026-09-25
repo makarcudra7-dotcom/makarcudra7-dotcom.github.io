@@ -4,15 +4,15 @@
     "headline": "Закрываю по 50 банок — и всё равно мало: компот «Фруктовый джаз» из яблок и винограда — зимой пьём как лимонад",
     "description": "Яблоки и виноград дают компоту яркий фруктовый вкус. Домашний напиток с безопасными рекомендациями по хранению.",
     "author": "Екатерина Рукопляс",
-    "coauthors": [],
     "category": "Рецепты",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/fallback-cover.svg",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-16x9.jpg",
     "images": [
-      "https://provkus-media.ru/assets/fallback-cover.svg"
+      "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-1x1.jpg"
     ],
-    "imageResponsive": false,
     "imageAlt": "Иллюстрация к компоту из яблок и винограда",
     "url": "https://provkus-media.ru/articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html",
     "publishedAt": "2026-09-24T17:01:00.000Z",
@@ -25,9 +25,10 @@
       "Домашние рецепты"
     ],
     "photoSource": "ProVkus",
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true,
+    "coauthors": []
   },
   {
     "slug": "lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net",
@@ -58,7 +59,7 @@
       "Полезные советы"
     ],
     "photoSource": "",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
