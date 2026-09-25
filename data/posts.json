@@ -1,5 +1,35 @@
 [
   {
+    "slug": "yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle",
+    "headline": "Яичница на сковороде — прошлый век: разбиваю 2 яйца в кружку — через 8 минут нежный завтрак как суфле",
+    "description": "Два яйца, ложка молока и кружка: на водяной бане получается нежный порционный омлет без жарки и масляных брызг.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Новости и тренды",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle-16x9.jpg"
+    ],
+    "imageAlt": "Две кружки с нежным омлетом из яиц, сыра и зелени готовятся на водяной бане в кастрюле под крышкой",
+    "url": "https://provkus-media.ru/articles/yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle.html",
+    "publishedAt": "2026-09-25T10:00:00.000Z",
+    "updatedAt": "2026-09-25T08:17:00.000Z",
+    "tags": [
+      "Яйца",
+      "Завтрак",
+      "Омлет",
+      "Быстрые рецепты",
+      "Рецепты в кружке",
+      "Простые рецепты"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily",
     "headline": "Говяжью тушёнку больше не беру наугад: 10 марок, где внутри — мясо кусками, а не жир и жилы",
     "description": "Собрали 10 марок говяжьей тушёнки, на которые стоит обратить внимание, и простую проверку банки перед покупкой.",
@@ -27,7 +57,7 @@
       "Продукты"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -329,7 +359,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false,
     "imageResponsive": true
   },
