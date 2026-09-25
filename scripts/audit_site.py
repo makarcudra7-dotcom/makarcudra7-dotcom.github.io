@@ -158,5 +158,37 @@ for f in ROOT.rglob('*.html'):
    check(dest.exists(),f'{f.relative_to(ROOT)}: missing {u.path}')
 
 check(public_count+13==len(locs),f'Sitemap inventory mismatch: public={public_count}, sitemap={len(locs)}')
+
+# TRUST-SOURCE-AUDIT
+explicit_high_risk={
+ 'kak-bezopasno-razmorazhivat-myaso','zachem-myt-banany-i-mandariny','kak-vybrat-syr-s-plesenyu',
+ 'skolko-hranit-plavlenyi-syr-posle-vskrytiya','ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat',
+ 'nuzhno-li-myt-yayca-posle-magazina','kak-pravilno-hranit-yayca-v-holodilnike','chto-ne-hranit-na-dverce-holodilnika',
+ 'sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih'
+}
+for p in posts:
+ f=ROOT/'articles'/f'{p["slug"]}.html'
+ if not f.exists():continue
+ article_text=f.read_text('utf-8')
+ check('utm_source=chatgpt.com' not in article_text,f'{f.name}: drafting tracking parameter')
+ check(not re.search(r'<a[^>]*>\s*<a\b',article_text,re.I),f'{f.name}: nested anchor')
+ nodes=ld_nodes(article_text)
+ article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting')),None)
+ if article and isinstance(article.get('author'),dict) and article['author'].get('url'):
+  check(article['author'].get('@id')==article['author']['url'].rstrip('#')+'#person',f'{f.name}: author @id')
+ high_risk=(p['slug'] in explicit_high_risk or 'безопас' in str(p.get('category','')).lower() or any(str(t).lower()=='безопасность еды' for t in (p.get('tags') or [])))
+ if high_risk:
+  note=re.search(r'<div class="note">(.*?)</div>',article_text,re.S|re.I)
+  source_count=len(re.findall(r'<a\s+[^>]*href=',note.group(1),re.I)) if note else 0
+  check(source_count>=3,f'{f.name}: high-risk article has {source_count} verifiable source links; need >=3')
+for author in authors:
+ ap=ROOT/author['url']
+ if not ap.exists():continue
+ nodes=ld_nodes(ap.read_text('utf-8'))
+ profile=next((x for x in nodes if x.get('@type')=='ProfilePage'),None)
+ if profile and isinstance(profile.get('mainEntity'),dict):
+  expected=SITE+'/'+author['url']+'#person'
+  check(profile['mainEntity'].get('@id')==expected,f'{author["url"]}: Person @id')
+
 print(json.dumps({'posts':len(posts),'public_articles':public_count,'sitemap_urls':len(locs),'errors':errors},ensure_ascii=False,indent=2))
 raise SystemExit(bool(errors))
