@@ -1,0 +1,30 @@
+name: Refresh CMS fallback UI
+on:
+  push:
+    paths:
+      - '.github/workflows/bump-admin-server-cache.yml'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bump admin server cache key
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('admin.html')
+          s=p.read_text()
+          s=s.replace('assets/admin-server.js?v=20260925-adminfix1','assets/admin-server.js?v=20260925-adminfix2')
+          p.write_text(s)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add admin.html
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh CMS GitHub fallback UI'
+            git push
+          fi
