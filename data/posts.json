@@ -1,5 +1,35 @@
 [
   {
+    "slug": "k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas",
+    "headline": "К Новому году начинаю закупаться уже сейчас: Роскачество назвало продукты, которые можно брать уже сейчас",
+    "description": "Часть продуктов для новогоднего стола можно купить за несколько месяцев. Главное — проверить срок годности и условия хранения.",
+    "author": "Эльвира Шайберт",
+    "category": "Продукты",
+    "type": "news",
+    "typeLabel": "Новость",
+    "image": "https://provkus-media.ru/assets/uploads/k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas-1x1.jpg"
+    ],
+    "imageAlt": "Муж с женой покупают продукты к Новому году",
+    "url": "https://provkus-media.ru/articles/k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas.html",
+    "publishedAt": "2026-09-25T18:34:00.000Z",
+    "updatedAt": "2026-09-25T18:34:00.000Z",
+    "tags": [
+      "Еда",
+      "Продукты",
+      "Новый год",
+      "Покупки"
+    ],
+    "photoSource": "provkus-media.ru",
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true,
+    "coauthors": []
+  },
+  {
     "slug": "kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu",
     "headline": "Какой водой заливать рис для плова — горячей или холодной: запомните раз и навсегда, чтобы крупа не превратилась в кашу",
     "description": "Для плова рис лучше заливать кипятком: так температура в казане не падает, крупа начинает готовиться сразу и проще контролировать количество жидкости.",
@@ -27,7 +57,7 @@
       "Полезное"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -212,7 +242,7 @@
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
