@@ -3,7 +3,13 @@ from pathlib import Path
 TAG = '<script src="/assets/metrika.js" defer></script>'
 
 
+def is_verification_file(path: Path) -> bool:
+    return path.name.lower().startswith('yandex_') and path.suffix.lower() == '.html'
+
+
 def inject(path: Path) -> bool:
+    if is_verification_file(path):
+        return False
     text = path.read_text(encoding='utf-8')
     if '/assets/metrika.js' in text:
         return False
