@@ -1,0 +1,50 @@
+name: Verify Fruit Jazz recovery
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-fruit-jazz.yml'
+      - 'articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html'
+      - 'sitemap-fruit-jazz.xml'
+      - 'robots.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check GitHub Pages article
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://makarcudra7-dotcom.github.io/articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html'
+          ok=0
+          for i in $(seq 1 30); do
+            code=$(curl -L -sS -o /tmp/pages-article -w '%{http_code}' --max-time 20 "$url" || true)
+            echo "attempt=$i pages_status=$code"
+            if [ "$code" = "200" ] && grep -q 'Фруктовый джаз' /tmp/pages-article; then ok=1; break; fi
+            sleep 5
+          done
+          test "$ok" = "1"
+
+      - name: Check production article and sitemap
+        shell: bash
+        run: |
+          set -euo pipefail
+          article='https://provkus-media.ru/articles/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad.html'
+          sitemap='https://provkus-media.ru/sitemap-fruit-jazz.xml'
+          ok=0
+          for i in $(seq 1 30); do
+            code=$(curl -L -sS -o /tmp/prod-article -w '%{http_code}' --max-time 20 "$article" || true)
+            echo "attempt=$i production_status=$code"
+            if [ "$code" = "200" ] && grep -q 'Фруктовый джаз' /tmp/prod-article; then ok=1; break; fi
+            sleep 5
+          done
+          test "$ok" = "1"
+          curl -L -sS --fail --max-time 20 "$sitemap" -o /tmp/recovery-sitemap
+          grep -q 'zakryvayu-po-50-banok-i-vse-ravno-malo' /tmp/recovery-sitemap
+          echo 'Fruit Jazz recovery verified'
