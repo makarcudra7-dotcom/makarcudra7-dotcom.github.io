@@ -12,6 +12,7 @@ on:
       - 'portion-calculator.html'
       - 'assets/calculators.css'
       - 'assets/calculators.js'
+      - 'assets/home-tools.css'
       - 'scripts/build_indexes.py'
       - 'scripts/build_discovery_archives.py'
       - 'scripts/enhance_article_links.py'
@@ -50,12 +51,20 @@ jobs:
           test -f calculators.html
           test -f grams-spoons-cups.html
           test -f portion-calculator.html
+          test -f assets/home-tools.css
           grep -q 'Архив публикаций' archive.html
           grep -q 'provkus-media.ru/archive' sitemap.xml
           grep -q 'provkus-media.ru/calculators.html' sitemap.xml
           grep -q 'provkus-media.ru/grams-spoons-cups.html' sitemap.xml
           grep -q 'provkus-media.ru/portion-calculator.html' sitemap.xml
-          grep -q 'href="/calculators.html"' index.html
+          grep -q 'HOME-TOOLS-START' index.html
+          grep -q 'Калькуляторы ProVkus' index.html
+          grep -q '<a href="/category.html"' index.html
+          grep -q '<a href="/calculators.html"' index.html
+          grep -q '<a href="/authors.html"' index.html
+          grep -q '<a href="/archive.html"' index.html
+          grep -q 'Кускус' assets/calculators.js
+          grep -q 'Сгущённое молоко' assets/calculators.js
           grep -q 'admin-discover-guard.js' admin.html
           grep -q 'DISCOVERY-LINKS-START' articles/*.html
           node --check assets/calculators.js
