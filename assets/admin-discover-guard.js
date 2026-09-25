@@ -28,4 +28,7 @@
     if(remoteWidth>0&&remoteWidth<1200){e.preventDefault();e.stopImmediatePropagation();if(typeof flash==='function')flash('Обложка должна быть шириной минимум 1200 px для Discover')}
   },true);
   checkRemote();
+  const quality=document.createElement('script');
+  quality.src='assets/admin-quality-v2.js?v=20260925-precise1';
+  document.body.appendChild(quality);
 })();
