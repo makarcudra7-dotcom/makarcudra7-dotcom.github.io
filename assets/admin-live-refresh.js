@@ -27,7 +27,7 @@
         if(!r.ok)throw new Error('Не удалось прочитать очередь');
         q=await r.json();
       }
-      scheduled=Array.isArray(q)?q:[];
+      scheduled=(Array.isArray(q)?q:[]).filter(x=>!x?.pausedRecovery);
       window.__pvScheduledSnapshot=scheduled;
       if(window.store)window.store.scheduled=scheduled;
       return scheduled;
@@ -40,13 +40,12 @@
   function renderScheduledRows(items=scheduled){
     const tb=document.getElementById('postsTable');if(!tb)return;
     tb.querySelectorAll('tr[data-live-scheduled="1"]').forEach(x=>x.remove());
-    if(!Array.isArray(items)||!items.length)return;
-    const html=items.map(x=>{
+    const visible=(Array.isArray(items)?items:[]).filter(x=>!x?.pausedRecovery);
+    if(!visible.length)return;
+    const html=visible.map(x=>{
       const h=esc(x.post?.headline||x.material?.headline||x.slug);
       const a=esc(x.post?.author||x.material?.author||'—');
-      const status=x.pausedRecovery?'Восстановлено':'Запланировано';
-      const cls=x.pausedRecovery?'status warn':'status scheduled';
-      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="${cls}">${status}</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button></div></td></tr>`
+      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button></div></td></tr>`
     }).join('');
     tb.insertAdjacentHTML('afterbegin',html);
   }
