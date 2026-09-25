@@ -1,0 +1,37 @@
+name: Verify ProVkus calculators
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'calculators.html'
+      - 'grams-spoons-cups.html'
+      - 'portion-calculator.html'
+      - 'assets/calculators.css'
+      - 'assets/calculators.js'
+      - '.github/workflows/verify-calculators-public.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check calculator pages and assets
+        run: |
+          set -euo pipefail
+          for base in https://makarcudra7-dotcom.github.io https://provkus-media.ru; do
+            echo "=== $base ==="
+            for path in calculators.html grams-spoons-cups.html portion-calculator.html assets/calculators.css assets/calculators.js; do
+              code=$(curl -L -sS -o /tmp/pv -w '%{http_code}' --max-time 25 "$base/$path?pv=calc-1" || true)
+              echo "$path -> $code"
+              test "$code" = 200
+            done
+            curl -L -sS --max-time 25 "$base/calculators.html?pv=calc-1" | grep -q 'Кулинарные калькуляторы'
+            curl -L -sS --max-time 25 "$base/grams-spoons-cups.html?pv=calc-1" | grep -q 'Граммы ↔ ложки ↔ стаканы'
+            curl -L -sS --max-time 25 "$base/portion-calculator.html?pv=calc-1" | grep -q 'Калькулятор порций рецепта'
+            curl -L -sS --max-time 25 "$base/assets/calculators.js?pv=calc-1" | grep -q 'densities'
+          done
+          echo 'Public ProVkus calculators verified'
