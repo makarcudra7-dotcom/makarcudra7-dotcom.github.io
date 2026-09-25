@@ -5,12 +5,18 @@
     "url": "https://provkus-media.ru/articles/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku.html",
     "image": "https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-16x9.jpg",
     "ingredients": [
-      "200 г майонеза",
-      "150 г сметаны"
+      "майонеза",
+      "сметаны",
+      "3 зубчика чеснока",
+      "2 чайные ложки лимонного сока",
+      "5 чайных ложек соевого соуса"
     ],
     "ingredientLines": [
       "200 г майонеза",
-      "150 г сметаны"
+      "150 г сметаны",
+      "2–3 зубчика чеснока",
+      "1–2 чайные ложки лимонного сока",
+      "1–5 чайных ложек соевого соуса."
     ],
     "updatedAt": "2026-09-25T04:00:00.000Z"
   },
@@ -41,13 +47,13 @@
     "ingredients": [
       "мясной фарш",
       "яйца",
-      "репчатый лук",
+      "лук репчатый",
       "батон",
       "сыр",
       "панировочные сухари",
       "растительное масло",
-      "зелёный лук",
-      "соль и чёрный перец"
+      "зеленый лук",
+      "соль и черный перец"
     ],
     "ingredientLines": [
       "мясной фарш — 500 г",
@@ -75,7 +81,7 @@
       "твердый сыр",
       "растительное масло",
       "разрыхлитель",
-      "соль",
+      "соль — ½ ч. ложки",
       "черный перец"
     ],
     "ingredientLines": [
@@ -97,14 +103,26 @@
     "url": "https://provkus-media.ru/articles/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom.html",
     "image": "https://provkus-media.ru/assets/uploads/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom-16x9.jpg",
     "ingredients": [
-      "1 луковица",
-      "2 ст. л. муки",
-      "50 г сыра"
+      "картофелины",
+      "лук репчатый",
+      "болгарский перец",
+      "яйца",
+      "муки",
+      "сыра",
+      "петрушка",
+      "соль, перец и паприка",
+      "растительное масло"
     ],
     "ingredientLines": [
+      "2 картофелины",
       "1 луковица",
+      "1 болгарский перец",
+      "2 яйца",
       "2 ст. л. муки",
-      "50 г сыра"
+      "50 г сыра",
+      "петрушка",
+      "соль, перец и паприка",
+      "растительное масло."
     ],
     "updatedAt": "2026-09-23T02:21:01Z"
   },
@@ -124,12 +142,12 @@
     "image": "https://provkus-media.ru/assets/covers/tykvennyi-krem-sup-s-yablokom-v2-16x9.jpg",
     "ingredients": [
       "тыква",
-      "кисло",
+      "кисло-сладкое яблоко",
       "лук",
       "чеснок",
       "бульон или вода",
-      "сливки 10",
-      "копчёная паприка",
+      "сливки",
+      "копченая паприка",
       "масло, соль, перец"
     ],
     "ingredientLines": [
@@ -150,7 +168,7 @@
     "url": "https://provkus-media.ru/articles/yabloki-s-indeikoi-i-timyanom.html",
     "image": "https://provkus-media.ru/assets/covers/yabloki-s-indeikoi-i-timyanom-v2-16x9.jpg",
     "ingredients": [
-      "крупные яблоки",
+      "яблоки",
       "фарш индейки",
       "лук",
       "тимьян",
@@ -178,7 +196,7 @@
       "картофель",
       "грибы",
       "лук",
-      "сливки 15%",
+      "сливки",
       "зернистая горчица",
       "чеснок",
       "укроп, соль, перец, масло"
@@ -202,12 +220,12 @@
     "ingredients": [
       "груша",
       "салатный микс",
-      "мягкий или полутвёрдый сыр",
+      "мягкий или полутвердый сыр",
       "грецкие орехи",
       "горчица",
-      "мёд",
+      "мед",
       "лимонный сок",
-      "оливковое масло"
+      "растительное масло"
     ],
     "ingredientLines": [
       "груша — 1 крупная",
@@ -233,7 +251,7 @@
       "чеснок",
       "сахар",
       "яблочный уксус",
-      "копчёная паприка",
+      "копченая паприка",
       "соль, перец"
     ],
     "ingredientLines": [
@@ -254,12 +272,12 @@
     "url": "https://provkus-media.ru/articles/vinegret-s-zharenoi-tykvoi.html",
     "image": "https://provkus-media.ru/assets/covers/vinegret-s-zharenoi-tykvoi-v2-16x9.jpg",
     "ingredients": [
-      "свёкла",
+      "свекла",
       "картофель",
       "морковь",
       "тыква",
-      "маринованные грибы",
-      "огурцы солёные",
+      "грибы",
+      "огурцы",
       "горошек",
       "масло",
       "горчица",
@@ -285,11 +303,11 @@
     "url": "https://provkus-media.ru/articles/kuritsa-s-yablokami-gorchitsa-med.html",
     "image": "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-16x9.jpg",
     "ingredients": [
-      "куриное филе или бёдра без кости",
+      "куриная грудка",
       "яблоки",
       "лук",
       "горчица",
-      "мёд",
+      "мед",
       "вода или бульон",
       "тимьян",
       "соль, перец, масло"
@@ -318,8 +336,8 @@
       "соевый соус",
       "чеснок",
       "имбирь",
-      "кунжутное или растительное масло",
-      "зелёный лук, кунжут"
+      "растительное масло",
+      "зеленый лук, кунжут"
     ],
     "ingredientLines": [
       "удон — 250 г",
