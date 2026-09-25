@@ -6,7 +6,8 @@ from pathlib import Path
 AUTHORS_PATH = Path("data/authors.json")
 ADMIN_PATH = Path("admin.html")
 INDEX_PATH = Path("index.html")
-ASSET_VERSION = "20260923-email"
+ASSET_VERSION = "20260925-author-trust"
+SITE = "https://provkus-media.ru"
 
 
 def replace_once(pattern: str, repl: str, text: str, label: str) -> str:
@@ -14,6 +15,58 @@ def replace_once(pattern: str, repl: str, text: str, label: str) -> str:
     if count != 1:
         raise RuntimeError(f"Could not update {label}: expected 1 match, got {count}")
     return updated
+
+
+def author_schema(author: dict) -> str:
+    person_url = f"{SITE}/{author['url']}"
+    image_url = f"{SITE}/{author['photo']}"
+    data = {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "url": person_url,
+        "name": f"{author['name']} — автор ProVkus",
+        "description": author.get("metaDescription") or author["bio"],
+        "mainEntity": {
+            "@type": "Person",
+            "name": author["name"],
+            "jobTitle": author["role"],
+            "description": author["bio"],
+            "image": image_url,
+            "url": person_url,
+            "knowsAbout": author["topics"],
+            "worksFor": {
+                "@type": "Organization",
+                "name": "ProVkus",
+                "url": SITE,
+            },
+        },
+    }
+    return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "</script>"
+
+
+def trust_panel(author: dict) -> str:
+    topics = "".join(f"<span>{html.escape(topic)}</span>" for topic in author["topics"])
+    return (
+        '<section class="author-trust-panel" aria-labelledby="author-trust-title">'
+        '<h2 id="author-trust-title">О работе автора</h2>'
+        '<div class="author-trust-grid">'
+        '<div class="author-trust-item"><h3>Специализация</h3>'
+        f'<p>{html.escape(author["lead"])}</p></div>'
+        '<div class="author-trust-item"><h3>Как готовит материалы</h3>'
+        f'<p>{html.escape(author["method"])}</p></div>'
+        '<div class="author-trust-item"><h3>Проверка фактов</h3>'
+        '<p>Фактические утверждения проверяются по первичным или заслуживающим доверия источникам. Для тем о безопасности еды редакционный стандарт требует не менее трёх проверяемых источников.</p></div>'
+        '<div class="author-trust-item"><h3>С какими вопросами обращаться</h3>'
+        f'<p>{html.escape(author["useful"])}</p></div>'
+        '</div>'
+        f'<div class="author-trust-topics" aria-label="Темы автора">{topics}</div>'
+        '<div class="author-trust-links">'
+        '<a href="/editorial-policy.html">Редакционные стандарты →</a>'
+        '<a href="/editorial.html">О редакции →</a>'
+        '</div>'
+        '<p class="author-trust-note">Профиль описывает редакционную специализацию и фактический подход к материалам. ProVkus не приписывает авторам неподтверждённые дипломы, сертификаты или профессиональные статусы.</p>'
+        '</section>'
+    )
 
 
 def sync_author(author: dict) -> None:
@@ -24,7 +77,6 @@ def sync_author(author: dict) -> None:
     text = page.read_text("utf-8")
     bio = html.escape(author["bio"], quote=False)
     meta = html.escape(author.get("metaDescription") or author["bio"], quote=True)
-    role = html.escape(author["role"], quote=False)
 
     text = replace_once(
         r'<meta name="description" content="[^"]*">',
@@ -36,7 +88,6 @@ def sync_author(author: dict) -> None:
     hero_match = re.search(r'<section class="author-hero">.*?</section>', text, flags=re.S)
     if not hero_match:
         raise RuntimeError(f"Author hero not found in {page}")
-
     hero = hero_match.group(0)
     hero = replace_once(
         r'(<p><strong>.*?</strong></p>)<p>.*?</p>',
@@ -46,12 +97,37 @@ def sync_author(author: dict) -> None:
     )
     text = text[: hero_match.start()] + hero + text[hero_match.end() :]
 
-    text, _ = re.subn(
-        r'("jobTitle"\s*:\s*")[^"]*(")',
-        lambda m: m.group(1) + role + m.group(2),
+    # Replace the existing ProfilePage JSON-LD with a richer, factual profile.
+    schema = author_schema(author)
+    text, schema_count = re.subn(
+        r'<script type="application/ld\+json">(?:(?!</script>).)*"@type"\s*:\s*"ProfilePage"(?:(?!</script>).)*</script>',
+        schema,
         text,
         count=1,
+        flags=re.S,
     )
+    if schema_count != 1:
+        raise RuntimeError(f"Could not refresh ProfilePage schema in {page}")
+
+    # Make the trust layer server-rendered and idempotent.
+    text = re.sub(r'<section class="author-trust-panel".*?</section>', '', text, flags=re.S)
+    hero_match = re.search(r'<section class="author-hero">.*?</section>', text, flags=re.S)
+    panel = trust_panel(author)
+    text = text[: hero_match.end()] + panel + text[hero_match.end() :]
+
+    if '/assets/author-trust.css' not in text:
+        text = text.replace(
+            '</head>',
+            f'<link rel="stylesheet" href="/assets/author-trust.css?v={ASSET_VERSION}"></head>',
+            1,
+        )
+    else:
+        text = re.sub(
+            r'/assets/author-trust\.css\?v=[^"\']+',
+            f'/assets/author-trust.css?v={ASSET_VERSION}',
+            text,
+            count=1,
+        )
 
     fresh_scripts = (
         f'<script src="/assets/community.js?v={ASSET_VERSION}"></script>'
