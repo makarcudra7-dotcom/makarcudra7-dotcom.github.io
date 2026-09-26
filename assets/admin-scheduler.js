@@ -26,7 +26,10 @@
   async function writeQueue(items,message='Update scheduled publications'){
     const next=[...items].sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt));
     await window.putFile(QUEUE_PATH,JSON.stringify(next,null,2),message);
-    if(typeof store!=='undefined'){store.scheduled=next.filter(x=>!x?.pausedRecovery);saveStore?.()}
+    const visible=next.filter(x=>!x?.pausedRecovery);
+    if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store}
+    window.__pvScheduledSnapshot=visible;
+    window.dispatchEvent(new CustomEvent('pv-scheduled-updated',{detail:{items:next}}));
     window.renderPosts?.();
     return next
   }
@@ -127,7 +130,8 @@
     const q=await readQueue();
     if(!Array.isArray(q))return false;
     const visible=q.filter(x=>!x?.pausedRecovery);
-    if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store;window.renderPosts?.()}
+    if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store;window.__pvScheduledSnapshot=visible;window.renderPosts?.()}
+    window.dispatchEvent(new CustomEvent('pv-scheduled-updated',{detail:{items:q}}));
     return true
   }
   window.reloadScheduledQueue=loadQueue;
