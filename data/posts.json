@@ -1,5 +1,35 @@
 [
   {
+    "slug": "vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu",
+    "headline": "Чай выбираю по 4 признакам: что проверяю на упаковке и какой домашний штрих меняет вкус обычной чашки",
+    "description": "Хороший чай выбирают не только по цене и красивой коробке. Четыре простые проверки помогают оценить покупку ещё в магазине.",
+    "author": "Илья Титюлькин",
+    "category": "Советы и лайфхаки",
+    "type": "guide",
+    "typeLabel": "Гайд",
+    "image": "https://provkus-media.ru/assets/uploads/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu-1x1.jpg"
+    ],
+    "imageAlt": "Покупатель выбирает чай в магазине и изучает упаковку",
+    "url": "https://provkus-media.ru/articles/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu.html",
+    "publishedAt": "2026-09-26T04:30:00.000Z",
+    "updatedAt": "2026-09-25T21:21:00.000Z",
+    "tags": [
+      "Еда",
+      "Чай",
+      "Напитки",
+      "Продукты",
+      "Полезное"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy",
     "headline": "Тыкву не режу на кусочки: прячу внутрь творог, чеснок и сыр — получается горячая «лодочка» с румяной корочкой",
     "description": "Половинки тыквы становятся съедобной формой для нежной творожной начинки с чесноком, зеленью и сыром.",
@@ -81,7 +111,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": []
   },
@@ -285,7 +315,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
