@@ -42,12 +42,15 @@ jobs:
       - name: Refresh crawlable pages and indexes
         if: steps.publication_changes.outputs.changed == 'true'
         run: python3 scripts/seo_hardening.py
-      - name: Generate responsive homepage images
+      - name: Generate responsive homepage images and quality surfaces
         if: steps.publication_changes.outputs.changed == 'true'
         run: |
           python3 scripts/optimize_home_images.py
           python3 scripts/build_indexes.py
           python3 scripts/optimize_home_markup.py
+          python3 scripts/quality_sync.py
+          node --check assets/app.js
+          node --check assets/community.js
       - name: Commit scheduler changes
         if: steps.publication_changes.outputs.changed == 'true'
         run: |
@@ -57,6 +60,6 @@ jobs:
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
-          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
+          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/app.js assets/community.js sitemap.xml feed.xml
           git commit -m "Sync scheduled materials"
           git push origin HEAD:main
