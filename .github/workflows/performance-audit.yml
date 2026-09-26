@@ -1,0 +1,90 @@
+name: Mobile performance audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/app.js'
+      - 'assets/public.css'
+      - 'scripts/optimize_home_hero.py'
+      - '.github/workflows/performance-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Try Google PageSpeed Insights mobile
+        id: psi
+        continue-on-error: true
+        run: |
+          curl -fsS --get 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed' \
+            --data-urlencode 'url=https://provkus-media.ru/' \
+            --data-urlencode 'strategy=mobile' \
+            --data-urlencode 'category=PERFORMANCE' \
+            --data-urlencode 'category=ACCESSIBILITY' \
+            --data-urlencode 'category=BEST_PRACTICES' \
+            --data-urlencode 'category=SEO' \
+            -o psi.json
+          python3 - <<'PY'
+          import json, sys
+          d=json.load(open('psi.json',encoding='utf-8'))
+          lr=d.get('lighthouseResult')
+          if not lr:
+              print(json.dumps(d,ensure_ascii=False)[:2000])
+              sys.exit(1)
+          cats=lr['categories']; audits=lr['audits']
+          def score(k): return round(cats[k]['score']*100)
+          def val(k): return audits[k].get('displayValue','n/a')
+          print('PAGESPEED_MOBILE')
+          print('Performance:', score('performance'))
+          print('Accessibility:', score('accessibility'))
+          print('Best Practices:', score('best-practices'))
+          print('SEO:', score('seo'))
+          print('FCP:', val('first-contentful-paint'))
+          print('LCP:', val('largest-contentful-paint'))
+          print('Speed Index:', val('speed-index'))
+          print('TBT:', val('total-blocking-time'))
+          print('CLS:', val('cumulative-layout-shift'))
+          for key in ('uses-responsive-images','uses-optimized-images','render-blocking-resources'):
+              if key in audits:
+                  print(key+':', audits[key].get('displayValue',''))
+          PY
+
+      - name: Install Lighthouse fallback
+        if: steps.psi.outcome == 'failure'
+        run: npm install --global lighthouse
+
+      - name: Run Lighthouse mobile fallback
+        if: steps.psi.outcome == 'failure'
+        run: |
+          lighthouse 'https://provkus-media.ru/' \
+            --quiet \
+            --chrome-flags='--headless --no-sandbox' \
+            --form-factor=mobile \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --output=json \
+            --output-path=lighthouse.json
+          python3 - <<'PY'
+          import json
+          d=json.load(open('lighthouse.json',encoding='utf-8'))
+          cats=d['categories']; audits=d['audits']
+          def score(k): return round(cats[k]['score']*100)
+          def val(k): return audits[k].get('displayValue','n/a')
+          print('LIGHTHOUSE_MOBILE_FALLBACK')
+          print('Performance:', score('performance'))
+          print('Accessibility:', score('accessibility'))
+          print('Best Practices:', score('best-practices'))
+          print('SEO:', score('seo'))
+          print('FCP:', val('first-contentful-paint'))
+          print('LCP:', val('largest-contentful-paint'))
+          print('Speed Index:', val('speed-index'))
+          print('TBT:', val('total-blocking-time'))
+          print('CLS:', val('cumulative-layout-shift'))
+          PY
