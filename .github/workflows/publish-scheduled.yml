@@ -36,9 +36,17 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
             echo "Publication changes detected"
           fi
+      - name: Install image dependencies
+        if: steps.publication_changes.outputs.changed == 'true'
+        run: python3 -m pip install --quiet pillow
       - name: Refresh crawlable pages and indexes
         if: steps.publication_changes.outputs.changed == 'true'
         run: python3 scripts/seo_hardening.py
+      - name: Generate responsive homepage images
+        if: steps.publication_changes.outputs.changed == 'true'
+        run: |
+          python3 scripts/optimize_home_images.py
+          python3 scripts/build_indexes.py
       - name: Commit scheduler changes
         if: steps.publication_changes.outputs.changed == 'true'
         run: |
@@ -48,6 +56,6 @@ jobs:
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
-          git add .github/scheduled-posts.json data/posts.json articles/ index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
+          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
           git commit -m "Sync scheduled materials"
           git push origin HEAD:main
