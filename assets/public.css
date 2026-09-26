@@ -10,138 +10,52 @@
 /* World cuisines home section */
 .pv-world-home{padding:22px 0 12px}.pv-world-home .container{padding:26px;border-radius:24px;background:#1f3029;color:#fff}.pv-world-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:18px}.pv-world-kicker{display:block;margin-bottom:7px;color:#ef8a6c;font-size:10px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.pv-world-head h2{margin:0;font:800 clamp(32px,4vw,48px)/.98 Georgia,serif;letter-spacing:-1.4px}.pv-world-head p{max-width:680px;margin:8px 0 0;color:#cdd8d3;font-size:14px;line-height:1.5}.pv-world-more{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:10px 15px;border-radius:999px;background:#fff;color:#1f3029;font-size:12px;font-weight:900;white-space:nowrap}.pv-world-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.pv-world-grid a{display:flex;flex-direction:column;gap:4px;min-width:0;padding:15px 16px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:rgba(255,255,255,.055);color:#fff;text-decoration:none;transition:transform .15s ease,background .15s ease}.pv-world-grid a:hover{transform:translateY(-1px);background:rgba(255,255,255,.1)}.pv-world-grid strong{font:800 20px/1.05 Georgia,serif}.pv-world-grid span{color:#aebdb7;font-size:11px}
 
-@media (min-width:1001px){
-  .hero-grid{align-items:start!important}
-  .hero-grid .lead-card{
-    display:grid!important;
-    grid-template-rows:auto auto!important;
-    min-height:0!important;
-    align-self:start!important;
-    align-items:stretch!important;
-    color:var(--ink)!important;
-    background:var(--paper)!important;
-  }
-  .hero-grid .lead-card>img{
-    position:relative!important;
-    inset:auto!important;
-    width:100%!important;
-    height:auto!important;
-    min-height:0!important;
-    max-height:none!important;
-    aspect-ratio:16/9!important;
-    object-fit:cover!important;
-    object-position:center 42%!important;
-  }
-  .hero-grid .lead-card:after{display:none!important}
-  .hero-grid .lead-copy{
-    position:relative!important;
-    z-index:2!important;
-    max-width:none!important;
-    padding:24px 28px 26px!important;
-    background:var(--paper)!important;
-    color:var(--ink)!important;
-  }
-  .hero-grid .lead-card .eyebrow{color:var(--accent)!important}
-  .hero-grid .lead-copy h1{
-    max-width:18ch!important;
-    margin:7px 0 11px!important;
-    font-size:clamp(38px,3.5vw,52px)!important;
-    line-height:1.01!important;
-    letter-spacing:-1.6px!important;
-    color:var(--ink)!important;
-  }
-  .hero-grid .lead-copy p{
-    max-width:68ch!important;
-    margin:0!important;
-    font-size:15px!important;
-    line-height:1.48!important;
-    color:var(--muted)!important;
-  }
-  .hero-grid .lead-copy .meta-row{
-    margin-top:13px!important;
-    color:var(--muted)!important;
-  }
+/* Desktop/tablet hero: photo and copy are separate blocks, never an overlay. */
+.hero-grid{align-items:start!important}
+.hero-grid .lead-card{display:grid!important;grid-template-rows:auto auto!important;min-height:0!important;align-self:start!important;align-items:stretch!important;color:var(--ink)!important;background:var(--paper)!important;overflow:hidden!important}
+.hero-grid .lead-card>img{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:16/9!important;object-fit:cover!important;object-position:center 42%!important}
+.hero-grid .lead-card:after{display:none!important}
+.hero-grid .lead-copy{position:relative!important;inset:auto!important;z-index:2!important;max-width:none!important;padding:24px 28px 26px!important;background:var(--paper)!important;color:var(--ink)!important}
+.hero-grid .lead-card .eyebrow{color:var(--accent)!important}
+.hero-grid .lead-copy h1{max-width:18ch!important;margin:7px 0 11px!important;font-size:clamp(38px,3.5vw,52px)!important;line-height:1.01!important;letter-spacing:-1.6px!important;color:var(--ink)!important}
+.hero-grid .lead-copy p{max-width:68ch!important;margin:0!important;font-size:15px!important;line-height:1.48!important;color:var(--muted)!important}
+.hero-grid .lead-copy .meta-row{margin-top:13px!important;color:var(--muted)!important}
 
-  /* Right rail: preserve editorial photos instead of forcing narrow portrait crops. */
-  .hero-side{
-    display:grid!important;
-    gap:14px!important;
-    align-content:start!important;
-  }
-  .hero-side .stack-card{
-    display:grid!important;
-    grid-template-columns:1fr!important;
-    grid-template-rows:auto 1fr!important;
-    min-height:0!important;
-    border-radius:18px!important;
-    overflow:hidden!important;
-    background:var(--paper)!important;
-  }
-  .hero-side .stack-card>img{
-    width:100%!important;
-    height:auto!important;
-    min-height:0!important;
-    aspect-ratio:16/9!important;
-    object-fit:cover!important;
-    object-position:center center!important;
-  }
-  .hero-side .stack-copy{
-    display:flex!important;
-    flex-direction:column!important;
-    min-width:0!important;
-    padding:14px 16px 15px!important;
-  }
-  .hero-side .badge{
-    align-self:flex-start!important;
-  }
-  .hero-side .stack-copy h3{
-    display:-webkit-box!important;
-    -webkit-box-orient:vertical!important;
-    -webkit-line-clamp:4!important;
-    overflow:hidden!important;
-    margin:7px 0 8px!important;
-    font-size:19px!important;
-    line-height:1.1!important;
-    letter-spacing:-.15px!important;
-  }
-  .hero-side .story-meta{
-    margin-top:auto!important;
-    padding-top:4px!important;
-    font-size:11px!important;
-  }
+@media (min-width:1001px){
+  .hero-side{display:grid!important;gap:14px!important;align-content:start!important}
+  .hero-side .stack-card{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto 1fr!important;min-height:0!important;border-radius:18px!important;overflow:hidden!important;background:var(--paper)!important}
+  .hero-side .stack-card>img{width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:16/9!important;object-fit:cover!important;object-position:center center!important}
+  .hero-side .stack-copy{display:flex!important;flex-direction:column!important;min-width:0!important;padding:14px 16px 15px!important}
+  .hero-side .badge{align-self:flex-start!important}
+  .hero-side .stack-copy h3{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:4!important;overflow:hidden!important;margin:7px 0 8px!important;font-size:19px!important;line-height:1.1!important;letter-spacing:-.15px!important}
+  .hero-side .story-meta{margin-top:auto!important;padding-top:4px!important;font-size:11px!important}
 }
 
 @media (max-width:1000px){
   .hero-main{gap:12px}
   .pv-ad-cta{grid-template-columns:1fr;padding:20px}.pv-ad-button{justify-self:start}
   .pv-world-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pv-world-head{align-items:start}
-  .hero-grid .lead-card:after{
-    background:linear-gradient(180deg,rgba(0,0,0,.02) 20%,rgba(0,0,0,.22) 48%,rgba(0,0,0,.88) 100%)!important;
-  }
-  .hero-grid .lead-copy{max-width:760px!important}
+  .hero-grid .lead-card{border-radius:20px!important}
+  .hero-grid .lead-copy{padding:20px 22px 22px!important}
+  .hero-grid .lead-copy h1{max-width:none!important;font-size:clamp(30px,6.8vw,43px)!important;line-height:1.03!important;letter-spacing:-1px!important}
+  .hero-grid .lead-copy p{font-size:14px!important;line-height:1.48!important}
   .hero-side .stack-card>img{object-position:center center!important}
 }
 
 @media (max-width:700px){
   .pv-ad-cta{padding:18px;border-radius:17px}.pv-ad-cta h2{font-size:24px}.pv-ad-cta p{font-size:12px}.pv-ad-button{width:100%}
   .pv-world-home{padding:14px 0 4px}.pv-world-home .container{padding:20px;border-radius:19px}.pv-world-head{display:grid;gap:14px}.pv-world-more{justify-self:start}.pv-world-grid{grid-template-columns:1fr 1fr;gap:8px}.pv-world-grid a{padding:13px}.pv-world-grid strong{font-size:17px}
-  .hero-grid .lead-copy h1{
-    font-size:clamp(31px,9vw,42px)!important;
-    line-height:1.01!important;
-  }
-  .hero-grid .lead-copy p{
-    display:-webkit-box!important;
-    -webkit-box-orient:vertical!important;
-    -webkit-line-clamp:2!important;
-    overflow:hidden!important;
-  }
+  .hero-grid .lead-card{display:block!important;min-height:0!important;background:var(--paper)!important;color:var(--ink)!important}
+  .hero-grid .lead-card>img{display:block!important;position:relative!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;object-fit:cover!important;border-radius:0!important}
+  .hero-grid .lead-copy{display:block!important;position:relative!important;inset:auto!important;padding:18px 18px 20px!important;background:var(--paper)!important;color:var(--ink)!important}
+  .hero-grid .lead-card .eyebrow{color:var(--accent)!important}
+  .hero-grid .lead-copy h1{max-width:none!important;margin:6px 0 10px!important;font-size:clamp(27px,7.6vw,35px)!important;line-height:1.04!important;letter-spacing:-.7px!important;color:var(--ink)!important}
+  .hero-grid .lead-copy p{display:-webkit-box!important;-webkit-box-orient:vertical!important;-webkit-line-clamp:3!important;overflow:hidden!important;color:var(--muted)!important;font-size:14px!important;line-height:1.45!important}
+  .hero-grid .lead-copy .meta-row{color:var(--muted)!important;font-size:11px!important}
   .hero-side .stack-card{grid-template-columns:132px 1fr!important;grid-template-rows:1fr!important}
-  .hero-side .stack-card>img{
-    width:100%!important;
-    height:100%!important;
-    aspect-ratio:auto!important;
-    object-fit:cover!important;
-    object-position:center center!important;
-  }
+  .hero-side .stack-card>img{width:100%!important;height:100%!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:center center!important}
   .hero-side .stack-copy h3{-webkit-line-clamp:4!important}
 }
+
+/* Deferred home images use a neutral placeholder without starting a network request. */
+img.pv-defer-img{background:linear-gradient(110deg,rgba(127,127,127,.08),rgba(127,127,127,.15),rgba(127,127,127,.08));}
