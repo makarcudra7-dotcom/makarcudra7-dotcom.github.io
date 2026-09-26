@@ -82,11 +82,10 @@ jobs:
         run: |
           git config user.name "provkus-quality-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add scripts/quality_sync.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/app.js assets/community.js index.html authors.html category.html author-*.html articles/ sitemap.xml feed.xml assets/uploads
+          git add scripts/quality_sync.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/app.js assets/community.js '*.html' articles/ sitemap.xml feed.xml assets/uploads
           if git diff --cached --quiet; then
             echo "Already synchronized"
             exit 0
           fi
           git commit -m "Stabilize frontend, authors and SEO"
-          git pull --rebase origin main
           git push origin HEAD:main
