@@ -6,7 +6,7 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sat, 26 Sep 2026 01:06:00 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 02:06:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
   <item>
     <title>Тыкву не режу на кусочки: прячу внутрь творог, чеснок и сыр — получается горячая «лодочка» с румяной корочкой</title>
@@ -22,7 +22,7 @@
     <title>Огурец для райты слегка отжимаю: йогуртовый соус остаётся густым даже после холодильника</title>
     <link>https://provkus-media.ru/articles/indiya-rayta-s-ogurcom.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-rayta-s-ogurcom.html</guid>
-    <pubDate>Sat, 26 Sep 2026 01:06:00 GMT</pubDate>
+    <pubDate>Sat, 26 Sep 2026 02:06:00 GMT</pubDate>
     <description>Холодная индийская райта из йогурта, огурца, мяты и зиры.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
@@ -52,7 +52,7 @@
     <title>Алу гоби готовлю почти без воды: картофель и цветная капуста остаются кусочками, а специи покрывают овощи</title>
     <link>https://provkus-media.ru/articles/indiya-alu-gobi.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-alu-gobi.html</guid>
-    <pubDate>Fri, 25 Sep 2026 16:30:00 GMT</pubDate>
+    <pubDate>Fri, 25 Sep 2026 17:30:00 GMT</pubDate>
     <description>Домашнее алу гоби из картофеля и цветной капусты с томатами, куркумой, зирой и кориандром.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -92,7 +92,7 @@
     <title>Баттер-чикен делаю в два этапа: курицу сначала подрумяниваю, а потом ненадолго возвращаю в сливочно-томатный соус</title>
     <link>https://provkus-media.ru/articles/indiya-batter-chiken-po-domashnemu.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-batter-chiken-po-domashnemu.html</guid>
-    <pubDate>Fri, 25 Sep 2026 11:10:00 GMT</pubDate>
+    <pubDate>Fri, 25 Sep 2026 12:10:00 GMT</pubDate>
     <description>Домашний баттер-чикен с курицей в сливочно-томатном соусе с гарам масалой.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -109,6 +109,16 @@
     <media:content url="https://provkus-media.ru/assets/uploads/yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle-16x9.jpg" medium="image"/>
   </item>
   <item>
+    <title>Дал из красной чечевицы варю до кремовой густоты, а специи прогреваю отдельно и вливаю в самом конце</title>
+    <link>https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html</guid>
+    <pubDate>Fri, 25 Sep 2026 08:40:00 GMT</pubDate>
+    <description>Кремовый дал из красной чечевицы с томатами, куркумой, зирой и чесноком.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Кухни мира</category>
+    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
+  </item>
+  <item>
     <title>Говяжью тушёнку больше не беру наугад: 10 марок, где внутри — мясо кусками, а не жир и жилы</title>
     <link>https://provkus-media.ru/articles/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily.html</guid>
@@ -119,12 +129,12 @@
     <media:content url="https://provkus-media.ru/assets/uploads/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily-16x9.jpg" medium="image"/>
   </item>
   <item>
-    <title>Дал из красной чечевицы варю до кремовой густоты, а специи прогреваю отдельно и вливаю в самом конце</title>
-    <link>https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html</guid>
-    <pubDate>Fri, 25 Sep 2026 07:40:00 GMT</pubDate>
-    <description>Кремовый дал из красной чечевицы с томатами, куркумой, зирой и чесноком.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <title>Чана масала начинаю со специй и лука: нут добавляю уже в готовую томатную основу</title>
+    <link>https://provkus-media.ru/articles/indiya-chana-masala.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-chana-masala.html</guid>
+    <pubDate>Fri, 25 Sep 2026 05:20:00 GMT</pubDate>
+    <description>Пряная чана масала из нута с томатами, луком, имбирём, чесноком и гарам масалой.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
   </item>
@@ -137,16 +147,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Хранение продуктов</category>
     <media:content url="https://provkus-media.ru/assets/uploads/sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Чана масала начинаю со специй и лука: нут добавляю уже в готовую томатную основу</title>
-    <link>https://provkus-media.ru/articles/indiya-chana-masala.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-chana-masala.html</guid>
-    <pubDate>Fri, 25 Sep 2026 04:20:00 GMT</pubDate>
-    <description>Пряная чана масала из нута с томатами, луком, имбирём, чесноком и гарам масалой.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
   </item>
   <item>
     <title>«Миледи» — салат с королевским характером: курица, ананас и копчёный сыр — за столом сразу просят добавку</title>
@@ -162,9 +162,19 @@
     <title>Капустный салат с курицей заправляю лаймом в самом конце: овощи хрустят, арахис остаётся сухим</title>
     <link>https://provkus-media.ru/articles/vetnam-salat-s-kuricey-i-kapustoy.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-salat-s-kuricey-i-kapustoy.html</guid>
-    <pubDate>Thu, 24 Sep 2026 18:15:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 19:15:00 GMT</pubDate>
     <description>Свежий салат с курицей, капустой, морковью, кинзой, лаймом и арахисом.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Кухни мира</category>
+    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
+  </item>
+  <item>
+    <title>Вьетнамский кофе без кофеина делаю очень крепким: лёд и сгущёнка смягчают вкус уже в стакане</title>
+    <link>https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html</guid>
+    <pubDate>Thu, 24 Sep 2026 17:20:00 GMT</pubDate>
+    <description>Домашняя безкофеиновая версия вьетнамского холодного кофе со сгущённым молоком и льдом.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
   </item>
@@ -179,20 +189,10 @@
     <media:content url="https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-16x9.jpg" medium="image"/>
   </item>
   <item>
-    <title>Вьетнамский кофе без кофеина делаю очень крепким: лёд и сгущёнка смягчают вкус уже в стакане</title>
-    <link>https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html</guid>
-    <pubDate>Thu, 24 Sep 2026 16:20:00 GMT</pubDate>
-    <description>Домашняя безкофеиновая версия вьетнамского холодного кофе со сгущённым молоком и льдом.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
-  </item>
-  <item>
     <title>Спринг-роллы не замачиваю в миске надолго: рисовой бумаге хватает нескольких секунд, дальше она размягчается сама</title>
     <link>https://provkus-media.ru/articles/vetnam-spring-rolly-s-krevetkami.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-spring-rolly-s-krevetkami.html</guid>
-    <pubDate>Thu, 24 Sep 2026 14:10:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 15:10:00 GMT</pubDate>
     <description>Свежие вьетнамские спринг-роллы с креветками, рисовой лапшой, огурцом и зеленью.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -202,7 +202,7 @@
     <title>Бань-ми собираю только перед едой: хрустящий багет, горячая курица и холодные маринованные овощи</title>
     <link>https://provkus-media.ru/articles/vetnam-ban-mi-s-kuricey.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-ban-mi-s-kuricey.html</guid>
-    <pubDate>Thu, 24 Sep 2026 12:05:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 13:05:00 GMT</pubDate>
     <description>Вьетнамский багет бань-ми с курицей, маринованной морковью, огурцом и кинзой.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -212,7 +212,7 @@
     <title>Фо-га собираю уже в миске: лапша и зелень не варятся часами, а горячий бульон доводит всё до нужной температуры</title>
     <link>https://provkus-media.ru/articles/vetnam-fo-ga-po-domashnemu.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-fo-ga-po-domashnemu.html</guid>
-    <pubDate>Thu, 24 Sep 2026 10:15:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 11:15:00 GMT</pubDate>
     <description>Домашний вьетнамский фо-га с куриным бульоном, рисовой лапшой, имбирём, бадьяном и зеленью.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
@@ -222,7 +222,7 @@
     <title>Клейкий рис для манго пропитываю кокосовым соусом горячим: крупа впитывает сладость, но не превращается в кашу</title>
     <link>https://provkus-media.ru/articles/tailand-mango-s-kleykim-risom.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-mango-s-kleykim-risom.html</guid>
-    <pubDate>Thu, 24 Sep 2026 08:40:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 09:40:00 GMT</pubDate>
     <description>Тайский десерт из спелого манго, клейкого риса и сладкого кокосового молока.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -232,7 +232,7 @@
     <title>Тайский салат с огурцом заправляю перед столом: лайм, арахис и чили остаются яркими, а овощи — хрустящими</title>
     <link>https://provkus-media.ru/articles/tailand-tayskiy-salat-s-ogurcom.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-tayskiy-salat-s-ogurcom.html</guid>
-    <pubDate>Thu, 24 Sep 2026 07:05:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 08:05:00 GMT</pubDate>
     <description>Свежий тайский салат с огурцом, морковью, лаймом, арахисом и острой кисло-сладкой заправкой.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -242,9 +242,19 @@
     <title>Зелёное карри начинаю с пасты: прогреваю её в кокосовом молоке, и только потом добавляю овощи</title>
     <link>https://provkus-media.ru/articles/tailand-zelenoe-karri-s-ovoschami.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-zelenoe-karri-s-ovoschami.html</guid>
-    <pubDate>Thu, 24 Sep 2026 05:20:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 06:20:00 GMT</pubDate>
     <description>Тайское зелёное карри с кокосовым молоком, баклажаном, перцем и базиликом.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Кухни мира</category>
+    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
+  </item>
+  <item>
+    <title>Том-кха не кипячу после лайма: кокосовый суп остаётся мягким, а цитрусовый аромат — свежим</title>
+    <link>https://provkus-media.ru/articles/tailand-tom-kha-s-kuricey.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-tom-kha-s-kuricey.html</guid>
+    <pubDate>Thu, 24 Sep 2026 04:45:00 GMT</pubDate>
+    <description>Домашний том-кха с курицей, кокосовым молоком, грибами, имбирём, лаймом и чили.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
   </item>
@@ -259,20 +269,10 @@
     <media:content url="https://provkus-media.ru/assets/uploads/lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net-16x9.jpg" medium="image"/>
   </item>
   <item>
-    <title>Том-кха не кипячу после лайма: кокосовый суп остаётся мягким, а цитрусовый аромат — свежим</title>
-    <link>https://provkus-media.ru/articles/tailand-tom-kha-s-kuricey.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-tom-kha-s-kuricey.html</guid>
-    <pubDate>Thu, 24 Sep 2026 03:45:00 GMT</pubDate>
-    <description>Домашний том-кха с курицей, кокосовым молоком, грибами, имбирём, лаймом и чили.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
-  </item>
-  <item>
     <title>Пад-тай не держу на огне дольше нужного: лапшу замачиваю заранее, а соус впитывается уже на сковороде</title>
     <link>https://provkus-media.ru/articles/tailand-pad-tay-s-kuricey.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-pad-tay-s-kuricey.html</guid>
-    <pubDate>Thu, 24 Sep 2026 02:10:00 GMT</pubDate>
+    <pubDate>Thu, 24 Sep 2026 03:10:00 GMT</pubDate>
     <description>Домашний пад-тай с курицей, рисовой лапшой, яйцом, ростками, арахисом и лаймом.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -292,7 +292,7 @@
     <title>Тамагояки сворачиваю тонкими слоями: новый омлет подливаю под рулет, а не жарю одной толстой массой</title>
     <link>https://provkus-media.ru/articles/yaponiya-tamagoyaki.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-tamagoyaki.html</guid>
-    <pubDate>Wed, 23 Sep 2026 18:15:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 19:15:00 GMT</pubDate>
     <description>Домашний тамагояки — многослойный японский омлет с лёгкой сладостью и соевым соусом.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -312,7 +312,7 @@
     <title>Окономияки делаю толстым, но жарю под крышкой: капуста успевает стать мягкой, а корочка — румяной</title>
     <link>https://provkus-media.ru/articles/yaponiya-okonomiyaki-po-domashnemu.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-okonomiyaki-po-domashnemu.html</guid>
-    <pubDate>Wed, 23 Sep 2026 16:20:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 17:20:00 GMT</pubDate>
     <description>Домашний японский капустный блин окономияки с яйцом, зелёным луком и соусом.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
@@ -342,7 +342,7 @@
     <title>Мисо-пасту не кипячу: развожу отдельно и добавляю в суп после снижения огня</title>
     <link>https://provkus-media.ru/articles/yaponiya-miso-sup-s-tofu.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-miso-sup-s-tofu.html</guid>
-    <pubDate>Wed, 23 Sep 2026 14:10:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 15:10:00 GMT</pubDate>
     <description>Домашний мисо-суп с тофу, водорослями и зелёным луком. Как правильно добавить мисо-пасту.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -352,7 +352,7 @@
     <title>Онигири формую тёплым рисом и влажными руками: треугольники держатся без прессования в камень</title>
     <link>https://provkus-media.ru/articles/yaponiya-onigiri-s-tuncom.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-onigiri-s-tuncom.html</guid>
-    <pubDate>Wed, 23 Sep 2026 12:05:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 13:05:00 GMT</pubDate>
     <description>Японские рисовые треугольники онигири с начинкой из тунца и нори.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -362,7 +362,7 @@
     <title>Оякодон не пересушиваю: яйцо вливаю в два захода, чтобы часть осталась нежной поверх курицы и риса</title>
     <link>https://provkus-media.ru/articles/yaponiya-oyakodon.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-oyakodon.html</guid>
-    <pubDate>Wed, 23 Sep 2026 10:15:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 11:15:00 GMT</pubDate>
     <description>Японская рисовая миска оякодон с курицей, луком и мягким яйцом в соевом соусе.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
@@ -372,7 +372,7 @@
     <title>Ачичук режу почти прозрачными ломтиками и солю только перед столом — томаты не успевают утонуть в соке</title>
     <link>https://provkus-media.ru/articles/uzbekskaya-achichuk.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-achichuk.html</guid>
-    <pubDate>Wed, 23 Sep 2026 08:40:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 09:40:00 GMT</pubDate>
     <description>Свежий узбекский салат ачичук из тонко нарезанных томатов, лука, базилика и острого перца.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
@@ -382,7 +382,7 @@
     <title>Самсу делаю с большим количеством лука: начинка остаётся сочной даже после горячей духовки</title>
     <link>https://provkus-media.ru/articles/uzbekskaya-samsa-s-myasom.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-samsa-s-myasom.html</guid>
-    <pubDate>Wed, 23 Sep 2026 07:05:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 08:05:00 GMT</pubDate>
     <description>Домашняя самса с мясом, луком и зирой в слоёном тесте. Как собрать треугольники и сохранить сочную начинку.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -392,9 +392,19 @@
     <title>Маставу начинаю как жаркое, а заканчиваю как суп: мясо и овощи сначала обжариваю, потом добавляю рис</title>
     <link>https://provkus-media.ru/articles/uzbekskaya-mastava.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-mastava.html</guid>
-    <pubDate>Wed, 23 Sep 2026 05:20:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 06:20:00 GMT</pubDate>
     <description>Густой узбекский суп мастава с говядиной, рисом, картофелем, морковью и томатами.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Кухни мира</category>
+    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
+  </item>
+  <item>
+    <title>Дымляму складываю слоями и не перемешиваю: овощи сами дают сок, а мясо томится внизу</title>
+    <link>https://provkus-media.ru/articles/uzbekskaya-dymlyama.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-dymlyama.html</guid>
+    <pubDate>Wed, 23 Sep 2026 04:45:00 GMT</pubDate>
+    <description>Домашняя дымляма с говядиной, картофелем, капустой, морковью, томатами и луком.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
   </item>
@@ -409,20 +419,10 @@
     <media:content url="https://provkus-media.ru/assets/uploads/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat-16x9.jpg?v=20260923-image" medium="image"/>
   </item>
   <item>
-    <title>Дымляму складываю слоями и не перемешиваю: овощи сами дают сок, а мясо томится внизу</title>
-    <link>https://provkus-media.ru/articles/uzbekskaya-dymlyama.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-dymlyama.html</guid>
-    <pubDate>Wed, 23 Sep 2026 03:45:00 GMT</pubDate>
-    <description>Домашняя дымляма с говядиной, картофелем, капустой, морковью, томатами и луком.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
-  </item>
-  <item>
     <title>Плов с говядиной не мешаю после добавления риса: сначала зирвак, потом крупа — так зёрна остаются рассыпчатыми</title>
     <link>https://provkus-media.ru/articles/uzbekskaya-plov-s-govyadinoy.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-plov-s-govyadinoy.html</guid>
-    <pubDate>Wed, 23 Sep 2026 02:10:00 GMT</pubDate>
+    <pubDate>Wed, 23 Sep 2026 03:10:00 GMT</pubDate>
     <description>Домашний плов с говядиной, морковью, луком, зирой и чесноком. Порядок приготовления зирвака и риса.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -439,6 +439,16 @@
     <media:content url="https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-16x9.jpg" medium="image"/>
   </item>
   <item>
+    <title>Оджахури готовлю в два этапа: картофель и мясо румяню отдельно, а соединяю только в финале</title>
+    <link>https://provkus-media.ru/articles/gruziya-odzhahuri.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-odzhahuri.html</guid>
+    <pubDate>Tue, 22 Sep 2026 19:15:00 GMT</pubDate>
+    <description>Оджахури со свининой, картофелем, луком, томатами и кинзой. Домашний рецепт на сковороде.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Кухни мира</category>
+    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
+  </item>
+  <item>
     <title>Картофельная лепёшка с сыром и овощами на сковороде</title>
     <link>https://provkus-media.ru/articles/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom.html</guid>
@@ -449,12 +459,12 @@
     <media:content url="https://provkus-media.ru/assets/uploads/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom-16x9.jpg" medium="image"/>
   </item>
   <item>
-    <title>Оджахури готовлю в два этапа: картофель и мясо румяню отдельно, а соединяю только в финале</title>
-    <link>https://provkus-media.ru/articles/gruziya-odzhahuri.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-odzhahuri.html</guid>
-    <pubDate>Tue, 22 Sep 2026 18:15:00 GMT</pubDate>
-    <description>Оджахури со свининой, картофелем, луком, томатами и кинзой. Домашний рецепт на сковороде.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
+    <title>Пхали из шпината хорошо отжимаю перед орехами: тогда масса держит форму и не расползается на тарелке</title>
+    <link>https://provkus-media.ru/articles/gruziya-phali-iz-shpinata.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-phali-iz-shpinata.html</guid>
+    <pubDate>Tue, 22 Sep 2026 17:20:00 GMT</pubDate>
+    <description>Пхали из шпината с грецкими орехами, чесноком, кинзой и уксусом. Холодная грузинская закуска.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
   </item>
@@ -469,20 +479,10 @@
     <media:content url="https://provkus-media.ru/assets/uploads/sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki-16x9.jpg" medium="image"/>
   </item>
   <item>
-    <title>Пхали из шпината хорошо отжимаю перед орехами: тогда масса держит форму и не расползается на тарелке</title>
-    <link>https://provkus-media.ru/articles/gruziya-phali-iz-shpinata.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-phali-iz-shpinata.html</guid>
-    <pubDate>Tue, 22 Sep 2026 16:20:00 GMT</pubDate>
-    <description>Пхали из шпината с грецкими орехами, чесноком, кинзой и уксусом. Холодная грузинская закуска.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/world-cuisines-placeholder.svg" medium="image"/>
-  </item>
-  <item>
     <title>Лобио не превращаю в однородное пюре: часть фасоли разминаю, часть оставляю целой — получается густо и фактурно</title>
     <link>https://provkus-media.ru/articles/gruziya-lobio.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-lobio.html</guid>
-    <pubDate>Tue, 22 Sep 2026 14:10:00 GMT</pubDate>
+    <pubDate>Tue, 22 Sep 2026 15:10:00 GMT</pubDate>
     <description>Густое лобио из красной фасоли с луком, чесноком, кинзой, грецким орехом и специями.</description>
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
@@ -492,7 +492,7 @@
     <title>Чахохбили готовлю без лишней воды: томаты и лук сами дают достаточно соуса для курицы</title>
     <link>https://provkus-media.ru/articles/gruziya-chahohbili.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-chahohbili.html</guid>
-    <pubDate>Tue, 22 Sep 2026 12:05:00 GMT</pubDate>
+    <pubDate>Tue, 22 Sep 2026 13:05:00 GMT</pubDate>
     <description>Домашнее чахохбили с курицей, томатами, луком, чесноком, кинзой и хмели-сунели.</description>
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
@@ -502,7 +502,7 @@
     <title>Хачапури по-аджарски: яйцо добавляю в самом конце, чтобы желток остался кремовым, а сыр уже кипел</title>
     <link>https://provkus-media.ru/articles/gruziya-hachapuri-po-adzharski.html</link>
     <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-hachapuri-po-adzharski.html</guid>
-    <pubDate>Tue, 22 Sep 2026 10:15:00 GMT</pubDate>
+    <pubDate>Tue, 22 Sep 2026 11:15:00 GMT</pubDate>
     <description>Домашний хачапури по-аджарски с сыром, яйцом и маслом: как сформовать лодочку и не пересушить желток.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>

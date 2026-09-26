@@ -44,8 +44,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-rayta-s-ogurcom-16x9.webp",
     "imageAlt": "Райта с огурцом — домашний рецепт, Индия",
     "url": "https://provkus-media.ru/articles/indiya-rayta-s-ogurcom.html",
-    "publishedAt": "2026-09-26T01:06:00Z",
-    "updatedAt": "2026-09-26T01:06:00Z",
+    "publishedAt": "2026-09-26T02:06:00Z",
+    "updatedAt": "2026-09-26T02:06:00Z",
     "tags": [
       "Кухни мира",
       "Индия",
@@ -128,8 +128,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-alu-gobi-16x9.webp",
     "imageAlt": "Алу гоби — домашний рецепт, Индия",
     "url": "https://provkus-media.ru/articles/indiya-alu-gobi.html",
-    "publishedAt": "2026-09-25T16:30:00Z",
-    "updatedAt": "2026-09-25T16:30:00Z",
+    "publishedAt": "2026-09-25T17:30:00Z",
+    "updatedAt": "2026-09-25T17:30:00Z",
     "tags": [
       "Кухни мира",
       "Индия",
@@ -247,8 +247,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-batter-chiken-po-domashnemu-16x9.webp",
     "imageAlt": "Баттер-чикен — домашний рецепт, Индия",
     "url": "https://provkus-media.ru/articles/indiya-batter-chiken-po-domashnemu.html",
-    "publishedAt": "2026-09-25T11:10:00Z",
-    "updatedAt": "2026-09-25T11:10:00Z",
+    "publishedAt": "2026-09-25T12:10:00Z",
+    "updatedAt": "2026-09-25T12:10:00Z",
     "tags": [
       "Кухни мира",
       "Индия",
@@ -289,6 +289,32 @@
     "excludeRelated": false
   },
   {
+    "slug": "indiya-dal-iz-krasnoy-chechevicy",
+    "headline": "Дал из красной чечевицы варю до кремовой густоты, а специи прогреваю отдельно и вливаю в самом конце",
+    "description": "Кремовый дал из красной чечевицы с томатами, куркумой, зирой и чесноком.",
+    "author": "Екатерина Рукопляс",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-dal-iz-krasnoy-chechevicy-16x9.webp",
+    "imageAlt": "Дал из красной чечевицы — домашний рецепт, Индия",
+    "url": "https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html",
+    "publishedAt": "2026-09-25T08:40:00Z",
+    "updatedAt": "2026-09-25T08:40:00Z",
+    "tags": [
+      "Кухни мира",
+      "Индия",
+      "Дал из красной чечевицы"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
     "slug": "govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily",
     "headline": "Говяжью тушёнку больше не беру наугад: 10 марок, где внутри — мясо кусками, а не жир и жилы",
     "description": "Собрали 10 марок говяжьей тушёнки, на которые стоит обратить внимание, и простую проверку банки перед покупкой.",
@@ -321,10 +347,10 @@
     "excludeRelated": false
   },
   {
-    "slug": "indiya-dal-iz-krasnoy-chechevicy",
-    "headline": "Дал из красной чечевицы варю до кремовой густоты, а специи прогреваю отдельно и вливаю в самом конце",
-    "description": "Кремовый дал из красной чечевицы с томатами, куркумой, зирой и чесноком.",
-    "author": "Екатерина Рукопляс",
+    "slug": "indiya-chana-masala",
+    "headline": "Чана масала начинаю со специй и лука: нут добавляю уже в готовую томатную основу",
+    "description": "Пряная чана масала из нута с томатами, луком, имбирём, чесноком и гарам масалой.",
+    "author": "Эльвира Шайберт",
     "category": "Кухни мира",
     "type": "recipe",
     "typeLabel": "Рецепт",
@@ -332,15 +358,15 @@
     "images": [
       "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
     ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-dal-iz-krasnoy-chechevicy-16x9.webp",
-    "imageAlt": "Дал из красной чечевицы — домашний рецепт, Индия",
-    "url": "https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html",
-    "publishedAt": "2026-09-25T07:40:00Z",
-    "updatedAt": "2026-09-25T07:40:00Z",
+    "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-chana-masala-16x9.webp",
+    "imageAlt": "Чана масала — домашний рецепт, Индия",
+    "url": "https://provkus-media.ru/articles/indiya-chana-masala.html",
+    "publishedAt": "2026-09-25T05:20:00Z",
+    "updatedAt": "2026-09-25T05:20:00Z",
     "tags": [
       "Кухни мира",
       "Индия",
-      "Дал из красной чечевицы"
+      "Чана масала"
     ],
     "featured": false,
     "popular": false,
@@ -375,32 +401,6 @@
     "featured": false,
     "popular": false,
     "coauthors": []
-  },
-  {
-    "slug": "indiya-chana-masala",
-    "headline": "Чана масала начинаю со специй и лука: нут добавляю уже в готовую томатную основу",
-    "description": "Пряная чана масала из нута с томатами, луком, имбирём, чесноком и гарам масалой.",
-    "author": "Эльвира Шайберт",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/indiya-chana-masala-16x9.webp",
-    "imageAlt": "Чана масала — домашний рецепт, Индия",
-    "url": "https://provkus-media.ru/articles/indiya-chana-masala.html",
-    "publishedAt": "2026-09-25T04:20:00Z",
-    "updatedAt": "2026-09-25T04:20:00Z",
-    "tags": [
-      "Кухни мира",
-      "Индия",
-      "Чана масала"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
   },
   {
     "slug": "miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku",
@@ -448,12 +448,38 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/vetnam-salat-s-kuricey-i-kapustoy-16x9.webp",
     "imageAlt": "Салат с курицей и капустой — домашний рецепт, Вьетнам",
     "url": "https://provkus-media.ru/articles/vetnam-salat-s-kuricey-i-kapustoy.html",
-    "publishedAt": "2026-09-24T18:15:00Z",
-    "updatedAt": "2026-09-24T18:15:00Z",
+    "publishedAt": "2026-09-24T19:15:00Z",
+    "updatedAt": "2026-09-24T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Вьетнам",
       "Салат с курицей и капустой"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
+    "slug": "vetnam-vetnamskiy-kofe-bez-kofeina",
+    "headline": "Вьетнамский кофе без кофеина делаю очень крепким: лёд и сгущёнка смягчают вкус уже в стакане",
+    "description": "Домашняя безкофеиновая версия вьетнамского холодного кофе со сгущённым молоком и льдом.",
+    "author": "Екатерина Рукопляс",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/vetnam-vetnamskiy-kofe-bez-kofeina-16x9.webp",
+    "imageAlt": "Вьетнамский кофе без кофеина — домашний рецепт, Вьетнам",
+    "url": "https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html",
+    "publishedAt": "2026-09-24T17:20:00Z",
+    "updatedAt": "2026-09-24T17:20:00Z",
+    "tags": [
+      "Кухни мира",
+      "Вьетнам",
+      "Вьетнамский кофе без кофеина"
     ],
     "featured": false,
     "popular": false,
@@ -491,32 +517,6 @@
     "coauthors": []
   },
   {
-    "slug": "vetnam-vetnamskiy-kofe-bez-kofeina",
-    "headline": "Вьетнамский кофе без кофеина делаю очень крепким: лёд и сгущёнка смягчают вкус уже в стакане",
-    "description": "Домашняя безкофеиновая версия вьетнамского холодного кофе со сгущённым молоком и льдом.",
-    "author": "Екатерина Рукопляс",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/vetnam-vetnamskiy-kofe-bez-kofeina-16x9.webp",
-    "imageAlt": "Вьетнамский кофе без кофеина — домашний рецепт, Вьетнам",
-    "url": "https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html",
-    "publishedAt": "2026-09-24T16:20:00Z",
-    "updatedAt": "2026-09-24T16:20:00Z",
-    "tags": [
-      "Кухни мира",
-      "Вьетнам",
-      "Вьетнамский кофе без кофеина"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "vetnam-spring-rolly-s-krevetkami",
     "headline": "Спринг-роллы не замачиваю в миске надолго: рисовой бумаге хватает нескольких секунд, дальше она размягчается сама",
     "description": "Свежие вьетнамские спринг-роллы с креветками, рисовой лапшой, огурцом и зеленью.",
@@ -531,8 +531,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/vetnam-spring-rolly-s-krevetkami-16x9.webp",
     "imageAlt": "Спринг-роллы с креветками — домашний рецепт, Вьетнам",
     "url": "https://provkus-media.ru/articles/vetnam-spring-rolly-s-krevetkami.html",
-    "publishedAt": "2026-09-24T14:10:00Z",
-    "updatedAt": "2026-09-24T14:10:00Z",
+    "publishedAt": "2026-09-24T15:10:00Z",
+    "updatedAt": "2026-09-24T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Вьетнам",
@@ -557,8 +557,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/vetnam-ban-mi-s-kuricey-16x9.webp",
     "imageAlt": "Бань-ми с курицей — домашний рецепт, Вьетнам",
     "url": "https://provkus-media.ru/articles/vetnam-ban-mi-s-kuricey.html",
-    "publishedAt": "2026-09-24T12:05:00Z",
-    "updatedAt": "2026-09-24T12:05:00Z",
+    "publishedAt": "2026-09-24T13:05:00Z",
+    "updatedAt": "2026-09-24T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Вьетнам",
@@ -583,8 +583,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/vetnam-fo-ga-po-domashnemu-16x9.webp",
     "imageAlt": "Фо-га — домашний рецепт, Вьетнам",
     "url": "https://provkus-media.ru/articles/vetnam-fo-ga-po-domashnemu.html",
-    "publishedAt": "2026-09-24T10:15:00Z",
-    "updatedAt": "2026-09-24T10:15:00Z",
+    "publishedAt": "2026-09-24T11:15:00Z",
+    "updatedAt": "2026-09-24T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Вьетнам",
@@ -609,8 +609,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tailand-mango-s-kleykim-risom-16x9.webp",
     "imageAlt": "Манго с клейким рисом — домашний рецепт, Таиланд",
     "url": "https://provkus-media.ru/articles/tailand-mango-s-kleykim-risom.html",
-    "publishedAt": "2026-09-24T08:40:00Z",
-    "updatedAt": "2026-09-24T08:40:00Z",
+    "publishedAt": "2026-09-24T09:40:00Z",
+    "updatedAt": "2026-09-24T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Таиланд",
@@ -635,8 +635,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tailand-tayskiy-salat-s-ogurcom-16x9.webp",
     "imageAlt": "Тайский салат с огурцом — домашний рецепт, Таиланд",
     "url": "https://provkus-media.ru/articles/tailand-tayskiy-salat-s-ogurcom.html",
-    "publishedAt": "2026-09-24T07:05:00Z",
-    "updatedAt": "2026-09-24T07:05:00Z",
+    "publishedAt": "2026-09-24T08:05:00Z",
+    "updatedAt": "2026-09-24T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Таиланд",
@@ -661,12 +661,38 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tailand-zelenoe-karri-s-ovoschami-16x9.webp",
     "imageAlt": "Зелёное карри с овощами — домашний рецепт, Таиланд",
     "url": "https://provkus-media.ru/articles/tailand-zelenoe-karri-s-ovoschami.html",
-    "publishedAt": "2026-09-24T05:20:00Z",
-    "updatedAt": "2026-09-24T05:20:00Z",
+    "publishedAt": "2026-09-24T06:20:00Z",
+    "updatedAt": "2026-09-24T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Таиланд",
       "Зелёное карри с овощами"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
+    "slug": "tailand-tom-kha-s-kuricey",
+    "headline": "Том-кха не кипячу после лайма: кокосовый суп остаётся мягким, а цитрусовый аромат — свежим",
+    "description": "Домашний том-кха с курицей, кокосовым молоком, грибами, имбирём, лаймом и чили.",
+    "author": "Эльвира Шайберт",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/tailand-tom-kha-s-kuricey-16x9.webp",
+    "imageAlt": "Том-кха с курицей — домашний рецепт, Таиланд",
+    "url": "https://provkus-media.ru/articles/tailand-tom-kha-s-kuricey.html",
+    "publishedAt": "2026-09-24T04:45:00Z",
+    "updatedAt": "2026-09-24T04:45:00Z",
+    "tags": [
+      "Кухни мира",
+      "Таиланд",
+      "Том-кха с курицей"
     ],
     "featured": false,
     "popular": false,
@@ -706,32 +732,6 @@
     "excludeRelated": false
   },
   {
-    "slug": "tailand-tom-kha-s-kuricey",
-    "headline": "Том-кха не кипячу после лайма: кокосовый суп остаётся мягким, а цитрусовый аромат — свежим",
-    "description": "Домашний том-кха с курицей, кокосовым молоком, грибами, имбирём, лаймом и чили.",
-    "author": "Эльвира Шайберт",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/tailand-tom-kha-s-kuricey-16x9.webp",
-    "imageAlt": "Том-кха с курицей — домашний рецепт, Таиланд",
-    "url": "https://provkus-media.ru/articles/tailand-tom-kha-s-kuricey.html",
-    "publishedAt": "2026-09-24T03:45:00Z",
-    "updatedAt": "2026-09-24T03:45:00Z",
-    "tags": [
-      "Кухни мира",
-      "Таиланд",
-      "Том-кха с курицей"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "tailand-pad-tay-s-kuricey",
     "headline": "Пад-тай не держу на огне дольше нужного: лапшу замачиваю заранее, а соус впитывается уже на сковороде",
     "description": "Домашний пад-тай с курицей, рисовой лапшой, яйцом, ростками, арахисом и лаймом.",
@@ -746,8 +746,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tailand-pad-tay-s-kuricey-16x9.webp",
     "imageAlt": "Пад-тай с курицей — домашний рецепт, Таиланд",
     "url": "https://provkus-media.ru/articles/tailand-pad-tay-s-kuricey.html",
-    "publishedAt": "2026-09-24T02:10:00Z",
-    "updatedAt": "2026-09-24T02:10:00Z",
+    "publishedAt": "2026-09-24T03:10:00Z",
+    "updatedAt": "2026-09-24T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Таиланд",
@@ -797,8 +797,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/yaponiya-tamagoyaki-16x9.webp",
     "imageAlt": "Тамагояки — домашний рецепт, Япония",
     "url": "https://provkus-media.ru/articles/yaponiya-tamagoyaki.html",
-    "publishedAt": "2026-09-23T18:15:00Z",
-    "updatedAt": "2026-09-23T18:15:00Z",
+    "publishedAt": "2026-09-23T19:15:00Z",
+    "updatedAt": "2026-09-23T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Япония",
@@ -855,8 +855,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/yaponiya-okonomiyaki-po-domashnemu-16x9.webp",
     "imageAlt": "Окономияки — домашний рецепт, Япония",
     "url": "https://provkus-media.ru/articles/yaponiya-okonomiyaki-po-domashnemu.html",
-    "publishedAt": "2026-09-23T16:20:00Z",
-    "updatedAt": "2026-09-23T16:20:00Z",
+    "publishedAt": "2026-09-23T17:20:00Z",
+    "updatedAt": "2026-09-23T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Япония",
@@ -941,8 +941,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/yaponiya-miso-sup-s-tofu-16x9.webp",
     "imageAlt": "Мисо-суп с тофу — домашний рецепт, Япония",
     "url": "https://provkus-media.ru/articles/yaponiya-miso-sup-s-tofu.html",
-    "publishedAt": "2026-09-23T14:10:00Z",
-    "updatedAt": "2026-09-23T14:10:00Z",
+    "publishedAt": "2026-09-23T15:10:00Z",
+    "updatedAt": "2026-09-23T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Япония",
@@ -967,8 +967,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/yaponiya-onigiri-s-tuncom-16x9.webp",
     "imageAlt": "Онигири с тунцом — домашний рецепт, Япония",
     "url": "https://provkus-media.ru/articles/yaponiya-onigiri-s-tuncom.html",
-    "publishedAt": "2026-09-23T12:05:00Z",
-    "updatedAt": "2026-09-23T12:05:00Z",
+    "publishedAt": "2026-09-23T13:05:00Z",
+    "updatedAt": "2026-09-23T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Япония",
@@ -993,8 +993,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/yaponiya-oyakodon-16x9.webp",
     "imageAlt": "Оякодон — домашний рецепт, Япония",
     "url": "https://provkus-media.ru/articles/yaponiya-oyakodon.html",
-    "publishedAt": "2026-09-23T10:15:00Z",
-    "updatedAt": "2026-09-23T10:15:00Z",
+    "publishedAt": "2026-09-23T11:15:00Z",
+    "updatedAt": "2026-09-23T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Япония",
@@ -1019,8 +1019,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/uzbekskaya-achichuk-16x9.webp",
     "imageAlt": "Ачичук — домашний рецепт, Узбекская",
     "url": "https://provkus-media.ru/articles/uzbekskaya-achichuk.html",
-    "publishedAt": "2026-09-23T08:40:00Z",
-    "updatedAt": "2026-09-23T08:40:00Z",
+    "publishedAt": "2026-09-23T09:40:00Z",
+    "updatedAt": "2026-09-23T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Узбекская",
@@ -1045,8 +1045,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/uzbekskaya-samsa-s-myasom-16x9.webp",
     "imageAlt": "Самса с мясом — домашний рецепт, Узбекская",
     "url": "https://provkus-media.ru/articles/uzbekskaya-samsa-s-myasom.html",
-    "publishedAt": "2026-09-23T07:05:00Z",
-    "updatedAt": "2026-09-23T07:05:00Z",
+    "publishedAt": "2026-09-23T08:05:00Z",
+    "updatedAt": "2026-09-23T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Узбекская",
@@ -1071,12 +1071,38 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/uzbekskaya-mastava-16x9.webp",
     "imageAlt": "Мастава — домашний рецепт, Узбекская",
     "url": "https://provkus-media.ru/articles/uzbekskaya-mastava.html",
-    "publishedAt": "2026-09-23T05:20:00Z",
-    "updatedAt": "2026-09-23T05:20:00Z",
+    "publishedAt": "2026-09-23T06:20:00Z",
+    "updatedAt": "2026-09-23T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Узбекская",
       "Мастава"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
+    "slug": "uzbekskaya-dymlyama",
+    "headline": "Дымляму складываю слоями и не перемешиваю: овощи сами дают сок, а мясо томится внизу",
+    "description": "Домашняя дымляма с говядиной, картофелем, капустой, морковью, томатами и луком.",
+    "author": "Екатерина Рукопляс",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/uzbekskaya-dymlyama-16x9.webp",
+    "imageAlt": "Дымляма — домашний рецепт, Узбекская",
+    "url": "https://provkus-media.ru/articles/uzbekskaya-dymlyama.html",
+    "publishedAt": "2026-09-23T04:45:00Z",
+    "updatedAt": "2026-09-23T04:45:00Z",
+    "tags": [
+      "Кухни мира",
+      "Узбекская",
+      "Дымляма"
     ],
     "featured": false,
     "popular": false,
@@ -1114,32 +1140,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "uzbekskaya-dymlyama",
-    "headline": "Дымляму складываю слоями и не перемешиваю: овощи сами дают сок, а мясо томится внизу",
-    "description": "Домашняя дымляма с говядиной, картофелем, капустой, морковью, томатами и луком.",
-    "author": "Екатерина Рукопляс",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/uzbekskaya-dymlyama-16x9.webp",
-    "imageAlt": "Дымляма — домашний рецепт, Узбекская",
-    "url": "https://provkus-media.ru/articles/uzbekskaya-dymlyama.html",
-    "publishedAt": "2026-09-23T03:45:00Z",
-    "updatedAt": "2026-09-23T03:45:00Z",
-    "tags": [
-      "Кухни мира",
-      "Узбекская",
-      "Дымляма"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "uzbekskaya-plov-s-govyadinoy",
     "headline": "Плов с говядиной не мешаю после добавления риса: сначала зирвак, потом крупа — так зёрна остаются рассыпчатыми",
     "description": "Домашний плов с говядиной, морковью, луком, зирой и чесноком. Порядок приготовления зирвака и риса.",
@@ -1154,8 +1154,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/uzbekskaya-plov-s-govyadinoy-16x9.webp",
     "imageAlt": "Плов с говядиной — домашний рецепт, Узбекская",
     "url": "https://provkus-media.ru/articles/uzbekskaya-plov-s-govyadinoy.html",
-    "publishedAt": "2026-09-23T02:10:00Z",
-    "updatedAt": "2026-09-23T02:10:00Z",
+    "publishedAt": "2026-09-23T03:10:00Z",
+    "updatedAt": "2026-09-23T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Узбекская",
@@ -1195,6 +1195,32 @@
     "imageResponsive": true
   },
   {
+    "slug": "gruziya-odzhahuri",
+    "headline": "Оджахури готовлю в два этапа: картофель и мясо румяню отдельно, а соединяю только в финале",
+    "description": "Оджахури со свининой, картофелем, луком, томатами и кинзой. Домашний рецепт на сковороде.",
+    "author": "Илья Титюлькин",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-odzhahuri-16x9.webp",
+    "imageAlt": "Оджахури — домашний рецепт, Грузия",
+    "url": "https://provkus-media.ru/articles/gruziya-odzhahuri.html",
+    "publishedAt": "2026-09-22T19:15:00Z",
+    "updatedAt": "2026-09-22T19:15:00Z",
+    "tags": [
+      "Кухни мира",
+      "Грузия",
+      "Оджахури"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
     "slug": "zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom",
     "headline": "Картофельная лепёшка с сыром и овощами на сковороде",
     "description": "Рецепт картофельной лепёшки с перцем и сыром: какие продукты нужны, как обжарить овощи и сколько готовить каждую сторону.",
@@ -1223,10 +1249,10 @@
     "imageResponsive": true
   },
   {
-    "slug": "gruziya-odzhahuri",
-    "headline": "Оджахури готовлю в два этапа: картофель и мясо румяню отдельно, а соединяю только в финале",
-    "description": "Оджахури со свининой, картофелем, луком, томатами и кинзой. Домашний рецепт на сковороде.",
-    "author": "Илья Титюлькин",
+    "slug": "gruziya-phali-iz-shpinata",
+    "headline": "Пхали из шпината хорошо отжимаю перед орехами: тогда масса держит форму и не расползается на тарелке",
+    "description": "Пхали из шпината с грецкими орехами, чесноком, кинзой и уксусом. Холодная грузинская закуска.",
+    "author": "Екатерина Рукопляс",
     "category": "Кухни мира",
     "type": "recipe",
     "typeLabel": "Рецепт",
@@ -1234,15 +1260,15 @@
     "images": [
       "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
     ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-odzhahuri-16x9.webp",
-    "imageAlt": "Оджахури — домашний рецепт, Грузия",
-    "url": "https://provkus-media.ru/articles/gruziya-odzhahuri.html",
-    "publishedAt": "2026-09-22T18:15:00Z",
-    "updatedAt": "2026-09-22T18:15:00Z",
+    "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-phali-iz-shpinata-16x9.webp",
+    "imageAlt": "Пхали из шпината — домашний рецепт, Грузия",
+    "url": "https://provkus-media.ru/articles/gruziya-phali-iz-shpinata.html",
+    "publishedAt": "2026-09-22T17:20:00Z",
+    "updatedAt": "2026-09-22T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Грузия",
-      "Оджахури"
+      "Пхали из шпината"
     ],
     "featured": false,
     "popular": false,
@@ -1279,32 +1305,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "gruziya-phali-iz-shpinata",
-    "headline": "Пхали из шпината хорошо отжимаю перед орехами: тогда масса держит форму и не расползается на тарелке",
-    "description": "Пхали из шпината с грецкими орехами, чесноком, кинзой и уксусом. Холодная грузинская закуска.",
-    "author": "Екатерина Рукопляс",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-phali-iz-shpinata-16x9.webp",
-    "imageAlt": "Пхали из шпината — домашний рецепт, Грузия",
-    "url": "https://provkus-media.ru/articles/gruziya-phali-iz-shpinata.html",
-    "publishedAt": "2026-09-22T16:20:00Z",
-    "updatedAt": "2026-09-22T16:20:00Z",
-    "tags": [
-      "Кухни мира",
-      "Грузия",
-      "Пхали из шпината"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "gruziya-lobio",
     "headline": "Лобио не превращаю в однородное пюре: часть фасоли разминаю, часть оставляю целой — получается густо и фактурно",
     "description": "Густое лобио из красной фасоли с луком, чесноком, кинзой, грецким орехом и специями.",
@@ -1319,8 +1319,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-lobio-16x9.webp",
     "imageAlt": "Лобио — домашний рецепт, Грузия",
     "url": "https://provkus-media.ru/articles/gruziya-lobio.html",
-    "publishedAt": "2026-09-22T14:10:00Z",
-    "updatedAt": "2026-09-22T14:10:00Z",
+    "publishedAt": "2026-09-22T15:10:00Z",
+    "updatedAt": "2026-09-22T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Грузия",
@@ -1345,8 +1345,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-chahohbili-16x9.webp",
     "imageAlt": "Чахохбили — домашний рецепт, Грузия",
     "url": "https://provkus-media.ru/articles/gruziya-chahohbili.html",
-    "publishedAt": "2026-09-22T12:05:00Z",
-    "updatedAt": "2026-09-22T12:05:00Z",
+    "publishedAt": "2026-09-22T13:05:00Z",
+    "updatedAt": "2026-09-22T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Грузия",
@@ -1371,8 +1371,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/gruziya-hachapuri-po-adzharski-16x9.webp",
     "imageAlt": "Хачапури по-аджарски — домашний рецепт, Грузия",
     "url": "https://provkus-media.ru/articles/gruziya-hachapuri-po-adzharski.html",
-    "publishedAt": "2026-09-22T10:15:00Z",
-    "updatedAt": "2026-09-22T10:15:00Z",
+    "publishedAt": "2026-09-22T11:15:00Z",
+    "updatedAt": "2026-09-22T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Грузия",
@@ -1397,8 +1397,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/afrika-pryanaya-chechevica-s-tomatami-16x9.webp",
     "imageAlt": "Пряная чечевица с томатами — домашний рецепт, Африка",
     "url": "https://provkus-media.ru/articles/afrika-pryanaya-chechevica-s-tomatami.html",
-    "publishedAt": "2026-09-22T08:40:00Z",
-    "updatedAt": "2026-09-22T08:40:00Z",
+    "publishedAt": "2026-09-22T09:40:00Z",
+    "updatedAt": "2026-09-22T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Африка",
@@ -1423,8 +1423,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/afrika-kurica-s-limonom-i-olivkami-16x9.webp",
     "imageAlt": "Курица с лимоном и оливками — домашний рецепт, Африка",
     "url": "https://provkus-media.ru/articles/afrika-kurica-s-limonom-i-olivkami.html",
-    "publishedAt": "2026-09-22T07:05:00Z",
-    "updatedAt": "2026-09-22T07:05:00Z",
+    "publishedAt": "2026-09-22T08:05:00Z",
+    "updatedAt": "2026-09-22T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Африка",
@@ -1449,8 +1449,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/afrika-hariru-po-domashnemu-16x9.webp",
     "imageAlt": "Харира — домашний рецепт, Африка",
     "url": "https://provkus-media.ru/articles/afrika-hariru-po-domashnemu.html",
-    "publishedAt": "2026-09-22T05:20:00Z",
-    "updatedAt": "2026-09-22T05:20:00Z",
+    "publishedAt": "2026-09-22T06:20:00Z",
+    "updatedAt": "2026-09-22T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Африка",
@@ -1510,8 +1510,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/afrika-marokkanskiy-kuskus-s-ovoschami-16x9.webp",
     "imageAlt": "Марокканский кускус с овощами — домашний рецепт, Африка",
     "url": "https://provkus-media.ru/articles/afrika-marokkanskiy-kuskus-s-ovoschami.html",
-    "publishedAt": "2026-09-22T03:45:00Z",
-    "updatedAt": "2026-09-22T03:45:00Z",
+    "publishedAt": "2026-09-22T04:45:00Z",
+    "updatedAt": "2026-09-22T04:45:00Z",
     "tags": [
       "Кухни мира",
       "Африка",
@@ -1536,8 +1536,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/afrika-shakshuka-po-severoafrikanski-16x9.webp",
     "imageAlt": "Шакшука по-североафрикански — домашний рецепт, Африка",
     "url": "https://provkus-media.ru/articles/afrika-shakshuka-po-severoafrikanski.html",
-    "publishedAt": "2026-09-22T02:10:00Z",
-    "updatedAt": "2026-09-22T02:10:00Z",
+    "publishedAt": "2026-09-22T03:10:00Z",
+    "updatedAt": "2026-09-22T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Африка",
@@ -1751,12 +1751,38 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-fokachcha-s-rozmarinom-16x9.webp",
     "imageAlt": "Фокачча с розмарином — домашний рецепт, Италия",
     "url": "https://provkus-media.ru/articles/italiya-fokachcha-s-rozmarinom.html",
-    "publishedAt": "2026-09-21T18:15:00Z",
-    "updatedAt": "2026-09-21T18:15:00Z",
+    "publishedAt": "2026-09-21T19:15:00Z",
+    "updatedAt": "2026-09-21T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Италия",
       "Фокачча с розмарином"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
+    "slug": "italiya-minestrone",
+    "headline": "Минестроне варю из того, что есть в овощном ящике: фасоль и маленькая паста превращают суп в полноценный обед",
+    "description": "Густой овощной минестроне с фасолью, кабачком, морковью, сельдереем, томатами и мелкой пастой.",
+    "author": "Илья Титюлькин",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-minestrone-16x9.webp",
+    "imageAlt": "Минестроне — домашний рецепт, Италия",
+    "url": "https://provkus-media.ru/articles/italiya-minestrone.html",
+    "publishedAt": "2026-09-21T17:20:00Z",
+    "updatedAt": "2026-09-21T17:20:00Z",
+    "tags": [
+      "Кухни мира",
+      "Италия",
+      "Минестроне"
     ],
     "featured": false,
     "popular": false,
@@ -1805,32 +1831,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "italiya-minestrone",
-    "headline": "Минестроне варю из того, что есть в овощном ящике: фасоль и маленькая паста превращают суп в полноценный обед",
-    "description": "Густой овощной минестроне с фасолью, кабачком, морковью, сельдереем, томатами и мелкой пастой.",
-    "author": "Илья Титюлькин",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-minestrone-16x9.webp",
-    "imageAlt": "Минестроне — домашний рецепт, Италия",
-    "url": "https://provkus-media.ru/articles/italiya-minestrone.html",
-    "publishedAt": "2026-09-21T16:20:00Z",
-    "updatedAt": "2026-09-21T16:20:00Z",
-    "tags": [
-      "Кухни мира",
-      "Италия",
-      "Минестроне"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "kak-vybrat-syr-s-plesenyu",
     "headline": "Как выбрать сыр с благородной плесенью",
     "description": "Как выбрать сыр с белой или голубой плесенью: внешний вид, запах, упаковка, срок годности и признаки, когда продукт лучше не покупать.",
@@ -1850,6 +1850,32 @@
     "photoSource": "Иллюстрация создана с помощью ИИ",
     "featured": false,
     "imageResponsive": true
+  },
+  {
+    "slug": "italiya-brusketta-s-tomatami",
+    "headline": "Брускетту собираю перед самой подачей: хлеб остаётся хрустящим, а томаты не успевают его размочить",
+    "description": "Хрустящая брускетта с помидорами, базиликом, чесноком и оливковым маслом. Быстрый рецепт итальянской закуски.",
+    "author": "Екатерина Рукопляс",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-brusketta-s-tomatami-16x9.webp",
+    "imageAlt": "Брускетта с томатами — домашний рецепт, Италия",
+    "url": "https://provkus-media.ru/articles/italiya-brusketta-s-tomatami.html",
+    "publishedAt": "2026-09-21T15:10:00Z",
+    "updatedAt": "2026-09-21T15:10:00Z",
+    "tags": [
+      "Кухни мира",
+      "Италия",
+      "Брускетта с томатами"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
   },
   {
     "slug": "chto-ne-hranit-na-dverce-holodilnika",
@@ -1873,32 +1899,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "italiya-brusketta-s-tomatami",
-    "headline": "Брускетту собираю перед самой подачей: хлеб остаётся хрустящим, а томаты не успевают его размочить",
-    "description": "Хрустящая брускетта с помидорами, базиликом, чесноком и оливковым маслом. Быстрый рецепт итальянской закуски.",
-    "author": "Екатерина Рукопляс",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-brusketta-s-tomatami-16x9.webp",
-    "imageAlt": "Брускетта с томатами — домашний рецепт, Италия",
-    "url": "https://provkus-media.ru/articles/italiya-brusketta-s-tomatami.html",
-    "publishedAt": "2026-09-21T14:10:00Z",
-    "updatedAt": "2026-09-21T14:10:00Z",
-    "tags": [
-      "Кухни мира",
-      "Италия",
-      "Брускетта с томатами"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "nuzhno-li-myt-yayca-posle-magazina",
     "headline": "Нужно ли мыть яйца после покупки и перед приготовлением",
     "description": "Нужно ли мыть яйца после покупки: когда мыть скорлупу, как хранить яйца в холодильнике и почему лучше делать это перед приготовлением.",
@@ -1920,6 +1920,32 @@
     "imageResponsive": true
   },
   {
+    "slug": "italiya-rizotto-s-gribami",
+    "headline": "Ризотто с грибами не варю как кашу: бульон добавляю по половнику — рис остаётся кремовым, но с текстурой",
+    "description": "Кремовое грибное ризотто из риса арборио с пармезаном. Как добавлять бульон и не переварить рис.",
+    "author": "Эльвира Шайберт",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-rizotto-s-gribami-16x9.webp",
+    "imageAlt": "Ризотто с грибами — домашний рецепт, Италия",
+    "url": "https://provkus-media.ru/articles/italiya-rizotto-s-gribami.html",
+    "publishedAt": "2026-09-21T13:05:00Z",
+    "updatedAt": "2026-09-21T13:05:00Z",
+    "tags": [
+      "Кухни мира",
+      "Италия",
+      "Ризотто с грибами"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
     "slug": "mozhno-li-zamorazhivat-hleb",
     "headline": "Как заморозить хлеб и разогреть его после хранения",
     "description": "Можно ли замораживать хлеб: как правильно заморозить батон и нарезку, сколько хранить, как размораживать и вернуть корочке хруст.",
@@ -1939,32 +1965,6 @@
     "photoSource": "Иллюстрация создана с помощью ИИ",
     "featured": false,
     "imageResponsive": true
-  },
-  {
-    "slug": "italiya-rizotto-s-gribami",
-    "headline": "Ризотто с грибами не варю как кашу: бульон добавляю по половнику — рис остаётся кремовым, но с текстурой",
-    "description": "Кремовое грибное ризотто из риса арборио с пармезаном. Как добавлять бульон и не переварить рис.",
-    "author": "Эльвира Шайберт",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-rizotto-s-gribami-16x9.webp",
-    "imageAlt": "Ризотто с грибами — домашний рецепт, Италия",
-    "url": "https://provkus-media.ru/articles/italiya-rizotto-s-gribami.html",
-    "publishedAt": "2026-09-21T12:05:00Z",
-    "updatedAt": "2026-09-21T12:05:00Z",
-    "tags": [
-      "Кухни мира",
-      "Италия",
-      "Ризотто с грибами"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
   },
   {
     "slug": "kak-hranit-kartofel-doma",
@@ -2002,8 +2002,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/italiya-pasta-kacho-e-pepe-16x9.webp",
     "imageAlt": "Паста качо э пепе — домашний рецепт, Италия",
     "url": "https://provkus-media.ru/articles/italiya-pasta-kacho-e-pepe.html",
-    "publishedAt": "2026-09-21T10:15:00Z",
-    "updatedAt": "2026-09-21T10:15:00Z",
+    "publishedAt": "2026-09-21T11:15:00Z",
+    "updatedAt": "2026-09-21T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Италия",
@@ -2035,6 +2035,32 @@
     "imageResponsive": true
   },
   {
+    "slug": "kitay-ogurcy-po-kitayski",
+    "headline": "Огурцы не режу ровными кружками: слегка разбиваю ножом — заправка цепляется за каждый неровный край",
+    "description": "Хрустящие битые огурцы с чесноком, уксусом, соевым соусом, кунжутом и чили. Быстрая холодная закуска.",
+    "author": "Илья Титюлькин",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-ogurcy-po-kitayski-16x9.webp",
+    "imageAlt": "Огурцы по-китайски — домашний рецепт, Китай",
+    "url": "https://provkus-media.ru/articles/kitay-ogurcy-po-kitayski.html",
+    "publishedAt": "2026-09-21T09:40:00Z",
+    "updatedAt": "2026-09-21T09:40:00Z",
+    "tags": [
+      "Кухни мира",
+      "Китай",
+      "Огурцы по-китайски"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
+  },
+  {
     "slug": "kak-pravilno-hranit-yayca-v-holodilnike",
     "headline": "Как правильно хранить яйца в холодильнике",
     "description": "Где хранить яйца в холодильнике: внутренняя полка или дверца, нужна ли упаковка, как следить за сроком годности и температурой.",
@@ -2056,10 +2082,10 @@
     "imageResponsive": true
   },
   {
-    "slug": "kitay-ogurcy-po-kitayski",
-    "headline": "Огурцы не режу ровными кружками: слегка разбиваю ножом — заправка цепляется за каждый неровный край",
-    "description": "Хрустящие битые огурцы с чесноком, уксусом, соевым соусом, кунжутом и чили. Быстрая холодная закуска.",
-    "author": "Илья Титюлькин",
+    "slug": "kitay-lapsha-s-govyadinoy-i-ovoschami",
+    "headline": "Лапшу с говядиной готовлю на самой горячей сковороде: мясо отдельно, овощи отдельно — ничего не варится в собственном соку",
+    "description": "Лапша с тонкими полосками говядины, сладким перцем и капустой в соево-имбирном соусе. Пошаговый домашний рецепт.",
+    "author": "Екатерина Рукопляс",
     "category": "Кухни мира",
     "type": "recipe",
     "typeLabel": "Рецепт",
@@ -2067,15 +2093,15 @@
     "images": [
       "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
     ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-ogurcy-po-kitayski-16x9.webp",
-    "imageAlt": "Огурцы по-китайски — домашний рецепт, Китай",
-    "url": "https://provkus-media.ru/articles/kitay-ogurcy-po-kitayski.html",
-    "publishedAt": "2026-09-21T08:40:00Z",
-    "updatedAt": "2026-09-21T08:40:00Z",
+    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-lapsha-s-govyadinoy-i-ovoschami-16x9.webp",
+    "imageAlt": "Лапша с говядиной и овощами — домашний рецепт, Китай",
+    "url": "https://provkus-media.ru/articles/kitay-lapsha-s-govyadinoy-i-ovoschami.html",
+    "publishedAt": "2026-09-21T08:05:00Z",
+    "updatedAt": "2026-09-21T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Китай",
-      "Огурцы по-китайски"
+      "Лапша с говядиной и овощами"
     ],
     "featured": false,
     "popular": false,
@@ -2124,32 +2150,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "kitay-lapsha-s-govyadinoy-i-ovoschami",
-    "headline": "Лапшу с говядиной готовлю на самой горячей сковороде: мясо отдельно, овощи отдельно — ничего не варится в собственном соку",
-    "description": "Лапша с тонкими полосками говядины, сладким перцем и капустой в соево-имбирном соусе. Пошаговый домашний рецепт.",
-    "author": "Екатерина Рукопляс",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-lapsha-s-govyadinoy-i-ovoschami-16x9.webp",
-    "imageAlt": "Лапша с говядиной и овощами — домашний рецепт, Китай",
-    "url": "https://provkus-media.ru/articles/kitay-lapsha-s-govyadinoy-i-ovoschami.html",
-    "publishedAt": "2026-09-21T07:05:00Z",
-    "updatedAt": "2026-09-21T07:05:00Z",
-    "tags": [
-      "Кухни мира",
-      "Китай",
-      "Лапша с говядиной и овощами"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "extra-virgin-kak-vybrat-olivkovoe-maslo",
     "headline": "Как выбрать оливковое масло extra virgin по этикетке",
     "description": "Как выбрать оливковое масло Extra Virgin: категория, происхождение, дата, тара, вкус и хранение после вскрытия. Чек-лист для магазина.",
@@ -2169,6 +2169,32 @@
     "photoSource": "Иллюстрация создана с помощью ИИ",
     "featured": false,
     "imageResponsive": true
+  },
+  {
+    "slug": "kitay-baklazhany-v-chesnochnom-souse",
+    "headline": "Баклажаны в чесночном соусе: сначала хорошо подрумяниваю, потом добавляю соус — мякоть не превращается в пюре",
+    "description": "Домашние баклажаны в чесночном кисло-сладком соусе: как обжарить кусочки до румяности и сохранить форму.",
+    "author": "Эльвира Шайберт",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-baklazhany-v-chesnochnom-souse-16x9.webp",
+    "imageAlt": "Баклажаны в чесночном соусе — домашний рецепт, Китай",
+    "url": "https://provkus-media.ru/articles/kitay-baklazhany-v-chesnochnom-souse.html",
+    "publishedAt": "2026-09-21T06:20:00Z",
+    "updatedAt": "2026-09-21T06:20:00Z",
+    "tags": [
+      "Кухни мира",
+      "Китай",
+      "Баклажаны в чесночном соусе"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
   },
   {
     "slug": "chay-v-paketikah-pravda-o-pyli",
@@ -2192,32 +2218,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "kitay-baklazhany-v-chesnochnom-souse",
-    "headline": "Баклажаны в чесночном соусе: сначала хорошо подрумяниваю, потом добавляю соус — мякоть не превращается в пюре",
-    "description": "Домашние баклажаны в чесночном кисло-сладком соусе: как обжарить кусочки до румяности и сохранить форму.",
-    "author": "Эльвира Шайберт",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-baklazhany-v-chesnochnom-souse-16x9.webp",
-    "imageAlt": "Баклажаны в чесночном соусе — домашний рецепт, Китай",
-    "url": "https://provkus-media.ru/articles/kitay-baklazhany-v-chesnochnom-souse.html",
-    "publishedAt": "2026-09-21T05:20:00Z",
-    "updatedAt": "2026-09-21T05:20:00Z",
-    "tags": [
-      "Кухни мира",
-      "Китай",
-      "Баклажаны в чесночном соусе"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "kak-hranit-rastitelnoe-maslo-posle-vskrytiya",
     "headline": "Как хранить растительное масло после вскрытия",
     "description": "Как хранить растительное масло после вскрытия: свет, тепло, крышка, холодильник и сроки. Где держать подсолнечное и другие масла.",
@@ -2237,6 +2237,32 @@
     "photoSource": "Иллюстрация создана с помощью ИИ",
     "featured": false,
     "imageResponsive": true
+  },
+  {
+    "slug": "kitay-zharenyy-ris-s-yaycom",
+    "headline": "Вчерашний рис не разогреваю: за 10 минут делаю жареный рис с яйцом — зёрна остаются рассыпчатыми",
+    "description": "Быстрый жареный рис с яйцом, морковью и зелёным луком. Почему лучше брать охлаждённый рис и в каком порядке жарить ингредиенты.",
+    "author": "Илья Титюлькин",
+    "category": "Кухни мира",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
+    "images": [
+      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
+    ],
+    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-zharenyy-ris-s-yaycom-16x9.webp",
+    "imageAlt": "Жареный рис с яйцом — домашний рецепт, Китай",
+    "url": "https://provkus-media.ru/articles/kitay-zharenyy-ris-s-yaycom.html",
+    "publishedAt": "2026-09-21T04:45:00Z",
+    "updatedAt": "2026-09-21T04:45:00Z",
+    "tags": [
+      "Кухни мира",
+      "Китай",
+      "Жареный рис с яйцом"
+    ],
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false
   },
   {
     "slug": "skolko-hranit-plavlenyi-syr-posle-vskrytiya",
@@ -2260,32 +2286,6 @@
     "imageResponsive": true
   },
   {
-    "slug": "kitay-zharenyy-ris-s-yaycom",
-    "headline": "Вчерашний рис не разогреваю: за 10 минут делаю жареный рис с яйцом — зёрна остаются рассыпчатыми",
-    "description": "Быстрый жареный рис с яйцом, морковью и зелёным луком. Почему лучше брать охлаждённый рис и в каком порядке жарить ингредиенты.",
-    "author": "Илья Титюлькин",
-    "category": "Кухни мира",
-    "type": "recipe",
-    "typeLabel": "Рецепт",
-    "image": "https://provkus-media.ru/assets/world-cuisines-placeholder.svg",
-    "images": [
-      "https://provkus-media.ru/assets/world-cuisines-placeholder.svg"
-    ],
-    "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-zharenyy-ris-s-yaycom-16x9.webp",
-    "imageAlt": "Жареный рис с яйцом — домашний рецепт, Китай",
-    "url": "https://provkus-media.ru/articles/kitay-zharenyy-ris-s-yaycom.html",
-    "publishedAt": "2026-09-21T03:45:00Z",
-    "updatedAt": "2026-09-21T03:45:00Z",
-    "tags": [
-      "Кухни мира",
-      "Китай",
-      "Жареный рис с яйцом"
-    ],
-    "featured": false,
-    "popular": false,
-    "excludeRelated": false
-  },
-  {
     "slug": "kitay-kurica-gunbao",
     "headline": "Курица гунбао дома: обжариваю быстро, арахис добавляю в самом конце — получается яркий соус и сочное мясо",
     "description": "Домашняя версия курицы гунбао с арахисом, перцем, имбирём и кисло-сладким соусом: пропорции и пошаговое приготовление.",
@@ -2300,8 +2300,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/kitay-kurica-gunbao-16x9.webp",
     "imageAlt": "Курица гунбао — домашний рецепт, Китай",
     "url": "https://provkus-media.ru/articles/kitay-kurica-gunbao.html",
-    "publishedAt": "2026-09-21T02:10:00Z",
-    "updatedAt": "2026-09-21T02:10:00Z",
+    "publishedAt": "2026-09-21T03:10:00Z",
+    "updatedAt": "2026-09-21T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Китай",
@@ -2326,8 +2326,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/russkaya-tvorozhnaya-zapekanka-16x9.webp",
     "imageAlt": "Творожная запеканка — домашний рецепт, Русская",
     "url": "https://provkus-media.ru/articles/russkaya-tvorozhnaya-zapekanka.html",
-    "publishedAt": "2026-09-20T18:15:00Z",
-    "updatedAt": "2026-09-20T18:15:00Z",
+    "publishedAt": "2026-09-20T19:15:00Z",
+    "updatedAt": "2026-09-20T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Русская",
@@ -2352,8 +2352,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/russkaya-rassolnik-s-perlovkoy-16x9.webp",
     "imageAlt": "Рассольник с перловкой — домашний рецепт, Русская",
     "url": "https://provkus-media.ru/articles/russkaya-rassolnik-s-perlovkoy.html",
-    "publishedAt": "2026-09-20T16:20:00Z",
-    "updatedAt": "2026-09-20T16:20:00Z",
+    "publishedAt": "2026-09-20T17:20:00Z",
+    "updatedAt": "2026-09-20T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Русская",
@@ -2378,8 +2378,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/russkaya-kurnik-po-domashnemu-16x9.webp",
     "imageAlt": "Курник по-домашнему — домашний рецепт, Русская",
     "url": "https://provkus-media.ru/articles/russkaya-kurnik-po-domashnemu.html",
-    "publishedAt": "2026-09-20T14:10:00Z",
-    "updatedAt": "2026-09-20T14:10:00Z",
+    "publishedAt": "2026-09-20T15:10:00Z",
+    "updatedAt": "2026-09-20T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Русская",
@@ -2404,8 +2404,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/russkaya-grechka-po-kupecheski-16x9.webp",
     "imageAlt": "Гречка по-купечески — домашний рецепт, Русская",
     "url": "https://provkus-media.ru/articles/russkaya-grechka-po-kupecheski.html",
-    "publishedAt": "2026-09-20T12:05:00Z",
-    "updatedAt": "2026-09-20T12:05:00Z",
+    "publishedAt": "2026-09-20T13:05:00Z",
+    "updatedAt": "2026-09-20T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Русская",
@@ -2430,8 +2430,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/russkaya-schi-iz-svezhey-kapusty-16x9.webp",
     "imageAlt": "Щи из свежей капусты — домашний рецепт, Русская",
     "url": "https://provkus-media.ru/articles/russkaya-schi-iz-svezhey-kapusty.html",
-    "publishedAt": "2026-09-20T10:15:00Z",
-    "updatedAt": "2026-09-20T10:15:00Z",
+    "publishedAt": "2026-09-20T11:15:00Z",
+    "updatedAt": "2026-09-20T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Русская",
@@ -2456,8 +2456,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/polsha-syrniki-po-polski-16x9.webp",
     "imageAlt": "Сырники по-польски — домашний рецепт, Польша",
     "url": "https://provkus-media.ru/articles/polsha-syrniki-po-polski.html",
-    "publishedAt": "2026-09-20T08:40:00Z",
-    "updatedAt": "2026-09-20T08:40:00Z",
+    "publishedAt": "2026-09-20T09:40:00Z",
+    "updatedAt": "2026-09-20T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Польша",
@@ -2482,8 +2482,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/polsha-ogurechnik-16x9.webp",
     "imageAlt": "Огуречник — домашний рецепт, Польша",
     "url": "https://provkus-media.ru/articles/polsha-ogurechnik.html",
-    "publishedAt": "2026-09-20T07:05:00Z",
-    "updatedAt": "2026-09-20T07:05:00Z",
+    "publishedAt": "2026-09-20T08:05:00Z",
+    "updatedAt": "2026-09-20T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Польша",
@@ -2508,8 +2508,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/polsha-bigos-16x9.webp",
     "imageAlt": "Бигос — домашний рецепт, Польша",
     "url": "https://provkus-media.ru/articles/polsha-bigos.html",
-    "publishedAt": "2026-09-20T05:20:00Z",
-    "updatedAt": "2026-09-20T05:20:00Z",
+    "publishedAt": "2026-09-20T06:20:00Z",
+    "updatedAt": "2026-09-20T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Польша",
@@ -2534,8 +2534,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/polsha-perogi-s-kartofelem-i-tvorogom-16x9.webp",
     "imageAlt": "Пьероги с картофелем и творогом — домашний рецепт, Польша",
     "url": "https://provkus-media.ru/articles/polsha-perogi-s-kartofelem-i-tvorogom.html",
-    "publishedAt": "2026-09-20T03:45:00Z",
-    "updatedAt": "2026-09-20T03:45:00Z",
+    "publishedAt": "2026-09-20T04:45:00Z",
+    "updatedAt": "2026-09-20T04:45:00Z",
     "tags": [
       "Кухни мира",
       "Польша",
@@ -2560,8 +2560,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/polsha-zhurek-po-domashnemu-16x9.webp",
     "imageAlt": "Журек — домашний рецепт, Польша",
     "url": "https://provkus-media.ru/articles/polsha-zhurek-po-domashnemu.html",
-    "publishedAt": "2026-09-20T02:10:00Z",
-    "updatedAt": "2026-09-20T02:10:00Z",
+    "publishedAt": "2026-09-20T03:10:00Z",
+    "updatedAt": "2026-09-20T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Польша",
@@ -2586,8 +2586,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/koreya-kurica-v-ostroy-glazuri-16x9.webp",
     "imageAlt": "Курица в острой глазури — домашний рецепт, Корея",
     "url": "https://provkus-media.ru/articles/koreya-kurica-v-ostroy-glazuri.html",
-    "publishedAt": "2026-09-19T18:15:00Z",
-    "updatedAt": "2026-09-19T18:15:00Z",
+    "publishedAt": "2026-09-19T19:15:00Z",
+    "updatedAt": "2026-09-19T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Корея",
@@ -2612,8 +2612,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/koreya-padzhon-s-zelenym-lukom-16x9.webp",
     "imageAlt": "Паджон с зелёным луком — домашний рецепт, Корея",
     "url": "https://provkus-media.ru/articles/koreya-padzhon-s-zelenym-lukom.html",
-    "publishedAt": "2026-09-19T16:20:00Z",
-    "updatedAt": "2026-09-19T16:20:00Z",
+    "publishedAt": "2026-09-19T17:20:00Z",
+    "updatedAt": "2026-09-19T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Корея",
@@ -2638,8 +2638,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/koreya-koreyskie-ogurcy-16x9.webp",
     "imageAlt": "Корейские огурцы — домашний рецепт, Корея",
     "url": "https://provkus-media.ru/articles/koreya-koreyskie-ogurcy.html",
-    "publishedAt": "2026-09-19T14:10:00Z",
-    "updatedAt": "2026-09-19T14:10:00Z",
+    "publishedAt": "2026-09-19T15:10:00Z",
+    "updatedAt": "2026-09-19T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Корея",
@@ -2664,8 +2664,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/koreya-kimchi-chige-po-domashnemu-16x9.webp",
     "imageAlt": "Кимчи-чиге — домашний рецепт, Корея",
     "url": "https://provkus-media.ru/articles/koreya-kimchi-chige-po-domashnemu.html",
-    "publishedAt": "2026-09-19T12:05:00Z",
-    "updatedAt": "2026-09-19T12:05:00Z",
+    "publishedAt": "2026-09-19T13:05:00Z",
+    "updatedAt": "2026-09-19T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Корея",
@@ -2690,8 +2690,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/koreya-pibimpap-16x9.webp",
     "imageAlt": "Пибимпап — домашний рецепт, Корея",
     "url": "https://provkus-media.ru/articles/koreya-pibimpap.html",
-    "publishedAt": "2026-09-19T10:15:00Z",
-    "updatedAt": "2026-09-19T10:15:00Z",
+    "publishedAt": "2026-09-19T11:15:00Z",
+    "updatedAt": "2026-09-19T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Корея",
@@ -2716,8 +2716,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-imbirnyy-limonad-16x9.webp",
     "imageAlt": "Имбирный лимонад — домашний рецепт, Напитки мира (безалкогольные)",
     "url": "https://provkus-media.ru/articles/napitki-mira-bezalkogolnye-imbirnyy-limonad.html",
-    "publishedAt": "2026-09-19T08:40:00Z",
-    "updatedAt": "2026-09-19T08:40:00Z",
+    "publishedAt": "2026-09-19T09:40:00Z",
+    "updatedAt": "2026-09-19T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Напитки мира (безалкогольные)",
@@ -2742,8 +2742,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-tayskiy-holodnyy-chay-bez-kofeina-16x9.webp",
     "imageAlt": "Тайский холодный чай без кофеина — домашний рецепт, Напитки мира (безалкогольные)",
     "url": "https://provkus-media.ru/articles/napitki-mira-bezalkogolnye-tayskiy-holodnyy-chay-bez-kofeina.html",
-    "publishedAt": "2026-09-19T07:05:00Z",
-    "updatedAt": "2026-09-19T07:05:00Z",
+    "publishedAt": "2026-09-19T08:05:00Z",
+    "updatedAt": "2026-09-19T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Напитки мира (безалкогольные)",
@@ -2768,8 +2768,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-meksikanskaya-orchata-16x9.webp",
     "imageAlt": "Мексиканская орчата — домашний рецепт, Напитки мира (безалкогольные)",
     "url": "https://provkus-media.ru/articles/napitki-mira-bezalkogolnye-meksikanskaya-orchata.html",
-    "publishedAt": "2026-09-19T05:20:00Z",
-    "updatedAt": "2026-09-19T05:20:00Z",
+    "publishedAt": "2026-09-19T06:20:00Z",
+    "updatedAt": "2026-09-19T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Напитки мира (безалкогольные)",
@@ -2794,8 +2794,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-ayran-s-myatoy-16x9.webp",
     "imageAlt": "Айран с мятой — домашний рецепт, Напитки мира (безалкогольные)",
     "url": "https://provkus-media.ru/articles/napitki-mira-bezalkogolnye-ayran-s-myatoy.html",
-    "publishedAt": "2026-09-19T03:45:00Z",
-    "updatedAt": "2026-09-19T03:45:00Z",
+    "publishedAt": "2026-09-19T04:45:00Z",
+    "updatedAt": "2026-09-19T04:45:00Z",
     "tags": [
       "Кухни мира",
       "Напитки мира (безалкогольные)",
@@ -2820,8 +2820,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-mangovyy-lassi-16x9.webp",
     "imageAlt": "Манговый ласси — домашний рецепт, Напитки мира (безалкогольные)",
     "url": "https://provkus-media.ru/articles/napitki-mira-bezalkogolnye-mangovyy-lassi.html",
-    "publishedAt": "2026-09-19T02:10:00Z",
-    "updatedAt": "2026-09-19T02:10:00Z",
+    "publishedAt": "2026-09-19T03:10:00Z",
+    "updatedAt": "2026-09-19T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Напитки мира (безалкогольные)",
@@ -2846,8 +2846,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-pechenaya-fasol-na-toste-16x9.webp",
     "imageAlt": "Печёная фасоль на тосте — домашний рецепт, Английские завтраки",
     "url": "https://provkus-media.ru/articles/angliyskie-zavtraki-pechenaya-fasol-na-toste.html",
-    "publishedAt": "2026-09-18T18:15:00Z",
-    "updatedAt": "2026-09-18T18:15:00Z",
+    "publishedAt": "2026-09-18T19:15:00Z",
+    "updatedAt": "2026-09-18T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Английские завтраки",
@@ -2872,8 +2872,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-yayca-s-soldatikami-16x9.webp",
     "imageAlt": "Яйца с солдатиками — домашний рецепт, Английские завтраки",
     "url": "https://provkus-media.ru/articles/angliyskie-zavtraki-yayca-s-soldatikami.html",
-    "publishedAt": "2026-09-18T16:20:00Z",
-    "updatedAt": "2026-09-18T16:20:00Z",
+    "publishedAt": "2026-09-18T17:20:00Z",
+    "updatedAt": "2026-09-18T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Английские завтраки",
@@ -2898,8 +2898,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom-16x9.webp",
     "imageAlt": "Овсяная каша с яблоком — домашний рецепт, Английские завтраки",
     "url": "https://provkus-media.ru/articles/angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom.html",
-    "publishedAt": "2026-09-18T14:10:00Z",
-    "updatedAt": "2026-09-18T14:10:00Z",
+    "publishedAt": "2026-09-18T15:10:00Z",
+    "updatedAt": "2026-09-18T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Английские завтраки",
@@ -2924,8 +2924,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-polnyy-angliyskiy-zavtrak-16x9.webp",
     "imageAlt": "Полный английский завтрак — домашний рецепт, Английские завтраки",
     "url": "https://provkus-media.ru/articles/angliyskie-zavtraki-polnyy-angliyskiy-zavtrak.html",
-    "publishedAt": "2026-09-18T12:05:00Z",
-    "updatedAt": "2026-09-18T12:05:00Z",
+    "publishedAt": "2026-09-18T13:05:00Z",
+    "updatedAt": "2026-09-18T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Английские завтраки",
@@ -2950,8 +2950,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-skony-k-zavtraku-16x9.webp",
     "imageAlt": "Сконы к завтраку — домашний рецепт, Английские завтраки",
     "url": "https://provkus-media.ru/articles/angliyskie-zavtraki-skony-k-zavtraku.html",
-    "publishedAt": "2026-09-18T10:15:00Z",
-    "updatedAt": "2026-09-18T10:15:00Z",
+    "publishedAt": "2026-09-18T11:15:00Z",
+    "updatedAt": "2026-09-18T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Английские завтраки",
@@ -2976,8 +2976,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tatarskaya-chak-chak-16x9.webp",
     "imageAlt": "Чак-чак — домашний рецепт, Татарская",
     "url": "https://provkus-media.ru/articles/tatarskaya-chak-chak.html",
-    "publishedAt": "2026-09-18T08:40:00Z",
-    "updatedAt": "2026-09-18T08:40:00Z",
+    "publishedAt": "2026-09-18T09:40:00Z",
+    "updatedAt": "2026-09-18T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Татарская",
@@ -3002,8 +3002,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tatarskaya-gubadiya-16x9.webp",
     "imageAlt": "Губадия — домашний рецепт, Татарская",
     "url": "https://provkus-media.ru/articles/tatarskaya-gubadiya.html",
-    "publishedAt": "2026-09-18T07:05:00Z",
-    "updatedAt": "2026-09-18T07:05:00Z",
+    "publishedAt": "2026-09-18T08:05:00Z",
+    "updatedAt": "2026-09-18T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Татарская",
@@ -3028,8 +3028,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tatarskaya-azu-po-tatarski-16x9.webp",
     "imageAlt": "Азу по-татарски — домашний рецепт, Татарская",
     "url": "https://provkus-media.ru/articles/tatarskaya-azu-po-tatarski.html",
-    "publishedAt": "2026-09-18T05:20:00Z",
-    "updatedAt": "2026-09-18T05:20:00Z",
+    "publishedAt": "2026-09-18T06:20:00Z",
+    "updatedAt": "2026-09-18T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Татарская",
@@ -3054,8 +3054,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tatarskaya-kystybyy-16x9.webp",
     "imageAlt": "Кыстыбый — домашний рецепт, Татарская",
     "url": "https://provkus-media.ru/articles/tatarskaya-kystybyy.html",
-    "publishedAt": "2026-09-18T03:45:00Z",
-    "updatedAt": "2026-09-18T03:45:00Z",
+    "publishedAt": "2026-09-18T04:45:00Z",
+    "updatedAt": "2026-09-18T04:45:00Z",
     "tags": [
       "Кухни мира",
       "Татарская",
@@ -3080,8 +3080,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/tatarskaya-echpochmak-16x9.webp",
     "imageAlt": "Эчпочмак — домашний рецепт, Татарская",
     "url": "https://provkus-media.ru/articles/tatarskaya-echpochmak.html",
-    "publishedAt": "2026-09-18T02:10:00Z",
-    "updatedAt": "2026-09-18T02:10:00Z",
+    "publishedAt": "2026-09-18T03:10:00Z",
+    "updatedAt": "2026-09-18T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Татарская",
@@ -3106,8 +3106,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/armeniya-zhengyalov-hac-po-domashnemu-16x9.webp",
     "imageAlt": "Женгялов хац — домашний рецепт, Армения",
     "url": "https://provkus-media.ru/articles/armeniya-zhengyalov-hac-po-domashnemu.html",
-    "publishedAt": "2026-09-17T18:15:00Z",
-    "updatedAt": "2026-09-17T18:15:00Z",
+    "publishedAt": "2026-09-17T19:15:00Z",
+    "updatedAt": "2026-09-17T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Армения",
@@ -3132,8 +3132,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/armeniya-gata-domashnyaya-16x9.webp",
     "imageAlt": "Гата домашняя — домашний рецепт, Армения",
     "url": "https://provkus-media.ru/articles/armeniya-gata-domashnyaya.html",
-    "publishedAt": "2026-09-17T16:20:00Z",
-    "updatedAt": "2026-09-17T16:20:00Z",
+    "publishedAt": "2026-09-17T17:20:00Z",
+    "updatedAt": "2026-09-17T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Армения",
@@ -3158,8 +3158,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/armeniya-spas-16x9.webp",
     "imageAlt": "Спас — домашний рецепт, Армения",
     "url": "https://provkus-media.ru/articles/armeniya-spas.html",
-    "publishedAt": "2026-09-17T14:10:00Z",
-    "updatedAt": "2026-09-17T14:10:00Z",
+    "publishedAt": "2026-09-17T15:10:00Z",
+    "updatedAt": "2026-09-17T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Армения",
@@ -3184,8 +3184,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/armeniya-tolma-v-vinogradnyh-listyah-16x9.webp",
     "imageAlt": "Толма в виноградных листьях — домашний рецепт, Армения",
     "url": "https://provkus-media.ru/articles/armeniya-tolma-v-vinogradnyh-listyah.html",
-    "publishedAt": "2026-09-17T12:05:00Z",
-    "updatedAt": "2026-09-17T12:05:00Z",
+    "publishedAt": "2026-09-17T13:05:00Z",
+    "updatedAt": "2026-09-17T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Армения",
@@ -3210,8 +3210,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/armeniya-horovac-iz-ovoschey-16x9.webp",
     "imageAlt": "Хоровац из овощей — домашний рецепт, Армения",
     "url": "https://provkus-media.ru/articles/armeniya-horovac-iz-ovoschey.html",
-    "publishedAt": "2026-09-17T10:15:00Z",
-    "updatedAt": "2026-09-17T10:15:00Z",
+    "publishedAt": "2026-09-17T11:15:00Z",
+    "updatedAt": "2026-09-17T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Армения",
@@ -3236,8 +3236,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/amerika-chili-s-fasolyu-16x9.webp",
     "imageAlt": "Чили с фасолью — домашний рецепт, Америка",
     "url": "https://provkus-media.ru/articles/amerika-chili-s-fasolyu.html",
-    "publishedAt": "2026-09-17T08:40:00Z",
-    "updatedAt": "2026-09-17T08:40:00Z",
+    "publishedAt": "2026-09-17T09:40:00Z",
+    "updatedAt": "2026-09-17T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Америка",
@@ -3262,8 +3262,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/amerika-pankeyki-16x9.webp",
     "imageAlt": "Панкейки — домашний рецепт, Америка",
     "url": "https://provkus-media.ru/articles/amerika-pankeyki.html",
-    "publishedAt": "2026-09-17T07:05:00Z",
-    "updatedAt": "2026-09-17T07:05:00Z",
+    "publishedAt": "2026-09-17T08:05:00Z",
+    "updatedAt": "2026-09-17T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Америка",
@@ -3288,8 +3288,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/amerika-koul-slou-16x9.webp",
     "imageAlt": "Коул-слоу — домашний рецепт, Америка",
     "url": "https://provkus-media.ru/articles/amerika-koul-slou.html",
-    "publishedAt": "2026-09-17T05:20:00Z",
-    "updatedAt": "2026-09-17T05:20:00Z",
+    "publishedAt": "2026-09-17T06:20:00Z",
+    "updatedAt": "2026-09-17T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Америка",
@@ -3314,8 +3314,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/amerika-kurinye-krylyshki-bbq-16x9.webp",
     "imageAlt": "Куриные крылышки BBQ — домашний рецепт, Америка",
     "url": "https://provkus-media.ru/articles/amerika-kurinye-krylyshki-bbq.html",
-    "publishedAt": "2026-09-17T03:45:00Z",
-    "updatedAt": "2026-09-17T03:45:00Z",
+    "publishedAt": "2026-09-17T04:45:00Z",
+    "updatedAt": "2026-09-17T04:45:00Z",
     "tags": [
       "Кухни мира",
       "Америка",
@@ -3340,8 +3340,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/amerika-mak-n-chiz-16x9.webp",
     "imageAlt": "Мак-н-чиз — домашний рецепт, Америка",
     "url": "https://provkus-media.ru/articles/amerika-mak-n-chiz.html",
-    "publishedAt": "2026-09-17T02:10:00Z",
-    "updatedAt": "2026-09-17T02:10:00Z",
+    "publishedAt": "2026-09-17T03:10:00Z",
+    "updatedAt": "2026-09-17T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Америка",
@@ -3366,8 +3366,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/belorussiya-draniki-so-smetanoy-16x9.webp",
     "imageAlt": "Драники со сметаной — домашний рецепт, Белоруссия",
     "url": "https://provkus-media.ru/articles/belorussiya-draniki-so-smetanoy.html",
-    "publishedAt": "2026-09-16T18:15:00Z",
-    "updatedAt": "2026-09-16T18:15:00Z",
+    "publishedAt": "2026-09-16T19:15:00Z",
+    "updatedAt": "2026-09-16T19:15:00Z",
     "tags": [
       "Кухни мира",
       "Белоруссия",
@@ -3392,8 +3392,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/belorussiya-kolduny-s-myasom-16x9.webp",
     "imageAlt": "Колдуны с мясом — домашний рецепт, Белоруссия",
     "url": "https://provkus-media.ru/articles/belorussiya-kolduny-s-myasom.html",
-    "publishedAt": "2026-09-16T16:20:00Z",
-    "updatedAt": "2026-09-16T16:20:00Z",
+    "publishedAt": "2026-09-16T17:20:00Z",
+    "updatedAt": "2026-09-16T17:20:00Z",
     "tags": [
       "Кухни мира",
       "Белоруссия",
@@ -3418,8 +3418,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/belorussiya-machanka-s-blinami-16x9.webp",
     "imageAlt": "Мачанка с блинами — домашний рецепт, Белоруссия",
     "url": "https://provkus-media.ru/articles/belorussiya-machanka-s-blinami.html",
-    "publishedAt": "2026-09-16T14:10:00Z",
-    "updatedAt": "2026-09-16T14:10:00Z",
+    "publishedAt": "2026-09-16T15:10:00Z",
+    "updatedAt": "2026-09-16T15:10:00Z",
     "tags": [
       "Кухни мира",
       "Белоруссия",
@@ -3444,8 +3444,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/belorussiya-klecki-kartofelnye-16x9.webp",
     "imageAlt": "Клецки картофельные — домашний рецепт, Белоруссия",
     "url": "https://provkus-media.ru/articles/belorussiya-klecki-kartofelnye.html",
-    "publishedAt": "2026-09-16T12:05:00Z",
-    "updatedAt": "2026-09-16T12:05:00Z",
+    "publishedAt": "2026-09-16T13:05:00Z",
+    "updatedAt": "2026-09-16T13:05:00Z",
     "tags": [
       "Кухни мира",
       "Белоруссия",
@@ -3470,8 +3470,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/belorussiya-holodnik-so-svekloy-16x9.webp",
     "imageAlt": "Холодник со свёклой — домашний рецепт, Белоруссия",
     "url": "https://provkus-media.ru/articles/belorussiya-holodnik-so-svekloy.html",
-    "publishedAt": "2026-09-16T10:15:00Z",
-    "updatedAt": "2026-09-16T10:15:00Z",
+    "publishedAt": "2026-09-16T11:15:00Z",
+    "updatedAt": "2026-09-16T11:15:00Z",
     "tags": [
       "Кухни мира",
       "Белоруссия",
@@ -3496,8 +3496,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/germaniya-kartofelnyy-salat-16x9.webp",
     "imageAlt": "Картофельный салат — домашний рецепт, Германия",
     "url": "https://provkus-media.ru/articles/germaniya-kartofelnyy-salat.html",
-    "publishedAt": "2026-09-16T08:40:00Z",
-    "updatedAt": "2026-09-16T08:40:00Z",
+    "publishedAt": "2026-09-16T09:40:00Z",
+    "updatedAt": "2026-09-16T09:40:00Z",
     "tags": [
       "Кухни мира",
       "Германия",
@@ -3522,8 +3522,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/germaniya-shnicel-po-domashnemu-16x9.webp",
     "imageAlt": "Шницель по-домашнему — домашний рецепт, Германия",
     "url": "https://provkus-media.ru/articles/germaniya-shnicel-po-domashnemu.html",
-    "publishedAt": "2026-09-16T07:05:00Z",
-    "updatedAt": "2026-09-16T07:05:00Z",
+    "publishedAt": "2026-09-16T08:05:00Z",
+    "updatedAt": "2026-09-16T08:05:00Z",
     "tags": [
       "Кухни мира",
       "Германия",
@@ -3548,8 +3548,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/germaniya-tushenaya-krasnaya-kapusta-16x9.webp",
     "imageAlt": "Тушёная красная капуста — домашний рецепт, Германия",
     "url": "https://provkus-media.ru/articles/germaniya-tushenaya-krasnaya-kapusta.html",
-    "publishedAt": "2026-09-16T05:20:00Z",
-    "updatedAt": "2026-09-16T05:20:00Z",
+    "publishedAt": "2026-09-16T06:20:00Z",
+    "updatedAt": "2026-09-16T06:20:00Z",
     "tags": [
       "Кухни мира",
       "Германия",
@@ -3574,8 +3574,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/germaniya-kartofelnye-klecki-16x9.webp",
     "imageAlt": "Картофельные клёцки — домашний рецепт, Германия",
     "url": "https://provkus-media.ru/articles/germaniya-kartofelnye-klecki.html",
-    "publishedAt": "2026-09-16T03:45:00Z",
-    "updatedAt": "2026-09-16T03:45:00Z",
+    "publishedAt": "2026-09-16T04:45:00Z",
+    "updatedAt": "2026-09-16T04:45:00Z",
     "tags": [
       "Кухни мира",
       "Германия",
@@ -3600,8 +3600,8 @@
     "imageTarget": "https://provkus-media.ru/assets/uploads/germaniya-yablochnyy-shtrudel-16x9.webp",
     "imageAlt": "Яблочный штрудель — домашний рецепт, Германия",
     "url": "https://provkus-media.ru/articles/germaniya-yablochnyy-shtrudel.html",
-    "publishedAt": "2026-09-16T02:10:00Z",
-    "updatedAt": "2026-09-16T02:10:00Z",
+    "publishedAt": "2026-09-16T03:10:00Z",
+    "updatedAt": "2026-09-16T03:10:00Z",
     "tags": [
       "Кухни мира",
       "Германия",
