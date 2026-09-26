@@ -3,14 +3,25 @@
   if(window.__pvSchedulerLoaded)return;window.__pvSchedulerLoaded=true;
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
   const QUEUE_PATH='.github/scheduled-posts.json';
+  const QUEUE_RAW='https://raw.githubusercontent.com/makarcudra7-dotcom/makarcudra7-dotcom.github.io/main/.github/scheduled-posts.json';
   const fmt=v=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch{return v||''}};
   const decode=f=>{if(!f?.content)return'';return new TextDecoder().decode(Uint8Array.from(atob(f.content.replace(/\n/g,'')),c=>c.charCodeAt(0)))};
   const future=o=>{const t=new Date(o?.publishedAt||0).getTime();return Number.isFinite(t)&&t>Date.now()+30000};
   const typeLabel=t=>({guide:'Инструкция / как сделать',explainer:'Разбор / объяснение',recipe:'Рецепт',selection:'Подборка',review:'Обзор',story:'История / опыт',news:'Новость',quiz:'Тест / викторина'})[t]||'Материал';
 
   async function readQueue(){
-    try{const f=await window.getFile(QUEUE_PATH);return f?.content?JSON.parse(decode(f)):[]}
-    catch(e){console.warn('scheduled queue read',e);return null}
+    try{
+      const f=await window.getFile(QUEUE_PATH);
+      if(f?.content)return JSON.parse(decode(f));
+      if(f===null)return [];
+    }catch(e){console.warn('scheduled queue server read',e)}
+    try{
+      const r=await fetch(QUEUE_RAW+'?t='+Date.now(),{cache:'no-store',headers:{Accept:'application/json'}});
+      if(r.status===404)return [];
+      if(!r.ok)throw new Error('GitHub raw '+r.status);
+      const q=await r.json();
+      return Array.isArray(q)?q:[];
+    }catch(e){console.warn('scheduled queue public fallback',e);return null}
   }
   async function writeQueue(items,message='Update scheduled publications'){
     const next=[...items].sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt));
