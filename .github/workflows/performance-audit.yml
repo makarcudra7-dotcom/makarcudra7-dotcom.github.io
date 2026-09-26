@@ -1,6 +1,6 @@
 name: Mobile performance audit
 
-# Production regression check after the final first-screen layout deployment.
+# Production regression check after the LCP preload deployment.
 on:
   push:
     branches: [main]
