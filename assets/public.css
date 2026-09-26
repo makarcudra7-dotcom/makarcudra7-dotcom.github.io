@@ -20,6 +20,10 @@
 .hero-grid .lead-copy p{max-width:68ch!important;margin:0!important;font-size:15px!important;line-height:1.48!important;color:var(--muted)!important}
 .hero-grid .lead-copy .meta-row{margin-top:13px!important;color:var(--muted)!important}
 
+/* Accessibility: author cards are paper-colored even inside the dark feature band. */
+html:not([data-theme="dark"]) .feature-band .author-card h3{color:#161512!important}
+.site-footer .footer-grid a{display:flex;align-items:center;min-height:28px;padding:4px 0}
+
 @media (min-width:1001px){
   .hero-side{display:grid!important;gap:14px!important;align-content:start!important}
   .hero-side .stack-card{display:grid!important;grid-template-columns:1fr!important;grid-template-rows:auto 1fr!important;min-height:0!important;border-radius:18px!important;overflow:hidden!important;background:var(--paper)!important}
