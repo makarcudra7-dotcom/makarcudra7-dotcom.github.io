@@ -40,10 +40,19 @@
   function addSiteSchema(){if(!isHome||document.getElementById('pv-home-schema')||document.getElementById('pvSiteSchema'))return;const s=document.createElement('script');s.id='pvSiteSchema';s.type='application/ld+json';s.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':SITE+'/#organization',name:'ProVkus',url:SITE+'/',logo:{'@type':'ImageObject',url:SITE+'/assets/provkus-logo.svg'}},{'@type':'WebSite','@id':SITE+'/#website',url:SITE+'/',name:'ProVkus',publisher:{'@id':SITE+'/#organization'},inLanguage:'ru-RU'}]});document.head.appendChild(s)}
   function enhanceNavigation(){const here=new URL(location.href),rubric=here.searchParams.get('rubric')||'';document.querySelectorAll('.main-nav a').forEach(a=>{try{const u=new URL(a.href,location.href);let active=u.pathname===here.pathname;if(here.pathname==='/category.html'&&u.pathname==='/category.html')active=(u.searchParams.get('rubric')||'')===rubric;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}catch(e){}});const main=document.querySelector('main');if(main&&!main.id)main.id='main-content'}
   function loadScript(src,id){if(id&&document.getElementById(id))return;const s=document.createElement('script');if(id)s.id=id;s.src=src;s.defer=true;document.body.appendChild(s)}
+  function injectAdvertisingCta(){
+    if(!isHome||document.querySelector('.pv-ad-cta'))return;
+    const grid=document.querySelector('.hero-grid'),lead=grid?.querySelector(':scope > .lead-card'),side=grid?.querySelector(':scope > .hero-side');
+    if(!grid||!lead||!side)return;
+    const main=document.createElement('div');main.className='hero-main';grid.insertBefore(main,lead);main.appendChild(lead);
+    const box=document.createElement('aside');box.className='pv-ad-cta';box.setAttribute('aria-label','Реклама и спецпроекты');
+    box.innerHTML='<div class="pv-ad-copy"><span class="pv-ad-kicker">Для брендов</span><h2>Реклама и спецпроекты в ProVkus</h2><p>Нативные интеграции, обзоры продуктов и специальные проекты для аудитории о еде, доме и покупках.</p></div><a class="pv-ad-button" href="/contacts.html">Обсудить размещение →</a>';
+    main.appendChild(box);
+  }
 
   const share=document.querySelector('[data-share]');if(share){share.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);share.textContent='Ссылка скопирована'}}catch(e){}})}
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
-  injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
+  injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();injectAdvertisingCta();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
   window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome)loadScript('/assets/home-dynamic.js?v=20260923-image-retry','pvHomeDynamic');
   loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');
