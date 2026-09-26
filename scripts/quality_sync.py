@@ -6,7 +6,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://provkus-media.ru'
-QUALITY_VERSION = '20260926-quality10'
+QUALITY_VERSION = '20260926-quality11'
 POSTS_PATH = ROOT / 'data/posts.json'
 AUTHORS_PATH = ROOT / 'data/authors.json'
 
@@ -82,11 +82,12 @@ def author_card(author, home=False):
     topics = ''.join(f'<span>{esc(x)}</span>' for x in (author.get('topics') or [])[:5])
     promise = ('В профиле — все публикации автора, его темы и возможность задать вопрос редакции.'
                if home else 'Все публикации автора, его темы и возможность задать вопрос редакции.')
+    heading = 'h3' if home else 'h2'
     return (
         f'<a class="author-card" href="/{esc(author["url"])}">'
         f'<div class="author-card-top"><img src="{esc(photo)}" width="112" height="112" '
         f'loading="lazy" decoding="async" alt="{esc(author["name"])}"><div>'
-        f'<div class="author-card-role">{esc(author.get("role"))}</div><h3>{esc(author["name"])}</h3></div></div>'
+        f'<div class="author-card-role">{esc(author.get("role"))}</div><{heading}>{esc(author["name"])}</{heading}></div></div>'
         f'<p class="author-card-lead">{esc(author.get("lead"))}</p>'
         f'<div class="author-topics">{topics}</div>'
         f'<div class="author-card-promise">{esc(promise)}</div>'
@@ -104,11 +105,16 @@ def sync_author_css():
         if path.exists():
             block_parts.append(read(path).strip())
     extra = '''
-/* Stable author directory additions */
+/* Stable author directory and accessibility additions */
 .author-card-promise{margin:4px 0 14px;padding:10px 11px;border-radius:10px;background:#f6f2ec;color:#625b54;font-size:11px;line-height:1.45}
 .author-directory-note{margin-top:20px;padding:20px 22px;border:1px solid #e5dfd5;border-radius:18px;background:#fffdf9;color:#5f5851;line-height:1.65}
 .author-directory-note h2{margin:0 0 8px;font:800 25px/1.1 Georgia,serif;color:#24211d}
 .author-directory-note p{margin:7px 0}
+.author-card-top h2,.author-card-top h3{font-size:24px;line-height:1.05;margin:5px 0;color:inherit}
+.lead-copy .eyebrow,.section-head .link-more{color:#a43b23}
+.newsletter-row button{background:#b9482c}
+.newsletter-row button:hover{background:#a63d25}
+.site-footer .footer-heading{font:800 12px/1.2 Inter,system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;margin:0 0 12px;color:#fff}
 @media(max-width:640px){.author-directory-note{padding:17px}.author-card-promise{font-size:10.5px}}
 '''.strip()
     block = '\n/* QUALITY-AUTHOR-CSS-START */\n' + '\n\n'.join(block_parts + [extra]) + '\n/* QUALITY-AUTHOR-CSS-END */\n'
@@ -128,20 +134,21 @@ def ensure_static_css_links():
     pages = list(ROOT.glob('*.html')) + list((ROOT / 'articles').glob('*.html'))
     for path in pages:
         source = read(path)
-        if 'public.css' not in source:
-            continue
         original = source
-        public_match = re.search(r'<link rel="stylesheet" href="([^\"]*?)public\.css[^\"]*">', source)
-        if public_match:
-            prefix = public_match.group(1)
-            styles_href = prefix + 'styles.css'
-            if not re.search(r'href="[^\"]*styles\.css(?:\?[^\"]*)?"', source):
-                source = source[:public_match.start()] + f'<link rel="stylesheet" href="{styles_href}">' + source[public_match.start():]
-            if not re.search(r'href="[^\"]*site-ui\.css(?:\?[^\"]*)?"', source):
-                public_match = re.search(r'<link rel="stylesheet" href="([^\"]*?)public\.css[^\"]*">', source)
-                prefix = public_match.group(1) if public_match else '/assets/'
-                source = source.replace('</head>', f'<link rel="stylesheet" href="{prefix}site-ui.css?v={QUALITY_VERSION}"></head>', 1)
+        if 'public.css' in source:
+            public_match = re.search(r'<link rel="stylesheet" href="([^\"]*?)public\.css[^\"]*">', source)
+            if public_match:
+                prefix = public_match.group(1)
+                styles_href = prefix + 'styles.css'
+                if not re.search(r'href="[^\"]*styles\.css(?:\?[^\"]*)?"', source):
+                    source = source[:public_match.start()] + f'<link rel="stylesheet" href="{styles_href}">' + source[public_match.start():]
+                if not re.search(r'href="[^\"]*site-ui\.css(?:\?[^\"]*)?"', source):
+                    public_match = re.search(r'<link rel="stylesheet" href="([^\"]*?)public\.css[^\"]*">', source)
+                    prefix = public_match.group(1) if public_match else '/assets/'
+                    source = source.replace('</head>', f'<link rel="stylesheet" href="{prefix}site-ui.css?v={QUALITY_VERSION}"></head>', 1)
+        source = re.sub(r'href="([^\"]*site-ui\.css)(?:\?[^\"]*)?"', lambda m: f'href="{m.group(1)}?v={QUALITY_VERSION}"', source)
         source = re.sub(r'<link rel="stylesheet" href="[^\"]*author-fix\.css[^\"]*">', '', source)
+        source = re.sub(r'<h4>(Читать|Редакция|Документы)</h4>', r'<h2 class="footer-heading">\1</h2>', source)
         if source != original:
             write_if_changed(path, source)
 
@@ -168,6 +175,7 @@ def sync_runtime():
         count=1,
     )
     source = source.replace("if(isHome)addCss('/assets/community-extra.css');", '')
+    source = source.replace(";btn.setAttribute('aria-label',next==='dark'?'Включить светлую тему':'Включить тёмную тему')", '')
     source = re.sub(r"/assets/community\.js\?v=[^'\"]+", f'/assets/community.js?v={QUALITY_VERSION}', source)
     write_if_changed(app, source)
 
@@ -183,6 +191,16 @@ def sync_runtime():
     if n != 1:
         raise RuntimeError('community.js enhanceDirectory signature changed')
     write_if_changed(community, c)
+
+
+def advertising_cta():
+    return (
+        '<aside class="pv-ad-cta" aria-label="Реклама и спецпроекты">'
+        '<div class="pv-ad-copy"><span class="pv-ad-kicker">Для брендов</span>'
+        '<h2>Реклама и спецпроекты в ProVkus</h2>'
+        '<p>Нативные интеграции, обзоры продуктов и специальные проекты для аудитории о еде, доме и покупках.</p></div>'
+        '<a class="pv-ad-button" href="/contacts.html">Обсудить размещение →</a></aside>'
+    )
 
 
 def sync_home_authors():
@@ -205,11 +223,28 @@ def sync_home_authors():
     write_if_changed(page, source)
 
 
+def sync_home_ux():
+    page = ROOT / 'index.html'
+    source = read(page)
+    hero = re.search(r'(<!-- HOME-HERO-START -->)(.*?)(<!-- HOME-HERO-END -->)', source, flags=re.S)
+    if hero and 'class="hero-main"' not in hero.group(2):
+        body = hero.group(2)
+        match = re.match(r'\s*(<a class="lead-card".*?</a>)(<div class="hero-side">.*)', body, flags=re.S)
+        if not match:
+            raise RuntimeError('homepage lead/side structure changed')
+        body = '<div class="hero-main">' + match.group(1) + advertising_cta() + '</div>' + match.group(2)
+        source = source[:hero.start(2)] + body + source[hero.end(2):]
+    source = re.sub(r'(<a class="home-quick-action"[^>]*)\saria-label="[^"]*"([^>]*>)', r'\1\2', source)
+    source = source.replace('<a href="/category.html" aria-current="page">Материалы</a>', '<a href="/category.html">Материалы</a>')
+    write_if_changed(page, source)
+
+
 def authors_schema():
     people = []
     for author in AUTHORS:
         people.append({
             '@type': 'Person',
+            '@id': f"{SITE}/{author['url']}#person",
             'name': author['name'],
             'url': f"{SITE}/{author['url']}",
             'jobTitle': author.get('role'),
@@ -339,6 +374,32 @@ def meaningful_inline_alts(source, post):
     return source[:body_match.start(2)] + new_body + source[body_match.end(2):]
 
 
+def enrich_article_jsonld(source):
+    def repl(match):
+        opening, payload, closing = match.groups()
+        try:
+            obj = json.loads(payload)
+        except Exception:
+            return match.group(0)
+
+        def walk(node):
+            if isinstance(node, dict):
+                if node.get('@type') in ('Article', 'NewsArticle', 'BlogPosting'):
+                    author = node.get('author')
+                    if isinstance(author, dict) and author.get('url'):
+                        author['@id'] = author['url'].rstrip('#') + '#person'
+                add_org_logo(node)
+                for value in node.values():
+                    walk(value)
+            elif isinstance(node, list):
+                for value in node:
+                    walk(value)
+        walk(obj)
+        return opening + json.dumps(obj, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/') + closing
+
+    return re.sub(r'(<script type="application/ld\+json"[^>]*>)(.*?)(</script>)', repl, source, flags=re.S | re.I)
+
+
 def sync_article_seo():
     title_overrides = {
         'tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy':
@@ -351,6 +412,7 @@ def sync_article_seo():
             continue
         source = read(page)
         source = meaningful_inline_alts(source, post)
+        source = enrich_article_jsonld(source)
         if slug in title_overrides:
             source = re.sub(r'<title>.*?</title>', f'<title>{esc(title_overrides[slug])}</title>', source, count=1, flags=re.S)
         write_if_changed(page, source)
@@ -361,6 +423,7 @@ def main():
     ensure_static_css_links()
     sync_runtime()
     sync_home_authors()
+    sync_home_ux()
     sync_authors_directory()
     sync_author_schemas()
     sync_category_seo()
