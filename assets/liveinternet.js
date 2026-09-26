@@ -20,6 +20,8 @@
   link.href = 'https://www.liveinternet.ru/click';
   link.target = '_blank';
   link.rel = 'noopener';
+  link.setAttribute('aria-label','Статистика посещаемости ProVkus в LiveInternet');
+  link.title = 'Статистика посещаемости ProVkus в LiveInternet';
 
   const img = document.createElement('img');
   img.id = 'licnt2C53';
@@ -27,16 +29,29 @@
   img.height = 31;
   img.style.border = '0';
   img.title = 'LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня';
-  img.alt = '';
+  img.alt = 'Счётчик посещаемости LiveInternet';
+  img.loading = 'lazy';
+  img.decoding = 'async';
   img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7';
 
   link.appendChild(img);
   wrap.appendChild(link);
   footer.appendChild(wrap);
 
-  const s = window.screen;
-  img.src = 'https://counter.yadro.ru/hit?t14.6;r' + escape(document.referrer) +
-    ((typeof(s) === 'undefined') ? '' : ';s' + s.width + '*' + s.height + '*' +
-    (s.colorDepth ? s.colorDepth : s.pixelDepth)) + ';u' + escape(document.URL) +
-    ';h' + escape(document.title.substring(0,150)) + ';' + Math.random();
+  const loadCounter = () => {
+    if (img.dataset.loaded === '1') return;
+    img.dataset.loaded = '1';
+    const s = window.screen;
+    img.src = 'https://counter.yadro.ru/hit?t14.6;r' + escape(document.referrer) +
+      ((typeof(s) === 'undefined') ? '' : ';s' + s.width + '*' + s.height + '*' +
+      (s.colorDepth ? s.colorDepth : s.pixelDepth)) + ';u' + escape(document.URL) +
+      ';h' + escape(document.title.substring(0,150)) + ';' + Math.random();
+  };
+
+  const scheduleCounter = () => {
+    if ('requestIdleCallback' in window) requestIdleCallback(loadCounter, {timeout:4500});
+    else setTimeout(loadCounter, 2500);
+  };
+  if (document.readyState === 'complete') scheduleCounter();
+  else window.addEventListener('load', scheduleCounter, {once:true});
 })();
