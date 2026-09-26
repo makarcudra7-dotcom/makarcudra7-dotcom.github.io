@@ -1,5 +1,37 @@
 [
   {
+    "slug": "mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo",
+    "headline": "Ждать полного остывания не нужно: когда готовую еду можно убирать в холодильник — правило двух часов",
+    "description": "Готовую еду не нужно часами остужать на столе. Большой объём лучше разделить на неглубокие контейнеры и быстро убрать в холодильник.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Безопасность еды",
+    "type": "guide",
+    "typeLabel": "Инструкция / как сделать",
+    "image": "https://provkus-media.ru/assets/uploads/mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo-1x1.jpg"
+    ],
+    "imageAlt": "Большая кастрюля с домашним супом после приготовления перед охлаждением",
+    "url": "https://provkus-media.ru/articles/mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo.html",
+    "publishedAt": "2026-09-26T12:04:00.000Z",
+    "updatedAt": "2026-09-26T05:59:00.000Z",
+    "tags": [
+      "Еда",
+      "Холодильник",
+      "Хранение",
+      "Безопасность",
+      "Полезное",
+      "Для кухни"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy",
     "headline": "Крупу из пакетов сразу пересыпаю в банки: что действительно помогает от жучков и зачем некоторые кладут сухой перец",
     "description": "Герметичные сухие банки и регулярная проверка запасов важнее любых народных лайфхаков. Разбираемся, где здесь место сухому перцу.",
@@ -27,7 +59,7 @@
       "Для кухни"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -259,7 +291,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
