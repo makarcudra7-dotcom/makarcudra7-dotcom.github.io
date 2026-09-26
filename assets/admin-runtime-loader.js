@@ -3,7 +3,7 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260926-preview3';
+  const VERSION='20260926-preview4';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
