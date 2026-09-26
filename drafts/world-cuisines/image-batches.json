@@ -1,59 +1,128 @@
 {
-  "version": 2,
-  "received": 30,
-  "accepted": 28,
+  "version": 3,
+  "received": 70,
+  "accepted": 68,
   "needsRegeneration": 2,
   "totalExpected": 95,
+  "notes": "Duplicate re-uploads are not counted twice. Newer batches are visual mappings; binary ingest is handled separately.",
   "batches": [
     {
       "batch": 1,
-      "receivedAt": "2026-09-26",
-      "status": "received-mapped-awaiting-binary-ingest",
+      "label": "Германия + Белоруссия",
+      "status": "mapped",
       "images": [
-        {"order":1,"sourceUpload":"efdffcb6-687c-4b8a-993a-3f0ee9d7f4ea.png","cuisine":"Германия","dish":"Яблочный штрудель","slug":"germaniya-yablochnyy-shtrudel","assetPath":"/assets/world-cuisines/germaniya-yablochnyy-shtrudel.webp"},
-        {"order":2,"sourceUpload":"53ef0958-7408-40d1-af51-885d609bda9b.png","cuisine":"Германия","dish":"Картофельные клёцки","slug":"germaniya-kartofelnye-klecki","assetPath":"/assets/world-cuisines/germaniya-kartofelnye-klecki.webp"},
-        {"order":3,"sourceUpload":"1e7b6f2b-5fc4-4831-9bab-353500ba31f0.png","cuisine":"Германия","dish":"Тушёная красная капуста","slug":"germaniya-tushenaya-krasnaya-kapusta","assetPath":"/assets/world-cuisines/germaniya-tushenaya-krasnaya-kapusta.webp"},
-        {"order":4,"sourceUpload":"e5c241d0-bbb9-4470-a097-0796ac782a2b.png","cuisine":"Германия","dish":"Шницель по-домашнему","slug":"germaniya-shnicel-po-domashnemu","assetPath":"/assets/world-cuisines/germaniya-shnicel-po-domashnemu.webp"},
-        {"order":5,"sourceUpload":"bcd78ef9-4236-4af6-bc5d-f1f2125bdffb.png","cuisine":"Германия","dish":"Картофельный салат","slug":"germaniya-kartofelnyy-salat","assetPath":"/assets/world-cuisines/germaniya-kartofelnyy-salat.webp"},
-        {"order":6,"sourceUpload":"da218f28-a9d0-416e-9651-489064f6084a.png","cuisine":"Белоруссия","dish":"Холодник со свёклой","slug":"belorussiya-holodnik-so-svekloy","assetPath":"/assets/world-cuisines/belorussiya-holodnik-so-svekloy.webp"},
-        {"order":7,"sourceUpload":"a6c56d86-e740-4014-8fca-8946d105b633.png","cuisine":"Белоруссия","dish":"Клецки картофельные","slug":"belorussiya-klecki-kartofelnye","assetPath":"/assets/world-cuisines/belorussiya-klecki-kartofelnye.webp"},
-        {"order":8,"sourceUpload":"8fba07ba-a944-4e2a-a4fd-454e9b7b5832.png","cuisine":"Белоруссия","dish":"Мачанка с блинами","slug":"belorussiya-machanka-s-blinami","assetPath":"/assets/world-cuisines/belorussiya-machanka-s-blinami.webp"},
-        {"order":9,"sourceUpload":"19140211-13f4-4add-afd1-9db13fe10283.png","cuisine":"Белоруссия","dish":"Колдуны с мясом","slug":"belorussiya-kolduny-s-myasom","assetPath":"/assets/world-cuisines/belorussiya-kolduny-s-myasom.webp"},
-        {"order":10,"sourceUpload":"0dd1db42-7bc1-423e-b1ee-fb44ce29c8fc.png","cuisine":"Белоруссия","dish":"Драники со сметаной","slug":"belorussiya-draniki-so-smetanoy","assetPath":"/assets/world-cuisines/belorussiya-draniki-so-smetanoy.webp"}
+        {"order":1,"cuisine":"Германия","dish":"Яблочный штрудель","slug":"germaniya-yablochnyy-shtrudel","review":"accepted"},
+        {"order":2,"cuisine":"Германия","dish":"Картофельные клёцки","slug":"germaniya-kartofelnye-klecki","review":"accepted"},
+        {"order":3,"cuisine":"Германия","dish":"Тушёная красная капуста","slug":"germaniya-tushenaya-krasnaya-kapusta","review":"accepted"},
+        {"order":4,"cuisine":"Германия","dish":"Шницель по-домашнему","slug":"germaniya-shnicel-po-domashnemu","review":"accepted"},
+        {"order":5,"cuisine":"Германия","dish":"Картофельный салат","slug":"germaniya-kartofelnyy-salat","review":"accepted"},
+        {"order":6,"cuisine":"Белоруссия","dish":"Холодник со свёклой","slug":"belorussiya-holodnik-so-svekloy","review":"accepted"},
+        {"order":7,"cuisine":"Белоруссия","dish":"Клецки картофельные","slug":"belorussiya-klecki-kartofelnye","review":"accepted"},
+        {"order":8,"cuisine":"Белоруссия","dish":"Мачанка с блинами","slug":"belorussiya-machanka-s-blinami","review":"accepted"},
+        {"order":9,"cuisine":"Белоруссия","dish":"Колдуны с мясом","slug":"belorussiya-kolduny-s-myasom","review":"accepted"},
+        {"order":10,"cuisine":"Белоруссия","dish":"Драники со сметаной","slug":"belorussiya-draniki-so-smetanoy","review":"accepted"}
       ]
     },
     {
       "batch": 2,
-      "receivedAt": "2026-09-26",
-      "status": "received-mapped-awaiting-binary-ingest",
+      "label": "Америка + Армения",
+      "status": "mapped",
       "images": [
-        {"order":11,"sourceUpload":"16e62e38-13cf-41e0-b79b-bd676cacc980.png","cuisine":"Америка","dish":"Мак-н-чиз","slug":"amerika-mak-n-chiz","assetPath":"/assets/world-cuisines/amerika-mak-n-chiz.webp"},
-        {"order":12,"sourceUpload":"e89e915e-2bb5-4b1e-9f17-3f2ff0979c9c.png","cuisine":"Америка","dish":"Куриные крылышки BBQ","slug":"amerika-kurinye-krylyshki-bbq","assetPath":"/assets/world-cuisines/amerika-kurinye-krylyshki-bbq.webp"},
-        {"order":13,"sourceUpload":"1729afa4-1681-4824-bdd5-29b4b7d400bd.png","cuisine":"Америка","dish":"Коул-слоу","slug":"amerika-koul-slou","assetPath":"/assets/world-cuisines/amerika-koul-slou.webp"},
-        {"order":14,"sourceUpload":"1d93f728-6fb0-48fe-9c09-0715c067fb9a.png","cuisine":"Америка","dish":"Панкейки","slug":"amerika-pankeyki","assetPath":"/assets/world-cuisines/amerika-pankeyki.webp"},
-        {"order":15,"sourceUpload":"ab6fab57-bf4c-4c50-97a2-f1fa13a09d07.png","cuisine":"Америка","dish":"Чили с фасолью","slug":"amerika-chili-s-fasolyu","assetPath":"/assets/world-cuisines/amerika-chili-s-fasolyu.webp"},
-        {"order":16,"sourceUpload":"535a43b1-0584-46ac-8f9c-71cf4cc1826a.png","cuisine":"Армения","dish":"Хоровац из овощей","slug":"armeniya-horovac-iz-ovoschey","assetPath":"/assets/world-cuisines/armeniya-horovac-iz-ovoschey.webp"},
-        {"order":17,"sourceUpload":"56514352-a9e5-477a-8cbd-e4fb99963e48.png","cuisine":"Армения","dish":"Толма в виноградных листьях","slug":"armeniya-tolma-v-vinogradnyh-listyah","assetPath":"/assets/world-cuisines/armeniya-tolma-v-vinogradnyh-listyah.webp"},
-        {"order":18,"sourceUpload":"8f438b31-4d33-4cb0-a88c-fb08734a50a0.png","cuisine":"Армения","dish":"Спас","slug":"armeniya-spas","assetPath":"/assets/world-cuisines/armeniya-spas.webp"},
-        {"order":19,"sourceUpload":"5ae14220-7963-40af-b5a1-5b1154742b55.png","cuisine":"Армения","dish":"Гата домашняя","slug":"armeniya-gata-domashnyaya","assetPath":"/assets/world-cuisines/armeniya-gata-domashnyaya.webp"},
-        {"order":20,"sourceUpload":"c43d3e2f-a2b1-46c4-9e3f-b4fe7994b300.png","cuisine":"Армения","dish":"Женгялов хац","slug":"armeniya-zhengyalov-hac-po-domashnemu","assetPath":"/assets/world-cuisines/armeniya-zhengyalov-hac-po-domashnemu.webp"}
+        {"order":11,"cuisine":"Америка","dish":"Мак-н-чиз","slug":"amerika-mak-n-chiz","review":"accepted"},
+        {"order":12,"cuisine":"Америка","dish":"Куриные крылышки BBQ","slug":"amerika-kurinye-krylyshki-bbq","review":"accepted"},
+        {"order":13,"cuisine":"Америка","dish":"Коул-слоу","slug":"amerika-koul-slou","review":"accepted"},
+        {"order":14,"cuisine":"Америка","dish":"Панкейки","slug":"amerika-pankeyki","review":"accepted"},
+        {"order":15,"cuisine":"Америка","dish":"Чили с фасолью","slug":"amerika-chili-s-fasolyu","review":"accepted"},
+        {"order":16,"cuisine":"Армения","dish":"Хоровац из овощей","slug":"armeniya-horovac-iz-ovoschey","review":"accepted"},
+        {"order":17,"cuisine":"Армения","dish":"Толма в виноградных листьях","slug":"armeniya-tolma-v-vinogradnyh-listyah","review":"accepted"},
+        {"order":18,"cuisine":"Армения","dish":"Спас","slug":"armeniya-spas","review":"accepted"},
+        {"order":19,"cuisine":"Армения","dish":"Гата домашняя","slug":"armeniya-gata-domashnyaya","review":"accepted"},
+        {"order":20,"cuisine":"Армения","dish":"Женгялов хац","slug":"armeniya-zhengyalov-hac-po-domashnemu","review":"accepted"}
       ]
     },
     {
       "batch": 3,
-      "receivedAt": "2026-09-26",
-      "status": "received-visual-mapped-2-need-regeneration",
+      "label": "Татарская + Английские завтраки",
+      "status": "mapped-2-regenerate",
       "images": [
-        {"order":21,"sourceUpload":null,"cuisine":"Татарская","dish":"Эчпочмак","slug":"tatarskaya-echpochmak","assetPath":"/assets/world-cuisines/tatarskaya-echpochmak.webp","review":"regenerate","reason":"Изображение не показывает характерную треугольную форму эчпочмака с отверстием сверху"},
-        {"order":22,"sourceUpload":null,"cuisine":"Татарская","dish":"Кыстыбый","slug":"tatarskaya-kystybyy","assetPath":"/assets/world-cuisines/tatarskaya-kystybyy.webp","review":"regenerate","reason":"Изображение выглядит как круглые лепёшки; нужен сложенный пополам кыстыбый с видимой картофельной начинкой"},
-        {"order":23,"sourceUpload":null,"cuisine":"Татарская","dish":"Азу по-татарски","slug":"tatarskaya-azu-po-tatarski","assetPath":"/assets/world-cuisines/tatarskaya-azu-po-tatarski.webp","review":"accepted"},
-        {"order":24,"sourceUpload":null,"cuisine":"Татарская","dish":"Губадия","slug":"tatarskaya-gubadiya","assetPath":"/assets/world-cuisines/tatarskaya-gubadiya.webp","review":"accepted"},
-        {"order":25,"sourceUpload":null,"cuisine":"Татарская","dish":"Чак-чак","slug":"tatarskaya-chak-chak","assetPath":"/assets/world-cuisines/tatarskaya-chak-chak.webp","review":"accepted"},
-        {"order":26,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Сконы к завтраку","slug":"angliyskie-zavtraki-skony-k-zavtraku","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-skony-k-zavtraku.webp","review":"accepted"},
-        {"order":27,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Полный английский завтрак","slug":"angliyskie-zavtraki-polnyy-angliyskiy-zavtrak","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-polnyy-angliyskiy-zavtrak.webp","review":"accepted"},
-        {"order":28,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Овсяная каша с яблоком","slug":"angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom.webp","review":"accepted"},
-        {"order":29,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Яйца с солдатиками","slug":"angliyskie-zavtraki-yayca-s-soldatikami","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-yayca-s-soldatikami.webp","review":"accepted"},
-        {"order":30,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Печёная фасоль на тосте","slug":"angliyskie-zavtraki-pechenaya-fasol-na-toste","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-pechenaya-fasol-na-toste.webp","review":"accepted"}
+        {"order":21,"cuisine":"Татарская","dish":"Эчпочмак","slug":"tatarskaya-echpochmak","review":"regenerate","reason":"Нужна характерная треугольная форма с отверстием сверху"},
+        {"order":22,"cuisine":"Татарская","dish":"Кыстыбый","slug":"tatarskaya-kystybyy","review":"regenerate","reason":"Нужна тонкая лепёшка, сложенная пополам, с видимой картофельной начинкой"},
+        {"order":23,"cuisine":"Татарская","dish":"Азу по-татарски","slug":"tatarskaya-azu-po-tatarski","review":"accepted"},
+        {"order":24,"cuisine":"Татарская","dish":"Губадия","slug":"tatarskaya-gubadiya","review":"accepted"},
+        {"order":25,"cuisine":"Татарская","dish":"Чак-чак","slug":"tatarskaya-chak-chak","review":"accepted"},
+        {"order":26,"cuisine":"Английские завтраки","dish":"Сконы к завтраку","slug":"angliyskie-zavtraki-skony-k-zavtraku","review":"accepted"},
+        {"order":27,"cuisine":"Английские завтраки","dish":"Полный английский завтрак","slug":"angliyskie-zavtraki-polnyy-angliyskiy-zavtrak","review":"accepted"},
+        {"order":28,"cuisine":"Английские завтраки","dish":"Овсяная каша с яблоком","slug":"angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom","review":"accepted"},
+        {"order":29,"cuisine":"Английские завтраки","dish":"Яйца с солдатиками","slug":"angliyskie-zavtraki-yayca-s-soldatikami","review":"accepted"},
+        {"order":30,"cuisine":"Английские завтраки","dish":"Печёная фасоль на тосте","slug":"angliyskie-zavtraki-pechenaya-fasol-na-toste","review":"accepted"}
+      ]
+    },
+    {
+      "batch": 4,
+      "label": "Напитки мира + Корея",
+      "status": "mapped",
+      "images": [
+        {"order":31,"cuisine":"Напитки мира (безалкогольные)","dish":"Манговый ласси","slug":"napitki-mira-bezalkogolnye-mangovyy-lassi","review":"accepted"},
+        {"order":32,"cuisine":"Напитки мира (безалкогольные)","dish":"Айран с мятой","slug":"napitki-mira-bezalkogolnye-ayran-s-myatoy","review":"accepted"},
+        {"order":33,"cuisine":"Напитки мира (безалкогольные)","dish":"Мексиканская орчата","slug":"napitki-mira-bezalkogolnye-meksikanskaya-orchata","review":"accepted"},
+        {"order":34,"cuisine":"Напитки мира (безалкогольные)","dish":"Тайский холодный чай без кофеина","slug":"napitki-mira-bezalkogolnye-tayskiy-holodnyy-chay-bez-kofeina","review":"accepted"},
+        {"order":35,"cuisine":"Напитки мира (безалкогольные)","dish":"Имбирный лимонад","slug":"napitki-mira-bezalkogolnye-imbirnyy-limonad","review":"accepted"},
+        {"order":36,"cuisine":"Корея","dish":"Пибимпап","slug":"koreya-pibimpap","review":"accepted"},
+        {"order":37,"cuisine":"Корея","dish":"Кимчи-чиге","slug":"koreya-kimchi-chige-po-domashnemu","review":"accepted"},
+        {"order":38,"cuisine":"Корея","dish":"Корейские огурцы","slug":"koreya-koreyskie-ogurcy","review":"accepted"},
+        {"order":39,"cuisine":"Корея","dish":"Паджон с зелёным луком","slug":"koreya-padzhon-s-zelenym-lukom","review":"accepted"},
+        {"order":40,"cuisine":"Корея","dish":"Курица в острой глазури","slug":"koreya-kurica-v-ostroy-glazuri","review":"accepted"}
+      ]
+    },
+    {
+      "batch": 5,
+      "label": "Польша + Русская",
+      "status": "mapped",
+      "images": [
+        {"order":41,"cuisine":"Польша","dish":"Журек","slug":"polsha-zhurek-po-domashnemu","review":"accepted"},
+        {"order":42,"cuisine":"Польша","dish":"Пьероги с картофелем и творогом","slug":"polsha-perogi-s-kartofelem-i-tvorogom","review":"accepted"},
+        {"order":43,"cuisine":"Польша","dish":"Бигос","slug":"polsha-bigos","review":"accepted"},
+        {"order":44,"cuisine":"Польша","dish":"Огуречник","slug":"polsha-ogurechnik","review":"accepted"},
+        {"order":45,"cuisine":"Польша","dish":"Сырники по-польски","slug":"polsha-syrniki-po-polski","review":"accepted"},
+        {"order":46,"cuisine":"Русская","dish":"Щи из свежей капусты","slug":"russkaya-schi-iz-svezhey-kapusty","review":"accepted"},
+        {"order":47,"cuisine":"Русская","dish":"Гречка по-купечески","slug":"russkaya-grechka-po-kupecheski","review":"accepted"},
+        {"order":48,"cuisine":"Русская","dish":"Курник по-домашнему","slug":"russkaya-kurnik-po-domashnemu","review":"accepted"},
+        {"order":49,"cuisine":"Русская","dish":"Рассольник с перловкой","slug":"russkaya-rassolnik-s-perlovkoy","review":"accepted"},
+        {"order":50,"cuisine":"Русская","dish":"Творожная запеканка","slug":"russkaya-tvorozhnaya-zapekanka","review":"accepted"}
+      ]
+    },
+    {
+      "batch": 6,
+      "label": "Китай + Италия",
+      "status": "mapped",
+      "images": [
+        {"order":51,"cuisine":"Китай","dish":"Курица гунбао","slug":"kitay-kurica-gunbao","review":"accepted"},
+        {"order":52,"cuisine":"Китай","dish":"Жареный рис с яйцом","slug":"kitay-zharenyy-ris-s-yaycom","review":"accepted"},
+        {"order":53,"cuisine":"Китай","dish":"Баклажаны в чесночном соусе","slug":"kitay-baklazhany-v-chesnochnom-souse","review":"accepted"},
+        {"order":54,"cuisine":"Китай","dish":"Лапша с говядиной и овощами","slug":"kitay-lapsha-s-govyadinoy-i-ovoschami","review":"accepted"},
+        {"order":55,"cuisine":"Китай","dish":"Огурцы по-китайски","slug":"kitay-ogurcy-po-kitayski","review":"accepted"},
+        {"order":56,"cuisine":"Италия","dish":"Паста качо э пепе","slug":"italiya-pasta-kacho-e-pepe","review":"accepted"},
+        {"order":57,"cuisine":"Италия","dish":"Ризотто с грибами","slug":"italiya-rizotto-s-gribami","review":"accepted"},
+        {"order":58,"cuisine":"Италия","dish":"Брускетта с томатами","slug":"italiya-brusketta-s-tomatami","review":"accepted"},
+        {"order":59,"cuisine":"Италия","dish":"Минестроне","slug":"italiya-minestrone","review":"accepted"},
+        {"order":60,"cuisine":"Италия","dish":"Фокачча с розмарином","slug":"italiya-fokachcha-s-rozmarinom","review":"accepted"}
+      ]
+    },
+    {
+      "batch": 7,
+      "label": "Африка + Грузия",
+      "status": "mapped",
+      "images": [
+        {"order":61,"cuisine":"Африка","dish":"Шакшука по-североафрикански","slug":"afrika-shakshuka-po-severoafrikanski","review":"accepted"},
+        {"order":62,"cuisine":"Африка","dish":"Марокканский кускус с овощами","slug":"afrika-marokkanskiy-kuskus-s-ovoschami","review":"accepted"},
+        {"order":63,"cuisine":"Африка","dish":"Харира","slug":"afrika-hariru-po-domashnemu","review":"accepted"},
+        {"order":64,"cuisine":"Африка","dish":"Курица с лимоном и оливками","slug":"afrika-kurica-s-limonom-i-olivkami","review":"accepted"},
+        {"order":65,"cuisine":"Африка","dish":"Пряная чечевица с томатами","slug":"afrika-pryanaya-chechevica-s-tomatami","review":"accepted"},
+        {"order":66,"cuisine":"Грузия","dish":"Хачапури по-аджарски","slug":"gruziya-hachapuri-po-adzharski","review":"accepted"},
+        {"order":67,"cuisine":"Грузия","dish":"Чахохбили","slug":"gruziya-chahohbili","review":"accepted"},
+        {"order":68,"cuisine":"Грузия","dish":"Лобио","slug":"gruziya-lobio","review":"accepted"},
+        {"order":69,"cuisine":"Грузия","dish":"Пхали из шпината","slug":"gruziya-phali-iz-shpinata","review":"accepted"},
+        {"order":70,"cuisine":"Грузия","dish":"Оджахури","slug":"gruziya-odzhahuri","review":"accepted"}
       ]
     }
   ]
