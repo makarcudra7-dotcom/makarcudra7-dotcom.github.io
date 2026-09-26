@@ -8,7 +8,7 @@
   function setTheme(next){
     document.documentElement.dataset.theme=next;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='dark'?'#161b19':'#f7f4ee');
-    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.textContent=next==='dark'?'☀ Светлая тема':'☾ Тёмная тема';btn.setAttribute('aria-pressed',String(next==='dark'));btn.setAttribute('aria-label',next==='dark'?'Включить светлую тему':'Включить тёмную тему')}
+    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.textContent=next==='dark'?'☀ Светлая тема':'☾ Тёмная тема';btn.setAttribute('aria-pressed',String(next==='dark'))}
   }
   let initial='light';try{initial=localStorage.getItem('provkus-theme')||'light'}catch(e){}
   setTheme(initial==='dark'?'dark':'light');
@@ -42,7 +42,7 @@
   function enhanceNavigation(){const here=new URL(location.href),rubric=here.searchParams.get('rubric')||'';document.querySelectorAll('.main-nav a').forEach(a=>{try{const u=new URL(a.href,location.href);let active=u.pathname===here.pathname;if(here.pathname==='/category.html'&&u.pathname==='/category.html')active=(u.searchParams.get('rubric')||'')===rubric;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}catch(e){}});const main=document.querySelector('main');if(main&&!main.id)main.id='main-content'}
   function loadScript(src,id){if(id&&document.getElementById(id))return;const s=document.createElement('script');if(id)s.id=id;s.src=src;s.defer=true;document.body.appendChild(s)}
   function runWhenIdle(fn){if('requestIdleCallback' in window){requestIdleCallback(fn,{timeout:2500})}else{setTimeout(fn,1200)}}
-  function loadNonCriticalScripts(){runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality10','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')})}
+  function loadNonCriticalScripts(){runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')})}
   function injectAdvertisingCta(){
     if(!isHome||document.querySelector('.pv-ad-cta'))return;
     const grid=document.querySelector('.hero-grid'),lead=grid?.querySelector(':scope > .lead-card'),side=grid?.querySelector(':scope > .hero-side');
