@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / 'index.html'
 SITE = 'https://provkus-media.ru'
-WIDTHS = (640, 960, 1280)
+WIDTHS = (320, 480, 640, 768, 960, 1280)
 
 
 def get_attr(tag, name):
@@ -129,13 +129,13 @@ def main():
     source = INDEX.read_text('utf-8')
     original = source
 
-    hero_sizes = lambda i: '(max-width: 760px) 100vw, 66vw' if i == 0 else '(max-width: 760px) 100vw, 32vw'
-    hero_preferred = lambda i: 960 if i == 0 else 640
+    hero_sizes = lambda i: '(max-width: 760px) calc(100vw - 24px), 66vw' if i == 0 else '(max-width: 760px) 132px, 32vw'
+    hero_preferred = lambda i: 768 if i == 0 else 320
     source = optimize_block(source, 'HOME-HERO', hero_sizes, hero_preferred, first_eager=True)
-    source = optimize_block(source, 'HOME-LOWER', '(max-width: 760px) 100vw, 31vw', 640)
+    source = optimize_block(source, 'HOME-LOWER', '(max-width: 760px) calc(100vw - 24px), 31vw', 768)
     source = re.sub(r'<link id="pv-hero-preload"[^>]*>', '', source, flags=re.I)
     source = add_lcp_preload(source)
-    source = re.sub(r'/assets/app\.js\?v=[^"\']+', '/assets/app.js?v=20260926-pagespeed1', source, count=1)
+    source = re.sub(r'/assets/app\.js\?v=[^"\']+', '/assets/app.js?v=20260926-pagespeed2', source, count=1)
 
     if source != original:
         INDEX.write_text(source, 'utf-8')
