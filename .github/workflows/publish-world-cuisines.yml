@@ -1,0 +1,64 @@
+name: Publish world cuisines now
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/world-cuisines/publish-now.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-world-cuisines-now
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Prepare 95 recipes
+        run: python scripts/publish_world_cuisines.py
+      - name: Publish all due items
+        run: node scripts/publish-scheduled.js
+      - name: Rebuild indexes and feed
+        run: |
+          python scripts/build_indexes.py
+          node scripts/build-feed.js
+      - name: Verify 95 published pages
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          reg=json.load(open('drafts/world-cuisines/final-photo-registry-95.json',encoding='utf-8'))
+          slugs=[x['slug'] for x in reg['items']]
+          posts=json.load(open('data/posts.json',encoding='utf-8'))
+          have={p.get('slug') for p in posts}
+          missing_posts=[s for s in slugs if s not in have]
+          missing_html=[s for s in slugs if not Path('articles',s+'.html').exists()]
+          if missing_posts or missing_html:
+              raise SystemExit(f'missing posts={missing_posts}; html={missing_html}')
+          print('Verified: 95 posts and 95 HTML pages')
+          PY
+      - name: Commit published site
+        run: |
+          rm -f drafts/world-cuisines/publish-now.trigger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Publish 95 world cuisine recipes"
+          git pull --rebase origin main
+          git push origin HEAD:main
