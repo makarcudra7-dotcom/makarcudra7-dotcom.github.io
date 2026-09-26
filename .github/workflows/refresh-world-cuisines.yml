@@ -28,11 +28,13 @@ jobs:
           node-version: '20'
       - name: Rewrite 95 recipes and link cards
         run: python scripts/refresh_world_cuisines.py
+      - name: Optimize world cuisine loading
+        run: python scripts/optimize_world_cuisines.py
       - name: Rebuild indexes and feed
         run: |
           python scripts/build_indexes.py
           node scripts/build-feed.js
-      - name: Verify links and article bodies
+      - name: Verify links, article bodies and deferred images
         run: |
           python - <<'PY'
           import json,re
@@ -56,7 +58,11 @@ jobs:
               raise SystemExit('Verification failed: '+', '.join(missing[:30]))
           if world.count('class="wc-dish" href="/articles/') != 95:
               raise SystemExit('Expected 95 clickable cards')
-          print('Verified 95 clickable cards and 95 rich recipe bodies')
+          if world.count('data-src="/assets/uploads/') != 95:
+              raise SystemExit('Expected 95 deferred recipe images')
+          if re.search(r'<img src="/assets/uploads/[^\"]+-16x9\.webp"', world):
+              raise SystemExit('Recipe images must not be requested directly by initial HTML')
+          print('Verified 95 cards, 95 rich recipes and 95 deferred images')
           PY
       - name: Commit refreshed site
         run: |
