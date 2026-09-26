@@ -1,0 +1,64 @@
+name: Fix homepage authors mobile
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-home-authors-mobile.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch homepage author cards
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          app = Path('assets/app.js')
+          s = app.read_text()
+          old = "function addCss(href){if(document.querySelector(`link[href^=\"${href}\"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260923-theme3';document.head.appendChild(l)}"
+          new = "function addCss(href){if(document.querySelector(`link[href^=\"${href}\"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v=20260926-authorhome2';document.head.appendChild(l)}"
+          assert old in s, 'addCss signature changed'
+          s = s.replace(old, new)
+
+          old = "function injectCss(){addCss('/assets/overrides.css');addCss('/assets/site-ui.css');addCss('/assets/theme.css');if(!isHome){addCss('/assets/author-fix.css');addCss('/assets/community-extra.css')}}"
+          new = "function injectCss(){addCss('/assets/overrides.css');addCss('/assets/site-ui.css');addCss('/assets/theme.css');addCss('/assets/author-fix.css');if(!isHome){addCss('/assets/community-extra.css')}}"
+          assert old in s, 'injectCss signature changed'
+          s = s.replace(old, new)
+
+          old = "window.__pvPostsPromise=window.__pvPostsPromise||(isHome?Promise.resolve([]):fetch('/data/posts.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).then(visiblePosts).catch(()=>[]));"
+          new = "const loadVisiblePosts=()=>fetch('/data/posts.json?v=20260926-authorhome2',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).then(visiblePosts).catch(()=>[]);\n  window.__pvPostsPromise=window.__pvPostsPromise||(isHome?new Promise(resolve=>{const start=()=>loadVisiblePosts().then(resolve);if(document.readyState==='complete')start();else window.addEventListener('load',start,{once:true})}):loadVisiblePosts());"
+          assert old in s, 'posts promise signature changed'
+          s = s.replace(old, new)
+
+          old = "loadScript('/assets/community.js?v=20260923-email','pvCommunity')"
+          new = "loadScript('/assets/community.js?v=20260926-authorhome2','pvCommunity')"
+          assert old in s, 'community cache key changed'
+          s = s.replace(old, new)
+          app.write_text(s)
+
+          css = Path('assets/author-fix.css')
+          c = css.read_text()
+          marker = '/* homepage mobile author hardening */'
+          if marker not in c:
+              c += '''\n\n/* homepage mobile author hardening */\n.author-directory-grid .author-card-top img{overflow:hidden!important;clip-path:circle(50%)!important;-webkit-clip-path:circle(50%)!important}\n@media(max-width:640px){\n  .feature-band .author-directory-grid .author-card{padding:16px!important}\n  .feature-band .author-directory-grid .author-card-top{grid-template-columns:80px minmax(0,1fr)!important;gap:12px!important;align-items:center!important}\n  .feature-band .author-directory-grid .author-card-top img{width:80px!important;height:80px!important;min-width:80px!important;max-width:80px!important;min-height:80px!important;max-height:80px!important;aspect-ratio:1/1!important;object-fit:cover!important;object-position:50% 28%!important;flex:0 0 80px!important;border-radius:50%!important}\n}\n@media(max-width:390px){\n  .feature-band .author-directory-grid .author-card-top{grid-template-columns:72px minmax(0,1fr)!important;gap:10px!important}\n  .feature-band .author-directory-grid .author-card-top img{width:72px!important;height:72px!important;min-width:72px!important;max-width:72px!important;min-height:72px!important;max-height:72px!important;flex-basis:72px!important}\n}\n'''
+          css.write_text(c)
+
+          index = Path('index.html')
+          h = index.read_text()
+          old = '/assets/app.js?v=20260925-clean1'
+          new = '/assets/app.js?v=20260926-authorhome2'
+          assert old in h, 'index app cache key changed'
+          index.write_text(h.replace(old, new))
+          PY
+      - name: Commit hotfix
+        run: |
+          git config user.name "provkus-fix-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/app.js assets/author-fix.css index.html
+          git commit -m "Fix homepage author cards on mobile"
+          git push
