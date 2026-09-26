@@ -1,0 +1,42 @@
+name: Optimize homepage hero
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'data/posts.json'
+      - 'scripts/optimize_home_hero.py'
+      - '.github/workflows/optimize-home-hero.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'responsive homepage hero images')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Build responsive hero images
+        run: python3 scripts/optimize_home_hero.py
+
+      - name: Commit responsive hero assets
+        run: |
+          git config user.name "provkus-performance-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html assets/uploads
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "perf: responsive homepage hero images"
+          git push
