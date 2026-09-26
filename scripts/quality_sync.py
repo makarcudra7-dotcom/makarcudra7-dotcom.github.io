@@ -120,7 +120,7 @@ def sync_author_css():
 
     public = ROOT / 'assets/public.css'
     p = read(public)
-    p = re.sub(r'^\s*@import\s+url\(["\']?/assets/styles\.css["\']?\);\s*', '', p, count=1, flags=re.I)
+    p = re.sub(r'^\s*@import\s+url\(["\']?/assets/styles\.css["\']?\);\s*', '', p, count=1, flags=re.I | re.M)
     write_if_changed(public, p)
 
 
@@ -156,7 +156,7 @@ def sync_runtime():
         count=1,
     )
     source = re.sub(
-        r"function injectCss\(\)\{.*?\}",
+        r"function injectCss\(\)\{[^\n]*\}",
         "function injectCss(){addCss('/assets/overrides.css');addCss('/assets/site-ui.css');addCss('/assets/theme.css')}",
         source,
         count=1,
@@ -238,7 +238,7 @@ def sync_authors_directory():
     main = (
         '<main class="container"><section class="section"><div class="section-head"><div><div class="eyebrow">Редакция ProVkus</div>'
         '<h1 class="section-title">Люди, которые отвечают за материалы</h1><p class="section-sub">'
-        'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.'</n        'p></div></div><div class="author-grid author-directory-grid">' + cards + '</div>'
+        'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.</p></div></div><div class="author-grid author-directory-grid">' + cards + '</div>'
         '<div class="author-directory-note"><h2>Как устроена редакция</h2><p>Каждый материал закреплён за конкретным автором и его редакционным направлением. '
         'В профиле автора собраны публикации, специализация и описание подхода к проверке фактов.</p><p>Для тем о продуктах, хранении и безопасности '
         'мы отделяем личный опыт от проверяемых утверждений и указываем источники там, где они нужны читателю для самостоятельной проверки.</p></div>'

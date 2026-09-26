@@ -133,6 +133,7 @@ def main():
     hero_preferred = lambda i: 960 if i == 0 else 640
     source = optimize_block(source, 'HOME-HERO', hero_sizes, hero_preferred, first_eager=True)
     source = optimize_block(source, 'HOME-LOWER', '(max-width: 760px) 100vw, 31vw', 640)
+    source = re.sub(r'<link id="pv-hero-preload"[^>]*>', '', source, flags=re.I)
     source = add_lcp_preload(source)
     source = re.sub(r'/assets/app\.js\?v=[^"\']+', '/assets/app.js?v=20260926-pagespeed1', source, count=1)
 
