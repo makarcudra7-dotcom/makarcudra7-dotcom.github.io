@@ -1,0 +1,168 @@
+name: Attach world cuisine photos
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/world-cuisines/photos-upload.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: attach-world-cuisine-photos
+  cancel-in-progress: false
+
+jobs:
+  attach:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Download and unpack 95 photos
+        shell: bash
+        run: |
+          set -euo pipefail
+          ASSET_URL="$(cat drafts/world-cuisines/photos-upload.trigger)"
+          curl --fail --location --retry 3 --output /tmp/world95-carrier.webp "$ASSET_URL"
+          python - <<'PY'
+          import io, json, tarfile
+          from pathlib import Path
+
+          root = Path('.')
+          carrier = Path('/tmp/world95-carrier.webp').read_bytes()
+          marker = b'\nPVARCHIVE95\n'
+          pos = carrier.find(marker)
+          if pos < 0:
+              raise SystemExit('Carrier marker not found; refusing to change published pages')
+          payload = carrier[pos + len(marker):]
+          reg = json.loads((root/'drafts/world-cuisines/final-photo-registry-95.json').read_text('utf-8'))
+          items = reg.get('items', [])
+          if len(items) != 95:
+              raise SystemExit(f'Expected 95 registry items, got {len(items)}')
+          expected = {f"{x['slug']}-16x9.webp" for x in items}
+
+          with tarfile.open(fileobj=io.BytesIO(payload), mode='r:gz') as tf:
+              members = [m for m in tf.getmembers() if m.isfile() and Path(m.name).name.endswith('-16x9.webp')]
+              names = {Path(m.name).name for m in members}
+              if names != expected:
+                  missing = sorted(expected - names)
+                  extra = sorted(names - expected)
+                  raise SystemExit(f'Photo set mismatch: missing={missing}, extra={extra}')
+              out = root/'assets/uploads'
+              out.mkdir(parents=True, exist_ok=True)
+              for m in members:
+                  name = Path(m.name).name
+                  data = tf.extractfile(m).read()
+                  if len(data) < 1000 or not data.startswith(b'RIFF') or b'WEBP' not in data[:16]:
+                      raise SystemExit(f'Invalid WebP payload: {name}')
+                  (out/name).write_bytes(data)
+
+          files = list((root/'assets/uploads').glob('*-16x9.webp'))
+          have = {p.name for p in files}
+          if not expected <= have:
+              raise SystemExit('Not all expected photos were written')
+          print('Extracted and verified 95/95 WebP photos')
+          PY
+      - name: Replace placeholders with real photos
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('.')
+          placeholder = 'https://provkus-media.ru/assets/world-cuisines-placeholder.svg'
+          reg_path = root/'drafts/world-cuisines/final-photo-registry-95.json'
+          reg = json.loads(reg_path.read_text('utf-8'))
+          items = reg['items']
+          slugs = {x['slug'] for x in items}
+
+          posts_path = root/'data/posts.json'
+          posts = json.loads(posts_path.read_text('utf-8'))
+          touched = 0
+          for p in posts:
+              slug = p.get('slug')
+              if slug in slugs:
+                  url = f'https://provkus-media.ru/assets/uploads/{slug}-16x9.webp'
+                  p['image'] = url
+                  p['images'] = [url]
+                  p['imageTarget'] = url
+                  touched += 1
+          if touched != 95:
+              raise SystemExit(f'Expected to update 95 posts, updated {touched}')
+          posts_path.write_text(json.dumps(posts, ensure_ascii=False, indent=2) + '\n', 'utf-8')
+
+          updated_html = 0
+          for slug in sorted(slugs):
+              path = root/'articles'/f'{slug}.html'
+              if not path.exists():
+                  raise SystemExit(f'Missing article HTML: {path}')
+              url = f'https://provkus-media.ru/assets/uploads/{slug}-16x9.webp'
+              text = path.read_text('utf-8')
+              new = text.replace(placeholder, url)
+              if url not in new:
+                  raise SystemExit(f'Photo URL not present after replacement: {slug}')
+              if placeholder in new:
+                  raise SystemExit(f'Placeholder still present: {slug}')
+              if new != text:
+                  path.write_text(new, 'utf-8')
+              updated_html += 1
+
+          reg['status'] = 'published-with-photos'
+          reg['photoFiles'] = 95
+          for x in reg['items']:
+              x['status'] = 'photo-uploaded'
+              x['image'] = f"https://provkus-media.ru/assets/uploads/{x['slug']}-16x9.webp"
+          reg_path.write_text(json.dumps(reg, ensure_ascii=False, indent=2) + '\n', 'utf-8')
+          print(f'Updated {touched} posts and verified {updated_html} article pages')
+          PY
+      - name: Rebuild indexes and feed
+        run: |
+          python scripts/build_indexes.py
+          node scripts/build-feed.js
+      - name: Final verification
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('.')
+          placeholder='world-cuisines-placeholder.svg'
+          reg=json.loads((root/'drafts/world-cuisines/final-photo-registry-95.json').read_text('utf-8'))
+          items=reg['items']
+          assert len(items)==95
+          missing=[]
+          bad=[]
+          for x in items:
+              slug=x['slug']
+              img=root/'assets/uploads'/f'{slug}-16x9.webp'
+              html=root/'articles'/f'{slug}.html'
+              if not img.exists(): missing.append(str(img))
+              txt=html.read_text('utf-8')
+              url=f'https://provkus-media.ru/assets/uploads/{slug}-16x9.webp'
+              if placeholder in txt or txt.count(url) < 4:
+                  bad.append(slug)
+          if missing or bad:
+              raise SystemExit(f'missing={missing}; bad_pages={bad}')
+          posts=json.loads((root/'data/posts.json').read_text('utf-8'))
+          postmap={p.get('slug'):p for p in posts}
+          bad_posts=[x['slug'] for x in items if postmap.get(x['slug'],{}).get('image') != f"https://provkus-media.ru/assets/uploads/{x['slug']}-16x9.webp"]
+          if bad_posts:
+              raise SystemExit(f'bad_posts={bad_posts}')
+          print('FINAL OK: 95/95 photos, 95/95 pages, 95/95 post images')
+          PY
+      - name: Commit photos and updated pages
+        run: |
+          rm -f drafts/world-cuisines/photos-upload.trigger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Attach 95 world cuisine photos"
+          git pull --rebase origin main
+          git push origin HEAD:main
