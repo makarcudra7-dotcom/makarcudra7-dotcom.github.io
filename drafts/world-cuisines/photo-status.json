@@ -1,0 +1,7 @@
+{
+  "status": "all-95-photos-received",
+  "total": 95,
+  "authoritativeOrderFile": "drafts/world-cuisines/authoritative-photo-order-45.json",
+  "note": "For the 45-photo China-through-India set, use user-confirmed order only. Do not visually re-identify or rename dishes.",
+  "pendingReview": ["tatarskaya-echpochmak", "tatarskaya-kystybyy"]
+}
