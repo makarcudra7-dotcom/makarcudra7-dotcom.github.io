@@ -1,5 +1,37 @@
 [
   {
+    "slug": "krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy",
+    "headline": "Крупу из пакетов сразу пересыпаю в банки: что действительно помогает от жучков и зачем некоторые кладут сухой перец",
+    "description": "Герметичные сухие банки и регулярная проверка запасов важнее любых народных лайфхаков. Разбираемся, где здесь место сухому перцу.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Хранение продуктов",
+    "type": "guide",
+    "typeLabel": "Инструкция / как сделать",
+    "image": "https://provkus-media.ru/assets/uploads/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy-1x1.jpg"
+    ],
+    "imageAlt": "Крупы в прозрачных герметичных банках на кухонной полке",
+    "url": "https://provkus-media.ru/articles/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy.html",
+    "publishedAt": "2026-09-26T08:30:00.000Z",
+    "updatedAt": "2026-09-26T06:02:00.000Z",
+    "tags": [
+      "Еда",
+      "Холодильник",
+      "Хранение",
+      "Безопасность",
+      "Полезное",
+      "Для кухни"
+    ],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu",
     "headline": "Чай выбираю по 4 признакам: что проверяю на упаковке и какой домашний штрих меняет вкус обычной чашки",
     "description": "Хороший чай выбирают не только по цене и красивой коробке. Четыре простые проверки помогают оценить покупку ещё в магазине.",
@@ -24,7 +56,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": []
   },
@@ -258,7 +290,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {

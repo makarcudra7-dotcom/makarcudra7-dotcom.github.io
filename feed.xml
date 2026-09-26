@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sat, 26 Sep 2026 05:35:00 GMT</lastBuildDate>
+  <lastBuildDate>Sat, 26 Sep 2026 06:02:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Крупу из пакетов сразу пересыпаю в банки: что действительно помогает от жучков и зачем некоторые кладут сухой перец</title>
+    <link>https://provkus-media.ru/articles/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy.html</guid>
+    <pubDate>Sat, 26 Sep 2026 08:30:00 GMT</pubDate>
+    <description>Герметичные сухие банки и регулярная проверка запасов важнее любых народных лайфхаков. Разбираемся, где здесь место сухому перцу.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Хранение продуктов</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy-16x9.jpg" medium="image"/>
+  </item>
   <item>
     <title>Чай выбираю по 4 признакам: что проверяю на упаковке и какой домашний штрих меняет вкус обычной чашки</title>
     <link>https://provkus-media.ru/articles/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/gruziya-lobio-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Чахохбили готовлю без лишней воды: томаты и лук сами дают достаточно соуса для курицы</title>
-    <link>https://provkus-media.ru/articles/gruziya-chahohbili.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-chahohbili.html</guid>
-    <pubDate>Tue, 22 Sep 2026 13:05:00 GMT</pubDate>
-    <description>Домашнее чахохбили с курицей, томатами, луком, чесноком, кинзой и хмели-сунели.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/gruziya-chahohbili-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
