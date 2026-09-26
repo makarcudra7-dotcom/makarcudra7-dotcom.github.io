@@ -11,6 +11,14 @@ INDEX = ROOT / "index.html"
 WIDTHS = (480, 768, 1200, 1600)
 QUALITY = 82
 
+CTA_HTML = (
+    '<aside class="pv-ad-cta" aria-label="Реклама и спецпроекты">'
+    '<div class="pv-ad-copy"><span class="pv-ad-kicker">Для брендов</span>'
+    '<h2>Реклама и спецпроекты в ProVkus</h2>'
+    '<p>Нативные интеграции, обзоры продуктов и специальные проекты для аудитории о еде, доме и покупках.</p>'
+    '</div><a class="pv-ad-button" href="/contacts.html">Обсудить размещение →</a></aside>'
+)
+
 
 def local_path_from_src(src: str) -> tuple[Path, str] | None:
     parsed = urlparse(src)
@@ -54,12 +62,27 @@ def public_url(path: Path) -> str:
     return "/" + path.relative_to(ROOT).as_posix()
 
 
+def ensure_stable_layout(hero: str) -> str:
+    """Keep the final first-screen structure in HTML so JS never moves the LCP card."""
+    if 'class="hero-main"' in hero:
+        return hero
+    side_marker = '<div class="hero-side">'
+    side_at = hero.find(side_marker)
+    if side_at < 0:
+        raise RuntimeError("hero-side not found in HOME-HERO block")
+    lead = hero[:side_at]
+    side = hero[side_at:]
+    if 'class="lead-card"' not in lead:
+        raise RuntimeError("lead-card not found before hero-side")
+    return f'<div class="hero-main">{lead}{CTA_HTML}</div>{side}'
+
+
 def patch_hero(source: str) -> tuple[str, str]:
     hero_match = re.search(r"<!-- HOME-HERO-START -->(.*?)<!-- HOME-HERO-END -->", source, flags=re.S)
     if not hero_match:
         raise RuntimeError("HOME-HERO markers not found in index.html")
 
-    hero = hero_match.group(1)
+    hero = ensure_stable_layout(hero_match.group(1))
     img_match = re.search(r"<img\b[^>]*>", hero, flags=re.I)
     if not img_match:
         raise RuntimeError("Hero image not found in HOME-HERO block")
@@ -102,9 +125,9 @@ def main() -> None:
     patched, src = patch_hero(source)
     if patched != source:
         INDEX.write_text(patched, "utf-8")
-        print(f"index.html: responsive srcset applied to {src}")
+        print(f"index.html: stable hero layout + responsive srcset applied to {src}")
     else:
-        print("index.html: responsive hero srcset already current")
+        print("index.html: stable responsive hero already current")
 
 
 if __name__ == "__main__":
