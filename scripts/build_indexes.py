@@ -154,6 +154,7 @@ fixed=[
   (site+'/', None),
   (site+'/category.html', None),
   (site+'/recipes.html', None),
+  (site+'/world-cuisines.html', None),
   (site+'/products.html', None),
   (site+'/home-storage.html', None),
   (site+'/food-safety.html', None),
