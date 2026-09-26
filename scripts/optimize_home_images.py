@@ -7,7 +7,7 @@ from PIL import Image, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://provkus-media.ru'
-WIDTHS = (640, 960, 1280)
+WIDTHS = (320, 480, 640, 768, 960, 1280)
 QUALITY = 80
 
 
