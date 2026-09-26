@@ -1,6 +1,8 @@
 {
-  "version": 1,
-  "received": 10,
+  "version": 2,
+  "received": 30,
+  "accepted": 28,
+  "needsRegeneration": 2,
   "totalExpected": 95,
   "batches": [
     {
@@ -18,6 +20,40 @@
         {"order":8,"sourceUpload":"8fba07ba-a944-4e2a-a4fd-454e9b7b5832.png","cuisine":"Белоруссия","dish":"Мачанка с блинами","slug":"belorussiya-machanka-s-blinami","assetPath":"/assets/world-cuisines/belorussiya-machanka-s-blinami.webp"},
         {"order":9,"sourceUpload":"19140211-13f4-4add-afd1-9db13fe10283.png","cuisine":"Белоруссия","dish":"Колдуны с мясом","slug":"belorussiya-kolduny-s-myasom","assetPath":"/assets/world-cuisines/belorussiya-kolduny-s-myasom.webp"},
         {"order":10,"sourceUpload":"0dd1db42-7bc1-423e-b1ee-fb44ce29c8fc.png","cuisine":"Белоруссия","dish":"Драники со сметаной","slug":"belorussiya-draniki-so-smetanoy","assetPath":"/assets/world-cuisines/belorussiya-draniki-so-smetanoy.webp"}
+      ]
+    },
+    {
+      "batch": 2,
+      "receivedAt": "2026-09-26",
+      "status": "received-mapped-awaiting-binary-ingest",
+      "images": [
+        {"order":11,"sourceUpload":"16e62e38-13cf-41e0-b79b-bd676cacc980.png","cuisine":"Америка","dish":"Мак-н-чиз","slug":"amerika-mak-n-chiz","assetPath":"/assets/world-cuisines/amerika-mak-n-chiz.webp"},
+        {"order":12,"sourceUpload":"e89e915e-2bb5-4b1e-9f17-3f2ff0979c9c.png","cuisine":"Америка","dish":"Куриные крылышки BBQ","slug":"amerika-kurinye-krylyshki-bbq","assetPath":"/assets/world-cuisines/amerika-kurinye-krylyshki-bbq.webp"},
+        {"order":13,"sourceUpload":"1729afa4-1681-4824-bdd5-29b4b7d400bd.png","cuisine":"Америка","dish":"Коул-слоу","slug":"amerika-koul-slou","assetPath":"/assets/world-cuisines/amerika-koul-slou.webp"},
+        {"order":14,"sourceUpload":"1d93f728-6fb0-48fe-9c09-0715c067fb9a.png","cuisine":"Америка","dish":"Панкейки","slug":"amerika-pankeyki","assetPath":"/assets/world-cuisines/amerika-pankeyki.webp"},
+        {"order":15,"sourceUpload":"ab6fab57-bf4c-4c50-97a2-f1fa13a09d07.png","cuisine":"Америка","dish":"Чили с фасолью","slug":"amerika-chili-s-fasolyu","assetPath":"/assets/world-cuisines/amerika-chili-s-fasolyu.webp"},
+        {"order":16,"sourceUpload":"535a43b1-0584-46ac-8f9c-71cf4cc1826a.png","cuisine":"Армения","dish":"Хоровац из овощей","slug":"armeniya-horovac-iz-ovoschey","assetPath":"/assets/world-cuisines/armeniya-horovac-iz-ovoschey.webp"},
+        {"order":17,"sourceUpload":"56514352-a9e5-477a-8cbd-e4fb99963e48.png","cuisine":"Армения","dish":"Толма в виноградных листьях","slug":"armeniya-tolma-v-vinogradnyh-listyah","assetPath":"/assets/world-cuisines/armeniya-tolma-v-vinogradnyh-listyah.webp"},
+        {"order":18,"sourceUpload":"8f438b31-4d33-4cb0-a88c-fb08734a50a0.png","cuisine":"Армения","dish":"Спас","slug":"armeniya-spas","assetPath":"/assets/world-cuisines/armeniya-spas.webp"},
+        {"order":19,"sourceUpload":"5ae14220-7963-40af-b5a1-5b1154742b55.png","cuisine":"Армения","dish":"Гата домашняя","slug":"armeniya-gata-domashnyaya","assetPath":"/assets/world-cuisines/armeniya-gata-domashnyaya.webp"},
+        {"order":20,"sourceUpload":"c43d3e2f-a2b1-46c4-9e3f-b4fe7994b300.png","cuisine":"Армения","dish":"Женгялов хац","slug":"armeniya-zhengyalov-hac-po-domashnemu","assetPath":"/assets/world-cuisines/armeniya-zhengyalov-hac-po-domashnemu.webp"}
+      ]
+    },
+    {
+      "batch": 3,
+      "receivedAt": "2026-09-26",
+      "status": "received-visual-mapped-2-need-regeneration",
+      "images": [
+        {"order":21,"sourceUpload":null,"cuisine":"Татарская","dish":"Эчпочмак","slug":"tatarskaya-echpochmak","assetPath":"/assets/world-cuisines/tatarskaya-echpochmak.webp","review":"regenerate","reason":"Изображение не показывает характерную треугольную форму эчпочмака с отверстием сверху"},
+        {"order":22,"sourceUpload":null,"cuisine":"Татарская","dish":"Кыстыбый","slug":"tatarskaya-kystybyy","assetPath":"/assets/world-cuisines/tatarskaya-kystybyy.webp","review":"regenerate","reason":"Изображение выглядит как круглые лепёшки; нужен сложенный пополам кыстыбый с видимой картофельной начинкой"},
+        {"order":23,"sourceUpload":null,"cuisine":"Татарская","dish":"Азу по-татарски","slug":"tatarskaya-azu-po-tatarski","assetPath":"/assets/world-cuisines/tatarskaya-azu-po-tatarski.webp","review":"accepted"},
+        {"order":24,"sourceUpload":null,"cuisine":"Татарская","dish":"Губадия","slug":"tatarskaya-gubadiya","assetPath":"/assets/world-cuisines/tatarskaya-gubadiya.webp","review":"accepted"},
+        {"order":25,"sourceUpload":null,"cuisine":"Татарская","dish":"Чак-чак","slug":"tatarskaya-chak-chak","assetPath":"/assets/world-cuisines/tatarskaya-chak-chak.webp","review":"accepted"},
+        {"order":26,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Сконы к завтраку","slug":"angliyskie-zavtraki-skony-k-zavtraku","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-skony-k-zavtraku.webp","review":"accepted"},
+        {"order":27,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Полный английский завтрак","slug":"angliyskie-zavtraki-polnyy-angliyskiy-zavtrak","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-polnyy-angliyskiy-zavtrak.webp","review":"accepted"},
+        {"order":28,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Овсяная каша с яблоком","slug":"angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom.webp","review":"accepted"},
+        {"order":29,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Яйца с солдатиками","slug":"angliyskie-zavtraki-yayca-s-soldatikami","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-yayca-s-soldatikami.webp","review":"accepted"},
+        {"order":30,"sourceUpload":null,"cuisine":"Английские завтраки","dish":"Печёная фасоль на тосте","slug":"angliyskie-zavtraki-pechenaya-fasol-na-toste","assetPath":"/assets/world-cuisines/angliyskie-zavtraki-pechenaya-fasol-na-toste.webp","review":"accepted"}
       ]
     }
   ]
