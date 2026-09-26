@@ -28,18 +28,51 @@
     return data;
   }
 
+  function canGithubFallback(){return !!githubToken()&&typeof originalGetFile==='function'}
+  function markServerFailed(error){
+    serverReady=false;
+    lastServerMessage=error?.message||'Серверный режим временно недоступен';
+    paint(lastServerMessage);
+  }
+
   window.getToken=function(){return serverReady?'server':(originalGetToken?originalGetToken():'')};
   window.getFile=async function(path){
-    if(!serverReady){if(!originalGetFile)throw new Error('Подключите GitHub в настройках');return originalGetFile(path)}
-    return (await serverRequest({action:'get',path})).file;
+    if(serverReady){
+      try{return (await serverRequest({action:'get',path})).file}
+      catch(e){
+        console.warn('[ProVkus CMS] server get failed, falling back to GitHub',e);
+        markServerFailed(e);
+        if(canGithubFallback())return originalGetFile(path);
+        throw e;
+      }
+    }
+    if(!originalGetFile)throw new Error('Подключите GitHub в настройках');
+    return originalGetFile(path);
   };
   window.putFile=async function(path,content,message,encoding='utf-8'){
-    if(!serverReady){if(!originalPutFile)throw new Error('Подключите GitHub в настройках');return originalPutFile(path,content,message,encoding)}
-    if(batchQueue){batchQueue.push({path,content,message,encoding});return {queued:true,path}}
-    return (await serverRequest({action:'put',path,content,message,encoding})).result;
+    if(serverReady){
+      if(batchQueue){batchQueue.push({path,content,message,encoding});return {queued:true,path}}
+      try{return (await serverRequest({action:'put',path,content,message,encoding})).result}
+      catch(e){
+        console.warn('[ProVkus CMS] server put failed, falling back to GitHub',e);
+        markServerFailed(e);
+        if(originalPutFile&&githubToken())return originalPutFile(path,content,message,encoding);
+        throw e;
+      }
+    }
+    if(!originalPutFile)throw new Error('Подключите GitHub в настройках');
+    return originalPutFile(path,content,message,encoding);
   };
   window.deleteFile=async function(path,message='Delete from ProVkus CMS'){
-    if(serverReady)return (await serverRequest({action:'delete',path,message})).result;
+    if(serverReady){
+      try{return (await serverRequest({action:'delete',path,message})).result}
+      catch(e){
+        console.warn('[ProVkus CMS] server delete failed, falling back to GitHub',e);
+        markServerFailed(e);
+        if(originalDeleteFile&&githubToken())return originalDeleteFile(path,message);
+        throw e;
+      }
+    }
     if(originalDeleteFile)return originalDeleteFile(path,message);
     throw new Error('Удаление требует подключения GitHub');
   };
@@ -50,7 +83,15 @@
     const queued=batchQueue;batchQueue=null;if(!queued.length)return null;
     const byPath=new Map();queued.forEach(f=>byPath.set(f.path,f));
     const files=[...byPath.values()].map(({path,content,encoding})=>({path,content,encoding}));
-    return (await serverRequest({action:'batchPut',files,message})).result;
+    try{return (await serverRequest({action:'batchPut',files,message})).result}
+    catch(e){
+      console.warn('[ProVkus CMS] server batch failed, falling back to GitHub',e);
+      markServerFailed(e);
+      if(!(originalPutFile&&githubToken()))throw e;
+      const results=[];
+      for(const file of files)results.push(await originalPutFile(file.path,file.content,message,file.encoding));
+      return {fallback:'github',files:files.map(x=>x.path),results};
+    }
   };
   window.isPublishBatchActive=()=>Array.isArray(batchQueue);
 
@@ -82,7 +123,11 @@
 
   async function probe(){
     if(!adminHash()){serverReady=false;paint('Войдите в админку');return false}
-    try{await serverRequest({action:'ping'});serverReady=true;lastServerMessage='';paint();return true}
+    try{
+      await serverRequest({action:'ping'});
+      serverReady=true;lastServerMessage='';paint();
+      return true;
+    }
     catch(e){serverReady=false;paint(e.message);return false}
   }
   window.testPublishServer=probe;
