@@ -1,0 +1,73 @@
+name: Refresh world cuisine recipes
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/world-cuisines/refresh-now.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-world-cuisines
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Rewrite 95 recipes and link cards
+        run: python scripts/refresh_world_cuisines.py
+      - name: Rebuild indexes and feed
+        run: |
+          python scripts/build_indexes.py
+          node scripts/build-feed.js
+      - name: Verify links and article bodies
+        run: |
+          python - <<'PY'
+          import json,re
+          from pathlib import Path
+          reg=json.load(open('drafts/world-cuisines/final-photo-registry-95.json',encoding='utf-8'))
+          world=Path('world-cuisines.html').read_text('utf-8')
+          missing=[]
+          for item in reg['items']:
+              slug=item['slug']
+              url=f'/articles/{slug}.html'
+              if url not in world:
+                  missing.append('card:'+slug)
+              p=Path('articles',slug+'.html')
+              if not p.exists():
+                  missing.append('html:'+slug)
+                  continue
+              text=p.read_text('utf-8')
+              if '<h2>Ингредиенты</h2>' not in text or '<ol class="recipe-steps">' not in text:
+                  missing.append('body:'+slug)
+          if missing:
+              raise SystemExit('Verification failed: '+', '.join(missing[:30]))
+          if world.count('class="wc-dish" href="/articles/') != 95:
+              raise SystemExit('Expected 95 clickable cards')
+          print('Verified 95 clickable cards and 95 rich recipe bodies')
+          PY
+      - name: Commit refreshed site
+        run: |
+          rm -f drafts/world-cuisines/refresh-now.trigger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Rewrite 95 world cuisine recipes and link cards"
+          git pull --rebase origin main
+          git push origin HEAD:main
