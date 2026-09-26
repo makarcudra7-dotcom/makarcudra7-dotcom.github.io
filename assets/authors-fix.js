@@ -11,13 +11,15 @@
   };
 
   const isPublishedNow = (post) => {
-    if (!post || post.status !== 'published') return false;
-    if (!post.publish_at) return true;
-    const ts = Date.parse(post.publish_at);
+    if (!post) return false;
+    if (post.status && post.status !== 'published') return false;
+    const dateValue = post.publishedAt || post.publish_at || '';
+    if (!dateValue) return true;
+    const ts = Date.parse(dateValue);
     return Number.isNaN(ts) || ts <= Date.now();
   };
 
-  fetch('/data/posts.json?v=20260926-authors1', { cache: 'no-cache' })
+  fetch('/data/posts.json?v=20260926-authors2', { cache: 'no-cache' })
     .then((response) => {
       if (!response.ok) throw new Error(`posts.json: ${response.status}`);
       return response.json();
