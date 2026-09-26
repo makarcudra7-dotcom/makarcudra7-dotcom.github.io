@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "received": 10,
+  "totalExpected": 95,
+  "batches": [
+    {
+      "batch": 1,
+      "receivedAt": "2026-09-26",
+      "status": "received-mapped-awaiting-binary-ingest",
+      "images": [
+        {"order":1,"sourceUpload":"efdffcb6-687c-4b8a-993a-3f0ee9d7f4ea.png","cuisine":"Германия","dish":"Яблочный штрудель","slug":"germaniya-yablochnyy-shtrudel","assetPath":"/assets/world-cuisines/germaniya-yablochnyy-shtrudel.webp"},
+        {"order":2,"sourceUpload":"53ef0958-7408-40d1-af51-885d609bda9b.png","cuisine":"Германия","dish":"Картофельные клёцки","slug":"germaniya-kartofelnye-klecki","assetPath":"/assets/world-cuisines/germaniya-kartofelnye-klecki.webp"},
+        {"order":3,"sourceUpload":"1e7b6f2b-5fc4-4831-9bab-353500ba31f0.png","cuisine":"Германия","dish":"Тушёная красная капуста","slug":"germaniya-tushenaya-krasnaya-kapusta","assetPath":"/assets/world-cuisines/germaniya-tushenaya-krasnaya-kapusta.webp"},
+        {"order":4,"sourceUpload":"e5c241d0-bbb9-4470-a097-0796ac782a2b.png","cuisine":"Германия","dish":"Шницель по-домашнему","slug":"germaniya-shnicel-po-domashnemu","assetPath":"/assets/world-cuisines/germaniya-shnicel-po-domashnemu.webp"},
+        {"order":5,"sourceUpload":"bcd78ef9-4236-4af6-bc5d-f1f2125bdffb.png","cuisine":"Германия","dish":"Картофельный салат","slug":"germaniya-kartofelnyy-salat","assetPath":"/assets/world-cuisines/germaniya-kartofelnyy-salat.webp"},
+        {"order":6,"sourceUpload":"da218f28-a9d0-416e-9651-489064f6084a.png","cuisine":"Белоруссия","dish":"Холодник со свёклой","slug":"belorussiya-holodnik-so-svekloy","assetPath":"/assets/world-cuisines/belorussiya-holodnik-so-svekloy.webp"},
+        {"order":7,"sourceUpload":"a6c56d86-e740-4014-8fca-8946d105b633.png","cuisine":"Белоруссия","dish":"Клецки картофельные","slug":"belorussiya-klecki-kartofelnye","assetPath":"/assets/world-cuisines/belorussiya-klecki-kartofelnye.webp"},
+        {"order":8,"sourceUpload":"8fba07ba-a944-4e2a-a4fd-454e9b7b5832.png","cuisine":"Белоруссия","dish":"Мачанка с блинами","slug":"belorussiya-machanka-s-blinami","assetPath":"/assets/world-cuisines/belorussiya-machanka-s-blinami.webp"},
+        {"order":9,"sourceUpload":"19140211-13f4-4add-afd1-9db13fe10283.png","cuisine":"Белоруссия","dish":"Колдуны с мясом","slug":"belorussiya-kolduny-s-myasom","assetPath":"/assets/world-cuisines/belorussiya-kolduny-s-myasom.webp"},
+        {"order":10,"sourceUpload":"0dd1db42-7bc1-423e-b1ee-fb44ce29c8fc.png","cuisine":"Белоруссия","dish":"Драники со сметаной","slug":"belorussiya-draniki-so-smetanoy","assetPath":"/assets/world-cuisines/belorussiya-draniki-so-smetanoy.webp"}
+      ]
+    }
+  ]
+}
