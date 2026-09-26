@@ -1,6 +1,6 @@
 name: Mobile performance audit
 
-# Production regression check for quality11 accessibility closure.
+# Production regression check after homepage runtime slimming.
 on:
   push:
     branches: [main]
