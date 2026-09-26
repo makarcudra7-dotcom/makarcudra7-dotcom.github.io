@@ -1,0 +1,61 @@
+{
+  "status": "authoritative-manual-order",
+  "source": "user-confirmed",
+  "count": 45,
+  "rule": "Do not re-identify these images visually. Bind strictly by this order.",
+  "images": [
+    {"order":1,"cuisine":"Китай","dish":"Курица гунбао","slug":"kitay-kurica-gunbao"},
+    {"order":2,"cuisine":"Китай","dish":"Жареный рис с яйцом","slug":"kitay-zharenyy-ris-s-yaycom"},
+    {"order":3,"cuisine":"Китай","dish":"Баклажаны в чесночном соусе","slug":"kitay-baklazhany-v-chesnochnom-souse"},
+    {"order":4,"cuisine":"Китай","dish":"Лапша с говядиной и овощами","slug":"kitay-lapsha-s-govyadinoy-i-ovoschami"},
+    {"order":5,"cuisine":"Китай","dish":"Огурцы по-китайски","slug":"kitay-ogurcy-po-kitayski"},
+
+    {"order":6,"cuisine":"Италия","dish":"Паста качо э пепе","slug":"italiya-pasta-kacho-e-pepe"},
+    {"order":7,"cuisine":"Италия","dish":"Ризотто с грибами","slug":"italiya-rizotto-s-gribami"},
+    {"order":8,"cuisine":"Италия","dish":"Брускетта с томатами","slug":"italiya-brusketta-s-tomatami"},
+    {"order":9,"cuisine":"Италия","dish":"Минестроне","slug":"italiya-minestrone"},
+    {"order":10,"cuisine":"Италия","dish":"Фокачча с розмарином","slug":"italiya-fokachcha-s-rozmarinom"},
+
+    {"order":11,"cuisine":"Африка","dish":"Шакшука по-североафрикански","slug":"afrika-shakshuka-po-severoafrikanski"},
+    {"order":12,"cuisine":"Африка","dish":"Марокканский кускус с овощами","slug":"afrika-marokkanskiy-kuskus-s-ovoschami"},
+    {"order":13,"cuisine":"Африка","dish":"Харира","slug":"afrika-hariru-po-domashnemu"},
+    {"order":14,"cuisine":"Африка","dish":"Курица с лимоном и оливками","slug":"afrika-kurica-s-limonom-i-olivkami"},
+    {"order":15,"cuisine":"Африка","dish":"Пряная чечевица с томатами","slug":"afrika-pryanaya-chechevica-s-tomatami"},
+
+    {"order":16,"cuisine":"Грузия","dish":"Хачапури по-аджарски","slug":"gruziya-hachapuri-po-adzharski"},
+    {"order":17,"cuisine":"Грузия","dish":"Чахохбили","slug":"gruziya-chahohbili"},
+    {"order":18,"cuisine":"Грузия","dish":"Лобио","slug":"gruziya-lobio"},
+    {"order":19,"cuisine":"Грузия","dish":"Пхали из шпината","slug":"gruziya-phali-iz-shpinata"},
+    {"order":20,"cuisine":"Грузия","dish":"Оджахури","slug":"gruziya-odzhahuri"},
+
+    {"order":21,"cuisine":"Узбекская","dish":"Плов с говядиной","slug":"uzbekskaya-plov-s-govyadinoy"},
+    {"order":22,"cuisine":"Узбекская","dish":"Дымляма","slug":"uzbekskaya-dymlyama"},
+    {"order":23,"cuisine":"Узбекская","dish":"Мастава","slug":"uzbekskaya-mastava"},
+    {"order":24,"cuisine":"Узбекская","dish":"Самса с мясом","slug":"uzbekskaya-samsa-s-myasom"},
+    {"order":25,"cuisine":"Узбекская","dish":"Ачичук","slug":"uzbekskaya-achichuk"},
+
+    {"order":26,"cuisine":"Япония","dish":"Оякодон","slug":"yaponiya-oyakodon"},
+    {"order":27,"cuisine":"Япония","dish":"Онигири с тунцом","slug":"yaponiya-onigiri-s-tuncom"},
+    {"order":28,"cuisine":"Япония","dish":"Мисо-суп с тофу","slug":"yaponiya-miso-sup-s-tofu"},
+    {"order":29,"cuisine":"Япония","dish":"Окономияки","slug":"yaponiya-okonomiyaki-po-domashnemu"},
+    {"order":30,"cuisine":"Япония","dish":"Тамагояки","slug":"yaponiya-tamagoyaki"},
+
+    {"order":31,"cuisine":"Таиланд","dish":"Пад-тай с курицей","slug":"tailand-pad-tay-s-kuricey"},
+    {"order":32,"cuisine":"Таиланд","dish":"Том-кха с курицей","slug":"tailand-tom-kha-s-kuricey"},
+    {"order":33,"cuisine":"Таиланд","dish":"Зелёное карри с овощами","slug":"tailand-zelenoe-karri-s-ovoschami"},
+    {"order":34,"cuisine":"Таиланд","dish":"Тайский салат с огурцом","slug":"tailand-tayskiy-salat-s-ogurcom"},
+    {"order":35,"cuisine":"Таиланд","dish":"Манго с клейким рисом","slug":"tailand-mango-s-kleykim-risom"},
+
+    {"order":36,"cuisine":"Вьетнам","dish":"Фо-га","slug":"vetnam-fo-ga-po-domashnemu"},
+    {"order":37,"cuisine":"Вьетнам","dish":"Бань-ми с курицей","slug":"vetnam-ban-mi-s-kuricey"},
+    {"order":38,"cuisine":"Вьетнам","dish":"Спринг-роллы с креветками","slug":"vetnam-spring-rolly-s-krevetkami"},
+    {"order":39,"cuisine":"Вьетнам","dish":"Вьетнамский кофе без кофеина","slug":"vetnam-vetnamskiy-kofe-bez-kofeina"},
+    {"order":40,"cuisine":"Вьетнам","dish":"Салат с курицей и капустой","slug":"vetnam-salat-s-kuricey-i-kapustoy"},
+
+    {"order":41,"cuisine":"Индия","dish":"Чана масала","slug":"indiya-chana-masala"},
+    {"order":42,"cuisine":"Индия","dish":"Дал из красной чечевицы","slug":"indiya-dal-iz-krasnoy-chechevicy"},
+    {"order":43,"cuisine":"Индия","dish":"Баттер-чикен","slug":"indiya-batter-chiken-po-domashnemu"},
+    {"order":44,"cuisine":"Индия","dish":"Алу гоби","slug":"indiya-alu-gobi"},
+    {"order":45,"cuisine":"Индия","dish":"Райта с огурцом","slug":"indiya-rayta-s-ogurcom"}
+  ]
+}
