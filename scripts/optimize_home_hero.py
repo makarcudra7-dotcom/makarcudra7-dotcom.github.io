@@ -19,6 +19,7 @@ CTA_HTML = (
     '</div><a class="pv-ad-button" href="/contacts.html">Обсудить размещение →</a></aside>'
 )
 
+BASE_STYLES_LINK = '<link rel="stylesheet" href="/assets/styles.css">'
 HOME_LAYOUT_CSS = (
     '<link rel="stylesheet" href="/assets/overrides.css?v=20260923-theme3">',
     '<link rel="stylesheet" href="/assets/theme.css?v=20260923-theme3">',
@@ -67,8 +68,19 @@ def public_url(path: Path) -> str:
     return "/" + path.relative_to(ROOT).as_posix()
 
 
+def ensure_parallel_base_css(source: str) -> str:
+    """Expose styles.css to the preload scanner instead of discovering it only through @import."""
+    if 'href="/assets/styles.css"' in source:
+        return source
+    marker = '<link rel="stylesheet" href="/assets/public.css?v=20260925-clean1">'
+    if marker in source:
+        return source.replace(marker, BASE_STYLES_LINK + marker, 1)
+    return source.replace('</head>', BASE_STYLES_LINK + '</head>', 1)
+
+
 def ensure_critical_home_css(source: str) -> str:
     """Load CSS that changes header/hero geometry before FCP to prevent CLS."""
+    source = ensure_parallel_base_css(source)
     missing = [tag for tag in HOME_LAYOUT_CSS if tag.split('?')[0] not in source]
     if not missing:
         return source
@@ -92,6 +104,20 @@ def ensure_stable_layout(hero: str) -> str:
     if 'class="lead-card"' not in lead:
         raise RuntimeError("lead-card not found before hero-side")
     return f'<div class="hero-main">{lead}{CTA_HTML}</div>{side}'
+
+
+def ensure_hero_preload(source: str, srcset: str, sizes: str, variants: list[tuple[int, Path]]) -> str:
+    """Start the mobile LCP request from <head>, before render-blocking CSS finishes."""
+    source = re.sub(r'<link\b[^>]*\bid="pv-hero-preload"[^>]*>', '', source, count=1, flags=re.I)
+    fallback = next((path for width, path in variants if width >= 768), variants[-1][1])
+    tag = (
+        f'<link id="pv-hero-preload" rel="preload" as="image" href="{public_url(fallback)}" '
+        f'imagesrcset="{srcset}" imagesizes="{sizes}" fetchpriority="high">'
+    )
+    marker = BASE_STYLES_LINK
+    if marker in source:
+        return source.replace(marker, tag + marker, 1)
+    return source.replace('</head>', tag + '</head>', 1)
 
 
 def patch_hero(source: str) -> tuple[str, str]:
@@ -127,7 +153,8 @@ def patch_hero(source: str) -> tuple[str, str]:
 
     clean_tag = re.sub(r'\s+srcset="[^"]*"', "", tag, flags=re.I)
     clean_tag = re.sub(r'\s+sizes="[^"]*"', "", clean_tag, flags=re.I)
-    replacement = clean_tag.replace(
+    clean_tag = re.sub(r'\s+loading="[^"]*"', "", clean_tag, flags=re.I)
+    replacement = clean_tag.replace('<img', '<img loading="eager"', 1).replace(
         ' src="',
         f' srcset="{srcset}" sizes="{sizes}" src="',
         1,
@@ -135,6 +162,7 @@ def patch_hero(source: str) -> tuple[str, str]:
 
     hero_patched = hero[: img_match.start()] + replacement + hero[img_match.end() :]
     result = source[: hero_match.start(1)] + hero_patched + source[hero_match.end(1) :]
+    result = ensure_hero_preload(result, srcset, sizes, variants)
     return result, src
 
 
@@ -143,7 +171,7 @@ def main() -> None:
     patched, src = patch_hero(source)
     if patched != source:
         INDEX.write_text(patched, "utf-8")
-        print(f"index.html: stable hero layout + responsive srcset + critical layout CSS applied to {src}")
+        print(f"index.html: LCP preload + parallel base CSS + responsive hero applied to {src}")
     else:
         print("index.html: stable responsive hero already current")
 
