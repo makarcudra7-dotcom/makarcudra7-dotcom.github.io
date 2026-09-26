@@ -1,6 +1,6 @@
 name: Mobile performance audit
 
-# Production regression check after the LCP preload deployment.
+# Production regression check after public quality changes.
 on:
   push:
     branches: [main]
@@ -54,6 +54,12 @@ jobs:
           print('Speed Index:', val('speed-index'))
           print('TBT:', val('total-blocking-time'))
           print('CLS:', val('cumulative-layout-shift'))
+          print('--- ACCESSIBILITY FAILURES ---')
+          refs=(cats.get('accessibility') or {}).get('auditRefs') or []
+          for ref in refs:
+              a=audits.get(ref.get('id')) or {}
+              if a.get('score') not in (None,1):
+                  print(ref.get('id'), 'score=',a.get('score'), 'title=',a.get('title'))
           PY
 
       - name: Install Lighthouse fallback
@@ -86,6 +92,12 @@ jobs:
           print('Speed Index:', val('speed-index'))
           print('TBT:', val('total-blocking-time'))
           print('CLS:', val('cumulative-layout-shift'))
+          print('--- ACCESSIBILITY FAILURES ---')
+          refs=(cats.get('accessibility') or {}).get('auditRefs') or []
+          for ref in refs:
+              a=audits.get(ref.get('id')) or {}
+              if a.get('score') not in (None,1):
+                  print(ref.get('id'), 'score=',a.get('score'), 'title=',a.get('title'))
           print('--- BOTTLENECK DIAGNOSTICS ---')
           wanted=(
               'long-tasks','mainthread-work-breakdown','bootup-time','layout-shifts',
