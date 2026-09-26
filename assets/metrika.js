@@ -41,10 +41,10 @@
   const scheduleBoot = () => {
     if (window.__pvMetrikaLoaded || bootTimer) return;
     const run = () => {
-      bootTimer = window.setTimeout(boot, 2200);
+      bootTimer = window.setTimeout(boot, 5000);
     };
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(run, {timeout: 3500});
+      requestIdleCallback(run, {timeout: 6000});
     } else {
       run();
     }
