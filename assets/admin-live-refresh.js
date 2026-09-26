@@ -77,7 +77,7 @@
     const html=items.map(x=>{
       const h=esc(x.post?.headline||x.material?.headline||x.slug);
       const a=esc(x.post?.author||x.material?.author||'—');
-      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-live-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`
+      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-preview-scheduled="${esc(x.slug)}">Посмотреть</button><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-live-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`
     }).join('');
     tb.insertAdjacentHTML('afterbegin',html);
   }
@@ -87,6 +87,27 @@
     renderScheduledRows(scheduled);
     const count=window.store?.posts?.length||0;
     const stat=document.getElementById('statPosts');if(stat)stat.textContent=String(count);
+  }
+
+  function previewScheduled(slug){
+    const item=scheduled.find(x=>x.slug===slug);if(!item)return;
+    const build=window.articleHTML;
+    if(typeof build!=='function'){
+      if(typeof window.flash==='function')window.flash('Предпросмотр пока недоступен. Обновите страницу админки.');
+      return;
+    }
+    const o={...(item.material||{})};
+    if(!o.publishedAt)o.publishedAt=item.publishAt;
+    if(!o.updatedAt)o.updatedAt=o.publishedAt||item.publishAt;
+    const img=item.post?.image||o.image||'';
+    const w=window.open('','_blank');
+    if(!w){
+      if(typeof window.flash==='function')window.flash('Браузер заблокировал окно предпросмотра');
+      return;
+    }
+    w.document.open();
+    w.document.write(build(o,img));
+    w.document.close();
   }
 
   function editScheduled(slug){
@@ -159,6 +180,8 @@
   function start(){clearInterval(timer);timer=setInterval(()=>{if(active()&&!document.hidden)refreshAll(false)},4000)}
 
   document.addEventListener('click',e=>{
+    const preview=e.target.closest?.('[data-live-preview-scheduled]');
+    if(preview){previewScheduled(preview.dataset.livePreviewScheduled);return}
     const edit=e.target.closest?.('[data-live-edit-scheduled]');
     if(edit){editScheduled(edit.dataset.liveEditScheduled);return}
     const del=e.target.closest?.('[data-live-delete-scheduled]');
