@@ -3,7 +3,7 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260926-queuefix1';
+  const VERSION='20260926-live8';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
