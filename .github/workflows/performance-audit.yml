@@ -1,6 +1,6 @@
 name: Mobile performance audit
 
-# Production regression check for quality11.
+# Production regression check for quality11 accessibility closure.
 on:
   push:
     branches: [main]
@@ -8,8 +8,11 @@ on:
       - 'index.html'
       - 'assets/app.js'
       - 'assets/public.css'
+      - 'assets/site-ui.css'
+      - 'assets/theme.css'
       - 'assets/metrika.js'
-      - 'scripts/optimize_home_hero.py'
+      - 'scripts/optimize_home_images.py'
+      - 'scripts/optimize_home_markup.py'
       - '.github/workflows/performance-audit.yml'
   workflow_dispatch:
 
