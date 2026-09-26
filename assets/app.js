@@ -40,6 +40,8 @@
   function addSiteSchema(){if(!isHome||document.getElementById('pv-home-schema')||document.getElementById('pvSiteSchema'))return;const s=document.createElement('script');s.id='pvSiteSchema';s.type='application/ld+json';s.textContent=JSON.stringify({'@context':'https://schema.org','@graph':[{'@type':'Organization','@id':SITE+'/#organization',name:'ProVkus',url:SITE+'/',logo:{'@type':'ImageObject',url:SITE+'/assets/provkus-logo.svg'}},{'@type':'WebSite','@id':SITE+'/#website',url:SITE+'/',name:'ProVkus',publisher:{'@id':SITE+'/#organization'},inLanguage:'ru-RU'}]});document.head.appendChild(s)}
   function enhanceNavigation(){const here=new URL(location.href),rubric=here.searchParams.get('rubric')||'';document.querySelectorAll('.main-nav a').forEach(a=>{try{const u=new URL(a.href,location.href);let active=u.pathname===here.pathname;if(here.pathname==='/category.html'&&u.pathname==='/category.html')active=(u.searchParams.get('rubric')||'')===rubric;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}catch(e){}});const main=document.querySelector('main');if(main&&!main.id)main.id='main-content'}
   function loadScript(src,id){if(id&&document.getElementById(id))return;const s=document.createElement('script');if(id)s.id=id;s.src=src;s.defer=true;document.body.appendChild(s)}
+  function runWhenIdle(fn){if('requestIdleCallback' in window){requestIdleCallback(fn,{timeout:2500})}else{setTimeout(fn,1200)}}
+  function loadNonCriticalScripts(){runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260923-email','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')})}
   function injectAdvertisingCta(){
     if(!isHome||document.querySelector('.pv-ad-cta'))return;
     const grid=document.querySelector('.hero-grid'),lead=grid?.querySelector(':scope > .lead-card'),side=grid?.querySelector(':scope > .hero-side');
@@ -55,7 +57,5 @@
   injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();injectAdvertisingCta();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
   window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome)loadScript('/assets/home-dynamic.js?v=20260926-mobile-speed2','pvHomeDynamic');
-  loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');
-  loadScript('/assets/community.js?v=20260923-email','pvCommunity');
-  loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet');
+  if(document.readyState==='complete')loadNonCriticalScripts();else window.addEventListener('load',loadNonCriticalScripts,{once:true});
 })();
