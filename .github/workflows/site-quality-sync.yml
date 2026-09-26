@@ -28,6 +28,7 @@ jobs:
           q=Path('scripts/quality_sync.py')
           s=q.read_text('utf-8')
           s=s.replace("'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.'</n        'p></div>", "'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.</p></div>")
+          s=s.replace('r"function injectCss\\(\\)\\{.*?\\}"', 'r"function injectCss\\(\\)\\{[^\\n]*\\}"')
           q.write_text(s,'utf-8')
 
           opt=Path('scripts/optimize_home_markup.py')
