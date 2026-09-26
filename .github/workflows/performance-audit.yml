@@ -60,6 +60,8 @@ jobs:
               a=audits.get(ref.get('id')) or {}
               if a.get('score') not in (None,1):
                   print(ref.get('id'), 'score=',a.get('score'), 'title=',a.get('title'))
+                  for item in ((a.get('details') or {}).get('items') or [])[:8]:
+                      print(' ',json.dumps(item,ensure_ascii=False,default=str)[:1800])
           PY
 
       - name: Install Lighthouse fallback
@@ -98,6 +100,8 @@ jobs:
               a=audits.get(ref.get('id')) or {}
               if a.get('score') not in (None,1):
                   print(ref.get('id'), 'score=',a.get('score'), 'title=',a.get('title'))
+                  for item in ((a.get('details') or {}).get('items') or [])[:8]:
+                      print(' ',json.dumps(item,ensure_ascii=False,default=str)[:1800])
           print('--- BOTTLENECK DIAGNOSTICS ---')
           wanted=(
               'long-tasks','mainthread-work-breakdown','bootup-time','layout-shifts',
