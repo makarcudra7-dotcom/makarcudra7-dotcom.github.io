@@ -1,6 +1,6 @@
 name: Mobile performance audit
 
-# Production regression check after homepage runtime slimming.
+# Final post-deploy production regression check.
 on:
   push:
     branches: [main]
