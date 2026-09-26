@@ -1,6 +1,6 @@
 name: Mobile performance audit
 
-# Production regression check after public quality changes.
+# Production regression check for quality11.
 on:
   push:
     branches: [main]
