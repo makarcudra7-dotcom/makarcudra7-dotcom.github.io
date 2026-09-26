@@ -4,3 +4,9 @@
 /* robust author portraits */
 .avatar,.author-card img,.author-photo{display:block;object-fit:cover;object-position:center center;background:#e8e2d9}
 .author-photo{max-width:100%;height:auto;aspect-ratio:1/1}
+
+
+/* world-cuisine-rich-recipes */
+.recipe-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0;padding:14px;border:1px solid rgba(127,127,127,.25);border-radius:16px;background:rgba(127,127,127,.08)}
+.recipe-facts div{min-width:0}.recipe-facts span{display:block;margin-bottom:4px;font-size:11px;opacity:.68}.recipe-facts strong{display:block;font-size:15px;line-height:1.25}.recipe-ingredients{padding-left:1.25em}.recipe-ingredients li{margin:.42em 0}.recipe-steps{padding-left:1.35em}.recipe-steps>li{margin:0 0 1.2em;padding-left:.25em}.recipe-steps>li>p{margin:.3em 0}.recipe-step-note{font-size:.94em;opacity:.78}.recipe-lead-note{padding:14px 16px;border-left:3px solid #ef5a36;background:rgba(239,90,54,.08);border-radius:0 12px 12px 0}.recipe-author-notes{margin-top:28px;padding-top:2px}.article-body h2{margin-top:1.35em}.article-body ul,.article-body ol{line-height:1.65}
+@media(max-width:680px){.recipe-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}

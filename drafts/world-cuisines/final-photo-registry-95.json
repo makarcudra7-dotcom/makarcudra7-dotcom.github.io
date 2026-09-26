@@ -771,5 +771,12 @@
     "last": "2026-09-26T05:06:00+03:00",
     "allPastAtPreparation": true
   },
-  "photoFiles": 95
+  "photoFiles": 95,
+  "contentRefresh": {
+    "status": "rich-recipes-live",
+    "updatedAt": "2026-09-26T03:46:16Z",
+    "minVisibleCharacters": 3121,
+    "maxVisibleCharacters": 4775,
+    "clickableCards": 95
+  }
 }
