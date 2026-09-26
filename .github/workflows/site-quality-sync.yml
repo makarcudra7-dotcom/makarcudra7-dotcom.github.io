@@ -6,6 +6,8 @@ on:
       - 'data/posts.json'
       - 'data/authors.json'
       - 'scripts/quality_sync.py'
+      - 'scripts/optimize_home_images.py'
+      - 'scripts/optimize_home_markup.py'
       - '.github/workflows/site-quality-sync.yml'
   workflow_dispatch:
 permissions:
@@ -51,6 +53,32 @@ jobs:
           python3 scripts/build_indexes.py
           python3 scripts/optimize_home_markup.py
           python3 scripts/quality_sync.py
+      - name: Slim homepage runtime
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          app=Path('assets/app.js')
+          s=app.read_text('utf-8')
+          old="function loadNonCriticalScripts(){runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')})}"
+          new="function loadNonCriticalScripts(){const load=()=>runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')});if(!isHome){load();return}let done=false,io=null;const arm=()=>{if(done)return;done=true;if(io)io.disconnect();load()};document.addEventListener('pointerdown',arm,{once:true,passive:true});document.addEventListener('keydown',arm,{once:true});const footer=document.querySelector('footer.site-footer');if(footer&&'IntersectionObserver'in window){io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))arm()},{rootMargin:'700px 0px',threshold:0.01});io.observe(footer)}}"
+          if old in s:
+            s=s.replace(old,new,1)
+          elif new not in s:
+            raise SystemExit('loadNonCriticalScripts signature changed')
+          old="injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();injectAdvertisingCta();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);"
+          new="injectCss();addFavicon();addSiteSchema();enhanceNavigation();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();"
+          if old in s:
+            s=s.replace(old,new,1)
+          elif new not in s:
+            raise SystemExit('homepage initialization signature changed')
+          old="window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});"
+          new="if(!isHome)window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});"
+          if old in s:
+            s=s.replace(old,new,1)
+          elif new not in s:
+            raise SystemExit('posts enrichment signature changed')
+          app.write_text(s,'utf-8')
+          PY
       - name: Validate runtime and invariants
         run: |
           node --check assets/app.js
@@ -71,6 +99,8 @@ jobs:
           assert 'authors-fix.js' not in authors
           assert '@import' not in public
           assert "isHome?Promise.resolve([]):loadVisiblePosts()" in app
+          assert "if(!isHome)window.__pvPostsPromise.then" in app
+          assert "IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))arm()}" in app
           assert "card.innerHTML=`<div class=\"author-card-top\"" not in community
           for name in ('Илья Титюлькин','Эльвира Шайберт','Екатерина Рукопляс'):
             assert name in index and name in authors
