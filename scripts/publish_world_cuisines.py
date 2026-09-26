@@ -7,7 +7,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DRAFT = ROOT / 'drafts' / 'world-cuisines'
 QUEUE = ROOT / '.github' / 'scheduled-posts.json'
 REGISTRY = DRAFT / 'final-photo-registry-95.json'
-LOCAL_TZ = timezone(timedelta(hours=4))
+# Public pages are formatted by publish-scheduled.js in Europe/Moscow (UTC+03:00).
+# Keep the publication window in that same clock so the last visible timestamp is exactly 26.09 05:06.
+LOCAL_TZ = timezone(timedelta(hours=3))
 DAY_SLOTS = [(6,10),(7,45),(9,20),(11,5),(12,40),(14,15),(16,5),(18,10),(20,20),(22,15)]
 PLACEHOLDER = 'https://provkus-media.ru/assets/world-cuisines-placeholder.svg'
 
@@ -99,9 +101,9 @@ def main():
     registry['status'] = 'published-with-photo-targets'
     registry['pendingReview'] = []
     registry['publicationWindow'] = {
-        'timezone': 'UTC+04:00',
-        'first': '2026-09-16T06:10:00+04:00',
-        'last': '2026-09-26T05:06:00+04:00',
+        'timezone': 'Europe/Moscow (UTC+03:00)',
+        'first': '2026-09-16T06:10:00+03:00',
+        'last': '2026-09-26T05:06:00+03:00',
         'allPastAtPreparation': True
     }
     for item in registry['items']:
