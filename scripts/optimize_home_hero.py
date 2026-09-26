@@ -19,6 +19,11 @@ CTA_HTML = (
     '</div><a class="pv-ad-button" href="/contacts.html">Обсудить размещение →</a></aside>'
 )
 
+HOME_LAYOUT_CSS = (
+    '<link rel="stylesheet" href="/assets/overrides.css?v=20260923-theme3">',
+    '<link rel="stylesheet" href="/assets/theme.css?v=20260923-theme3">',
+)
+
 
 def local_path_from_src(src: str) -> tuple[Path, str] | None:
     parsed = urlparse(src)
@@ -62,6 +67,18 @@ def public_url(path: Path) -> str:
     return "/" + path.relative_to(ROOT).as_posix()
 
 
+def ensure_critical_home_css(source: str) -> str:
+    """Load CSS that changes header/hero geometry before FCP to prevent CLS."""
+    missing = [tag for tag in HOME_LAYOUT_CSS if tag.split('?')[0] not in source]
+    if not missing:
+        return source
+    insertion = ''.join(missing)
+    marker = '<script src="/assets/metrika.js" defer></script>'
+    if marker in source:
+        return source.replace(marker, insertion + marker, 1)
+    return source.replace('</head>', insertion + '</head>', 1)
+
+
 def ensure_stable_layout(hero: str) -> str:
     """Keep the final first-screen structure in HTML so JS never moves the LCP card."""
     if 'class="hero-main"' in hero:
@@ -78,6 +95,7 @@ def ensure_stable_layout(hero: str) -> str:
 
 
 def patch_hero(source: str) -> tuple[str, str]:
+    source = ensure_critical_home_css(source)
     hero_match = re.search(r"<!-- HOME-HERO-START -->(.*?)<!-- HOME-HERO-END -->", source, flags=re.S)
     if not hero_match:
         raise RuntimeError("HOME-HERO markers not found in index.html")
@@ -125,7 +143,7 @@ def main() -> None:
     patched, src = patch_hero(source)
     if patched != source:
         INDEX.write_text(patched, "utf-8")
-        print(f"index.html: stable hero layout + responsive srcset applied to {src}")
+        print(f"index.html: stable hero layout + responsive srcset + critical layout CSS applied to {src}")
     else:
         print("index.html: stable responsive hero already current")
 
