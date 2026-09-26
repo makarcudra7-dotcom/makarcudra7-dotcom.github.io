@@ -42,7 +42,7 @@
   function enhanceNavigation(){const here=new URL(location.href),rubric=here.searchParams.get('rubric')||'';document.querySelectorAll('.main-nav a').forEach(a=>{try{const u=new URL(a.href,location.href);let active=u.pathname===here.pathname;if(here.pathname==='/category.html'&&u.pathname==='/category.html')active=(u.searchParams.get('rubric')||'')===rubric;if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')}catch(e){}});const main=document.querySelector('main');if(main&&!main.id)main.id='main-content'}
   function loadScript(src,id){if(id&&document.getElementById(id))return;const s=document.createElement('script');if(id)s.id=id;s.src=src;s.defer=true;document.body.appendChild(s)}
   function runWhenIdle(fn){if('requestIdleCallback' in window){requestIdleCallback(fn,{timeout:2500})}else{setTimeout(fn,1200)}}
-  function loadNonCriticalScripts(){runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')})}
+  function loadNonCriticalScripts(){const load=()=>runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')});if(!isHome){load();return}let done=false,io=null;const arm=()=>{if(done)return;done=true;if(io)io.disconnect();load()};document.addEventListener('pointerdown',arm,{once:true,passive:true});document.addEventListener('keydown',arm,{once:true});const footer=document.querySelector('footer.site-footer');if(footer&&'IntersectionObserver'in window){io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))arm()},{rootMargin:'700px 0px',threshold:0.01});io.observe(footer)}}
   function injectAdvertisingCta(){
     if(!isHome||document.querySelector('.pv-ad-cta'))return;
     const grid=document.querySelector('.hero-grid'),lead=grid?.querySelector(':scope > .lead-card'),side=grid?.querySelector(':scope > .hero-side');
@@ -55,8 +55,8 @@
 
   const share=document.querySelector('[data-share]');if(share){share.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);share.textContent='Ссылка скопирована'}}catch(e){}})}
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
-  injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();injectAdvertisingCta();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);
-  window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
+  injectCss();addFavicon();addSiteSchema();enhanceNavigation();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();
+  if(!isHome)window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome){const loadHome=()=>runWhenIdle(()=>loadScript('/assets/home-dynamic.js?v=20260926-mobile-speed3','pvHomeDynamic'));if(document.readyState==='complete')loadHome();else window.addEventListener('load',loadHome,{once:true})}
   if(document.readyState==='complete')loadNonCriticalScripts();else window.addEventListener('load',loadNonCriticalScripts,{once:true});
 })();
