@@ -1,0 +1,98 @@
+name: Site quality sync
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'data/posts.json'
+      - 'data/authors.json'
+      - 'scripts/quality_sync.py'
+      - '.github/workflows/site-quality-sync.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: provkus-site-quality-sync
+  cancel-in-progress: false
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Harden generators and publishing pipeline
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          q=Path('scripts/quality_sync.py')
+          s=q.read_text('utf-8')
+          s=s.replace("'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.'</n        'p></div>", "'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.</p></div>")
+          q.write_text(s,'utf-8')
+
+          opt=Path('scripts/optimize_home_markup.py')
+          s=opt.read_text('utf-8')
+          needle="    source = add_lcp_preload(source)"
+          replacement="    source = re.sub(r'<link id=\"pv-hero-preload\"[^>]*>', '', source, flags=re.I)\n    source = add_lcp_preload(source)"
+          if replacement not in s:
+            if needle not in s: raise SystemExit('optimize_home_markup preload signature changed')
+            s=s.replace(needle,replacement,1)
+          opt.write_text(s,'utf-8')
+
+          pub=Path('.github/workflows/publish-scheduled.yml')
+          s=pub.read_text('utf-8')
+          if 'python3 scripts/quality_sync.py' not in s:
+            s=s.replace('          python3 scripts/optimize_home_markup.py\n', '          python3 scripts/optimize_home_markup.py\n          python3 scripts/quality_sync.py\n',1)
+          old='          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml'
+          new='          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/app.js assets/community.js sitemap.xml feed.xml'
+          if old in s: s=s.replace(old,new,1)
+          pub.write_text(s,'utf-8')
+          PY
+      - name: Validate quality script
+        run: python3 -m py_compile scripts/quality_sync.py scripts/optimize_home_markup.py scripts/build_indexes.py
+      - name: Install image dependency
+        run: python3 -m pip install --quiet pillow
+      - name: Rebuild canonical public surfaces
+        run: |
+          python3 scripts/optimize_home_images.py
+          python3 scripts/build_indexes.py
+          python3 scripts/optimize_home_markup.py
+          python3 scripts/quality_sync.py
+      - name: Validate runtime and invariants
+        run: |
+          node --check assets/app.js
+          node --check assets/community.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          index=Path('index.html').read_text('utf-8')
+          authors=Path('authors.html').read_text('utf-8')
+          public=Path('assets/public.css').read_text('utf-8')
+          app=Path('assets/app.js').read_text('utf-8')
+          community=Path('assets/community.js').read_text('utf-8')
+          assert 'id="pv-hero-preload"' not in index
+          assert '<!-- HOME-LCP-PRELOAD-START -->' in index
+          assert '<!-- HOME-AUTHORS-START -->' in index
+          assert '0 публикац' not in index
+          assert 'id="pv-authors-schema"' in authors
+          assert 'authors-fix.js' not in authors
+          assert '@import' not in public
+          assert "isHome?Promise.resolve([]):loadVisiblePosts()" in app
+          assert "card.innerHTML=`<div class=\"author-card-top\"" not in community
+          for name in ('Илья Титюлькин','Эльвира Шайберт','Екатерина Рукопляс'):
+            assert name in index and name in authors
+          tea=Path('articles/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu.html').read_text('utf-8')
+          assert not re.search(r'<img[^>]*alt=""', tea)
+          print('quality invariants ok')
+          PY
+      - name: Commit quality sync
+        run: |
+          git config user.name "provkus-quality-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add scripts/quality_sync.py scripts/optimize_home_markup.py .github/workflows/publish-scheduled.yml assets/public.css assets/site-ui.css assets/app.js assets/community.js index.html authors.html category.html author-*.html articles/ sitemap.xml feed.xml assets/uploads
+          if git diff --cached --quiet; then
+            echo "Already synchronized"
+            exit 0
+          fi
+          git commit -m "Stabilize frontend, authors and SEO"
+          git push origin HEAD:main
