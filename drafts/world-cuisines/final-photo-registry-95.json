@@ -1,5 +1,5 @@
 {
-  "status": "published-with-photo-targets",
+  "status": "published-with-photos",
   "total": 95,
   "rule": "Bind photos strictly by photoOrder. Do not visually re-identify or rename dishes.",
   "pendingReview": [],
@@ -9,665 +9,760 @@
       "cuisine": "Германия",
       "article": "Яблочный штрудель",
       "slug": "germaniya-yablochnyy-shtrudel",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/germaniya-yablochnyy-shtrudel-16x9.webp"
     },
     {
       "photoOrder": 2,
       "cuisine": "Германия",
       "article": "Картофельные клёцки",
       "slug": "germaniya-kartofelnye-klecki",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/germaniya-kartofelnye-klecki-16x9.webp"
     },
     {
       "photoOrder": 3,
       "cuisine": "Германия",
       "article": "Тушёная красная капуста",
       "slug": "germaniya-tushenaya-krasnaya-kapusta",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/germaniya-tushenaya-krasnaya-kapusta-16x9.webp"
     },
     {
       "photoOrder": 4,
       "cuisine": "Германия",
       "article": "Шницель по-домашнему",
       "slug": "germaniya-shnicel-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/germaniya-shnicel-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 5,
       "cuisine": "Германия",
       "article": "Картофельный салат",
       "slug": "germaniya-kartofelnyy-salat",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/germaniya-kartofelnyy-salat-16x9.webp"
     },
     {
       "photoOrder": 6,
       "cuisine": "Белоруссия",
       "article": "Холодник со свёклой",
       "slug": "belorussiya-holodnik-so-svekloy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/belorussiya-holodnik-so-svekloy-16x9.webp"
     },
     {
       "photoOrder": 7,
       "cuisine": "Белоруссия",
       "article": "Клецки картофельные",
       "slug": "belorussiya-klecki-kartofelnye",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/belorussiya-klecki-kartofelnye-16x9.webp"
     },
     {
       "photoOrder": 8,
       "cuisine": "Белоруссия",
       "article": "Мачанка с блинами",
       "slug": "belorussiya-machanka-s-blinami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/belorussiya-machanka-s-blinami-16x9.webp"
     },
     {
       "photoOrder": 9,
       "cuisine": "Белоруссия",
       "article": "Колдуны с мясом",
       "slug": "belorussiya-kolduny-s-myasom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/belorussiya-kolduny-s-myasom-16x9.webp"
     },
     {
       "photoOrder": 10,
       "cuisine": "Белоруссия",
       "article": "Драники со сметаной",
       "slug": "belorussiya-draniki-so-smetanoy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/belorussiya-draniki-so-smetanoy-16x9.webp"
     },
     {
       "photoOrder": 11,
       "cuisine": "Америка",
       "article": "Мак-н-чиз",
       "slug": "amerika-mak-n-chiz",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/amerika-mak-n-chiz-16x9.webp"
     },
     {
       "photoOrder": 12,
       "cuisine": "Америка",
       "article": "Куриные крылышки BBQ",
       "slug": "amerika-kurinye-krylyshki-bbq",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/amerika-kurinye-krylyshki-bbq-16x9.webp"
     },
     {
       "photoOrder": 13,
       "cuisine": "Америка",
       "article": "Коул-слоу",
       "slug": "amerika-koul-slou",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/amerika-koul-slou-16x9.webp"
     },
     {
       "photoOrder": 14,
       "cuisine": "Америка",
       "article": "Панкейки",
       "slug": "amerika-pankeyki",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/amerika-pankeyki-16x9.webp"
     },
     {
       "photoOrder": 15,
       "cuisine": "Америка",
       "article": "Чили с фасолью",
       "slug": "amerika-chili-s-fasolyu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/amerika-chili-s-fasolyu-16x9.webp"
     },
     {
       "photoOrder": 16,
       "cuisine": "Армения",
       "article": "Хоровац из овощей",
       "slug": "armeniya-horovac-iz-ovoschey",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/armeniya-horovac-iz-ovoschey-16x9.webp"
     },
     {
       "photoOrder": 17,
       "cuisine": "Армения",
       "article": "Толма в виноградных листьях",
       "slug": "armeniya-tolma-v-vinogradnyh-listyah",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/armeniya-tolma-v-vinogradnyh-listyah-16x9.webp"
     },
     {
       "photoOrder": 18,
       "cuisine": "Армения",
       "article": "Спас",
       "slug": "armeniya-spas",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/armeniya-spas-16x9.webp"
     },
     {
       "photoOrder": 19,
       "cuisine": "Армения",
       "article": "Гата домашняя",
       "slug": "armeniya-gata-domashnyaya",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/armeniya-gata-domashnyaya-16x9.webp"
     },
     {
       "photoOrder": 20,
       "cuisine": "Армения",
       "article": "Женгялов хац",
       "slug": "armeniya-zhengyalov-hac-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/armeniya-zhengyalov-hac-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 21,
       "cuisine": "Татарская",
       "article": "Эчпочмак",
       "slug": "tatarskaya-echpochmak",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tatarskaya-echpochmak-16x9.webp"
     },
     {
       "photoOrder": 22,
       "cuisine": "Татарская",
       "article": "Кыстыбый",
       "slug": "tatarskaya-kystybyy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tatarskaya-kystybyy-16x9.webp"
     },
     {
       "photoOrder": 23,
       "cuisine": "Татарская",
       "article": "Азу по-татарски",
       "slug": "tatarskaya-azu-po-tatarski",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tatarskaya-azu-po-tatarski-16x9.webp"
     },
     {
       "photoOrder": 24,
       "cuisine": "Татарская",
       "article": "Губадия",
       "slug": "tatarskaya-gubadiya",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tatarskaya-gubadiya-16x9.webp"
     },
     {
       "photoOrder": 25,
       "cuisine": "Татарская",
       "article": "Чак-чак",
       "slug": "tatarskaya-chak-chak",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tatarskaya-chak-chak-16x9.webp"
     },
     {
       "photoOrder": 26,
       "cuisine": "Английские завтраки",
       "article": "Сконы к завтраку",
       "slug": "angliyskie-zavtraki-skony-k-zavtraku",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-skony-k-zavtraku-16x9.webp"
     },
     {
       "photoOrder": 27,
       "cuisine": "Английские завтраки",
       "article": "Полный английский завтрак",
       "slug": "angliyskie-zavtraki-polnyy-angliyskiy-zavtrak",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-polnyy-angliyskiy-zavtrak-16x9.webp"
     },
     {
       "photoOrder": 28,
       "cuisine": "Английские завтраки",
       "article": "Овсяная каша с яблоком",
       "slug": "angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom-16x9.webp"
     },
     {
       "photoOrder": 29,
       "cuisine": "Английские завтраки",
       "article": "Яйца с солдатиками",
       "slug": "angliyskie-zavtraki-yayca-s-soldatikami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-yayca-s-soldatikami-16x9.webp"
     },
     {
       "photoOrder": 30,
       "cuisine": "Английские завтраки",
       "article": "Печёная фасоль на тосте",
       "slug": "angliyskie-zavtraki-pechenaya-fasol-na-toste",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/angliyskie-zavtraki-pechenaya-fasol-na-toste-16x9.webp"
     },
     {
       "photoOrder": 31,
       "cuisine": "Напитки мира (безалкогольные)",
       "article": "Манговый ласси",
       "slug": "napitki-mira-bezalkogolnye-mangovyy-lassi",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-mangovyy-lassi-16x9.webp"
     },
     {
       "photoOrder": 32,
       "cuisine": "Напитки мира (безалкогольные)",
       "article": "Айран с мятой",
       "slug": "napitki-mira-bezalkogolnye-ayran-s-myatoy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-ayran-s-myatoy-16x9.webp"
     },
     {
       "photoOrder": 33,
       "cuisine": "Напитки мира (безалкогольные)",
       "article": "Мексиканская орчата",
       "slug": "napitki-mira-bezalkogolnye-meksikanskaya-orchata",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-meksikanskaya-orchata-16x9.webp"
     },
     {
       "photoOrder": 34,
       "cuisine": "Напитки мира (безалкогольные)",
       "article": "Тайский холодный чай без кофеина",
       "slug": "napitki-mira-bezalkogolnye-tayskiy-holodnyy-chay-bez-kofeina",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-tayskiy-holodnyy-chay-bez-kofeina-16x9.webp"
     },
     {
       "photoOrder": 35,
       "cuisine": "Напитки мира (безалкогольные)",
       "article": "Имбирный лимонад",
       "slug": "napitki-mira-bezalkogolnye-imbirnyy-limonad",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/napitki-mira-bezalkogolnye-imbirnyy-limonad-16x9.webp"
     },
     {
       "photoOrder": 36,
       "cuisine": "Корея",
       "article": "Пибимпап",
       "slug": "koreya-pibimpap",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/koreya-pibimpap-16x9.webp"
     },
     {
       "photoOrder": 37,
       "cuisine": "Корея",
       "article": "Кимчи-чиге",
       "slug": "koreya-kimchi-chige-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/koreya-kimchi-chige-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 38,
       "cuisine": "Корея",
       "article": "Корейские огурцы",
       "slug": "koreya-koreyskie-ogurcy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/koreya-koreyskie-ogurcy-16x9.webp"
     },
     {
       "photoOrder": 39,
       "cuisine": "Корея",
       "article": "Паджон с зелёным луком",
       "slug": "koreya-padzhon-s-zelenym-lukom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/koreya-padzhon-s-zelenym-lukom-16x9.webp"
     },
     {
       "photoOrder": 40,
       "cuisine": "Корея",
       "article": "Курица в острой глазури",
       "slug": "koreya-kurica-v-ostroy-glazuri",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/koreya-kurica-v-ostroy-glazuri-16x9.webp"
     },
     {
       "photoOrder": 41,
       "cuisine": "Польша",
       "article": "Журек",
       "slug": "polsha-zhurek-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/polsha-zhurek-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 42,
       "cuisine": "Польша",
       "article": "Пьероги с картофелем и творогом",
       "slug": "polsha-perogi-s-kartofelem-i-tvorogom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/polsha-perogi-s-kartofelem-i-tvorogom-16x9.webp"
     },
     {
       "photoOrder": 43,
       "cuisine": "Польша",
       "article": "Бигос",
       "slug": "polsha-bigos",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/polsha-bigos-16x9.webp"
     },
     {
       "photoOrder": 44,
       "cuisine": "Польша",
       "article": "Огуречник",
       "slug": "polsha-ogurechnik",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/polsha-ogurechnik-16x9.webp"
     },
     {
       "photoOrder": 45,
       "cuisine": "Польша",
       "article": "Сырники по-польски",
       "slug": "polsha-syrniki-po-polski",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/polsha-syrniki-po-polski-16x9.webp"
     },
     {
       "photoOrder": 46,
       "cuisine": "Русская",
       "article": "Щи из свежей капусты",
       "slug": "russkaya-schi-iz-svezhey-kapusty",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/russkaya-schi-iz-svezhey-kapusty-16x9.webp"
     },
     {
       "photoOrder": 47,
       "cuisine": "Русская",
       "article": "Гречка по-купечески",
       "slug": "russkaya-grechka-po-kupecheski",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/russkaya-grechka-po-kupecheski-16x9.webp"
     },
     {
       "photoOrder": 48,
       "cuisine": "Русская",
       "article": "Курник по-домашнему",
       "slug": "russkaya-kurnik-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/russkaya-kurnik-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 49,
       "cuisine": "Русская",
       "article": "Рассольник с перловкой",
       "slug": "russkaya-rassolnik-s-perlovkoy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/russkaya-rassolnik-s-perlovkoy-16x9.webp"
     },
     {
       "photoOrder": 50,
       "cuisine": "Русская",
       "article": "Творожная запеканка",
       "slug": "russkaya-tvorozhnaya-zapekanka",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/russkaya-tvorozhnaya-zapekanka-16x9.webp"
     },
     {
       "photoOrder": 51,
       "cuisine": "Китай",
       "article": "Курица гунбао",
       "slug": "kitay-kurica-gunbao",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/kitay-kurica-gunbao-16x9.webp"
     },
     {
       "photoOrder": 52,
       "cuisine": "Китай",
       "article": "Жареный рис с яйцом",
       "slug": "kitay-zharenyy-ris-s-yaycom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/kitay-zharenyy-ris-s-yaycom-16x9.webp"
     },
     {
       "photoOrder": 53,
       "cuisine": "Китай",
       "article": "Баклажаны в чесночном соусе",
       "slug": "kitay-baklazhany-v-chesnochnom-souse",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/kitay-baklazhany-v-chesnochnom-souse-16x9.webp"
     },
     {
       "photoOrder": 54,
       "cuisine": "Китай",
       "article": "Лапша с говядиной и овощами",
       "slug": "kitay-lapsha-s-govyadinoy-i-ovoschami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/kitay-lapsha-s-govyadinoy-i-ovoschami-16x9.webp"
     },
     {
       "photoOrder": 55,
       "cuisine": "Китай",
       "article": "Огурцы по-китайски",
       "slug": "kitay-ogurcy-po-kitayski",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/kitay-ogurcy-po-kitayski-16x9.webp"
     },
     {
       "photoOrder": 56,
       "cuisine": "Италия",
       "article": "Паста качо э пепе",
       "slug": "italiya-pasta-kacho-e-pepe",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/italiya-pasta-kacho-e-pepe-16x9.webp"
     },
     {
       "photoOrder": 57,
       "cuisine": "Италия",
       "article": "Ризотто с грибами",
       "slug": "italiya-rizotto-s-gribami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/italiya-rizotto-s-gribami-16x9.webp"
     },
     {
       "photoOrder": 58,
       "cuisine": "Италия",
       "article": "Брускетта с томатами",
       "slug": "italiya-brusketta-s-tomatami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/italiya-brusketta-s-tomatami-16x9.webp"
     },
     {
       "photoOrder": 59,
       "cuisine": "Италия",
       "article": "Минестроне",
       "slug": "italiya-minestrone",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/italiya-minestrone-16x9.webp"
     },
     {
       "photoOrder": 60,
       "cuisine": "Италия",
       "article": "Фокачча с розмарином",
       "slug": "italiya-fokachcha-s-rozmarinom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/italiya-fokachcha-s-rozmarinom-16x9.webp"
     },
     {
       "photoOrder": 61,
       "cuisine": "Африка",
       "article": "Шакшука по-североафрикански",
       "slug": "afrika-shakshuka-po-severoafrikanski",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/afrika-shakshuka-po-severoafrikanski-16x9.webp"
     },
     {
       "photoOrder": 62,
       "cuisine": "Африка",
       "article": "Марокканский кускус с овощами",
       "slug": "afrika-marokkanskiy-kuskus-s-ovoschami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/afrika-marokkanskiy-kuskus-s-ovoschami-16x9.webp"
     },
     {
       "photoOrder": 63,
       "cuisine": "Африка",
       "article": "Харира",
       "slug": "afrika-hariru-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/afrika-hariru-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 64,
       "cuisine": "Африка",
       "article": "Курица с лимоном и оливками",
       "slug": "afrika-kurica-s-limonom-i-olivkami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/afrika-kurica-s-limonom-i-olivkami-16x9.webp"
     },
     {
       "photoOrder": 65,
       "cuisine": "Африка",
       "article": "Пряная чечевица с томатами",
       "slug": "afrika-pryanaya-chechevica-s-tomatami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/afrika-pryanaya-chechevica-s-tomatami-16x9.webp"
     },
     {
       "photoOrder": 66,
       "cuisine": "Грузия",
       "article": "Хачапури по-аджарски",
       "slug": "gruziya-hachapuri-po-adzharski",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/gruziya-hachapuri-po-adzharski-16x9.webp"
     },
     {
       "photoOrder": 67,
       "cuisine": "Грузия",
       "article": "Чахохбили",
       "slug": "gruziya-chahohbili",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/gruziya-chahohbili-16x9.webp"
     },
     {
       "photoOrder": 68,
       "cuisine": "Грузия",
       "article": "Лобио",
       "slug": "gruziya-lobio",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/gruziya-lobio-16x9.webp"
     },
     {
       "photoOrder": 69,
       "cuisine": "Грузия",
       "article": "Пхали из шпината",
       "slug": "gruziya-phali-iz-shpinata",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/gruziya-phali-iz-shpinata-16x9.webp"
     },
     {
       "photoOrder": 70,
       "cuisine": "Грузия",
       "article": "Оджахури",
       "slug": "gruziya-odzhahuri",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/gruziya-odzhahuri-16x9.webp"
     },
     {
       "photoOrder": 71,
       "cuisine": "Узбекская",
       "article": "Плов с говядиной",
       "slug": "uzbekskaya-plov-s-govyadinoy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/uzbekskaya-plov-s-govyadinoy-16x9.webp"
     },
     {
       "photoOrder": 72,
       "cuisine": "Узбекская",
       "article": "Дымляма",
       "slug": "uzbekskaya-dymlyama",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/uzbekskaya-dymlyama-16x9.webp"
     },
     {
       "photoOrder": 73,
       "cuisine": "Узбекская",
       "article": "Мастава",
       "slug": "uzbekskaya-mastava",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/uzbekskaya-mastava-16x9.webp"
     },
     {
       "photoOrder": 74,
       "cuisine": "Узбекская",
       "article": "Самса с мясом",
       "slug": "uzbekskaya-samsa-s-myasom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/uzbekskaya-samsa-s-myasom-16x9.webp"
     },
     {
       "photoOrder": 75,
       "cuisine": "Узбекская",
       "article": "Ачичук",
       "slug": "uzbekskaya-achichuk",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/uzbekskaya-achichuk-16x9.webp"
     },
     {
       "photoOrder": 76,
       "cuisine": "Япония",
       "article": "Оякодон",
       "slug": "yaponiya-oyakodon",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/yaponiya-oyakodon-16x9.webp"
     },
     {
       "photoOrder": 77,
       "cuisine": "Япония",
       "article": "Онигири с тунцом",
       "slug": "yaponiya-onigiri-s-tuncom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/yaponiya-onigiri-s-tuncom-16x9.webp"
     },
     {
       "photoOrder": 78,
       "cuisine": "Япония",
       "article": "Мисо-суп с тофу",
       "slug": "yaponiya-miso-sup-s-tofu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/yaponiya-miso-sup-s-tofu-16x9.webp"
     },
     {
       "photoOrder": 79,
       "cuisine": "Япония",
       "article": "Окономияки",
       "slug": "yaponiya-okonomiyaki-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/yaponiya-okonomiyaki-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 80,
       "cuisine": "Япония",
       "article": "Тамагояки",
       "slug": "yaponiya-tamagoyaki",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/yaponiya-tamagoyaki-16x9.webp"
     },
     {
       "photoOrder": 81,
       "cuisine": "Таиланд",
       "article": "Пад-тай с курицей",
       "slug": "tailand-pad-tay-s-kuricey",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tailand-pad-tay-s-kuricey-16x9.webp"
     },
     {
       "photoOrder": 82,
       "cuisine": "Таиланд",
       "article": "Том-кха с курицей",
       "slug": "tailand-tom-kha-s-kuricey",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tailand-tom-kha-s-kuricey-16x9.webp"
     },
     {
       "photoOrder": 83,
       "cuisine": "Таиланд",
       "article": "Зелёное карри с овощами",
       "slug": "tailand-zelenoe-karri-s-ovoschami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tailand-zelenoe-karri-s-ovoschami-16x9.webp"
     },
     {
       "photoOrder": 84,
       "cuisine": "Таиланд",
       "article": "Тайский салат с огурцом",
       "slug": "tailand-tayskiy-salat-s-ogurcom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tailand-tayskiy-salat-s-ogurcom-16x9.webp"
     },
     {
       "photoOrder": 85,
       "cuisine": "Таиланд",
       "article": "Манго с клейким рисом",
       "slug": "tailand-mango-s-kleykim-risom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/tailand-mango-s-kleykim-risom-16x9.webp"
     },
     {
       "photoOrder": 86,
       "cuisine": "Вьетнам",
       "article": "Фо-га",
       "slug": "vetnam-fo-ga-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/vetnam-fo-ga-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 87,
       "cuisine": "Вьетнам",
       "article": "Бань-ми с курицей",
       "slug": "vetnam-ban-mi-s-kuricey",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/vetnam-ban-mi-s-kuricey-16x9.webp"
     },
     {
       "photoOrder": 88,
       "cuisine": "Вьетнам",
       "article": "Спринг-роллы с креветками",
       "slug": "vetnam-spring-rolly-s-krevetkami",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/vetnam-spring-rolly-s-krevetkami-16x9.webp"
     },
     {
       "photoOrder": 89,
       "cuisine": "Вьетнам",
       "article": "Вьетнамский кофе без кофеина",
       "slug": "vetnam-vetnamskiy-kofe-bez-kofeina",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/vetnam-vetnamskiy-kofe-bez-kofeina-16x9.webp"
     },
     {
       "photoOrder": 90,
       "cuisine": "Вьетнам",
       "article": "Салат с курицей и капустой",
       "slug": "vetnam-salat-s-kuricey-i-kapustoy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/vetnam-salat-s-kuricey-i-kapustoy-16x9.webp"
     },
     {
       "photoOrder": 91,
       "cuisine": "Индия",
       "article": "Чана масала",
       "slug": "indiya-chana-masala",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/indiya-chana-masala-16x9.webp"
     },
     {
       "photoOrder": 92,
       "cuisine": "Индия",
       "article": "Дал из красной чечевицы",
       "slug": "indiya-dal-iz-krasnoy-chechevicy",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/indiya-dal-iz-krasnoy-chechevicy-16x9.webp"
     },
     {
       "photoOrder": 93,
       "cuisine": "Индия",
       "article": "Баттер-чикен",
       "slug": "indiya-batter-chiken-po-domashnemu",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/indiya-batter-chiken-po-domashnemu-16x9.webp"
     },
     {
       "photoOrder": 94,
       "cuisine": "Индия",
       "article": "Алу гоби",
       "slug": "indiya-alu-gobi",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/indiya-alu-gobi-16x9.webp"
     },
     {
       "photoOrder": 95,
       "cuisine": "Индия",
       "article": "Райта с огурцом",
       "slug": "indiya-rayta-s-ogurcom",
-      "status": "accepted"
+      "status": "photo-uploaded",
+      "image": "https://provkus-media.ru/assets/uploads/indiya-rayta-s-ogurcom-16x9.webp"
     }
   ],
   "publicationWindow": {
@@ -675,5 +770,6 @@
     "first": "2026-09-16T06:10:00+03:00",
     "last": "2026-09-26T05:06:00+03:00",
     "allPastAtPreparation": true
-  }
+  },
+  "photoFiles": 95
 }
