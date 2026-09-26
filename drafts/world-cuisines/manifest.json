@@ -1,0 +1,18 @@
+{
+  "status": "all-texts-ready-awaiting-images",
+  "totalArticles": 95,
+  "totalCuisines": 19,
+  "batches": [
+    {"file":"batch-01-china-belarus.json","count":10},
+    {"file":"batch-02-italy-germany.json","count":10},
+    {"file":"batch-03-america-africa.json","count":10},
+    {"file":"batch-04-georgia-uzbekistan.json","count":10},
+    {"file":"batch-05-armenia-tatar.json","count":10},
+    {"file":"batch-06-english-breakfast-world-drinks.json","count":10},
+    {"file":"batch-07-japan-korea.json","count":10},
+    {"file":"batch-08-thailand-vietnam.json","count":10},
+    {"file":"batch-09-india-poland.json","count":10},
+    {"file":"batch-10-russian.json","count":5}
+  ],
+  "nextStep": "attach unique 16:9 images, then move reviewed drafts into scheduled-posts with Recipe schema fields"
+}
