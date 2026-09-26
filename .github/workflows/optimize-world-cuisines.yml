@@ -1,0 +1,53 @@
+name: Optimize world cuisines loading
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/world-cuisines/optimize-now.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: optimize-world-cuisines
+  cancel-in-progress: false
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Defer world cuisine images
+        run: python scripts/optimize_world_cuisines.py
+      - name: Verify initial image load
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          text=Path('world-cuisines.html').read_text('utf-8')
+          deferred=text.count('data-src="/assets/uploads/')
+          immediate=len(re.findall(r'<img src="/assets/uploads/[^\"]+-16x9\.webp"', text))
+          assert deferred==95, deferred
+          assert immediate==0, immediate
+          assert '/assets/world-cuisines-lazy.js?v=20260926-1' in text
+          print('Verified: 95 images deferred, 0 recipe images requested by initial HTML')
+          PY
+      - name: Commit performance fix
+        run: |
+          rm -f drafts/world-cuisines/optimize-now.trigger
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Speed up world cuisines initial load"
+          git pull --rebase origin main
+          git push origin HEAD:main
