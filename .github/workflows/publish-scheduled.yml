@@ -47,6 +47,7 @@ jobs:
         run: |
           python3 scripts/optimize_home_images.py
           python3 scripts/build_indexes.py
+          python3 scripts/optimize_home_markup.py
       - name: Commit scheduler changes
         if: steps.publication_changes.outputs.changed == 'true'
         run: |
