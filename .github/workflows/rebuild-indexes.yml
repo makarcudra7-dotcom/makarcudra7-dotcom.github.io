@@ -9,8 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Generate discovery indexes for validation
-        run: python3 scripts/build_indexes.py
+        run: |
+          python3 scripts/build_indexes.py
+          python3 scripts/optimize_home_markup.py
       - name: Show generated status
         run: |
-          git diff --stat -- sitemap.xml feed.xml || true
+          git diff --stat -- index.html sitemap.xml feed.xml || true
           echo "Canonical Google readiness workflow owns generated commits"
