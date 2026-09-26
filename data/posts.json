@@ -1,5 +1,30 @@
 [
   {
+    "slug": "nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet",
+    "headline": "Нашла в Google рецепт курицы на соли и сначала не поверила: приготовила — кожа хрустит, мясо остаётся сочным",
+    "description": "Целая курица запекается на слое соли без маринада. Проверяем способ и объясняем, как безопасно определить готовность птицы.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet-1x1.jpg"
+    ],
+    "imageAlt": "Запечённая целиком курица с хрустящей румяной корочкой на толстом слое крупной соли",
+    "url": "https://provkus-media.ru/articles/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet.html",
+    "publishedAt": "2026-09-26T17:24:00.000Z",
+    "updatedAt": "2026-09-26T05:23:00.000Z",
+    "tags": [],
+    "photoSource": "provkus-media.ru",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false
+  },
+  {
     "slug": "ne-perlovka-i-ne-kukuruza-v-sentyabre-vybirayu-druguyu-primanku-karas-ee-prosto-obozhaet",
     "headline": "Не только перловка и кукуруза: в сентябре проверяю картофельную насадку на карася — когда она может сработать",
     "description": "Картофельная насадка — не универсальный секрет улова, а один из вариантов для тёплой осенней воды. Показываем рецепт и ограничения.",
@@ -62,7 +87,7 @@
       "Для кухни"
     ],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },
@@ -238,7 +263,7 @@
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
