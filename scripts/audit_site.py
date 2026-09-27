@@ -72,8 +72,7 @@ for p in posts:
   check(article.get('publisher',{}).get('logo',{}).get('url')==LOGO,f'{f.name}: publisher logo')
  check(any(x.get('@type')=='BreadcrumbList' for x in nodes),f'{f.name}: breadcrumb schema')
  for recipe in (x for x in nodes if x.get('@type')=='Recipe'):
-  check(bool(recipe.get('name') and recipe.get('recipeIngredient') and recipe.get('recipeInstructions')
-             and recipe.get('recipeYield') and recipe.get('totalTime')),
+  check(bool(recipe.get('name') and recipe.get('image') and recipe.get('recipeIngredient') and recipe.get('recipeInstructions')),
         f'{f.name}: incomplete Recipe schema')
  for u in p.get('images') or ([p.get('image')] if p.get('image') else []):
   if not u:continue
