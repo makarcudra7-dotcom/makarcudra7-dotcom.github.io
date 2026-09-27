@@ -46,7 +46,8 @@
       "cookTime": "PT20M",
       "totalTime": "PT30M",
       "recipeYield": "4 порции",
-      "recipeCategory": "Основное блюдо"
+      "recipeCategory": "Основное блюдо",
+      "popular": true
     },
     "post": {
       "slug": "tomatnoe-ragu-s-fasolyu",
@@ -74,7 +75,7 @@
       ],
       "photoSource": "Иллюстрация создана для ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "recipeIngredient": [
         "Консервированная фасоль — 2 банки по 400 г",
         "Томаты в собственном соку — 400 г",
