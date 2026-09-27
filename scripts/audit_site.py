@@ -93,6 +93,15 @@ check(bool(home_page.find('h1')) and home_page.find('h1')[0].get('class') is Non
 check(featured.get('headline','') in home and featured.get('image','') in home,'index: featured post in crawlable HTML')
 check(bool(home_page.find('meta',property='og:image')) and home_page.find('meta',property='og:image')[0].get('content')==featured.get('image'),'index: representative OG image')
 check('HOME-HERO-START' in home and 'HOME-LOWER-START' in home,'index: static feed')
+check('HOME-NEWS-START' in home and 'HOME-NEWS-END' in home,'index: news block')
+news_posts=[p for p in posts if str(p.get('category') or '').strip().casefold().startswith('новост') and (not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now)]
+news_slugs={p['slug'] for p in news_posts}
+news_html=(ROOT/'news.html').read_text('utf-8')
+news_links={a.get('href','').rsplit('/',1)[-1][:-5] for a in Page(news_html).find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
+check(news_links==news_slugs,f'news.html: category links (missing {news_slugs-news_links}, extra {news_links-news_slugs})')
+home_news=home.split('<!-- HOME-NEWS-START -->',1)[-1].split('<!-- HOME-NEWS-END -->',1)[0]
+check('/news.html' in home_news and ('ProVkusn-ые новости' in home_news),'index: news heading and archive link')
+check(all(f'/articles/{p["slug"]}.html' in home_news for p in sorted(news_posts,key=lambda p:p.get('publishedAt') or '',reverse=True)[:4]),'index: newest news cards')
 check(('site-ui.css' in home or 'home-bundle.css' in home),'index: critical styles in head')
 category=Page((ROOT/'category.html').read_text('utf-8'))
 category_links={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in category.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
@@ -159,7 +168,7 @@ for f in ROOT.rglob('*.html'):
    dest=(ROOT/unquote(u.path).lstrip('/')) if u.path.startswith('/') else (f.parent/unquote(u.path))
    check(dest.exists(),f'{f.relative_to(ROOT)}: missing {u.path}')
 
-FIXED_SITEMAP_URLS=14  # homepage + hubs + authors + editorial/contact/policy pages
+FIXED_SITEMAP_URLS=15  # homepage + hubs + news + authors + editorial/contact/policy pages
 archive_urls={SITE+'/archive.html'} | {
  SITE+'/'+str(path.relative_to(ROOT)).replace('index.html','')
  for path in (ROOT/'archive').rglob('index.html')

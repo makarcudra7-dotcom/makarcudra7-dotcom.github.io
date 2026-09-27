@@ -117,6 +117,45 @@ def update_home():
   if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
 
 update_home()
+def news_post(p):
+  return str(p.get('category') or '').strip().casefold().startswith('новост')
+
+def update_news():
+  selected=[p for p in posts if news_post(p)]
+  page=root/'index.html';source=page.read_text('utf-8')
+  if selected:
+    section=('<!-- HOME-NEWS-START --><section class="section pv-news-section" aria-labelledby="pv-news-title">'
+             '<div class="container"><div class="section-head"><div><div class="eyebrow">Свежая лента</div>'
+             '<h2 class="section-title" id="pv-news-title">ProVkusn-ые новости</h2>'
+             '<div class="section-sub">Материалы рубрики «Новости»</div></div>'
+             f'<a class="link-more" href="/news.html">Все новости ({len(selected)}) →</a></div>'
+             '<div class="story-grid">'+''.join(map(card,selected[:4]))+'</div></div></section><!-- HOME-NEWS-END -->')
+  else:section='<!-- HOME-NEWS-START --><!-- HOME-NEWS-END -->'
+  if '<!-- HOME-NEWS-START -->' in source:
+    source=re.sub(r'<!-- HOME-NEWS-START -->.*?<!-- HOME-NEWS-END -->',lambda _:section,source,count=1,flags=re.S)
+  else:
+    marker='<section class="section"><div class="container feature-band">'
+    if marker not in source:raise RuntimeError('Homepage author section missing')
+    source=source.replace(marker,section+marker,1)
+  if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
+
+  cards=''.join(map(card,selected)) or '<p class="section-sub">В рубрике пока нет публикаций.</p>'
+  news=root/'news.html'
+  archive=(f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+           f'<title>ProVkusn-ые новости — все материалы рубрики | ProVkus</title>'
+           f'<meta name="description" content="Новости ProVkus о еде, продуктах и домашней кухне. Все материалы рубрики по дате публикации.">'
+           f'<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{site}/news.html">'
+           '<link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/public.css"></head><body>'
+           '<header class="site-header"><div class="container topbar"><a class="brand" href="/">Pro<b>Vkus</b></a>'
+           '<nav class="main-nav"><a href="/category.html">Материалы</a><a href="/news.html" aria-current="page">Новости</a>'
+           '<a href="/authors.html">Авторы</a></nav></div></header>'
+           '<main class="container"><section class="section"><div class="section-head"><div><div class="eyebrow">Новости ProVkus</div>'
+           '<h1 class="section-title">ProVkusn-ые новости</h1><p class="section-sub">Все материалы рубрики «Новости» по дате публикации.</p>'
+           f'</div><span class="section-sub">{len(selected)} материалов</span></div><div class="story-grid">{cards}</div></section></main>'
+           '<script src="/assets/app.js"></script></body></html>')
+  if not news.exists() or news.read_text('utf-8')!=archive:news.write_text(archive,'utf-8')
+
+update_news()
 category=root/'category.html';source=category.read_text('utf-8')
 grid='<!-- CATEGORY-STATIC-START -->'+''.join(map(card,posts))+'<!-- CATEGORY-STATIC-END -->'
 if '<!-- CATEGORY-STATIC-START -->' in source:
@@ -173,6 +212,7 @@ fixed=[
   (site+'/products.html', None),
   (site+'/home-storage.html', None),
   (site+'/food-safety.html', None),
+  (site+'/news.html', None),
   (site+'/authors.html', None),
   (site+'/author-ilya.html', None),
   (site+'/author-elvira.html', None),
