@@ -1,0 +1,104 @@
+name: Fix production cache and author copy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-production-cache-and-author-copy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Apply production cleanup
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          AUTHOR_VERSION = '20260927-author-fix5'
+          APP_VERSION = '20260927-publicfix5'
+          ADMIN_VERSION = '20260927-placement5'
+          neutral = ('Фактические утверждения проверяются по релевантным первичным или заслуживающим доверия источникам. '
+                     'Фиксированного минимального числа ссылок нет: авторские и редакционные материалы могут выходить без внешних источников, '
+                     'если в них нет утверждений, требующих внешнего подтверждения.')
+          old = ('Фактические утверждения проверяются по первичным или заслуживающим доверия источникам. '
+                 'Для тем о безопасности еды редакционный стандарт требует не менее трёх проверяемых источников.')
+
+          def write(path, text):
+              Path(path).write_text(text, encoding='utf-8')
+
+          # Fix the generator so future author rebuilds cannot restore the old rule.
+          p = Path('scripts/sync_author_bios.py')
+          text = p.read_text(encoding='utf-8')
+          text = re.sub(r'ASSET_VERSION = "[^"]+"', f'ASSET_VERSION = "{AUTHOR_VERSION}"', text, count=1)
+          text = text.replace(old, neutral)
+          write(p, text)
+
+          # Fix all three generated author pages now and bust cached assets.
+          for path in ['author-ilya.html', 'author-elvira.html', 'author-ekaterina.html']:
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              text = text.replace(old, neutral)
+              text = re.sub(r'/assets/author-trust\.css\?v=[^"\']+', f'/assets/author-trust.css?v={AUTHOR_VERSION}', text)
+              text = re.sub(r'/assets/app\.js\?v=[^"\']+', f'/assets/app.js?v={APP_VERSION}', text)
+              text = re.sub(r'/assets/community\.js\?v=[^"\']+', f'/assets/community.js?v={APP_VERSION}', text)
+              write(p, text)
+
+          # Directory page: make sure the current app.js is fetched instead of a cached pre-fix copy.
+          p = Path('authors.html')
+          text = p.read_text(encoding='utf-8')
+          text = re.sub(r'/assets/app\.js\?v=[^"\']+', f'/assets/app.js?v={APP_VERSION}', text)
+          write(p, text)
+
+          # Homepage app loader: same cache-bust for navigation/author fixes.
+          p = Path('index.html')
+          text = p.read_text(encoding='utf-8')
+          text = re.sub(r'/assets/app\.js\?v=[^"\\]+', f'/assets/app.js?v={APP_VERSION}', text)
+          write(p, text)
+
+          # Admin: remove the obsolete source-count hint and force the queued-placement UI to refresh.
+          p = Path('admin.html')
+          text = p.read_text(encoding='utf-8')
+          text = text.replace('Добавьте проверяемые источники; для безопасности еды — минимум 3', 'Источники необязательны; добавляйте ссылки, когда они нужны для проверки фактов')
+          text = re.sub(r'assets/admin-fixes\.js\?v=[^"\']+', f'assets/admin-fixes.js?v={ADMIN_VERSION}', text)
+          text = re.sub(r'assets/admin-operations\.js\?v=[^"\']+', f'assets/admin-operations.js?v={ADMIN_VERSION}', text)
+          write(p, text)
+
+      - name: Verify cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          ! grep -R -nE 'не менее тр[её]х|минимум 3' scripts/sync_author_bios.py author-*.html admin.html editorial-policy.html
+          grep -q '20260927-placement5' admin.html
+          grep -q '20260927-publicfix5' authors.html
+          grep -q '20260927-author-fix5' author-ekaterina.html
+          grep -Eq '[1-9][0-9]* публикац' author-ekaterina.html
+          python -m py_compile scripts/sync_author_bios.py
+          node --check assets/app.js
+          node --check assets/admin-fixes.js
+          node --check assets/admin-operations.js
+          node --check scripts/publish-scheduled.js
+          git diff --check
+
+      - name: Commit cleanup
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then
+            echo 'No changes needed'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/sync_author_bios.py author-*.html authors.html index.html admin.html
+          git commit -m 'Finalize author, cache and scheduled-placement fixes'
+          git push
