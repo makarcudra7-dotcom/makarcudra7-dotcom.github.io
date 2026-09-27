@@ -109,6 +109,12 @@ entries = []
 for post, url, published, content in selected:
     image = post.get('image') or (post.get('images') or [''])[0]
     image = urljoin(SITE + '/', image) if image else ''
+    cover = ''
+    if image.startswith(SITE + '/'):
+        file = ROOT / image[len(SITE) + 1:].split('?', 1)[0]
+        mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif'}.get(file.suffix.lower())
+        if mime and file.is_file():
+            cover = f'<enclosure url="{xml(image)}" length="{file.stat().st_size}" type="{mime}"/>'
     tags = ''.join(f'<category>{xml(tag)}</category>' for tag in [post.get('category', ''), *(post.get('tags') or [])] if tag)
     entries.append(f'''  <item>
     <title>{xml(post.get('headline'))}</title>
@@ -118,6 +124,7 @@ for post, url, published, content in selected:
     <dc:creator>{xml(post.get('author') or 'Редакция ProVkus')}</dc:creator>
     {tags}
     {f'<media:content url="{xml(image)}" medium="image"/>' if image else ''}
+    {cover}
     <content:encoded>{cdata(content)}</content:encoded>
   </item>''')
 latest = max((row[2] for row in selected), default=datetime.now(timezone.utc))
