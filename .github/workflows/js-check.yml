@@ -41,6 +41,7 @@ jobs:
           node --check assets/admin-quality-v2.js
           node --check assets/admin-live-refresh.js
           node tests/admin-operations.test.js
+          node tests/admin-authors.test.js
           node --check assets/admin-seo.js
           node --check assets/admin-sources.js
           node --check assets/category-hub.js

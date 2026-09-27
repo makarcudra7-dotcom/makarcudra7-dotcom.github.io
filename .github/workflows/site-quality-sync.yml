@@ -13,6 +13,7 @@ on:
       - 'scripts/optimize_home_images.py'
       - 'scripts/optimize_home_markup.py'
       - 'scripts/build_indexes.py'
+      - 'scripts/build-feed.js'
       - 'scripts/build_discovery_archives.py'
       - 'scripts/enhance_article_links.py'
       - 'scripts/build_calculators_integration.py'

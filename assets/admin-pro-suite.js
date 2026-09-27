@@ -75,15 +75,26 @@
     for(const id of ['source','photoSource']){const input=$('#'+id);if(!input||input.dataset.ctrlk)continue;input.dataset.ctrlk='1';input.addEventListener('keydown',e=>{if(!(e.ctrlKey||e.metaKey)||e.key.toLowerCase()!=='k')return;e.preventDefault();const url=prompt('URL источника',/^https?:\/\//i.test(input.value)?input.value:'https://');if(url){input.value=url.trim();input.dispatchEvent(new Event('input',{bubbles:true}));flash?.('Ссылка источника добавлена')}});if(id==='source')input.insertAdjacentHTML('afterend','<div class="ctrlk-hint">Ctrl+K — быстро вставить кликабельный URL источника</div>')}
   }
 
+  function validAuthors(data){return Array.isArray(data)&&data.length>0&&data.every(a=>a&&typeof a.name==='string'&&a.name.trim())}
   function syncGlobalAuthors(data){
-    try{if(typeof AUTHORS!=='undefined'&&Array.isArray(AUTHORS)){AUTHORS.splice(0,AUTHORS.length,...data.map(a=>({name:a.name,role:a.role,photo:a.photo+(a.photoVersion?'?v='+a.photoVersion:''),url:a.url,bio:a.bio})));typeof renderAuthors==='function'&&renderAuthors()}}catch(e){console.warn('sync authors',e)}
+    if(!validAuthors(data))return false;
+    try{if(typeof AUTHORS!=='undefined'&&Array.isArray(AUTHORS)){
+      AUTHORS.splice(0,AUTHORS.length,...data.map(a=>({name:a.name,role:a.role||'',photo:(a.photo||'assets/fallback-cover.svg')+(a.photoVersion?'?v='+a.photoVersion:''),url:a.url||'authors.html',bio:a.bio||''})));
+      typeof renderAuthors==='function'&&renderAuthors();return true
+    }}catch(e){console.warn('sync authors',e)}return false
   }
   async function loadAuthors(){
     const body=$('#authors .card-body');if(body)body.innerHTML='<div class="author-load-note">Загружаем профили авторов…</div>';
     let serverError=null;authorsLoadedFromPublic=false;authorsData=[];
-    try{const f=await window.getFile('data/authors.json');if(f?.content)authorsData=JSON.parse(decode(f))}catch(e){serverError=e}
-    if(!Array.isArray(authorsData)||!authorsData.length){
-      try{const r=await fetch('/data/authors.json?'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);authorsData=await r.json();authorsLoadedFromPublic=true}catch(e){if(body)body.innerHTML=`<div class="author-load-note warn"><strong>Не удалось загрузить авторов.</strong><br>${esc(serverError?.message||e.message||'Неизвестная ошибка')}</div>`;flash?.('Не удалось загрузить авторов');return}
+    try{const f=await window.getFile('data/authors.json');if(f?.content){const value=JSON.parse(decode(f));if(validAuthors(value))authorsData=value}}catch(e){serverError=e}
+    if(!validAuthors(authorsData)){
+      try{const r=await fetch('data/authors.json?pv-authors='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const value=await r.json();if(!validAuthors(value))throw new Error('Ответ не содержит профили авторов');authorsData=value;authorsLoadedFromPublic=true}
+      catch(e){
+        const fallback=typeof AUTHORS!=='undefined'&&Array.isArray(AUTHORS)?AUTHORS.map(a=>({...a})):[];
+        if(validAuthors(fallback)){authorsData=fallback;authorsLoadedFromPublic=true;renderAuthorEditor();if(body)body.querySelector('.author-load-note').textContent='Показываем сохранённые профили. Соединение с файлом авторов временно недоступно; редактирование будет возможно после восстановления связи.';return}
+        if(body)body.innerHTML=`<div class="author-load-note warn"><strong>Не удалось загрузить авторов.</strong><br>${esc(serverError?.message||e.message||'Неизвестная ошибка')}</div>`;
+        flash?.('Не удалось загрузить авторов');return
+      }
     }
     syncGlobalAuthors(authorsData);renderAuthorEditor()
   }

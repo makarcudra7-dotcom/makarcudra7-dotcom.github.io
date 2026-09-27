@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const source=fs.readFileSync('assets/admin-pro-suite.js','utf8');
+const note={textContent:''};const body={innerHTML:'',querySelector:()=>note};
+const authors=[{name:'Илья Титюлькин',role:'Редактор',photo:'ilya.jpg',url:'author-ilya.html',bio:''},{name:'Эльвира Шайберт',role:'Редактор',photo:'elvira.jpg',url:'author-elvira.html',bio:''},{name:'Екатерина Рукопляс',role:'Редактор',photo:'katya.jpg',url:'author-ekaterina.html',bio:''}];
+let count=0;
+const context=vm.createContext({window:{getFile:async()=>({content:Buffer.from('[]').toString('base64')})},document:{querySelector:s=>s==='#authors .card-body'?body:null,querySelectorAll:()=>[]},AUTHORS:authors,renderAuthors:()=>{count=authors.length},fetch:async()=>({ok:true,json:async()=>[]}),flash(){},TextDecoder,Uint8Array,atob:s=>Buffer.from(s,'base64').toString('binary'),Date,console,setInterval:()=>0});
+vm.runInContext(source.replace('let n=0,t=setInterval', 'window.__test={loadAuthors,validAuthors};let n=0,t=setInterval'),context);
+(async()=>{await context.window.__test.loadAuthors();assert.equal(authors.length,3);assert.match(body.innerHTML,/Илья Титюлькин/);assert.match(note.textContent,/Соединение с файлом авторов/);assert.equal(context.window.__test.validAuthors([]),false);console.log('author fallback: OK')})().catch(e=>{console.error(e);process.exitCode=1});
