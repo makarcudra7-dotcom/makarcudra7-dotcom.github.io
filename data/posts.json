@@ -1,5 +1,35 @@
 [
   {
+    "slug": "ris-na-zavtra-kak-ostudit-hranit-razogret",
+    "headline": "Вопрос закрыт: россиянам объяснили, можно ли есть вчерашний рис из холодильника — многие хозяйки даже не догадываются",
+    "description": "Что делать с приготовленным рисом: быстрое охлаждение, холодильник, срок хранения и однократный разогрев. Разбираем риск Bacillus cereus.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Безопасность еды",
+    "type": "guide",
+    "typeLabel": "Инструкция / как сделать",
+    "image": "https://provkus-media.ru/assets/uploads/week-ris-na-zavtra-kak-ostudit-hranit-razogret-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/week-ris-na-zavtra-kak-ostudit-hranit-razogret-cover.webp"
+    ],
+    "imageAlt": "Приготовленный рис распределён по неглубоким контейнерам для охлаждения",
+    "url": "https://provkus-media.ru/articles/ris-na-zavtra-kak-ostudit-hranit-razogret.html",
+    "publishedAt": "2026-09-27T09:00:00.000Z",
+    "updatedAt": "2026-09-27T09:00:00.000Z",
+    "tags": [
+      "рис",
+      "безопасность еды",
+      "хранение",
+      "разогрев"
+    ],
+    "photoSource": "Иллюстрация создана для ProVkus",
+    "featured": true,
+    "popular": false,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "kapustnye-oladi-na-skovorode",
     "headline": "Полкочана капусты и два яйца — и вкуснейшие оладьи на столе за 15 минут: края румяные, а внутри одна нежность",
     "description": "Капустные оладьи из 500 г капусты и двух яиц: около 15 минут на подготовку и 20 минут на жарку. Как сохранить румяные края и приготовить середину.",
@@ -98,7 +128,7 @@
     "updatedAt": "2026-09-26T05:23:00.000Z",
     "tags": [],
     "photoSource": "provkus-media.ru",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false
   },

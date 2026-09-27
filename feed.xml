@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 07:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 09:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Вопрос закрыт: россиянам объяснили, можно ли есть вчерашний рис из холодильника — многие хозяйки даже не догадываются</title>
+    <link>https://provkus-media.ru/articles/ris-na-zavtra-kak-ostudit-hranit-razogret.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/ris-na-zavtra-kak-ostudit-hranit-razogret.html</guid>
+    <pubDate>Sun, 27 Sep 2026 09:00:00 GMT</pubDate>
+    <description>Что делать с приготовленным рисом: быстрое охлаждение, холодильник, срок хранения и однократный разогрев. Разбираем риск Bacillus cereus.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Безопасность еды</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-ris-na-zavtra-kak-ostudit-hranit-razogret-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Полкочана капусты и два яйца — и вкуснейшие оладьи на столе за 15 минут: края румяные, а внутри одна нежность</title>
     <link>https://provkus-media.ru/articles/kapustnye-oladi-na-skovorode.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-plov-s-govyadinoy-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Сок, нектар или напиток: 5 вещей на упаковке, которые стоит проверить перед покупкой</title>
-    <link>https://provkus-media.ru/articles/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy.html</guid>
-    <pubDate>Wed, 23 Sep 2026 01:41:00 GMT</pubDate>
-    <description>Яркие фрукты на коробке еще не говорят, сколько внутри сока. Пять деталей на упаковке помогут быстро понять, что именно вы покупаете.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Продукты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>
