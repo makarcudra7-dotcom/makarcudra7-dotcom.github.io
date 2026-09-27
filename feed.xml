@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 16:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 18:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Картофель позеленел или пророс: в каком случае клубень выбрасывать, а когда можно очистить</title>
+    <link>https://provkus-media.ru/articles/pozelenel-proros-kartofel.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/pozelenel-proros-kartofel.html</guid>
+    <pubDate>Sun, 27 Sep 2026 18:00:00 GMT</pubDate>
+    <description>Почему позеленевший картофель лучше не использовать, что делать с ростками у крепкого клубня и как хранить картофель без света.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Безопасность еды</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-pozelenel-proros-kartofel-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Шарлотка больше не в моде: мудрые хозяюшки осенью-2026 готовят хитовый крамбл —  теплые яблоки + овсянка и никакой возни с тестом</title>
     <link>https://provkus-media.ru/articles/yablochnyi-krambl-s-ovsyanoi-kroshkoi.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-oyakodon-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Ачичук режу почти прозрачными ломтиками и солю только перед столом — томаты не успевают утонуть в соке</title>
-    <link>https://provkus-media.ru/articles/uzbekskaya-achichuk.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-achichuk.html</guid>
-    <pubDate>Wed, 23 Sep 2026 09:40:00 GMT</pubDate>
-    <description>Свежий узбекский салат ачичук из тонко нарезанных томатов, лука, базилика и острого перца.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-achichuk-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>

@@ -1,5 +1,36 @@
 [
   {
+    "slug": "pozelenel-proros-kartofel",
+    "headline": "Картофель позеленел или пророс: в каком случае клубень выбрасывать, а когда можно очистить",
+    "description": "Почему позеленевший картофель лучше не использовать, что делать с ростками у крепкого клубня и как хранить картофель без света.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Безопасность еды",
+    "type": "guide",
+    "typeLabel": "Материал",
+    "image": "https://provkus-media.ru/assets/uploads/week-pozelenel-proros-kartofel-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/week-pozelenel-proros-kartofel-cover.webp",
+      "https://provkus-media.ru/assets/uploads/week-pozelenel-proros-kartofel-inside.webp"
+    ],
+    "imageAlt": "Обычные картофелины рядом с клубнем с зелёным участком и ростками",
+    "url": "https://provkus-media.ru/articles/pozelenel-proros-kartofel.html",
+    "publishedAt": "2026-09-27T18:00:00.000Z",
+    "updatedAt": "2026-09-27T18:00:00.000Z",
+    "tags": [
+      "картофель",
+      "безопасность еды",
+      "хранение",
+      "продукты"
+    ],
+    "photoSource": "Иллюстрация создана для ProVkus",
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "yablochnyi-krambl-s-ovsyanoi-kroshkoi",
     "headline": "Шарлотка больше не в моде: мудрые хозяюшки осенью-2026 готовят хитовый крамбл —  теплые яблоки + овсянка и никакой возни с тестом",
     "description": "Домашний яблочный крамбл: пропорции яблок, овсяных хлопьев и масла, последовательность приготовления и признаки готовности.",
