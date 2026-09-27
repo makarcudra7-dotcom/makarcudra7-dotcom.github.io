@@ -106,7 +106,7 @@
       "осенний рецепт"
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
-    "featured": false,
+    "featured": true,
     "popular": false,
     "recipeIngredient": [
       "Тыква без семян — 900 г",
@@ -155,7 +155,7 @@
       "разогрев"
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "excludeRelated": false,
     "status": "published",
