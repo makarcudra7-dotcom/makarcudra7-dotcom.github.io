@@ -3,7 +3,7 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260927-workflow-hardening1';
+  const VERSION='20260927-workflow-hardening3';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
@@ -12,7 +12,8 @@
     'admin-fast-publish.js',
     'admin-live-refresh.js',
     'admin-persistence.js',
-    'admin-workflow-hardening.js'
+    'admin-workflow-hardening.js',
+    'admin-indexing-calendar.js'
   ];
 
   function existing(name){
