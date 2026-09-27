@@ -17,8 +17,8 @@
     const grid=$('.author-directory-grid,.author-grid');if(!grid)return;
     grid.querySelectorAll('.author-card').forEach(card=>{
       const key=(card.getAttribute('href')||'').split('/').pop();const a=authors.find(x=>x.url===key);if(!a)return;
-      const sig=`${a.name}|${a.role}|${a.lead}|${(a.topics||[]).join(',')}`;if(card.dataset.proSig===sig)return;card.dataset.proSig=sig;
-      card.innerHTML=`<div class="author-card-top"><img src="/${esc((a.photo||'assets/fallback-cover.svg').replace(/^\//,'')+(a.photoVersion?'?v='+a.photoVersion:''))}" width="112" height="112" alt="${esc(a.name)}"><div><div class="author-card-role">${esc(a.role)}</div><h3>${esc(a.name)}</h3></div></div><p class="author-card-lead">${esc(a.lead||a.bio)}</p>${topics((a.topics||[]).slice(0,5))}<div class="author-card-promise">В профиле — все публикации автора, его темы и возможность задать вопрос редакции.</div><div class="author-card-footer"><span data-author-count="${esc(a.name)}">Материалы автора</span><strong>Открыть профиль →</strong></div>`;
+      const sig=`${a.name}|${a.role}|${a.lead}|${(a.topics||[]).join(',')}`;if(card.dataset.proSig===sig)return;card.dataset.proSig=sig;const existingCount=card.querySelector('[data-author-count]')?.textContent||'Материалы автора';
+      card.innerHTML=`<div class="author-card-top"><img src="/${esc((a.photo||'assets/fallback-cover.svg').replace(/^\//,'')+(a.photoVersion?'?v='+a.photoVersion:''))}" width="112" height="112" alt="${esc(a.name)}"><div><div class="author-card-role">${esc(a.role)}</div><h3>${esc(a.name)}</h3></div></div><p class="author-card-lead">${esc(a.lead||a.bio)}</p>${topics((a.topics||[]).slice(0,5))}<div class="author-card-promise">В профиле — все публикации автора, его темы и возможность задать вопрос редакции.</div><div class="author-card-footer"><span data-author-count="${esc(a.name)}">${esc(existingCount)}</span><strong>Открыть профиль →</strong></div>`;
     })
   }
   function updateProfile(authors){
