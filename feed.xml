@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 09:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 10:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Тыкву в кашу не перевожу — румяню по старому хитрому способу: домашние в восторге, а я и рад</title>
+    <link>https://provkus-media.ru/articles/tykva-dolkami-i-kubikami-v-duhovke.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/tykva-dolkami-i-kubikami-v-duhovke.html</guid>
+    <pubDate>Sun, 27 Sep 2026 10:30:00 GMT</pubDate>
+    <description>Базовый рецепт запечённой тыквы: как нарезать, приправить и расположить кусочки на противне, чтобы получить мягкую середину и подрумяненные края.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-tykva-dolkami-i-kubikami-v-duhovke-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Вопрос закрыт: россиянам объяснили, можно ли есть вчерашний рис из холодильника — многие хозяйки даже не догадываются</title>
     <link>https://provkus-media.ru/articles/ris-na-zavtra-kak-ostudit-hranit-razogret.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Безопасность еды</category>
     <media:content url="https://provkus-media.ru/assets/uploads/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat-16x9.jpg?v=20260923-image" medium="image"/>
-  </item>
-  <item>
-    <title>Плов с говядиной не мешаю после добавления риса: сначала зирвак, потом крупа — так зёрна остаются рассыпчатыми</title>
-    <link>https://provkus-media.ru/articles/uzbekskaya-plov-s-govyadinoy.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-plov-s-govyadinoy.html</guid>
-    <pubDate>Wed, 23 Sep 2026 03:10:00 GMT</pubDate>
-    <description>Домашний плов с говядиной, морковью, луком, зирой и чесноком. Порядок приготовления зирвака и риса.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-plov-s-govyadinoy-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>

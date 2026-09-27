@@ -1,5 +1,54 @@
 [
   {
+    "slug": "tykva-dolkami-i-kubikami-v-duhovke",
+    "headline": "Тыкву в кашу не перевожу — румяню по старому хитрому способу: домашние в восторге, а я и рад",
+    "description": "Базовый рецепт запечённой тыквы: как нарезать, приправить и расположить кусочки на противне, чтобы получить мягкую середину и подрумяненные края.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/week-tykva-dolkami-i-kubikami-v-duhovke-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/week-tykva-dolkami-i-kubikami-v-duhovke-cover.webp",
+      "https://provkus-media.ru/assets/uploads/week-tykva-dolkami-i-kubikami-v-duhovke-inside.webp"
+    ],
+    "imageAlt": "Запечённые дольки и кубики тыквы с травами на противне",
+    "url": "https://provkus-media.ru/articles/tykva-dolkami-i-kubikami-v-duhovke.html",
+    "publishedAt": "2026-09-27T10:30:00.000Z",
+    "updatedAt": "2026-09-27T10:30:00.000Z",
+    "tags": [
+      "тыква",
+      "духовка",
+      "осенний рецепт"
+    ],
+    "photoSource": "Иллюстрация создана для ProVkus",
+    "featured": false,
+    "popular": false,
+    "recipeIngredient": [
+      "Тыква без семян — 900 г",
+      "Оливковое или другое растительное масло — 2 ст. л.",
+      "Соль — 1/2 ч. л. или по вкусу",
+      "Паприка — 1 ч. л.",
+      "Сухой тимьян — 1/2 ч. л."
+    ],
+    "recipeInstructions": [
+      "Разогрейте духовку до 200 °C. Очистите тыкву от семян и нарежьте часть мякоти дольками, часть — кубиками сопоставимой толщины.",
+      "Обсушите кусочки, перемешайте с маслом, солью, паприкой и тимьяном.",
+      "Разложите на большом противне в один слой, оставляя промежутки. Если противень тесный, используйте два.",
+      "Запекайте ориентировочно 25–40 минут, проверяя готовность вилкой; небольшие кубики могут быть готовы раньше крупных долек.",
+      "Подавайте горячей как гарнир или добавьте в салат после краткого остывания."
+    ],
+    "prepTime": "PT15M",
+    "cookTime": "PT35M",
+    "totalTime": "PT50M",
+    "recipeYield": "4 порции",
+    "recipeCategory": "Основное блюдо",
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "ris-na-zavtra-kak-ostudit-hranit-razogret",
     "headline": "Вопрос закрыт: россиянам объяснили, можно ли есть вчерашний рис из холодильника — многие хозяйки даже не догадываются",
     "description": "Что делать с приготовленным рисом: быстрое охлаждение, холодильник, срок хранения и однократный разогрев. Разбираем риск Bacillus cereus.",
