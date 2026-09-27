@@ -170,5 +170,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-09-27T12:34:45.208631Z"
+  },
+  "kuritsa-s-tykvoi-na-protivne": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-27T14:28:07.795968Z"
   }
 }
