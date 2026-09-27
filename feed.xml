@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 12:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 13:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Осенью всегда готовлю курочку на тыкве — корочка золотистая и хрустящая, а гарнир как кубики из пюре</title>
+    <link>https://provkus-media.ru/articles/kuritsa-s-tykvoi-na-protivne.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/kuritsa-s-tykvoi-na-protivne.html</guid>
+    <pubDate>Sun, 27 Sep 2026 13:30:00 GMT</pubDate>
+    <description>Пошаговый рецепт курицы с тыквой на противне: ингредиенты, последовательность, время как ориентир и проверка готовности птицы термометром.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-kuritsa-s-tykvoi-na-protivne-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Мягкие яблоки — прошлый век: как хранить красные, зеленые и желтые, чтобы хрустели как в первый день</title>
     <link>https://provkus-media.ru/articles/kak-hranit-osennie-yabloki.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-mastava-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Дымляму складываю слоями и не перемешиваю: овощи сами дают сок, а мясо томится внизу</title>
-    <link>https://provkus-media.ru/articles/uzbekskaya-dymlyama.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-dymlyama.html</guid>
-    <pubDate>Wed, 23 Sep 2026 04:45:00 GMT</pubDate>
-    <description>Домашняя дымляма с говядиной, картофелем, капустой, морковью, томатами и луком.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-dymlyama-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
