@@ -33,7 +33,7 @@ jobs:
           PY
       - name: Commit generated author pages
         run: |
-          if git diff --quiet; then
+          if git diff --quiet -- author-*.html; then
             echo 'No generated changes'
             exit 0
           fi
