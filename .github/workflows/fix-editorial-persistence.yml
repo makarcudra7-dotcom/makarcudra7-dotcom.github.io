@@ -1,0 +1,137 @@
+name: Persist editorial notes versions and tasks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-editorial-persistence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move editorial metadata from browser storage to GitHub
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          ops = Path('assets/admin-operations.js')
+          text = ops.read_text(encoding='utf-8')
+
+          pattern = re.compile(r"function note\(slug\)\{.*?\nconst HISTORY_KEY=.*?\nfunction editorTools\(\)\{", re.S)
+          replacement = r'''const EDITORIAL_META='.github/editorial-workflow.json';
+async function editorialMeta(){
+ try{
+  const value=await fileJson(EDITORIAL_META,{articles:{},updatedAt:null});
+  const meta=value&&typeof value==='object'&&!Array.isArray(value)?value:{articles:{},updatedAt:null};
+  if(!meta.articles||typeof meta.articles!=='object'||Array.isArray(meta.articles))meta.articles={};
+  return meta;
+ }catch(e){throw new Error('Для общих заметок и версий подключите GitHub в настройках')}
+}
+async function saveEditorialMeta(meta,label){meta.updatedAt=new Date().toISOString();await window.putFile(EDITORIAL_META,JSON.stringify(meta,null,2)+'\n',label)}
+function workflowSlug(){return ($('#slug')?.value||'').trim()}
+async function note(slug){
+ try{
+  const meta=await editorialMeta(),rec=meta.articles[slug]||(meta.articles[slug]={});
+  const value=prompt('Редакторская заметка — общая для всех редакторов',rec.note||'');if(value===null)return;
+  rec.note=value;rec.noteUpdatedAt=new Date().toISOString();await saveEditorialMeta(meta,'Editorial note: '+slug);message('Заметка сохранена в общей редакционной истории');
+ }catch(e){message(e.message||'Не удалось сохранить заметку')}
+}
+async function tasks(slug){
+ try{
+  const meta=await editorialMeta(),rec=meta.articles[slug]||(meta.articles[slug]={}),old=(rec.tasks||[]).map(t=>`[${t.done?'x':' '}] ${t.text}`).join('\n');
+  const value=prompt('Задачи по материалу. Каждая строка: [ ] задача или [x] выполнено',old);if(value===null)return;
+  rec.tasks=value.split(/\n+/).map(x=>x.trim()).filter(Boolean).map(line=>{const m=line.match(/^\[([xX ])\]\s*(.+)$/);return{text:(m?m[2]:line).trim(),done:!!m&&/x/i.test(m[1])}}).filter(x=>x.text);
+  rec.tasksUpdatedAt=new Date().toISOString();await saveEditorialMeta(meta,'Editorial tasks: '+slug);message(`Задачи сохранены: ${rec.tasks.filter(x=>x.done).length}/${rec.tasks.length} выполнено`);
+ }catch(e){message(e.message||'Не удалось сохранить задачи')}
+}
+let historyBusy=false;
+async function snapshot(reason='manual'){
+ if(historyBusy)return;
+ try{
+  const o=window.collect?.();if(!o?.headline&&!o?.content)return;const slug=workflowSlug()||o.slug;if(!slug)return;
+  const encoded=JSON.stringify(o);if(encoded.length>700000){message('Версия не сохранена: сначала загрузите встроенные фото, чтобы снимок не превышал лимит');return}
+  historyBusy=true;const meta=await editorialMeta(),rec=meta.articles[slug]||(meta.articles[slug]={}),versions=Array.isArray(rec.versions)?rec.versions:[];
+  if(versions[0]&&JSON.stringify(versions[0].data)===encoded)return;
+  versions.unshift({at:new Date().toISOString(),reason,data:o});rec.versions=versions.slice(0,20);rec.versionUpdatedAt=new Date().toISOString();
+  await saveEditorialMeta(meta,'Editorial version: '+slug);
+ }catch(e){console.warn('shared version history',e)}finally{historyBusy=false}
+}
+async function history(){
+ const slug=workflowSlug();if(!slug)return message('Сначала задайте slug материала');
+ try{
+  const meta=await editorialMeta(),versions=meta.articles[slug]?.versions||[];if(!versions.length)return message('Сохранённых общих версий пока нет');
+  const choice=prompt('Номер версии для восстановления в редактор:\n'+versions.map((x,i)=>`${i+1}. ${new Date(x.at).toLocaleString('ru-RU')} · ${x.reason||'версия'} · ${x.data?.headline||''}`).join('\n'));
+  const n=Number(choice);if(n>=1&&n<=versions.length){await snapshot('before-restore');window.fill?.(versions[n-1].data);document.querySelector('.nav-btn[data-target="material"]')?.click();message('Версия восстановлена в редактор; опубликуйте или сохраните её явно')}
+ }catch(e){message(e.message||'Не удалось открыть историю версий')}
+}
+function editorTools(){'''
+          text, count = pattern.subn(replacement, text, count=1)
+          if count != 1:
+              raise SystemExit(f'Could not replace local note/history block: {count}')
+
+          text = text.replace("b.onclick=history;", "b.onclick=()=>history();", 1)
+          text = text.replace(".addEventListener('click',snapshot,true)", ".addEventListener('click',()=>{void snapshot('before-'+id)},true)", 1)
+
+          old_buttons = '<button type="button" class="btn soft" data-pv-action="note" data-pv-slug="${esc(slug)}">Заметка</button>`);'
+          new_buttons = '<button type="button" class="btn soft" data-pv-action="note" data-pv-slug="${esc(slug)}">Заметка</button><button type="button" class="btn soft" data-pv-action="tasks" data-pv-slug="${esc(slug)}">Задачи</button>`);'
+          if old_buttons not in text:
+              raise SystemExit('Published row button anchor not found')
+          text = text.replace(old_buttons, new_buttons, 1)
+
+          old_switch = "case'note':note(s)}}"
+          new_switch = "case'note':note(s);break;case'tasks':tasks(s)}}"
+          if old_switch not in text:
+              raise SystemExit('Action switch anchor not found')
+          text = text.replace(old_switch, new_switch, 1)
+          ops.write_text(text, encoding='utf-8')
+
+          fixes = Path('assets/admin-fixes.js')
+          text = fixes.read_text(encoding='utf-8')
+          anchor = 'title="После выхода материал автоматически будет добавлен в рассылку">В рассылку</button>`);'
+          repl = 'title="После выхода материал автоматически будет добавлен в рассылку">В рассылку</button><button type="button" class="btn soft" data-pv-action="note" data-pv-slug="${esc(slug)}">Заметка</button><button type="button" class="btn soft" data-pv-action="tasks" data-pv-slug="${esc(slug)}">Задачи</button>`);'
+          if anchor not in text:
+              raise SystemExit('Queued row button anchor not found')
+          text = text.replace(anchor, repl, 1)
+          fixes.write_text(text, encoding='utf-8')
+
+          admin = Path('admin.html')
+          text = admin.read_text(encoding='utf-8')
+          text = re.sub(r'assets/admin-fixes\.js\?v=[^"\']+', 'assets/admin-fixes.js?v=20260927-sharedworkflow1', text)
+          text = re.sub(r'assets/admin-operations\.js\?v=[^"\']+', 'assets/admin-operations.js?v=20260927-sharedworkflow1', text)
+          admin.write_text(text, encoding='utf-8')
+
+      - name: Verify persistence migration
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check assets/admin-operations.js
+          node --check assets/admin-fixes.js
+          grep -q "EDITORIAL_META='.github/editorial-workflow.json'" assets/admin-operations.js
+          grep -q 'data-pv-action="tasks"' assets/admin-operations.js
+          grep -q 'data-pv-action="tasks"' assets/admin-fixes.js
+          ! grep -q 'pvNotes:' assets/admin-operations.js
+          ! grep -q "HISTORY_KEY='pvEditorHistory'" assets/admin-operations.js
+          grep -q '20260927-sharedworkflow1' admin.html
+          git diff --check
+
+      - name: Commit persistence migration
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/admin-operations.js assets/admin-fixes.js admin.html
+          git commit -m 'Persist editorial notes tasks and version history'
+          git pull --rebase origin main
+          git push
