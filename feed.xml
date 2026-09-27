@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sat, 26 Sep 2026 06:02:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 06:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Капуста для квашения: красивый кочан ещё не гарантия хруста — у прилавка проверяю три признака</title>
+    <link>https://provkus-media.ru/articles/kapusta-dlya-kvasheniya-kak-vybrat.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/kapusta-dlya-kvasheniya-kak-vybrat.html</guid>
+    <pubDate>Sun, 27 Sep 2026 06:00:00 GMT</pubDate>
+    <description>Как осмотреть капусту перед покупкой: листья, срез, плотность и вес. Что проверить дома перед шинковкой и почему сорт важнее красивой упаковки.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Продукты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-kapusta-dlya-kvasheniya-kak-vybrat-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Нашла в Google рецепт курицы на соли и сначала не поверила: приготовила — кожа хрустит, мясо остаётся сочным</title>
     <link>https://provkus-media.ru/articles/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/gruziya-odzhahuri-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Картофельная лепёшка с сыром и овощами на сковороде</title>
-    <link>https://provkus-media.ru/articles/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom.html</guid>
-    <pubDate>Tue, 22 Sep 2026 19:00:00 GMT</pubDate>
-    <description>Рецепт картофельной лепёшки с перцем и сыром: какие продукты нужны, как обжарить овощи и сколько готовить каждую сторону.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>
