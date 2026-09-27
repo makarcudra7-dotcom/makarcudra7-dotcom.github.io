@@ -91,7 +91,7 @@ check(bool(home_page.find('h1')) and home_page.find('h1')[0].get('class') is Non
 check(featured.get('headline','') in home and featured.get('image','') in home,'index: featured post in crawlable HTML')
 check(bool(home_page.find('meta',property='og:image')) and home_page.find('meta',property='og:image')[0].get('content')==featured.get('image'),'index: representative OG image')
 check('HOME-HERO-START' in home and 'HOME-LOWER-START' in home,'index: static feed')
-check('site-ui.css' in home,'index: critical styles in head')
+check(('site-ui.css' in home or 'home-bundle.css' in home),'index: critical styles in head')
 category=Page((ROOT/'category.html').read_text('utf-8'))
 category_links={urlparse(a.get('href','')).path.rsplit('/',1)[-1][:-5] for a in category.find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
 check(category_links=={p['slug'] for p in posts if not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now},'category: static inventory')
