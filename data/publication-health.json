@@ -32,9 +32,9 @@
   "tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy": {
     "status": "error",
     "errors": [
-      "SEO title не совпадает с заголовком"
+      "страница недоступна: URLError: <urlopen error _ssl.c:983: The handshake operation timed out>"
     ],
-    "checkedAt": "2026-09-27T07:29:22.647266Z"
+    "checkedAt": "2026-09-27T22:29:26.119828Z"
   },
   "indiya-rayta-s-ogurcom": {
     "status": "ok",
@@ -92,9 +92,11 @@
     "checkedAt": "2026-09-27T06:54:29.852461Z"
   },
   "indiya-chana-masala": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:29.675009Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: URLError: <urlopen error _ssl.c:983: The handshake operation timed out>"
+    ],
+    "checkedAt": "2026-09-27T22:29:27.989043Z"
   },
   "sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih": {
     "status": "ok",
