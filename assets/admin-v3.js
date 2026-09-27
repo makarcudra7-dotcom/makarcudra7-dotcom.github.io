@@ -1,6 +1,6 @@
 (()=>{
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-  const categories=['Продукты','Рецепты','Дом и быт','Хранение продуктов','Безопасность еды','Здоровое питание','Кухонная техника','Покупки и выбор','Сезонное','Напитки','Десерты и выпечка','Люди и истории','Новости и тренды','Советы и лайфхаки'];
+  const categories=['Продукты','Продукты и выбор','Рецепты','Кухни мира','Дом и быт','Дом и хранение','Хранение продуктов','Безопасность еды','Здоровое питание','Кухонная техника','Покупки и выбор','Сезонное','Напитки','Десерты и выпечка','Люди и истории','Новости','Новости и тренды','Советы и лайфхаки'];
   const types=[['guide','Инструкция / как сделать'],['explainer','Разбор / объяснение'],['recipe','Рецепт'],['selection','Подборка'],['review','Обзор'],['story','История / опыт'],['news','Новость']];
   const typeSchema={guide:'Article',explainer:'Article',selection:'Article',review:'Article',story:'Article',recipe:'Recipe',news:'NewsArticle'};
   const nowLocal=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16)};
@@ -26,8 +26,13 @@
     activate('material');
     try{store.draft=null;saveStore()}catch(e){}
   }
+  function ensureCategory(value){
+    const c=$('#category'),name=String(value||'').trim();if(!c||!name)return;
+    if(![...c.options].some(x=>x.value===name))c.add(new Option(name,name));
+    c.value=name;
+  }
   function setupSelectors(){
-    const c=$('#category'); if(c){c.innerHTML=categories.map(x=>`<option>${x}</option>`).join('');c.value='Продукты'}
+    const c=$('#category'); if(c){c.replaceChildren(...categories.map(x=>new Option(x,x)));for(const p of store.posts||[])if(p.category&&!([...c.options].some(x=>x.value===p.category)))c.add(new Option(p.category,p.category));c.value='Продукты'}
     const t=$('#type'); if(t){t.innerHTML=types.map(([v,l])=>`<option value="${v}">${l}</option>`).join('');t.value='guide'}
   }
   function addTopButtons(){
@@ -65,6 +70,7 @@
       if(!getToken())throw new Error('Сначала подключите GitHub в Настройках');
       const o=collect();
       if(!o.headline||!o.description)throw new Error('Заполните заголовок и description');
+      if(!o.category)throw new Error('Выберите рубрику');
       if(!o.slug)o.slug=slugify(o.headline);
       if(!o.seoTitle)o.seoTitle=o.headline;
       if(!o.lead)throw new Error('Добавьте лид');
@@ -78,7 +84,8 @@
       if(pr)pr.style.width='55%';
       await putFile(`articles/${o.slug}.html`,enhancedArticleHTML(o,img,images),`Publish: ${o.headline}`);
       let pf=await getFile('data/posts.json'),posts=[];if(pf?.content){try{posts=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(pf.content.replace(/\n/g,'')),c=>c.charCodeAt(0))))}catch(e){}}
-      const rec={slug:o.slug,headline:o.headline,description:o.description,author:o.author,category:o.category,type:o.type,typeLabel:(types.find(x=>x[0]===o.type)||[])[1]||'Материал',image:img,images,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:isoFromLocal(o.publishedAt),updatedAt:isoFromLocal(o.updatedAt),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||''};
+      const previous=posts.find(p=>p.slug===o.slug)||{};
+      const rec={...previous,slug:o.slug,headline:o.headline,description:o.description,author:o.author,category:o.category,type:o.type,typeLabel:(types.find(x=>x[0]===o.type)||[])[1]||'Материал',image:img,images,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:isoFromLocal(o.publishedAt),updatedAt:isoFromLocal(o.updatedAt),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||''};
       posts=[rec,...posts.filter(p=>p.slug!==o.slug)].sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt));
       await putFile('data/posts.json',JSON.stringify(posts,null,2),`Update post index: ${o.headline}`);
       store.posts=posts;store.draft=null;saveStore();renderPosts();if(pr)pr.style.width='100%';flash('Материал опубликован');
@@ -91,6 +98,7 @@
       $$('#postsTable tr').forEach((tr,i)=>{if(tr.children.length<5)return;const p=store.posts?.[i];if(!p||tr.querySelector('.row-actions'))return;const td=document.createElement('td');td.className='row-actions';td.innerHTML=`<a class="btn soft" href="${esc(p.url)}" target="_blank">Открыть</a>`;tr.appendChild(td)})};renderPosts();
   }
   setupSelectors();addTopButtons();
+  const baseFill=window.fill;window.fill=function(o={}){if(o.category)ensureCategory(o.category);baseFill(o);if(o.category)ensureCategory(o.category)};
   const ps=$('#photoSource'),psb=$('#photoSourceBtn');if(psb&&ps){psb.onclick=()=>{const v=prompt('Источник фото — введите вручную',ps.value||'');if(v!==null)ps.value=v.trim()}}
   $('#publishBtn').onclick=()=>publishV3(false);
   $('#saveExitBtn').onclick=()=>publishV3(true);
