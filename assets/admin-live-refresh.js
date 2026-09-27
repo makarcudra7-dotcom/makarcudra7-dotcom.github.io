@@ -11,7 +11,7 @@
   const decode=f=>{if(!f?.content)return'';return new TextDecoder().decode(Uint8Array.from(atob(f.content.replace(/\n/g,'')),c=>c.charCodeAt(0)))};
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const fmt=v=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch{return v||''}};
-  let refreshing=false,timer=null,scheduled=[];
+  let refreshing=false,timer=null,scheduled=[],renderSignature="";
 
   function persist(){
     if(!window.store)return;
@@ -85,6 +85,9 @@
   }
 
   function repaint(){
+    const signature=JSON.stringify([(window.store?.posts||[]).map(p=>[p.slug,p.headline,p.publishedAt]),scheduled.map(p=>[p.slug,p.post?.headline,p.publishAt])]);
+    if(signature===renderSignature)return;
+    renderSignature=signature;
     window.renderPosts?.();
     renderScheduledRows(scheduled);
     const count=window.store?.posts?.length||0;
@@ -222,7 +225,7 @@
   }
 
   function active(){return document.getElementById('publications')?.classList.contains('active')}
-  function start(){clearInterval(timer);timer=setInterval(()=>{if(active()&&!document.hidden)refreshAll(false)},2500)}
+  function start(){clearInterval(timer);timer=setInterval(()=>{if(active()&&!document.hidden)refreshAll(false)},15000)}
 
   document.addEventListener('click',e=>{
     const preview=e.target.closest?.('[data-live-preview-scheduled]');
