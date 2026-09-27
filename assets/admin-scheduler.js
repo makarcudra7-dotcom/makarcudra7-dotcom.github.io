@@ -79,7 +79,7 @@
       if(file){images=await uploadCover(file,o.slug);img=images[0]}else if(!img)throw new Error('Добавьте главное изображение');
       if(pr)pr.style.width='55%';
       o.image=img;o.images=images;
-      const post=makePost(o,img,images),item={slug:o.slug,publishAt:post.publishedAt,createdAt:new Date().toISOString(),material:o,post};
+      const post={...makePost(o,img,images),status:'queued'},item={slug:o.slug,publishAt:post.publishedAt,createdAt:new Date().toISOString(),status:'queued',material:{...o,status:'queued'},post};
       const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь публикаций. Повторите попытку.');
       const next=[item,...queue.filter(x=>x.slug!==o.slug)];
       await writeQueue(next,`Schedule: ${o.headline}`);

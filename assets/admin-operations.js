@@ -9,7 +9,7 @@ const queued=()=>window.__pvScheduledSnapshot||window.store?.scheduled||[];
 const bySlug=s=>posts().find(p=>p.slug===s);
 const slugFromRow=tr=>{const a=tr.querySelector('a[href*="/articles/"]');try{return new URL(a.href).pathname.split('/').pop().replace(/\.html$/,'')}catch{return''}};
 const message=s=>window.flash?.(s);
-let busy=false,filters={status:'all',author:'all',date:''},renderPending=false,newsletter=[],sitemapCache=null,healthReport={};
+let busy=false,filters={status:'all',author:'all',date:'',category:'all'},renderPending=false,newsletter=[],sitemapCache=null,healthReport={};
 function showBusy(on){busy=on;$$('[data-pv-action],#pvBulkApply').forEach(b=>b.disabled=on)}
 async function fileJson(path,fallback=[]){const f=await window.getFile(path);return f?.content?JSON.parse(decode(f)):fallback}
 async function savePosts(mutator,label){
@@ -70,8 +70,8 @@ function applyFilters(){
  for(const tr of $$('#postsTable tr')){
   if(tr.querySelector('td[colspan]'))continue;total++;
   const slug=slugFromRow(tr),p=bySlug(slug),item=queued().find(x=>x.slug===tr.dataset.scheduledSlug),isDraft=tr.classList.contains('draft-row');
-  const status=isDraft?'draft':item?'scheduled':'published',author=p?.author||item?.post?.author||tr.children[2]?.textContent||'',date=(p?.publishedAt||item?.publishAt||'').slice(0,10);
-  const match=(!q||(tr.textContent+' '+(p?.url||'')).toLowerCase().includes(q))&&(filters.status==='all'||filters.status===status)&&(filters.author==='all'||filters.author===author)&&(!filters.date||filters.date===date);
+  const status=isDraft?'draft':item?'scheduled':'published',author=p?.author||item?.post?.author||tr.children[2]?.textContent||'',category=p?.category||item?.post?.category||item?.material?.category||'',date=(p?.publishedAt||item?.publishAt||'').slice(0,10);
+  const match=(!q||(tr.textContent+' '+(p?.url||'')).toLowerCase().includes(q))&&(filters.status==='all'||filters.status===status)&&(filters.author==='all'||filters.author===author)&&(filters.category==='all'||filters.category===category)&&(!filters.date||filters.date===date);
   tr.hidden=!match;if(match)visible++;
  }
  const count=$('#postSearchCount');if(count)count.textContent=`Показано: ${visible} из ${total}`;
@@ -80,10 +80,10 @@ function applyFilters(){
 window.pvApplyFilters=applyFilters;
 function filtersUi(){
  const bar=$('#publications .card-body .cms-searchbar');if(!bar||$('#pvFilters'))return;
- const authors=[...new Set(posts().map(x=>x.author).filter(Boolean))].sort();
- bar.insertAdjacentHTML('afterend',`<div id="pvFilters" class="pv-filters"><select id="pvStatus"><option value="all">Все статусы</option><option value="published">Опубликованы</option><option value="scheduled">В очереди</option><option value="draft">Черновики</option></select><select id="pvAuthor"><option value="all">Все авторы</option>${authors.map(x=>`<option>${esc(x)}</option>`).join('')}</select><input type="date" id="pvDate" aria-label="Фильтр по дате"><button type="button" class="btn soft" id="pvClearFilters">Сбросить фильтры</button><button type="button" class="btn soft" id="pvCalendarBtn">Календарь недели</button><button type="button" class="btn soft" id="pvAuditBtn">Проверить вышедшие</button><span id="pvDataState" class="hint"></span></div><div id="pvCalendar" hidden></div><div class="pv-bulk"><button type="button" class="btn soft" id="pvBulkApply">Выбранные: в популярное</button><button type="button" class="btn soft" id="pvBulkMail">Выбранные: в рассылку</button><button type="button" class="btn soft" id="pvBulkSchedule">Выбранные: сдвинуть очередь</button></div>`);
- $('#pvStatus').onchange=e=>{filters.status=e.target.value;applyFilters()};$('#pvAuthor').onchange=e=>{filters.author=e.target.value;applyFilters()};$('#pvDate').onchange=e=>{filters.date=e.target.value;applyFilters()};
- $('#pvClearFilters').onclick=()=>{filters={status:'all',author:'all',date:''};$('#pvStatus').value='all';$('#pvAuthor').value='all';$('#pvDate').value='';const input=$('#postSearch');if(input){input.value='';input.dispatchEvent(new Event('input'))}applyFilters()};
+ const authors=[...new Set(posts().map(x=>x.author).filter(Boolean))].sort();const categories=[...new Set([...posts().map(x=>x.category),...queued().map(x=>x.post?.category||x.material?.category)].filter(Boolean))].sort();
+ bar.insertAdjacentHTML('afterend',`<div id="pvFilters" class="pv-filters"><select id="pvStatus"><option value="all">Все статусы</option><option value="published">Опубликованы</option><option value="scheduled">В очереди</option><option value="draft">Черновики</option></select><select id="pvAuthor"><option value="all">Все авторы</option>${authors.map(x=>`<option>${esc(x)}</option>`).join('')}</select><select id="pvCategory"><option value="all">Все рубрики</option>${categories.map(x=>`<option>${esc(x)}</option>`).join('')}</select><input type="date" id="pvDate" aria-label="Фильтр по дате"><button type="button" class="btn soft" id="pvClearFilters">Сбросить фильтры</button><button type="button" class="btn soft" id="pvCalendarBtn">Календарь недели</button><button type="button" class="btn soft" id="pvAuditBtn">Проверить вышедшие</button><span id="pvDataState" class="hint"></span></div><div id="pvCalendar" hidden></div><div class="pv-bulk"><button type="button" class="btn soft" id="pvBulkApply">Выбранные: в популярное</button><button type="button" class="btn soft" id="pvBulkMail">Выбранные: в рассылку</button><button type="button" class="btn soft" id="pvBulkSchedule">Выбранные: сдвинуть очередь</button></div>`);
+ $('#pvStatus').onchange=e=>{filters.status=e.target.value;applyFilters()};$('#pvAuthor').onchange=e=>{filters.author=e.target.value;applyFilters()};$('#pvCategory').onchange=e=>{filters.category=e.target.value;applyFilters()};$('#pvDate').onchange=e=>{filters.date=e.target.value;applyFilters()};
+ $('#pvClearFilters').onclick=()=>{filters={status:'all',author:'all',date:'',category:'all'};$('#pvStatus').value='all';$('#pvAuthor').value='all';$('#pvCategory').value='all';$('#pvDate').value='';const input=$('#postSearch');if(input){input.value='';input.dispatchEvent(new Event('input'))}applyFilters()};
  $('#pvCalendarBtn').onclick=toggleCalendar;$('#pvAuditBtn').onclick=healthAll;
  $('#pvBulkApply').onclick=()=>{const slugs=$$('[data-pv-select]:checked').map(x=>x.dataset.pvSelect);if(!slugs.length)return message('Выберите статьи');savePosts(list=>{let n=0;for(const p of list)if(slugs.includes(p.slug)&&!p.popular){p.popular=true;n++}if(list.filter(x=>x.popular).length>7)throw new Error('В «Популярном» максимум 7 статей. Выберите меньше.');return list},'Bulk popular placement')};
  $('#pvBulkMail').onclick=()=>sendMail($$('[data-pv-select]:checked').map(x=>x.dataset.pvSelect).filter(x=>bySlug(x)));$('#pvBulkSchedule').onclick=bulkReschedule;
@@ -95,6 +95,7 @@ async function reschedule(slug){
  const item=queued().find(x=>x.slug===slug);if(!item)return message('Материал уже вышел или отсутствует в очереди');
  const old=new Date(item.publishAt),local=new Date(old-old.getTimezoneOffset()*60000).toISOString().slice(0,16),value=prompt('Новые дата и время публикации (местное время браузера, ГГГГ-ММ-ДДTЧЧ:ММ)',local);
  if(value===null)return;const date=new Date(value);if(!Number.isFinite(date.getTime())||date<=new Date())return message('Выберите корректное будущее время');
+ if(!confirm(`Перенести публикацию с ${old.toLocaleString('ru-RU')} на ${date.toLocaleString('ru-RU')}?`))return;
  if(busy)return;showBusy(true);
  try{const list=await fileJson('.github/scheduled-posts.json');const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Статья уже отсутствует в очереди');target.publishAt=date.toISOString();target.post.publishedAt=target.publishAt;target.material.publishedAt=value;target.material.updatedAt=value;target.post.updatedAt=target.publishAt;await window.putFile('.github/scheduled-posts.json',JSON.stringify(list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt)),null,2),'Reschedule: '+slug);await window.refreshScheduledNow?.();toggleCalendar();toggleCalendar();message('Время в очереди изменено')}
  catch(e){message(e.message||'Не удалось перенести публикацию')}finally{showBusy(false)}

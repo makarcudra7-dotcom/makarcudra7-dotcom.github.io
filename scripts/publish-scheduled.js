@@ -21,11 +21,31 @@ function readJson(file,fallback){try{return JSON.parse(fs.readFileSync(file,'utf
 const queue=readJson(QUEUE,[]),now=Date.now();
 const paused=queue.filter(x=>x?.pausedRecovery===true||x?.paused===true);
 const active=queue.filter(x=>!paused.includes(x));
-const due=active.filter(x=>new Date(x.publishAt).getTime()<=now),pending=[...paused,...active.filter(x=>new Date(x.publishAt).getTime()>now)];
+const failed=active.filter(x=>x?.status==='error'||x?.post?.status==='error');
+const retryable=active.filter(x=>!failed.includes(x));
+const due=retryable.filter(x=>new Date(x.publishAt).getTime()<=now),pending=[...paused,...failed,...retryable.filter(x=>new Date(x.publishAt).getTime()>now)];
 let posts=readJson(POSTS,[]),newsletter=readJson(NEWSLETTER,[]),changed=false,newsletterChanged=false;
 const pendingSlugs=new Set(pending.filter(x=>!x?.pausedRecovery&&!x?.paused).map(x=>x.slug).filter(Boolean));
 if(pendingSlugs.size){const before=posts.length;posts=posts.filter(p=>!pendingSlugs.has(p.slug));if(posts.length!==before)changed=true;for(const slug of pendingSlugs){const file=path.join('articles',slug+'.html');if(fs.existsSync(file)){fs.unlinkSync(file);changed=true;console.log(`Withheld scheduled material until publish time: ${slug}`)}}}
-for(const item of due.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt))){if(!item?.slug||!item?.material||!item?.post)continue;const published=item.publishAt||item.post.publishedAt||new Date().toISOString();const updated=item.post.updatedAt;const modified=updated&&new Date(updated).getTime()>=new Date(published).getTime()?updated:published;const rec={...item.post,featured:item.post.featured??item.material.featured??false,popular:item.post.popular??item.material.popular??false,newsletter:item.post.newsletter??item.material.newsletter??false,publishedAt:published,updatedAt:modified};fs.mkdirSync('articles',{recursive:true});fs.writeFileSync(path.join('articles',item.slug+'.html'),render({...item,post:rec,publishAt:published}));if(rec.featured)posts=posts.map(p=>({...p,featured:false}));posts=[rec,...posts.filter(p=>p.slug!==rec.slug)];if(rec.newsletter){newsletter=[{id:`${rec.slug}-${Date.now()}-${newsletter.length}`,slug:rec.slug,sentAt:published},...newsletter].slice(0,60);newsletterChanged=true;console.log(`Queued newsletter signal for published material: ${rec.slug}`)}changed=true;console.log(`Published scheduled material: ${rec.slug}`)}
+for(const item of due.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt))){
+  if(!item?.slug||!item?.material||!item?.post)continue;
+  item.status='publishing';item.post.status='publishing';
+  try{
+    const published=item.publishAt||item.post.publishedAt||new Date().toISOString();
+    const updated=item.post.updatedAt;
+    const modified=updated&&new Date(updated).getTime()>=new Date(published).getTime()?updated:published;
+    const rec={...item.post,status:'published',featured:item.post.featured??item.material.featured??false,popular:item.post.popular??item.material.popular??false,newsletter:item.post.newsletter??item.material.newsletter??false,publishedAt:published,updatedAt:modified};
+    fs.mkdirSync('articles',{recursive:true});
+    fs.writeFileSync(path.join('articles',item.slug+'.html'),render({...item,post:rec,publishAt:published}));
+    if(rec.featured)posts=posts.map(p=>({...p,featured:false}));
+    posts=[rec,...posts.filter(p=>p.slug!==rec.slug)];
+    if(rec.newsletter){newsletter=[{id:`${rec.slug}-${Date.now()}-${newsletter.length}`,slug:rec.slug,sentAt:published},...newsletter].slice(0,60);newsletterChanged=true;console.log(`Queued newsletter signal for published material: ${rec.slug}`)}
+    changed=true;console.log(`Published scheduled material: ${rec.slug}`)
+  }catch(error){
+    item.status='error';item.post.status='error';item.errorMessage=String(error?.message||error||'Неизвестная ошибка публикации');item.failedAt=new Date().toISOString();item.attempts=Number(item.attempts||0)+1;
+    pending.push(item);changed=true;console.error(`Scheduled publication failed: ${item.slug}: ${item.errorMessage}`)
+  }
+}
 if(changed||due.length){posts.sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0));const popular=posts.filter(x=>x.popular).sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0));for(const p of popular.slice(7)){const hit=posts.find(x=>x.slug===p.slug);if(hit)hit.popular=false}fs.writeFileSync(POSTS,JSON.stringify(posts,null,2)+'\n')}
 if(newsletterChanged)fs.writeFileSync(NEWSLETTER,JSON.stringify(newsletter,null,2)+'\n');
 if(due.length)fs.writeFileSync(QUEUE,JSON.stringify(pending,null,2)+'\n');
