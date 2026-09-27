@@ -6,7 +6,7 @@ from pathlib import Path
 AUTHORS_PATH = Path("data/authors.json")
 ADMIN_PATH = Path("admin.html")
 INDEX_PATH = Path("index.html")
-ASSET_VERSION = "20260927-author-fix5"
+ASSET_VERSION = "20260927-countfix1"
 SITE = "https://provkus-media.ru"
 
 
