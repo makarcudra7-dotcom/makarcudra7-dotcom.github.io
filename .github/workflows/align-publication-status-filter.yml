@@ -1,0 +1,51 @@
+name: Align publication status filter
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/align-publication-status-filter.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Align filter with unified statuses
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('assets/admin-operations.js')
+          text=p.read_text(encoding='utf-8')
+          old="const status=isDraft?'draft':item?'scheduled':'published',author=p?.author||item?.post?.author||tr.children[2]?.textContent||'',category=p?.category||item?.post?.category||item?.material?.category||'',date=(p?.publishedAt||item?.publishAt||'').slice(0,10);"
+          new="const status=tr.dataset.pvStatus||(isDraft?'draft':item?'queued':'published'),author=p?.author||item?.post?.author||tr.children[2]?.textContent||'',category=p?.category||item?.post?.category||item?.material?.category||'',date=(p?.publishedAt||item?.publishAt||'').slice(0,10);"
+          if old not in text:
+              raise SystemExit('status computation anchor not found')
+          text=text.replace(old,new,1)
+          old='<option value="published">Опубликованы</option><option value="scheduled">В очереди</option><option value="draft">Черновики</option>'
+          new='<option value="published">Опубликованы</option><option value="publishing">Публикуются</option><option value="queued">В очереди</option><option value="ready">Готовы</option><option value="draft">Черновики</option><option value="error">Ошибки</option>'
+          if old not in text:
+              raise SystemExit('status options anchor not found')
+          text=text.replace(old,new,1)
+          p.write_text(text,encoding='utf-8')
+          PY
+      - name: Verify
+        run: |
+          set -euo pipefail
+          node --check assets/admin-operations.js
+          grep -q 'value="error">Ошибки' assets/admin-operations.js
+          grep -q 'tr.dataset.pvStatus' assets/admin-operations.js
+          git diff --check
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/admin-operations.js
+          git commit -m 'Align publication filters with unified statuses'
+          git pull --rebase origin main
+          git push
