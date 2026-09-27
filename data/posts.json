@@ -25,7 +25,7 @@
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
     "featured": false,
-    "popular": false
+    "popular": true
   },
   {
     "slug": "nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet",
@@ -263,7 +263,7 @@
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
