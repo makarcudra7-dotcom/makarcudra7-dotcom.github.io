@@ -56,7 +56,7 @@
   const share=document.querySelector('[data-share]');if(share){share.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);share.textContent='Ссылка скопирована'}}catch(e){}})}
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
   injectCss();addFavicon();addSiteSchema();enhanceNavigation();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();
-  if(!isHome)if(!isHome)window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
+  if(!isHome)window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome){const loadHome=()=>runWhenIdle(()=>loadScript('/assets/home-dynamic.js?v=20260926-mobile-speed3','pvHomeDynamic'));if(document.readyState==='complete')loadHome();else window.addEventListener('load',loadHome,{once:true})}
   if(document.readyState==='complete')loadNonCriticalScripts();else window.addEventListener('load',loadNonCriticalScripts,{once:true});
 })();
