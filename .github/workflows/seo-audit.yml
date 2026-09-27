@@ -15,7 +15,16 @@ jobs:
           python-version: '3.12'
       - name: Install audit dependencies
         run: pip install pillow
-      - name: Rebuild sitemap and feed in CI
-        run: python3 scripts/build_indexes.py
+      - name: Rebuild all discovery surfaces in CI
+        run: |
+          python3 scripts/seo_hardening.py
+          python3 scripts/build_indexes.py
+          python3 scripts/build_discovery_archives.py
+          python3 scripts/enhance_article_links.py
+          python3 scripts/build_calculators_integration.py
+          python3 scripts/quality_sync.py
+          python3 scripts/post_quality_hardening.py
       - name: Run offline Google readiness audit
-        run: python3 scripts/audit_site.py
+        run: |
+          python3 scripts/check_indexing_surfaces.py
+          python3 scripts/audit_site.py
