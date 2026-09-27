@@ -6,7 +6,7 @@ from pathlib import Path
 AUTHORS_PATH = Path("data/authors.json")
 ADMIN_PATH = Path("admin.html")
 INDEX_PATH = Path("index.html")
-ASSET_VERSION = "20260925-author-trust"
+ASSET_VERSION = "20260927-author-fix5"
 SITE = "https://provkus-media.ru"
 
 
@@ -55,7 +55,7 @@ def trust_panel(author: dict) -> str:
         '<div class="author-trust-item"><h3>Как готовит материалы</h3>'
         f'<p>{html.escape(author["method"])}</p></div>'
         '<div class="author-trust-item"><h3>Проверка фактов</h3>'
-        '<p>Фактические утверждения проверяются по первичным или заслуживающим доверия источникам. Для тем о безопасности еды редакционный стандарт требует не менее трёх проверяемых источников.</p></div>'
+        '<p>Фактические утверждения проверяются по релевантным первичным или заслуживающим доверия источникам. Фиксированного минимального числа ссылок нет: авторские и редакционные материалы могут выходить без внешних источников, если в них нет утверждений, требующих внешнего подтверждения.</p></div>'
         '<div class="author-trust-item"><h3>С какими вопросами обращаться</h3>'
         f'<p>{html.escape(author["useful"])}</p></div>'
         '</div>'
