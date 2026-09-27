@@ -29,7 +29,7 @@ jobs:
         id: publication_changes
         shell: bash
         run: |
-          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/; then
+          if git diff --quiet -- .github/scheduled-posts.json data/posts.json data/newsletter-pushes.json articles/; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No publication changes; skip generated-site rebuild"
           else
@@ -65,7 +65,7 @@ jobs:
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
-          git add .github/scheduled-posts.json data/posts.json articles/ archive/ archive.html calculators.html assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js sitemap.xml feed.xml
+          git add .github/scheduled-posts.json data/posts.json data/newsletter-pushes.json articles/ archive/ archive.html calculators.html assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js sitemap.xml feed.xml
           git commit -m "Sync scheduled materials"
           git pull --rebase origin main
           git push origin HEAD:main
