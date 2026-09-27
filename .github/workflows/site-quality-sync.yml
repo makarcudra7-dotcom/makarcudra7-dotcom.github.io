@@ -1,5 +1,5 @@
 name: Site quality sync
-# Quality pass rerun after hardening the generator patcher.
+# Idempotent quality pass: safe to rerun after every content update.
 on:
   push:
     branches: [main]
@@ -78,6 +78,7 @@ jobs:
             s=s.replace(old,new,1)
           elif new not in s:
             raise SystemExit('posts enrichment signature changed')
+          s=s.replace('if(!isHome)if(!isHome)window.__pvPostsPromise.then','if(!isHome)window.__pvPostsPromise.then')
           app.write_text(s,'utf-8')
           PY
       - name: Validate runtime and invariants
@@ -101,6 +102,7 @@ jobs:
           assert '@import' not in public
           assert "isHome?Promise.resolve([]):loadVisiblePosts()" in app
           assert "if(!isHome)window.__pvPostsPromise.then" in app
+          assert "if(!isHome)if(!isHome)" not in app
           assert "IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))arm()}" in app
           assert "card.innerHTML=`<div class=\"author-card-top\"" not in community
           for name in ('Илья Титюлькин','Эльвира Шайберт','Екатерина Рукопляс'):
