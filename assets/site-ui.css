@@ -21,6 +21,7 @@ body{background:var(--bg);text-rendering:optimizeLegibility;-webkit-font-smoothi
 
 
 
+
 /* QUALITY-AUTHOR-CSS-START */
 /* Author portraits: load this stylesheet in <head> so dimensions are stable before first paint. */
 .author-grid{align-items:start}
