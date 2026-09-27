@@ -25,7 +25,7 @@
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
     "featured": false,
-    "popular": false,
+    "popular": true,
     "recipeIngredient": [
       "Куриные бёдра без кости — 700 г",
       "Тыква без семян — 700 г",
@@ -419,7 +419,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
