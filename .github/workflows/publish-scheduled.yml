@@ -49,6 +49,7 @@ jobs:
           python3 scripts/build_indexes.py
           python3 scripts/optimize_home_markup.py
           python3 scripts/quality_sync.py
+          python3 scripts/post_quality_hardening.py
           node --check assets/app.js
           node --check assets/community.js
       - name: Commit scheduler changes
