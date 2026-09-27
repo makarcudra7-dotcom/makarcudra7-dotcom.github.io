@@ -1,5 +1,4 @@
 name: Site quality sync
-# Idempotent quality pass: safe to rerun after every content update.
 on:
   push:
     branches: [main]
@@ -7,6 +6,7 @@ on:
       - 'data/posts.json'
       - 'data/authors.json'
       - 'scripts/quality_sync.py'
+      - 'scripts/post_quality_hardening.py'
       - 'scripts/optimize_home_images.py'
       - 'scripts/optimize_home_markup.py'
       - '.github/workflows/site-quality-sync.yml'
@@ -23,99 +23,45 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Harden generators
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          q=Path('scripts/quality_sync.py')
-          s=q.read_text('utf-8')
-          s=s.replace("'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.'</n        'p></div>", "'У каждого редактора своё направление. В профиле можно посмотреть все публикации, понять подход к темам и задать вопрос редакции.</p></div>")
-          s=s.replace('r"function injectCss\\(\\)\\{.*?\\}"', 'r"function injectCss\\(\\)\\{[^\\n]*\\}"')
-          s=s.replace("flags=re.I)\n    write_if_changed(public, p)", "flags=re.I | re.M)\n    write_if_changed(public, p)", 1)
-          q.write_text(s,'utf-8')
-
-          opt=Path('scripts/optimize_home_markup.py')
-          s=opt.read_text('utf-8')
-          needle="    source = add_lcp_preload(source)"
-          replacement="    source = re.sub(r'<link id=\"pv-hero-preload\"[^>]*>', '', source, flags=re.I)\n    source = add_lcp_preload(source)"
-          if replacement not in s:
-            if needle not in s: raise SystemExit('optimize_home_markup preload signature changed')
-            s=s.replace(needle,replacement,1)
-          opt.write_text(s,'utf-8')
-          PY
-      - name: Validate quality script
-        run: python3 -m py_compile scripts/quality_sync.py scripts/optimize_home_markup.py scripts/build_indexes.py
       - name: Install image dependency
         run: python3 -m pip install --quiet pillow
+      - name: Validate generators
+        run: python3 -m py_compile scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py scripts/build_indexes.py
       - name: Rebuild canonical public surfaces
         run: |
           python3 scripts/optimize_home_images.py
           python3 scripts/build_indexes.py
           python3 scripts/optimize_home_markup.py
           python3 scripts/quality_sync.py
-      - name: Slim homepage runtime
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          app=Path('assets/app.js')
-          s=app.read_text('utf-8')
-          old="function loadNonCriticalScripts(){runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')})}"
-          new="function loadNonCriticalScripts(){const load=()=>runWhenIdle(()=>{loadScript('/assets/feed-v2.js?v=20260922-community2','pvFeedV2');loadScript('/assets/community.js?v=20260926-quality11','pvCommunity');loadScript('/assets/liveinternet.js?v=20260922','pvLiveInternet')});if(!isHome){load();return}let done=false,io=null;const arm=()=>{if(done)return;done=true;if(io)io.disconnect();load()};document.addEventListener('pointerdown',arm,{once:true,passive:true});document.addEventListener('keydown',arm,{once:true});const footer=document.querySelector('footer.site-footer');if(footer&&'IntersectionObserver'in window){io=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))arm()},{rootMargin:'700px 0px',threshold:0.01});io.observe(footer)}}"
-          if old in s:
-            s=s.replace(old,new,1)
-          elif new not in s:
-            raise SystemExit('loadNonCriticalScripts signature changed')
-          old="injectCss();addFavicon();addSiteSchema();enhanceNavigation();localizeAuthorPhotos();injectAdvertisingCta();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document);"
-          new="injectCss();addFavicon();addSiteSchema();enhanceNavigation();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();"
-          if old in s:
-            s=s.replace(old,new,1)
-          elif new not in s:
-            raise SystemExit('homepage initialization signature changed')
-          old="window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});"
-          new="if(!isHome)window.__pvPostsPromise.then(posts=>{renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});"
-          if old in s:
-            s=s.replace(old,new,1)
-          elif new not in s:
-            raise SystemExit('posts enrichment signature changed')
-          s=s.replace('if(!isHome)if(!isHome)window.__pvPostsPromise.then','if(!isHome)window.__pvPostsPromise.then')
-          app.write_text(s,'utf-8')
-          PY
-      - name: Validate runtime and invariants
+          python3 scripts/post_quality_hardening.py
+      - name: Validate runtime and SEO invariants
         run: |
           node --check assets/app.js
           node --check assets/community.js
+          python3 scripts/post_quality_hardening.py
+          python3 scripts/audit_site.py
           python3 - <<'PY'
           from pathlib import Path
           import re
           index=Path('index.html').read_text('utf-8')
           authors=Path('authors.html').read_text('utf-8')
           public=Path('assets/public.css').read_text('utf-8')
-          app=Path('assets/app.js').read_text('utf-8')
           community=Path('assets/community.js').read_text('utf-8')
           assert 'id="pv-hero-preload"' not in index
-          assert '<!-- HOME-LCP-PRELOAD-START -->' in index
           assert '<!-- HOME-AUTHORS-START -->' in index
-          assert '0 публикац' not in index
           assert 'id="pv-authors-schema"' in authors
           assert 'authors-fix.js' not in authors
           assert '@import' not in public
-          assert "isHome?Promise.resolve([]):loadVisiblePosts()" in app
-          assert "if(!isHome)window.__pvPostsPromise.then" in app
-          assert "if(!isHome)if(!isHome)" not in app
-          assert "IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))arm()}" in app
           assert "card.innerHTML=`<div class=\"author-card-top\"" not in community
-          for name in ('Илья Титюлькин','Эльвира Шайберт','Екатерина Рукопляс'):
-            assert name in index and name in authors
           tea=Path('articles/vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu.html').read_text('utf-8')
           assert not re.search(r'<img[^>]*alt=""', tea)
-          print('quality invariants ok')
+          print('site quality invariants ok')
           PY
       - name: Commit quality sync
         run: |
           git config user.name "provkus-quality-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add scripts/quality_sync.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/app.js assets/community.js '*.html' articles/ sitemap.xml feed.xml assets/uploads
+          git add scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/app.js assets/community.js '*.html' articles/ sitemap.xml feed.xml assets/uploads
           if git diff --cached --quiet; then
             echo "Already synchronized"
             exit 0
