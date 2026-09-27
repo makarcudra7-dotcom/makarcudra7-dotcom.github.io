@@ -63,15 +63,18 @@ for p in posts:
  check(bool(s.find('meta',property='og:url')),f'{f.name}: og:url')
  check(bool(s.find('link',rel='alternate',type='application/rss+xml')),f'{f.name}: RSS discovery')
  nodes=ld_nodes(text)
- article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting')),None)
- check(article is not None,f'{f.name}: Article JSON-LD')
+ article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting','Recipe')),None)
+ check(article is not None,f'{f.name}: Article/Recipe JSON-LD')
  if article:
   check(article.get('headline')==p.get('headline','').strip(),f'{f.name}: schema headline')
   check(article.get('image')==(p.get('images') or ([p.get('image')] if p.get('image') else [])),f'{f.name}: schema image')
   check(article.get('author',{}).get('url')==author_urls.get(p.get('author'),SITE+'/authors.html'),f'{f.name}: author URL')
   check(article.get('publisher',{}).get('logo',{}).get('url')==LOGO,f'{f.name}: publisher logo')
  check(any(x.get('@type')=='BreadcrumbList' for x in nodes),f'{f.name}: breadcrumb schema')
- check(not any(x.get('@type')=='Recipe' for x in nodes),f'{f.name}: incomplete Recipe schema')
+ for recipe in (x for x in nodes if x.get('@type')=='Recipe'):
+  check(bool(recipe.get('name') and recipe.get('recipeIngredient') and recipe.get('recipeInstructions')
+             and recipe.get('recipeYield') and recipe.get('totalTime')),
+        f'{f.name}: incomplete Recipe schema')
  for u in p.get('images') or ([p.get('image')] if p.get('image') else []):
   if not u:continue
   up=urlparse(u)
@@ -182,7 +185,7 @@ for p in posts:
  check('utm_source=chatgpt.com' not in article_text,f'{f.name}: drafting tracking parameter')
  check(not re.search(r'<a[^>]*>\s*<a\b',article_text,re.I),f'{f.name}: nested anchor')
  nodes=ld_nodes(article_text)
- article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting')),None)
+ article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting','Recipe')),None)
  if article and isinstance(article.get('author'),dict) and article['author'].get('url'):
   check(article['author'].get('@id')==article['author']['url'].rstrip('#')+'#person',f'{f.name}: author @id')
  high_risk=(p['slug'] in explicit_high_risk or 'безопас' in str(p.get('category','')).lower() or any(str(t).lower()=='безопасность еды' for t in (p.get('tags') or [])))

@@ -68,7 +68,7 @@ def check():
         assert name not in s, f'unbundled stylesheet remains: {name}'
     assert 'id="pv-app-loader"' in s
     assert not re.search(r'<script(?:\s+[^>]*)?src=["\']/assets/app\.js', s, flags=re.I)
-    assert '0 публикац' not in s
+    assert not re.search(r'(?<!\d)0 публикац', s)
     assert s.count('HOME-LCP-PRELOAD-START') == 1
     assert BUNDLE.exists() and BUNDLE.stat().st_size > 0
     print('post-quality hardening invariants ok')

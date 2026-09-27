@@ -385,7 +385,7 @@ def enrich_article_jsonld(source):
 
         def walk(node):
             if isinstance(node, dict):
-                if node.get('@type') in ('Article', 'NewsArticle', 'BlogPosting'):
+                if node.get('@type') in ('Article', 'NewsArticle', 'BlogPosting', 'Recipe'):
                     author = node.get('author')
                     if isinstance(author, dict) and author.get('url'):
                         author['@id'] = author['url'].rstrip('#') + '#person'

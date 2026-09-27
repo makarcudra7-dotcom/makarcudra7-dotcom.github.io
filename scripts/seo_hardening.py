@@ -56,6 +56,8 @@ def json_script(obj, marker=''):
     return '<script'+attrs+'>'+json.dumps(obj,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+'</script>'
 
 def article_type(p):
+    if p.get('type') == 'recipe' and p.get('recipeIngredient') and p.get('recipeInstructions'):
+        return 'Recipe'
     return 'NewsArticle' if 'news' in str(p.get('type','')).lower() else 'Article'
 
 def article_schema(p):
@@ -71,6 +73,18 @@ def article_schema(p):
         'author':{'@type':'Person','name':p.get('author') or 'Редакция ProVkus','url':f"{SITE}/{a.get('url','authors.html')}"},
         'publisher':{'@type':'Organization','@id':ORG_ID,'name':'ProVkus','url':SITE+'/','logo':{'@type':'ImageObject','url':LOGO,'contentUrl':LOGO,'width':512,'height':512}}
     }
+    if article['@type']=='Recipe':
+        article.update(
+            name=p.get('headline','').strip(),
+            recipeIngredient=p['recipeIngredient'],
+            recipeInstructions=[
+                {'@type':'HowToStep','position':i,'text':step}
+                for i,step in enumerate(p['recipeInstructions'],1)
+            ],
+            prepTime=p.get('prepTime'), cookTime=p.get('cookTime'),
+            totalTime=p.get('totalTime'), recipeYield=p.get('recipeYield'),
+            recipeCategory=p.get('recipeCategory')
+        )
     breadcrumb={'@type':'BreadcrumbList','@id':canonical+'#breadcrumb','itemListElement':[
         {'@type':'ListItem','position':1,'name':'ProVkus','item':SITE+'/'},
         {'@type':'ListItem','position':2,'name':p.get('category') or 'Материалы','item':rubric_url(p.get('category'))},
