@@ -8,7 +8,7 @@
     const author=$('#author')?.value||'';
     const male=/\bИлья\b/i.test(author);
     const text=($('#headline')?.value||'')+' '+($('#lead')?.value||'')+' '+($('#richEditor')?.innerText||'');
-    const patterns=male?[/\bя\s+и\s+рада\b/i,/\b(?:я\s+)?думала\b/i,/\b(?:я\s+)?готовила\b/i,/\b(?:я\s+)?решила\b/i]:[/\bя\s+и\s+рад\b/i,/\b(?:я\s+)?думал\b/i,/\b(?:я\s+)?готовил\b/i,/\b(?:я\s+)?решил\b/i];
+    const patterns=male?[/\bя\s+и\s+рада\b/i,/\b(?:я\s+)?думала\b/i,/\b(?:я\s+)?готовила\b/i,/\b(?:я\s+)?решила\b/i,/\b(?:я\s+)?добавила\b/i,/\b(?:я\s+)?взяла\b/i]:[/\bя\s+и\s+рад\b/i,/\b(?:я\s+)?думал\b/i,/\b(?:я\s+)?готовил\b/i,/\b(?:я\s+)?решил\b/i,/\b(?:я\s+)?добавил\b/i,/\b(?:я\s+)?взял\b/i];
     const found=patterns.find(p=>p.test(text));
     const note=$('#genderStatus');
     if(note){note.textContent=found?`Проверьте согласование с автором: «${text.match(found)?.[0]}»`:'';note.hidden=!found}

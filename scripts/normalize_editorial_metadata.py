@@ -45,7 +45,7 @@ for item in queue:
     if slug=='tykva-dolkami-i-kubikami-v-duhovke':
         o['headline']=o['headline'].replace('а я и рада','а я и рад')
     if slug=='tomatnoe-ragu-s-fasolyu':
-        o['headline']=o['headline'].replace('Думала,','Думал,')
+        o['headline']=o['headline'].replace('Думала,','Думал,').replace('добавила томаты','добавил томаты')
     o['seoTitle']=o['headline'];item['post']['headline']=o['headline']
 queue_path.write_text(json.dumps(queue,ensure_ascii=False,indent=2)+'\n')
 print(f'Updated {len(posts)} published articles and {len(queue)} scheduled materials')
