@@ -3,14 +3,15 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260927-suite1';
+  const VERSION='20260927-shared-persistence1';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
     'admin-content-manager.js',
     'admin-scheduler.js',
     'admin-fast-publish.js',
-    'admin-live-refresh.js'
+    'admin-live-refresh.js',
+    'admin-persistence.js'
   ];
 
   function existing(name){
