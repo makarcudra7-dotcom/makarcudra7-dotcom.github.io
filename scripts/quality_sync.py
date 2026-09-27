@@ -119,7 +119,8 @@ def sync_author_css():
 '''.strip()
     block = '\n/* QUALITY-AUTHOR-CSS-START */\n' + '\n\n'.join(block_parts + [extra]) + '\n/* QUALITY-AUTHOR-CSS-END */\n'
     if '/* QUALITY-AUTHOR-CSS-START */' in source:
-        source = re.sub(r'\n?/\* QUALITY-AUTHOR-CSS-START \*/.*?/\* QUALITY-AUTHOR-CSS-END \*/\n?', '\n' + block, source, flags=re.S)
+        source = re.sub(r'\n*/\* QUALITY-AUTHOR-CSS-START \*/.*?/\* QUALITY-AUTHOR-CSS-END \*/\n*',
+                        '\n' + block, source, flags=re.S)
     else:
         source = source.rstrip() + '\n' + block
     write_if_changed(site_ui, source)

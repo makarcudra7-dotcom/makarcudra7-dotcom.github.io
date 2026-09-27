@@ -5,10 +5,18 @@ on:
     paths:
       - 'data/posts.json'
       - 'data/authors.json'
+      - 'data/newsletter-pushes.json'
+      - 'scripts/seo_hardening.py'
+      - 'scripts/publish-scheduled.js'
       - 'scripts/quality_sync.py'
       - 'scripts/post_quality_hardening.py'
       - 'scripts/optimize_home_images.py'
       - 'scripts/optimize_home_markup.py'
+      - 'scripts/build_indexes.py'
+      - 'scripts/build_discovery_archives.py'
+      - 'scripts/enhance_article_links.py'
+      - 'scripts/build_calculators_integration.py'
+      - 'scripts/check_indexing_surfaces.py'
       - '.github/workflows/site-quality-sync.yml'
   workflow_dispatch:
 permissions:
@@ -26,11 +34,15 @@ jobs:
       - name: Install image dependency
         run: python3 -m pip install --quiet pillow
       - name: Validate generators
-        run: python3 -m py_compile scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py scripts/build_indexes.py
+        run: python3 -m py_compile scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py scripts/build_indexes.py scripts/build_discovery_archives.py scripts/enhance_article_links.py scripts/build_calculators_integration.py scripts/check_indexing_surfaces.py
       - name: Rebuild canonical public surfaces
         run: |
           python3 scripts/optimize_home_images.py
+          python3 scripts/seo_hardening.py
           python3 scripts/build_indexes.py
+          python3 scripts/build_discovery_archives.py
+          python3 scripts/enhance_article_links.py
+          python3 scripts/build_calculators_integration.py
           python3 scripts/optimize_home_markup.py
           python3 scripts/quality_sync.py
           python3 scripts/post_quality_hardening.py
@@ -54,6 +66,7 @@ jobs:
           node --check assets/community.js
           python3 scripts/post_quality_hardening.py
           python3 scripts/audit_site.py
+          python3 scripts/check_indexing_surfaces.py
           python3 - <<'PY'
           from pathlib import Path
           import re
@@ -75,7 +88,7 @@ jobs:
         run: |
           git config user.name "provkus-quality-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add scripts/audit_site.py scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js '*.html' articles/ sitemap.xml feed.xml assets/uploads
+          git add scripts/audit_site.py scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js '*.html' articles/ archive/ sitemap.xml feed.xml assets/uploads
           if git diff --cached --quiet; then
             echo "Already synchronized"
             exit 0

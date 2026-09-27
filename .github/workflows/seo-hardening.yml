@@ -1,21 +1,5 @@
 name: Google readiness hardening
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'data/posts.json'
-      - 'data/authors.json'
-      - 'data/newsletter-pushes.json'
-      - 'assets/admin-seo.js'
-      - 'assets/provkus-logo.svg'
-      - 'scripts/seo_hardening.py'
-      - 'scripts/sync_author_bios.py'
-      - 'scripts/build_indexes.py'
-      - 'scripts/build-feed.js'
-      - 'scripts/optimize_home_images.py'
-      - 'scripts/optimize_home_markup.py'
-      - 'scripts/audit_site.py'
-      - '.github/workflows/seo-hardening.yml'
   pull_request:
     branches: [main]
     paths:
@@ -56,6 +40,9 @@ jobs:
         run: |
           python3 scripts/optimize_home_images.py
           python3 scripts/build_indexes.py
+          python3 scripts/build_discovery_archives.py
+          python3 scripts/enhance_article_links.py
+          python3 scripts/build_calculators_integration.py
           python3 scripts/optimize_home_markup.py
       - name: Run offline crawl and structured-data audit
         run: python3 scripts/audit_site.py
@@ -64,7 +51,7 @@ jobs:
         run: |
           git config user.name "provkus-google-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add articles assets/uploads author-*.html admin.html index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
+          git add articles archive/ archive.html calculators.html assets/uploads author-*.html admin.html index.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
           if git diff --cached --quiet; then
             echo "Generated Google output is already current"
             exit 0

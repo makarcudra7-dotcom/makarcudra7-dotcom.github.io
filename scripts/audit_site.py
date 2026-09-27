@@ -157,8 +157,16 @@ for f in ROOT.rglob('*.html'):
    dest=(ROOT/unquote(u.path).lstrip('/')) if u.path.startswith('/') else (f.parent/unquote(u.path))
    check(dest.exists(),f'{f.relative_to(ROOT)}: missing {u.path}')
 
-FIXED_SITEMAP_URLS=14  # homepage + hubs + authors + editorial/contact/policy pages, including world-cuisines.html
-check(public_count+FIXED_SITEMAP_URLS==len(locs),f'Sitemap inventory mismatch: public={public_count}, sitemap={len(locs)}')
+FIXED_SITEMAP_URLS=14  # homepage + hubs + authors + editorial/contact/policy pages
+archive_urls={SITE+'/archive.html'} | {
+ SITE+'/'+str(path.relative_to(ROOT)).replace('index.html','')
+ for path in (ROOT/'archive').rglob('index.html')
+}
+calculator_urls={SITE+'/'+name for name in ('calculators.html','grams-spoons-cups.html','portion-calculator.html')}
+check(archive_urls <= locs,'Archive sitemap inventory incomplete')
+check(calculator_urls <= locs,'Calculator sitemap inventory incomplete')
+expected_urls=public_count+FIXED_SITEMAP_URLS+len(archive_urls)+len(calculator_urls)
+check(expected_urls==len(locs),f'Sitemap inventory mismatch: expected={expected_urls}, sitemap={len(locs)}')
 
 # TRUST-SOURCE-AUDIT
 explicit_high_risk={

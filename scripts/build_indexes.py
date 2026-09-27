@@ -13,6 +13,12 @@ def parse_dt(value):
   try:return datetime.fromisoformat(value.replace('Z','+00:00')).astimezone(timezone.utc)
   except Exception:return None
 
+def effective_modified(p):
+  published=parse_dt(p.get('publishedAt'))
+  updated=parse_dt(p.get('updatedAt'))
+  if published and (not updated or updated<published):return p.get('publishedAt')
+  return p.get('updatedAt') or p.get('publishedAt') or ''
+
 def is_public(p):
   published=parse_dt(p.get('publishedAt'))
   if published and published>now:return False
@@ -43,6 +49,17 @@ def card(p):
           '</div></div></a>')
 def post_link(p):
   return '/articles/'+quote(p['slug'])+'.html'
+def ensure_site_ui_link(source):
+  pattern=r'<link rel="stylesheet" href="/assets/site-ui\.css(?:\?[^"]*)?">'
+  found=False
+  def keep_first(match):
+    nonlocal found
+    if found:return ''
+    found=True
+    return match.group(0)
+  source=re.sub(pattern,keep_first,source)
+  if not found:source=source.replace('</head>','<link rel="stylesheet" href="/assets/site-ui.css"></head>',1)
+  return source
 def lead_card(p):
   return (f'<a class="lead-card" href="{post_link(p)}"><img fetchpriority="high" '
           f'decoding="async" width="1600" height="900" src="{html.escape(p.get("image") or "/assets/fallback-cover.svg",quote=True)}" '
@@ -96,8 +113,7 @@ def update_home():
     start=source.index('<div class="story-grid">',source.index('<section class="section">'))
     end=source.index('</div></div></section>',start)+len('</div>')
     source=source[:start]+lower+source[end:]
-  if '<link rel="stylesheet" href="/assets/site-ui.css">' not in source:
-    source=source.replace('</head>','<link rel="stylesheet" href="/assets/site-ui.css"></head>',1)
+  source=ensure_site_ui_link(source)
   if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
 
 update_home()
@@ -112,8 +128,7 @@ else:
   source=source[:start]+grid+source[end:]
 source=re.sub(r'(<div class="section-sub">)\d+ (?:публикаци[яий]+|материалов)(</div>)',
               lambda m:m.group(1)+str(len(posts))+' материалов'+m.group(2),source,count=1)
-if '<link rel="stylesheet" href="/assets/site-ui.css">' not in source:
-  source=source.replace('</head>','<link rel="stylesheet" href="/assets/site-ui.css"></head>',1)
+source=ensure_site_ui_link(source)
 if source!=category.read_text('utf-8'):category.write_text(source,'utf-8')
 for name,match in rubrics.items():
   page=root/name
@@ -171,7 +186,7 @@ for loc,last in fixed:
   urls.append(f'<url><loc>{html.escape(loc)}</loc></url>')
 for p in posts:
   loc=p.get('url') or f"{site}/articles/{p['slug']}.html"
-  last=(p.get('updatedAt') or p.get('publishedAt') or '')[:10]
+  last=effective_modified(p)[:10]
   lm=f'<lastmod>{last}</lastmod>' if last else ''
   img=p.get('image') or ''
   image=''

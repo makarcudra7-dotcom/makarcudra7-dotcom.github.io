@@ -44,6 +44,11 @@ def iso(v):
     except Exception:
         return v
 
+def effective_modified(p):
+    published=iso(p.get('publishedAt')) if p.get('publishedAt') else ''
+    updated=iso(p.get('updatedAt')) if p.get('updatedAt') else ''
+    return max(published, updated) if published and updated else published or updated
+
 def json_script(obj, marker=''):
     attrs=' type="application/ld+json"'
     if marker:
@@ -60,7 +65,7 @@ def article_schema(p):
     article={
         '@type':article_type(p),'@id':canonical+'#article','headline':p.get('headline','').strip(),
         'description':p.get('description','').strip(),'image':images,'datePublished':iso(p.get('publishedAt')),
-        'dateModified':iso(p.get('updatedAt') or p.get('publishedAt')),'articleSection':p.get('category') or 'Материалы',
+        'dateModified':effective_modified(p),'articleSection':p.get('category') or 'Материалы',
         'keywords':p.get('tags') or [],'inLanguage':'ru-RU','isAccessibleForFree':True,
         'mainEntityOfPage':{'@type':'WebPage','@id':canonical},
         'author':{'@type':'Person','name':p.get('author') or 'Редакция ProVkus','url':f"{SITE}/{a.get('url','authors.html')}"},
@@ -97,6 +102,10 @@ def patch_article(p):
     text=ensure_meta(text,'type="application/rss+xml"','<link rel="alternate" type="application/rss+xml" title="ProVkus — новые материалы" href="https://provkus-media.ru/feed.xml">')
     text=ensure_meta(text,'name="twitter:title"',f'<meta name="twitter:title" content="{html.escape(p.get("headline", ""),quote=True)}">')
     text=ensure_meta(text,'name="twitter:description"',f'<meta name="twitter:description" content="{html.escape(p.get("description", ""),quote=True)}">')
+    text=upsert_meta(text,'property','article:modified_time',effective_modified(p))
+    published=iso(p.get('publishedAt')) if p.get('publishedAt') else ''
+    if published and effective_modified(p)==published:
+        text=re.sub(r'<span>Обновлено\s*<time\s+datetime="[^"]*">.*?</time></span>','',text,count=1,flags=re.S)
     def robots(m):
         value=m.group(1)
         if 'noindex' in value.lower():return m.group(0)

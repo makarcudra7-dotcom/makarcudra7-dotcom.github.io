@@ -2,23 +2,6 @@ name: Rebuild discovery architecture
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'data/posts.json'
-      - 'articles/**'
-      - 'calculators.html'
-      - 'grams-spoons-cups.html'
-      - 'portion-calculator.html'
-      - 'assets/calculators.css'
-      - 'assets/calculators.js'
-      - 'assets/home-tools.css'
-      - 'scripts/build_indexes.py'
-      - 'scripts/build_discovery_archives.py'
-      - 'scripts/enhance_article_links.py'
-      - 'scripts/build_calculators_integration.py'
-      - 'assets/admin-discover-guard.js'
-      - '.github/workflows/discovery-architecture.yml'
 
 permissions:
   contents: write

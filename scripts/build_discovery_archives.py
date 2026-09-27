@@ -18,6 +18,12 @@ def parse_dt(value):
     try: return datetime.fromisoformat(value.replace('Z','+00:00')).astimezone(timezone.utc)
     except Exception: return None
 
+def effective_modified(post):
+    published=parse_dt(post.get('publishedAt'))
+    updated=parse_dt(post.get('updatedAt'))
+    if published and (not updated or updated<published): return post.get('publishedAt')
+    return post.get('updatedAt') or post.get('publishedAt') or ''
+
 def public_posts():
     out=[]
     for p in POSTS:
@@ -51,7 +57,7 @@ def page_html(title, description, canonical, body, items=None):
         itemlist.append({'@type':'ListItem','position':i,'url':SITE+article_url(p),'name':p.get('headline') or ''})
     schema={'@context':'https://schema.org','@type':'CollectionPage','name':title,'url':canonical,'inLanguage':'ru-RU','isPartOf':{'@type':'WebSite','name':'ProVkus','url':SITE+'/'}}
     if itemlist: schema['mainEntity']={'@type':'ItemList','itemListElement':itemlist}
-    return f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)}</title><meta name="description" content="{esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{esc(canonical)}"><link rel="stylesheet" href="/assets/public.css?v=20260925-clean1"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','<\\/')}</script></head><body><header class="site-header"><div class="container topbar"><a class="brand" href="/">Pro<b>Vkus</b></a><nav class="main-nav"><a href="/recipes.html">Рецепты</a><a href="/products.html">Продукты</a><a href="/home-storage.html">Дом</a><a href="/food-safety.html">Безопасность</a><a href="/authors.html">Авторы</a><a href="/archive.html" aria-current="page">Архив</a></nav></div></header><main class="container"><section class="section">{body}</section></main><footer class="site-footer"><div class="container footer-bottom"><span>ProVkus — практичное медиа о еде и доме.</span><a href="/archive.html">Архив публикаций</a></div></footer><script src="/assets/app.js?v=20260925-clean1"></script></body></html>'''
+    return f'''<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)}</title><meta name="description" content="{esc(description)}"><meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{esc(canonical)}"><link rel="stylesheet" href="/assets/public.css?v=20260925-clean1"><script type="application/ld+json">{json.dumps(schema,ensure_ascii=False).replace('</','<\\/')}</script><script src="/assets/metrika.js" defer></script></head><body><header class="site-header"><div class="container topbar"><a class="brand" href="/">Pro<b>Vkus</b></a><nav class="main-nav"><a href="/recipes.html">Рецепты</a><a href="/products.html">Продукты</a><a href="/home-storage.html">Дом</a><a href="/food-safety.html">Безопасность</a><a href="/authors.html">Авторы</a><a href="/archive.html" aria-current="page">Архив</a></nav></div></header><main class="container"><section class="section">{body}</section></main><footer class="site-footer"><div class="container footer-bottom"><span>ProVkus — практичное медиа о еде и доме.</span><a href="/archive.html">Архив публикаций</a></div></footer><script src="/assets/app.js?v=20260925-clean1"></script></body></html>'''
 
 def write(path, content):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -121,7 +127,7 @@ for path in public_html:
                     if post.get('category'): obj['articleSection']=post['category']
                     if post.get('image'): obj['image']=[post['image']]
                     if post.get('publishedAt'): obj['datePublished']=post['publishedAt']
-                    if post.get('updatedAt') or post.get('publishedAt'): obj['dateModified']=post.get('updatedAt') or post.get('publishedAt')
+                    if effective_modified(post): obj['dateModified']=effective_modified(post)
                     author=obj.get('author') if isinstance(obj.get('author'),dict) else {'@type':'Person','name':post.get('author') or ''}
                     if post.get('author'): author['name']=post['author']
                     if post.get('author') in AUTHOR_URL: author['url']=SITE+AUTHOR_URL[post['author']]
@@ -129,7 +135,7 @@ for path in public_html:
                 return '<script type="application/ld+json">'+json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+'</script>' if changed else m.group(0)
             source=re.sub(r'<script type="application/ld\+json">(.*?)</script>',repl,source,count=1,flags=re.S)
             if post.get('publishedAt') and 'property="article:published_time"' not in source:
-                meta=f'<meta property="article:published_time" content="{esc(post["publishedAt"])}"><meta property="article:modified_time" content="{esc(post.get("updatedAt") or post["publishedAt"])}">'
+                meta=f'<meta property="article:published_time" content="{esc(post["publishedAt"])}"><meta property="article:modified_time" content="{esc(effective_modified(post))}">'
                 source=source.replace('</head>',meta+'</head>',1)
     path.write_text(source,'utf-8')
 
@@ -146,7 +152,7 @@ sitemap=ROOT/'sitemap.xml'
 if sitemap.exists():
     xml=sitemap.read_text('utf-8')
     xml=re.sub(r'\s*<url><loc>https://provkus-media\.ru/archive(?:\.html|/)[^<]*</loc>(?:<lastmod>[^<]+</lastmod>)?</url>','',xml)
-    newest=(POSTS[0].get('updatedAt') or POSTS[0].get('publishedAt') or '')[:10] if POSTS else ''
+    newest=max((effective_modified(p) or '')[:10] for p in POSTS) if POSTS else ''
     entries='\n'.join(f'<url><loc>{esc(u)}</loc>{f"<lastmod>{newest}</lastmod>" if newest else ""}</url>' for u in archive_urls)
     xml=xml.replace('</urlset>',entries+'\n</urlset>')
     sitemap.write_text(xml,'utf-8')

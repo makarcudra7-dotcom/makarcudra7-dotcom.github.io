@@ -47,9 +47,13 @@ jobs:
         run: |
           python3 scripts/optimize_home_images.py
           python3 scripts/build_indexes.py
+          python3 scripts/build_discovery_archives.py
+          python3 scripts/enhance_article_links.py
+          python3 scripts/build_calculators_integration.py
           python3 scripts/optimize_home_markup.py
           python3 scripts/quality_sync.py
           python3 scripts/post_quality_hardening.py
+          python3 scripts/check_indexing_surfaces.py
           node --check assets/app.js
           node --check assets/community.js
       - name: Commit scheduler changes
@@ -61,6 +65,7 @@ jobs:
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
-          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js sitemap.xml feed.xml
+          git add .github/scheduled-posts.json data/posts.json articles/ archive/ archive.html calculators.html assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js sitemap.xml feed.xml
           git commit -m "Sync scheduled materials"
+          git pull --rebase origin main
           git push origin HEAD:main
