@@ -61,7 +61,7 @@ jobs:
         run: |
           git config user.name "provkus-quality-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/app.js assets/community.js '*.html' articles/ sitemap.xml feed.xml assets/uploads
+          git add scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js '*.html' articles/ sitemap.xml feed.xml assets/uploads
           if git diff --cached --quiet; then
             echo "Already synchronized"
             exit 0
