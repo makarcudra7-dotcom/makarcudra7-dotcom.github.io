@@ -1,5 +1,36 @@
 [
   {
+    "slug": "kak-hranit-osennie-yabloki",
+    "headline": "Мягкие яблоки — прошлый век: как хранить красные, зеленые и желтые, чтобы хрустели как в первый день",
+    "description": "Как хранить яблоки разных сортов дома: прохлада, сортировка повреждённых плодов и контроль влажности. Цвет кожуры не гарантирует хруст.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Дом и хранение",
+    "type": "guide",
+    "typeLabel": "Материал",
+    "image": "https://provkus-media.ru/assets/uploads/week-kak-hranit-osennie-yabloki-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/week-kak-hranit-osennie-yabloki-cover.webp",
+      "https://provkus-media.ru/assets/uploads/week-kak-hranit-osennie-yabloki-inside.webp"
+    ],
+    "imageAlt": "Осенние яблоки в открытом ящике и бумажном пакете на кухне",
+    "url": "https://provkus-media.ru/articles/kak-hranit-osennie-yabloki.html",
+    "publishedAt": "2026-09-27T12:00:00.000Z",
+    "updatedAt": "2026-09-27T12:00:00.000Z",
+    "tags": [
+      "яблоки",
+      "хранение",
+      "осень",
+      "дом"
+    ],
+    "photoSource": "Иллюстрация создана для ProVkus",
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "tykva-dolkami-i-kubikami-v-duhovke",
     "headline": "Тыкву в кашу не перевожу — румяню по старому хитрому способу: домашние в восторге, а я и рад",
     "description": "Базовый рецепт запечённой тыквы: как нарезать, приправить и расположить кусочки на противне, чтобы получить мягкую середину и подрумяненные края.",

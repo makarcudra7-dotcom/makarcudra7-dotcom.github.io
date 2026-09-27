@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 10:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 12:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Мягкие яблоки — прошлый век: как хранить красные, зеленые и желтые, чтобы хрустели как в первый день</title>
+    <link>https://provkus-media.ru/articles/kak-hranit-osennie-yabloki.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/kak-hranit-osennie-yabloki.html</guid>
+    <pubDate>Sun, 27 Sep 2026 12:00:00 GMT</pubDate>
+    <description>Как хранить яблоки разных сортов дома: прохлада, сортировка повреждённых плодов и контроль влажности. Цвет кожуры не гарантирует хруст.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Дом и хранение</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-kak-hranit-osennie-yabloki-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Тыкву в кашу не перевожу — румяню по старому хитрому способу: домашние в восторге, а я и рад</title>
     <link>https://provkus-media.ru/articles/tykva-dolkami-i-kubikami-v-duhovke.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-dymlyama-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Не пробуйте «на вкус» такие закрутки: 5 неочевидных признаков, после которых банку лучше не открывать</title>
-    <link>https://provkus-media.ru/articles/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat.html</guid>
-    <pubDate>Wed, 23 Sep 2026 03:52:00 GMT</pubDate>
-    <description>Вздутие крышки — далеко не единственный тревожный сигнал. Проверить домашнюю заготовку можно еще до того, как брать открывалку.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Безопасность еды</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat-16x9.jpg?v=20260923-image" medium="image"/>
   </item>
 </channel>
 </rss>
