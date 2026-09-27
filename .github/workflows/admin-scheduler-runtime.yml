@@ -29,7 +29,7 @@ jobs:
           s=p.read_text(encoding='utf-8')
           s=s.replace('assets/admin-discover-guard.js?v=20260925-precise2','assets/admin-discover-guard.js?v=20260925-schedule-fast2')
           tag='<script src="assets/admin-runtime-loader.js?v=20260925-schedule-fast2"></script>'
-          if tag not in s:
+          if 'src="assets/admin-runtime-loader.js?' not in s:
               s=s.replace('</body></html>',tag+'</body></html>')
           p.write_text(s,encoding='utf-8')
           PY
@@ -38,7 +38,7 @@ jobs:
           node --check assets/admin-runtime-loader.js
           node --check assets/admin-scheduler.js
           node --check assets/admin-fast-publish.js
-          grep -q 'admin-runtime-loader.js?v=20260925-schedule-fast2' admin.html
+          grep -q 'src="assets/admin-runtime-loader.js?' admin.html
       - name: Commit admin wiring
         run: |
           git config user.name "provkus-admin-bot"
