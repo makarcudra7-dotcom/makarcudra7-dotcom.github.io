@@ -1,4 +1,5 @@
 name: Site quality sync
+# Quality pass rerun after hardening the generator patcher.
 on:
   push:
     branches: [main]
