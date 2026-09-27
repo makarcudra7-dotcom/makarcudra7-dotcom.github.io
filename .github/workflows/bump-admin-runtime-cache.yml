@@ -1,0 +1,45 @@
+name: Bump admin runtime cache
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bump-admin-runtime-cache.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Bump runtime loader cache key
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path('admin.html')
+          text=p.read_text(encoding='utf-8')
+          text,n=re.subn(r'assets/admin-runtime-loader\.js\?v=[^"\']+', 'assets/admin-runtime-loader.js?v=20260927-shared-persistence1', text, count=1)
+          if n!=1: raise SystemExit(f'admin runtime loader reference not found: {n}')
+          p.write_text(text,encoding='utf-8')
+      - name: Verify
+        run: |
+          set -euo pipefail
+          grep -q 'admin-runtime-loader.js?v=20260927-shared-persistence1' admin.html
+          node --check assets/admin-runtime-loader.js
+          node --check assets/admin-persistence.js
+          git diff --check
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add admin.html
+          git commit -m 'Load shared editorial persistence in admin' || exit 0
+          git pull --rebase origin main
+          git push
