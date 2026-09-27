@@ -67,4 +67,5 @@ jobs:
             exit 0
           fi
           git commit -m "Stabilize frontend, authors and SEO"
+          git pull --rebase origin main
           git push origin HEAD:main
