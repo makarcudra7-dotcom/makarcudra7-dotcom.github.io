@@ -6,8 +6,10 @@
   const QUEUE_RAW='https://raw.githubusercontent.com/makarcudra7-dotcom/makarcudra7-dotcom.github.io/main/.github/scheduled-posts.json';
   const fmt=v=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch{return v||''}};
   const decode=f=>{if(!f?.content)return'';return new TextDecoder().decode(Uint8Array.from(atob(f.content.replace(/\n/g,'')),c=>c.charCodeAt(0)))};
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const future=o=>{const t=new Date(o?.publishedAt||0).getTime();return Number.isFinite(t)&&t>Date.now()+30000};
   const typeLabel=t=>({guide:'Инструкция / как сделать',explainer:'Разбор / объяснение',recipe:'Рецепт',selection:'Подборка',review:'Обзор',story:'История / опыт',news:'Новость',quiz:'Тест / викторина'})[t]||'Материал';
+  let queueBusy=false;
 
   async function readQueue(){
     try{
@@ -25,7 +27,7 @@
   }
   async function writeQueue(items,message='Update scheduled publications'){
     const next=[...items].sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt));
-    await window.putFile(QUEUE_PATH,JSON.stringify(next,null,2),message);
+    await window.putFile(QUEUE_PATH,JSON.stringify(next,null,2)+'\n',message);
     const visible=next.filter(x=>!x?.pausedRecovery);
     if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store}
     window.__pvScheduledSnapshot=visible;
@@ -55,7 +57,7 @@
     return''
   }
   function makePost(o,img,images){
-    return {slug:o.slug,headline:o.headline,description:o.description,author:o.author,coauthors:Array.isArray(o.coauthors)?o.coauthors.filter(Boolean):[],category:o.category,type:o.type,typeLabel:typeLabel(o.type),image:img,images,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:new Date(o.publishedAt).toISOString(),updatedAt:new Date(o.updatedAt||o.publishedAt).toISOString(),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||'',featured:!!o.featured,popular:!!o.popular,quizCount:o.type==='quiz'?(o.quiz?.questions?.length||0):undefined}
+    return {slug:o.slug,headline:o.headline,description:o.description,author:o.author,coauthors:Array.isArray(o.coauthors)?o.coauthors.filter(Boolean):[],category:o.category,type:o.type,typeLabel:typeLabel(o.type),image:img,images,imageAlt:o.imageAlt,url:`https://provkus-media.ru/articles/${o.slug}.html`,publishedAt:new Date(o.publishedAt).toISOString(),updatedAt:new Date(o.updatedAt||o.publishedAt).toISOString(),tags:(o.tags||'').split(',').map(x=>x.trim()).filter(Boolean),photoSource:o.photoSource||'',featured:!!o.featured,popular:!!o.popular,newsletter:!!o.newsletter,quizCount:o.type==='quiz'?(o.quiz?.questions?.length||0):undefined}
   }
   function lockActions(on,label=''){
     const pub=$('#publishBtn'),plan=$('#scheduleBtn');
@@ -78,11 +80,13 @@
       let img=(o.image||'').trim(),images=img?[img]:[],file=$('#imageFile')?.files?.[0];
       if(file){images=await uploadCover(file,o.slug);img=images[0]}else if(!img)throw new Error('Добавьте главное изображение');
       if(pr)pr.style.width='55%';
-      o.image=img;o.images=images;
-      const post={...makePost(o,img,images),status:'queued'},item={slug:o.slug,publishAt:post.publishedAt,createdAt:new Date().toISOString(),status:'queued',material:{...o,status:'queued'},post};
       const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь публикаций. Повторите попытку.');
+      const existing=queue.find(x=>x.slug===o.slug);
+      o.image=img;o.images=images;o.newsletter=existing?.post?.newsletter??existing?.material?.newsletter??!!o.newsletter;
+      const post={...makePost(o,img,images),status:'queued'},item={slug:o.slug,publishAt:post.publishedAt,createdAt:existing?.createdAt||new Date().toISOString(),status:'queued',material:{...o,status:'queued'},post};
       const next=[item,...queue.filter(x=>x.slug!==o.slug)];
       await writeQueue(next,`Schedule: ${o.headline}`);
+      window.__pvEditingScheduledSlug='';
       if(typeof store!=='undefined'){store.draft=null;saveStore?.()}
       if(pr)pr.style.width='100%';flash?.(`Запланировано на ${fmt(item.publishAt)}`);
       document.querySelector('.nav-btn[data-target="publications"]')?.click();
@@ -99,9 +103,21 @@
   async function editScheduled(slug){
     const queue=await readQueue();if(!Array.isArray(queue))return flash?.('Не удалось загрузить очередь');
     const item=queue.find(x=>x.slug===slug);if(!item)return;
-    window.fill?.({...item.material,_editingSlug:''});
+    window.__pvEditingScheduledSlug=slug;
+    window.fill?.({...item.material,featured:!!item.post?.featured,popular:!!item.post?.popular,newsletter:!!item.post?.newsletter,_editingSlug:''});
     document.querySelector('.nav-btn[data-target="material"]')?.click();
-    flash?.('Запланированный материал открыт для редактирования')
+    flash?.('Запланированный материал открыт для редактирования; размещение в очереди сохранится')
+  }
+  async function toggleQueuedPlacement(slug,kind){
+    if(queueBusy)return;queueBusy=true;
+    try{
+      const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь');
+      const item=queue.find(x=>x.slug===slug);if(!item)throw new Error('Материал уже отсутствует в очереди');
+      item.post=item.post||{};item.material=item.material||{};
+      const on=!(item.post[kind]??item.material[kind]);item.post[kind]=on;item.material[kind]=on;item.updatedAt=new Date().toISOString();
+      await writeQueue(queue,`Scheduled ${kind}: ${slug}`);
+      flash?.(`${kind==='featured'?'Главная':kind==='popular'?'Популярное':'Рассылка'}: ${on?'включено':'выключено'} для отложенного материала`)
+    }catch(e){flash?.(e.message||'Не удалось изменить размещение')}finally{queueBusy=false}
   }
   function ensureScheduleButton(){
     let b=$('#scheduleBtn');if(b)return b;
@@ -121,11 +137,13 @@
     const wrapped=function(){
       base();const tb=$('#postsTable'),items=(typeof store!=='undefined'&&Array.isArray(store.scheduled))?store.scheduled.filter(x=>!x?.pausedRecovery):[];if(!tb||!items.length)return;
       const placeholder=tb.querySelector('tr td[colspan]');if(placeholder)placeholder.closest('tr')?.remove();
-      const rows=items.map(x=>`<tr class="scheduled-row"><td><strong>${String(x.post?.headline||x.slug).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${x.post?.author||''}</td><td>${fmt(x.publishAt)}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-preview-scheduled="${x.slug}">Посмотреть</button><button type="button" class="btn soft" data-edit-scheduled="${x.slug}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-scheduled="${x.slug}">Удалить</button></div></td></tr>`).join('');
+      const rows=items.map(x=>{const featured=!!(x.post?.featured??x.material?.featured),popular=!!(x.post?.popular??x.material?.popular),newsletter=!!(x.post?.newsletter??x.material?.newsletter);return `<tr class="scheduled-row" data-scheduled-slug="${esc(x.slug)}"><td><strong>${esc(x.post?.headline||x.slug)}</strong><div class="draft-local">${featured?'Главная · ':''}${popular?'Популярное · ':''}${newsletter?'В рассылку':''}</div></td><td><span class="status scheduled">В очереди</span></td><td>${esc(x.post?.author||'')}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft ${featured?'pv-selected':''}" data-queue-placement="featured" data-queue-slug="${esc(x.slug)}" aria-pressed="${featured}">Главная</button><button type="button" class="btn soft ${popular?'pv-selected':''}" data-queue-placement="popular" data-queue-slug="${esc(x.slug)}" aria-pressed="${popular}">Популярное</button><button type="button" class="btn soft ${newsletter?'pv-selected':''}" data-queue-placement="newsletter" data-queue-slug="${esc(x.slug)}" aria-pressed="${newsletter}">В рассылку</button><button type="button" class="btn soft" data-live-preview-scheduled="${esc(x.slug)}">Посмотреть</button><button type="button" class="btn soft" data-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`}).join('');
       tb.insertAdjacentHTML('afterbegin',rows);
       $$('[data-edit-scheduled]').forEach(b=>b.onclick=()=>editScheduled(b.dataset.editScheduled));
       $$('[data-delete-scheduled]').forEach(b=>b.onclick=()=>removeScheduled(b.dataset.deleteScheduled,true));
-    };wrapped.__scheduledWrapped=true;window.renderPosts=wrapped;window.renderPosts()
+      $$('[data-queue-placement]').forEach(b=>b.onclick=()=>toggleQueuedPlacement(b.dataset.queueSlug,b.dataset.queuePlacement));
+    };
+    wrapped.__scheduledWrapped=true;window.renderPosts=wrapped;window.renderPosts()
   }
   async function loadQueue(){
     const q=await readQueue();
@@ -146,6 +164,7 @@
     };
     plan.onclick=()=>schedule(false);
     $('#publishedAt')?.addEventListener('input',paintButtons);$('#publishedAt')?.addEventListener('change',paintButtons);paintButtons();enhanceList();
+    $('#newArticleBtn')?.addEventListener('click',()=>{window.__pvEditingScheduledSlug=''},true);
     loadQueue();setTimeout(loadQueue,1200);setTimeout(loadQueue,3200);
     document.querySelector('.nav-btn[data-target="publications"]')?.addEventListener('click',()=>loadQueue(),true);
   }
