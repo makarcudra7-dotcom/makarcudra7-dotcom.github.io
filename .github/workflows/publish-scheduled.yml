@@ -61,6 +61,6 @@ jobs:
           fi
           git config user.name "provkus-scheduler"
           git config user.email "actions@users.noreply.github.com"
-          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/app.js assets/community.js sitemap.xml feed.xml
+          git add .github/scheduled-posts.json data/posts.json articles/ assets/uploads index.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js sitemap.xml feed.xml
           git commit -m "Sync scheduled materials"
           git push origin HEAD:main
