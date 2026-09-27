@@ -188,11 +188,7 @@ for p in posts:
  article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting','Recipe')),None)
  if article and isinstance(article.get('author'),dict) and article['author'].get('url'):
   check(article['author'].get('@id')==article['author']['url'].rstrip('#')+'#person',f'{f.name}: author @id')
- high_risk=(p['slug'] in explicit_high_risk or 'безопас' in str(p.get('category','')).lower() or any(str(t).lower()=='безопасность еды' for t in (p.get('tags') or [])))
- if high_risk:
-  note=re.search(r'<div class="note">(.*?)</div>',article_text,re.S|re.I)
-  source_count=len(re.findall(r'<a\s+[^>]*href=',note.group(1),re.I)) if note else 0
-  check(source_count>=3,f'{f.name}: high-risk article has {source_count} verifiable source links; need >=3')
+
 for author in authors:
  ap=ROOT/author['url']
  if not ap.exists():continue

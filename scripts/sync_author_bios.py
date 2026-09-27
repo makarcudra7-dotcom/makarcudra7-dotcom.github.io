@@ -28,6 +28,7 @@ def author_schema(author: dict) -> str:
         "description": author.get("metaDescription") or author["bio"],
         "mainEntity": {
             "@type": "Person",
+            "@id": person_url + "#person",
             "name": author["name"],
             "jobTitle": author["role"],
             "description": author["bio"],
