@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 15:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 16:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Шарлотка больше не в моде: мудрые хозяюшки осенью-2026 готовят хитовый крамбл —  теплые яблоки + овсянка и никакой возни с тестом</title>
+    <link>https://provkus-media.ru/articles/yablochnyi-krambl-s-ovsyanoi-kroshkoi.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/yablochnyi-krambl-s-ovsyanoi-kroshkoi.html</guid>
+    <pubDate>Sun, 27 Sep 2026 16:30:00 GMT</pubDate>
+    <description>Домашний яблочный крамбл: пропорции яблок, овсяных хлопьев и масла, последовательность приготовления и признаки готовности.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-yablochnyi-krambl-s-ovsyanoi-kroshkoi-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Думал, обычная фасоль из банки, добавил томаты — и на выходе обалденное рагу: густеет на глазах, с африканским акцентом</title>
     <link>https://provkus-media.ru/articles/tomatnoe-ragu-s-fasolyu.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-achichuk-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Самсу делаю с большим количеством лука: начинка остаётся сочной даже после горячей духовки</title>
-    <link>https://provkus-media.ru/articles/uzbekskaya-samsa-s-myasom.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/uzbekskaya-samsa-s-myasom.html</guid>
-    <pubDate>Wed, 23 Sep 2026 08:05:00 GMT</pubDate>
-    <description>Домашняя самса с мясом, луком и зирой в слоёном тесте. Как собрать треугольники и сохранить сочную начинку.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/uzbekskaya-samsa-s-myasom-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>

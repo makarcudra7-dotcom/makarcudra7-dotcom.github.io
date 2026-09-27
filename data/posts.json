@@ -1,5 +1,35 @@
 [
   {
+    "slug": "yablochnyi-krambl-s-ovsyanoi-kroshkoi",
+    "headline": "Шарлотка больше не в моде: мудрые хозяюшки осенью-2026 готовят хитовый крамбл —  теплые яблоки + овсянка и никакой возни с тестом",
+    "description": "Домашний яблочный крамбл: пропорции яблок, овсяных хлопьев и масла, последовательность приготовления и признаки готовности.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/week-yablochnyi-krambl-s-ovsyanoi-kroshkoi-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/week-yablochnyi-krambl-s-ovsyanoi-kroshkoi-cover.webp"
+    ],
+    "imageAlt": "Яблочный крамбл с золотистой овсяной крошкой в форме для выпечки",
+    "url": "https://provkus-media.ru/articles/yablochnyi-krambl-s-ovsyanoi-kroshkoi.html",
+    "publishedAt": "2026-09-27T16:30:00.000Z",
+    "updatedAt": "2026-09-27T16:30:00.000Z",
+    "tags": [
+      "яблоки",
+      "крамбл",
+      "десерт",
+      "выпечка"
+    ],
+    "photoSource": "Иллюстрация создана для ProVkus",
+    "featured": true,
+    "popular": true,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "tomatnoe-ragu-s-fasolyu",
     "headline": "Думал, обычная фасоль из банки, добавил томаты — и на выходе обалденное рагу: густеет на глазах, с африканским акцентом",
     "description": "Густое томатное рагу с консервированной фасолью: как уварить соус и добавить по вкусу зиру и хариссу для североафриканской нотки.",
@@ -161,7 +191,7 @@
       "осенний рецепт"
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "recipeIngredient": [
       "Тыква без семян — 900 г",
@@ -415,7 +445,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
