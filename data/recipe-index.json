@@ -1,5 +1,60 @@
 [
   {
+    "slug": "kuritsa-s-tykvoi-na-protivne",
+    "headline": "Осенью всегда готовлю курочку на тыкве — корочка золотистая и хрустящая, а гарнир как кубики из пюре",
+    "url": "https://provkus-media.ru/articles/kuritsa-s-tykvoi-na-protivne.html",
+    "image": "https://provkus-media.ru/assets/uploads/week-kuritsa-s-tykvoi-na-protivne-cover.webp",
+    "ingredients": [
+      "куриных бедер без кости и",
+      "лук",
+      "паприки, ½ ч. л. тимьяна, соль и перец"
+    ],
+    "ingredientLines": [
+      "700 г куриных бёдер без кости и 700 г очищенной от семян тыквы",
+      "1 красная луковица, 2 ст. л. масла",
+      "1 ч. л. паприки, ½ ч. л. тимьяна, соль и перец по вкусу."
+    ],
+    "updatedAt": "2026-09-27T13:30:00.000Z"
+  },
+  {
+    "slug": "tykva-dolkami-i-kubikami-v-duhovke",
+    "headline": "Тыкву в кашу не перевожу — румяню по старому хитрому способу: домашние в восторге, а я и рад",
+    "url": "https://provkus-media.ru/articles/tykva-dolkami-i-kubikami-v-duhovke.html",
+    "image": "https://provkus-media.ru/assets/uploads/week-tykva-dolkami-i-kubikami-v-duhovke-cover.webp",
+    "ingredients": [
+      "тыквы без семян",
+      "растительного масла",
+      "½ ч. л. соли"
+    ],
+    "ingredientLines": [
+      "900 г тыквы без семян",
+      "2 ст. л. растительного масла",
+      "½ ч. л. соли, 1 ч. л. паприки, ½ ч. л. сухого тимьяна."
+    ],
+    "updatedAt": "2026-09-27T10:30:00.000Z"
+  },
+  {
+    "slug": "kapustnye-oladi-na-skovorode",
+    "headline": "Полкочана капусты и два яйца — и вкуснейшие оладьи на столе за 15 минут: края румяные, а внутри одна нежность",
+    "url": "https://provkus-media.ru/articles/kapustnye-oladi-na-skovorode.html",
+    "image": "https://provkus-media.ru/assets/uploads/week-kapustnye-oladi-na-skovorode-cover.webp",
+    "ingredients": [
+      "белокочанной капусты",
+      "яйца",
+      "лук",
+      "½ ч. л. соли или",
+      "масла"
+    ],
+    "ingredientLines": [
+      "500 г белокочанной капусты",
+      "2 яйца и 70 г пшеничной муки",
+      "1 небольшая луковица",
+      "½ ч. л. соли или по вкусу",
+      "2–3 ст. л. масла для жарки; укроп и сметана для подачи."
+    ],
+    "updatedAt": "2026-09-27T07:30:00.000Z"
+  },
+  {
     "slug": "nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet",
     "headline": "Нашла в Google рецепт курицы на соли и сначала не поверила: приготовила — кожа хрустит, мясо остаётся сочным",
     "url": "https://provkus-media.ru/articles/nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet.html",
