@@ -238,3 +238,4 @@ sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitem
 (root/'sitemap.xml').write_text(sitemap,'utf-8')
 # RSS and manual newsletter pushes use one canonical generator.
 subprocess.run(['node','scripts/build-feed.js'],cwd=root,check=True)
+subprocess.run(['python3','scripts/build-dzen-feed.py'],cwd=root,check=True)

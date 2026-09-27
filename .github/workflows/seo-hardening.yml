@@ -12,6 +12,7 @@ on:
       - 'scripts/sync_author_bios.py'
       - 'scripts/build_indexes.py'
       - 'scripts/build-feed.js'
+      - 'scripts/build-dzen-feed.py'
       - 'scripts/optimize_home_images.py'
       - 'scripts/optimize_home_markup.py'
       - 'scripts/audit_site.py'
@@ -51,7 +52,7 @@ jobs:
         run: |
           git config user.name "provkus-google-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add articles archive/ archive.html calculators.html assets/uploads author-*.html admin.html index.html news.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml
+          git add articles archive/ archive.html calculators.html assets/uploads author-*.html admin.html index.html news.html category.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml dzen.xml
           if git diff --cached --quiet; then
             echo "Generated Google output is already current"
             exit 0
