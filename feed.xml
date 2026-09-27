@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 06:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Sun, 27 Sep 2026 07:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Полкочана капусты и два яйца — и вкуснейшие оладьи на столе за 15 минут: края румяные, а внутри одна нежность</title>
+    <link>https://provkus-media.ru/articles/kapustnye-oladi-na-skovorode.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/kapustnye-oladi-na-skovorode.html</guid>
+    <pubDate>Sun, 27 Sep 2026 07:30:00 GMT</pubDate>
+    <description>Капустные оладьи из 500 г капусты и двух яиц: около 15 минут на подготовку и 20 минут на жарку. Как сохранить румяные края и приготовить середину.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/week-kapustnye-oladi-na-skovorode-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Капуста для квашения: красивый кочан ещё не гарантия хруста — у прилавка проверяю три признака</title>
     <link>https://provkus-media.ru/articles/kapusta-dlya-kvasheniya-kak-vybrat.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Продукты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Оджахури готовлю в два этапа: картофель и мясо румяню отдельно, а соединяю только в финале</title>
-    <link>https://provkus-media.ru/articles/gruziya-odzhahuri.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/gruziya-odzhahuri.html</guid>
-    <pubDate>Tue, 22 Sep 2026 19:15:00 GMT</pubDate>
-    <description>Оджахури со свининой, картофелем, луком, томатами и кинзой. Домашний рецепт на сковороде.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/gruziya-odzhahuri-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
