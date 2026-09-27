@@ -1,5 +1,60 @@
 [
   {
+    "slug": "tomatnoe-ragu-s-fasolyu",
+    "headline": "Думал, обычная фасоль из банки, добавил томаты — и на выходе обалденное рагу: густеет на глазах, с африканским акцентом",
+    "description": "Густое томатное рагу с консервированной фасолью: как уварить соус и добавить по вкусу зиру и хариссу для североафриканской нотки.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/week-tomatnoe-ragu-s-fasolyu-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/week-tomatnoe-ragu-s-fasolyu-cover.webp",
+      "https://provkus-media.ru/assets/uploads/week-tomatnoe-ragu-s-fasolyu-inside.webp"
+    ],
+    "imageAlt": "Томатное рагу с белой фасолью и зеленью в керамической миске",
+    "url": "https://provkus-media.ru/articles/tomatnoe-ragu-s-fasolyu.html",
+    "publishedAt": "2026-09-27T15:00:00.000Z",
+    "updatedAt": "2026-09-27T15:00:00.000Z",
+    "tags": [
+      "фасоль",
+      "рагу",
+      "быстрый ужин",
+      "продукты"
+    ],
+    "photoSource": "Иллюстрация создана для ProVkus",
+    "featured": false,
+    "popular": true,
+    "recipeIngredient": [
+      "Консервированная фасоль — 2 банки по 400 г",
+      "Томаты в собственном соку — 400 г",
+      "Лук — 1 шт.",
+      "Чеснок — 2 зубчика",
+      "Растительное масло — 1 ст. л.",
+      "Паприка — 1 ч. л.",
+      "Молотая зира — 1/2 ч. л.",
+      "Харисса — до 1 ч. л. по желанию",
+      "Соль, перец и зелень — по вкусу"
+    ],
+    "recipeInstructions": [
+      "Слейте жидкость с фасоли; при желании промойте её и дайте воде стечь.",
+      "На масле размягчите лук, добавьте чеснок, паприку и зиру.",
+      "Для пряного варианта вмешайте до 1 чайной ложки хариссы; начните с меньшего количества и попробуйте соус.",
+      "Влейте томаты, разомните крупные куски и тушите около 10 минут.",
+      "Добавьте фасоль и прогрейте всё вместе ещё 7–10 минут. Попробуйте, затем посолите с учётом соли в консерве.",
+      "Подавайте с зеленью и хлебом или крупой."
+    ],
+    "prepTime": "PT10M",
+    "cookTime": "PT20M",
+    "totalTime": "PT30M",
+    "recipeYield": "4 порции",
+    "recipeCategory": "Основное блюдо",
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "kuritsa-s-tykvoi-na-protivne",
     "headline": "Осенью всегда готовлю курочку на тыкве — корочка золотистая и хрустящая, а гарнир как кубики из пюре",
     "description": "Пошаговый рецепт курицы с тыквой на противне: ингредиенты, последовательность, время как ориентир и проверка готовности птицы термометром.",
@@ -389,7 +444,7 @@
     "photoSource": "provkus-media.ru",
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
