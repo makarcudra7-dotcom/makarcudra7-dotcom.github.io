@@ -38,9 +38,11 @@
       try{
         const f=await window.getFile(POSTS);
         if(f?.content)posts=JSON.parse(decode(f));
-        else if(f===null)posts=[];
+        // A missing API file may be a transient read failure: use the public index.
+
       }catch(e){console.warn('posts source refresh',e)}
     }
+    if(Array.isArray(posts)&&!posts.length&&(window.store?.posts?.length||0)>0)posts=null;
     if(!Array.isArray(posts)){
       const r=await fetch(`${POSTS}?pv-live=${Date.now()}`,{cache:'no-store'});
       if(!r.ok)throw new Error('Не удалось обновить список публикаций');
@@ -57,9 +59,11 @@
         try{
           const f=await window.getFile(QUEUE);
           if(f?.content)q=JSON.parse(decode(f));
-          else if(f===null)q=[];
+          // Fall back to the public queue when the API has no file.
+
         }catch(e){console.warn('scheduled API refresh',e)}
       }
+      if(Array.isArray(q)&&!q.length&&scheduled.length)q=null;
       if(!Array.isArray(q)){
         const r=await fetch(`${RAW_QUEUE}?pv-live=${Date.now()}`,{cache:'no-store'});
         if(!r.ok)throw new Error('Не удалось прочитать очередь');

@@ -32,9 +32,21 @@
 
   function installSearch(){
     const body=$('#publications .card-body');if(!body||$('#postSearch'))return;
-    body.insertAdjacentHTML('afterbegin',`<div class="cms-searchbar"><input id="postSearch" type="search" placeholder="Поиск по заголовку или ссылке…" autocomplete="off"><span class="cms-search-count" id="postSearchCount"></span></div>`);
-    const filter=()=>{const q=($('#postSearch')?.value||'').trim().toLowerCase(),rows=$$('#postsTable tr'),real=rows.filter(tr=>!tr.querySelector('td[colspan]'));let visible=0;for(const tr of real){const href=tr.querySelector('a[href]')?.href||'',hay=(tr.textContent+' '+href).toLowerCase(),show=!q||hay.includes(q);tr.hidden=!show;if(show)visible++}const c=$('#postSearchCount');if(c)c.textContent=q?`Найдено: ${visible}`:`Всего: ${real.length}`};
-    $('#postSearch').addEventListener('input',filter);const mo=new MutationObserver(filter);mo.observe($('#postsTable'),{childList:true,subtree:true});filter()
+    body.insertAdjacentHTML('afterbegin',`<div class="cms-searchbar"><input id="postSearch" name="publication-filter" type="search" placeholder="Поиск по заголовку или ссылке…" autocomplete="off" value=""><button type="button" class="btn soft" id="clearPostSearch" hidden>Сбросить</button><span class="cms-search-count" id="postSearchCount"></span></div><p id="postSearchEmpty" class="hint" hidden>По запросу ничего не найдено. Сбросьте поиск, чтобы увидеть все материалы.</p>`);
+    const input=$('#postSearch'),clear=$('#clearPostSearch'),empty=$('#postSearchEmpty');
+    const filter=()=>{
+      const q=input.value.trim().toLowerCase(),rows=$$('#postsTable tr'),real=rows.filter(tr=>!tr.querySelector('td[colspan]'));
+      let visible=0;
+      for(const tr of real){const href=tr.querySelector('a[href]')?.href||'',hay=(tr.textContent+' '+href).toLowerCase(),show=!q||hay.includes(q);tr.hidden=!show;if(show)visible++}
+      $('#postSearchCount').textContent=q?`Найдено: ${visible} из ${real.length}`:`Всего: ${real.length}`;
+      clear.hidden=!q;empty.hidden=!(q&&real.length&&!visible);
+    };
+    const reset=()=>{input.value='';filter()};
+    clear.addEventListener('click',reset);
+    input.addEventListener('input',filter);
+    const mo=new MutationObserver(filter);mo.observe($('#postsTable'),{childList:true,subtree:true});
+    window.addEventListener('pageshow',reset);
+    reset();
   }
 
   function findSlug(tr){const a=tr.querySelector('a[href*="/articles/"]');if(!a)return'';try{return(new URL(a.href,location.href).pathname.split('/').pop()||'').replace(/\.html$/,'')}catch{return''}}
