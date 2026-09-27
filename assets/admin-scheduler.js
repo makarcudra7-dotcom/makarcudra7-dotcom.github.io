@@ -44,6 +44,7 @@
     return urls
   }
   function validate(o){
+    if(window.editorialGenderValid&&!window.editorialGenderValid())return'Проверьте согласование текста с автором';
     if(!o.headline||!o.description)return'Заполните заголовок и description';
     if(!o.lead)return'Добавьте лид';
     if(!o.imageAlt)return'Добавьте Alt к изображению';

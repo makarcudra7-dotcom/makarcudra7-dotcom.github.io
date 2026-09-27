@@ -14,6 +14,7 @@
     if(note){note.textContent=found?`Проверьте согласование с автором: «${text.match(found)?.[0]}»`:'';note.hidden=!found}
     return !found;
   }
+  window.editorialGenderValid=genderWarning;
   function syncEditorial(){
     const title=$('#headline')?.value||'';
     const seo=$('#seoTitle');if(seo&&seo.value!==title){seo.value=title;seo.dispatchEvent(new Event('change',{bubbles:true}))}
