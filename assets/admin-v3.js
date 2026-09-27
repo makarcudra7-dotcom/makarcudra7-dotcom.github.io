@@ -68,7 +68,6 @@
       if(!o.slug)o.slug=slugify(o.headline);
       if(!o.seoTitle)o.seoTitle=o.headline;
       if(!o.lead)throw new Error('Добавьте лид');
-      if(!o.source)throw new Error('Укажите источник / первоисточник');
       if(!o.imageAlt)throw new Error('Добавьте Alt к изображению');
       if(!o.publishedAt)o.publishedAt=nowLocal(); if(!o.updatedAt)o.updatedAt=o.publishedAt;
       if(!o.canonical)o.canonical=`https://provkus-media.ru/articles/${o.slug}.html`;

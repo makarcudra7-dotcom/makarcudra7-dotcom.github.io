@@ -198,6 +198,7 @@
     try{
       await Promise.all([refreshPublished(),refreshScheduled()]);
       repaint();
+      window.__pvLastRefreshAt=Date.now();
       const count=window.store?.posts?.length||0;
       if(showMessage&&typeof window.flash==='function')window.flash(`Список обновлён: ${count} опубликовано, ${scheduled.length} запланировано`);
     }catch(e){console.warn('publications live refresh',e)}

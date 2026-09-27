@@ -29,7 +29,7 @@
   },true);
   checkRemote();
   const quality=document.createElement('script');
-  quality.src='assets/admin-quality-v2.js?v=20260925-precise1';
+  quality.src='assets/admin-quality-v2.js?v=20260927-suite1';
   document.body.appendChild(quality);
   if(!document.querySelector('script[src*="admin-runtime-loader.js"]')){
     const runtime=document.createElement('script');

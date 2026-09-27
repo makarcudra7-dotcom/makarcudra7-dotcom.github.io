@@ -19,7 +19,7 @@
     if(typeof window.putFile!=='function'||window.putFile.__proSuite)return;
     const base=window.putFile;
     const wrapped=async function(path,content,message,encoding='utf-8'){
-      if(encoding!=='base64'&&path==='data/posts.json'){
+      if(encoding!=='base64'&&path==='data/posts.json'&&!window.__pvListMutation){
         try{const posts=JSON.parse(content),o=window.collect?.()||{};const p=posts.find(x=>x.slug===o.slug);if(p)p.excludeRelated=!!o.excludeRelated;content=JSON.stringify(posts,null,2)}catch(e){console.warn('related metadata',e)}
       }
       if(encoding!=='base64'&&path==='.github/scheduled-posts.json'){
@@ -35,6 +35,7 @@
     body.insertAdjacentHTML('afterbegin',`<div class="cms-searchbar"><input id="postSearch" name="publication-filter" type="search" placeholder="Поиск по заголовку или ссылке…" autocomplete="off" value=""><button type="button" class="btn soft" id="clearPostSearch" hidden>Сбросить</button><span class="cms-search-count" id="postSearchCount"></span></div><p id="postSearchEmpty" class="hint" hidden>По запросу ничего не найдено. Сбросьте поиск, чтобы увидеть все материалы.</p>`);
     const input=$('#postSearch'),clear=$('#clearPostSearch'),empty=$('#postSearchEmpty');
     const filter=()=>{
+      if(window.pvApplyFilters)return window.pvApplyFilters();
       const q=input.value.trim().toLowerCase(),rows=$$('#postsTable tr'),real=rows.filter(tr=>!tr.querySelector('td[colspan]'));
       let visible=0;
       for(const tr of real){const href=tr.querySelector('a[href]')?.href||'',hay=(tr.textContent+' '+href).toLowerCase(),show=!q||hay.includes(q);tr.hidden=!show;if(show)visible++}
@@ -63,6 +64,7 @@
     }catch(e){flash?.(e.message||'Не удалось поставить материал в рассылку')}
   }
   async function enhanceRows(){
+    if(window.__pvOperations)return;
     const pushes=await (async()=>{try{const f=await window.getFile('data/newsletter-pushes.json');return f?.content?JSON.parse(decode(f)):[]}catch{return[]}})();const pushed=new Map(pushes.map(x=>[x.slug,x]));
     $$('#postsTable tr').forEach(tr=>{const slug=findSlug(tr);if(!slug)return;let cell=tr.querySelector('.row-actions');if(!cell)return;if(!cell.querySelector('[data-newsletter-send]'))cell.insertAdjacentHTML('beforeend',`<button type="button" class="btn soft newsletter-send-btn" data-newsletter-send="${esc(slug)}">В рассылку</button>`);const hit=pushed.get(slug);if(hit&&!cell.querySelector('.newsletter-sent'))cell.insertAdjacentHTML('beforeend',`<span class="newsletter-sent">Отправляли ${new Date(hit.sentAt).toLocaleDateString('ru-RU')}</span>`)});
     $$('[data-newsletter-send]').forEach(b=>b.onclick=()=>sendNewsletter(b.dataset.newsletterSend))

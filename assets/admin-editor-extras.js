@@ -122,7 +122,7 @@
   }
 
   function makeSourceOptional(){
-    const src=$('#source');if(src){const label=src.closest('.field')?.querySelector('label');if(label)label.textContent='Источники: организация, материал и ссылка (для безопасности еды — минимум 3)'}
+    const src=$('#source');if(src){const label=src.closest('.field')?.querySelector('label');if(label)label.textContent='Источники (необязательно для редакционного материала)'}
     $$('.checklist .check span:last-child').forEach(x=>{if(/оригинальность и источник/i.test(x.textContent))x.textContent='Проверить оригинальность; источник указать при наличии.'});
     const btn=$('#publishBtn');if(!btn||btn.__sourceOptionalWrapped||typeof btn.onclick!=='function')return;
     const base=btn.onclick;btn.__sourceOptionalWrapped=true;

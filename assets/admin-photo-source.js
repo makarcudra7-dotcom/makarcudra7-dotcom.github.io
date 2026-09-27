@@ -17,7 +17,7 @@
   if(typeof putFile==='function'){
     const basePutFile=putFile;
     putFile=async function(path,content,message,encoding='utf-8'){
-      if(path==='data/posts.json'&&encoding!=='base64'){
+      if(path==='data/posts.json'&&encoding!=='base64'&&!window.__pvListMutation){
         try{
           const posts=JSON.parse(content),o=typeof collect==='function'?collect():null;
           if(o?.slug){
@@ -30,7 +30,7 @@
       return basePutFile(path,content,message,encoding);
     };
   }
-  const V='20260927-list1';
+  const V='20260927-suite1';
   const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-editor-ui.css?v='+V;document.head.appendChild(css);
   const b=document.getElementById('photoSourceBtn');if(b)b.addEventListener('click',()=>{const i=document.getElementById('photoSource');if(i){i.focus();i.select()}});
   const ensurePlacement=()=>{

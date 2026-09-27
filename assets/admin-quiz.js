@@ -89,7 +89,7 @@
   }
   function loadExtras(){
     if(document.querySelector('script[data-admin-editor-extras]'))return;
-    const s=document.createElement('script');s.src='assets/admin-editor-extras.js?v=20260923-alt';s.dataset.adminEditorExtras='1';document.body.appendChild(s);
+    const s=document.createElement('script');s.src='assets/admin-editor-extras.js?v=20260927-suite1';s.dataset.adminEditorExtras='1';document.body.appendChild(s);
   }
   function install(){
     addEditorStyles();ensureEditor();ensureQuizOption();
@@ -108,7 +108,7 @@
           content=injectQuiz(content,o.quiz);
           if(typeof window.processInlineImagesInHtml==='function')content=await window.processInlineImagesInHtml(content,o.slug||'test');
         }
-        if(path==='data/posts.json'&&o.type==='quiz'){
+        if(path==='data/posts.json'&&o.type==='quiz'&&!window.__pvListMutation){
           try{const posts=JSON.parse(content),p=posts.find(x=>x.slug===o.slug);if(p){p.type='quiz';p.typeLabel='Тест / викторина';p.quizCount=o.quiz?.questions?.length||0}content=JSON.stringify(posts,null,2)}catch(e){}
         }
         return base(path,content,message,encoding);

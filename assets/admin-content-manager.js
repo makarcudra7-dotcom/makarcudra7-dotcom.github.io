@@ -72,7 +72,7 @@
   function wrapPostIndex(){
     if(typeof window.putFile!=='function'||window.putFile.__placementIndexWrapped)return;
     const base=window.putFile;const wrapped=async function(path,content,message,encoding='utf-8'){
-      if(path==='data/posts.json'&&encoding!=='base64'){
+      if(path==='data/posts.json'&&encoding!=='base64'&&!window.__pvListMutation){
         try{
           let posts=JSON.parse(content),o=window.collect?.()||{},p=posts.find(x=>x.slug===o.slug);
           if(p){p.featured=!!o.featured;p.popular=!!o.popular;if(p.featured)posts.forEach(x=>{if(x.slug!==p.slug)x.featured=false});const pops=posts.filter(x=>x.popular).sort((a,b)=>new Date(b.publishedAt||0)-new Date(a.publishedAt||0));pops.slice(7).forEach(x=>x.popular=false)}
