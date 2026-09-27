@@ -8,3 +8,4 @@ html[data-theme="dark"] .author-trust-topics span{background:#303a33;color:#edf0
 html[data-theme="dark"] .author-trust-links a{color:#ff9e80}
 html[data-theme="dark"] .author-trust-note{color:#c2c9c0}
 @media(max-width:700px){.author-trust-panel{padding:18px}.author-trust-grid{grid-template-columns:1fr}.author-trust-item{padding:16px}.author-trust-item h3{font-size:17px}.author-trust-item p{font-size:15px;line-height:1.6}}
+/* production refresh 2026-09-27: contrast fix is intentionally duplicated in this standalone stylesheet so author profiles remain readable before app.js loads */
