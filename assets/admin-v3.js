@@ -6,6 +6,7 @@
   const nowLocal=()=>{const d=new Date();return new Date(d-d.getTimezoneOffset()*60000).toISOString().slice(0,16)};
   const isoFromLocal=v=>v?new Date(v).toISOString():new Date().toISOString();
   function activate(target){
+    sessionStorage.setItem('provkusCmsSection',target);
     $$('.nav-btn').forEach(x=>x.classList.toggle('active',x.dataset.target===target));
     $$('.section').forEach(s=>s.classList.toggle('active',s.id===target));
     const t={material:'Новая публикация',publications:'Все материалы',authors:'Авторы',settings:'Настройки'}[target]||'ProVkus CMS';
@@ -97,5 +98,6 @@
   $('#newArticleBtn').onclick=resetNew;$('#allMaterialsBtn').onclick=()=>activate('publications');
   $$('.nav-btn[data-target]').forEach(b=>b.onclick=()=>activate(b.dataset.target));
   enhanceTable();
-  setTimeout(resetNew,0);
+  // Keep the current draft intact on reload; publications are the CMS home.
+  activate(['material','publications','authors','settings'].includes(sessionStorage.getItem('provkusCmsSection'))?sessionStorage.getItem('provkusCmsSection'):'publications');
 })();
