@@ -33,17 +33,21 @@ jobs:
       - name: Install Pillow
         run: pip install pillow
 
-      - name: Build responsive hero images
-        run: |
-          python3 scripts/build_indexes.py
-          python3 scripts/optimize_home_hero.py
-
-      - name: Commit responsive hero assets
+      - name: Rebuild and publish homepage placements
         run: |
           git config user.name "provkus-performance-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add index.html assets/uploads archive/ archive.html calculators.html news.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml dzen.xml
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m "Refresh homepage placements and responsive homepage hero images"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/build_indexes.py
+            python3 scripts/optimize_home_hero.py
+            git add index.html assets/uploads
+            git restore --worktree .
+            if git diff --cached --quiet; then exit 0; fi
+            git commit -m "Refresh homepage placements and responsive homepage hero images"
+            if git push origin HEAD:main; then exit 0; fi
+            sleep "$attempt"
+          done
+          echo 'Could not publish homepage after concurrent updates' >&2
+          exit 1
