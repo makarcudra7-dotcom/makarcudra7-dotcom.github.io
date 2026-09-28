@@ -40,7 +40,8 @@
       "editorialCheck": {
         "aiImage": true
       },
-      "photoSource": "Иллюстрация создана с помощью ИИ"
+      "photoSource": "Иллюстрация создана с помощью ИИ",
+      "popular": true
     },
     "post": {
       "slug": "krem-sup-iz-tsvetnoy-kapusty-bez-slivok",
@@ -68,11 +69,12 @@
       ],
       "photoSource": "Иллюстрация создана с помощью ИИ",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "excludeRelated": false,
       "status": "scheduled",
       "newsletter": false
-    }
+    },
+    "updatedAt": "2026-09-28T11:57:42.888Z"
   },
   {
     "slug": "tvorozhnaya-zapekanka-s-grushey",
