@@ -778,5 +778,13 @@
     "minVisibleCharacters": 3121,
     "maxVisibleCharacters": 4775,
     "clickableCards": 95
+  },
+  "imageQuality": {
+    "version": 2,
+    "dimensions": "1600x900",
+    "format": "WebP",
+    "quality": "92-96",
+    "method": "Lanczos upscale/normalize + restrained unsharp mask",
+    "files": 95
   }
 }
