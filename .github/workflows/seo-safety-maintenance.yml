@@ -10,6 +10,7 @@ on:
       - 'articles/**'
       - 'scripts/add_recipe_schema.py'
       - 'scripts/seo_safety_maintenance.py'
+      - 'scripts/seo_followup_maintenance.py'
       - 'scripts/build_discovery_archives.py'
       - 'scripts/build_indexes.py'
 
@@ -35,17 +36,23 @@ jobs:
       - name: Apply SEO and editorial-safety rules
         run: python3 scripts/seo_safety_maintenance.py
 
+      - name: Finish on-page SEO cleanup
+        run: python3 scripts/seo_followup_maintenance.py
+
       - name: Validate safety and index surfaces
         run: |
           set -euo pipefail
-          python3 -m py_compile scripts/add_recipe_schema.py scripts/seo_safety_maintenance.py scripts/build_discovery_archives.py
+          python3 -m py_compile scripts/add_recipe_schema.py scripts/seo_safety_maintenance.py scripts/seo_followup_maintenance.py scripts/build_discovery_archives.py
           grep -q 'Проверено редакцией' editorial-policy.html
           grep -q 'здоровье, безопасность пищи либо безопасное хранение' editorial-policy.html
+          grep -q 'id="pv-page-schema"' editorial-policy.html
+          grep -q 'id="pv-page-schema"' editorial.html
+          grep -q 'rel="icon"' world-cuisines.html
           grep -q 'Sitemap: https://provkus-media.ru/sitemap.xml' robots.txt
           ! grep -q 'sitemap-fruit-jazz.xml' robots.txt
           ! grep -Eq 'https://provkus-media\.ru/archive/[0-9]{4}/[0-9]{2}/[0-9]{2}/' sitemap.xml
           python3 - <<'PY'
-          import json, re
+          import json
           from pathlib import Path
           import scripts.seo_safety_maintenance as seo
           root=Path('.')
@@ -64,8 +71,11 @@ jobs:
               if ec.get('mode')!='sources' or not ec.get('confirmed') or not ec.get('sourceUrl'):
                   errors.append(f"metadata:{f}")
           for f in (root/'archive').glob('*/*/*/index.html'):
-              if 'noindex,follow' not in f.read_text('utf-8'):
+              s=f.read_text('utf-8')
+              if 'noindex,follow' not in s:
                   errors.append(f"archive-indexable:{f}")
+              if 'rel="icon"' not in s:
+                  errors.append(f"archive-favicon:{f}")
           if checked == 0:
               errors.append('no safety-sensitive posts detected')
           if errors:
