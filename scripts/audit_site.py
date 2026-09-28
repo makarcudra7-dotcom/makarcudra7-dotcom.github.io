@@ -100,7 +100,7 @@ news_html=(ROOT/'news.html').read_text('utf-8')
 news_links={a.get('href','').rsplit('/',1)[-1][:-5] for a in Page(news_html).find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
 check(news_links==news_slugs,f'news.html: category links (missing {news_slugs-news_links}, extra {news_links-news_slugs})')
 home_news=home.split('<!-- HOME-NEWS-START -->',1)[-1].split('<!-- HOME-NEWS-END -->',1)[0]
-check('/news.html' in home_news and ('ProVkusn-ые новости' in home_news),'index: news heading and archive link')
+check('/news.html' in home_news and ('ProVkus-ные новости' in home_news),'index: news heading and archive link')
 check(all(f'/articles/{p["slug"]}.html' in home_news for p in sorted(news_posts,key=lambda p:p.get('publishedAt') or '',reverse=True)[:4]),'index: newest news cards')
 check(('site-ui.css' in home or 'home-bundle.css' in home),'index: critical styles in head')
 category=Page((ROOT/'category.html').read_text('utf-8'))

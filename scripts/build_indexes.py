@@ -126,7 +126,7 @@ def update_news():
   if selected:
     section=('<!-- HOME-NEWS-START --><section class="section pv-news-section" aria-labelledby="pv-news-title">'
              '<div class="container"><div class="section-head"><div><div class="eyebrow">Свежая лента</div>'
-             '<h2 class="section-title" id="pv-news-title">ProVkusn-ые новости</h2>'
+             '<h2 class="section-title" id="pv-news-title">ProVkus-ные новости</h2>'
              '<div class="section-sub">Материалы рубрики «Новости»</div></div>'
              f'<a class="link-more" href="/news.html">Все новости ({len(selected)}) →</a></div>'
              '<div class="story-grid">'+''.join(map(card,selected[:4]))+'</div></div></section><!-- HOME-NEWS-END -->')
@@ -142,7 +142,7 @@ def update_news():
   cards=''.join(map(card,selected)) or '<p class="section-sub">В рубрике пока нет публикаций.</p>'
   news=root/'news.html'
   archive=(f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-           f'<title>ProVkusn-ые новости — все материалы рубрики | ProVkus</title>'
+           f'<title>ProVkus-ные новости — все материалы рубрики | ProVkus</title>'
            f'<meta name="description" content="Новости ProVkus о еде, продуктах и домашней кухне. Все материалы рубрики по дате публикации.">'
            f'<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{site}/news.html">'
            '<link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/public.css"></head><body>'
@@ -150,7 +150,7 @@ def update_news():
            '<nav class="main-nav"><a href="/category.html">Материалы</a><a href="/news.html" aria-current="page">Новости</a>'
            '<a href="/authors.html">Авторы</a></nav></div></header>'
            '<main class="container"><section class="section"><div class="section-head"><div><div class="eyebrow">Новости ProVkus</div>'
-           '<h1 class="section-title">ProVkusn-ые новости</h1><p class="section-sub">Все материалы рубрики «Новости» по дате публикации.</p>'
+           '<h1 class="section-title">ProVkus-ные новости</h1><p class="section-sub">Все материалы рубрики «Новости» по дате публикации.</p>'
            f'</div><span class="section-sub">{len(selected)} материалов</span></div><div class="story-grid">{cards}</div></section></main>'
            '<script src="/assets/app.js"></script></body></html>')
   if not news.exists() or news.read_text('utf-8')!=archive:news.write_text(archive,'utf-8')
