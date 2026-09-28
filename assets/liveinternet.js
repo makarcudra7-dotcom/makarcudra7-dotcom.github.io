@@ -49,9 +49,11 @@
   };
 
   const scheduleCounter = () => {
+    if (window.__pvCookieAnalyticsAllowed?.() !== true) return;
     if ('requestIdleCallback' in window) requestIdleCallback(loadCounter, {timeout:4500});
     else setTimeout(loadCounter, 2500);
   };
+  window.addEventListener('pv-analytics-consent', e => { if(e.detail?.allowed) scheduleCounter(); });
   if (document.readyState === 'complete') scheduleCounter();
   else window.addEventListener('load', scheduleCounter, {once:true});
 })();

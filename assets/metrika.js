@@ -4,6 +4,26 @@
   if (window.__pvMetrikaBootScheduled) return;
   window.__pvMetrikaBootScheduled = true;
 
+  const CONSENT_KEY = 'provkus-analytics-consent-v1';
+  const consent = () => { try { return localStorage.getItem(CONSENT_KEY); } catch (_) { return null; } };
+  const allowed = () => consent() === 'yes';
+  const isAdmin = location.pathname === '/admin.html';
+  function showConsent(){
+    if (isAdmin || document.getElementById('pvCookieBanner')) return;
+    const style=document.createElement('style');
+    style.textContent='#pvCookieBanner{position:fixed;z-index:2147483000;bottom:16px;left:16px;right:16px;max-width:650px;padding:18px;background:#fff;color:#202c24;border:1px solid #d8e1d8;border-radius:14px;box-shadow:0 10px 35px #0003;font:15px/1.5 system-ui,sans-serif}#pvCookieBanner strong{display:block;font-size:17px;margin-bottom:5px}#pvCookieBanner p{margin:0 0 12px}#pvCookieBanner a{color:#165c40;text-decoration:underline}#pvCookieBanner .pv-cookie-actions{display:flex;flex-wrap:wrap;gap:8px}#pvCookieBanner button{min-height:42px;padding:9px 15px;border:1px solid #165c40;border-radius:8px;background:#fff;color:#165c40;font:600 14px system-ui;cursor:pointer}#pvCookieBanner button:first-child{background:#165c40;color:#fff}@media(max-width:480px){#pvCookieBanner{bottom:8px;left:8px;right:8px;padding:14px}#pvCookieBanner button{flex:1}}';
+    document.head.appendChild(style);
+    const box=document.createElement('aside');box.id='pvCookieBanner';box.setAttribute('role','dialog');box.setAttribute('aria-label','Настройка аналитики');
+    box.innerHTML='<strong>Аналитика на ProVkus</strong><p>С вашего разрешения Яндекс Метрика и LiveInternet собирают сведения о посещении, чтобы мы улучшали сайт. <a href="/privacy.html#analytics">Как используются данные</a>.</p><div class="pv-cookie-actions"><button type="button" data-choice="yes">Разрешить аналитику</button><button type="button" data-choice="no">Только необходимые</button></div>';
+    box.addEventListener('click',e=>{const choice=e.target.closest('[data-choice]')?.dataset.choice;if(!choice)return;try{localStorage.setItem(CONSENT_KEY,choice)}catch(_){ }box.remove();window.dispatchEvent(new CustomEvent('pv-analytics-consent',{detail:{allowed:choice==='yes'}}));if(choice==='yes')boot();else if(window.__pvMetrikaLoaded)location.reload()});
+    document.body.appendChild(box);
+  }
+  function offerConsent(){if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',offerConsent,{once:true});else if(consent()===null)showConsent()}
+  window.pvCookieSettings=showConsent;
+  window.__pvCookieAnalyticsAllowed=allowed;
+  offerConsent();
+  if(!isAdmin){const addSettingsLink=()=>{const footer=document.querySelector('.site-footer');if(!footer||document.getElementById('pvCookieSettingsLink'))return;const link=document.createElement('a');link.id='pvCookieSettingsLink';link.href='#cookie-settings';link.textContent='Настройки аналитики';link.style.cssText='display:inline-block;margin:8px 12px;color:inherit;text-decoration:underline';link.addEventListener('click',e=>{e.preventDefault();showConsent()});footer.appendChild(link)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addSettingsLink,{once:true});else addSettingsLink()}
+
   const goalQueue = [];
   window.pvGoal = (name, params={}) => {
     if (typeof window.ym === 'function' && window.__pvMetrikaLoaded) {
@@ -14,7 +34,7 @@
   };
 
   const boot = () => {
-    if (window.__pvMetrikaLoaded) return;
+    if (window.__pvMetrikaLoaded || !allowed() || isAdmin) return;
     window.__pvMetrikaLoaded = true;
 
     (function(m,e,t,r,i,k,a){
@@ -39,7 +59,7 @@
 
   let bootTimer = 0;
   const scheduleBoot = () => {
-    if (window.__pvMetrikaLoaded || bootTimer) return;
+    if (window.__pvMetrikaLoaded || bootTimer || !allowed() || isAdmin) return;
     const run = () => {
       bootTimer = window.setTimeout(boot, 5000);
     };
@@ -59,9 +79,12 @@
         clearTimeout(bootTimer);
         bootTimer = 0;
       }
-      boot();
+      if (allowed()) boot();
     }, {once:true, passive:true});
   });
+
+  if (allowed()) scheduleBoot();
+  window.addEventListener('pv-analytics-consent', e => { if(e.detail?.allowed) scheduleBoot(); });
 
   const text = el => (el?.textContent || '').replace(/\s+/g,' ').trim().toLowerCase();
   const closestAction = target => target?.closest?.('button,a,input[type="submit"],input[type="button"],[role="button"]');
