@@ -87,7 +87,7 @@
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
     "featured": false,
-    "popular": false,
+    "popular": true,
     "excludeRelated": false,
     "status": "published",
     "newsletter": false
@@ -540,7 +540,7 @@
     "tags": [],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
