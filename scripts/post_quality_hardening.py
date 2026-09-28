@@ -5,7 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / 'index.html'
 ASSETS = ROOT / 'assets'
 APP_VERSION = '20260927-quality13'
-BUNDLE_VERSION = '20260929-contrast1'
+BUNDLE_VERSION = '20260929-contrast2'
 BUNDLE = ASSETS / 'home-bundle.css'
 BUNDLE_SOURCES = ('styles.css', 'public.css', 'site-ui.css', 'home-tools.css', 'overrides.css', 'theme.css')
 
