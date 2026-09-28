@@ -119,7 +119,13 @@ def update_home():
 
 update_home()
 def news_post(p):
-  return str(p.get('category') or '').strip().casefold().startswith('новост')
+  # Material type is the primary news signal. Category/tag checks preserve
+  # compatibility with legacy publications created before taxonomy cleanup.
+  ptype=str(p.get('type') or '').strip().casefold()
+  if ptype in {'newsarticle','news','новость','новости'}:return True
+  if str(p.get('typeLabel') or '').strip().casefold().startswith('новост'):return True
+  if str(p.get('category') or '').strip().casefold().startswith('новост'):return True
+  return any(str(tag).strip().casefold().startswith('новост') for tag in (p.get('tags') or []))
 
 def update_news():
   selected=[p for p in posts if news_post(p)]
@@ -128,7 +134,7 @@ def update_news():
     section=('<!-- HOME-NEWS-START --><section class="section pv-news-section" aria-labelledby="pv-news-title">'
              '<div class="container"><div class="section-head"><div><div class="eyebrow">Свежая лента</div>'
              '<h2 class="section-title" id="pv-news-title">ProVkus-ные новости</h2>'
-             '<div class="section-sub">Материалы рубрики «Новости»</div></div>'
+             '<div class="section-sub">Материалы типа «Новость»</div></div>'
              f'<a class="link-more" href="/news.html">Все новости ({len(selected)}) →</a></div>'
              '<div class="story-grid">'+''.join(map(card,selected[:4]))+'</div></div></section><!-- HOME-NEWS-END -->')
   else:section='<!-- HOME-NEWS-START --><!-- HOME-NEWS-END -->'
@@ -140,7 +146,7 @@ def update_news():
     source=source.replace(marker,section+marker,1)
   if source!=page.read_text('utf-8'):page.write_text(source,'utf-8')
 
-  cards=''.join(map(card,selected)) or '<p class="section-sub">В рубрике пока нет публикаций.</p>'
+  cards=''.join(map(card,selected)) or '<p class="section-sub">Новостей пока нет.</p>'
   news=root/'news.html'
   archive=(f'<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
            f'<title>ProVkus-ные новости — все материалы рубрики | ProVkus</title>'
@@ -151,7 +157,7 @@ def update_news():
            '<nav class="main-nav"><a href="/category.html">Материалы</a><a href="/news.html" aria-current="page">Новости</a>'
            '<a href="/authors.html">Авторы</a></nav></div></header>'
            '<main class="container"><section class="section"><div class="section-head"><div><div class="eyebrow">Новости ProVkus</div>'
-           '<h1 class="section-title">ProVkus-ные новости</h1><p class="section-sub">Все материалы рубрики «Новости» по дате публикации.</p>'
+           '<h1 class="section-title">ProVkus-ные новости</h1><p class="section-sub">Все материалы типа «Новость» по дате публикации.</p>'
            f'</div><span class="section-sub">{len(selected)} материалов</span></div><div class="story-grid">{cards}</div></section></main>'
            '<script src="/assets/app.js"></script></body></html>')
   if not news.exists() or news.read_text('utf-8')!=archive:news.write_text(archive,'utf-8')
@@ -176,8 +182,11 @@ for name,match in rubrics.items():
   selected=[p for p in posts if match(str(p.get('category') or '').lower())]
   content='<!-- HUB-STATIC-START -->'+(''.join(map(card,selected)) or
     '<p class="section-sub">В этой рубрике пока нет публикаций.</p>')+'<!-- HUB-STATIC-END -->'
-  source,n=re.subn(r'(<div id="categoryHubGrid" class="story-grid">).*?(</div></section></main>)',
-                   lambda m:m.group(1)+content+m.group(2),source,count=1,flags=re.S)
+  if '<!-- HUB-STATIC-START -->' in source:
+    source,n=re.subn(r'<!-- HUB-STATIC-START -->.*?<!-- HUB-STATIC-END -->',lambda _:content,source,count=1,flags=re.S)
+  else:
+    source,n=re.subn(r'(<div id="categoryHubGrid" class="story-grid">).*?(</div>)',
+                     lambda m:m.group(1)+content+m.group(2),source,count=1,flags=re.S)
   if n!=1:raise RuntimeError(f'Category grid missing in {name}')
   source=re.sub(r'(<span id="categoryHubCount" class="section-sub">).*?(</span>)',
                 lambda m:m.group(1)+str(len(selected))+' материалов'+m.group(2),source,count=1)
