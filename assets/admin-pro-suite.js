@@ -32,7 +32,7 @@
 
   function installSearch(){
     const body=$('#publications .card-body');if(!body||$('#postSearch'))return;
-    body.insertAdjacentHTML('afterbegin',`<div class="cms-searchbar"><input id="postSearch" name="publication-filter" type="search" placeholder="Поиск по заголовку или ссылке…" autocomplete="off" value=""><button type="button" class="btn soft" id="clearPostSearch" hidden>Сбросить</button><span class="cms-search-count" id="postSearchCount"></span></div><p id="postSearchEmpty" class="hint" hidden>По запросу ничего не найдено. Сбросьте поиск, чтобы увидеть все материалы.</p>`);
+    body.insertAdjacentHTML('afterbegin',`<div class="cms-searchbar"><input id="postSearch" name="pv-publication-title-query" type="search" placeholder="Поиск по заголовку или ссылке…" autocomplete="off" value=""><button type="button" class="btn soft" id="clearPostSearch" hidden>Сбросить</button><span class="cms-search-count" id="postSearchCount"></span></div><p id="postSearchEmpty" class="hint" hidden>По запросу ничего не найдено. Сбросьте поиск, чтобы увидеть все материалы.</p>`);
     const input=$('#postSearch'),clear=$('#clearPostSearch'),empty=$('#postSearchEmpty');
     const filter=()=>{
       if(window.pvApplyFilters)return window.pvApplyFilters();

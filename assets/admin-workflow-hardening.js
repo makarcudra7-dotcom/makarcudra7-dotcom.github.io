@@ -64,14 +64,17 @@
 
   function rawPreview(html){return String(html||'').replace(/https:\/\/provkus-media\.ru\/assets\/uploads\//g,RAW+'assets/uploads/').replace(/src=["']\/assets\/uploads\//g,m=>m.replace('/assets/uploads/',RAW+'assets/uploads/'))}
   async function mobilePreview(slug){
+    let modal=$('#pvMobilePreview');if(!modal){modal=document.createElement('div');modal.id='pvMobilePreview';modal.className='pv-mobile-modal';document.body.appendChild(modal)}
+    modal.innerHTML='<div class="pv-mobile-shell"><div class="pv-mobile-head"><strong>Мобильный предпросмотр · 390px</strong><button type="button" class="btn soft" data-pv-mobile-close>Закрыть</button></div><div class="pv-mobile-loading" role="status">Загружаю материал…</div><iframe title="Мобильный предпросмотр"></iframe></div>';
+    modal.classList.add('open');modal.querySelector('[data-pv-mobile-close]').onclick=()=>modal.classList.remove('open');
     try{
-      let item=queued().find(x=>x.slug===slug);if(typeof window.getFile==='function'){const f=await window.getFile(QUEUE);const list=f?.content?JSON.parse(decode(f)):[];item=list.find(x=>x.slug===slug)||item}
+      let item=queued().find(x=>x.slug===slug);
+      if(typeof window.getFile==='function'&&window.getToken?.())try{const f=await window.getFile(QUEUE);if(f?.content){const list=JSON.parse(decode(f));item=list.find(x=>x.slug===slug)||item}}catch(e){console.warn('mobile preview: using loaded queue',e)}
       if(!item)throw new Error('Материал отсутствует в очереди');if(typeof window.articleHTML!=='function')throw new Error('Генератор предпросмотра ещё загружается');
       const html=rawPreview(window.articleHTML({...item.material,publishedAt:item.publishAt},item.post?.image||item.material?.image||''));
-      let modal=$('#pvMobilePreview');if(!modal){modal=document.createElement('div');modal.id='pvMobilePreview';modal.className='pv-mobile-modal';document.body.appendChild(modal)}
-      modal.innerHTML=`<div class="pv-mobile-shell"><div class="pv-mobile-head"><strong>Мобильный предпросмотр · 390px</strong><button type="button" class="btn soft" data-pv-mobile-close>Закрыть</button></div><iframe title="Мобильный предпросмотр"></iframe></div>`;
-      modal.classList.add('open');modal.querySelector('iframe').srcdoc=html;modal.querySelector('[data-pv-mobile-close]').onclick=()=>modal.classList.remove('open');
-    }catch(e){say(e.message||'Не удалось открыть мобильный предпросмотр')}
+      if(!modal.classList.contains('open'))return;
+      modal.querySelector('.pv-mobile-loading')?.remove();modal.querySelector('iframe').srcdoc=html;
+    }catch(e){const loading=modal.querySelector('.pv-mobile-loading');if(loading)loading.textContent=e.message||'Не удалось открыть материал';say(e.message||'Не удалось открыть мобильный предпросмотр')}
   }
 
   function sourceCount(o){const s=String(o.sourceHtml||o.source||'').trim();return s?(s.match(/https?:\/\//gi)||[]).length||1:0}
