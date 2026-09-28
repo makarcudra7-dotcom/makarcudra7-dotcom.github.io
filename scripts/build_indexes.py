@@ -50,6 +50,7 @@ def card(p):
 def post_link(p):
   return '/articles/'+quote(p['slug'])+'.html'
 def ensure_site_ui_link(source):
+  if 'home-bundle.css' in source:return source
   pattern=r'<link rel="stylesheet" href="/assets/site-ui\.css(?:\?[^"]*)?">'
   found=False
   def keep_first(match):

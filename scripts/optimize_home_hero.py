@@ -70,7 +70,9 @@ def public_url(path: Path) -> str:
 
 
 def ensure_parallel_base_css(source: str) -> str:
-    """Expose styles.css to the preload scanner instead of discovering it only through @import."""
+    """Expose styles.css when the homepage does not use its consolidated bundle."""
+    if 'home-bundle.css' in source:
+        return source
     if 'href="/assets/styles.css"' in source:
         return source
     marker = '<link rel="stylesheet" href="/assets/public.css?v=20260925-clean1">'
@@ -81,6 +83,8 @@ def ensure_parallel_base_css(source: str) -> str:
 
 def ensure_critical_home_css(source: str) -> str:
     """Load CSS that changes header/hero geometry before FCP to prevent CLS."""
+    if 'home-bundle.css' in source:
+        return source
     source = ensure_parallel_base_css(source)
     missing = [tag for tag in HOME_LAYOUT_CSS if tag.split('?')[0] not in source]
     if not missing:
