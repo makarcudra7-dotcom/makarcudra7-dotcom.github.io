@@ -11,6 +11,7 @@ on:
       - 'scripts/add_recipe_schema.py'
       - 'scripts/seo_safety_maintenance.py'
       - 'scripts/seo_followup_maintenance.py'
+      - 'scripts/seo_content_depth.py'
       - 'scripts/build_discovery_archives.py'
       - 'scripts/build_indexes.py'
 
@@ -39,15 +40,19 @@ jobs:
       - name: Finish on-page SEO cleanup
         run: python3 scripts/seo_followup_maintenance.py
 
+      - name: Add useful content depth
+        run: python3 scripts/seo_content_depth.py
+
       - name: Validate safety and index surfaces
         run: |
           set -euo pipefail
-          python3 -m py_compile scripts/add_recipe_schema.py scripts/seo_safety_maintenance.py scripts/seo_followup_maintenance.py scripts/build_discovery_archives.py
+          python3 -m py_compile scripts/add_recipe_schema.py scripts/seo_safety_maintenance.py scripts/seo_followup_maintenance.py scripts/seo_content_depth.py scripts/build_discovery_archives.py
           grep -q 'Проверено редакцией' editorial-policy.html
           grep -q 'здоровье, безопасность пищи либо безопасное хранение' editorial-policy.html
           grep -q 'id="pv-page-schema"' editorial-policy.html
           grep -q 'id="pv-page-schema"' editorial.html
           grep -q 'rel="icon"' world-cuisines.html
+          grep -q 'SEO-EXTRA-COPY' contacts.html
           grep -q 'Sitemap: https://provkus-media.ru/sitemap.xml' robots.txt
           ! grep -q 'sitemap-fruit-jazz.xml' robots.txt
           ! grep -Eq 'https://provkus-media\.ru/archive/[0-9]{4}/[0-9]{2}/[0-9]{2}/' sitemap.xml
