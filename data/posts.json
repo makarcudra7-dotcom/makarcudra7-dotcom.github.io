@@ -1,5 +1,49 @@
 [
   {
+    "slug": "chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit",
+    "headline": "Что не стоит ставить на стол в Новый год 2027: Красная Коза такое меню «не оценит»",
+    "description": "Если хочется оформить новогодний стол в символике Огненной Козы, некоторые тяжёлые блюда можно заменить более лёгкими и яркими вариантами.",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "guide",
+    "typeLabel": "Инструкция / как сделать",
+    "image": "https://provkus-media.ru/assets/uploads/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit-1x1.jpg"
+    ],
+    "imageAlt": "Мужчина в кругу семьи отмечает Новый год",
+    "url": "https://provkus-media.ru/articles/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit.html",
+    "publishedAt": "2026-09-28T19:26:00.000Z",
+    "updatedAt": "2026-09-28T19:26:00.000Z",
+    "tags": [
+      "Еда",
+      "Новый год",
+      "Меню",
+      "Праздник",
+      "2027"
+    ],
+    "photoSource": "ProVkus",
+    "editorialCheck": {
+      "mode": "",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "",
+      "sourceNote": "",
+      "realPhoto": "",
+      "aiImage": false,
+      "confirmed": false
+    },
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true,
+    "coauthors": []
+  },
+  {
     "slug": "kartofelnye-lepeshki-s-syrom",
     "headline": "Вчерашнее пюре больше не разогреваю: делаю сырные лепёшки «Улыбашки» с хрустящей корочкой и сырной бомбой внутри",
     "description": "Лепёшки «Улыбашки» из вчерашнего пюре: как спрятать сыр в середину, запечатать края и обжарить до хрустящей корочки.",
@@ -24,7 +68,7 @@
       "остатки еды"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "excludeRelated": false,
     "status": "published",
@@ -516,7 +560,7 @@
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
     "featured": false,
-    "popular": true
+    "popular": false
   },
   {
     "slug": "nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet",
