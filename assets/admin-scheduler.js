@@ -40,6 +40,14 @@
     window.renderPosts?.();
     return next
   }
+  async function updateQueue(mutator,message){
+    for(let attempt=0;attempt<6;attempt++){
+      const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь публикаций');
+      const next=mutator(queue);
+      try{return await writeQueue(next,message)}
+      catch(e){if(attempt===5||!/does not match|\b409\b|\b422\b|sha|conflict/i.test(e.message||''))throw e;await new Promise(resolve=>setTimeout(resolve,400*(attempt+1)))}
+    }
+  }
   async function cropBlob(file,w,h,q=.86){
     const bmp=await createImageBitmap(file),scale=Math.max(w/bmp.width,h/bmp.height),sw=w/scale,sh=h/scale,sx=(bmp.width-sw)/2,sy=(bmp.height-sh)/2;
     const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(bmp,sx,sy,sw,sh,0,0,w,h);bmp.close?.();
@@ -90,8 +98,7 @@
       if(!file&&img===existing?.post?.image&&existing.post.images?.length)images=existing.post.images;
       o.image=img;o.images=images;o.newsletter=existing?.post?.newsletter??existing?.material?.newsletter??!!o.newsletter;
       const post={...makePost(o,img,images),status:'queued'},item={slug:o.slug,publishAt:post.publishedAt,createdAt:existing?.createdAt||new Date().toISOString(),status:'queued',material:{...o,status:'queued'},post};
-      const next=[item,...queue.filter(x=>x.slug!==o.slug)];
-      await writeQueue(next,`Schedule: ${o.headline}`);
+      await updateQueue(latest=>[item,...latest.filter(x=>x.slug!==o.slug)],`Schedule: ${o.headline}`);
       window.__pvEditingScheduledSlug='';
       if(typeof store!=='undefined'){store.draft=null;saveStore?.()}
       if(pr)pr.style.width='100%';flash?.(`Запланировано на ${fmt(item.publishAt)}`);
@@ -104,7 +111,8 @@
     const queue=await readQueue();if(!Array.isArray(queue))return flash?.('Не удалось загрузить очередь');
     const item=queue.find(x=>x.slug===slug);if(!item)return;
     if(ask&&!confirm(`Удалить из очереди «${item.post?.headline||slug}»?`))return;
-    await writeQueue(queue.filter(x=>x.slug!==slug),`Unschedule: ${item.post?.headline||slug}`);flash?.('Публикация снята с очереди')
+    try{await updateQueue(latest=>latest.filter(x=>x.slug!==slug),`Unschedule: ${item.post?.headline||slug}`);flash?.('Публикация снята с очереди')}
+    catch(e){flash?.(e.message||'Не удалось снять публикацию с очереди')}
   }
   async function editScheduled(slug){
     const queue=await readQueue();if(!Array.isArray(queue))return flash?.('Не удалось загрузить очередь');
@@ -115,21 +123,22 @@
     flash?.('Запланированный материал открыт для редактирования; размещение в очереди сохранится')
   }
   async function toggleQueuedPlacement(slug,kind){
-    if(queueBusy)return;queueBusy=true;
+    if(queueBusy)return flash?.('Подождите сохранения предыдущего изменения');queueBusy=true;
     try{
       let on;
-      for(let attempt=0;attempt<4;attempt++){
+      for(let attempt=0;attempt<6;attempt++){
         const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь');
         const item=queue.find(x=>x.slug===slug);if(!item)throw new Error('Материал уже отсутствует в очереди');
         item.post=item.post||{};item.material=item.material||{};
         if(on===undefined)on=!(item.post[kind]??item.material[kind]);
         item.post[kind]=on;item.material[kind]=on;item.updatedAt=new Date().toISOString();
         try{await writeQueue(queue,`Scheduled ${kind}: ${slug}`);break}
-        catch(e){if(attempt===3||!/does not match|\b409\b|\b422\b|sha|conflict/i.test(e.message||''))throw e;await new Promise(resolve=>setTimeout(resolve,150*(attempt+1)))}
+        catch(e){if(attempt===5||!/does not match|\b409\b|\b422\b|sha|conflict/i.test(e.message||''))throw e;await new Promise(resolve=>setTimeout(resolve,400*(attempt+1)))}
       }
       flash?.(`${kind==='featured'?'Главная':kind==='popular'?'Популярное':'Рассылка'}: ${on?'включено':'выключено'} для отложенного материала`)
     }catch(e){flash?.(e.message||'Не удалось изменить размещение')}finally{queueBusy=false}
   }
+  window.pvToggleScheduledPlacement=toggleQueuedPlacement;
   function ensureScheduleButton(){
     let b=$('#scheduleBtn');if(b)return b;
     const pub=$('#publishBtn'),actions=pub?.parentElement;if(!pub||!actions)return null;

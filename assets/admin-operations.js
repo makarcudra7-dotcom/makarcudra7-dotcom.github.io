@@ -12,13 +12,20 @@ const message=s=>window.flash?.(s);
 let busy=false,filters={status:'all',author:'all',date:'',category:'all'},renderPending=false,newsletter=[],sitemapCache=null,healthReport={};
 function showBusy(on){busy=on;$$('[data-pv-action],#pvBulkApply').forEach(b=>b.disabled=on)}
 async function fileJson(path,fallback=[]){const f=await window.getFile(path);return f?.content?JSON.parse(decode(f)):fallback}
+const isConflict=e=>/does not match|\b409\b|\b422\b|sha|conflict/i.test(e?.message||'');
+async function mutateJson(path,mutator,label){
+ for(let attempt=0;attempt<6;attempt++){
+  const current=await fileJson(path);if(!Array.isArray(current))throw new Error('Список недоступен. Ничего не изменено.');
+  const next=mutator(current);if(!Array.isArray(next))throw new Error('Изменение не подготовлено');
+  try{await window.putFile(path,JSON.stringify(next,null,2)+'\n',label);return next}
+  catch(e){if(attempt===5||!isConflict(e))throw e;await new Promise(resolve=>setTimeout(resolve,400*(attempt+1)))}
+ }
+}
 async function savePosts(mutator,label){
  if(busy)return;showBusy(true);
  try{
-   const current=await fileJson('data/posts.json');if(!Array.isArray(current)||!current.length)throw new Error('Список статей недоступен. Ничего не изменено.');
-   const next=mutator(current);if(!Array.isArray(next))return;
    window.__pvListMutation=true;
-   try{await window.putFile('data/posts.json',JSON.stringify(next,null,2),label)}finally{window.__pvListMutation=false}
+   let next;try{next=await mutateJson('data/posts.json',current=>{if(!current.length)throw new Error('Список статей недоступен. Ничего не изменено.');return mutator(current)},label)}finally{window.__pvListMutation=false}
    if(window.store)window.store.posts=next;
    window.renderPosts?.();message('Сохранено. Главная страница обновится после сборки сайта.');
  }catch(e){message(e.message||'Не удалось сохранить изменение');console.warn('publication action',e)}
@@ -26,9 +33,10 @@ async function savePosts(mutator,label){
 }
 async function setPlacement(slug,kind){
  const p=bySlug(slug);if(!p)return;
+ let desired;
  await savePosts(list=>{
   const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Статья отсутствует в свежем списке');
-  const on=!target[kind];target[kind]=on;
+  if(desired===undefined)desired=!target[kind];const on=desired;target[kind]=on;
   if(kind==='featured'&&on)list.forEach(x=>{if(x.slug!==slug)x.featured=false});
   if(kind==='popular'&&on){const selected=list.filter(x=>x.popular);if(selected.length>7)selected.filter(x=>x.slug!==slug).sort((a,b)=>new Date(a.publishedAt)-new Date(b.publishedAt)).slice(0,selected.length-7).forEach(x=>x.popular=false)}
   return list;
@@ -39,11 +47,10 @@ async function sendMail(slugs){
  if(!confirm(`Поставить в email-ленту ${slugs.length} материал(ов)? Повторная отправка создаст новый RSS-сигнал.`))return;
  showBusy(true);
  try{
-  const list=await fileJson('data/newsletter-pushes.json');const now=Date.now();
+  const now=Date.now();
   const newItems=slugs.filter(s=>bySlug(s)).map((slug,i)=>({id:`${slug}-${now+i}`,slug,sentAt:new Date(now+i).toISOString()}));
   if(!newItems.length)throw new Error('Нет опубликованных материалов для рассылки');
-  const next=[...newItems,...list].slice(0,60);
-  await window.putFile('data/newsletter-pushes.json',JSON.stringify(next,null,2),'Newsletter: '+newItems.map(x=>x.slug).join(', '));
+  const next=await mutateJson('data/newsletter-pushes.json',list=>[...newItems,...list.filter(x=>!newItems.some(y=>y.id===x.id))].slice(0,60),'Newsletter: '+newItems.map(x=>x.slug).join(', '));
   newsletter=next;decorate();message('Сигнал добавлен в RSS. Доставка подписчикам зависит от follow.it.');
  }catch(e){message(e.message||'Не удалось поставить в рассылку')}
  finally{showBusy(false)}
@@ -108,7 +115,7 @@ async function reschedule(slug){
  if(value===null)return;const date=new Date(value);if(!Number.isFinite(date.getTime())||date<=new Date())return message('Выберите корректное будущее время');
  if(!confirm(`Перенести публикацию с ${old.toLocaleString('ru-RU')} на ${date.toLocaleString('ru-RU')}?`))return;
  if(busy)return;showBusy(true);
- try{const list=await fileJson('.github/scheduled-posts.json');const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Статья уже отсутствует в очереди');target.publishAt=date.toISOString();target.post.publishedAt=target.publishAt;target.material.publishedAt=value;target.material.updatedAt=value;target.post.updatedAt=target.publishAt;await window.putFile('.github/scheduled-posts.json',JSON.stringify(list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt)),null,2),'Reschedule: '+slug);await window.refreshScheduledNow?.();toggleCalendar();toggleCalendar();message('Время в очереди изменено')}
+ try{await mutateJson('.github/scheduled-posts.json',list=>{const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Статья уже отсутствует в очереди');target.publishAt=date.toISOString();target.post.publishedAt=target.publishAt;target.material.publishedAt=value;target.material.updatedAt=value;target.post.updatedAt=target.publishAt;return list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt))},'Reschedule: '+slug);await window.refreshScheduledNow?.();toggleCalendar();toggleCalendar();message('Время в очереди изменено')}
  catch(e){message(e.message||'Не удалось перенести публикацию')}finally{showBusy(false)}
 }
 async function health(slug,announce=true){
@@ -126,13 +133,13 @@ async function bulkReschedule(){
  const input=prompt('На сколько минут сдвинуть выбранные публикации? Отрицательное число — раньше.','30');if(input===null)return;
  const minutes=Number(input);if(!Number.isFinite(minutes)||minutes===0)return message('Укажите число минут');
  if(busy)return;showBusy(true);
- try{const list=await fileJson('.github/scheduled-posts.json');for(const item of list.filter(x=>slugs.includes(x.slug))){const date=new Date(new Date(item.publishAt).getTime()+minutes*60000);if(date<=new Date())throw new Error('Получится дата в прошлом — ничего не изменено');item.publishAt=date.toISOString();item.post.publishedAt=item.publishAt;const local=new Date(date-date.getTimezoneOffset()*60000).toISOString().slice(0,16);item.material.publishedAt=local;item.material.updatedAt=local;item.post.updatedAt=item.publishAt}await window.putFile('.github/scheduled-posts.json',JSON.stringify(list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt)),null,2),'Bulk reschedule: '+slugs.join(', '));await window.refreshScheduledNow?.();message(`Перенесено ${slugs.length} публикаций`)}catch(e){message(e.message||'Не удалось перенести очередь')}finally{showBusy(false)}
+ try{await mutateJson('.github/scheduled-posts.json',list=>{for(const item of list.filter(x=>slugs.includes(x.slug))){const date=new Date(new Date(item.publishAt).getTime()+minutes*60000);if(date<=new Date())throw new Error('Получится дата в прошлом — ничего не изменено');item.publishAt=date.toISOString();item.post.publishedAt=item.publishAt;const local=new Date(date-date.getTimezoneOffset()*60000).toISOString().slice(0,16);item.material.publishedAt=local;item.material.updatedAt=local;item.post.updatedAt=item.publishAt}return list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt))},'Bulk reschedule: '+slugs.join(', '));await window.refreshScheduledNow?.();message(`Перенесено ${slugs.length} публикаций`)}catch(e){message(e.message||'Не удалось перенести очередь')}finally{showBusy(false)}
 }
 async function publishNow(slug){
  const item=queued().find(x=>x.slug===slug);if(!item)return message('Материал уже не в очереди');
  if(!confirm(`Выпустить сейчас «${item.post?.headline||slug}»?`))return;
  if(busy)return;showBusy(true);
- try{const list=await fileJson('.github/scheduled-posts.json');const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Материал уже вышел');target.publishAt=new Date(Date.now()-1000).toISOString();target.post.publishedAt=target.publishAt;target.material.publishedAt=target.publishAt;await window.putFile('.github/scheduled-posts.json',JSON.stringify(list,null,2),'Publish now: '+slug);message('Задача отправлена. Статус изменится после автоматической публикации.');setTimeout(()=>window.refreshPublications?.(),5000)}catch(e){message(e.message||'Не удалось запустить публикацию')}finally{showBusy(false)}
+ try{await mutateJson('.github/scheduled-posts.json',list=>{const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Материал уже вышел');target.publishAt=new Date(Date.now()-1000).toISOString();target.post.publishedAt=target.publishAt;target.material.publishedAt=target.publishAt;return list},'Publish now: '+slug);message('Задача отправлена. Статус изменится после автоматической публикации.');setTimeout(()=>window.refreshPublications?.(),5000)}catch(e){message(e.message||'Не удалось запустить публикацию')}finally{showBusy(false)}
 }
 const TEMPLATES={
  recipe:'<h2>Ингредиенты</h2><ul><li>Укажите продукты и количество</li></ul><h2>Как приготовить</h2><ol><li>Опишите первый шаг</li></ol><h2>Подача и хранение</h2><p>Добавьте проверенные детали.</p>',

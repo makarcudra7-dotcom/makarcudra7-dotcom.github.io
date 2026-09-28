@@ -135,7 +135,7 @@ module.exports = async function handler(req, res) {
     const encodedPath = path.split('/').map(encodeURIComponent).join('/');
 
     if (body.action === 'get') {
-      const r = await github(`contents/${encodedPath}?ref=${encodeURIComponent(BRANCH)}`);
+      const r = await github(`contents/${encodedPath}?ref=${encodeURIComponent(BRANCH)}&pv=${Date.now()}`);
       if (r.status === 404) return json(res, 200, { file: null });
       const data = await r.json();
       if (!r.ok) return json(res, r.status, { error: data.message || `GitHub ${r.status}` });
@@ -146,7 +146,7 @@ module.exports = async function handler(req, res) {
       const encoding = body.encoding === 'base64' ? 'base64' : 'utf-8';
       const rawContent = String(body.content || '');
       const content = encoding === 'base64' ? rawContent : Buffer.from(rawContent, 'utf8').toString('base64');
-      const current = await github(`contents/${encodedPath}?ref=${encodeURIComponent(BRANCH)}`);
+      const current = await github(`contents/${encodedPath}?ref=${encodeURIComponent(BRANCH)}&pv=${Date.now()}`);
       let sha;
       if (current.ok) sha = (await current.json()).sha;
       else if (current.status !== 404) {
@@ -166,7 +166,7 @@ module.exports = async function handler(req, res) {
     }
 
     if (body.action === 'delete') {
-      const current = await github(`contents/${encodedPath}?ref=${encodeURIComponent(BRANCH)}`);
+      const current = await github(`contents/${encodedPath}?ref=${encodeURIComponent(BRANCH)}&pv=${Date.now()}`);
       if (current.status === 404) return json(res, 200, { result: null, deleted: false });
       const currentData = await current.json().catch(() => ({}));
       if (!current.ok) return json(res, current.status, { error: currentData.message || `GitHub ${current.status}` });

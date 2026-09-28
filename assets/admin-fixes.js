@@ -43,12 +43,17 @@
     queueBusy=true;
     document.querySelectorAll('[data-pv-queued-placement]').forEach(b=>b.disabled=true);
     try{
-      const file=await window.getFile('.github/scheduled-posts.json');
-      const list=file?.content?JSON.parse(decode(file)):[];
-      const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Материал уже вышел или отсутствует в очереди');
-      target.post=target.post||{};target.material=target.material||{};
-      const on=!target.post[kind];target.post[kind]=on;target.material[kind]=on;
-      await window.putFile('.github/scheduled-posts.json',JSON.stringify(list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt)),null,2),`Scheduled ${kind}: ${slug}`);
+      let on,list;
+      for(let attempt=0;attempt<6;attempt++){
+        const file=await window.getFile('.github/scheduled-posts.json');
+        list=file?.content?JSON.parse(decode(file)):[];
+        const target=list.find(x=>x.slug===slug);if(!target)throw new Error('Материал уже вышел или отсутствует в очереди');
+        target.post=target.post||{};target.material=target.material||{};
+        if(on===undefined)on=!(target.post[kind]??target.material[kind]);
+        target.post[kind]=on;target.material[kind]=on;
+        try{await window.putFile('.github/scheduled-posts.json',JSON.stringify(list.sort((a,b)=>new Date(a.publishAt)-new Date(b.publishAt)),null,2)+'\n',`Scheduled ${kind}: ${slug}`);break}
+        catch(e){if(attempt===5||!/does not match|\b409\b|\b422\b|sha|conflict/i.test(e.message||''))throw e;await new Promise(resolve=>setTimeout(resolve,400*(attempt+1)))}
+      }
       window.__pvScheduledSnapshot=list;if(window.store)window.store.scheduled=list;
       await window.refreshScheduledNow?.();decorateQueuedPlacements();
       const label=kind==='featured'?'Главная':kind==='popular'?'Популярное':'В рассылку';flash(`${label}: ${on?'включено':'выключено'} для отложенной статьи`);
@@ -58,7 +63,8 @@
 
   document.addEventListener('click',e=>{
     const b=e.target.closest?.('[data-pv-queued-placement]');if(!b)return;
-    e.preventDefault();e.stopPropagation();toggleQueuedPlacement(b.dataset.pvQueuedSlug,b.dataset.pvQueuedPlacement);
+    e.preventDefault();e.stopPropagation();
+    (window.pvToggleScheduledPlacement||toggleQueuedPlacement)(b.dataset.pvQueuedSlug,b.dataset.pvQueuedPlacement);
   },true);
   const table=document.getElementById('postsTable');if(table)new MutationObserver(decorateQueuedPlacements).observe(table,{childList:true,subtree:true});
   let tries=0,t=setInterval(()=>{decorateQueuedPlacements();if(++tries>120)clearInterval(t)},100);

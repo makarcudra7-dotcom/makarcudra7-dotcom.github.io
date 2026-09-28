@@ -1,5 +1,9 @@
 name: Optimize homepage hero
 
+concurrency:
+  group: provkus-scheduled-publishing
+  cancel-in-progress: false
+
 on:
   push:
     branches: [main]
@@ -30,13 +34,16 @@ jobs:
         run: pip install pillow
 
       - name: Build responsive hero images
-        run: python3 scripts/optimize_home_hero.py
+        run: |
+          python3 scripts/build_indexes.py
+          python3 scripts/optimize_home_hero.py
 
       - name: Commit responsive hero assets
         run: |
           git config user.name "provkus-performance-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add index.html assets/uploads
+          git add index.html assets/uploads archive/ archive.html calculators.html news.html category.html authors.html author-*.html recipes.html products.html home-storage.html food-safety.html sitemap.xml feed.xml dzen.xml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m "perf: responsive homepage hero images"
-          git push
+          git commit -m "Refresh homepage placements and responsive homepage hero images"
+          git pull --rebase origin main
+          git push origin HEAD:main
