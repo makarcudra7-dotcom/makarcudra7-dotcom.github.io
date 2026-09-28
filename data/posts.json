@@ -1,5 +1,44 @@
 [
   {
+    "slug": "grechka-s-gribami-v-skovorode",
+    "headline": "Как приготовить гречку с грибами без сухости: кидаю на сковороду шампиньоны, а крупа сама пухнет на глазах",
+    "description": "Пропорции гречки и воды, порядок обжаривания грибов и время под крышкой для рассыпчатого ужина.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/2026-09-28-grechka-s-gribami-v-skovorode-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/2026-09-28-grechka-s-gribami-v-skovorode-cover.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-28-grechka-s-gribami-v-skovorode-inside.webp"
+    ],
+    "imageAlt": "Рассыпчатая гречка с подрумяненными шампиньонами и луком",
+    "url": "https://provkus-media.ru/articles/grechka-s-gribami-v-skovorode.html",
+    "publishedAt": "2026-09-28T11:00:00.000Z",
+    "updatedAt": "2026-09-28T11:00:00.000Z",
+    "tags": [],
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "editorialCheck": {
+      "mode": "",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "",
+      "sourceNote": "",
+      "realPhoto": "",
+      "aiImage": true,
+      "confirmed": false
+    },
+    "featured": true,
+    "popular": false,
+    "newsletter": false,
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "pozelenel-proros-kartofel",
     "headline": "Картофель позеленел или пророс: в каком случае клубень выбрасывать, а когда можно очистить",
     "description": "Почему позеленевший картофель лучше не использовать, что делать с ростками у крепкого клубня и как хранить картофель без света.",
@@ -54,7 +93,7 @@
       "выпечка"
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "excludeRelated": false,
     "status": "published",

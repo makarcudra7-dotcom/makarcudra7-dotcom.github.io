@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Sun, 27 Sep 2026 19:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 11:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Как приготовить гречку с грибами без сухости: кидаю на сковороду шампиньоны, а крупа сама пухнет на глазах</title>
+    <link>https://provkus-media.ru/articles/grechka-s-gribami-v-skovorode.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/grechka-s-gribami-v-skovorode.html</guid>
+    <pubDate>Mon, 28 Sep 2026 11:00:00 GMT</pubDate>
+    <description>Пропорции гречки и воды, порядок обжаривания грибов и время под крышкой для рассыпчатого ужина.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-28-grechka-s-gribami-v-skovorode-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Картофель позеленел или пророс: в каком случае клубень выбрасывать, а когда можно очистить</title>
     <link>https://provkus-media.ru/articles/pozelenel-proros-kartofel.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-onigiri-s-tuncom-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Оякодон не пересушиваю: яйцо вливаю в два захода, чтобы часть осталась нежной поверх курицы и риса</title>
-    <link>https://provkus-media.ru/articles/yaponiya-oyakodon.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-oyakodon.html</guid>
-    <pubDate>Wed, 23 Sep 2026 11:15:00 GMT</pubDate>
-    <description>Японская рисовая миска оякодон с курицей, луком и мягким яйцом в соевом соусе.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-oyakodon-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
