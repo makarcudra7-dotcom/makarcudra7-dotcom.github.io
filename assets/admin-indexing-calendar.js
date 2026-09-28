@@ -41,11 +41,34 @@
     const card=document.createElement('div');card.className='card';card.id='pvIndexingPanel';card.innerHTML='<div class="card-title">Индексация <button type="button" class="btn soft" id="pvIndexRefresh">Проверить</button></div><div class="card-body" id="pvIndexingBody"></div>';section.appendChild(card);$('#pvIndexRefresh').onclick=loadIndexing;loadIndexing();
   }
 
+  async function renderPostReport(){
+    const box=$('#pvPostReport');if(!box)return;
+    box.innerHTML='<strong>После публикации</strong><span>Загружаю результаты проверки…</span>';
+    try{
+      const response=await fetch('/data/publication-health.json?pv='+Date.now(),{cache:'no-store'});
+      if(!response.ok)throw new Error('HTTP '+response.status);
+      const report=await response.json();
+      const recent=posts().filter(p=>p.slug&&new Date(p.publishedAt).getTime()<=Date.now())
+        .sort((a,b)=>new Date(b.publishedAt)-new Date(a.publishedAt)).slice(0,15);
+      if(!recent.length){box.innerHTML='<strong>После публикации</strong><span>Список материалов загружается…</span>';return}
+      const rows=recent.map(p=>({p,health:report[p.slug]}));
+      const issues=rows.filter(x=>x.health?.status==='error').length;
+      const pending=rows.filter(x=>!x.health).length;
+      const checked=rows.filter(x=>x.health?.checkedAt).map(x=>x.health.checkedAt).sort().at(-1);
+      box.innerHTML=`<div class="pv-post-head"><strong>Свежие публикации: проверка сайта</strong><button type="button" class="btn soft" id="pvPostHealthRefresh">Обновить</button></div>
+        <p class="hint">Последние 15 материалов · ошибок: ${issues} · ожидают проверки: ${pending} · последняя проверка: ${checked?esc(new Date(checked).toLocaleString('ru-RU')):'—'}. Автоматическая проверка запускается каждый час.</p>
+        <div class="pv-post-list">${rows.map(({p,health})=>`<div class="pv-post-item"><a href="/articles/${encodeURIComponent(p.slug)}.html" target="_blank" rel="noopener">${esc(p.headline||p.slug)}</a><span class="${health?.status==='error'?'pv-index-error':''}">${health?.status==='error'?esc(health.errors?.join('; ')||'Ошибка'):health?.status==='ok'?'Страница и фото доступны':'Ожидает проверки'}</span><small>${health?.checkedAt?esc(new Date(health.checkedAt).toLocaleString('ru-RU')):'—'}</small></div>`).join('')}</div>
+        <p class="hint">Это техническая доступность страницы и изображений. Статус индексации Google и показы здесь не измеряются.</p>`;
+      $('#pvPostHealthRefresh').onclick=renderPostReport;
+    }catch(e){box.innerHTML=`<strong>После публикации</strong><span class="pv-index-error">Не удалось загрузить результаты: ${esc(e.message)}</span><button type="button" class="btn soft" id="pvPostHealthRefresh">Повторить</button>`;$('#pvPostHealthRefresh').onclick=renderPostReport}
+  }
   function installPostReport(){
     const root=$('#publications .card-body');if(!root||$('#pvPostReport'))return;
-    const box=document.createElement('div');box.id='pvPostReport';box.className='pv-post-report';box.innerHTML='<strong>После публикации</strong><span>Ошибки и время последней проверки берутся из автоматического publication-health.</span><span>Показы/клики: источник аналитики пока не подключён к CMS; значения не подменяются нулями.</span>';root.appendChild(box);
+    const box=document.createElement('div');box.id='pvPostReport';box.className='pv-post-report';root.appendChild(box);renderPostReport();
+    document.addEventListener('pv-posts-loaded',renderPostReport);
+    setTimeout(renderPostReport,1500);
   }
-  function styles(){if($('#pvIndexingStyles'))return;const s=document.createElement('style');s.id='pvIndexingStyles';s.textContent='.pv-calendar-mode{display:flex;gap:7px;margin:8px 0 12px}.pv-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.pv-index-grid>div{border:1px solid #e3e3e3;border-radius:10px;padding:11px;display:flex;flex-direction:column;gap:4px}.pv-index-grid span{font-weight:700}.pv-index-grid small,.pv-post-report span{color:#666;font-size:12px}.pv-index-error{color:#a3342a}.pv-post-report{margin:12px 0;padding:12px;border:1px solid #e3e3e3;border-radius:10px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}';document.head.appendChild(s)}
+  function styles(){if($('#pvIndexingStyles'))return;const s=document.createElement('style');s.id='pvIndexingStyles';s.textContent='.pv-calendar-mode{display:flex;gap:7px;margin:8px 0 12px}.pv-index-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}.pv-index-grid>div{border:1px solid #e3e3e3;border-radius:10px;padding:11px;display:flex;flex-direction:column;gap:4px}.pv-index-grid span{font-weight:700}.pv-index-grid small,.pv-post-report span{color:#666;font-size:12px}.pv-index-error{color:#a3342a}.pv-post-report{margin:12px 0;padding:12px;border:1px solid #e3e3e3;border-radius:10px}.pv-post-head{display:flex;justify-content:space-between;align-items:center;gap:12px}.pv-post-list{display:grid;gap:8px;max-height:460px;overflow:auto}.pv-post-item{display:grid;grid-template-columns:minmax(200px,2fr) minmax(180px,1fr) auto;gap:12px;border-top:1px solid #eee;padding:8px 0;font-size:13px}.pv-post-item a{color:#164b35}.pv-post-item small{color:#666}@media(max-width:720px){.pv-post-item{grid-template-columns:1fr}.pv-post-item small{margin-top:-8px}}';document.head.appendChild(s)}
   function init(){styles();installCalendar();installIndexing();installPostReport()}
   let tries=0,t=setInterval(()=>{init();if(++tries>180)clearInterval(t)},100);window.addEventListener('pv-admin-runtime-ready',init);
 })();
