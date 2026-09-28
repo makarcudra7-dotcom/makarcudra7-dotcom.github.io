@@ -1,7 +1,7 @@
 import re
 from pathlib import Path
 
-TAG = '<script src="/assets/metrika.js?v=20260929-reader2" defer></script>'
+TAG = '<script src="/assets/metrika.js?v=20260929-reader3" defer></script>'
 METRIKA_RE = re.compile(r"(?P<prefix><script\s+src=['\"])(?P<path>/?assets/metrika\.js)(?:\?[^'\"]*)?(?P<suffix>['\"])", re.IGNORECASE)
 APP_RE = re.compile(r"(?P<prefix><script\s+src=['\"])(?P<path>/?assets/app\.js)(?:\?[^'\"]*)?(?P<suffix>['\"])", re.IGNORECASE)
 APP_URL_RE = re.compile(r"(?P<path>/?assets/app\.js)(?:\?v=[A-Za-z0-9_-]+)?")
@@ -45,9 +45,9 @@ def inject(path: Path) -> bool:
         text, zen_changed = ensure_zen_meta_first_in_head(text)
         changed = changed or zen_changed
 
-    updated = METRIKA_RE.sub(lambda m: m['prefix'] + m['path'] + '?v=20260929-reader2' + m['suffix'], text)
-    updated = APP_RE.sub(lambda m: m['prefix'] + m['path'] + '?v=20260929-reader2' + m['suffix'], updated)
-    updated = APP_URL_RE.sub(lambda m: m['path'] + '?v=20260929-reader2', updated)
+    updated = METRIKA_RE.sub(lambda m: m['prefix'] + m['path'] + '?v=20260929-reader3' + m['suffix'], text)
+    updated = APP_RE.sub(lambda m: m['prefix'] + m['path'] + '?v=20260929-reader3' + m['suffix'], updated)
+    updated = APP_URL_RE.sub(lambda m: m['path'] + '?v=20260929-reader3', updated)
     if updated != text:
         text = updated
         changed = True

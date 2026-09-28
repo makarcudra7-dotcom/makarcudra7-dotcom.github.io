@@ -61,6 +61,6 @@
   injectCss();addFavicon();addSiteSchema();enhanceNavigation();fixAuthorTrustCopy();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();
   if(!isHome)window.__pvPostsPromise.then(posts=>{if(posts.length)renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome){const loadHome=()=>runWhenIdle(()=>loadScript('/assets/home-dynamic.js?v=20260926-mobile-speed3','pvHomeDynamic'));if(document.readyState==='complete')loadHome();else window.addEventListener('load',loadHome,{once:true})}
-  loadScript('/assets/reader-tools.js?v=20260929-reader2','pvReaderToolsScript');
+  loadScript('/assets/reader-tools.js?v=20260929-reader3','pvReaderToolsScript');
   if(document.readyState==='complete')loadNonCriticalScripts();else window.addEventListener('load',loadNonCriticalScripts,{once:true});
 })();
