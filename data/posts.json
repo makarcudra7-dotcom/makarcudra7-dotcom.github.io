@@ -311,7 +311,20 @@
     "popular": false,
     "excludeRelated": false,
     "status": "published",
-    "newsletter": false
+    "newsletter": false,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://04.rospotrebnadzor.ru/index.php/san-nadzor/2015-10-01-05-48-10/12038-03032020.html",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "yablochnyi-krambl-s-ovsyanoi-kroshkoi",
@@ -575,7 +588,20 @@
     "popular": false,
     "excludeRelated": false,
     "status": "published",
-    "newsletter": false
+    "newsletter": false,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://36.rospotrebnadzor.ru/news/24999",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "kapustnye-oladi-na-skovorode",
@@ -689,7 +715,20 @@
       "Застелите противень пергаментом, распределите соль слоем 1–1,5 см и хорошо обсушите курицу.",
       "Положите курицу грудкой вверх и запекайте при 190 °C; для птицы около 1,5 кг ориентир 60–75 минут.",
       "Проверьте температуру в самой толстой части бедра, не касаясь кости: не ниже 74 °C. Оставьте на 10 минут перед разрезанием."
-    ]
+    ],
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://13.rospotrebnadzor.ru/center/services/education/135923",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "ne-perlovka-i-ne-kukuruza-v-sentyabre-vybirayu-druguyu-primanku-karas-ee-prosto-obozhaet",
@@ -756,7 +795,20 @@
     "photoSource": "provkus-media.ru",
     "featured": false,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://62.rospotrebnadzor.ru/content/sroki-godnosti-gotovyh-blyud",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy",
@@ -788,7 +840,20 @@
     "photoSource": "provkus-media.ru",
     "featured": false,
     "popular": false,
-    "excludeRelated": false
+    "excludeRelated": false,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://zpp.rospotrebnadzor.ru/news/regional/321941",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu",
@@ -1345,7 +1410,20 @@
     "excludeRelated": false,
     "featured": false,
     "popular": false,
-    "coauthors": []
+    "coauthors": [],
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://62.rospotrebnadzor.ru/content/sroki-godnosti-gotovyh-blyud",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku",
@@ -1498,7 +1576,20 @@
     "excludeRelated": false,
     "featured": false,
     "popular": false,
-    "coauthors": []
+    "coauthors": [],
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "vetnam-spring-rolly-s-krevetkami",
@@ -2514,7 +2605,20 @@
     "featured": false,
     "popular": false,
     "excludeRelated": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://26.rospotrebnadzor.ru/press-center/pr/14344/",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "uzbekskaya-plov-s-govyadinoy",
@@ -3655,7 +3759,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://zpp.rospotrebnadzor.ru/info/analysis/464925",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "zachem-myt-banany-i-mandariny",
@@ -3676,7 +3793,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://zpp.rospotrebnadzor.ru/news/federal/574886",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "kak-vybrat-syr-s-plesenyu",
@@ -3697,7 +3827,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/molds-food-are-they-dangerous",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "italiya-brusketta-s-tomatami",
@@ -3763,7 +3906,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://zpp.rospotrebnadzor.ru/news/federal/574709",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "nuzhno-li-myt-yayca-posle-magazina",
@@ -3784,7 +3940,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://zpp.rospotrebnadzor.ru/news/federal/535642",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "italiya-rizotto-s-gribami",
@@ -3853,7 +4022,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/big-thaw-safe-defrosting-methods-consumers",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "kak-hranit-kartofel-doma",
@@ -4007,7 +4189,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://04.rospotrebnadzor.ru/index.php/consumer-information/faq/17944-24012023.pdf",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "kitay-lapsha-s-govyadinoy-i-ovoschami",
@@ -4258,7 +4453,20 @@
     "prepTime": "PT10M",
     "cookTime": "PT10M",
     "totalTime": "PT20M",
-    "recipeYield": "4 порции"
+    "recipeYield": "4 порции",
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://www.fda.gov/consumers/consumer-updates/what-you-need-know-about-egg-safety",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "skolko-hranit-plavlenyi-syr-posle-vskrytiya",
@@ -4279,7 +4487,20 @@
     ],
     "photoSource": "ProVkus",
     "featured": false,
-    "imageResponsive": true
+    "imageResponsive": true,
+    "editorialCheck": {
+      "mode": "sources",
+      "sourceUrl": "https://www.fda.gov/consumers/consumer-updates/are-you-storing-food-safely",
+      "sourceNote": "Рекомендации, связанные с безопасностью пищи, здоровьем или безопасным хранением продуктов, сверены редакцией с профильным источником.",
+      "confirmed": true,
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "realPhoto": "",
+      "aiImage": false
+    }
   },
   {
     "slug": "kitay-kurica-gunbao",

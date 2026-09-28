@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://provkus-media.ru/sitemap.xml
-Sitemap: https://provkus-media.ru/sitemap-fruit-jazz.xml

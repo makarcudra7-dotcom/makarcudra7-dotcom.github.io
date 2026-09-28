@@ -157,4 +157,15 @@ if sitemap.exists():
     xml=xml.replace('</urlset>',entries+'\n</urlset>')
     sitemap.write_text(xml,'utf-8')
 
+
+# SEO-DAILY-ARCHIVE-RULE: daily date archives are navigation pages, not search landing pages.
+for _path in (ROOT/'archive').glob('*/*/*/index.html'):
+    _src=_path.read_text('utf-8')
+    _src=re.sub(r'<meta name="robots" content="[^"]*">','<meta name="robots" content="noindex,follow">',_src,count=1)
+    _path.write_text(_src,'utf-8')
+if sitemap.exists():
+    _xml=sitemap.read_text('utf-8')
+    _xml=re.sub(r'\s*<url><loc>https://provkus-media\.ru/archive/\d{4}/\d{2}/\d{2}/</loc>(?:<lastmod>[^<]+</lastmod>)?</url>','',_xml)
+    sitemap.write_text(_xml,'utf-8')
+
 print(f'Generated {len(archive_urls)} archive URLs for {len(POSTS)} public posts')
