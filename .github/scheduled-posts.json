@@ -29,7 +29,7 @@
         "questions": [],
         "afterContent": "<p></p>"
       },
-      "featured": false,
+      "featured": true,
       "popular": false,
       "_editingSlug": "",
       "excludeRelated": false,
@@ -87,7 +87,7 @@
         "aiImage": true,
         "confirmed": false
       },
-      "featured": false,
+      "featured": true,
       "popular": false,
       "newsletter": false,
       "status": "queued",
