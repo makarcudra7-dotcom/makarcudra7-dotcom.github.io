@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Mon, 28 Sep 2026 17:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 19:46:25 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Что не стоит ставить на стол в Новый год 2027: Красная Коза такое меню «не оценит»</title>
+    <link>https://provkus-media.ru/articles/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit.html</guid>
+    <pubDate>Mon, 28 Sep 2026 19:26:00 GMT</pubDate>
+    <description>Если хочется оформить новогодний стол в символике Огненной Козы, некоторые тяжёлые блюда можно заменить более лёгкими и яркими вариантами.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Продукты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit-16x9.jpg" medium="image"/>
+  </item>
   <item>
     <title>Вчерашнее пюре больше не разогреваю: делаю сырные лепёшки «Улыбашки» с хрустящей корочкой и сырной бомбой внутри</title>
     <link>https://provkus-media.ru/articles/kartofelnye-lepeshki-s-syrom.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/kotlety-bol-she-ne-leplyu-pustymi-vnutr-yayco-syr-poluchayutsya-myasnye-matreshki-s-syurprizom-v-razreze-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Окономияки делаю толстым, но жарю под крышкой: капуста успевает стать мягкой, а корочка — румяной</title>
-    <link>https://provkus-media.ru/articles/yaponiya-okonomiyaki-po-domashnemu.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-okonomiyaki-po-domashnemu.html</guid>
-    <pubDate>Wed, 23 Sep 2026 17:20:00 GMT</pubDate>
-    <description>Домашний японский капустный блин окономияки с яйцом, зелёным луком и соусом.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-okonomiyaki-po-domashnemu-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
