@@ -193,11 +193,9 @@
     "checkedAt": "2026-09-28T07:33:05.990854Z"
   },
   "tomatnoe-ragu-s-fasolyu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: RemoteDisconnected: Remote end closed connection without response"
-    ],
-    "checkedAt": "2026-09-28T15:34:03.233022Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T16:33:33.906213Z"
   },
   "yablochnyi-krambl-s-ovsyanoi-kroshkoi": {
     "status": "ok",
@@ -205,11 +203,9 @@
     "checkedAt": "2026-09-28T07:33:06.041940Z"
   },
   "pozelenel-proros-kartofel": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: RemoteDisconnected: Remote end closed connection without response"
-    ],
-    "checkedAt": "2026-09-28T15:34:03.213141Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T16:33:34.156420Z"
   },
   "tailand-tom-kha-s-kuricey": {
     "status": "error",
@@ -1037,5 +1033,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-09-28T15:34:03.993759Z"
+  },
+  "salat-iz-svekly-yabloka-i-fasoli": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T16:33:33.868448Z"
   }
 }
