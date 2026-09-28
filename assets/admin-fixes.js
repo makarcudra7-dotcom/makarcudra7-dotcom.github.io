@@ -1,10 +1,15 @@
 (()=>{
   const image=document.getElementById('image'),file=document.getElementById('imageFile'),preview=document.getElementById('imagePreview');
-  let localUrl='';
+  let previewSeq=0;
   function update(){
-    if(localUrl){URL.revokeObjectURL(localUrl);localUrl=''}
+    const seq=++previewSeq;
     const upload=file?.files?.[0];
-    if(upload){localUrl=URL.createObjectURL(upload);preview.src=localUrl;return}
+    if(upload){
+      const reader=new FileReader();
+      reader.onload=()=>{if(seq===previewSeq&&file.files?.[0]===upload)preview.src=reader.result};
+      reader.onerror=()=>{if(seq===previewSeq)preview.src='assets/fallback-cover.svg'};
+      reader.readAsDataURL(upload);return
+    }
     const typed=image?.value?.trim();
     preview.src=typed?new URL(typed,location.origin+'/').href:'assets/fallback-cover.svg';
   }

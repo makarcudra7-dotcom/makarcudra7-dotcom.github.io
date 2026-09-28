@@ -32,7 +32,12 @@
   }
   function inspectImage(){
     const seq=++imageCheckSeq,file=$('#imageFile')?.files?.[0],url=$('#image')?.value?.trim();
-    if(file){const object=URL.createObjectURL(file),img=new Image();img.onload=()=>{if(seq===imageCheckSeq)describeImage(img.naturalWidth,img.naturalHeight);URL.revokeObjectURL(object)};img.onerror=()=>{if(seq===imageCheckSeq)describeImage(0,0,true);URL.revokeObjectURL(object)};img.src=object;return}
+    if(file){
+      const reader=new FileReader();
+      reader.onload=()=>{const img=new Image();img.onload=()=>{if(seq===imageCheckSeq)describeImage(img.naturalWidth,img.naturalHeight)};img.onerror=()=>{if(seq===imageCheckSeq)describeImage(0,0,true)};img.src=reader.result};
+      reader.onerror=()=>{if(seq===imageCheckSeq)describeImage(0,0,true)};
+      reader.readAsDataURL(file);return
+    }
     if(!url){describeImage(0,0);return}
     if(!/^https:\/\//i.test(url)){describeImage(0,0,true);return}
     const img=new Image();img.onload=()=>{if(seq===imageCheckSeq)describeImage(img.naturalWidth,img.naturalHeight)};img.onerror=()=>{if(seq===imageCheckSeq)describeImage(0,0,true)};img.src=url+(url.includes('?')?'&':'?')+'pv-quality='+Date.now();
