@@ -71,7 +71,7 @@ function applyFilters(){
   if(tr.querySelector('td[colspan]'))continue;total++;
   const slug=slugFromRow(tr),p=bySlug(slug),item=queued().find(x=>x.slug===tr.dataset.scheduledSlug),isDraft=tr.classList.contains('draft-row');
   const status=tr.dataset.pvStatus||(isDraft?'draft':item?'queued':'published'),author=p?.author||item?.post?.author||tr.children[2]?.textContent||'',category=p?.category||item?.post?.category||item?.material?.category||'',date=(p?.publishedAt||item?.publishAt||'').slice(0,10);
-  const match=(!q||(tr.textContent+' '+(p?.url||'')).toLowerCase().includes(q))&&(filters.status==='all'||filters.status===status)&&(filters.author==='all'||filters.author===author)&&(filters.category==='all'||filters.category===category)&&(!filters.date||filters.date===date);
+  const match=(!q||(tr.textContent+' '+(p?.url||item?.post?.url||item?.material?.canonical||'')).toLowerCase().includes(q))&&(filters.status==='all'||filters.status===status)&&(filters.author==='all'||filters.author===author)&&(filters.category==='all'||filters.category===category)&&(!filters.date||filters.date===date);
   tr.hidden=!match;if(match)visible++;
  }
  const count=$('#postSearchCount');if(count)count.textContent=`Показано: ${visible} из ${total}`;
