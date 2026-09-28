@@ -63,7 +63,18 @@ function enrichRow(tr,slug){
 }
 function decorate(){
  if(renderPending)return;renderPending=true;
- requestAnimationFrame(()=>{renderPending=false;for(const tr of $$('#postsTable tr')){const slug=slugFromRow(tr);if(slug)enrichRow(tr,slug);else if(tr.dataset.scheduledSlug&&!tr.querySelector('[data-pv-reschedule]')){tr.children[0]?.insertAdjacentHTML('afterbegin',`<input type="checkbox" data-pv-select="${esc(tr.dataset.scheduledSlug)}" aria-label="Выбрать запланированный материал" class="pv-row-select"> `);tr.querySelector('.row-actions')?.insertAdjacentHTML('beforeend',`<button type="button" class="btn soft" data-pv-reschedule="${esc(tr.dataset.scheduledSlug)}">Перенести</button><button type="button" class="btn soft" data-pv-publish-now="${esc(tr.dataset.scheduledSlug)}">Выпустить сейчас</button>`)} }applyFilters()})
+ requestAnimationFrame(()=>{renderPending=false;for(const tr of $$('#postsTable tr')){const slug=slugFromRow(tr);if(slug)enrichRow(tr,slug);else if(tr.dataset.scheduledSlug&&!tr.querySelector('[data-pv-reschedule]')){tr.children[0]?.insertAdjacentHTML('afterbegin',`<input type="checkbox" data-pv-select="${esc(tr.dataset.scheduledSlug)}" aria-label="Выбрать запланированный материал" class="pv-row-select"> `);tr.querySelector('.row-actions')?.insertAdjacentHTML('beforeend',`<button type="button" class="btn soft" data-pv-reschedule="${esc(tr.dataset.scheduledSlug)}">Перенести</button><button type="button" class="btn soft" data-pv-publish-now="${esc(tr.dataset.scheduledSlug)}">Выпустить сейчас</button>`)} }refreshFilterOptions();applyFilters()})
+}
+function refreshFilterOptions(){
+ for(const [id,values] of [['pvAuthor',[...posts().map(x=>x.author),...queued().map(x=>x.post?.author||x.material?.author)]],['pvCategory',[...posts().map(x=>x.category),...queued().map(x=>x.post?.category||x.material?.category)] ]]){
+  const select=$('#'+id);if(!select)return;
+  const options=[...new Set(values.filter(Boolean))].sort((a,b)=>a.localeCompare(b,'ru'));
+  const current=select.value;
+  if(options.length===select.options.length-1&&options.every((value,i)=>select.options[i+1].value===value))continue;
+  select.replaceChildren(select.options[0].cloneNode(true),...options.map(value=>new Option(value,value)));
+  select.value=options.includes(current)?current:'all';
+  if(id==='pvAuthor')filters.author=select.value;else filters.category=select.value;
+ }
 }
 function applyFilters(){
  const q=($('#postSearch')?.value||'').trim().toLowerCase();let visible=0,total=0;

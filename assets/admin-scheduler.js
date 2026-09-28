@@ -15,7 +15,6 @@
     try{
       const f=await window.getFile(QUEUE_PATH);
       if(f?.content)return JSON.parse(decode(f));
-      if(f===null)return [];
     }catch(e){console.warn('scheduled queue server read',e)}
     try{
       const r=await fetch(QUEUE_RAW+'?t='+Date.now(),{cache:'no-store',headers:{Accept:'application/json'}});
@@ -149,8 +148,14 @@
     const q=await readQueue();
     if(!Array.isArray(q))return false;
     const visible=q.filter(x=>!x?.pausedRecovery);
-    if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store;window.__pvScheduledSnapshot=visible;window.renderPosts?.()}
-    window.dispatchEvent(new CustomEvent('pv-scheduled-updated',{detail:{items:q}}));
+    const previous=window.__pvScheduledSnapshot||store?.scheduled||[];
+    const signature=items=>JSON.stringify(items.map(x=>[x.slug,x.publishAt,x.post?.headline,x.post?.author,x.post?.featured,x.post?.popular,x.post?.newsletter]));
+    if(signature(previous)!==signature(visible)){
+      if(typeof store!=='undefined'){store.scheduled=visible;saveStore?.();window.store=store}
+      window.__pvScheduledSnapshot=visible;
+      window.renderPosts?.();
+      window.dispatchEvent(new CustomEvent('pv-scheduled-updated',{detail:{items:q}}));
+    }
     return true
   }
   window.reloadScheduledQueue=loadQueue;

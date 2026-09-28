@@ -29,18 +29,18 @@
     const draft=window.collect();const value=JSON.stringify(draft);
     if(value===last)return;
     window.store.draft=draft;
-    try{localStorage.setItem('provkusCms',JSON.stringify(window.store));last=value;if(status)status.textContent=dirty?'Черновик сохранён локально · есть несохранённые изменения':'Черновик сохранён автоматически'}
+    try{localStorage.setItem('provkusCms',JSON.stringify(window.store));last=value;baseline=value;dirty=false;if(status)status.textContent='Черновик сохранён автоматически'}
     catch(e){if(status)status.textContent='Не удалось сохранить черновик';console.warn('autosave',e)}
   }
   function later(){syncEditorial();markDirty();if(status&&dirty)status.textContent='Сохраняю локальный черновик…';clearTimeout(timer);timer=setTimeout(save,600)}
   document.addEventListener('input',e=>{if(e.target.closest?.('#material')&&e.target.id!=='seoTitle')later()});
   document.addEventListener('change',e=>{if(e.target.closest?.('#material'))later()});
   document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();save();$('#saveBtn')?.focus()}});
-  window.addEventListener('beforeunload',e=>{if(!dirty)return;e.preventDefault();e.returnValue=''});
+  window.addEventListener('beforeunload',e=>{if(!dirty)return;save();if(dirty){e.preventDefault();e.returnValue=''}});
   window.addEventListener('pagehide',()=>{clearTimeout(timer);save()});
   document.addEventListener('click',e=>{
     const leave=e.target.closest?.('.nav-btn[data-target]:not([data-target="material"]),.site-link:not(#saveBtn)');
-    if(leave&&dirty&&!confirm('Есть изменения материала, которые ещё не сохранены в GitHub. Уйти со страницы редактора?')){e.preventDefault();e.stopImmediatePropagation();return}
+    if(leave&&dirty){clearTimeout(timer);save()}
     if(e.target.closest?.('#saveBtn,#scheduleBtn,#savePublishedBtn,#publishBtn'))setTimeout(()=>{if(!document.querySelector('.flash')?.textContent?.match(/ошиб|не удалось|остановлена/i))markClean()},1200)
   },true);
   $('#refreshPostsBtn')?.addEventListener('click',()=>window.refreshPublications?.());

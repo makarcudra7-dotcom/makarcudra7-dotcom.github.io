@@ -76,24 +76,19 @@
     }
   }
 
-  function renderScheduledRows(items=scheduled){
-    const tb=document.getElementById('postsTable');if(!tb)return;
-    tb.querySelectorAll('tr[data-live-scheduled="1"],tr.scheduled-row').forEach(x=>x.remove());
-    if(!Array.isArray(items)||!items.length)return;
-    const html=items.map(x=>{
-      const h=esc(x.post?.headline||x.material?.headline||x.slug);
-      const a=esc(x.post?.author||x.material?.author||'—');
-      return `<tr data-live-scheduled="1" data-scheduled-slug="${esc(x.slug)}"><td><strong>${h}</strong></td><td><span class="status scheduled">Запланировано</span></td><td>${a}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-live-preview-scheduled="${esc(x.slug)}">Посмотреть</button><button type="button" class="btn soft" data-live-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-live-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`
-    }).join('');
-    tb.insertAdjacentHTML('afterbegin',html);
-  }
-
   function repaint(){
-    const signature=JSON.stringify([(window.store?.posts||[]).map(p=>[p.slug,p.headline,p.publishedAt]),scheduled.map(p=>[p.slug,p.post?.headline,p.publishAt])]);
+    const signature=JSON.stringify([(window.store?.posts||[]).map(p=>[p.slug,p.headline,p.author,p.publishedAt,p.category,p.featured,p.popular]),scheduled.map(p=>[p.slug,p.post?.headline,p.post?.author,p.publishAt,p.post?.featured,p.post?.popular,p.post?.newsletter])]);
     if(signature===renderSignature)return;
     renderSignature=signature;
+    const selected=new Set([...document.querySelectorAll('#postsTable [data-pv-select]:checked')].map(x=>x.dataset.pvSelect));
+    const scrollY=window.scrollY;
+    const tableScroll=document.querySelector('#publications .table-wrap')?.scrollLeft||0;
     window.renderPosts?.();
-    renderScheduledRows(scheduled);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      for(const box of document.querySelectorAll('#postsTable [data-pv-select]'))box.checked=selected.has(box.dataset.pvSelect);
+      const wrap=document.querySelector('#publications .table-wrap');if(wrap)wrap.scrollLeft=tableScroll;
+      if(document.getElementById('publications')?.classList.contains('active')&&Math.abs(window.scrollY-scrollY)>1)window.scrollTo({top:scrollY,behavior:'instant'});
+    }));
     const count=window.store?.posts?.length||0;
     const stat=document.getElementById('statPosts');if(stat)stat.textContent=String(count);
   }
@@ -248,7 +243,6 @@
   window.addEventListener('pv-admin-runtime-ready',()=>{wrapMutations();refreshAll(false)},{once:true});
   window.refreshPublications=()=>refreshAll(true);
   window.refreshScheduledNow=async()=>{await refreshScheduled();repaint();return scheduled};
-  window.renderScheduledRows=renderScheduledRows;
 
   wrapMutations();
   setTimeout(()=>refreshAll(false),100);
