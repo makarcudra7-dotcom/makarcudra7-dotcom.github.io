@@ -140,8 +140,7 @@ body{background:var(--bg);text-rendering:optimizeLegibility;-webkit-font-smoothi
 .author-directory-note h2{margin:0 0 8px;font:800 25px/1.1 Georgia,serif;color:#24211d}
 .author-directory-note p{margin:7px 0}
 .author-card-top h2,.author-card-top h3{font-size:24px;line-height:1.05;margin:5px 0;color:inherit}
-.lead-copy .eyebrow,.section-head .link-more,.section-head .eyebrow{color:#a43b23}
-.popular-panel .eyebrow{color:#b7dccb}
+.lead-copy .eyebrow,.section-head .link-more{color:#a43b23}
 .newsletter-row button{background:#b9482c}
 .newsletter-row button:hover{background:#a63d25}
 .site-footer .footer-heading{font:800 12px/1.2 Inter,system-ui,sans-serif;letter-spacing:.11em;text-transform:uppercase;margin:0 0 12px;color:#fff}
