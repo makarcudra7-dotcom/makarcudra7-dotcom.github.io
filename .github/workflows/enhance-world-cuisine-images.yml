@@ -1,0 +1,64 @@
+name: Enhance world cuisine images
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'drafts/world-cuisines/enhance-images-now.trigger'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: enhance-world-cuisine-images
+  cancel-in-progress: false
+
+jobs:
+  enhance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow==11.3.0
+      - name: Enhance all 95 images
+        run: python scripts/enhance_world_cuisine_images.py
+      - name: Verify dimensions and quality floor
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          root=Path('.')
+          reg=json.loads((root/'drafts/world-cuisines/final-photo-registry-95.json').read_text('utf-8'))
+          bad=[]
+          for item in reg['items']:
+              p=root/'assets/uploads'/f"{item['slug']}-16x9.webp"
+              if not p.exists():
+                  bad.append((item['slug'],'missing'))
+                  continue
+              with Image.open(p) as im:
+                  if im.size != (1600,900): bad.append((item['slug'],im.size))
+              if p.stat().st_size < 70000: bad.append((item['slug'],p.stat().st_size))
+          if bad:
+              raise SystemExit('Image quality verification failed: '+repr(bad[:20]))
+          assert reg.get('imageQuality',{}).get('version') == 2
+          print('Verified: 95/95 images are 1600x900 and pass the quality floor')
+          PY
+      - name: Commit enhanced images
+        run: |
+          rm -f drafts/world-cuisines/enhance-images-now.trigger
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A assets/uploads drafts/world-cuisines/final-photo-registry-95.json drafts/world-cuisines/enhance-images-now.trigger
+          if git diff --cached --quiet; then
+            echo 'No image changes to commit'
+            exit 0
+          fi
+          git commit -m 'Improve quality of 95 world cuisine images'
+          git pull --rebase origin main
+          git push origin HEAD:main
