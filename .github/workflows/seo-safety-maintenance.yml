@@ -6,9 +6,13 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/seo-safety-maintenance.yml'
+      - 'admin.html'
+      - 'assets/admin-taxonomy-standard.js'
       - 'data/posts.json'
       - 'articles/**'
       - 'scripts/add_recipe_schema.py'
+      - 'scripts/taxonomy_maintenance.py'
+      - 'scripts/validate_content_standard.py'
       - 'scripts/seo_safety_maintenance.py'
       - 'scripts/seo_followup_maintenance.py'
       - 'scripts/seo_content_depth.py'
@@ -31,6 +35,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Normalize rubrics, types and news routing
+        run: python3 scripts/taxonomy_maintenance.py
+
       - name: Upgrade eligible recipe structured data
         run: python3 scripts/add_recipe_schema.py
 
@@ -43,10 +50,14 @@ jobs:
       - name: Add useful content depth
         run: python3 scripts/seo_content_depth.py
 
-      - name: Validate safety and index surfaces
+      - name: Rebuild public indexes
+        run: python3 scripts/build_indexes.py
+
+      - name: Validate safety, taxonomy and index surfaces
         run: |
           set -euo pipefail
-          python3 -m py_compile scripts/add_recipe_schema.py scripts/seo_safety_maintenance.py scripts/seo_followup_maintenance.py scripts/seo_content_depth.py scripts/build_discovery_archives.py
+          python3 -m py_compile scripts/add_recipe_schema.py scripts/taxonomy_maintenance.py scripts/validate_content_standard.py scripts/seo_safety_maintenance.py scripts/seo_followup_maintenance.py scripts/seo_content_depth.py scripts/build_discovery_archives.py scripts/build_indexes.py
+          python3 scripts/validate_content_standard.py
           grep -q 'Проверено редакцией' editorial-policy.html
           grep -q 'здоровье, безопасность пищи либо безопасное хранение' editorial-policy.html
           grep -q 'id="pv-page-schema"' editorial-policy.html
@@ -92,7 +103,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add editorial-policy.html robots.txt sitemap.xml data/posts.json assets/styles.css assets/admin-editorial-check.js scripts/build_discovery_archives.py articles/ archive/ '*.html'
+          git add admin.html editorial-policy.html robots.txt sitemap.xml data/posts.json assets/styles.css assets/admin-editorial-check.js scripts/build_indexes.py scripts/build_discovery_archives.py articles/ archive/ '*.html' feed.xml dzen-feed.xml 2>/dev/null || true
           if git diff --cached --quiet; then
             echo 'SEO maintenance already up to date'
             exit 0
