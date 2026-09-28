@@ -31,9 +31,4 @@
   const quality=document.createElement('script');
   quality.src='assets/admin-quality-v2.js?v=20260927-suite1';
   document.body.appendChild(quality);
-  if(!document.querySelector('script[src*="admin-runtime-loader.js"]')){
-    const runtime=document.createElement('script');
-    runtime.src='assets/admin-runtime-loader.js?v=20260925-schedule-fast2';
-    document.body.appendChild(runtime);
-  }
 })();
