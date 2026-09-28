@@ -56,7 +56,7 @@ def check(p):
  return slug,{'status':'ok' if not errors else 'error','errors':errors,'checkedAt':datetime.now(timezone.utc).isoformat().replace('+00:00','Z')}
 # Check recent content every hour; cover the full archive once per day.
 all_posts=sorted((p for p in POSTS if p.get('slug')),key=lambda p:p.get('publishedAt',''),reverse=True)
-chosen=all_posts if datetime.now(timezone.utc).hour==3 or os.environ.get('PV_HEALTH_ALL')=='1' else all_posts[:30]
+chosen=all_posts if datetime.now(timezone.utc).hour==3 or os.environ.get('PV_HEALTH_ALL')=='1' else list({p['slug']:p for p in [*all_posts[:30],*(p for p in all_posts if previous.get(p['slug'],{}).get('status')=='error')]}.values())
 with concurrent.futures.ThreadPoolExecutor(max_workers=8) as pool:results=dict(pool.map(check,chosen))
 valid={p['slug'] for p in all_posts}
 next_report={k:v for k,v in previous.items() if k in valid}
