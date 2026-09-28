@@ -4,6 +4,7 @@ from pathlib import Path
 TAG = '<script src="/assets/metrika.js?v=20260929-cookie1" defer></script>'
 METRIKA_RE = re.compile(r"(?P<prefix><script\s+src=['\"])(?P<path>/?assets/metrika\.js)(?:\?[^'\"]*)?(?P<suffix>['\"])", re.IGNORECASE)
 APP_RE = re.compile(r"(?P<prefix><script\s+src=['\"])(?P<path>/?assets/app\.js)(?:\?[^'\"]*)?(?P<suffix>['\"])", re.IGNORECASE)
+APP_URL_RE = re.compile(r"(?P<path>/?assets/app\.js)(?:\?v=[A-Za-z0-9_-]+)?")
 ZEN_TOKEN = 'rUGpnQ652SgR8wAjXpAH1CIOQhGCJU3OTRITDl4Iq46VYdgXOAy6CuHOYQ0ru6Dr'
 ZEN_TAG = f'<meta name="zen-verification" content="{ZEN_TOKEN}" />'
 ZEN_META_RE = re.compile(r'<meta\s+[^>]*name=["\']zen-verification["\'][^>]*>', re.IGNORECASE)
@@ -46,6 +47,7 @@ def inject(path: Path) -> bool:
 
     updated = METRIKA_RE.sub(lambda m: m['prefix'] + m['path'] + '?v=20260929-cookie1' + m['suffix'], text)
     updated = APP_RE.sub(lambda m: m['prefix'] + m['path'] + '?v=20260929-cookie1' + m['suffix'], updated)
+    updated = APP_URL_RE.sub(lambda m: m['path'] + '?v=20260929-cookie1', updated)
     if updated != text:
         text = updated
         changed = True
