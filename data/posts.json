@@ -24,7 +24,7 @@
       "остатки еды"
     ],
     "photoSource": "Иллюстрация создана с помощью ИИ",
-    "featured": false,
+    "featured": true,
     "popular": false,
     "excludeRelated": false,
     "status": "published",
@@ -156,7 +156,7 @@
       "aiImage": true,
       "confirmed": false
     },
-    "featured": true,
+    "featured": false,
     "popular": false,
     "newsletter": false,
     "status": "published",
