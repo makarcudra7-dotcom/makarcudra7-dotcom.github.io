@@ -117,11 +117,16 @@
   async function toggleQueuedPlacement(slug,kind){
     if(queueBusy)return;queueBusy=true;
     try{
-      const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь');
-      const item=queue.find(x=>x.slug===slug);if(!item)throw new Error('Материал уже отсутствует в очереди');
-      item.post=item.post||{};item.material=item.material||{};
-      const on=!(item.post[kind]??item.material[kind]);item.post[kind]=on;item.material[kind]=on;item.updatedAt=new Date().toISOString();
-      await writeQueue(queue,`Scheduled ${kind}: ${slug}`);
+      let on;
+      for(let attempt=0;attempt<4;attempt++){
+        const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь');
+        const item=queue.find(x=>x.slug===slug);if(!item)throw new Error('Материал уже отсутствует в очереди');
+        item.post=item.post||{};item.material=item.material||{};
+        if(on===undefined)on=!(item.post[kind]??item.material[kind]);
+        item.post[kind]=on;item.material[kind]=on;item.updatedAt=new Date().toISOString();
+        try{await writeQueue(queue,`Scheduled ${kind}: ${slug}`);break}
+        catch(e){if(attempt===3||!/does not match|\b409\b|\b422\b|sha|conflict/i.test(e.message||''))throw e;await new Promise(resolve=>setTimeout(resolve,150*(attempt+1)))}
+      }
       flash?.(`${kind==='featured'?'Главная':kind==='popular'?'Популярное':'Рассылка'}: ${on?'включено':'выключено'} для отложенного материала`)
     }catch(e){flash?.(e.message||'Не удалось изменить размещение')}finally{queueBusy=false}
   }
