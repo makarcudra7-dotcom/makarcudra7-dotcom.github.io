@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Mon, 28 Sep 2026 12:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 14:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>В сентябре груши кладу прямо на творог: запеканка получается по-летнему нежной — без возни с тестом</title>
+    <link>https://provkus-media.ru/articles/tvorozhnaya-zapekanka-s-grushey.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/tvorozhnaya-zapekanka-s-grushey.html</guid>
+    <pubDate>Mon, 28 Sep 2026 14:00:00 GMT</pubDate>
+    <description>Творожная запеканка с грушей: точные пропорции, небольшая форма, температура духовки и время отдыха после выпечки.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-28-tvorozhnaya-zapekanka-s-grushey-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Готовлю полезный крем-суп из цветной капусты без сливок: румяные соцветия раскрываются в ложке совсем по-новому</title>
     <link>https://provkus-media.ru/articles/krem-sup-iz-tsvetnoy-kapusty-bez-slivok.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Хранение продуктов</category>
     <media:content url="https://provkus-media.ru/assets/uploads/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Мисо-пасту не кипячу: развожу отдельно и добавляю в суп после снижения огня</title>
-    <link>https://provkus-media.ru/articles/yaponiya-miso-sup-s-tofu.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-miso-sup-s-tofu.html</guid>
-    <pubDate>Wed, 23 Sep 2026 15:10:00 GMT</pubDate>
-    <description>Домашний мисо-суп с тофу, водорослями и зелёным луком. Как правильно добавить мисо-пасту.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-miso-sup-s-tofu-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>

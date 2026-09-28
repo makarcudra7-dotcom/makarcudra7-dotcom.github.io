@@ -1,5 +1,36 @@
 [
   {
+    "slug": "tvorozhnaya-zapekanka-s-grushey",
+    "headline": "В сентябре груши кладу прямо на творог: запеканка получается по-летнему нежной — без возни с тестом",
+    "description": "Творожная запеканка с грушей: точные пропорции, небольшая форма, температура духовки и время отдыха после выпечки.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/2026-09-28-tvorozhnaya-zapekanka-s-grushey-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/2026-09-28-tvorozhnaya-zapekanka-s-grushey-cover.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-28-tvorozhnaya-zapekanka-s-grushey-inside.webp"
+    ],
+    "imageAlt": "Творожная запеканка с ломтиками груши в керамической форме",
+    "url": "https://provkus-media.ru/articles/tvorozhnaya-zapekanka-s-grushey.html",
+    "publishedAt": "2026-09-28T14:00:00.000Z",
+    "updatedAt": "2026-09-28T14:00:00.000Z",
+    "tags": [
+      "творог",
+      "груша",
+      "запеканка",
+      "десерт"
+    ],
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "krem-sup-iz-tsvetnoy-kapusty-bez-slivok",
     "headline": "Готовлю полезный крем-суп из цветной капусты без сливок: румяные соцветия раскрываются в ложке совсем по-новому",
     "description": "Как запечь цветную капусту, сварить основу с картофелем и получить гладкий густой суп без сливок.",
