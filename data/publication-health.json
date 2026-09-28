@@ -1030,5 +1030,12 @@
       "страница недоступна: HTTPError: HTTP Error 404: Not Found"
     ],
     "checkedAt": "2026-09-28T13:33:32.770233Z"
+  },
+  "tvorozhnaya-zapekanka-s-grushey": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T14:35:16.477448Z"
   }
 }
