@@ -2,7 +2,7 @@ import re
 from pathlib import Path
 
 TAG = '<script src="/assets/metrika.js" defer></script>'
-ZEN_TOKEN = 'rUGpnQ652SgR8wAjXpAH1CIOQhGCJU3OTRITDI4Iq46VYdgXOAy6CuHOYQOru6Dr'
+ZEN_TOKEN = 'rUGpnQ652SgR8wAjXpAH1CIOQhGCJU3OTRITDl4Iq46VYdgXOAy6CuHOYQ0ru6Dr'
 ZEN_TAG = f'<meta name="zen-verification" content="{ZEN_TOKEN}" />'
 ZEN_META_RE = re.compile(r'<meta\s+[^>]*name=["\']zen-verification["\'][^>]*>', re.IGNORECASE)
 
