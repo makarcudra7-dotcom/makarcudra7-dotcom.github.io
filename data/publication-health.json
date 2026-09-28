@@ -193,9 +193,11 @@
     "checkedAt": "2026-09-28T07:33:05.990854Z"
   },
   "tomatnoe-ragu-s-fasolyu": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-28T07:33:05.984843Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: RemoteDisconnected: Remote end closed connection without response"
+    ],
+    "checkedAt": "2026-09-28T15:34:03.233022Z"
   },
   "yablochnyi-krambl-s-ovsyanoi-kroshkoi": {
     "status": "ok",
@@ -203,9 +205,11 @@
     "checkedAt": "2026-09-28T07:33:06.041940Z"
   },
   "pozelenel-proros-kartofel": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-28T07:33:05.982828Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: RemoteDisconnected: Remote end closed connection without response"
+    ],
+    "checkedAt": "2026-09-28T15:34:03.213141Z"
   },
   "tailand-tom-kha-s-kuricey": {
     "status": "error",
@@ -1025,17 +1029,13 @@
     "checkedAt": "2026-09-28T11:33:10.652906Z"
   },
   "krem-sup-iz-tsvetnoy-kapusty-bez-slivok": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T13:33:32.770233Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T15:34:04.178363Z"
   },
   "tvorozhnaya-zapekanka-s-grushey": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T14:35:16.477448Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T15:34:03.993759Z"
   }
 }
