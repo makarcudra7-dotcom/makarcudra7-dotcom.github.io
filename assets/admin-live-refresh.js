@@ -160,7 +160,7 @@
 
   async function editScheduled(slug){
     const item=await latestScheduledItem(slug);if(!item)return;
-    if(typeof window.fill==='function')window.fill({...item.material,_editingSlug:''});
+    if(typeof window.fill==='function')window.fill(window.pvScheduledEditorData?.(item)||{...item.material,_editingSlug:''});
     const file=document.getElementById('imageFile');if(file)file.value='';
     document.querySelector('.nav-btn[data-target="material"]')?.click();
     if(typeof window.flash==='function')window.flash('Открыта свежая версия запланированного материала');

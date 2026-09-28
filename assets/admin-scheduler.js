@@ -6,6 +6,12 @@
   const QUEUE_RAW='https://raw.githubusercontent.com/makarcudra7-dotcom/makarcudra7-dotcom.github.io/main/.github/scheduled-posts.json';
   const fmt=v=>{try{return new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(v))}catch{return v||''}};
   const decode=f=>{if(!f?.content)return'';return new TextDecoder().decode(Uint8Array.from(atob(f.content.replace(/\n/g,'')),c=>c.charCodeAt(0)))};
+  const localDate=value=>{const date=new Date(value||'');return Number.isFinite(date.getTime())?new Date(date.getTime()-date.getTimezoneOffset()*60000).toISOString().slice(0,16):''};
+  function editorData(item){
+    const material=item.material||{},post=item.post||{},image=material.image||post.image||'';
+    return {...material,publishedAt:localDate(item.publishAt||material.publishedAt||post.publishedAt),updatedAt:localDate(material.updatedAt||post.updatedAt||item.publishAt),image,images:material.images?.length?material.images:post.images||[image],ogImage:material.ogImage||image,imageAlt:material.imageAlt||post.imageAlt||'',photoSource:material.photoSource||post.photoSource||'',featured:!!post.featured,popular:!!post.popular,newsletter:!!post.newsletter,_editingSlug:''};
+  }
+  window.pvScheduledEditorData=editorData;
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const future=o=>{const t=new Date(o?.publishedAt||0).getTime();return Number.isFinite(t)&&t>Date.now()+30000};
   const typeLabel=t=>({guide:'Инструкция / как сделать',explainer:'Разбор / объяснение',recipe:'Рецепт',selection:'Подборка',review:'Обзор',story:'История / опыт',news:'Новость',quiz:'Тест / викторина'})[t]||'Материал';
@@ -81,6 +87,7 @@
       if(pr)pr.style.width='55%';
       const queue=await readQueue();if(!Array.isArray(queue))throw new Error('Не удалось загрузить очередь публикаций. Повторите попытку.');
       const existing=queue.find(x=>x.slug===o.slug);
+      if(!file&&img===existing?.post?.image&&existing.post.images?.length)images=existing.post.images;
       o.image=img;o.images=images;o.newsletter=existing?.post?.newsletter??existing?.material?.newsletter??!!o.newsletter;
       const post={...makePost(o,img,images),status:'queued'},item={slug:o.slug,publishAt:post.publishedAt,createdAt:existing?.createdAt||new Date().toISOString(),status:'queued',material:{...o,status:'queued'},post};
       const next=[item,...queue.filter(x=>x.slug!==o.slug)];
@@ -103,7 +110,7 @@
     const queue=await readQueue();if(!Array.isArray(queue))return flash?.('Не удалось загрузить очередь');
     const item=queue.find(x=>x.slug===slug);if(!item)return;
     window.__pvEditingScheduledSlug=slug;
-    window.fill?.({...item.material,featured:!!item.post?.featured,popular:!!item.post?.popular,newsletter:!!item.post?.newsletter,_editingSlug:''});
+    window.fill?.(editorData(item));
     document.querySelector('.nav-btn[data-target="material"]')?.click();
     flash?.('Запланированный материал открыт для редактирования; размещение в очереди сохранится')
   }
@@ -136,7 +143,7 @@
     const wrapped=function(){
       base();const tb=$('#postsTable'),items=(typeof store!=='undefined'&&Array.isArray(store.scheduled))?store.scheduled.filter(x=>!x?.pausedRecovery):[];if(!tb||!items.length)return;
       const placeholder=tb.querySelector('tr td[colspan]');if(placeholder)placeholder.closest('tr')?.remove();
-      const rows=items.map(x=>{const featured=!!(x.post?.featured??x.material?.featured),popular=!!(x.post?.popular??x.material?.popular),newsletter=!!(x.post?.newsletter??x.material?.newsletter);return `<tr class="scheduled-row" data-scheduled-slug="${esc(x.slug)}"><td><strong>${esc(x.post?.headline||x.slug)}</strong><div class="draft-local">${featured?'Главная · ':''}${popular?'Популярное · ':''}${newsletter?'В рассылку':''}</div></td><td><span class="status scheduled">В очереди</span></td><td>${esc(x.post?.author||'')}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft ${featured?'pv-selected':''}" data-queue-placement="featured" data-queue-slug="${esc(x.slug)}" aria-pressed="${featured}">Главная</button><button type="button" class="btn soft ${popular?'pv-selected':''}" data-queue-placement="popular" data-queue-slug="${esc(x.slug)}" aria-pressed="${popular}">Популярное</button><button type="button" class="btn soft ${newsletter?'pv-selected':''}" data-queue-placement="newsletter" data-queue-slug="${esc(x.slug)}" aria-pressed="${newsletter}">В рассылку</button><button type="button" class="btn soft" data-live-preview-scheduled="${esc(x.slug)}">Посмотреть</button><button type="button" class="btn soft" data-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn danger-btn" data-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`}).join('');
+      const rows=items.map(x=>{const featured=!!(x.post?.featured??x.material?.featured),popular=!!(x.post?.popular??x.material?.popular),newsletter=!!(x.post?.newsletter??x.material?.newsletter);return `<tr class="scheduled-row" data-scheduled-slug="${esc(x.slug)}"><td><strong>${esc(x.post?.headline||x.slug)}</strong><div class="draft-local">${featured?'Главная · ':''}${popular?'Популярное · ':''}${newsletter?'В рассылку':''}</div></td><td><span class="status scheduled">В очереди</span></td><td>${esc(x.post?.author||'')}</td><td>${esc(fmt(x.publishAt))}</td><td>—</td><td><div class="row-actions"><button type="button" class="btn soft" data-edit-scheduled="${esc(x.slug)}">Редактировать</button><button type="button" class="btn soft" data-live-preview-scheduled="${esc(x.slug)}">Посмотреть</button><button type="button" class="btn soft ${featured?'pv-selected':''}" data-queue-placement="featured" data-queue-slug="${esc(x.slug)}" aria-pressed="${featured}">Главная</button><button type="button" class="btn soft ${popular?'pv-selected':''}" data-queue-placement="popular" data-queue-slug="${esc(x.slug)}" aria-pressed="${popular}">Популярное</button><button type="button" class="btn soft ${newsletter?'pv-selected':''}" data-queue-placement="newsletter" data-queue-slug="${esc(x.slug)}" aria-pressed="${newsletter}">В рассылку</button><button type="button" class="btn danger-btn" data-delete-scheduled="${esc(x.slug)}">Удалить</button></div></td></tr>`}).join('');
       tb.insertAdjacentHTML('afterbegin',rows);
       $$('[data-edit-scheduled]').forEach(b=>b.onclick=()=>editScheduled(b.dataset.editScheduled));
       $$('[data-delete-scheduled]').forEach(b=>b.onclick=()=>removeScheduled(b.dataset.deleteScheduled,true));

@@ -94,7 +94,7 @@
     }catch(e){flash(e.message);return false}finally{btn.disabled=false;if(exitBtn)exitBtn.disabled=false;btn.textContent='Опубликовать'}
   }
   function enhanceTable(){
-    const old=renderPosts;window.renderPosts=function(){old();const th=$('#postsTable')?.closest('table')?.querySelector('thead tr');if(th&&!th.querySelector('.actions-col')){const x=document.createElement('th');x.className='actions-col';x.textContent='Действия';th.appendChild(x)}
+    const old=renderPosts;window.renderPosts=function(){old();const th=$('#postsTable')?.closest('table')?.querySelector('thead tr');if(th&&!th.querySelector('.actions-col')){const existing=[...th.children].find(x=>x.textContent.trim()==='Действия');if(existing)existing.classList.add('actions-col');else{const x=document.createElement('th');x.className='actions-col';x.textContent='Действия';th.appendChild(x)}}
       $$('#postsTable tr').forEach((tr,i)=>{if(tr.children.length<5)return;const p=store.posts?.[i];if(!p||tr.querySelector('.row-actions'))return;const td=document.createElement('td');td.className='row-actions';td.innerHTML=`<a class="btn soft" href="${esc(p.url)}" target="_blank">Открыть</a>`;tr.appendChild(td)})};renderPosts();
   }
   setupSelectors();addTopButtons();

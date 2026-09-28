@@ -10,4 +10,6 @@
 #placementCard .placement-check strong,#placementCard .related-exclude-check strong{display:block}
 #placementCard .placement-check small,#placementCard .related-exclude-check small{display:block;line-height:1.4}
 .author-admin-form input[type=file]{padding:10px;background:#f8faf8}
+#postsTable tr[data-scheduled-slug] td:last-child{width:350px;min-width:350px;white-space:normal}
+#postsTable tr[data-scheduled-slug] .row-actions{width:350px;max-width:350px;display:flex;flex-wrap:wrap;gap:5px;white-space:normal}
 @media(max-width:650px){.after-editor{grid-template-columns:1fr}}

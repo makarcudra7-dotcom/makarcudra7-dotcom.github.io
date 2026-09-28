@@ -14,7 +14,7 @@
   const seo=document.getElementById('seoTitle');if(seo){seo.maxLength=140;seo.dispatchEvent(new Event('input',{bubbles:true}))}
   if(document.getElementById('coauthors'))document.getElementById('coauthors').closest('.field')?.remove();
   const source=document.getElementById('source');if(source)source.placeholder='Добавьте проверяемые источники при необходимости; для редакционного материала поле можно оставить пустым';
-  const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-fixes.css?v=20260927-queue-placement1';document.head.appendChild(css);
+  const css=document.createElement('link');css.rel='stylesheet';css.href='assets/admin-fixes.css?v=20260928-edit-restore1';document.head.appendChild(css);
 
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const decode=f=>new TextDecoder().decode(Uint8Array.from(atob((f?.content||'').replace(/\n/g,'')),c=>c.charCodeAt(0)));
@@ -26,6 +26,7 @@
     document.querySelectorAll('#postsTable tr[data-scheduled-slug]').forEach(tr=>{
       const slug=tr.dataset.scheduledSlug,item=queued().find(x=>x.slug===slug),cell=tr.querySelector('.row-actions')||tr.lastElementChild;
       if(!slug||!item||!cell)return;
+      if(cell.querySelector('[data-queue-placement]')){cell.querySelectorAll('[data-pv-queued-placement]').forEach(b=>b.remove());return}
       if(!cell.querySelector('[data-pv-queued-placement="featured"]')){
         cell.insertAdjacentHTML('afterbegin',`<button type="button" class="btn soft" data-pv-queued-placement="featured" data-pv-queued-slug="${esc(slug)}" aria-pressed="false" title="После выхода материал автоматически станет главным">Главная</button><button type="button" class="btn soft" data-pv-queued-placement="popular" data-pv-queued-slug="${esc(slug)}" aria-pressed="false" title="После выхода материал автоматически попадёт в Популярное">Популярное</button><button type="button" class="btn soft" data-pv-queued-placement="newsletter" data-pv-queued-slug="${esc(slug)}" aria-pressed="false" title="После выхода материал автоматически будет добавлен в рассылку">В рассылку</button>`);
       }
