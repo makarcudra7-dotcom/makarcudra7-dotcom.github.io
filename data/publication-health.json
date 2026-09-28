@@ -1,157 +1,115 @@
 {
   "kapusta-dlya-kvasheniya-kak-vybrat": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.923594Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:06.967937Z"
   },
   "nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.914981Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:07.849392Z"
   },
   "ne-perlovka-i-ne-kukuruza-v-sentyabre-vybirayu-druguyu-primanku-karas-ee-prosto-obozhaet": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.930046Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:07.624603Z"
   },
   "mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.922352Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:07.391973Z"
   },
   "krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.940941Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:07.849917Z"
   },
   "vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.928813Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.079170Z"
   },
   "tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy": {
     "status": "error",
     "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
+      "SEO title не совпадает с заголовком"
     ],
-    "checkedAt": "2026-09-28T06:40:26.922694Z"
+    "checkedAt": "2026-09-28T07:33:07.266483Z"
   },
   "indiya-rayta-s-ogurcom": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.914341Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:06.741558Z"
   },
   "dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.016348Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.169478Z"
   },
   "k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.036834Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.393454Z"
   },
   "indiya-alu-gobi": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.020974Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:07.935279Z"
   },
   "kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.023062Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.314857Z"
   },
   "varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.038832Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:09.017995Z"
   },
   "kompot-iz-tykvy-s-limonom-zolotoy-oktyabr": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.018971Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.538181Z"
   },
   "indiya-batter-chiken-po-domashnemu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.032606Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.537566Z"
   },
   "yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.046920Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.863339Z"
   },
   "indiya-dal-iz-krasnoy-chechevicy": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.240208Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:08.792074Z"
   },
   "govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.250195Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:09.267455Z"
   },
   "indiya-chana-masala": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.244130Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:09.023063Z"
   },
   "sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.248482Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:09.484843Z"
   },
   "miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.247729Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:09.262541Z"
   },
   "vetnam-salat-s-kuricey-i-kapustoy": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:27.237673Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:09.313884Z"
   },
   "vetnam-vetnamskiy-kofe-bez-kofeina": {
     "status": "error",
@@ -210,60 +168,44 @@
     "checkedAt": "2026-09-28T03:32:46.766590Z"
   },
   "kapustnye-oladi-na-skovorode": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.680334Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:05.999085Z"
   },
   "ris-na-zavtra-kak-ostudit-hranit-razogret": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.684001Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:05.984372Z"
   },
   "tykva-dolkami-i-kubikami-v-duhovke": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.674925Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:05.989822Z"
   },
   "kak-hranit-osennie-yabloki": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.679028Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:06.041808Z"
   },
   "kuritsa-s-tykvoi-na-protivne": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.680437Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:05.990854Z"
   },
   "tomatnoe-ragu-s-fasolyu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.674709Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:05.984843Z"
   },
   "yablochnyi-krambl-s-ovsyanoi-kroshkoi": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.670918Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:06.041940Z"
   },
   "pozelenel-proros-kartofel": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostn"
-    ],
-    "checkedAt": "2026-09-28T06:40:26.683812Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T07:33:05.982828Z"
   },
   "tailand-tom-kha-s-kuricey": {
     "status": "error",
