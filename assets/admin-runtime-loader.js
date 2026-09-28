@@ -3,7 +3,7 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260928-mobile-fix1';
+  const VERSION='20260928-preview-credit1';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',

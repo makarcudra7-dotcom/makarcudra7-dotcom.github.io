@@ -8,7 +8,7 @@
   function value(){const v={};for(const id of fields){const el=$('#pvCheck-'+id);v[id]=id==='aiImage'||id==='confirmed'?!!el?.checked:(el?.value||'').trim()}return v}
   function set(v={}){for(const id of fields){const el=$('#pvCheck-'+id);if(!el)continue;if(id==='aiImage'||id==='confirmed')el.checked=!!v[id];else el.value=v[id]||''}paint()}
   function paint(){const mode=$('#pvCheck-mode')?.value||'';$('#pvCheck-kitchen').hidden=mode!=='kitchen';$('#pvCheck-sources').hidden=mode!=='sources';const photo=$('#pvCheck-aiImage')?.checked;$('#pvCheck-imageHint').textContent=photo?'Обложка будет подписана как ИИ-иллюстрация. Аватар автора остаётся рядом с именем; он не подтверждает готовку.':'Если обложка создана ИИ, отметьте это здесь.'}
-  function error(v){if(v.aiImage&&!$('#photoSource')?.value?.trim())return 'Для ИИ-обложки укажите источник фото: «Иллюстрация создана с помощью ИИ»';
+  function error(v,photoSource=$('#photoSource')?.value){if(v.aiImage&&!String(photoSource||'').trim())return 'Для ИИ-обложки укажите источник фото: «Иллюстрация создана с помощью ИИ»';
     if(v.mode==='sources'&&(!url(v.sourceUrl)||v.sourceNote.length<30||!v.confirmed))return 'Для сверки по источникам нужны HTTPS-ссылка, вывод от 30 символов и подтверждение проверки';
     if(v.mode==='kitchen'&&(!v.tester||!v.testedAt||!Number(v.minutes)||Number(v.minutes)<=0||v.result.length<40||!v.confirmed))return 'Для кухонной проверки укажите исполнителя, дату, фактические минуты, наблюдения от 40 символов и подтверждение';
     if(v.realPhoto&&!url(v.realPhoto))return 'Ссылка на реальное фото должна начинаться с HTTPS';return''}
@@ -28,7 +28,7 @@
       ?`<strong>На кухне ProVkus</strong><p>Готовил(а): ${esc(v.tester)} · ${esc(v.testedAt)} · фактическое время ${esc(v.minutes)} мин.</p><p>${esc(v.result)}</p>${v.adjustment?`<p>После пробы: ${esc(v.adjustment)}</p>`:''}${v.realPhoto?`<p><a href="${esc(url(v.realPhoto))}" rel="noopener">Реальное фото приготовления</a></p>`:''}`
       :`<strong>Сверено с источниками</strong><p>${esc(v.sourceNote)}</p><p><a href="${esc(url(v.sourceUrl))}" rel="noopener nofollow">Источник проверки</a></p>`;
     return `<aside class="pv-editorial-check" aria-label="Проверка материала" style="padding:18px;margin:24px 0;background:#f4f8f3;border-left:4px solid #39805f;border-radius:8px">${items}</aside>`}
-  function decorate(html,v){if(!v?.mode&&!v?.aiImage)return html;const err=error(v);if(err)throw Error(err);
+  function decorate(html,v,o){if(!v?.mode&&!v?.aiImage)return html;const err=error(v,o?.photoSource);if(err)throw Error(err);
     if(v.mode)html=html.replace('<div class="article-body">','<div class="article-body">'+publicHtml(v));
     if(v.aiImage)html=html.replace(/(<img class="article-cover"[^>]*>)/,'$1<div class="photo-credit">Иллюстрация создана с помощью ИИ</div>');
     const data=JSON.stringify(v).replace(/</g,'\\u003c');return html.replace('</article>',`<script type="application/json" id="pv-editorial-check-data">${data}</script></article>`)
@@ -37,7 +37,7 @@
     const collect=window.collect,fill=window.fill,render=window.articleHTML;
     window.collect=function(){const o=collect.apply(this,arguments);o.editorialCheck=value();return o};
     window.fill=function(o){const out=fill.apply(this,arguments);set(o?.editorialCheck||{});return out};
-    window.articleHTML=function(o,img){return decorate(render.call(this,o,img),o.editorialCheck||value())};
+    window.articleHTML=function(o,img){return decorate(render.call(this,o,img),o.editorialCheck||value(),o)};
     if(typeof window.putFile==='function'){
       const put=window.putFile;
       window.putFile=async function(path,content,message,encoding='utf-8'){

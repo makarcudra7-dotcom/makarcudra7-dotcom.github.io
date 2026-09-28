@@ -40,7 +40,8 @@
       "recipeCategory": "Домашний рецепт",
       "editorialCheck": {
         "aiImage": true
-      }
+      },
+      "photoSource": "Иллюстрация создана с помощью ИИ"
     },
     "post": {
       "slug": "grechka-s-gribami-v-skovorode",
@@ -66,7 +67,7 @@
         "ужин",
         "сковорода"
       ],
-      "photoSource": "Иллюстрация создана для ProVkus",
+      "photoSource": "Иллюстрация создана с помощью ИИ",
       "featured": false,
       "popular": false,
       "excludeRelated": false,
@@ -114,7 +115,8 @@
       "recipeCategory": "Домашний рецепт",
       "editorialCheck": {
         "aiImage": true
-      }
+      },
+      "photoSource": "Иллюстрация создана с помощью ИИ"
     },
     "post": {
       "slug": "krem-sup-iz-tsvetnoy-kapusty-bez-slivok",
@@ -140,7 +142,7 @@
         "без сливок",
         "овощи"
       ],
-      "photoSource": "Иллюстрация создана для ProVkus",
+      "photoSource": "Иллюстрация создана с помощью ИИ",
       "featured": false,
       "popular": false,
       "excludeRelated": false,
@@ -190,7 +192,8 @@
       "recipeCategory": "Домашний рецепт",
       "editorialCheck": {
         "aiImage": true
-      }
+      },
+      "photoSource": "Иллюстрация создана с помощью ИИ"
     },
     "post": {
       "slug": "tvorozhnaya-zapekanka-s-grushey",
@@ -216,7 +219,7 @@
         "запеканка",
         "десерт"
       ],
-      "photoSource": "Иллюстрация создана для ProVkus",
+      "photoSource": "Иллюстрация создана с помощью ИИ",
       "featured": false,
       "popular": false,
       "excludeRelated": false,
@@ -260,7 +263,8 @@
       "editorialCheck": {
         "aiImage": true
       },
-      "popular": true
+      "popular": true,
+      "photoSource": "Иллюстрация создана с помощью ИИ"
     },
     "post": {
       "slug": "salat-iz-svekly-yabloka-i-fasoli",
@@ -286,7 +290,7 @@
         "яблоко",
         "салат"
       ],
-      "photoSource": "Иллюстрация создана для ProVkus",
+      "photoSource": "Иллюстрация создана с помощью ИИ",
       "featured": false,
       "popular": true,
       "excludeRelated": false,
@@ -334,7 +338,8 @@
       "recipeCategory": "Домашний рецепт",
       "editorialCheck": {
         "aiImage": true
-      }
+      },
+      "photoSource": "Иллюстрация создана с помощью ИИ"
     },
     "post": {
       "slug": "kartofelnye-lepeshki-s-syrom",
@@ -360,7 +365,7 @@
         "сыр",
         "остатки еды"
       ],
-      "photoSource": "Иллюстрация создана для ProVkus",
+      "photoSource": "Иллюстрация создана с помощью ИИ",
       "featured": false,
       "popular": false,
       "excludeRelated": false,

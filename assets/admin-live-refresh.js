@@ -139,6 +139,7 @@
       if(typeof build!=='function')throw new Error('Предпросмотр пока недоступен. Обновите страницу админки.');
       const stamp=Date.now();
       const o={...(item.material||{})};
+      o.photoSource=o.photoSource||item.post?.photoSource||'';
       if(!o.publishedAt)o.publishedAt=item.publishAt;
       if(!o.updatedAt)o.updatedAt=o.publishedAt||item.publishAt;
       o.content=rewritePreviewImages(o.content||'',stamp);

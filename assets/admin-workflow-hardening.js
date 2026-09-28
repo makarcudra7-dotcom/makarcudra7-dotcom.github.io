@@ -71,7 +71,7 @@
       let item=queued().find(x=>x.slug===slug);
       if(typeof window.getFile==='function'&&window.getToken?.())try{const f=await window.getFile(QUEUE);if(f?.content){const list=JSON.parse(decode(f));item=list.find(x=>x.slug===slug)||item}}catch(e){console.warn('mobile preview: using loaded queue',e)}
       if(!item)throw new Error('Материал отсутствует в очереди');if(typeof window.articleHTML!=='function')throw new Error('Генератор предпросмотра ещё загружается');
-      const html=rawPreview(window.articleHTML({...item.material,publishedAt:item.publishAt},item.post?.image||item.material?.image||''));
+      const html=rawPreview(window.articleHTML({...item.material,photoSource:item.material?.photoSource||item.post?.photoSource||'',publishedAt:item.publishAt},item.post?.image||item.material?.image||''));
       if(!modal.classList.contains('open'))return;
       modal.querySelector('.pv-mobile-loading')?.remove();modal.querySelector('iframe').srcdoc=html;
     }catch(e){const loading=modal.querySelector('.pv-mobile-loading');if(loading)loading.textContent=e.message||'Не удалось открыть материал';say(e.message||'Не удалось открыть мобильный предпросмотр')}
