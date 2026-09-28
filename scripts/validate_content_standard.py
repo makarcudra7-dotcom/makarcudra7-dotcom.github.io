@@ -5,7 +5,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from scripts import add_recipe_schema
+import add_recipe_schema
 
 ROOT=Path(__file__).resolve().parents[1]
 EFFECTIVE=datetime(2026,9,29,tzinfo=timezone.utc)
