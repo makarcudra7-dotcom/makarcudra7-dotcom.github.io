@@ -30,11 +30,9 @@
     "checkedAt": "2026-09-28T07:33:08.079170Z"
   },
   "tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy": {
-    "status": "error",
-    "errors": [
-      "SEO title не совпадает с заголовком"
-    ],
-    "checkedAt": "2026-09-28T07:33:07.266483Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T22:29:19.525559Z"
   },
   "indiya-rayta-s-ogurcom": {
     "status": "ok",
