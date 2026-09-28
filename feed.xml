@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Mon, 28 Sep 2026 14:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 15:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Готовлю осенний ужин из 3-х продуктов: свёкла, яблоко и фасоль — хрустит по-королевски, а дел на 5 минут</title>
+    <link>https://provkus-media.ru/articles/salat-iz-svekly-yabloka-i-fasoli.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/salat-iz-svekly-yabloka-i-fasoli.html</guid>
+    <pubDate>Mon, 28 Sep 2026 15:30:00 GMT</pubDate>
+    <description>Осенний салат из трёх основных продуктов за пять минут: готовая свёкла, консервированная фасоль и хрустящее яблоко.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-28-salat-iz-svekly-yabloka-i-fasoli-cover-v2.webp" medium="image"/>
+  </item>
   <item>
     <title>В сентябре груши кладу прямо на творог: запеканка получается по-летнему нежной — без возни с тестом</title>
     <link>https://provkus-media.ru/articles/tvorozhnaya-zapekanka-s-grushey.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Сезонное</category>
     <media:content url="https://provkus-media.ru/assets/uploads/natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Почему яблоки нельзя хранить рядом с овощами: одна ошибка ускоряет порчу запасов</title>
-    <link>https://provkus-media.ru/articles/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov.html</guid>
-    <pubDate>Wed, 23 Sep 2026 15:12:00 GMT</pubDate>
-    <description>Яблоки выделяют этилен, который ускоряет созревание некоторых овощей. Разбираемся, как хранить запасы даже в одном погребе.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Хранение продуктов</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>

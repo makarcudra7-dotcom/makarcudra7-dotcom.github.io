@@ -1,5 +1,36 @@
 [
   {
+    "slug": "salat-iz-svekly-yabloka-i-fasoli",
+    "headline": "Готовлю осенний ужин из 3-х продуктов: свёкла, яблоко и фасоль — хрустит по-королевски, а дел на 5 минут",
+    "description": "Осенний салат из трёх основных продуктов за пять минут: готовая свёкла, консервированная фасоль и хрустящее яблоко.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/2026-09-28-salat-iz-svekly-yabloka-i-fasoli-cover-v2.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/2026-09-28-salat-iz-svekly-yabloka-i-fasoli-cover-v2.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-28-salat-iz-svekly-yabloka-i-fasoli-inside-v2.webp"
+    ],
+    "imageAlt": "Осенний салат из свёклы, белой фасоли, яблока и укропа",
+    "url": "https://provkus-media.ru/articles/salat-iz-svekly-yabloka-i-fasoli.html",
+    "publishedAt": "2026-09-28T15:30:00.000Z",
+    "updatedAt": "2026-09-28T15:30:00.000Z",
+    "tags": [
+      "свёкла",
+      "фасоль",
+      "яблоко",
+      "салат"
+    ],
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false,
+    "popular": true,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "tvorozhnaya-zapekanka-s-grushey",
     "headline": "В сентябре груши кладу прямо на творог: запеканка получается по-летнему нежной — без возни с тестом",
     "description": "Творожная запеканка с грушей: точные пропорции, небольшая форма, температура духовки и время отдыха после выпечки.",
@@ -513,7 +544,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {
