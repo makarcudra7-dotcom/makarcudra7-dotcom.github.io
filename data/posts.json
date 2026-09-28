@@ -67,12 +67,26 @@
       "сыр",
       "остатки еды"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "popular": false,
     "excludeRelated": false,
     "status": "published",
-    "newsletter": false
+    "newsletter": false,
+    "recipeIngredient": [
+      "500 г охлаждённого картофельного пюре",
+      "1 яйцо",
+      "60–80 г муки",
+      "90 г твёрдого сыра",
+      "1–2 ст. л. масла для жарки"
+    ],
+    "recipeInstructions": [
+      "Смешайте холодное пюре с яйцом и 60 г муки. При необходимости добавьте муку по ложке до пластичной массы.",
+      "Разделите массу на 8 частей, расплющите каждую, положите в центр кубик сыра и тщательно защипните края.",
+      "Обжаривайте партиями на умеренном огне по 4–5 минут с каждой стороны до румяной корочки и полного прогрева середины."
+    ],
+    "recipeYield": "8 лепёшек",
+    "recipeCategory": "Основное блюдо"
   },
   {
     "slug": "salat-iz-svekly-yabloka-i-fasoli",
@@ -98,12 +112,26 @@
       "яблоко",
       "салат"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "popular": true,
     "excludeRelated": false,
     "status": "published",
-    "newsletter": false
+    "newsletter": false,
+    "recipeIngredient": [
+      "около 350 г готовой варёной или запечённой свёклы кубиками",
+      "около 240 г консервированной белой фасоли без заливки",
+      "1 плотное кисло-сладкое яблоко"
+    ],
+    "recipeInstructions": [
+      "Выложите готовую свёклу в миску. Слейте заливку с фасоли, промойте зёрна и дайте воде стечь.",
+      "Нарежьте вымытое яблоко тонкой соломкой вместе с кожицей.",
+      "Соедините свёклу, фасоль и яблоко, осторожно перемешайте и сразу подавайте."
+    ],
+    "recipeYield": "3 порции",
+    "prepTime": "PT5M",
+    "totalTime": "PT5M",
+    "recipeCategory": "Салат"
   },
   {
     "slug": "tvorozhnaya-zapekanka-s-grushey",
@@ -129,12 +157,28 @@
       "запеканка",
       "десерт"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "popular": true,
     "excludeRelated": false,
     "status": "published",
-    "newsletter": false
+    "newsletter": false,
+    "recipeIngredient": [
+      "500 г творога 5–9%",
+      "2 яйца",
+      "55 г манки",
+      "80 г натурального йогурта",
+      "45–55 г сахара",
+      "2 небольшие груши",
+      "щепотка соли",
+      "немного сливочного масла для формы"
+    ],
+    "recipeInstructions": [
+      "Смешайте творог с яйцами, йогуртом, сахаром, солью и манкой; оставьте на 15 минут. Разогрейте духовку до 175 °C и смажьте форму диаметром 18–20 см.",
+      "Переложите массу в форму, тонко нарежьте груши и разложите ломтики сверху, слегка вдавливая.",
+      "Выпекайте 40–45 минут до схватившихся румяных краёв. Оставьте в форме на 20 минут после духовки."
+    ],
+    "recipeCategory": "Десерт"
   },
   {
     "slug": "krem-sup-iz-tsvetnoy-kapusty-bez-slivok",
@@ -160,12 +204,28 @@
       "без сливок",
       "овощи"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "popular": true,
     "excludeRelated": false,
     "status": "published",
-    "newsletter": false
+    "newsletter": false,
+    "recipeIngredient": [
+      "650 г цветной капусты",
+      "1 картофелина (около 150 г)",
+      "1 небольшая луковица",
+      "700–800 мл воды или овощного бульона",
+      "2 ст. л. масла",
+      "соль и чёрный перец по вкусу"
+    ],
+    "recipeInstructions": [
+      "Разберите капусту на соцветия, обсушите, смешайте с ложкой масла и запекайте при 220 °C около 20 минут до золотистых краёв.",
+      "Мелко нарежьте лук и обжарьте на оставшемся масле 4 минуты. Добавьте картофель кубиками и 700 мл воды или бульона, варите под крышкой 12–15 минут.",
+      "Отложите немного капусты для подачи, остальную добавьте в кастрюлю ещё на 3 минуты.",
+      "Снимите с огня, измельчите суп блендером, посолите, поперчите и при необходимости разбавьте оставшейся жидкостью. Подавайте с отложенными соцветиями."
+    ],
+    "recipeYield": "4 небольшие порции",
+    "recipeCategory": "Суп"
   },
   {
     "slug": "grechka-s-gribami-v-skovorode",
@@ -186,7 +246,7 @@
     "publishedAt": "2026-09-28T11:00:00.000Z",
     "updatedAt": "2026-09-28T11:00:00.000Z",
     "tags": [],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "editorialCheck": {
       "mode": "",
       "tester": "",
@@ -204,7 +264,23 @@
     "popular": false,
     "newsletter": false,
     "status": "published",
-    "excludeRelated": false
+    "excludeRelated": false,
+    "recipeIngredient": [
+      "180 г гречки",
+      "300 г шампиньонов",
+      "1 средняя луковица",
+      "380 мл горячей воды",
+      "2 ст. л. растительного масла",
+      "соль, перец, петрушка по вкусу"
+    ],
+    "recipeInstructions": [
+      "Промойте гречку, нарежьте грибы пластинками, а лук кубиками.",
+      "Обжарьте шампиньоны на сухой широкой сковороде 7–9 минут до румяных краёв. Добавьте масло и лук, через 3–4 минуты всыпьте гречку.",
+      "Влейте горячую воду, посолите, доведите до слабого кипения и готовьте под крышкой 15–18 минут на небольшом огне.",
+      "Выключите нагрев, оставьте под крышкой на 5 минут, затем разрыхлите вилкой и добавьте перец и петрушку."
+    ],
+    "recipeYield": "3 порции",
+    "recipeCategory": "Основное блюдо"
   },
   {
     "slug": "pozelenel-proros-kartofel",
@@ -2280,7 +2356,7 @@
       "https://provkus-media.ru/assets/covers/tykvennyi-krem-sup-s-yablokom-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/tykvennyi-krem-sup-s-yablokom-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2301,7 +2377,7 @@
       "https://provkus-media.ru/assets/covers/yabloki-s-indeikoi-i-timyanom-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/yabloki-s-indeikoi-i-timyanom-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2322,7 +2398,7 @@
       "https://provkus-media.ru/assets/covers/kartoshka-s-gribami-gorchichnyi-sous-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kartoshka-s-gribami-gorchichnyi-sous-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2343,7 +2419,7 @@
       "https://provkus-media.ru/assets/covers/teplyi-salat-grusha-syr-orehi-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/teplyi-salat-grusha-syr-orehi-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2364,7 +2440,7 @@
       "https://provkus-media.ru/assets/covers/slivovyi-ketchup-dymok-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/slivovyi-ketchup-dymok-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2385,7 +2461,7 @@
       "https://provkus-media.ru/assets/covers/vinegret-s-zharenoi-tykvoi-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/vinegret-s-zharenoi-tykvoi-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2406,7 +2482,7 @@
       "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kuritsa-s-yablokami-gorchitsa-med-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2427,7 +2503,7 @@
       "https://provkus-media.ru/assets/covers/udon-s-tykvoi-i-gribami-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/udon-s-tykvoi-i-gribami-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2448,7 +2524,7 @@
       "https://provkus-media.ru/assets/covers/gribnoi-pirog-obabnik-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/gribnoi-pirog-obabnik-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2521,7 +2597,7 @@
       "https://provkus-media.ru/assets/covers/kak-bezopasno-razmorazhivat-myaso-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-bezopasno-razmorazhivat-myaso-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2542,7 +2618,7 @@
       "https://provkus-media.ru/assets/covers/zachem-myt-banany-i-mandariny-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/zachem-myt-banany-i-mandariny-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2563,7 +2639,7 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-syr-s-plesenyu-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-vybrat-syr-s-plesenyu-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2610,7 +2686,7 @@
       "https://provkus-media.ru/assets/covers/chto-ne-hranit-na-dverce-holodilnika-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/chto-ne-hranit-na-dverce-holodilnika-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2631,7 +2707,7 @@
       "https://provkus-media.ru/assets/covers/nuzhno-li-myt-yayca-posle-magazina-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/nuzhno-li-myt-yayca-posle-magazina-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2678,7 +2754,7 @@
       "https://provkus-media.ru/assets/covers/mozhno-li-zamorazhivat-hleb-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/mozhno-li-zamorazhivat-hleb-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2699,7 +2775,7 @@
       "https://provkus-media.ru/assets/covers/kak-hranit-kartofel-doma-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-hranit-kartofel-doma-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2746,7 +2822,7 @@
       "https://provkus-media.ru/assets/covers/zamorozhennye-ovoshi-ne-pustye-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/zamorozhennye-ovoshi-ne-pustye-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2793,7 +2869,7 @@
       "https://provkus-media.ru/assets/covers/kak-pravilno-hranit-yayca-v-holodilnike-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-pravilno-hranit-yayca-v-holodilnike-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2840,7 +2916,7 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-kofe-po-date-obzharki-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-vybrat-kofe-po-date-obzharki-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2861,7 +2937,7 @@
       "https://provkus-media.ru/assets/covers/kak-vybrat-sladkie-mandariny-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-vybrat-sladkie-mandariny-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2882,7 +2958,7 @@
       "https://provkus-media.ru/assets/covers/extra-virgin-kak-vybrat-olivkovoe-maslo-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/extra-virgin-kak-vybrat-olivkovoe-maslo-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2929,7 +3005,7 @@
       "https://provkus-media.ru/assets/covers/chay-v-paketikah-pravda-o-pyli-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/chay-v-paketikah-pravda-o-pyli-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2950,7 +3026,7 @@
       "https://provkus-media.ru/assets/covers/kak-hranit-rastitelnoe-maslo-posle-vskrytiya-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/kak-hranit-rastitelnoe-maslo-posle-vskrytiya-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
@@ -2997,7 +3073,7 @@
       "https://provkus-media.ru/assets/covers/skolko-hranit-plavlenyi-syr-posle-vskrytiya-v2-4x3.jpg",
       "https://provkus-media.ru/assets/covers/skolko-hranit-plavlenyi-syr-posle-vskrytiya-v2-1x1.jpg"
     ],
-    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "photoSource": "ProVkus",
     "featured": false,
     "imageResponsive": true
   },
