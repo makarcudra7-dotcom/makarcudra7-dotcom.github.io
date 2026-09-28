@@ -1,8 +1,9 @@
 from __future__ import annotations
 
 import re
+import html
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import unquote, urlparse, urljoin
 
 from PIL import Image
 
@@ -109,6 +110,7 @@ def ensure_stable_layout(hero: str) -> str:
 def ensure_hero_preload(source: str, srcset: str, sizes: str, variants: list[tuple[int, Path]]) -> str:
     """Start the mobile LCP request from <head>, before render-blocking CSS finishes."""
     source = re.sub(r'<link\b[^>]*\bid="pv-hero-preload"[^>]*>', '', source, count=1, flags=re.I)
+    source = re.sub(r'<!-- HOME-LCP-PRELOAD-START -->.*?<!-- HOME-LCP-PRELOAD-END -->', '', source, flags=re.S)
     fallback = next((path for width, path in variants if width >= 768), variants[-1][1])
     tag = (
         f'<link id="pv-hero-preload" rel="preload" as="image" href="{public_url(fallback)}" '
@@ -118,6 +120,23 @@ def ensure_hero_preload(source: str, srcset: str, sizes: str, variants: list[tup
     if marker in source:
         return source.replace(marker, tag + marker, 1)
     return source.replace('</head>', tag + '</head>', 1)
+
+
+def sync_social_image(source: str, image_url: str, image_alt: str) -> str:
+    """Keep previews in sync with the article shown in the homepage hero."""
+    absolute_url = urljoin('https://provkus-media.ru/', image_url)
+    for attribute, key, value in (
+        ('property', 'og:image', absolute_url),
+        ('property', 'og:image:alt', image_alt),
+        ('name', 'twitter:image', absolute_url),
+    ):
+        tag = f'<meta {attribute}="{key}" content="{html.escape(value, quote=True)}">'
+        pattern = rf'<meta\s+{attribute}="{re.escape(key)}"\s+content="[^"]*"\s*/?>'
+        if re.search(pattern, source, flags=re.I):
+            source = re.sub(pattern, lambda _: tag, source, count=1, flags=re.I)
+        else:
+            source = source.replace('</head>', tag + '</head>', 1)
+    return source
 
 
 def patch_hero(source: str) -> tuple[str, str]:
@@ -137,6 +156,8 @@ def patch_hero(source: str) -> tuple[str, str]:
         raise RuntimeError("Hero image src not found")
 
     src = src_match.group(1)
+    alt_match = re.search(r'\balt="([^"]*)"', tag, flags=re.I)
+    alt = html.unescape(alt_match.group(1)) if alt_match else ''
     resolved = local_path_from_src(src)
     if not resolved:
         raise RuntimeError(f"Hero image is not a local upload: {src}")
@@ -163,6 +184,7 @@ def patch_hero(source: str) -> tuple[str, str]:
     hero_patched = hero[: img_match.start()] + replacement + hero[img_match.end() :]
     result = source[: hero_match.start(1)] + hero_patched + source[hero_match.end(1) :]
     result = ensure_hero_preload(result, srcset, sizes, variants)
+    result = sync_social_image(result, src, alt)
     return result, src
 
 
