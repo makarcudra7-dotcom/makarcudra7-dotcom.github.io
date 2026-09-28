@@ -14,3 +14,7 @@
 /* SEO-EDITORIAL-CHECK */
 .pv-editorial-check{font-family:Inter,system-ui,sans-serif;margin:18px 0 24px;padding:14px 16px;border:1px solid #cfe2d7;border-left:5px solid #39805f;border-radius:14px;background:#f4f8f3;color:#244338}.pv-editorial-check__label{display:flex;align-items:center;gap:7px;font-weight:900}.pv-editorial-check p{margin:7px 0 5px;font-size:13px;line-height:1.45;color:#496157}.pv-editorial-check a{font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:2px}.seo-hub-intro{max-width:850px;margin:10px 0 22px;color:var(--muted);line-height:1.6}
 /* /SEO-EDITORIAL-CHECK */
+
+/* SEO-SUPPORTING-COPY */
+.seo-supporting-copy{max-width:900px;margin:26px auto;padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.seo-supporting-copy h2{font-size:24px;margin:0 0 12px}.seo-supporting-copy h2+ p{margin-top:0}.seo-supporting-copy p{color:#45423d;line-height:1.65;margin:0 0 12px}.seo-supporting-copy p:last-child{margin-bottom:0}.seo-supporting-copy a{text-decoration:underline;text-underline-offset:2px}
+/* /SEO-SUPPORTING-COPY */
