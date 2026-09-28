@@ -1,0 +1,86 @@
+name: SEO and editorial safety maintenance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/seo-safety-maintenance.yml'
+      - 'data/posts.json'
+      - 'articles/**'
+      - 'scripts/add_recipe_schema.py'
+      - 'scripts/seo_safety_maintenance.py'
+      - 'scripts/build_discovery_archives.py'
+      - 'scripts/build_indexes.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: provkus-seo-safety-main
+  cancel-in-progress: true
+
+jobs:
+  maintain:
+    if: ${{ github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[seo-maintenance]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Upgrade eligible recipe structured data
+        run: python3 scripts/add_recipe_schema.py
+
+      - name: Apply SEO and editorial-safety rules
+        run: python3 scripts/seo_safety_maintenance.py
+
+      - name: Validate safety and index surfaces
+        run: |
+          set -euo pipefail
+          python3 -m py_compile scripts/add_recipe_schema.py scripts/seo_safety_maintenance.py scripts/build_discovery_archives.py
+          grep -q 'Проверено редакцией' editorial-policy.html
+          grep -q 'здоровье, безопасность пищи либо безопасное хранение' editorial-policy.html
+          grep -q 'Sitemap: https://provkus-media.ru/sitemap.xml' robots.txt
+          ! grep -q 'sitemap-fruit-jazz.xml' robots.txt
+          ! grep -Eq 'https://provkus-media\.ru/archive/[0-9]{4}/[0-9]{2}/[0-9]{2}/' sitemap.xml
+          python3 - <<'PY'
+          import json, re
+          from pathlib import Path
+          import scripts.seo_safety_maintenance as seo
+          root=Path('.')
+          posts=json.loads((root/'data/posts.json').read_text('utf-8'))
+          errors=[]
+          checked=0
+          for p in posts:
+              f=root/'articles'/f"{p.get('slug','')}.html"
+              if not f.exists() or not seo.risk_sensitive(p):
+                  continue
+              checked+=1
+              s=f.read_text('utf-8')
+              if 'Проверено редакцией' not in s:
+                  errors.append(f"badge:{f}")
+              ec=p.get('editorialCheck') or {}
+              if ec.get('mode')!='sources' or not ec.get('confirmed') or not ec.get('sourceUrl'):
+                  errors.append(f"metadata:{f}")
+          for f in (root/'archive').glob('*/*/*/index.html'):
+              if 'noindex,follow' not in f.read_text('utf-8'):
+                  errors.append(f"archive-indexable:{f}")
+          if checked == 0:
+              errors.append('no safety-sensitive posts detected')
+          if errors:
+              raise SystemExit('\n'.join(errors))
+          print(f'validated {checked} editorially checked safety-sensitive articles')
+          PY
+
+      - name: Commit maintenance result
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add editorial-policy.html robots.txt sitemap.xml data/posts.json assets/styles.css assets/admin-editorial-check.js scripts/build_discovery_archives.py articles/ archive/ '*.html'
+          if git diff --cached --quiet; then
+            echo 'SEO maintenance already up to date'
+            exit 0
+          fi
+          git commit -m '[seo-maintenance] Apply SEO and editorial safety fixes'
+          git push
