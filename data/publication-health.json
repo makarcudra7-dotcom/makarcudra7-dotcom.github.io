@@ -1,157 +1,115 @@
 {
   "kapusta-dlya-kvasheniya-kak-vybrat": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.952883Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.236624Z"
   },
   "nashla-v-google-recept-kuricy-na-soli-i-snachala-ne-poverila-prigotovila-kozha-hrustit-myaso-ne-sohnet": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.956947Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.643043Z"
   },
   "ne-perlovka-i-ne-kukuruza-v-sentyabre-vybirayu-druguyu-primanku-karas-ee-prosto-obozhaet": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.938052Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.569618Z"
   },
   "mozhno-li-stavit-goryachuyu-edu-v-holodil-nik-glavnoe-pravilo": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.960287Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.443720Z"
   },
   "krupu-v-magazinnyh-paketah-bol-she-ne-hranyu-peresypayu-v-banki-i-dobavlyayu-1-vesch-zhuchki-obhodyat-zapasy-storonoy": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.945943Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.653248Z"
   },
   "vybirayu-chay-po-4-priznakam-vot-na-chto-obratit-vnimanie-1-layfhak-s-molokom-i-domashnie-posidelki-prevraschayutsya-v-chaynuyu-ceremoniyu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.925811Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.782405Z"
   },
   "tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy": {
     "status": "error",
     "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+      "SEO title не совпадает с заголовком"
     ],
-    "checkedAt": "2026-09-28T00:39:56.998696Z"
+    "checkedAt": "2026-09-28T05:31:41.342266Z"
   },
   "indiya-rayta-s-ogurcom": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.933038Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.142253Z"
   },
   "dlya-chego-posypayut-sol-yu-bananovuyu-kozhuru-apel-sinovye-korki-i-lavrovyy-list-pashut-i-zdes-i-tam-proveryaem-hitovye-layfhaki": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.020398Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.805515Z"
   },
   "k-novomu-godu-nachinayu-zakupat-sya-uzhe-seychas-roskachestvo-nazvalo-produkty-kotorye-mozhno-brat-uzhe-seychas": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.039162Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.888302Z"
   },
   "indiya-alu-gobi": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.027971Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.672800Z"
   },
   "kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.085017Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.903299Z"
   },
   "varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.066247Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.222386Z"
   },
   "kompot-iz-tykvy-s-limonom-zolotoy-oktyabr": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.049135Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.951359Z"
   },
   "indiya-batter-chiken-po-domashnemu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.056578Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:41.977284Z"
   },
   "yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.122285Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.101817Z"
   },
   "indiya-dal-iz-krasnoy-chechevicy": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.103530Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.116265Z"
   },
   "govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.143366Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.236784Z"
   },
   "indiya-chana-masala": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.150192Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.369665Z"
   },
   "sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.147185Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.321181Z"
   },
   "miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.155667Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.283242Z"
   },
   "vetnam-salat-s-kuricey-i-kapustoy": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:57.162469Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:42.285249Z"
   },
   "vetnam-vetnamskiy-kofe-bez-kofeina": {
     "status": "error",
@@ -210,60 +168,44 @@
     "checkedAt": "2026-09-28T03:32:46.766590Z"
   },
   "kapustnye-oladi-na-skovorode": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.826489Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.765238Z"
   },
   "ris-na-zavtra-kak-ostudit-hranit-razogret": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.830227Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.771704Z"
   },
   "tykva-dolkami-i-kubikami-v-duhovke": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.825538Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.766980Z"
   },
   "kak-hranit-osennie-yabloki": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.829895Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.770101Z"
   },
   "kuritsa-s-tykvoi-na-protivne": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.847663Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.808992Z"
   },
   "tomatnoe-ragu-s-fasolyu": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.829377Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.811511Z"
   },
   "yablochnyi-krambl-s-ovsyanoi-kroshkoi": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.831550Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.765985Z"
   },
   "pozelenel-proros-kartofel": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-28T00:39:56.840854Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-28T05:31:40.809220Z"
   },
   "tailand-tom-kha-s-kuricey": {
     "status": "error",
