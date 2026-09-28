@@ -154,44 +154,60 @@
     "checkedAt": "2026-09-28T00:39:57.162469Z"
   },
   "vetnam-vetnamskiy-kofe-bez-kofeina": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.071856Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.666533Z"
   },
   "zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.068811Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.683362Z"
   },
   "vetnam-spring-rolly-s-krevetkami": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.206590Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.746083Z"
   },
   "vetnam-ban-mi-s-kuricey": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.590751Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.752426Z"
   },
   "vetnam-fo-ga-po-domashnemu": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.285155Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.736051Z"
   },
   "tailand-mango-s-kleykim-risom": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.261905Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.762013Z"
   },
   "tailand-tayskiy-salat-s-ogurcom": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.282481Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.761003Z"
   },
   "tailand-zelenoe-karri-s-ovoschami": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-27T06:54:30.271385Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.766590Z"
   },
   "kapustnye-oladi-na-skovorode": {
     "status": "error",
@@ -248,5 +264,817 @@
       "страница недоступна: HTTPError: HTTP Error 404: Not Found"
     ],
     "checkedAt": "2026-09-28T00:39:56.840854Z"
+  },
+  "tailand-tom-kha-s-kuricey": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.764007Z"
+  },
+  "lavrovyy-list-kladut-v-krupu-holodil-nik-i-dazhe-za-shkaf-5-populyarnyh-layfhakov-kakie-rabotayut-a-kakie-net": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.787230Z"
+  },
+  "tailand-pad-tay-s-kuricey": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.838173Z"
+  },
+  "nedorogoy-kofe-iz-pyaterochki-obeschaet-v-etnamskiy-harakter-yarkaya-banka-ne-glavnoe-reshayut-3-stroki": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.845395Z"
+  },
+  "yaponiya-tamagoyaki": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.844060Z"
+  },
+  "kotlety-bol-she-ne-leplyu-pustymi-vnutr-yayco-syr-poluchayutsya-myasnye-matreshki-s-syurprizom-v-razreze": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.869942Z"
+  },
+  "yaponiya-okonomiyaki-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.853812Z"
+  },
+  "natirayu-pryamo-v-testo-i-pirog-tykovka-poluchaetsya-kak-v-horoshey-kulinarii-syrnaya-korochka-rumyanaya-myakish-sochnyy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.856703Z"
+  },
+  "pochemu-yabloki-nel-zya-hranit-ryadom-s-ovoschami-odna-oshibka-uskoryaet-porchu-zapasov": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.861062Z"
+  },
+  "yaponiya-miso-sup-s-tofu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.886983Z"
+  },
+  "yaponiya-onigiri-s-tuncom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.960738Z"
+  },
+  "yaponiya-oyakodon": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.937466Z"
+  },
+  "uzbekskaya-achichuk": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.937953Z"
+  },
+  "uzbekskaya-samsa-s-myasom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.943660Z"
+  },
+  "uzbekskaya-mastava": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.950404Z"
+  },
+  "uzbekskaya-dymlyama": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.956412Z"
+  },
+  "ne-probuyte-na-vkus-takie-zakrutki-5-neochevidnyh-priznakov-posle-kotoryh-banku-luchshe-ne-otkryvat": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.987055Z"
+  },
+  "uzbekskaya-plov-s-govyadinoy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:46.990441Z"
+  },
+  "sok-nektar-ili-napitok-5-veschey-na-upakovke-kotorye-stoit-proverit-pered-pokupkoy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.034462Z"
+  },
+  "gruziya-odzhahuri": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.050975Z"
+  },
+  "zhena-prosit-gotovit-etu-lepeshku-vmesto-piccy-sochno-mnogo-nachinki-i-nikakoy-vozni-s-testom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.043931Z"
+  },
+  "gruziya-phali-iz-shpinata": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.077281Z"
+  },
+  "sharlotka-podozhdet-vynimayu-seredinku-iz-yablok-i-pryachu-tvorozhnoe-sufle-10-minut-i-na-stole-goryachie-gorshochki": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.049967Z"
+  },
+  "gruziya-lobio": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.054046Z"
+  },
+  "gruziya-chahohbili": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.080186Z"
+  },
+  "gruziya-hachapuri-po-adzharski": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.088929Z"
+  },
+  "afrika-pryanaya-chechevica-s-tomatami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.128929Z"
+  },
+  "afrika-kurica-s-limonom-i-olivkami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.153174Z"
+  },
+  "afrika-hariru-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.152256Z"
+  },
+  "etot-test-po-produktam-sssr-zavalit-dazhe-tot-kto-stoyal-za-doktorskoy-8-voprosov-o-vkusah-gostah-i-deficite": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.151940Z"
+  },
+  "afrika-marokkanskiy-kuskus-s-ovoschami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.148409Z"
+  },
+  "afrika-shakshuka-po-severoafrikanski": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.185166Z"
+  },
+  "tykvennyi-krem-sup-s-yablokom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.250870Z"
+  },
+  "yabloki-s-indeikoi-i-timyanom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.182856Z"
+  },
+  "kartoshka-s-gribami-gorchichnyi-sous": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.227387Z"
+  },
+  "teplyi-salat-grusha-syr-orehi": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.248771Z"
+  },
+  "slivovyi-ketchup-dymok": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.243007Z"
+  },
+  "vinegret-s-zharenoi-tykvoi": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.247454Z"
+  },
+  "kuritsa-s-yablokami-gorchitsa-med": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.252506Z"
+  },
+  "udon-s-tykvoi-i-gribami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.282378Z"
+  },
+  "gribnoi-pirog-obabnik": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.277841Z"
+  },
+  "kak-bezopasno-razmorazhivat-myaso": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.324158Z"
+  },
+  "zachem-myt-banany-i-mandariny": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.348463Z"
+  },
+  "kak-vybrat-syr-s-plesenyu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.348107Z"
+  },
+  "italiya-fokachcha-s-rozmarinom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.342819Z"
+  },
+  "chto-ne-hranit-na-dverce-holodilnika": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.343499Z"
+  },
+  "nuzhno-li-myt-yayca-posle-magazina": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.343985Z"
+  },
+  "italiya-minestrone": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.366027Z"
+  },
+  "mozhno-li-zamorazhivat-hleb": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.378026Z"
+  },
+  "kak-hranit-kartofel-doma": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.419039Z"
+  },
+  "italiya-brusketta-s-tomatami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.434440Z"
+  },
+  "zamorozhennye-ovoshi-ne-pustye": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.443968Z"
+  },
+  "italiya-rizotto-s-gribami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.445171Z"
+  },
+  "kak-pravilno-hranit-yayca-v-holodilnike": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.456662Z"
+  },
+  "kak-vybrat-kofe-po-date-obzharki": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.443238Z"
+  },
+  "italiya-pasta-kacho-e-pepe": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.469881Z"
+  },
+  "kak-vybrat-sladkie-mandariny": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.499982Z"
+  },
+  "extra-virgin-kak-vybrat-olivkovoe-maslo": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.513009Z"
+  },
+  "chay-v-paketikah-pravda-o-pyli": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.526655Z"
+  },
+  "kitay-ogurcy-po-kitayski": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.540553Z"
+  },
+  "kak-hranit-rastitelnoe-maslo-posle-vskrytiya": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.567002Z"
+  },
+  "skolko-hranit-plavlenyi-syr-posle-vskrytiya": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.535115Z"
+  },
+  "kitay-lapsha-s-govyadinoy-i-ovoschami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.561952Z"
+  },
+  "kitay-baklazhany-v-chesnochnom-souse": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.567433Z"
+  },
+  "kitay-zharenyy-ris-s-yaycom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.600495Z"
+  },
+  "kitay-kurica-gunbao": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.601352Z"
+  },
+  "russkaya-tvorozhnaya-zapekanka": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.621954Z"
+  },
+  "russkaya-rassolnik-s-perlovkoy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.630368Z"
+  },
+  "russkaya-kurnik-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.633438Z"
+  },
+  "russkaya-grechka-po-kupecheski": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.654726Z"
+  },
+  "russkaya-schi-iz-svezhey-kapusty": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.659502Z"
+  },
+  "polsha-syrniki-po-polski": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.659817Z"
+  },
+  "polsha-ogurechnik": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.693965Z"
+  },
+  "polsha-bigos": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.693322Z"
+  },
+  "polsha-perogi-s-kartofelem-i-tvorogom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.729566Z"
+  },
+  "polsha-zhurek-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.725998Z"
+  },
+  "koreya-kurica-v-ostroy-glazuri": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.732389Z"
+  },
+  "koreya-padzhon-s-zelenym-lukom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.756917Z"
+  },
+  "koreya-koreyskie-ogurcy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.754097Z"
+  },
+  "koreya-kimchi-chige-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.759742Z"
+  },
+  "koreya-pibimpap": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.790570Z"
+  },
+  "napitki-mira-bezalkogolnye-imbirnyy-limonad": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.824563Z"
+  },
+  "napitki-mira-bezalkogolnye-tayskiy-holodnyy-chay-bez-kofeina": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.823581Z"
+  },
+  "napitki-mira-bezalkogolnye-meksikanskaya-orchata": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.822697Z"
+  },
+  "napitki-mira-bezalkogolnye-ayran-s-myatoy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.849768Z"
+  },
+  "napitki-mira-bezalkogolnye-mangovyy-lassi": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.845587Z"
+  },
+  "angliyskie-zavtraki-pechenaya-fasol-na-toste": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.850833Z"
+  },
+  "angliyskie-zavtraki-yayca-s-soldatikami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.857469Z"
+  },
+  "angliyskie-zavtraki-ovsyanaya-kasha-s-yablokom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.892460Z"
+  },
+  "angliyskie-zavtraki-polnyy-angliyskiy-zavtrak": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.920287Z"
+  },
+  "angliyskie-zavtraki-skony-k-zavtraku": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.917838Z"
+  },
+  "tatarskaya-chak-chak": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.923541Z"
+  },
+  "tatarskaya-gubadiya": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.941686Z"
+  },
+  "tatarskaya-azu-po-tatarski": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.011576Z"
+  },
+  "tatarskaya-kystybyy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.948703Z"
+  },
+  "tatarskaya-echpochmak": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.951291Z"
+  },
+  "armeniya-zhengyalov-hac-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:47.999505Z"
+  },
+  "armeniya-gata-domashnyaya": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.004144Z"
+  },
+  "armeniya-spas": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.017158Z"
+  },
+  "armeniya-tolma-v-vinogradnyh-listyah": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.029383Z"
+  },
+  "armeniya-horovac-iz-ovoschey": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.038003Z"
+  },
+  "amerika-chili-s-fasolyu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.045176Z"
+  },
+  "amerika-pankeyki": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.044390Z"
+  },
+  "amerika-koul-slou": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.101865Z"
+  },
+  "amerika-kurinye-krylyshki-bbq": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.164977Z"
+  },
+  "amerika-mak-n-chiz": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.102297Z"
+  },
+  "belorussiya-draniki-so-smetanoy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.164497Z"
+  },
+  "belorussiya-kolduny-s-myasom": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.123450Z"
+  },
+  "belorussiya-machanka-s-blinami": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.132155Z"
+  },
+  "belorussiya-klecki-kartofelnye": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.137612Z"
+  },
+  "belorussiya-holodnik-so-svekloy": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.146315Z"
+  },
+  "germaniya-kartofelnyy-salat": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.198171Z"
+  },
+  "germaniya-shnicel-po-domashnemu": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.235609Z"
+  },
+  "germaniya-tushenaya-krasnaya-kapusta": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.226891Z"
+  },
+  "germaniya-kartofelnye-klecki": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.233260Z"
+  },
+  "germaniya-yablochnyy-shtrudel": {
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-09-28T03:32:48.237556Z"
   }
 }
