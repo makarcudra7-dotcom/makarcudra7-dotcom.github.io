@@ -1,5 +1,36 @@
 [
   {
+    "slug": "kartofelnye-lepeshki-s-syrom",
+    "headline": "Вчерашнее пюре больше не разогреваю: делаю сырные лепёшки «Улыбашки» с хрустящей корочкой и сырной бомбой внутри",
+    "description": "Лепёшки «Улыбашки» из вчерашнего пюре: как спрятать сыр в середину, запечатать края и обжарить до хрустящей корочки.",
+    "author": "Илья Титюлькин",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/2026-09-28-kartofelnye-lepeshki-s-syrom-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/2026-09-28-kartofelnye-lepeshki-s-syrom-cover.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-28-kartofelnye-lepeshki-s-syrom-inside.webp"
+    ],
+    "imageAlt": "Румяные картофельные лепёшки с расплавленным сыром и зеленью",
+    "url": "https://provkus-media.ru/articles/kartofelnye-lepeshki-s-syrom.html",
+    "publishedAt": "2026-09-28T17:00:00.000Z",
+    "updatedAt": "2026-09-28T17:00:00.000Z",
+    "tags": [
+      "картофель",
+      "пюре",
+      "сыр",
+      "остатки еды"
+    ],
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false,
+    "popular": false,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "salat-iz-svekly-yabloka-i-fasoli",
     "headline": "Готовлю осенний ужин из 3-х продуктов: свёкла, яблоко и фасоль — хрустит по-королевски, а дел на 5 минут",
     "description": "Осенний салат из трёх основных продуктов за пять минут: готовая свёкла, консервированная фасоль и хрустящее яблоко.",
