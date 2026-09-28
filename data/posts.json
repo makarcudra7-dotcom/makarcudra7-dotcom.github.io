@@ -1,5 +1,36 @@
 [
   {
+    "slug": "krem-sup-iz-tsvetnoy-kapusty-bez-slivok",
+    "headline": "Готовлю полезный крем-суп из цветной капусты без сливок: румяные соцветия раскрываются в ложке совсем по-новому",
+    "description": "Как запечь цветную капусту, сварить основу с картофелем и получить гладкий густой суп без сливок.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/2026-09-28-krem-sup-iz-tsvetnoy-kapusty-bez-slivok-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/2026-09-28-krem-sup-iz-tsvetnoy-kapusty-bez-slivok-cover.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-28-krem-sup-iz-tsvetnoy-kapusty-bez-slivok-inside.webp"
+    ],
+    "imageAlt": "Густой крем-суп из цветной капусты с румяными соцветиями",
+    "url": "https://provkus-media.ru/articles/krem-sup-iz-tsvetnoy-kapusty-bez-slivok.html",
+    "publishedAt": "2026-09-28T12:30:00.000Z",
+    "updatedAt": "2026-09-28T12:30:00.000Z",
+    "tags": [
+      "цветная капуста",
+      "суп",
+      "без сливок",
+      "овощи"
+    ],
+    "photoSource": "Иллюстрация создана с помощью ИИ",
+    "featured": false,
+    "popular": true,
+    "excludeRelated": false,
+    "status": "published",
+    "newsletter": false
+  },
+  {
     "slug": "grechka-s-gribami-v-skovorode",
     "headline": "Как приготовить гречку с грибами без сухости: кидаю на сковороду шампиньоны, а крупа сама пухнет на глазах",
     "description": "Пропорции гречки и воды, порядок обжаривания грибов и время под крышкой для рассыпчатого ужина.",
@@ -483,7 +514,7 @@
     ],
     "photoSource": "provkus-media.ru",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "excludeRelated": false
   },
   {

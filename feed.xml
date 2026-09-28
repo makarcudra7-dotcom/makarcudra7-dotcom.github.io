@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Mon, 28 Sep 2026 11:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Mon, 28 Sep 2026 12:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Готовлю полезный крем-суп из цветной капусты без сливок: румяные соцветия раскрываются в ложке совсем по-новому</title>
+    <link>https://provkus-media.ru/articles/krem-sup-iz-tsvetnoy-kapusty-bez-slivok.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/krem-sup-iz-tsvetnoy-kapusty-bez-slivok.html</guid>
+    <pubDate>Mon, 28 Sep 2026 12:30:00 GMT</pubDate>
+    <description>Как запечь цветную капусту, сварить основу с картофелем и получить гладкий густой суп без сливок.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-28-krem-sup-iz-tsvetnoy-kapusty-bez-slivok-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Как приготовить гречку с грибами без сухости: кидаю на сковороду шампиньоны, а крупа сама пухнет на глазах</title>
     <link>https://provkus-media.ru/articles/grechka-s-gribami-v-skovorode.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Кухни мира</category>
     <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-miso-sup-s-tofu-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Онигири формую тёплым рисом и влажными руками: треугольники держатся без прессования в камень</title>
-    <link>https://provkus-media.ru/articles/yaponiya-onigiri-s-tuncom.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/yaponiya-onigiri-s-tuncom.html</guid>
-    <pubDate>Wed, 23 Sep 2026 13:05:00 GMT</pubDate>
-    <description>Японские рисовые треугольники онигири с начинкой из тунца и нори.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Кухни мира</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/yaponiya-onigiri-s-tuncom-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
