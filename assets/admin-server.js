@@ -1,5 +1,6 @@
 (()=>{
   'use strict';
+  if(window.__pvAdminServerLoaded)return;window.__pvAdminServerLoaded=true;
   const API_KEY='provkusPublishApi';
   const $=s=>document.querySelector(s);
   const originalGetToken=typeof window.getToken==='function'?window.getToken:null;

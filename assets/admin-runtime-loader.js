@@ -3,7 +3,7 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260928-stable-list1';
+  const VERSION='20260928-stable-list2';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
