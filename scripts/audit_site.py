@@ -96,7 +96,10 @@ check(featured.get('headline','') in home and featured.get('image','') in home,'
 check(bool(home_page.find('meta',property='og:image')) and home_page.find('meta',property='og:image')[0].get('content')==featured.get('image'),'index: representative OG image')
 check('HOME-HERO-START' in home and 'HOME-LOWER-START' in home,'index: static feed')
 check('HOME-NEWS-START' in home and 'HOME-NEWS-END' in home,'index: news block')
-news_posts=[p for p in posts if str(p.get('category') or '').strip().casefold().startswith('новост') and (not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now)]
+def is_news(p):
+ typ=str(p.get('type') or '').strip().casefold()
+ return typ in {'newsarticle','news','новость','новости'} or str(p.get('typeLabel') or '').strip().casefold().startswith('новост') or str(p.get('category') or '').strip().casefold().startswith('новост') or any(str(tag).strip().casefold().startswith('новост') for tag in (p.get('tags') or []))
+news_posts=[p for p in posts if is_news(p) and (not parse_dt(p.get('publishedAt')) or parse_dt(p.get('publishedAt'))<=now)]
 news_slugs={p['slug'] for p in news_posts}
 news_html=(ROOT/'news.html').read_text('utf-8')
 news_links={a.get('href','').rsplit('/',1)[-1][:-5] for a in Page(news_html).find('a') if a.get('href','').startswith('/articles/') and a.get('href','').endswith('.html')}
@@ -173,9 +176,10 @@ for f in ROOT.rglob('*.html'):
 FIXED_SITEMAP_URLS=15  # homepage + hubs + news + authors + editorial/contact/policy pages
 archive_urls={SITE+'/archive.html'} | {
  SITE+'/'+str(path.relative_to(ROOT)).replace('index.html','')
- for path in (ROOT/'archive').rglob('index.html')
+ for path in (ROOT/'archive').glob('*/index.html')
 }
 calculator_urls={SITE+'/'+name for name in ('calculators.html','grams-spoons-cups.html','portion-calculator.html')}
+archive_urls |= {SITE+'/'+str(path.relative_to(ROOT)).replace('index.html','') for path in (ROOT/'archive').glob('*/*/index.html')}
 check(archive_urls <= locs,'Archive sitemap inventory incomplete')
 check(calculator_urls <= locs,'Calculator sitemap inventory incomplete')
 expected_urls=public_count+FIXED_SITEMAP_URLS+len(archive_urls)+len(calculator_urls)

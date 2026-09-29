@@ -53,13 +53,21 @@ jobs:
           PY
       - name: Commit generated recipe template data
         run: |
-          if git diff --quiet -- .github/scheduled-posts.json data/posts.json data/recipe-index.json articles; then
-            echo 'No generated changes'
-            exit 0
-          fi
           git config user.name 'provkus-cms-bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add .github/scheduled-posts.json data/posts.json data/recipe-index.json articles
-          git commit -m 'Refresh full recipe templates'
-          git pull --rebase origin main
-          git push
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/apply_recipe_template_backfill.py
+            python3 scripts/ensure_recipe_template.py
+            python3 scripts/build_recipe_tools.py
+            if git diff --quiet -- .github/scheduled-posts.json data/posts.json data/recipe-index.json articles; then
+              echo 'No generated changes'
+              exit 0
+            fi
+            git add .github/scheduled-posts.json data/posts.json data/recipe-index.json articles
+            git commit -m 'Refresh full recipe templates'
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Main changed during recipe build; retrying from latest commit ($attempt/5)"
+          done
+          exit 1

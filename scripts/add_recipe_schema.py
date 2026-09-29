@@ -31,11 +31,12 @@ def visible_recipe(source):
     for section in LIST.finditer(body):
         headings=HEADING.findall(body[:section.start()])
         label=clean(headings[-1]) if headings else ''
+        section_tag=section.group(0).split('>',1)[0]
         items=[clean(item) for item in ITEM.findall(section.group(2))]
         items=[item for item in items if item]
-        if re.search(r'ингредиент|понадоб|продукт|состав|порци',label,re.I) and len(items)>=2:
+        if ('recipe-ingredients' in section_tag or re.search(r'ингредиент|понадоб|продукт|состав|порци',label,re.I)) and len(items)>=2:
             ingredients=items
-        if re.search(r'как |приготов|порядок|шаг|способ|готовим|делаем|сборк',label,re.I) and len(items)>=2:
+        if ('recipe-steps' in section_tag or re.search(r'как |приготов|порядок|шаг|способ|готовим|делаем|сборк',label,re.I)) and len(items)>=2:
             steps=items
     return (ingredients,steps) if ingredients and steps else None
 
