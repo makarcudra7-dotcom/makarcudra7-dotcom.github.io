@@ -17,5 +17,11 @@
 
     root * .
     encode zstd gzip
+
+    @freshFrontend {
+        path / /index.html *.html *.js *.css
+    }
+    header @freshFrontend Cache-Control "no-cache, must-revalidate"
+
     file_server
 }
