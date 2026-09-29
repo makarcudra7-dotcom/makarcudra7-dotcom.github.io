@@ -445,7 +445,7 @@
   },
   {
     "slug": "yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy",
-    "publishAt": "2026-09-29T16:52:00.000Z",
+    "publishAt": "2026-09-29T18:13:00.000Z",
     "createdAt": "2026-09-29T09:45:51.525Z",
     "status": "queued",
     "material": {
@@ -453,15 +453,15 @@
       "category": "Рецепты",
       "type": "recipe",
       "lead": "яблоки в слоеном тесте в духовке",
-      "publishedAt": "2026-09-29T20:52",
-      "updatedAt": "2026-09-29T13:45",
+      "publishedAt": "2026-09-29T22:13",
+      "updatedAt": "2026-09-29T13:46",
       "seoTitle": "Яблоки осенью не пускаю на шарлотку: надеваю слоёную «шубку» — и получаются румяные корзиночки как из кондитерской",
       "description": "Половинки яблок оборачивают кружочками слоёного теста и запекают при 180°C. Сверху можно добавить воздушный крем с маскарпоне.",
       "slug": "yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy",
       "canonical": "https://provkus-media.ru/articles/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy.html",
       "robots": "index, follow, max-image-preview:large",
-      "ogImage": "",
-      "source": "",
+      "ogImage": "https://provkus-media.ru/assets/uploads/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy-16x9.jpg",
+      "source": "leplants.ru",
       "tags": "Яблоки, Осень, Десерт, Выпечка, Рецепты, Готовка",
       "image": "https://provkus-media.ru/assets/uploads/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy-16x9.jpg",
       "imageAlt": "Женщина держит румяную корзиночку из слоёного теста с яблоками, рядом на противне лежат готовые яблочные слойки  ",
@@ -476,6 +476,8 @@
       "featured": true,
       "popular": true,
       "_editingSlug": "",
+      "excludeRelated": false,
+      "sourceHtml": "<ol class=\"pv-sources\"><li><a href=\"https://leplants.ru/dizajn-i-blagoustrojstvo/yabloko-v-shubke-iz-sloyonogo-testa-korzinochki-kotorye-pekutsya-sami-a-vkuskak-u-dorogoy-vypechki/\" target=\"_blank\" rel=\"noopener noreferrer\">leplants.ru</a></li></ol>",
       "recipeIngredient": [
         "Бездрожжевое слоёное тесто — 400 г",
         "Мука — 10 г",
@@ -507,8 +509,6 @@
       "cookTime": "PT30M",
       "totalTime": "PT60M",
       "recipeTemplateApplied": true,
-      "excludeRelated": false,
-      "sourceHtml": "",
       "editorialCheck": {
         "mode": "",
         "tester": "",
@@ -547,8 +547,8 @@
       ],
       "imageAlt": "Женщина держит румяную корзиночку из слоёного теста с яблоками, рядом на противне лежат готовые яблочные слойки  ",
       "url": "https://provkus-media.ru/articles/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy.html",
-      "publishedAt": "2026-09-29T16:52:00.000Z",
-      "updatedAt": "2026-09-29T09:45:00.000Z",
+      "publishedAt": "2026-09-29T18:13:00.000Z",
+      "updatedAt": "2026-09-29T09:46:00.000Z",
       "tags": [
         "Яблоки",
         "Осень",
@@ -574,8 +574,7 @@
       "featured": true,
       "popular": true,
       "newsletter": false,
-      "status": "queued",
-      "excludeRelated": false
+      "status": "queued"
     }
   }
 ]
