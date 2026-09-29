@@ -3,14 +3,16 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {'admin.html'}
-VERSION = '20260929-theme4'
+VERSION = '20260929-theme5'
 
-BOOTSTRAP = '''<script id="pv-theme-bootstrap">(function(){var KEY='provkus-theme';function apply(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#161b19':'#f7f4ee');document.querySelectorAll('.pv-theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(t==='dark'));b.setAttribute('aria-label',t==='dark'?'Включить светлую тему':'Включить тёмную тему')})}var t='light';try{t=localStorage.getItem(KEY)||'light'}catch(e){}apply(t);window.__pvThemeApply=function(next,persist){apply(next);if(persist!==false){try{localStorage.setItem(KEY,next)}catch(e){}}};window.__pvThemeDelegated=true;document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pv-theme-toggle');if(!b)return;var next=document.documentElement.dataset.theme==='dark'?'light':'dark';window.__pvThemeApply(next,true)});document.addEventListener('DOMContentLoaded',function(){apply(document.documentElement.dataset.theme||t)})})();</script>'''
+BOOTSTRAP = '''<script id="pv-theme-bootstrap">(function(){var KEY='provkus-theme';function cleanup(){var bs=document.querySelectorAll('.site-header .pv-theme-toggle');for(var i=1;i<bs.length;i++)bs[i].remove()}function apply(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#161b19':'#f7f4ee');cleanup();document.querySelectorAll('.pv-theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(t==='dark'));b.setAttribute('aria-label',t==='dark'?'Включить светлую тему':'Включить тёмную тему')})}var t='light';try{t=localStorage.getItem(KEY)||'light'}catch(e){}apply(t);window.__pvThemeApply=function(next,persist){apply(next);if(persist!==false){try{localStorage.setItem(KEY,next)}catch(e){}}};window.__pvThemeDelegated=true;document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pv-theme-toggle');if(!b)return;var next=document.documentElement.dataset.theme==='dark'?'light':'dark';window.__pvThemeApply(next,true)});document.addEventListener('DOMContentLoaded',function(){cleanup();apply(document.documentElement.dataset.theme||t)});})();</script>'''
 THEME_LINK = f'<link rel="stylesheet" href="/assets/theme.css?v={VERSION}">'
 BUTTON = '<button type="button" class="pv-theme-toggle" aria-pressed="false" aria-label="Переключить тему"><span class="pv-theme-label-light">☾ Тёмная тема</span><span class="pv-theme-label-dark">☀ Светлая тема</span></button>'
 
 DARK_CONTRAST = r'''
-/* THEME-CONTRAST-V4 */
+/* THEME-CONTRAST-V5 */
+.site-header .pv-theme-toggle:empty{display:none!important}
+.site-header .pv-theme-toggle~.pv-theme-toggle{display:none!important}
 .pv-theme-label-dark{display:none}
 html[data-theme="dark"] .pv-theme-label-light{display:none}
 html[data-theme="dark"] .pv-theme-label-dark{display:inline}
@@ -64,40 +66,12 @@ html[data-theme="dark"] .pv-search-results a:hover{background:#2d3831!important}
 def patch_assets():
     app = ROOT / 'assets' / 'app.js'
     text = app.read_text(encoding='utf-8')
-    original = text
-    text = text.replace("const VERSION='20260929-search2';", f"const VERSION='{VERSION}';")
-    pattern = re.compile(r"\n  function setTheme\(next\)\{.*?\n  if\(!isHome\)\{", re.S)
-    replacement = '''
-  function setTheme(next,persist=false){
-    next=next==='dark'?'dark':'light';
-    if(window.__pvThemeApply){window.__pvThemeApply(next,persist);return}
-    document.documentElement.dataset.theme=next;
-    document.documentElement.style.colorScheme=next;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='dark'?'#161b19':'#f7f4ee');
-    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.setAttribute('aria-pressed',String(next==='dark'));btn.setAttribute('aria-label',next==='dark'?'Включить светлую тему':'Включить тёмную тему')}
-    if(persist){try{localStorage.setItem('provkus-theme',next)}catch(e){}}
-  }
-  let initial='light';try{initial=localStorage.getItem('provkus-theme')||'light'}catch(e){}
-  setTheme(initial==='dark'?'dark':'light',false);
-  const bar=document.querySelector('.site-header .topbar');
-  if(bar){
-    let button=bar.querySelector('.pv-theme-toggle');
-    if(!button){button=document.createElement('button');button.type='button';button.className='pv-theme-toggle';button.innerHTML='<span class="pv-theme-label-light">☾ Тёмная тема</span><span class="pv-theme-label-dark">☀ Светлая тема</span>';bar.appendChild(button)}
-    setTheme(document.documentElement.dataset.theme,false);
-    if(!window.__pvThemeDelegated){button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next,true)})}
-  }
-  if(!isHome){'''
-    text, n = pattern.subn(replacement, text, count=1)
-    if not n:
-        print('WARN app.js theme block not matched')
-    if text != original:
-        app.write_text(text, encoding='utf-8')
+    text = re.sub(r"const VERSION='[^']+';", f"const VERSION='{VERSION}';", text, count=1)
+    app.write_text(text, encoding='utf-8')
 
     theme = ROOT / 'assets' / 'theme.css'
     css = theme.read_text(encoding='utf-8')
-    marker = '/* THEME-CONTRAST-V4 */'
-    if marker in css:
-        css = css.split(marker, 1)[0].rstrip() + '\n'
+    css = re.split(r'/\* THEME-CONTRAST-V[45] \*/', css, maxsplit=1)[0].rstrip() + '\n'
     css = css.rstrip() + '\n' + DARK_CONTRAST.strip() + '\n'
     theme.write_text(css, encoding='utf-8')
 
@@ -106,7 +80,9 @@ def patch(path: Path) -> bool:
     text = path.read_text(encoding='utf-8')
     original = text
 
-    if 'id="pv-theme-bootstrap"' not in text:
+    if 'id="pv-theme-bootstrap"' in text:
+        text = re.sub(r'<script id="pv-theme-bootstrap">.*?</script>', BOOTSTRAP, text, count=1, flags=re.S)
+    else:
         text = text.replace('<head>', '<head>' + BOOTSTRAP, 1)
 
     if '/assets/theme.css' not in text:
@@ -120,8 +96,8 @@ def patch(path: Path) -> bool:
         if not count:
             print(f'WARN no topbar match: {path.relative_to(ROOT)}')
 
-    text = re.sub(r'assets/app\.js\?v=[^"\']+', f'assets/app.js?v={VERSION}', text)
-    text = re.sub(r'/assets/app\.js\?v=[^"\']+', f'/assets/app.js?v={VERSION}', text)
+    app_pattern = re.compile(r'((?:\.\./|/)?assets/app\.js)(?:\?v=[^"\']+)?')
+    text = app_pattern.sub(lambda m: m.group(1) + '?v=' + VERSION, text)
 
     if text != original:
         path.write_text(text, encoding='utf-8')
