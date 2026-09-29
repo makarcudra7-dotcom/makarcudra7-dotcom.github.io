@@ -6,7 +6,7 @@
     "author": "Эльвира Шайберт",
     "coauthors": [],
     "category": "Рецепты",
-    "type": "recipe",
+    "type": "Recipe",
     "typeLabel": "Рецепт",
     "image": "https://provkus-media.ru/assets/uploads/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy-16x9.jpg",
     "images": [
@@ -43,7 +43,31 @@
     "featured": true,
     "popular": true,
     "newsletter": false,
-    "status": "published"
+    "status": "published",
+    "recipeIngredient": [
+      "Бездрожжевое слоёное тесто — 400 г",
+      "Мука — 10 г",
+      "Красные яблоки — 6 шт.",
+      "Сахар — по вкусу",
+      "Корица — по вкусу",
+      "Сахарная пудра — 20 г",
+      "Маскарпоне — 25 г",
+      "Сливки — 250 мл"
+    ],
+    "recipeInstructions": [
+      "Достать слоёное тесто из морозилки минимум за 30 минут до приготовления.",
+      "Яблоки вымыть, разрезать пополам и удалить сердцевину.",
+      "Рабочую поверхность присыпать 10 г муки.",
+      "Рюмкой или бокалом вырезать из теста кружочки — примерно по 4–5 штук на яблоко.",
+      "Обернуть половинки яблок кружочками теста изнутри, формируя корзиночки.",
+      "Перевернуть заготовки и выложить на противень, застеленный пергаментом.",
+      "Посыпать сахаром и корицей по вкусу.",
+      "Выпекать при 180°C примерно 30 минут до золотистой корочки.",
+      "Для крема взбить 250 мл сливок с 20 г сахарной пудры до плотной консистенции.",
+      "Добавить 25 г маскарпоне и аккуратно перемешать.",
+      "В готовых корзиночках сделать небольшое углубление, наполнить кремом и добавить щепотку корицы.",
+      "Дать выпечке немного остыть и подавать."
+    ]
   },
   {
     "slug": "kofe-s-solenoy-karamel-yu-na-ozon-skupayut-korobkami-1-paketik-v-kruzhku-i-doma-budto-zakazala-desertnyy-latte",
@@ -53,7 +77,7 @@
     "coauthors": [],
     "category": "Продукты",
     "type": "NewsArticle",
-    "typeLabel": "Материал",
+    "typeLabel": "Новость",
     "image": "https://provkus-media.ru/assets/uploads/kofe-s-solenoy-karamel-yu-na-ozon-skupayut-korobkami-1-paketik-v-kruzhku-i-doma-budto-zakazala-desertnyy-latte-16x9.jpg",
     "images": [
       "https://provkus-media.ru/assets/uploads/kofe-s-solenoy-karamel-yu-na-ozon-skupayut-korobkami-1-paketik-v-kruzhku-i-doma-budto-zakazala-desertnyy-latte-16x9.jpg",
@@ -98,7 +122,7 @@
     "author": "Эльвира Шайберт",
     "coauthors": [],
     "category": "Хранение",
-    "type": "news",
+    "type": "NewsArticle",
     "typeLabel": "Новость",
     "image": "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-16x9.jpg",
     "images": [
@@ -145,7 +169,7 @@
     "coauthors": [],
     "category": "Продукты",
     "type": "NewsArticle",
-    "typeLabel": "Материал",
+    "typeLabel": "Новость",
     "image": "https://provkus-media.ru/assets/uploads/do-300-rubley-za-blyudo-a-vid-kak-iz-kafe-3-nahodki-iz-krasnogo-i-belogo-gedza-salat-i-suluguni-16x9.jpg",
     "images": [
       "https://provkus-media.ru/assets/uploads/do-300-rubley-za-blyudo-a-vid-kak-iz-kafe-3-nahodki-iz-krasnogo-i-belogo-gedza-salat-i-suluguni-16x9.jpg",
@@ -184,7 +208,7 @@
     "author": "Екатерина Рукопляс",
     "coauthors": [],
     "category": "Рецепты",
-    "type": "recipe",
+    "type": "Recipe",
     "typeLabel": "Рецепт",
     "image": "https://provkus-media.ru/assets/uploads/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego-16x9.jpg",
     "images": [
@@ -250,7 +274,7 @@
     "description": "Кусок мяса подвешивают под крышкой над кипящей водой — обычная кастрюля превращается в простую пароварку без масла и сковороды.",
     "author": "Эльвира Шайберт",
     "category": "Рецепты",
-    "type": "recipe",
+    "type": "Recipe",
     "typeLabel": "Рецепт",
     "image": "https://provkus-media.ru/assets/uploads/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo-16x9.jpg",
     "images": [
@@ -288,19 +312,19 @@
     "popular": true,
     "coauthors": [],
     "recipeIngredient": [
-      "небольшой кусок курицы, индейки или нежирной свинины",
-      "соль",
-      "любимые специи",
-      "вода для кастрюли",
-      "пищевой хлопковый шпагат"
+      "небольшой кусок курицы, индейки или нежирной свинины;",
+      "соль;",
+      "любимые специи;",
+      "вода для кастрюли;",
+      "пищевой хлопковый шпагат."
     ],
     "recipeInstructions": [
-      "Мясо обсушите и натрите солью и специями.",
-      "Кусок крепко обвяжите пищевым хлопковым шпагатом.",
-      "В кастрюлю налейте воду и доведите её до тихого кипения.",
-      "Закрепите мясо под крышкой так, чтобы оно висело внутри кастрюли и не касалось воды.",
-      "Закройте кастрюлю. Вода должна спокойно кипеть всё время приготовления, а пар — свободно окружать кусок.",
-      "Проверьте готовность в самой толстой части мяса кулинарным термометром. Для птицы ориентир — 74°C, для цельного куска свинины — 63°C, после чего дайте ему отдохнуть 3 минуты."
+      "Мясо обсушивают, натирают солью и специями.",
+      "Кусок крепко обвязывают пищевым хлопковым шпагатом.",
+      "В кастрюлю наливают воду и доводят её до тихого кипения.",
+      "Мясо закрепляют под крышкой так, чтобы оно висело внутри кастрюли и не касалось воды.",
+      "Кастрюлю закрывают. Вода должна спокойно кипеть всё время приготовления, а пар — свободно окружать кусок.",
+      "Готовность проверяют в самой толстой части мяса кулинарным термометром. Для птицы ориентир — 74°C, для цельного куска свинины — 63°C, после чего ему дают отдохнуть 3 минуты."
     ],
     "recipeTemplateApplied": true
   },
