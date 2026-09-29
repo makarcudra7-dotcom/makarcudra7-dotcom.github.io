@@ -1,19 +1,29 @@
 (function(){
   const SITE='https://provkus-media.ru';
   const FALLBACK='/assets/fallback-cover.svg';
-  const VERSION='20260929-search2';
+  const VERSION='20260929-theme4';
   const AUTHOR_PHOTOS={'ilya.svg':'/assets/authors/ilya.jpg?v=20260922-3','ilya.jpg':'/assets/authors/ilya.jpg?v=20260922-3','elvira.svg':'/assets/authors/elvira-generated.jpg','elvira-v2.jpg':'/assets/authors/elvira-generated.jpg','elvira.jpg':'/assets/authors/elvira-generated.jpg','elvira-realistic.jpg':'/assets/authors/elvira-generated.jpg','ekaterina.svg':'/assets/authors/ekaterina.jpg?v=20260922-3','ekaterina.jpg':'/assets/authors/ekaterina.jpg?v=20260922-3'};
   const AUTHOR_PAGES={'author-ekaterina.html':'Екатерина Рукопляс','author-elvira.html':'Эльвира Шайберт','author-ilya.html':'Илья Титюлькин'};
   const isHome=/^(\/|\/index\.html)$/.test(location.pathname);
 
-  function setTheme(next){
+  function setTheme(next,persist=false){
+    next=next==='dark'?'dark':'light';
+    if(window.__pvThemeApply){window.__pvThemeApply(next,persist);return}
     document.documentElement.dataset.theme=next;
+    document.documentElement.style.colorScheme=next;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='dark'?'#161b19':'#f7f4ee');
-    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.textContent=next==='dark'?'☀ Светлая тема':'☾ Тёмная тема';btn.setAttribute('aria-pressed',String(next==='dark'))}
+    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.setAttribute('aria-pressed',String(next==='dark'));btn.setAttribute('aria-label',next==='dark'?'Включить светлую тему':'Включить тёмную тему')}
+    if(persist){try{localStorage.setItem('provkus-theme',next)}catch(e){}}
   }
   let initial='light';try{initial=localStorage.getItem('provkus-theme')||'light'}catch(e){}
-  setTheme(initial==='dark'?'dark':'light');
-  const bar=document.querySelector('.site-header .topbar');if(bar){const button=document.createElement('button');button.type='button';button.className='pv-theme-toggle';bar.appendChild(button);setTheme(document.documentElement.dataset.theme);button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next);try{localStorage.setItem('provkus-theme',next)}catch(e){}})}
+  setTheme(initial==='dark'?'dark':'light',false);
+  const bar=document.querySelector('.site-header .topbar');
+  if(bar){
+    let button=bar.querySelector('.pv-theme-toggle');
+    if(!button){button=document.createElement('button');button.type='button';button.className='pv-theme-toggle';button.innerHTML='<span class="pv-theme-label-light">☾ Тёмная тема</span><span class="pv-theme-label-dark">☀ Светлая тема</span>';bar.appendChild(button)}
+    setTheme(document.documentElement.dataset.theme,false);
+    if(!window.__pvThemeDelegated){button.addEventListener('click',()=>{const next=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(next,true)})}
+  }
   if(!isHome){fetch('/data/authors.json',{cache:'no-cache'}).then(r=>r.ok?r.json():[]).then(authors=>{for(const author of authors){if(!author.photoVersion||!author.photo)continue;document.querySelectorAll('img').forEach(img=>{if(img.alt!==author.name)return;img.src='/'+author.photo.replace(/^\//,'')+'?v='+author.photoVersion})}}).catch(()=>{})}
   const y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();
   function addCss(href){if(document.querySelector(`link[href^="${href}"]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href+'?v='+VERSION;document.head.appendChild(l)}
