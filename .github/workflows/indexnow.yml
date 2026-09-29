@@ -1,0 +1,38 @@
+name: Notify IndexNow of changed pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'articles/**'
+      - 'data/posts.json'
+      - 'index.html'
+      - 'category.html'
+      - 'news.html'
+      - 'recipes.html'
+      - 'products.html'
+      - 'home-storage.html'
+      - 'food-safety.html'
+      - '59453d301e4a660b358e1c8f8a345305.txt'
+      - 'scripts/indexnow_submit.py'
+      - '.github/workflows/indexnow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: provkus-indexnow
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Notify IndexNow after public key verification
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+        run: python3 scripts/indexnow_submit.py
