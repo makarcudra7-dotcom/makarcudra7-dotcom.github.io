@@ -1,0 +1,34 @@
+name: Theme consistency
+
+on:
+  push:
+    paths:
+      - 'scripts/patch_theme_consistency.py'
+      - 'assets/theme.css'
+      - 'assets/app.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-theme:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Patch public HTML
+        run: python scripts/patch_theme_consistency.py
+      - name: Commit generated HTML
+        run: |
+          if git diff --quiet; then
+            echo "No HTML changes"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Apply stable theme bootstrap to public pages"
+          git push
