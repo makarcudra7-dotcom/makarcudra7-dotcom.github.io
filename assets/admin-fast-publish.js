@@ -18,14 +18,15 @@
       window.__pvPublishing=true;
       try{
         const result=await base.call(this,e);
-        if(result===true&&batched){
+        const ready=result===true||window.publishBatchReady?.()===true;
+        if(ready&&batched){
           const o=window.collect?.()||{},label=mode==='schedule'?'Schedule':'Publish';
           await window.commitPublishBatch?.(`${label}: ${o.headline||o.slug||'material'}`);
-          if(typeof flash==='function')flash(mode==='schedule'?'Запланировано — изменения сохранены одним пакетом':'Опубликовано — изменения сохранены одним пакетом');
+          if(typeof flash==='function')flash(mode==='schedule'?'Запланировано — сохранено одним коммитом':'Опубликовано — отправлено одним коммитом');
           if(mode==='schedule'&&typeof window.reloadScheduledQueue==='function')await window.reloadScheduledQueue();
           window.renderPosts?.();
         }else if(batched){window.cancelPublishBatch?.()}
-        return result
+        return ready||result
       }catch(err){if(batched)window.cancelPublishBatch?.();if(typeof flash==='function')flash(err.message||'Не удалось завершить публикацию');return false}
       finally{window.__pvPublishing=false}
     };
@@ -39,7 +40,7 @@
       wrapButton($('#publishBtn'),'publish');
       wrapButton($('#scheduleBtn'),'schedule');
       const p=$('#publishBtn'),s=$('#scheduleBtn');
-      if(p?.dataset.fastPublishWrapped==='1'&&s?.dataset.fastPublishWrapped==='1')clearInterval(t);
+      if(p?.dataset.fastPublishWrapped==='1'&&(!s||s.dataset.fastPublishWrapped==='1'))clearInterval(t);
     }
     if(ticks>400)clearInterval(t)
   },50);
