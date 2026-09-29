@@ -9,6 +9,8 @@ on:
       - '.github/scheduled-posts.json'
       - '.github/workflows/publish-scheduled.yml'
       - 'scripts/publish-scheduled.js'
+      - 'scripts/start-site-with-scheduler.sh'
+      - 'scripts/sync-runtime-queue.js'
   workflow_dispatch:
 
 permissions:
