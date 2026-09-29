@@ -44,7 +44,9 @@ html[data-theme="dark"] .author-card-role{color:#a4d3b8!important}
 html[data-theme="dark"] .author-card-footer{color:#c4c9bf;border-top-color:#566157}
 html[data-theme="dark"] .author-card-footer strong{color:#ff9e80}
 html[data-theme="dark"] .author-card-promise{background:#303a33!important;color:#e8e5dc!important}
-/* THEME-CONTRAST-V4 */
+/* THEME-CONTRAST-V5 */
+.site-header .pv-theme-toggle:empty{display:none!important}
+.site-header .pv-theme-toggle~.pv-theme-toggle{display:none!important}
 .pv-theme-label-dark{display:none}
 html[data-theme="dark"] .pv-theme-label-light{display:none}
 html[data-theme="dark"] .pv-theme-label-dark{display:inline}
