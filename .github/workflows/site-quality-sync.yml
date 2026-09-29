@@ -90,11 +90,25 @@ jobs:
         run: |
           git config user.name "provkus-quality-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add scripts/audit_site.py scripts/quality_sync.py scripts/post_quality_hardening.py scripts/optimize_home_markup.py assets/public.css assets/site-ui.css assets/home-bundle.css assets/app.js assets/community.js '*.html' articles/ archive/ sitemap.xml feed.xml dzen.xml assets/uploads
-          if git diff --cached --quiet; then
-            echo "Already synchronized"
-            exit 0
-          fi
-          git commit -m "Stabilize frontend, authors and SEO"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 scripts/optimize_home_images.py
+            python3 scripts/seo_hardening.py
+            python3 scripts/build_indexes.py
+            python3 scripts/build_discovery_archives.py
+            python3 scripts/enhance_article_links.py
+            python3 scripts/build_calculators_integration.py
+            python3 scripts/optimize_home_markup.py
+            python3 scripts/quality_sync.py
+            python3 scripts/post_quality_hardening.py
+            git add -A
+            if git diff --cached --quiet; then
+              echo "Already synchronized"
+              exit 0
+            fi
+            git commit -m "Stabilize frontend, authors and SEO"
+            if git push origin HEAD:main; then exit 0; fi
+            echo "Main changed during quality sync; retrying ($attempt/5)"
+          done
+          exit 1
