@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search5';
+  const VERSION='20260929-search6';
   const MAX_RESULTS=8;
   let postsPromise=null;
 
@@ -8,7 +8,7 @@
     return String(value||'').toLocaleLowerCase('ru-RU').replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/gi,' ').replace(/\s+/g,' ').trim();
   }
   function esc(value){
-    return String(value||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});
+    return String(value||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]});
   }
   function isPublished(post){
     const t=Date.parse(post&&post.publishedAt||'');
@@ -70,6 +70,25 @@
     link.title=n?'Сохранено рецептов: '+n:'Сохранённых рецептов пока нет';
     if(location.pathname==='/saved.html')link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
   }
+  function primeHomeFirstScreen(){
+    if(!/^(\/|\/index\.html)$/.test(location.pathname))return;
+    function revealHeroImages(){
+      document.querySelectorAll('.hero-side img').forEach(function(img){
+        img.loading='eager';
+        if(img.dataset&&img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;img.classList.remove('pv-defer-img')}
+      });
+    }
+    revealHeroImages();
+    const hero=document.querySelector('.hero .hero-grid');
+    if(hero&&'MutationObserver' in window){
+      const observer=new MutationObserver(revealHeroImages);
+      observer.observe(hero,{childList:true,subtree:true});
+      setTimeout(function(){observer.disconnect()},6000);
+    }
+    if(!window.__pvHomeDynamicLoaded&&!document.getElementById('pvHomeDynamicImmediate')){
+      const s=document.createElement('script');s.id='pvHomeDynamicImmediate';s.src='/assets/home-dynamic.js?v=20260929-fast1';s.defer=true;document.body.appendChild(s);
+    }
+  }
   function cleanHeader(bar){
     if(!bar)return;
     bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove()});
@@ -83,6 +102,7 @@
     ensureSavedNav(bar.querySelector('.main-nav'));
   }
   function setup(){
+    primeHomeFirstScreen();
     const bar=document.querySelector('.site-header .topbar');
     if(!bar)return;
     cleanHeader(bar);
