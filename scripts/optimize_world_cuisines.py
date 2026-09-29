@@ -4,48 +4,77 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WORLD = ROOT / 'world-cuisines.html'
-PLACEHOLDER = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='270' viewBox='0 0 480 270'%3E%3Crect width='480' height='270' fill='%23e9e2d8'/%3E%3C/svg%3E"
-SCRIPT_TAG = '<script src="/assets/world-cuisines-lazy.js?v=20260926-1" defer></script>'
 PERF_STYLE = '''<style id="wc-performance">
 #wcList .wc-section{content-visibility:auto;contain-intrinsic-size:auto 520px}
 #wcList .wc-section:first-child{content-visibility:visible}
-.wc-dish>img[data-src]{background:#e9e2d8}
 </style>'''
+
+
+def drop_attr(tag, name):
+    return re.sub(rf'\s{name}=("|\').*?\1', '', tag, flags=re.I | re.S)
+
+
+def set_attr(tag, name, value):
+    tag = drop_attr(tag, name)
+    return tag.replace('<img', f'<img {name}="{value}"', 1)
+
+
+def get_attr(tag, name):
+    match = re.search(rf'\s{name}=("|\')(.*?)\1', tag, flags=re.I | re.S)
+    return match.group(2) if match else ''
 
 
 def main():
     text = WORLD.read_text('utf-8')
 
-    if 'data-src="/assets/uploads/' not in text:
-        pat = re.compile(r'<img src="(?P<src>/assets/uploads/[^"]+-16x9\.webp)"(?P<attrs>[^>]*)>')
-        def repl(m):
-            attrs = m.group('attrs')
-            attrs = re.sub(r'\sloading="[^"]*"', '', attrs)
-            attrs = re.sub(r'\sdecoding="[^"]*"', '', attrs)
-            attrs = re.sub(r'\sfetchpriority="[^"]*"', '', attrs)
-            return (f'<img src="{PLACEHOLDER}" data-src="{m.group("src")}"{attrs}'
-                    ' loading="lazy" decoding="async" fetchpriority="low">')
-        text, count = pat.subn(repl, text)
-        if count != 95:
-            raise SystemExit(f'Expected to defer 95 world-cuisine images, changed {count}')
-    else:
-        count = text.count('data-src="/assets/uploads/')
-        if count != 95:
-            raise SystemExit(f'Expected 95 deferred images, found {count}')
-
+    # The old implementation rendered a blank SVG first and waited for JS +
+    # IntersectionObserver to replace it. That made images look slow/broken.
+    text = re.sub(
+        r'<script\s+src="/assets/world-cuisines-lazy\.js(?:\?[^\"]*)?"\s+defer></script>',
+        '',
+        text,
+        flags=re.I,
+    )
+    text = re.sub(r'<style id="wc-performance">.*?</style>', PERF_STYLE, text, count=1, flags=re.S)
     if 'id="wc-performance"' not in text:
-        text = text.replace('</head>', PERF_STYLE + SCRIPT_TAG + '</head>', 1)
-    elif SCRIPT_TAG not in text:
-        text = text.replace('</head>', SCRIPT_TAG + '</head>', 1)
+        text = text.replace('</head>', PERF_STYLE + '</head>', 1)
 
+    image_index = 0
+
+    def normalize_image(match):
+        nonlocal image_index
+        tag = match.group(0)
+        src = get_attr(tag, 'data-src') or get_attr(tag, 'src')
+        if '/assets/uploads/' not in src or '-16x9.webp' not in src:
+            return tag
+
+        current = image_index
+        image_index += 1
+        tag = drop_attr(tag, 'data-src')
+        tag = set_attr(tag, 'src', src)
+        tag = set_attr(tag, 'decoding', 'async')
+
+        # First desktop row is visible immediately. Remaining recipe art uses
+        # browser-native lazy loading, with no JavaScript placeholder stage.
+        if current < 4:
+            tag = set_attr(tag, 'loading', 'eager')
+            tag = set_attr(tag, 'fetchpriority', 'auto')
+        else:
+            tag = set_attr(tag, 'loading', 'lazy')
+            tag = set_attr(tag, 'fetchpriority', 'low')
+        return tag
+
+    text = re.sub(r'<img\b[^>]*>', normalize_image, text, flags=re.I | re.S)
     WORLD.write_text(text, 'utf-8')
 
     final = WORLD.read_text('utf-8')
+    recipe_images = len(re.findall(r'<img\b[^>]*src="/assets/uploads/[^\"]+-16x9\.webp"', final, flags=re.I))
     deferred = final.count('data-src="/assets/uploads/')
-    immediate = len(re.findall(r'<img src="/assets/uploads/[^\"]+-16x9\.webp"', final))
-    if deferred != 95 or immediate:
-        raise SystemExit(f'Performance verification failed: deferred={deferred}, immediate={immediate}')
-    print(f'World cuisines optimized: deferred={deferred}, immediate recipe images={immediate}')
+    if recipe_images != 95 or deferred != 0:
+        raise SystemExit(f'Performance verification failed: native={recipe_images}, deferred={deferred}')
+    if 'world-cuisines-lazy.js' in final:
+        raise SystemExit('Legacy world-cuisines lazy loader is still linked')
+    print(f'World cuisines optimized: native images={recipe_images}, eager=4, lazy={recipe_images - 4}')
 
 
 if __name__ == '__main__':
