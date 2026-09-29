@@ -1,17 +1,17 @@
 name: Optimize homepage hero
 
 concurrency:
-  group: provkus-scheduled-publishing
-  cancel-in-progress: false
+  group: provkus-homepage-optimization
+  cancel-in-progress: true
 
 on:
   push:
     branches: [main]
     paths:
-      - 'index.html'
-      - 'data/posts.json'
       - 'scripts/optimize_home_hero.py'
       - '.github/workflows/optimize-home-hero.yml'
+  schedule:
+    - cron: '7,37 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,6 @@ permissions:
 
 jobs:
   optimize:
-    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'responsive homepage hero images')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,11 +32,11 @@ jobs:
       - name: Install Pillow
         run: pip install pillow
 
-      - name: Rebuild and publish homepage placements
+      - name: Rebuild and optimize homepage placements
         run: |
           git config user.name "provkus-performance-bot"
           git config user.email "actions@users.noreply.github.com"
-          for attempt in 1 2 3 4; do
+          for attempt in 1 2 3; do
             git fetch origin main
             git reset --hard origin/main
             python3 scripts/build_indexes.py
@@ -49,5 +48,5 @@ jobs:
             if git push origin HEAD:main; then exit 0; fi
             sleep "$attempt"
           done
-          echo 'Could not publish homepage after concurrent updates' >&2
+          echo 'Could not publish homepage optimization after concurrent updates' >&2
           exit 1
