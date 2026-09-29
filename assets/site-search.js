@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search4';
+  const VERSION='20260929-search5';
   const MAX_RESULTS=8;
   let postsPromise=null;
 
@@ -53,6 +53,23 @@
       .sort(function(a,b){return b.score-a.score})
       .map(function(x){return x.post});
   }
+  function savedCount(){
+    try{const items=JSON.parse(localStorage.getItem('provkus-saved-recipes-v1')||'[]');return Array.isArray(items)?items.length:0}catch(e){return 0}
+  }
+  function ensureSavedNav(nav){
+    if(!nav)return;
+    let link=nav.querySelector('.pv-saved-link');
+    if(!link){
+      link=document.createElement('a');
+      link.className='pv-saved-link';
+      link.href='/saved.html';
+      nav.appendChild(link);
+    }
+    link.textContent='★ Сохранённые';
+    const n=savedCount();
+    link.title=n?'Сохранено рецептов: '+n:'Сохранённых рецептов пока нет';
+    if(location.pathname==='/saved.html')link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
+  }
   function cleanHeader(bar){
     if(!bar)return;
     bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove()});
@@ -63,6 +80,7 @@
       let path=''; try{path=new URL(a.href,location.href).pathname}catch(e){}
       if(text==='материалы' || path==='/category.html')a.remove();
     });
+    ensureSavedNav(bar.querySelector('.main-nav'));
   }
   function setup(){
     const bar=document.querySelector('.site-header .topbar');
@@ -77,6 +95,7 @@
 
     if(bar.querySelector('.pv-site-search'))return;
     const nav=bar.querySelector('.main-nav');
+    ensureSavedNav(nav);
 
     const wrap=document.createElement('div');
     wrap.className='pv-site-search';
@@ -141,5 +160,6 @@
     document.addEventListener('pointerdown',function(e){if(!wrap.contains(e.target))close()});
     getPosts();
   }
+  window.addEventListener('storage',function(e){if(e.key==='provkus-saved-recipes-v1'){const bar=document.querySelector('.site-header .topbar');if(bar)cleanHeader(bar)}});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
 })();
