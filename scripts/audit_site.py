@@ -3,7 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, unquote
 from datetime import datetime, timezone
-import json, re, xml.etree.ElementTree as ET
+import json, re, html, xml.etree.ElementTree as ET
 from PIL import Image
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -43,6 +43,8 @@ for p in posts:
  check(f.exists(),f'{f.name}: missing article file')
  if not f.exists():continue
  text=f.read_text('utf-8');s=Page(text)
+ title=re.search(r'<title>(.*?)</title>',text,re.S|re.I)
+ check(bool(title) and html.unescape(title.group(1)).strip()==p.get('headline','').strip(),f'{f.name}: SEO title differs from headline')
  check(not any(re.fullmatch(r'[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}',im.get('alt',''),re.I) for im in s.find('img')),f'{f.name}: UUID used as image alt')
  check(len(s.find('h1'))==1,f'{f.name}: h1')
  check(bool(s.find('h1')) and p.get('headline','').strip() in text,f'{f.name}: visible headline')

@@ -403,10 +403,6 @@ def enrich_article_jsonld(source):
 
 
 def sync_article_seo():
-    title_overrides = {
-        'tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy':
-            'Фаршированная тыква с творогом и сыром — рецепт',
-    }
     by_slug = {p['slug']: p for p in POSTS}
     for slug, post in by_slug.items():
         page = ROOT / 'articles' / f'{slug}.html'
@@ -415,8 +411,7 @@ def sync_article_seo():
         source = read(page)
         source = meaningful_inline_alts(source, post)
         source = enrich_article_jsonld(source)
-        if slug in title_overrides:
-            source = re.sub(r'<title>.*?</title>', f'<title>{esc(title_overrides[slug])}</title>', source, count=1, flags=re.S)
+        source = re.sub(r'<title>.*?</title>', f'<title>{esc(post["headline"])}</title>', source, count=1, flags=re.S)
         write_if_changed(page, source)
 
 
