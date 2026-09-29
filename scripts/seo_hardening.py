@@ -56,7 +56,7 @@ def json_script(obj, marker=''):
     return '<script'+attrs+'>'+json.dumps(obj,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+'</script>'
 
 def article_type(p):
-    if p.get('type') == 'recipe' and p.get('recipeIngredient') and p.get('recipeInstructions'):
+    if str(p.get('type') or '').strip().casefold() == 'recipe' and p.get('recipeIngredient') and p.get('recipeInstructions'):
         return 'Recipe'
     return 'NewsArticle' if 'news' in str(p.get('type','')).lower() else 'Article'
 
