@@ -18,10 +18,31 @@
     root * .
     encode zstd gzip
 
-    @freshFrontend {
-        path / /index.html *.html *.js *.css
+    # HTML must always be revalidated so newly published materials appear immediately.
+    @html {
+        path / *.html
     }
-    header @freshFrontend Cache-Control "no-cache, must-revalidate"
+    header @html Cache-Control "no-cache, must-revalidate"
+
+    # Front-end code is versioned on public pages; keep a short cache while still
+    # allowing fixes to propagate quickly when an unversioned legacy URL is used.
+    @frontend {
+        path *.js *.css
+    }
+    header @frontend Cache-Control "public, max-age=3600, must-revalidate"
+
+    # Upload filenames and generated responsive variants are content-addressed by
+    # article slug / size and do not change in place. Cache them aggressively so
+    # navigation between lists, articles and World Cuisines does not re-download art.
+    @images {
+        path *.avif *.webp *.jpg *.jpeg *.png *.gif *.svg *.ico
+    }
+    header @images Cache-Control "public, max-age=31536000, immutable"
+
+    @fonts {
+        path *.woff *.woff2
+    }
+    header @fonts Cache-Control "public, max-age=31536000, immutable"
 
     file_server
 }
