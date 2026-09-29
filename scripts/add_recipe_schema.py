@@ -82,6 +82,8 @@ def main():
             continue
         source=path.read_text(encoding='utf-8')
         recipe=visible_recipe(source)
+        if not recipe and post.get('recipeIngredient') and post.get('recipeInstructions'):
+            recipe=(post['recipeIngredient'],post['recipeInstructions'])
         if not recipe:
             missing+=1
             continue

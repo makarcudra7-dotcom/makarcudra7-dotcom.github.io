@@ -68,6 +68,8 @@ for p in posts:
  article=next((x for x in nodes if x.get('@type') in ('Article','NewsArticle','BlogPosting','Recipe')),None)
  check(article is not None,f'{f.name}: Article/Recipe JSON-LD')
  if article:
+  if str(p.get('type') or '').strip().casefold()=='recipe':
+   check(article.get('@type')=='Recipe',f'{f.name}: recipe must use Recipe schema')
   check(article.get('headline')==p.get('headline','').strip(),f'{f.name}: schema headline')
   check(article.get('image')==(p.get('images') or ([p.get('image')] if p.get('image') else [])),f'{f.name}: schema image')
   check(article.get('author',{}).get('url')==author_urls.get(p.get('author'),SITE+'/authors.html'),f'{f.name}: author URL')
