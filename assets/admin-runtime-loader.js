@@ -3,13 +3,14 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260929-fast-publish2';
+  const VERSION='20260929-recipe-auto1';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
     'admin-content-manager.js',
     'admin-scheduler.js',
     'admin-publish-runtime.js',
+    'admin-recipe-template.js',
     'admin-fast-publish.js',
     'admin-live-refresh.js',
     'admin-persistence.js',
