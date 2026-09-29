@@ -15,12 +15,9 @@ echo "[runtime-scheduler] starting; interval=${INTERVAL}s"
 
 (
   while true; do
-    started_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-    if node /srv/scripts/publish-scheduled.js; then
-      echo "[runtime-scheduler] ${started_at} queue check ok"
-    else
+    if ! node /srv/scripts/publish-scheduled.js; then
       code=$?
-      echo "[runtime-scheduler] ${started_at} queue check failed (exit=${code})" >&2
+      echo "[runtime-scheduler] $(date -u +%Y-%m-%dT%H:%M:%SZ) queue check failed (exit=${code})" >&2
     fi
     sleep "$INTERVAL"
   done
