@@ -154,7 +154,7 @@ def update_news():
            f'<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="{site}/news.html">'
            '<link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/public.css"></head><body>'
            '<header class="site-header"><div class="container topbar"><a class="brand" href="/">Pro<b>Vkus</b></a>'
-           '<nav class="main-nav"><a href="/category.html">Материалы</a><a href="/news.html" aria-current="page">Новости</a>'
+           '<nav class="main-nav"><a href="/news.html" aria-current="page">Новости</a>'
            '<a href="/authors.html">Авторы</a></nav></div></header>'
            '<main class="container"><section class="section"><div class="section-head"><div><div class="eyebrow">Новости ProVkus</div>'
            '<h1 class="section-title">ProVkus-ные новости</h1><p class="section-sub">Все материалы типа «Новость» по дате публикации.</p>'
