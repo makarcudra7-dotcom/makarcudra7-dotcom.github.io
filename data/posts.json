@@ -1,5 +1,49 @@
 [
   {
+    "slug": "privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo",
+    "headline": "Привязала мясо к крышке кастрюли — сноха сначала удивилась, а за ужином попросила научить: нежнее жареного",
+    "description": "Кусок мяса подвешивают под крышкой над кипящей водой — обычная кастрюля превращается в простую пароварку без масла и сковороды.",
+    "author": "Эльвира Шайберт",
+    "category": "Советы и лайфхаки",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo-1x1.jpg"
+    ],
+    "imageAlt": "Женщина поднимает крышку кастрюли, к которой на шпагате подвешены куски мяса над кипящим бульоном с овощами и специями.",
+    "url": "https://provkus-media.ru/articles/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo.html",
+    "publishedAt": "2026-09-29T06:37:00.000Z",
+    "updatedAt": "2026-09-29T06:37:00.000Z",
+    "tags": [
+      "Еда",
+      "Готовка",
+      "Кулинарный лайфхак",
+      "Обед",
+      "Полезное"
+    ],
+    "photoSource": "ProVkus",
+    "excludeRelated": false,
+    "editorialCheck": {
+      "mode": "",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "",
+      "sourceNote": "",
+      "realPhoto": "",
+      "aiImage": false,
+      "confirmed": false
+    },
+    "featured": true,
+    "popular": true,
+    "coauthors": []
+  },
+  {
     "slug": "chto-ne-stoit-stavit-na-stol-v-novyy-god-2027-krasnaya-koza-takoe-menyu-ne-ocenit",
     "headline": "Что не стоит ставить на стол в Новый год 2027: Красная Коза такое меню «не оценит»",
     "description": "Если хочется оформить новогодний стол в символике Огненной Козы, некоторые тяжёлые блюда можно заменить более лёгкими и яркими вариантами.",
@@ -39,7 +83,7 @@
       "confirmed": false
     },
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": []
   },
@@ -442,7 +486,7 @@
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "recipeIngredient": [
       "4 куриных бедра на кости с кожей (около 900 г);",
       "700 г очищенной тыквы с плотной мякотью, 1 красная луковица;",
