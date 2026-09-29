@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search3';
+  const VERSION='20260929-search4';
   const MAX_RESULTS=8;
   let postsPromise=null;
 
@@ -56,6 +56,8 @@
   function cleanHeader(bar){
     if(!bar)return;
     bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove()});
+    const toggles=bar.querySelectorAll('.pv-theme-toggle');
+    toggles.forEach(function(el,i){if(i>0)el.remove()});
     bar.querySelectorAll('.main-nav a').forEach(function(a){
       const text=normalize(a.textContent);
       let path=''; try{path=new URL(a.href,location.href).pathname}catch(e){}
