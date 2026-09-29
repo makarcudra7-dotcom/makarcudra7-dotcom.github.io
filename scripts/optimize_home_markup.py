@@ -48,21 +48,22 @@ def variant_url(original, rel, width):
     return prefix + '/' + candidate.as_posix()
 
 
-def responsive_img(tag, sizes, preferred, eager=False):
+def responsive_img(tag, sizes, preferred, eager=False, high_priority=False):
     original = original_url(tag)
     rel = local_rel(original)
+
+    # Always make the loading policy explicit. Above-the-fold cards must never
+    # wait for native lazy-loading; everything below the fold should.
+    tag = set_attr(tag, 'decoding', 'async')
+    tag = set_attr(tag, 'loading', 'eager' if eager else 'lazy')
+    tag = set_attr(tag, 'fetchpriority', 'high' if high_priority else ('auto' if eager else 'low'))
+
     if not rel:
-        if eager:
-            tag = set_attr(tag, 'loading', 'eager')
-            tag = set_attr(tag, 'fetchpriority', 'high')
         return tag
 
     variants = [(width, variant_url(original, rel, width)) for width in WIDTHS]
     variants = [(width, url) for width, url in variants if url]
     if not variants:
-        if eager:
-            tag = set_attr(tag, 'loading', 'eager')
-            tag = set_attr(tag, 'fetchpriority', 'high')
         return tag
 
     chosen = min(variants, key=lambda item: abs(item[0] - preferred))[1]
@@ -71,14 +72,10 @@ def responsive_img(tag, sizes, preferred, eager=False):
     tag = set_attr(tag, 'src', chosen)
     tag = set_attr(tag, 'srcset', srcset)
     tag = set_attr(tag, 'sizes', sizes)
-    tag = set_attr(tag, 'decoding', 'async')
-    if eager:
-        tag = set_attr(tag, 'loading', 'eager')
-        tag = set_attr(tag, 'fetchpriority', 'high')
     return tag
 
 
-def optimize_block(source, marker, sizes, preferred, first_eager=False):
+def optimize_block(source, marker, sizes, preferred, eager_count=0):
     pattern = rf'(<!-- {marker}-START -->)(.*?)(<!-- {marker}-END -->)'
     match = re.search(pattern, source, flags=re.S)
     if not match:
@@ -89,9 +86,16 @@ def optimize_block(source, marker, sizes, preferred, first_eager=False):
     def replace_img(img_match):
         nonlocal index
         tag = img_match.group(0)
-        eager = first_eager and index == 0
+        current = index
         index += 1
-        return responsive_img(tag, sizes(index - 1) if callable(sizes) else sizes, preferred(index - 1) if callable(preferred) else preferred, eager=eager)
+        eager = current < eager_count
+        return responsive_img(
+            tag,
+            sizes(current) if callable(sizes) else sizes,
+            preferred(current) if callable(preferred) else preferred,
+            eager=eager,
+            high_priority=current == 0 and eager,
+        )
 
     body = re.sub(r'<img\b[^>]*>', replace_img, body, flags=re.I)
     replacement = match.group(1) + body + match.group(3)
@@ -131,8 +135,15 @@ def main():
 
     hero_sizes = lambda i: '(max-width: 760px) calc(100vw - 24px), 66vw' if i == 0 else '(max-width: 760px) 132px, 32vw'
     hero_preferred = lambda i: 768 if i == 0 else 320
-    source = optimize_block(source, 'HOME-HERO', hero_sizes, hero_preferred, first_eager=True)
-    source = optimize_block(source, 'HOME-LOWER', '(max-width: 760px) calc(100vw - 24px), 31vw', 768)
+
+    # Lead story + first two visible side cards are part of the initial desktop
+    # viewport. Do not defer those requests. Only the lead story gets high
+    # network priority so it remains the clear LCP candidate.
+    source = optimize_block(source, 'HOME-HERO', hero_sizes, hero_preferred, eager_count=3)
+
+    # Everything below the hero stays natively lazy and uses responsive WebP
+    # variants when they exist.
+    source = optimize_block(source, 'HOME-LOWER', '(max-width: 760px) calc(100vw - 24px), 31vw', 768, eager_count=0)
     source = re.sub(r'<link id="pv-hero-preload"[^>]*>', '', source, flags=re.I)
     source = add_lcp_preload(source)
     source = re.sub(r'/assets/app\.js\?v=[^"\']+', '/assets/app.js?v=20260926-pagespeed2', source, count=1)
