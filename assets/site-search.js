@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search-safe1';
+  const VERSION='20260929-search-a11y1';
   const MAX_RESULTS=8;
   const SAVED_KEY='provkus-saved-recipes-v1';
   let postsPromise=null;
@@ -83,12 +83,19 @@
     });
     ensureSavedNav(bar.querySelector('.main-nav'));
   }
+  function fixConsentSemantics(){
+    const box=document.getElementById('pvCookieBanner');
+    if(!box)return;
+    if(box.tagName==='ASIDE'&&box.getAttribute('role')==='dialog')box.removeAttribute('role');
+    if(!box.getAttribute('aria-label'))box.setAttribute('aria-label','Настройка аналитики');
+  }
   function setup(){
     const bar=document.querySelector('.site-header .topbar');
     if(!bar)return;
+    fixConsentSemantics();
     cleanHeader(bar);
-    setTimeout(function(){cleanHeader(bar)},800);
-    setTimeout(function(){cleanHeader(bar)},2500);
+    setTimeout(function(){cleanHeader(bar);fixConsentSemantics()},800);
+    setTimeout(function(){cleanHeader(bar);fixConsentSemantics()},2500);
 
     if(bar.querySelector('.pv-site-search'))return;
     const nav=bar.querySelector('.main-nav');
@@ -97,9 +104,9 @@
     wrap.innerHTML='<form class="pv-search-form" role="search" autocomplete="off">'+
       '<label class="pv-search-label" for="pvSiteSearchInput">Поиск по ProVkus</label>'+
       '<span class="pv-search-icon" aria-hidden="true">⌕</span>'+
-      '<input id="pvSiteSearchInput" class="pv-search-input" type="search" inputmode="search" placeholder="Найти рецепт, продукт, совет…" aria-label="Поиск по ProVkus" aria-autocomplete="list" aria-controls="pvSearchResults" aria-expanded="false">'+
+      '<input id="pvSiteSearchInput" class="pv-search-input" type="search" role="combobox" inputmode="search" placeholder="Найти рецепт, продукт, совет…" aria-label="Поиск по ProVkus" aria-autocomplete="list" aria-haspopup="listbox" aria-controls="pvSearchResults" aria-expanded="false">'+
       '<button class="pv-search-submit" type="submit">Найти</button>'+
-      '</form><div id="pvSearchResults" class="pv-search-results" role="listbox" hidden></div>';
+      '</form><div id="pvSearchResults" class="pv-search-results" role="listbox" aria-label="Результаты поиска" hidden></div>';
     if(nav)nav.insertAdjacentElement('afterend',wrap);else bar.appendChild(wrap);
 
     const form=wrap.querySelector('form');
@@ -107,12 +114,13 @@
     const results=wrap.querySelector('.pv-search-results');
     let matches=[];let active=-1;let timer=0;
 
-    function close(){results.hidden=true;results.innerHTML='';input.setAttribute('aria-expanded','false');active=-1}
+    function close(){results.hidden=true;results.innerHTML='';input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');active=-1}
     function setActive(next){
       const links=results.querySelectorAll('.pv-search-result');
-      if(!links.length){active=-1;return}
+      if(!links.length){active=-1;input.removeAttribute('aria-activedescendant');return}
       active=Math.max(0,Math.min(next,links.length-1));
       links.forEach(function(a,i){a.classList.toggle('is-active',i===active);a.setAttribute('aria-selected',i===active?'true':'false')});
+      input.setAttribute('aria-activedescendant',links[active].id);
       links[active].scrollIntoView({block:'nearest'});
     }
     function render(query){
@@ -127,12 +135,12 @@
         }else{
           results.innerHTML='<div class="pv-search-summary">Найдено: '+matches.length+'</div>'+shown.map(function(p,i){
             const href='/articles/'+encodeURIComponent(p.slug)+'.html';
-            return '<a class="pv-search-result" role="option" aria-selected="false" data-index="'+i+'" href="'+href+'">'+
+            return '<a id="pvSearchOption'+i+'" class="pv-search-result" role="option" aria-selected="false" data-index="'+i+'" href="'+href+'">'+
               '<span class="pv-search-result-meta">'+esc(p.category||'Материал')+(p.author?' · '+esc(p.author):'')+'</span>'+
               '<strong>'+esc(p.headline||p.title||'Без заголовка')+'</strong></a>';
           }).join('');
         }
-        results.hidden=false;input.setAttribute('aria-expanded','true');active=-1;
+        results.hidden=false;input.setAttribute('aria-expanded','true');input.removeAttribute('aria-activedescendant');active=-1;
       });
     }
     input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(function(){render(input.value)},120)});
