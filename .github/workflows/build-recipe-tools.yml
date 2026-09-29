@@ -6,8 +6,10 @@ on:
     paths:
       - 'data/posts.json'
       - 'articles/**.html'
+      - '.github/scheduled-posts.json'
       - 'scripts/build_recipe_tools.py'
       - 'scripts/ensure_recipe_template.py'
+      - 'scripts/apply_recipe_template_backfill.py'
       - 'assets/provkus-tools-v2.js'
       - 'assets/provkus-tools.css'
       - 'assets/admin-recipe-template.js'
@@ -22,7 +24,9 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Ensure recipe template on every recipe
+      - name: Apply full recipe template data
+        run: python3 scripts/apply_recipe_template_backfill.py
+      - name: Ensure recipe assets on every recipe
         run: python3 scripts/ensure_recipe_template.py
       - name: Build recipe index and inject tools
         run: python3 scripts/build_recipe_tools.py
@@ -43,19 +47,19 @@ jobs:
               missing.append(p['slug']+':file');continue
             text=path.read_text(encoding='utf-8')
             if 'pv-recipe-marker' not in text or '/assets/provkus-tools.css' not in text or '/assets/provkus-tools-v2.js' not in text:
-              missing.append(p['slug']+':template')
+              missing.append(p['slug']+':assets')
           assert not missing, 'recipe template missing: '+', '.join(missing[:20])
           print('recipes',len(recipes),'indexed',len(data),'with ingredients',sum(bool(x.get('ingredients')) for x in data))
           PY
-      - name: Commit generated recipe tools data
+      - name: Commit generated recipe template data
         run: |
-          if git diff --quiet -- data/recipe-index.json articles; then
+          if git diff --quiet -- .github/scheduled-posts.json data/posts.json data/recipe-index.json articles; then
             echo 'No generated changes'
             exit 0
           fi
           git config user.name 'provkus-cms-bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add data/recipe-index.json articles
-          git commit -m 'Refresh recipe tools index'
+          git add .github/scheduled-posts.json data/posts.json data/recipe-index.json articles
+          git commit -m 'Refresh full recipe templates'
           git pull --rebase origin main
           git push
