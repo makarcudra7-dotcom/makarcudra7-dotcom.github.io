@@ -18,10 +18,15 @@
     root * .
     encode zstd gzip
 
+    @home {
+        path / /index.html
+    }
+    header @home Clear-Site-Data "\"cache\""
+
     @freshFrontend {
         path / /index.html *.html *.js *.css
     }
-    header @freshFrontend Cache-Control "no-cache, must-revalidate"
+    header @freshFrontend Cache-Control "no-store, max-age=0"
 
     file_server
 }
