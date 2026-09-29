@@ -9,6 +9,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/optimize_home_hero.py'
+      - 'scripts/optimize_home_images.py'
+      - 'scripts/optimize_home_markup.py'
       - '.github/workflows/optimize-home-hero.yml'
   schedule:
     - cron: '7,37 * * * *'
@@ -40,11 +42,13 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             python3 scripts/build_indexes.py
+            python3 scripts/optimize_home_images.py
             python3 scripts/optimize_home_hero.py
+            python3 scripts/optimize_home_markup.py
             git add index.html assets/uploads
             git restore --worktree .
             if git diff --cached --quiet; then exit 0; fi
-            git commit -m "Refresh homepage placements and responsive homepage hero images"
+            git commit -m "Refresh homepage placements and responsive homepage images"
             if git push origin HEAD:main; then exit 0; fi
             sleep "$attempt"
           done
