@@ -9,10 +9,10 @@
   const rubrics=[['all','Все'],['products','Продукты'],['recipes','Рецепты'],['home','Дом'],['safety','Безопасность'],['season','Сезонное и советы']];
   function matchRubric(p,r){const c=p.category||'';if(r==='all')return true;if(r==='products')return /Продукт|Покупки/.test(c);if(r==='recipes')return /Рецепт|Десерт|Напит/.test(c);if(r==='home')return /Дом|Хранение|Кухонная техника/.test(c);if(r==='safety')return /Безопасность|Здоровое/.test(c);if(r==='season')return /Сезон|Совет|Новости|Люди/.test(c);return true}
   function publicNav(){
-    const links=[['/category.html','Материалы'],['/calculators.html','Калькуляторы'],['/authors.html','Авторы'],['/archive.html','Архив']];
+    const links=[['/calculators.html','Калькуляторы'],['/authors.html','Авторы'],['/archive.html','Архив']];
     document.querySelectorAll('.main-nav').forEach(nav=>{
       nav.innerHTML=links.map(([href,label])=>`<a href="${href}">${label}</a>`).join('');
-      nav.querySelectorAll('a').forEach(a=>{try{const u=new URL(a.href,location.href);const here=new URL(location.href);const active=u.pathname===here.pathname||(u.pathname==='/category.html'&&/^\/articles\//.test(here.pathname));if(active)a.setAttribute('aria-current','page')}catch(e){}});
+      nav.querySelectorAll('a').forEach(a=>{try{const u=new URL(a.href,location.href);const here=new URL(location.href);if(u.pathname===here.pathname)a.setAttribute('aria-current','page')}catch(e){}});
     });
   }
   function authorCounts(posts){
