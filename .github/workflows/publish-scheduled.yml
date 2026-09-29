@@ -7,6 +7,8 @@ on:
     branches: [main]
     paths:
       - '.github/scheduled-posts.json'
+      - '.github/workflows/publish-scheduled.yml'
+      - 'scripts/publish-scheduled.js'
   workflow_dispatch:
 
 permissions:
