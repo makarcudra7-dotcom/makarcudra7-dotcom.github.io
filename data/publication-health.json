@@ -800,10 +800,8 @@
     "checkedAt": "2026-09-28T19:48:49.873539Z"
   },
   "privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-09-29T06:37:50.225521Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-29T07:32:52.887378Z"
   }
 }
