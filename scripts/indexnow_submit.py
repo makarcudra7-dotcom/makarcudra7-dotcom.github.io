@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import html
 import os
 import re
 import subprocess
@@ -110,6 +111,30 @@ def verify_key() -> None:
     raise RuntimeError("Public IndexNow key file is not reachable or has different content")
 
 
+def verify_new_pages(before: str, urls: list[str]) -> None:
+    """Do not ping a new article until Railway serves the published title."""
+    posts = json.loads((ROOT / "data/posts.json").read_text("utf-8"))
+    pending = {
+        p["url"]: p["headline"] for p in posts
+        if p.get("url") in urls and not old_file(before, f"articles/{p['slug']}.html")
+    }
+    for attempt in range(36):
+        for url, headline in list(pending.items()):
+            try:
+                with urlopen(Request(url, headers={"User-Agent": "ProVkus-IndexNow/1.0"}), timeout=10) as response:
+                    page = response.read().decode("utf-8", errors="replace")
+                    title = re.search(r"<title>(.*?)</title>", page, re.S | re.I)
+                    if response.status == 200 and title and html.unescape(title.group(1)).strip() == headline.strip():
+                        del pending[url]
+            except (HTTPError, URLError, TimeoutError):
+                pass
+        if not pending:
+            return
+        if attempt < 35:
+            time.sleep(10)
+    raise RuntimeError("New article is not live yet: " + ", ".join(pending))
+
+
 def submit(urls: list[str]) -> None:
     for endpoint in ENDPOINTS:
         for offset in range(0, len(urls), 100):
@@ -134,4 +159,5 @@ if __name__ == "__main__":
         sys.exit(0)
     if "--dry-run" not in sys.argv:
         verify_key()
+        verify_new_pages(before, urls)
         submit(urls)
