@@ -237,7 +237,111 @@
       "featured": false,
       "popular": true,
       "newsletter": false,
+      "status": "queued",
+      "excludeRelated": false
+    }
+  },
+  {
+    "slug": "2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli",
+    "publishAt": "2026-09-29T14:15:00.000Z",
+    "createdAt": "2026-09-29T08:54:08.246Z",
+    "status": "queued",
+    "material": {
+      "headline": "2 кусочка рафинада кладу прямо в хлебницу — не для сладости: простой трюк, о котором зря забыли",
+      "category": "Хранение",
+      "type": "news",
+      "lead": "как хранить хлеб чтобы не плесневел",
+      "publishedAt": "2026-09-29T18:15",
+      "updatedAt": "2026-09-29T12:53",
+      "seoTitle": "2 кусочка рафинада кладу прямо в хлебницу — не для сладости: простой трюк, о котором зря забыли",
+      "description": "Два кусочка сахара помогают забрать небольшую лишнюю влагу в хлебнице. Главное — держать их отдельно и вовремя менять.",
+      "slug": "2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli",
+      "canonical": "https://provkus-media.ru/articles/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli.html",
+      "robots": "index, follow, max-image-preview:large",
+      "ogImage": "",
+      "source": "Управление Роспотребнадзора по Воронежской области; Роскачество о хранении батона и плесени",
+      "tags": "Для кухни, Для дома, Продукты, Лайфхаки, Полезное",
+      "image": "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-16x9.jpg",
+      "imageAlt": "Женщина кладёт два кусочка сахара-рафинада в хлебницу рядом с хлебом",
+      "photoSource": "ProVkus",
+      "content": "<p>Свежая буханка может испортиться быстрее не из-за возраста, а из-за сырости внутри хлебницы. Особенно если туда отправили ещё тёплый хлеб: пар оседает на стенках, крошки намокают, появляется неприятный запах. Простой старый приём — положить внутрь 2 кусочка рафинада.</p><p>Сахар способен впитывать влагу из воздуха, поэтому работает как небольшой поглотитель. Но есть важное условие: с хлебом он соприкасаться не должен.</p><h2>Два кусочка — в дальний угол</h2><p>Рафинад кладут на маленькое блюдце, крышечку или просто в отдельный угол хлебницы.</p><p>Проверять сахар стоит регулярно. Если кусочки отсырели, стали липкими или начали рассыпаться, их выбрасывают и заменяют свежими.</p><p>Насыпать целую горсть бессмысленно: этот способ рассчитан на небольшую избыточную влажность, а не на мокрую хлебницу.</p><h2>Горячую буханку сначала остужают</h2><p>Главная ошибка — убрать хлеб сразу после выпечки. От горячего мякиша продолжает идти пар, и 2 кусочка рафинада с таким количеством влаги не справятся.</p><p>Хлебу дают полностью остыть. Если внутри хлебницы уже появился конденсат, её освобождают, проветривают и тщательно высушивают.</p><p>Заодно убирают старые крошки: они постепенно скапливаются на дне и тоже могут отсыревать.</p><h2>Плесень сахаром не остановить</h2><p>Рафинад не является консервантом и не превращает хлебницу в место для многонедельного хранения.</p><p>Если на хлебе появился белый, зелёный или чёрный налёт, срезать только видимый участок не стоит. Пористая структура позволяет загрязнению распространяться глубже. Такую буханку выбрасывают целиком, а хлебницу после неё моют и полностью просушивают.</p><h2>Для долгого хранения лучше морозилка</h2><p>Если хлеб едят медленно, надёжнее сразу отделить часть буханки, нарезать ломтиками и заморозить. Тогда можно доставать ровно столько, сколько нужно к завтраку.</p><p>Дополнительный практический момент — ломтики лучше упаковать плотно, чтобы они меньше подсыхали и не набирали запахи морозилки. Для сохранения качества замороженный хлеб обычно рекомендуют использовать примерно за 2–3 месяца.</p><p>Так сахар остаётся помощником именно для хлебницы, а морозилка решает другую задачу — длительное хранение.</p><h2>Личное мнение автора</h2><p>Я бы держала два кусочка рафинада на отдельной крышечке: так сразу видно, когда они отсырели. А половину большой буханки предпочла бы заморозить — тогда не приходится надеяться, что хлеб успеют съесть раньше, чем он начнёт портиться.</p>",
+      "author": "Эльвира Шайберт",
+      "coauthors": [],
+      "quiz": {
+        "questions": [],
+        "afterContent": "<p></p>"
+      },
+      "featured": true,
+      "popular": true,
+      "_editingSlug": "",
+      "excludeRelated": false,
+      "sourceHtml": "<ol class=\"pv-sources\"><li><a href=\"https://36.rospotrebnadzor.ru/news/20869\" target=\"_blank\" rel=\"noopener noreferrer\">Управление Роспотребнадзора по Воронежской области</a></li><li><a href=\"https://www.roskachestvo.gov.ru/news/roskachestvo-napomnilo-pravila-vybora-nareznogo-batona/\" target=\"_blank\" rel=\"noopener noreferrer\">Роскачество о хранении батона и плесени</a></li></ol>",
+      "editorialCheck": {
+        "mode": "sources",
+        "tester": "",
+        "testedAt": "",
+        "minutes": "",
+        "result": "",
+        "adjustment": "",
+        "sourceUrl": "https://zpp.rospotrebnadzor.ru/news/federal/161864",
+        "sourceNote": "Роспотребнадзор прямо рекомендует положить в хлебницу небольшой кусочек сахара, чтобы защитить хлеб от лишней влаги и плесени. Там же советуют хранить хлеб в ёмкости с вентиляцией, регулярно очищать и проветривать хлебницу. Также подтверждается, что при появлении плесени недостаточно срезать повреждённый участок: споры могут проникать в глубину хлеба.",
+        "realPhoto": "",
+        "aiImage": false,
+        "confirmed": true
+      },
+      "images": [
+        "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-16x9.jpg",
+        "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-4x3.jpg",
+        "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-1x1.jpg"
+      ],
+      "newsletter": false,
       "status": "queued"
+    },
+    "post": {
+      "slug": "2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli",
+      "headline": "2 кусочка рафинада кладу прямо в хлебницу — не для сладости: простой трюк, о котором зря забыли",
+      "description": "Два кусочка сахара помогают забрать небольшую лишнюю влагу в хлебнице. Главное — держать их отдельно и вовремя менять.",
+      "author": "Эльвира Шайберт",
+      "coauthors": [],
+      "category": "Хранение",
+      "type": "news",
+      "typeLabel": "Новость",
+      "image": "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-16x9.jpg",
+      "images": [
+        "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-16x9.jpg",
+        "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-4x3.jpg",
+        "https://provkus-media.ru/assets/uploads/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli-1x1.jpg"
+      ],
+      "imageAlt": "Женщина кладёт два кусочка сахара-рафинада в хлебницу рядом с хлебом",
+      "url": "https://provkus-media.ru/articles/2-kusochka-rafinada-kladu-pryamo-v-hlebnicu-ne-dlya-sladosti-prostoy-tryuk-o-kotorom-zrya-zabyli.html",
+      "publishedAt": "2026-09-29T14:15:00.000Z",
+      "updatedAt": "2026-09-29T08:53:00.000Z",
+      "tags": [
+        "Для кухни",
+        "Для дома",
+        "Продукты",
+        "Лайфхаки",
+        "Полезное"
+      ],
+      "photoSource": "ProVkus",
+      "editorialCheck": {
+        "mode": "sources",
+        "tester": "",
+        "testedAt": "",
+        "minutes": "",
+        "result": "",
+        "adjustment": "",
+        "sourceUrl": "https://zpp.rospotrebnadzor.ru/news/federal/161864",
+        "sourceNote": "Роспотребнадзор прямо рекомендует положить в хлебницу небольшой кусочек сахара, чтобы защитить хлеб от лишней влаги и плесени. Там же советуют хранить хлеб в ёмкости с вентиляцией, регулярно очищать и проветривать хлебницу. Также подтверждается, что при появлении плесени недостаточно срезать повреждённый участок: споры могут проникать в глубину хлеба.",
+        "realPhoto": "",
+        "aiImage": false,
+        "confirmed": true
+      },
+      "featured": true,
+      "popular": true,
+      "newsletter": false,
+      "status": "queued",
+      "excludeRelated": false
     }
   }
 ]
