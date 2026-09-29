@@ -5,6 +5,7 @@ on:
     paths:
       - 'assets/admin-runtime-loader.js'
       - 'assets/admin-recipe-template.js'
+      - 'assets/admin-recipe-type-normalizer.js'
       - '.github/workflows/bump-admin-runtime.yml'
   workflow_dispatch:
 permissions:
@@ -22,7 +23,7 @@ jobs:
           import re
           p=Path('admin.html')
           s=p.read_text(encoding='utf-8')
-          s=re.sub(r'admin-runtime-loader\.js\?v=[^"<]+','admin-runtime-loader.js?v=20260929-recipe-template2',s)
+          s=re.sub(r'admin-runtime-loader\.js\?v=[^"<]+','admin-runtime-loader.js?v=20260929-recipe-template3',s)
           p.write_text(s,encoding='utf-8')
           PY
       - name: Commit
