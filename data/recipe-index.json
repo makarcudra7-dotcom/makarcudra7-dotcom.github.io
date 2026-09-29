@@ -1,5 +1,44 @@
 [
   {
+    "slug": "yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy",
+    "headline": "Яблоки осенью не пускаю на шарлотку: надеваю слоёную «шубку» — и получаются румяные корзиночки как из кондитерской",
+    "url": "https://provkus-media.ru/articles/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy.html",
+    "image": "https://provkus-media.ru/assets/uploads/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy-16x9.jpg",
+    "ingredients": [],
+    "ingredientLines": [],
+    "updatedAt": "2026-09-29T18:13:00.000Z"
+  },
+  {
+    "slug": "porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego",
+    "headline": "Порционный салат «Леди» собираю прямо в бокале: курица + ананас — на празднике разбирают раньше горячего",
+    "url": "https://provkus-media.ru/articles/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego.html",
+    "image": "https://provkus-media.ru/assets/uploads/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego-16x9.jpg",
+    "ingredients": [
+      "курица",
+      "ананас",
+      "яйца",
+      "сыр",
+      "грецкие орехи или миндаль",
+      "майонез",
+      "натуральный йогурт",
+      "соль",
+      "зелень — для украшения"
+    ],
+    "ingredientLines": [
+      "отварное куриное филе — 300 г",
+      "консервированный ананас — 150 г",
+      "варёные яйца — 3 шт.",
+      "сливочный сыр — 150 г",
+      "твёрдый сыр — 100 г",
+      "грецкие орехи или миндаль — 1 горсть",
+      "майонез — 2–3 ст. л.",
+      "натуральный йогурт — 2 ст. л.",
+      "соль — по вкусу",
+      "зелень — для украшения"
+    ],
+    "updatedAt": "2026-09-29T09:15:00.000Z"
+  },
+  {
     "slug": "privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo",
     "headline": "Привязала мясо к крышке кастрюли — сноха сначала удивилась, а за ужином попросила научить: нежнее жареного",
     "url": "https://provkus-media.ru/articles/privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo.html",
@@ -35,17 +74,12 @@
     "ingredients": [
       "банку белой фасоли с выходом около",
       "яблоко",
-      "сыр",
-      "творог",
-      "грибы"
+      "без заливки и одно плотное кисло-сла"
     ],
     "ingredientLines": [
       "банку белой фасоли с выходом около 240 г без заливки",
       "одно плотное кисло-сладкое яблоко",
-      "Вчерашнее пюре больше не разогреваю: делаю сырные лепёшки «Улыбашки» с хрустящей корочкой и сырной бомбой внутри",
-      "В сентябре груши кладу прямо на творог: запеканка получается по-летнему нежной — без возни с тестом",
-      "Готовлю полезный крем-суп из цветной капусты без сливок: румяные соцветия раскрываются в ложке совсем по-новому",
-      "Как приготовить гречку с грибами без сухости: кидаю на сковороду шампиньоны, а крупа сама пухнет на глазах"
+      "240 г без заливки и одно плотное кисло-сла"
     ],
     "updatedAt": "2026-09-28T15:30:00.000Z"
   },
@@ -76,16 +110,18 @@
     "url": "https://provkus-media.ru/articles/krem-sup-iz-tsvetnoy-kapusty-bez-slivok.html",
     "image": "https://provkus-media.ru/assets/uploads/2026-09-28-krem-sup-iz-tsvetnoy-kapusty-bez-slivok-cover.webp",
     "ingredients": [
-      "сыр",
-      "готовлю осенний ужин из",
-      "творог",
-      "грибы"
+      "цветной капусты",
+      "воды или овощного бульона",
+      "горячей воды или бульона",
+      "жидкости",
+      "всегда проще"
     ],
     "ingredientLines": [
-      "Вчерашнее пюре больше не разогреваю: делаю сырные лепёшки «Улыбашки» с хрустящей корочкой и сырной бомбой внутри",
-      "Готовлю осенний ужин из 3-х продуктов: свёкла, яблоко и фасоль — хрустит по-королевски, а дел на 5 минут",
-      "В сентябре груши кладу прямо на творог: запеканка получается по-летнему нежной — без возни с тестом",
-      "Как приготовить гречку с грибами без сухости: кидаю на сковороду шампиньоны, а крупа сама пухнет на глазах"
+      "650 г цветной капусты",
+      "800 мл воды или овощного бульона",
+      "700 мл горячей воды или бульона",
+      "700 мл жидкости",
+      "100 мл всегда проще"
     ],
     "updatedAt": "2026-09-28T12:30:00.000Z"
   },
