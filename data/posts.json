@@ -1,5 +1,72 @@
 [
   {
+    "slug": "porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego",
+    "headline": "Порционный салат «Леди» собираю прямо в бокале: курица + ананас — на празднике разбирают раньше горячего",
+    "description": "Курица, ананас, два вида сыра и орехи укладываются слоями в бокалы. Через 30 минут получается готовая праздничная закуска.",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego-1x1.jpg"
+    ],
+    "imageAlt": "Порционный салат «Леди» с курицей, ананасом и сыром в прозрачных бокалах на праздничном столе",
+    "url": "https://provkus-media.ru/articles/porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego.html",
+    "publishedAt": "2026-09-29T09:15:00.000Z",
+    "updatedAt": "2026-09-29T09:15:00.000Z",
+    "tags": [
+      "Салат",
+      "Рецепты",
+      "Закуски",
+      "Готовка",
+      "Еда"
+    ],
+    "photoSource": "ProVkus",
+    "editorialCheck": {
+      "mode": "",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "",
+      "sourceNote": "",
+      "realPhoto": "",
+      "aiImage": false,
+      "confirmed": false
+    },
+    "featured": true,
+    "popular": true,
+    "newsletter": false,
+    "status": "published",
+    "excludeRelated": false,
+    "recipeIngredient": [
+      "отварное куриное филе — 300 г",
+      "консервированный ананас — 150 г",
+      "варёные яйца — 3 шт.",
+      "сливочный сыр — 150 г",
+      "твёрдый сыр — 100 г",
+      "грецкие орехи или миндаль — 1 горсть",
+      "майонез — 2–3 ст. л.",
+      "натуральный йогурт — 2 ст. л.",
+      "соль — по вкусу",
+      "зелень — для украшения"
+    ],
+    "recipeInstructions": [
+      "Смешайте майонез и натуральный йогурт до однородной заправки.",
+      "Нарежьте курицу и хорошо обсушенный ананас небольшими кубиками, яйца натрите на мелкой тёрке. Орехи слегка подрумяньте на сухой сковороде и крупно измельчите.",
+      "Разложите по бокалам курицу, немного соли и тонкий слой соуса. Затем добавьте ананас, ещё немного заправки, яйца, сливочный сыр, орехи и тёртый твёрдый сыр.",
+      "Украсьте сверху тонкой долькой ананаса и зеленью.",
+      "Уберите бокалы в холодильник примерно на 30 минут перед подачей."
+    ],
+    "recipeCategory": "Салат / закуска",
+    "recipeTemplateApplied": true
+  },
+  {
     "slug": "privyazala-myaso-k-kryshke-kastryuli-snoha-snachala-udivilas-a-za-uzhinom-poprosila-nauchit-nezhnee-zharenogo",
     "headline": "Привязала мясо к крышке кастрюли — сноха сначала удивилась, а за ужином попросила научить: нежнее жареного",
     "description": "Кусок мяса подвешивают под крышкой над кипящей водой — обычная кастрюля превращается в простую пароварку без масла и сковороды.",
@@ -39,7 +106,7 @@
       "aiImage": false,
       "confirmed": false
     },
-    "featured": true,
+    "featured": false,
     "popular": true,
     "coauthors": [],
     "recipeIngredient": [
@@ -455,7 +522,7 @@
     ],
     "photoSource": "Иллюстрация создана для ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "recipeIngredient": [
       "2 банки фасоли примерно по 400 г и 400 г томатов в собственном соку;",
       "1 луковица, 2 зубчика чеснока, 1 ст. л. масла;",

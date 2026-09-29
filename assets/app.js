@@ -12,7 +12,7 @@
     document.documentElement.dataset.theme=next;
     document.documentElement.style.colorScheme=next;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content',next==='dark'?'#161b19':'#f7f4ee');
-    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.setAttribute('aria-pressed',String(next==='dark'));btn.setAttribute('aria-label',next==='dark'?'Включить светлую тему':'Включить тёмную тему')}
+    const btn=document.querySelector('.pv-theme-toggle');if(btn){btn.setAttribute('aria-pressed',String(next==='dark'))}
     if(persist){try{localStorage.setItem('provkus-theme',next)}catch(e){}}
   }
   let initial='light';try{initial=localStorage.getItem('provkus-theme')||'light'}catch(e){}

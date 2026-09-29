@@ -12,6 +12,14 @@
 .recipe-facts div{min-width:0}.recipe-facts span{display:block;margin-bottom:4px;font-size:11px;opacity:.68}.recipe-facts strong{display:block;font-size:15px;line-height:1.25}.recipe-ingredients{padding-left:1.25em}.recipe-ingredients li{margin:.42em 0}.recipe-steps{padding-left:1.35em}.recipe-steps>li{margin:0 0 1.2em;padding-left:.25em}.recipe-steps>li>p{margin:.3em 0}.recipe-step-note{font-size:.94em;opacity:.78}.recipe-lead-note{padding:14px 16px;border-left:3px solid #ef5a36;background:rgba(239,90,54,.08);border-radius:0 12px 12px 0}.recipe-author-notes{margin-top:28px;padding-top:2px}.article-body h2{margin-top:1.35em}.article-body ul,.article-body ol{line-height:1.65}
 @media(max-width:680px){.recipe-facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
+/* SEO-EDITORIAL-CHECK */
+.pv-editorial-check{font-family:Inter,system-ui,sans-serif;margin:18px 0 24px;padding:14px 16px;border:1px solid #cfe2d7;border-left:5px solid #39805f;border-radius:14px;background:#f4f8f3;color:#244338}.pv-editorial-check__label{display:flex;align-items:center;gap:7px;font-weight:900}.pv-editorial-check p{margin:7px 0 5px;font-size:13px;line-height:1.45;color:#496157}.pv-editorial-check a{font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:2px}.seo-hub-intro{max-width:850px;margin:10px 0 22px;color:var(--muted);line-height:1.6}
+/* /SEO-EDITORIAL-CHECK */
+
+/* SEO-SUPPORTING-COPY */
+.seo-supporting-copy{max-width:900px;margin:26px auto;padding:22px 24px;border:1px solid var(--line);border-radius:18px;background:var(--paper)}.seo-supporting-copy h2{font-size:24px;margin:0 0 12px}.seo-supporting-copy h2+ p{margin-top:0}.seo-supporting-copy p{color:#45423d;line-height:1.65;margin:0 0 12px}.seo-supporting-copy p:last-child{margin-bottom:0}.seo-supporting-copy a{text-decoration:underline;text-underline-offset:2px}
+/* /SEO-SUPPORTING-COPY */
+
 /* bundled from public.css */
 /* ProVkus compatibility stylesheet: stable public design. */
 .pv-\73 easonal-layer,.pv-\73 easonal-piece,.pv-\73 easonal-leaf{display:none!important;visibility:hidden!important;opacity:0!important;animation:none!important;pointer-events:none!important}
@@ -214,3 +222,53 @@ html[data-theme="dark"] .author-card-role{color:#a4d3b8!important}
 html[data-theme="dark"] .author-card-footer{color:#c4c9bf;border-top-color:#566157}
 html[data-theme="dark"] .author-card-footer strong{color:#ff9e80}
 html[data-theme="dark"] .author-card-promise{background:#303a33!important;color:#e8e5dc!important}
+/* THEME-CONTRAST-V5 */
+.site-header .pv-theme-toggle:empty{display:none!important}
+.site-header .pv-theme-toggle~.pv-theme-toggle{display:none!important}
+.pv-theme-label-dark{display:none}
+html[data-theme="dark"] .pv-theme-label-light{display:none}
+html[data-theme="dark"] .pv-theme-label-dark{display:inline}
+html[data-theme="dark"] body{background:var(--bg)!important;color:var(--ink)!important}
+html[data-theme="dark"] .section-title,
+html[data-theme="dark"] .story-body h3,
+html[data-theme="dark"] .stack-copy h3,
+html[data-theme="dark"] .legal-card h1,
+html[data-theme="dark"] .legal-card h2,
+html[data-theme="dark"] .legal-card h3,
+html[data-theme="dark"] .chief-editor-copy h2,
+html[data-theme="dark"] .home-tools-head h2{color:var(--ink)!important}
+html[data-theme="dark"] .section-sub,
+html[data-theme="dark"] .story-meta,
+html[data-theme="dark"] .stack-copy p,
+html[data-theme="dark"] .legal-nav a,
+html[data-theme="dark"] .home-tools-head p,
+html[data-theme="dark"] .home-tools-foot,
+html[data-theme="dark"] .home-quick-copy small{color:var(--muted)!important}
+html[data-theme="dark"] .home-tools-section{background:var(--bg)!important;color:var(--ink)!important}
+html[data-theme="dark"] .home-topic-strip,
+html[data-theme="dark"] .home-topic-strip a,
+html[data-theme="dark"] .home-quick-action{background:var(--paper)!important;color:var(--ink)!important;border-color:var(--line)!important}
+html[data-theme="dark"] .chief-editor{background:#222925!important;color:#f2f0e9!important;border-color:#45524a!important;box-shadow:0 10px 30px rgba(0,0,0,.24)!important}
+html[data-theme="dark"] .chief-editor-copy p,
+html[data-theme="dark"] .chief-editor-facts li{color:#d9ddd6!important}
+html[data-theme="dark"] .chief-editor-facts strong,
+html[data-theme="dark"] .chief-editor-copy h2{color:#f5f2eb!important}
+html[data-theme="dark"] .chief-editor-photo figcaption{color:#bfc7bd!important}
+html[data-theme="dark"] .chief-editor-role{color:#ff9e80!important}
+html[data-theme="dark"] .chief-editor-quote{background:#332723!important;color:#fff6ef!important;border-left-color:#f08b71!important}
+html[data-theme="dark"] .chief-editor-quote footer{color:#d9c8bf!important}
+html[data-theme="dark"] .pv-recipe-panel,
+html[data-theme="dark"] .pv-feedback,
+html[data-theme="dark"] .pv-search-panel{background:#222925!important;color:#f2f0e9!important;border-color:#45524a!important}
+html[data-theme="dark"] .pv-recipe-panel h2,
+html[data-theme="dark"] .pv-recipe-panel h3,
+html[data-theme="dark"] .pv-feedback h2,
+html[data-theme="dark"] .pv-search-panel h1{color:#f2f0e9!important}
+html[data-theme="dark"] .pv-editorial-note,
+html[data-theme="dark"] .pv-feedback-note{color:#c4cbc2!important}
+html[data-theme="dark"] .pv-recipe-actions button,
+html[data-theme="dark"] .pv-filter-row button,
+html[data-theme="dark"] .pv-search-panel input,
+html[data-theme="dark"] .pv-search-panel select,
+html[data-theme="dark"] .pv-search-results a{background:#18201c!important;color:#f2f0e9!important;border-color:#536159!important}
+html[data-theme="dark"] .pv-search-results a:hover{background:#2d3831!important}
