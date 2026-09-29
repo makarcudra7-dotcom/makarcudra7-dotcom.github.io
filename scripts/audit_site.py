@@ -1,4 +1,4 @@
-"""Offline crawl/metadata regression check. This does not prove Google indexing."""
+"""Offline crawl/metadata regression check. This does not prove Google indexing.\n\nRecipe schema type must follow the published material type.\n"""
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, unquote

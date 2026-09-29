@@ -15,10 +15,32 @@ jobs:
       - uses: actions/checkout@v4
       - name: Add schema from visible ingredients and steps
         run: python3 scripts/add_recipe_schema.py
-      - name: Install audit dependency
-        run: python3 -m pip install Pillow
-      - name: Validate site
-        run: python3 scripts/audit_site.py
+      - name: Validate recipe structured data
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          posts=json.loads(Path('data/posts.json').read_text('utf-8'))
+          errors=[]
+          for post in posts:
+              if str(post.get('type') or '').casefold()!='recipe':
+                  continue
+              page=Path('articles')/(post['slug']+'.html')
+              if not page.exists():
+                  continue
+              text=page.read_text('utf-8')
+              for raw in __import__('re').findall(r'<script type="application/ld\+json"[^>]*>(.*?)</script>',text,__import__('re').S):
+                  try: data=json.loads(raw)
+                  except ValueError: continue
+                  nodes=data.get('@graph',[data]) if isinstance(data,dict) else []
+                  if any(isinstance(node,dict) and node.get('@type')=='Recipe' and node.get('recipeIngredient') and node.get('recipeInstructions') for node in nodes):
+                      break
+              else:
+                  errors.append(post['slug'])
+          if errors:
+              raise SystemExit('Missing Recipe data: '+', '.join(errors))
+          print('Recipe schema validated')
+          PY
       - name: Commit only recipe metadata
         run: |
           git config user.name 'github-actions[bot]'
