@@ -3,14 +3,16 @@ from pathlib import Path
 import re
 
 ROOT=Path(__file__).resolve().parents[1]
+SEARCH_VERSION='20260929-search2'
 
 # Homepage must have search before the lazy-loaded general app starts.
 index=ROOT/'index.html'
 s=index.read_text('utf-8')
-css='<link rel="stylesheet" href="/assets/site-search.css?v=20260929-search1">'
-js='<script src="/assets/site-search.js?v=20260929-search1" defer></script>'
-if css not in s:
-    s=s.replace('</head>',css+js+'</head>',1)
+s=re.sub(r'<link rel="stylesheet" href="/assets/site-search\.css\?v=[^"]+">','',s)
+s=re.sub(r'<script src="/assets/site-search\.js\?v=[^"]+" defer></script>','',s)
+css=f'<link rel="stylesheet" href="/assets/site-search.css?v={SEARCH_VERSION}">'
+js=f'<script src="/assets/site-search.js?v={SEARCH_VERSION}" defer></script>'
+s=s.replace('</head>',css+js+'</head>',1)
 # Remove only the header navigation item, not footer/category links.
 def clean_nav(m):
     body=m.group(1)
@@ -23,8 +25,10 @@ index.write_text(s,'utf-8')
 # Other pages load app.js normally; have it install the search UI immediately.
 app=ROOT/'assets/app.js'
 s=app.read_text('utf-8')
+s=re.sub(r"const VERSION='[^']+';",f"const VERSION='{SEARCH_VERSION}';",s,count=1)
+s=re.sub(r"/assets/site-search\.js\?v=[^'\"]+",f"/assets/site-search.js?v={SEARCH_VERSION}",s)
 old="injectCss();addFavicon();addSiteSchema();enhanceNavigation();"
-new="injectCss();addCss('/assets/site-search.css');loadScript('/assets/site-search.js?v=20260929-search1','pvSiteSearch');addFavicon();addSiteSchema();enhanceNavigation();"
+new=f"injectCss();addCss('/assets/site-search.css');loadScript('/assets/site-search.js?v={SEARCH_VERSION}','pvSiteSearch');addFavicon();addSiteSchema();enhanceNavigation();"
 if old in s:
     s=s.replace(old,new,1)
 elif "site-search.js" not in s:
@@ -51,4 +55,4 @@ for page in list(ROOT.glob('*.html'))+list((ROOT/'articles').glob('*.html')):
     if changed!=text:
         page.write_text(changed,'utf-8')
 
-print('Header navigation simplified and live search enabled.')
+print('Header navigation simplified and live search cache version refreshed.')
