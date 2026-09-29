@@ -1,14 +1,15 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search6';
+  const VERSION='20260929-search7';
   const MAX_RESULTS=8;
+  const SAVED_KEY='provkus-saved-recipes-v1';
   let postsPromise=null;
 
   function normalize(value){
     return String(value||'').toLocaleLowerCase('ru-RU').replace(/ё/g,'е').replace(/[^a-zа-я0-9]+/gi,' ').replace(/\s+/g,' ').trim();
   }
   function esc(value){
-    return String(value||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]});
+    return String(value||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});
   }
   function isPublished(post){
     const t=Date.parse(post&&post.publishedAt||'');
@@ -23,14 +24,15 @@
     return postsPromise;
   }
   function score(post,query){
-    const q=normalize(query); if(!q)return 0;
+    const q=normalize(query);if(!q)return 0;
     const words=q.split(' ').filter(Boolean);
     const headline=normalize(post.headline||post.title);
     const description=normalize(post.description||post.excerpt||post.lead);
     const category=normalize(post.category);
     const author=normalize(post.author);
     const tags=normalize(Array.isArray(post.tags)?post.tags.join(' '):post.tags);
-    const hay=[headline,description,category,author,tags].join(' ');
+    const ingredients=normalize(Array.isArray(post.recipeIngredient)?post.recipeIngredient.join(' '):'');
+    const hay=[headline,description,category,author,tags,ingredients].join(' ');
     if(!words.every(function(w){return hay.includes(w)}))return 0;
     let s=1;
     if(headline===q)s+=100;
@@ -40,11 +42,10 @@
       if(headline.split(' ').some(function(x){return x.startsWith(w)}))s+=12;
       if(category.includes(w))s+=5;
       if(tags.includes(w))s+=4;
+      if(ingredients.includes(w))s+=4;
       if(author.includes(w))s+=2;
       if(description.includes(w))s+=1;
     });
-    const t=Date.parse(post.publishedAt||'');
-    if(Number.isFinite(t))s+=Math.max(0,1-(Date.now()-t)/(1000*60*60*24*3650));
     return s;
   }
   function search(posts,query){
@@ -54,52 +55,66 @@
       .map(function(x){return x.post});
   }
   function savedCount(){
-    try{const items=JSON.parse(localStorage.getItem('provkus-saved-recipes-v1')||'[]');return Array.isArray(items)?items.length:0}catch(e){return 0}
+    try{const items=JSON.parse(localStorage.getItem(SAVED_KEY)||'[]');return Array.isArray(items)?items.length:0}catch(e){return 0}
   }
   function ensureSavedNav(nav){
     if(!nav)return;
     let link=nav.querySelector('.pv-saved-link');
+    let changed=false;
     if(!link){
       link=document.createElement('a');
       link.className='pv-saved-link';
       link.href='/saved.html';
+      link.textContent='★ Сохранённые';
       nav.appendChild(link);
+      changed=true;
     }
-    link.textContent='★ Сохранённые';
+    if(link.getAttribute('href')!=='/saved.html'){link.setAttribute('href','/saved.html');changed=true}
+    if(link.textContent!=='★ Сохранённые'){link.textContent='★ Сохранённые';changed=true}
     const n=savedCount();
-    link.title=n?'Сохранено рецептов: '+n:'Сохранённых рецептов пока нет';
-    if(location.pathname==='/saved.html')link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');
+    const title=n?'Сохранено рецептов: '+n:'Сохранённых рецептов пока нет';
+    if(link.title!==title)link.title=title;
+    if(location.pathname==='/saved.html'){
+      if(link.getAttribute('aria-current')!=='page')link.setAttribute('aria-current','page');
+    }else if(link.hasAttribute('aria-current'))link.removeAttribute('aria-current');
+    return changed;
   }
   function primeHomeFirstScreen(){
     if(!/^(\/|\/index\.html)$/.test(location.pathname))return;
     function revealHeroImages(){
       document.querySelectorAll('.hero-side img').forEach(function(img){
-        img.loading='eager';
+        if(img.getAttribute('loading')!=='eager')img.setAttribute('loading','eager');
         if(img.dataset&&img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;img.classList.remove('pv-defer-img')}
       });
     }
     revealHeroImages();
     const hero=document.querySelector('.hero .hero-grid');
     if(hero&&'MutationObserver' in window){
-      const observer=new MutationObserver(revealHeroImages);
+      const observer=new MutationObserver(function(){revealHeroImages()});
       observer.observe(hero,{childList:true,subtree:true});
-      setTimeout(function(){observer.disconnect()},6000);
+      setTimeout(function(){observer.disconnect()},4000);
     }
     if(!window.__pvHomeDynamicLoaded&&!document.getElementById('pvHomeDynamicImmediate')){
-      const s=document.createElement('script');s.id='pvHomeDynamicImmediate';s.src='/assets/home-dynamic.js?v=20260929-fast1';s.defer=true;document.body.appendChild(s);
+      const s=document.createElement('script');
+      s.id='pvHomeDynamicImmediate';
+      s.src='/assets/home-dynamic.js?v=20260929-fast2';
+      s.defer=true;
+      document.body.appendChild(s);
     }
   }
   function cleanHeader(bar){
-    if(!bar)return;
-    bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove()});
+    if(!bar)return false;
+    let changed=false;
+    bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove();changed=true});
     const toggles=bar.querySelectorAll('.pv-theme-toggle');
-    toggles.forEach(function(el,i){if(i>0)el.remove()});
+    toggles.forEach(function(el,i){if(i>0){el.remove();changed=true}});
     bar.querySelectorAll('.main-nav a').forEach(function(a){
       const text=normalize(a.textContent);
-      let path=''; try{path=new URL(a.href,location.href).pathname}catch(e){}
-      if(text==='материалы' || path==='/category.html')a.remove();
+      let path='';try{path=new URL(a.href,location.href).pathname}catch(e){}
+      if(text==='материалы'||path==='/category.html'){a.remove();changed=true}
     });
-    ensureSavedNav(bar.querySelector('.main-nav'));
+    if(ensureSavedNav(bar.querySelector('.main-nav')))changed=true;
+    return changed;
   }
   function setup(){
     primeHomeFirstScreen();
@@ -107,9 +122,18 @@
     if(!bar)return;
     cleanHeader(bar);
 
-    if(!bar.dataset.pvHeaderGuard){
+    if(!bar.dataset.pvHeaderGuard&&'MutationObserver' in window){
       bar.dataset.pvHeaderGuard='1';
-      const guard=new MutationObserver(function(){cleanHeader(bar)});
+      let running=false;
+      const guard=new MutationObserver(function(){
+        if(running)return;
+        running=true;
+        guard.disconnect();
+        try{cleanHeader(bar)}finally{
+          guard.observe(bar,{childList:true,subtree:true});
+          running=false;
+        }
+      });
       guard.observe(bar,{childList:true,subtree:true});
     }
 
@@ -130,7 +154,7 @@
     const form=wrap.querySelector('form');
     const input=wrap.querySelector('input');
     const results=wrap.querySelector('.pv-search-results');
-    let matches=[]; let active=-1; let timer=0;
+    let matches=[];let active=-1;let timer=0;
 
     function close(){results.hidden=true;results.innerHTML='';input.setAttribute('aria-expanded','false');active=-1}
     function setActive(next){
@@ -161,7 +185,7 @@
       });
     }
     input.addEventListener('focus',function(){if(input.value.trim().length>=2)render(input.value)});
-    input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(function(){render(input.value)},90)});
+    input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(function(){render(input.value)},100)});
     input.addEventListener('keydown',function(e){
       if(e.key==='ArrowDown'){e.preventDefault();if(results.hidden)render(input.value);else setActive(active+1)}
       else if(e.key==='ArrowUp'){e.preventDefault();if(!results.hidden)setActive(active<=0?0:active-1)}
@@ -170,7 +194,7 @@
     });
     form.addEventListener('submit',function(e){
       e.preventDefault();
-      const q=input.value.trim(); if(q.length<2){input.focus();return}
+      const q=input.value.trim();if(q.length<2){input.focus();return}
       getPosts().then(function(posts){
         matches=search(posts,q);
         if(matches.length===1){location.href='/articles/'+encodeURIComponent(matches[0].slug)+'.html';return}
@@ -180,6 +204,11 @@
     document.addEventListener('pointerdown',function(e){if(!wrap.contains(e.target))close()});
     getPosts();
   }
-  window.addEventListener('storage',function(e){if(e.key==='provkus-saved-recipes-v1'){const bar=document.querySelector('.site-header .topbar');if(bar)cleanHeader(bar)}});
+
+  window.addEventListener('storage',function(e){
+    if(e.key!==SAVED_KEY)return;
+    const bar=document.querySelector('.site-header .topbar');
+    if(bar)cleanHeader(bar);
+  });
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
 })();
