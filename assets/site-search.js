@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search1';
+  const VERSION='20260929-search3';
   const MAX_RESULTS=8;
   let postsPromise=null;
 
@@ -53,9 +53,10 @@
       .sort(function(a,b){return b.score-a.score})
       .map(function(x){return x.post});
   }
-  function removeMaterials(nav){
-    if(!nav)return;
-    nav.querySelectorAll('a').forEach(function(a){
+  function cleanHeader(bar){
+    if(!bar)return;
+    bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove()});
+    bar.querySelectorAll('.main-nav a').forEach(function(a){
       const text=normalize(a.textContent);
       let path=''; try{path=new URL(a.href,location.href).pathname}catch(e){}
       if(text==='материалы' || path==='/category.html')a.remove();
@@ -63,9 +64,17 @@
   }
   function setup(){
     const bar=document.querySelector('.site-header .topbar');
-    if(!bar||bar.querySelector('.pv-site-search'))return;
+    if(!bar)return;
+    cleanHeader(bar);
+
+    if(!bar.dataset.pvHeaderGuard){
+      bar.dataset.pvHeaderGuard='1';
+      const guard=new MutationObserver(function(){cleanHeader(bar)});
+      guard.observe(bar,{childList:true,subtree:true});
+    }
+
+    if(bar.querySelector('.pv-site-search'))return;
     const nav=bar.querySelector('.main-nav');
-    removeMaterials(nav);
 
     const wrap=document.createElement('div');
     wrap.className='pv-site-search';
