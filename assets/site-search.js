@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const VERSION='20260929-search7';
+  const VERSION='20260929-search-safe1';
   const MAX_RESULTS=8;
   const SAVED_KEY='provkus-saved-recipes-v1';
   let postsPromise=null;
@@ -60,87 +60,38 @@
   function ensureSavedNav(nav){
     if(!nav)return;
     let link=nav.querySelector('.pv-saved-link');
-    let changed=false;
     if(!link){
       link=document.createElement('a');
       link.className='pv-saved-link';
       link.href='/saved.html';
       link.textContent='★ Сохранённые';
       nav.appendChild(link);
-      changed=true;
     }
-    if(link.getAttribute('href')!=='/saved.html'){link.setAttribute('href','/saved.html');changed=true}
-    if(link.textContent!=='★ Сохранённые'){link.textContent='★ Сохранённые';changed=true}
     const n=savedCount();
-    const title=n?'Сохранено рецептов: '+n:'Сохранённых рецептов пока нет';
-    if(link.title!==title)link.title=title;
-    if(location.pathname==='/saved.html'){
-      if(link.getAttribute('aria-current')!=='page')link.setAttribute('aria-current','page');
-    }else if(link.hasAttribute('aria-current'))link.removeAttribute('aria-current');
-    return changed;
-  }
-  function primeHomeFirstScreen(){
-    if(!/^(\/|\/index\.html)$/.test(location.pathname))return;
-    function revealHeroImages(){
-      document.querySelectorAll('.hero-side img').forEach(function(img){
-        if(img.getAttribute('loading')!=='eager')img.setAttribute('loading','eager');
-        if(img.dataset&&img.dataset.src){img.src=img.dataset.src;delete img.dataset.src;img.classList.remove('pv-defer-img')}
-      });
-    }
-    revealHeroImages();
-    const hero=document.querySelector('.hero .hero-grid');
-    if(hero&&'MutationObserver' in window){
-      const observer=new MutationObserver(function(){revealHeroImages()});
-      observer.observe(hero,{childList:true,subtree:true});
-      setTimeout(function(){observer.disconnect()},4000);
-    }
-    if(!window.__pvHomeDynamicLoaded&&!document.getElementById('pvHomeDynamicImmediate')){
-      const s=document.createElement('script');
-      s.id='pvHomeDynamicImmediate';
-      s.src='/assets/home-dynamic.js?v=20260929-fast2';
-      s.defer=true;
-      document.body.appendChild(s);
-    }
+    link.title=n?'Сохранено рецептов: '+n:'Сохранённых рецептов пока нет';
+    if(location.pathname==='/saved.html')link.setAttribute('aria-current','page');
   }
   function cleanHeader(bar){
-    if(!bar)return false;
-    let changed=false;
-    bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove();changed=true});
+    if(!bar)return;
+    bar.querySelectorAll('.pv-reader-search').forEach(function(el){el.remove()});
     const toggles=bar.querySelectorAll('.pv-theme-toggle');
-    toggles.forEach(function(el,i){if(i>0){el.remove();changed=true}});
+    toggles.forEach(function(el,i){if(i>0)el.remove()});
     bar.querySelectorAll('.main-nav a').forEach(function(a){
       const text=normalize(a.textContent);
       let path='';try{path=new URL(a.href,location.href).pathname}catch(e){}
-      if(text==='материалы'||path==='/category.html'){a.remove();changed=true}
+      if(text==='материалы'||path==='/category.html')a.remove();
     });
-    if(ensureSavedNav(bar.querySelector('.main-nav')))changed=true;
-    return changed;
+    ensureSavedNav(bar.querySelector('.main-nav'));
   }
   function setup(){
-    primeHomeFirstScreen();
     const bar=document.querySelector('.site-header .topbar');
     if(!bar)return;
     cleanHeader(bar);
-
-    if(!bar.dataset.pvHeaderGuard&&'MutationObserver' in window){
-      bar.dataset.pvHeaderGuard='1';
-      let running=false;
-      const guard=new MutationObserver(function(){
-        if(running)return;
-        running=true;
-        guard.disconnect();
-        try{cleanHeader(bar)}finally{
-          guard.observe(bar,{childList:true,subtree:true});
-          running=false;
-        }
-      });
-      guard.observe(bar,{childList:true,subtree:true});
-    }
+    setTimeout(function(){cleanHeader(bar)},800);
+    setTimeout(function(){cleanHeader(bar)},2500);
 
     if(bar.querySelector('.pv-site-search'))return;
     const nav=bar.querySelector('.main-nav');
-    ensureSavedNav(nav);
-
     const wrap=document.createElement('div');
     wrap.className='pv-site-search';
     wrap.innerHTML='<form class="pv-search-form" role="search" autocomplete="off">'+
@@ -184,8 +135,7 @@
         results.hidden=false;input.setAttribute('aria-expanded','true');active=-1;
       });
     }
-    input.addEventListener('focus',function(){if(input.value.trim().length>=2)render(input.value)});
-    input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(function(){render(input.value)},100)});
+    input.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(function(){render(input.value)},120)});
     input.addEventListener('keydown',function(e){
       if(e.key==='ArrowDown'){e.preventDefault();if(results.hidden)render(input.value);else setActive(active+1)}
       else if(e.key==='ArrowUp'){e.preventDefault();if(!results.hidden)setActive(active<=0?0:active-1)}
@@ -202,13 +152,12 @@
       });
     });
     document.addEventListener('pointerdown',function(e){if(!wrap.contains(e.target))close()});
-    getPosts();
   }
 
   window.addEventListener('storage',function(e){
     if(e.key!==SAVED_KEY)return;
-    const bar=document.querySelector('.site-header .topbar');
-    if(bar)cleanHeader(bar);
+    const nav=document.querySelector('.site-header .main-nav');
+    if(nav)ensureSavedNav(nav);
   });
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup,{once:true});else setup();
 })();
