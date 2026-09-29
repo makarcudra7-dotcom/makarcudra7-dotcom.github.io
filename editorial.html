@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ru">
-<head>
+<head><script id="pv-theme-bootstrap">(function(){var KEY='provkus-theme';function apply(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#161b19':'#f7f4ee');document.querySelectorAll('.pv-theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(t==='dark'));b.setAttribute('aria-label',t==='dark'?'Включить светлую тему':'Включить тёмную тему')})}var t='light';try{t=localStorage.getItem(KEY)||'light'}catch(e){}apply(t);window.__pvThemeApply=function(next,persist){apply(next);if(persist!==false){try{localStorage.setItem(KEY,next)}catch(e){}}};window.__pvThemeDelegated=true;document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pv-theme-toggle');if(!b)return;var next=document.documentElement.dataset.theme==='dark'?'light':'dark';window.__pvThemeApply(next,true)});document.addEventListener('DOMContentLoaded',function(){apply(document.documentElement.dataset.theme||t)})})();</script>
   <link rel="icon" href="/favicon.ico?v=20260923" sizes="any">
   <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=20260923">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260923">
@@ -63,9 +63,9 @@
     .chief-editor-quote{margin:22px 0 0;padding:20px 22px;border-left:4px solid var(--accent);border-radius:0 16px 16px 0;background:#fff4ef;color:var(--ink);font:700 17px/1.55 Georgia,serif}.chief-editor-quote footer{margin-top:12px;color:var(--muted);font:700 12px/1.4 Arial,sans-serif}
     @media(max-width:760px){.chief-editor{grid-template-columns:1fr;padding:18px}.chief-editor-photo{max-width:360px}.chief-editor-quote{font-size:16px}}
   </style>
-</head>
+<link rel="stylesheet" href="/assets/theme.css?v=20260929-theme4"></head>
 <body>
-<header class="site-header"><div class="container topbar"><a class="brand" href="index.html">Pro<b>Vkus</b></a><nav class="main-nav"><a href="/calculators.html">Калькуляторы</a><a href="/authors.html">Авторы</a><a href="/archive.html">Архив</a></nav></div></header>
+<header class="site-header"><div class="container topbar"><a class="brand" href="index.html">Pro<b>Vkus</b></a><nav class="main-nav"><a href="/calculators.html">Калькуляторы</a><a href="/authors.html">Авторы</a><a href="/archive.html">Архив</a></nav><button type="button" class="pv-theme-toggle" aria-pressed="false" aria-label="Переключить тему"><span class="pv-theme-label-light">☾ Тёмная тема</span><span class="pv-theme-label-dark">☀ Светлая тема</span></button></div></header>
 <main class="container">
   <div class="legal-layout">
     <nav class="legal-nav"><a href="authors.html">Авторы</a><a href="editorial-policy.html">Редакционные стандарты</a><a href="contacts.html">Контакты</a></nav>
@@ -115,6 +115,6 @@
     </article>
   </div>
 </main>
-<script src="assets/app.js?v=20260929-reader3"></script>
+<script src="assets/app.js?v=20260929-theme4"></script>
 </body>
 </html>
