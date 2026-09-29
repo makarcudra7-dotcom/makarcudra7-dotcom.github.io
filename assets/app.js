@@ -1,7 +1,7 @@
 (function(){
   const SITE='https://provkus-media.ru';
   const FALLBACK='/assets/fallback-cover.svg';
-  const VERSION='20260927-publicfix2';
+  const VERSION='20260929-search2';
   const AUTHOR_PHOTOS={'ilya.svg':'/assets/authors/ilya.jpg?v=20260922-3','ilya.jpg':'/assets/authors/ilya.jpg?v=20260922-3','elvira.svg':'/assets/authors/elvira-generated.jpg','elvira-v2.jpg':'/assets/authors/elvira-generated.jpg','elvira.jpg':'/assets/authors/elvira-generated.jpg','elvira-realistic.jpg':'/assets/authors/elvira-generated.jpg','ekaterina.svg':'/assets/authors/ekaterina.jpg?v=20260922-3','ekaterina.jpg':'/assets/authors/ekaterina.jpg?v=20260922-3'};
   const AUTHOR_PAGES={'author-ekaterina.html':'Екатерина Рукопляс','author-elvira.html':'Эльвира Шайберт','author-ilya.html':'Илья Титюлькин'};
   const isHome=/^(\/|\/index\.html)$/.test(location.pathname);
@@ -58,7 +58,7 @@
 
   const share=document.querySelector('[data-share]');if(share){share.addEventListener('click',async()=>{try{if(navigator.share){await navigator.share({title:document.title,url:location.href})}else{await navigator.clipboard.writeText(location.href);share.textContent='Ссылка скопирована'}}catch(e){}})}
   document.querySelectorAll('a[href="admin.html"]').forEach(a=>{a.href='editorial.html';a.textContent='Редакция'});document.querySelectorAll('.footer-bottom span').forEach(el=>{if(el.textContent.includes('Сетевое издание'))el.textContent='Информационный сайт ProVkus. Регистрация СМИ не заявлена.'});
-  injectCss();addCss('/assets/site-search.css');loadScript('/assets/site-search.js?v=20260929-search1','pvSiteSearch');addFavicon();addSiteSchema();enhanceNavigation();fixAuthorTrustCopy();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();
+  injectCss();addCss('/assets/site-search.css');loadScript('/assets/site-search.js?v=20260929-search2','pvSiteSearch');addFavicon();addSiteSchema();enhanceNavigation();fixAuthorTrustCopy();if(!isHome){localizeAuthorPhotos();document.querySelectorAll('img').forEach(normalizeRemoteImage);formatVisibleDates(document)}injectAdvertisingCta();
   if(!isHome)window.__pvPostsPromise.then(posts=>{if(posts.length)renderAuthorProfile(posts);enrichCards(posts);const post=posts.find(p=>p.slug===currentSlug());if(post)enrichArticle(post)});
   if(isHome){const loadHome=()=>runWhenIdle(()=>loadScript('/assets/home-dynamic.js?v=20260926-mobile-speed3','pvHomeDynamic'));if(document.readyState==='complete')loadHome();else window.addEventListener('load',loadHome,{once:true})}
   loadScript('/assets/reader-tools.js?v=20260929-reader3','pvReaderToolsScript');
