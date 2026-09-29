@@ -3,7 +3,6 @@ on:
   push:
     branches: [main]
     paths:
-      - 'data/posts.json'
       - 'scripts/check_publication_health.py'
       - '.github/workflows/publication-health.yml'
   schedule:
@@ -13,7 +12,7 @@ permissions:
   contents: write
 concurrency:
   group: provkus-publication-health
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   check:
     runs-on: ubuntu-latest
