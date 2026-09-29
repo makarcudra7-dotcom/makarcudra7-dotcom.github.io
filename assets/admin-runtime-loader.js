@@ -3,7 +3,7 @@
   if(window.__pvAdminRuntimeLoader)return;
   window.__pvAdminRuntimeLoader=true;
 
-  const VERSION='20260929-recipe-template2';
+  const VERSION='20260929-recipe-template3';
   const modules=[
     'admin-editor-extras.js',
     'admin-global-bridge.js',
@@ -11,6 +11,7 @@
     'admin-scheduler.js',
     'admin-publish-runtime.js',
     'admin-recipe-template.js',
+    'admin-recipe-type-normalizer.js',
     'admin-fast-publish.js',
     'admin-live-refresh.js',
     'admin-persistence.js',
