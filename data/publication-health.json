@@ -30,9 +30,11 @@
     "checkedAt": "2026-09-28T07:33:08.079170Z"
   },
   "tykvu-ne-rezhu-v-kashu-pryachu-vnutr-tvorog-chesnok-i-syr-poluchaetsya-goryachaya-lodochka-s-rumyanoy-shapkoy": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-09-28T22:29:19.525559Z"
+    "status": "error",
+    "errors": [
+      "SEO title не совпадает с заголовком"
+    ],
+    "checkedAt": "2026-09-29T10:33:37.973237Z"
   },
   "indiya-rayta-s-ogurcom": {
     "status": "ok",
@@ -803,5 +805,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-09-29T07:32:52.887378Z"
+  },
+  "porcionnyy-salat-ledi-sobirayu-pryamo-v-bokale-kurica-ananas-na-prazdnike-razbirayut-ran-she-goryachego": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-09-29T10:33:36.802397Z"
   }
 }
