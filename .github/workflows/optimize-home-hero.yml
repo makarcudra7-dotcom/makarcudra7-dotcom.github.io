@@ -11,6 +11,7 @@ on:
       - 'scripts/optimize_home_hero.py'
       - 'scripts/optimize_home_images.py'
       - 'scripts/optimize_home_markup.py'
+      - 'scripts/optimize_article_images.py'
       - '.github/workflows/optimize-home-hero.yml'
   schedule:
     - cron: '7,37 * * * *'
@@ -45,7 +46,8 @@ jobs:
             python3 scripts/optimize_home_images.py
             python3 scripts/optimize_home_hero.py
             python3 scripts/optimize_home_markup.py
-            git add index.html assets/uploads
+            python3 scripts/optimize_article_images.py
+            git add index.html articles assets/uploads
             git restore --worktree .
             if git diff --cached --quiet; then exit 0; fi
             git commit -m "Refresh homepage placements and responsive homepage images"
