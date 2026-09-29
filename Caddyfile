@@ -1,0 +1,21 @@
+{
+    admin off
+    persist_config off
+    auto_https off
+    log {
+        format json
+    }
+    servers {
+        trusted_proxies static 0.0.0.0/0 ::/0
+    }
+}
+
+:{$PORT:8080} {
+    log {
+        format json
+    }
+
+    root * .
+    encode zstd gzip
+    file_server
+}
