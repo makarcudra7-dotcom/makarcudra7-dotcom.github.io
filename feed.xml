@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Wed, 30 Sep 2026 13:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 14:45:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Открываю томатную пасту ради 1 ложки — остаток больше не плесневеет: делаю один простой трюк, и банка живёт дольше</title>
+    <link>https://provkus-media.ru/articles/tomatnaya-pasta-zamorozka-po-odnoy-lozhke.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/tomatnaya-pasta-zamorozka-po-odnoy-lozhke.html</guid>
+    <pubDate>Wed, 30 Sep 2026 14:45:00 GMT</pubDate>
+    <description>Томатную пасту после вскрытия удобно заморозить порциями по одной ложке. Как подготовить порции, подписать пакет и использовать пасту без размораживания всей банки.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Хранение</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-30-tomatnaya-pasta-zamorozka-po-odnoy-lozhke-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>На пачках масла одинаковые 82,5%, а цена отличается вдвое: смотрю не на жирность — решают 2 строчки на этикетке</title>
     <link>https://provkus-media.ru/articles/slivochnoe-maslo-82-5-dve-strochki-na-etiketke.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/tailand-mango-s-kleykim-risom-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Тайский салат с огурцом заправляю перед столом: лайм, арахис и чили остаются яркими, а овощи — хрустящими</title>
-    <link>https://provkus-media.ru/articles/tailand-tayskiy-salat-s-ogurcom.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-tayskiy-salat-s-ogurcom.html</guid>
-    <pubDate>Thu, 24 Sep 2026 08:05:00 GMT</pubDate>
-    <description>Свежий тайский салат с огурцом, морковью, лаймом, арахисом и острой кисло-сладкой заправкой.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/tailand-tayskiy-salat-s-ogurcom-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
