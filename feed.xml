@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Wed, 30 Sep 2026 14:45:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 16:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Шампиньоны больше не караулю у сковороды: противень забиваю доверху — потом 3 дня собираю ужины за 10 минут</title>
+    <link>https://provkus-media.ru/articles/shampinony-na-protivne-tri-bystrykh-uzhina.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/shampinony-na-protivne-tri-bystrykh-uzhina.html</guid>
+    <pubDate>Wed, 30 Sep 2026 16:00:00 GMT</pubDate>
+    <description>Большой противень запечённых шампиньонов и три быстрых ужина: тосты, паста и кускус. Как разложить грибы одним слоем и заморозить порции на следующие дни.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-30-shampinony-na-protivne-tri-bystrykh-uzhina-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Открываю томатную пасту ради 1 ложки — остаток больше не плесневеет: делаю один простой трюк, и банка живёт дольше</title>
     <link>https://provkus-media.ru/articles/tomatnaya-pasta-zamorozka-po-odnoy-lozhke.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/vetnam-fo-ga-po-domashnemu-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Клейкий рис для манго пропитываю кокосовым соусом горячим: крупа впитывает сладость, но не превращается в кашу</title>
-    <link>https://provkus-media.ru/articles/tailand-mango-s-kleykim-risom.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-mango-s-kleykim-risom.html</guid>
-    <pubDate>Thu, 24 Sep 2026 09:40:00 GMT</pubDate>
-    <description>Тайский десерт из спелого манго, клейкого риса и сладкого кокосового молока.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/tailand-mango-s-kleykim-risom-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
