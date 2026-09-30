@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Wed, 30 Sep 2026 16:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 16:41:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Чеснок покупаю сразу по 3 кг: закатываю корейский «Маныль чангадзи» на зиму — хрустит, пропитывается соусом, исчезает первым</title>
+    <link>https://provkus-media.ru/articles/chesnok-pokupayu-srazu-po-3-kg-zakatyvayu-koreyskiy-manyl-changadzi-na-zimu-hrustit-propityvaetsya-sousom-ischezaet-pervym.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/chesnok-pokupayu-srazu-po-3-kg-zakatyvayu-koreyskiy-manyl-changadzi-na-zimu-hrustit-propityvaetsya-sousom-ischezaet-pervym.html</guid>
+    <pubDate>Wed, 30 Sep 2026 16:41:00 GMT</pubDate>
+    <description>Корейский «Маныль чангадзи» готовят в два этапа: чеснок сначала выдерживают в уксусе, а затем заливают сладко-солёным соевым маринадом и дают хорошо настояться.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/chesnok-pokupayu-srazu-po-3-kg-zakatyvayu-koreyskiy-manyl-changadzi-na-zimu-hrustit-propityvaetsya-sousom-ischezaet-pervym-16x9.jpg" medium="image"/>
+  </item>
   <item>
     <title>Шампиньоны больше не караулю у сковороды: противень забиваю доверху — потом 3 дня собираю ужины за 10 минут</title>
     <link>https://provkus-media.ru/articles/shampinony-na-protivne-tri-bystrykh-uzhina.html</link>
@@ -25,7 +35,7 @@
     <pubDate>Wed, 30 Sep 2026 14:45:00 GMT</pubDate>
     <description>Томатную пасту после вскрытия удобно заморозить порциями по одной ложке. Как подготовить порции, подписать пакет и использовать пасту без размораживания всей банки.</description>
     <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Хранение</category>
+    <category>Безопасность еды</category>
     <media:content url="https://provkus-media.ru/assets/uploads/2026-09-30-tomatnaya-pasta-zamorozka-po-odnoy-lozhke-cover.webp" medium="image"/>
   </item>
   <item>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/vetnam-ban-mi-s-kuricey-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Фо-га собираю уже в миске: лапша и зелень не варятся часами, а горячий бульон доводит всё до нужной температуры</title>
-    <link>https://provkus-media.ru/articles/vetnam-fo-ga-po-domashnemu.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-fo-ga-po-domashnemu.html</guid>
-    <pubDate>Thu, 24 Sep 2026 11:15:00 GMT</pubDate>
-    <description>Домашний вьетнамский фо-га с куриным бульоном, рисовой лапшой, имбирём, бадьяном и зеленью.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/vetnam-fo-ga-po-domashnemu-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
