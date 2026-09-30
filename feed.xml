@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Tue, 29 Sep 2026 18:13:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 13:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>На пачках масла одинаковые 82,5%, а цена отличается вдвое: смотрю не на жирность — решают 2 строчки на этикетке</title>
+    <link>https://provkus-media.ru/articles/slivochnoe-maslo-82-5-dve-strochki-na-etiketke.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/slivochnoe-maslo-82-5-dve-strochki-na-etiketke.html</guid>
+    <pubDate>Wed, 30 Sep 2026 13:30:00 GMT</pubDate>
+    <description>Какие две строки читать на упаковке сливочного масла: название продукта и состав. Как сравнить цену пачек разной массы и чего этикетка не доказывает.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Продукты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-30-slivochnoe-maslo-82-5-dve-strochki-na-etiketke-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Яблоки осенью не пускаю на шарлотку: надеваю слоёную «шубку» — и получаются румяные корзиночки как из кондитерской</title>
     <link>https://provkus-media.ru/articles/yabloki-osen-yu-ne-puskayu-na-sharlotku-nadevayu-sloenuyu-shubku-i-poluchayutsya-rumyanye-korzinochki-kak-iz-konditerskoy.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/tailand-tayskiy-salat-s-ogurcom-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Зелёное карри начинаю с пасты: прогреваю её в кокосовом молоке, и только потом добавляю овощи</title>
-    <link>https://provkus-media.ru/articles/tailand-zelenoe-karri-s-ovoschami.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/tailand-zelenoe-karri-s-ovoschami.html</guid>
-    <pubDate>Thu, 24 Sep 2026 06:20:00 GMT</pubDate>
-    <description>Тайское зелёное карри с кокосовым молоком, баклажаном, перцем и базиликом.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/tailand-zelenoe-karri-s-ovoschami-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
