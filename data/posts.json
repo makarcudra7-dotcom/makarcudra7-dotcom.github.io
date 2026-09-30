@@ -1,5 +1,58 @@
 [
   {
+    "slug": "tverdye-grushi-v-mede-v-dukhovke",
+    "headline": "Твёрдые груши не дозариваю на подоконнике: отправляю в мёд — через 20 минут внутри уже не фрукт, а тёплый десерт с нежной мякотью",
+    "description": "Груши в медово-масляном соусе: ингредиенты, температура духовки и проверка готовности через 20 минут. Почему крупным твёрдым плодам может понадобиться больше времени.",
+    "lead": "запечённые груши с мёдом в духовке",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/2026-09-30-tverdye-grushi-v-mede-v-dukhovke-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/2026-09-30-tverdye-grushi-v-mede-v-dukhovke-cover.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-30-tverdye-grushi-v-mede-v-dukhovke-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/2026-09-30-tverdye-grushi-v-mede-v-dukhovke-1x1.webp"
+    ],
+    "imageAlt": "Запечённые половинки груш в медово-масляном соусе в керамической форме",
+    "photoSource": "ProVkus",
+    "url": "https://provkus-media.ru/articles/tverdye-grushi-v-mede-v-dukhovke.html",
+    "publishedAt": "2026-09-30T17:15:00.000Z",
+    "updatedAt": "2026-09-30T17:15:00.000Z",
+    "tags": [
+      "Груши",
+      "Осень",
+      "Десерт",
+      "Мёд",
+      "Рецепты"
+    ],
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "status": "published",
+    "recipeIngredient": [
+      "Груши среднего размера — 2 шт.",
+      "Мёд — 2 ст. л.",
+      "Сливочное масло — 20 г",
+      "Корица — ¼ ч. л. по желанию",
+      "Натуральный йогурт — 100 г для подачи по желанию"
+    ],
+    "recipeInstructions": [
+      "Разогреть духовку до 205 °C. Вымыть две груши, разрезать вдоль пополам и удалить сердцевину.",
+      "Растопить 20 г сливочного масла в небольшой жаропрочной форме, смешать с двумя столовыми ложками мёда и корицей по желанию.",
+      "Разложить половинки груш срезом вниз в один слой.",
+      "Запекать около 20 минут. Проверить мякоть тонким ножом; если остаётся жёсткой, продолжить запекание по 5 минут до размягчения.",
+      "Дать постоять 3–5 минут, перевернуть и полить соусом. При желании подать с натуральным йогуртом."
+    ],
+    "prepTime": "PT10M",
+    "cookTime": "PT20M",
+    "totalTime": "PT30M",
+    "recipeYield": "2 порции",
+    "recipeCategory": "Десерт",
+    "recipeCuisine": "Домашняя"
+  },
+  {
     "slug": "chesnok-pokupayu-srazu-po-3-kg-zakatyvayu-koreyskiy-manyl-changadzi-na-zimu-hrustit-propityvaetsya-sousom-ischezaet-pervym",
     "headline": "Чеснок покупаю сразу по 3 кг: закатываю корейский «Маныль чангадзи» на зиму — хрустит, пропитывается соусом, исчезает первым",
     "description": "Корейский «Маныль чангадзи» готовят в два этапа: чеснок сначала выдерживают в уксусе, а затем заливают сладко-солёным соевым маринадом и дают хорошо настояться.",

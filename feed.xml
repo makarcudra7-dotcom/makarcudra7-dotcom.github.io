@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Wed, 30 Sep 2026 16:41:00 GMT</lastBuildDate>
+  <lastBuildDate>Wed, 30 Sep 2026 17:15:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Твёрдые груши не дозариваю на подоконнике: отправляю в мёд — через 20 минут внутри уже не фрукт, а тёплый десерт с нежной мякотью</title>
+    <link>https://provkus-media.ru/articles/tverdye-grushi-v-mede-v-dukhovke.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/tverdye-grushi-v-mede-v-dukhovke.html</guid>
+    <pubDate>Wed, 30 Sep 2026 17:15:00 GMT</pubDate>
+    <description>Груши в медово-масляном соусе: ингредиенты, температура духовки и проверка готовности через 20 минут. Почему крупным твёрдым плодам может понадобиться больше времени.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/2026-09-30-tverdye-grushi-v-mede-v-dukhovke-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Чеснок покупаю сразу по 3 кг: закатываю корейский «Маныль чангадзи» на зиму — хрустит, пропитывается соусом, исчезает первым</title>
     <link>https://provkus-media.ru/articles/chesnok-pokupayu-srazu-po-3-kg-zakatyvayu-koreyskiy-manyl-changadzi-na-zimu-hrustit-propityvaetsya-sousom-ischezaet-pervym.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/vetnam-spring-rolly-s-krevetkami-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Бань-ми собираю только перед едой: хрустящий багет, горячая курица и холодные маринованные овощи</title>
-    <link>https://provkus-media.ru/articles/vetnam-ban-mi-s-kuricey.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-ban-mi-s-kuricey.html</guid>
-    <pubDate>Thu, 24 Sep 2026 13:05:00 GMT</pubDate>
-    <description>Вьетнамский багет бань-ми с курицей, маринованной морковью, огурцом и кинзой.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/vetnam-ban-mi-s-kuricey-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
