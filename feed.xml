@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Thu, 01 Oct 2026 13:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 16:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Сливы заливаю сметаной прямо на тесте — из духовки достаю пирог с нежной серединой: к чаю уже режут второй кусок</title>
+    <link>https://provkus-media.ru/articles/slivovyy-pirog-smetannaya-zalivka.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/slivovyy-pirog-smetannaya-zalivka.html</guid>
+    <pubDate>Thu, 01 Oct 2026 16:00:00 GMT</pubDate>
+    <description>Песочный сливовый пирог со сметанной заливкой: ингредиенты, предварительная выпечка основы и признаки готовности.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/plum-sourcream-oct01-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Пирожки больше не леплю: заворачиваю курицу с сыром в лаваш — на сковороде конвертики хрустят, а внутри тянется начинка</title>
     <link>https://provkus-media.ru/articles/lavash-konvertiki-kuritsa-syr.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Безопасность еды</category>
     <media:content url="https://provkus-media.ru/assets/uploads/sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>«Миледи» — салат с королевским характером: курица, ананас и копчёный сыр — за столом сразу просят добавку</title>
-    <link>https://provkus-media.ru/articles/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku.html</guid>
-    <pubDate>Fri, 25 Sep 2026 04:00:00 GMT</pubDate>
-    <description>Сочная курица, сладкий ананас, копчёный сыр и хрустящие сухарики собираются в эффектный слоёный салат с чесночным соусом.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>
