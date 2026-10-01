@@ -3,7 +3,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 SKIP = {'admin.html'}
-VERSION = '20260929-theme5'
+VERSION = '20261002-mobile'
 
 BOOTSTRAP = '''<script id="pv-theme-bootstrap">(function(){var KEY='provkus-theme';function cleanup(){var bs=document.querySelectorAll('.site-header .pv-theme-toggle');for(var i=1;i<bs.length;i++)bs[i].remove()}function apply(t){t=t==='dark'?'dark':'light';document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',t==='dark'?'#161b19':'#f7f4ee');cleanup();document.querySelectorAll('.pv-theme-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(t==='dark'));b.setAttribute('aria-label',t==='dark'?'Включить светлую тему':'Включить тёмную тему')})}var t='light';try{t=localStorage.getItem(KEY)||'light'}catch(e){}apply(t);window.__pvThemeApply=function(next,persist){apply(next);if(persist!==false){try{localStorage.setItem(KEY,next)}catch(e){}}};window.__pvThemeDelegated=true;document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.pv-theme-toggle');if(!b)return;var next=document.documentElement.dataset.theme==='dark'?'light':'dark';window.__pvThemeApply(next,true)});document.addEventListener('DOMContentLoaded',function(){cleanup();apply(document.documentElement.dataset.theme||t)});})();</script>'''
 THEME_LINK = f'<link rel="stylesheet" href="/assets/theme.css?v={VERSION}">'
