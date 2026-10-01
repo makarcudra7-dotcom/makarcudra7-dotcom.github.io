@@ -1,0 +1,32 @@
+name: Refresh mobile article asset URLs
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/refresh-mobile-article-assets.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for p in list(Path('.').rglob('*.html')) + [Path('scripts/publish-scheduled.js')]:
+              if '.git' in p.parts: continue
+              old=p.read_text()
+              new=re.sub(r'(assets/app\\.js)(?:\\?[^"\\\'<>\\s]*)?',r'\\1?v=20261002-mobile',old)
+              if new!=old:p.write_text(new)
+          PY
+          git config user.name "provkus-mobile-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add '*.html' scripts/publish-scheduled.js
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Refresh article UI asset version for mobile typography"
+          git pull --rebase origin main
+          git push origin HEAD:main
