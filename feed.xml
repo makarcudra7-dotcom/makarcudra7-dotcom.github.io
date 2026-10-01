@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Thu, 01 Oct 2026 07:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 10:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Обед в таком контейнере больше не грею: пластик выглядит целым, но одна отметка на дне решает всё</title>
+    <link>https://provkus-media.ru/articles/konteyner-markirovka-dlya-mikrovolnovki.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/konteyner-markirovka-dlya-mikrovolnovki.html</guid>
+    <pubDate>Thu, 01 Oct 2026 10:00:00 GMT</pubDate>
+    <description>Как отличить знак для СВЧ от маркировки пластика и почему целый контейнер не обязательно подходит для разогрева.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Безопасность еды</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/container-microwave-oct01-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Морковь из холодильника гнётся, будто резиновая: сама портила запас одной привычкой — теперь храню иначе</title>
     <link>https://provkus-media.ru/articles/morkov-v-holodilnike-ne-vyanet.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/vetnam-salat-s-kuricey-i-kapustoy-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Вьетнамский кофе без кофеина делаю очень крепким: лёд и сгущёнка смягчают вкус уже в стакане</title>
-    <link>https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-vetnamskiy-kofe-bez-kofeina.html</guid>
-    <pubDate>Thu, 24 Sep 2026 17:20:00 GMT</pubDate>
-    <description>Домашняя безкофеиновая версия вьетнамского холодного кофе со сгущённым молоком и льдом.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/vetnam-vetnamskiy-kofe-bez-kofeina-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>

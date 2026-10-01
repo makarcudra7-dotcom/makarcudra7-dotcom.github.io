@@ -1,5 +1,38 @@
 [
   {
+    "slug": "konteyner-markirovka-dlya-mikrovolnovki",
+    "headline": "Обед в таком контейнере больше не грею: пластик выглядит целым, но одна отметка на дне решает всё",
+    "description": "Как отличить знак для СВЧ от маркировки пластика и почему целый контейнер не обязательно подходит для разогрева.",
+    "lead": "какие пластиковые контейнеры можно греть в микроволновке",
+    "author": "Екатерина Рукопляс",
+    "coauthors": [],
+    "category": "Безопасность еды",
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/container-microwave-oct01-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/container-microwave-oct01-cover.webp",
+      "https://provkus-media.ru/assets/uploads/container-microwave-oct01-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/container-microwave-oct01-1x1.webp"
+    ],
+    "imageAlt": "Контейнер с обедом рядом с микроволновой печью",
+    "photoSource": "ProVkus",
+    "url": "https://provkus-media.ru/articles/konteyner-markirovka-dlya-mikrovolnovki.html",
+    "publishedAt": "2026-10-01T10:00:00.000Z",
+    "updatedAt": "2026-10-01T10:00:00.000Z",
+    "tags": [
+      "Безопасность еды",
+      "полезные советы"
+    ],
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "status": "published",
+    "editorialCheck": {
+      "aiImage": true
+    }
+  },
+  {
     "slug": "morkov-v-holodilnike-ne-vyanet",
     "headline": "Морковь из холодильника гнётся, будто резиновая: сама портила запас одной привычкой — теперь храню иначе",
     "description": "Почему морковь теряет упругость и как хранить целые корнеплоды: упаковка, овощной ящик и проверка на порчу.",
