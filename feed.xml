@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Wed, 30 Sep 2026 17:15:00 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 05:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>С0 крупнее, но переплата не всегда оправдана: считаю цену яиц по-другому — дешёвый десяток может оказаться дороже</title>
+    <link>https://provkus-media.ru/articles/yaytsa-s0-s1-tsena-za-ves.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/yaytsa-s0-s1-tsena-za-ves.html</guid>
+    <pubDate>Thu, 01 Oct 2026 05:00:00 GMT</pubDate>
+    <description>Как сравнить стоимость яиц С0 и С1 по массе, а не только по цене десятка: понятный расчёт и важные оговорки.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Продукты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/eggs-price-oct01-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Твёрдые груши не дозариваю на подоконнике: отправляю в мёд — через 20 минут внутри уже не фрукт, а тёплый десерт с нежной мякотью</title>
     <link>https://provkus-media.ru/articles/tverdye-grushi-v-mede-v-dukhovke.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/zakryvayu-po-50-banok-i-vse-ravno-malo-kompot-fruktovyy-dzhaz-iz-yablok-i-vinograda-zimoy-p-em-kak-limonad-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Спринг-роллы не замачиваю в миске надолго: рисовой бумаге хватает нескольких секунд, дальше она размягчается сама</title>
-    <link>https://provkus-media.ru/articles/vetnam-spring-rolly-s-krevetkami.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-spring-rolly-s-krevetkami.html</guid>
-    <pubDate>Thu, 24 Sep 2026 15:10:00 GMT</pubDate>
-    <description>Свежие вьетнамские спринг-роллы с креветками, рисовой лапшой, огурцом и зеленью.</description>
-    <dc:creator>Эльвира Шайберт</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/vetnam-spring-rolly-s-krevetkami-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
