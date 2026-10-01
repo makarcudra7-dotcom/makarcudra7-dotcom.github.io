@@ -1,7 +1,7 @@
 (function(){
   const SITE='https://provkus-media.ru';
   const FALLBACK='/assets/fallback-cover.svg';
-  const VERSION='20260929-theme5';
+  const VERSION='20261002-mobile';
   const AUTHOR_PHOTOS={'ilya.svg':'/assets/authors/ilya.jpg?v=20260922-3','ilya.jpg':'/assets/authors/ilya.jpg?v=20260922-3','elvira.svg':'/assets/authors/elvira-generated.jpg','elvira-v2.jpg':'/assets/authors/elvira-generated.jpg','elvira.jpg':'/assets/authors/elvira-generated.jpg','elvira-realistic.jpg':'/assets/authors/elvira-generated.jpg','ekaterina.svg':'/assets/authors/ekaterina.jpg?v=20260922-3','ekaterina.jpg':'/assets/authors/ekaterina.jpg?v=20260922-3'};
   const AUTHOR_PAGES={'author-ekaterina.html':'Екатерина Рукопляс','author-elvira.html':'Эльвира Шайберт','author-ilya.html':'Илья Титюлькин'};
   const isHome=/^(\/|\/index\.html)$/.test(location.pathname);
