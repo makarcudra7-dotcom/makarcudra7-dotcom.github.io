@@ -868,5 +868,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-01T10:33:42.878133Z"
+  },
+  "lavash-konvertiki-kuritsa-syr": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-01T13:36:06.892624Z"
   }
 }
