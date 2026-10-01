@@ -1,0 +1,9 @@
+/* Mobile article header, loaded separately to avoid stale base stylesheet caches. */
+@media(max-width:700px){
+main.container .article-wrap{padding-top:20px}
+.article-wrap .article-title{font-size:clamp(25px,6.8vw,30px);line-height:1.12;letter-spacing:-.5px;margin:8px 0 12px;text-wrap:wrap;overflow-wrap:break-word}
+.article-wrap .article-dek{font-size:16px;line-height:1.4;margin-bottom:12px}
+.article-wrap .article-author{padding:10px 0 12px;margin-bottom:12px}
+.article-wrap .article-cover{margin:14px 0;border-radius:18px}
+.article-wrap .article-body h2{font-size:25px;line-height:1.2}
+}
