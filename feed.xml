@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Thu, 01 Oct 2026 10:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Thu, 01 Oct 2026 13:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Пирожки больше не леплю: заворачиваю курицу с сыром в лаваш — на сковороде конвертики хрустят, а внутри тянется начинка</title>
+    <link>https://provkus-media.ru/articles/lavash-konvertiki-kuritsa-syr.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/lavash-konvertiki-kuritsa-syr.html</guid>
+    <pubDate>Thu, 01 Oct 2026 13:30:00 GMT</pubDate>
+    <description>Простой вариант конвертиков из тонкого лаваша с готовой курицей и плавящимся сыром: пропорции и порядок обжаривания.</description>
+    <dc:creator>Илья Титюлькин</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/lavash-chicken-oct01-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Обед в таком контейнере больше не грею: пластик выглядит целым, но одна отметка на дне решает всё</title>
     <link>https://provkus-media.ru/articles/konteyner-markirovka-dlya-mikrovolnovki.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/miledi-salat-s-korolevskim-harakterom-kurica-ananas-i-kopchenyy-syr-za-stolom-srazu-prosyat-dobavku-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Капустный салат с курицей заправляю лаймом в самом конце: овощи хрустят, арахис остаётся сухим</title>
-    <link>https://provkus-media.ru/articles/vetnam-salat-s-kuricey-i-kapustoy.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/vetnam-salat-s-kuricey-i-kapustoy.html</guid>
-    <pubDate>Thu, 24 Sep 2026 19:15:00 GMT</pubDate>
-    <description>Свежий салат с курицей, капустой, морковью, кинзой, лаймом и арахисом.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/vetnam-salat-s-kuricey-i-kapustoy-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>
