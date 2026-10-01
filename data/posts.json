@@ -1,5 +1,38 @@
 [
   {
+    "slug": "morkov-v-holodilnike-ne-vyanet",
+    "headline": "Морковь из холодильника гнётся, будто резиновая: сама портила запас одной привычкой — теперь храню иначе",
+    "description": "Почему морковь теряет упругость и как хранить целые корнеплоды: упаковка, овощной ящик и проверка на порчу.",
+    "lead": "как хранить морковь в холодильнике чтобы не вяла",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Хранение",
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/carrots-storage-oct01-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/carrots-storage-oct01-cover.webp",
+      "https://provkus-media.ru/assets/uploads/carrots-storage-oct01-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/carrots-storage-oct01-1x1.webp"
+    ],
+    "imageAlt": "Морковь в прозрачном пакете в овощном ящике холодильника",
+    "photoSource": "ProVkus",
+    "url": "https://provkus-media.ru/articles/morkov-v-holodilnike-ne-vyanet.html",
+    "publishedAt": "2026-10-01T07:30:00.000Z",
+    "updatedAt": "2026-10-01T07:30:00.000Z",
+    "tags": [
+      "Хранение",
+      "полезные советы"
+    ],
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "status": "published",
+    "editorialCheck": {
+      "aiImage": true
+    }
+  },
+  {
     "slug": "yaytsa-s0-s1-tsena-za-ves",
     "headline": "С0 крупнее, но переплата не всегда оправдана: считаю цену яиц по-другому — дешёвый десяток может оказаться дороже",
     "description": "Как сравнить стоимость яиц С0 и С1 по массе, а не только по цене десятка: понятный расчёт и важные оговорки.",
