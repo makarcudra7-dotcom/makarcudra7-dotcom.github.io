@@ -248,7 +248,7 @@
       "imageAlt": "Золотистый заливной пирог с яйцами и зелёным луком в разрезе",
       "photoSource": "ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -293,7 +293,7 @@
       "imageAlt": "Золотистый заливной пирог с яйцами и зелёным луком в разрезе",
       "photoSource": "ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -339,7 +339,8 @@
       ],
       "status": "scheduled",
       "excludeRelated": false
-    }
+    },
+    "updatedAt": "2026-10-02T09:46:47.198Z"
   },
   {
     "slug": "plov-pravilo-proportsiy-po-vesu",
