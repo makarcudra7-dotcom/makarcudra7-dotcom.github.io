@@ -161,7 +161,7 @@
       "totalTime": "",
       "recipeTemplateApplied": true,
       "featured": true,
-      "popular": true,
+      "popular": false,
       "_editingSlug": "",
       "excludeRelated": false,
       "sourceHtml": "<ol class=\"pv-sources\"><li><a href=\"https://sakhaday.ru/news/barhatistee-maslyanogo-i-ne-techet-gotovlyu-francuzskiy-krem-muslin-kak-rastayavshee-morozhennoe\" target=\"_blank\" rel=\"noopener noreferrer\">SakhaDay</a></li><li><a href=\"https://www.gastronom.ru/text/kak-prigotovit-krem-dlja-jeklerov-v-domashnih-uslovijah-1014823\" target=\"_blank\" rel=\"noopener noreferrer\">Gastronom.ru</a></li><li><a href=\"https://povar.ru/recipes/krem_muslin_dlya_torta-80870.html\" target=\"_blank\" rel=\"noopener noreferrer\">Повар.ру</a></li></ol>",
@@ -227,11 +227,12 @@
         "confirmed": true
       },
       "featured": true,
-      "popular": true,
+      "popular": false,
       "newsletter": false,
       "status": "queued",
       "excludeRelated": false
-    }
+    },
+    "updatedAt": "2026-10-02T09:46:26.722Z"
   },
   {
     "slug": "zalivnoy-pirog-tri-yaytsa-luk-kefir",
