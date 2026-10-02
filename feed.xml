@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Fri, 02 Oct 2026 16:30:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 18:00:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Осенью кабачки не раздаю соседям: храню по одному правилу — и на Новый год режу свежими в салат</title>
+    <link>https://provkus-media.ru/articles/kabachki-hranenie-do-novogo-goda.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/kabachki-hranenie-do-novogo-goda.html</guid>
+    <pubDate>Fri, 02 Oct 2026 18:00:00 GMT</pubDate>
+    <description>Как выбрать кабачки для долгого хранения, разместить их отдельно и проверить перед использованием зимой.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Хранение</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/zucchini-storage-oct02-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Готовлю овощи так, что дети облизывают тарелки: 6 рецептов осенних блюд — и никакой варёной морковки «через не хочу»</title>
     <link>https://provkus-media.ru/articles/shest-osennih-ovoshchnyh-blyud.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/indiya-alu-gobi-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Какой водой заливать рис для плова — горячей или холодной: запомните раз и навсегда, чтобы крупа не превратилась в кашу</title>
-    <link>https://provkus-media.ru/articles/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu.html</guid>
-    <pubDate>Fri, 25 Sep 2026 16:15:00 GMT</pubDate>
-    <description>Для плова рис лучше заливать кипятком: так температура в казане не падает, крупа начинает готовиться сразу и проще контролировать количество жидкости.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Продукты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/kakoy-vodoy-zalivat-ris-dlya-plova-goryachey-ili-holodnoy-zapomnite-raz-i-navsegda-chtoby-krupa-ne-prevratilas-v-kashu-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>

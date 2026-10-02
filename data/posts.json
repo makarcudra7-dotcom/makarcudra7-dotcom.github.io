@@ -1,5 +1,38 @@
 [
   {
+    "slug": "kabachki-hranenie-do-novogo-goda",
+    "headline": "Осенью кабачки не раздаю соседям: храню по одному правилу — и на Новый год режу свежими в салат",
+    "description": "Как выбрать кабачки для долгого хранения, разместить их отдельно и проверить перед использованием зимой.",
+    "lead": "как сохранить зрелые кабачки свежими до нового года",
+    "author": "Эльвира Шайберт",
+    "category": "Хранение",
+    "imageAlt": "Зрелые кабачки с сухими плодоножками на полке",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "coauthors": [],
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/zucchini-storage-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/zucchini-storage-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/zucchini-storage-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/zucchini-storage-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/kabachki-hranenie-do-novogo-goda.html",
+    "publishedAt": "2026-10-02T18:00:00.000Z",
+    "updatedAt": "2026-10-02T18:00:00.000Z",
+    "tags": [
+      "Хранение"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "shest-osennih-ovoshchnyh-blyud",
     "headline": "Готовлю овощи так, что дети облизывают тарелки: 6 рецептов осенних блюд — и никакой варёной морковки «через не хочу»",
     "description": "Шесть разных способов приготовить осенние овощи: тыква, цветная капуста, кабачковые оладьи, свекольные котлеты, суп и морковные палочки.",
@@ -924,7 +957,7 @@
       "confirmed": false
     },
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "status": "published",
     "excludeRelated": false
