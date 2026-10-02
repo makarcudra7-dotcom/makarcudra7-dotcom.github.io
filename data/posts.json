@@ -1,5 +1,63 @@
 [
   {
+    "slug": "yablochnye-zhgutiki-na-skovorode",
+    "headline": "Яблоки натираю прямо в тесто и жарю «Жгутики»: проще шарлотки, а со сковороды улетают быстрее пирожков",
+    "description": "Мягкое тесто с тёртым яблоком, короткие жгутики и умеренный нагрев: подробный рецепт выпечки без духовки.",
+    "lead": "яблочные жгутики на кефире на сковороде",
+    "author": "Эльвира Шайберт",
+    "category": "Рецепты",
+    "imageAlt": "Румяные яблочные жгутики на тарелке",
+    "photoSource": "ProVkus",
+    "featured": true,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "recipeIngredient": [
+      "Пшеничная мука — 350 г и до 50 г для корректировки и подпыла",
+      "Кефир — 150 мл",
+      "Яйцо — 1 шт.",
+      "Яблоко без сердцевины — 150 г",
+      "Сахар — 30 г",
+      "Растительное масло в тесто — 20 мл",
+      "Разрыхлитель — 7 г",
+      "Соль — щепотка",
+      "Растительное масло для жарки — около 60 мл"
+    ],
+    "recipeInstructions": [
+      "Смешайте кефир, яйцо, сахар, соль и 20 мл масла.",
+      "Натрите яблоко, слегка отожмите только свободный сок и вмешайте мякоть в жидкую основу.",
+      "Добавьте муку с разрыхлителем, замесите мягкое тесто. При сильной липкости добавляйте запас муки понемногу. Дайте постоять 10 минут.",
+      "На слегка присыпанной доске раскатайте пласт толщиной 6–7 мм. Нарежьте полосками примерно 2 × 8 см и слегка перекрутите каждую один раз.",
+      "Налейте масло на сковороду слоем 3–4 мм. На умеренном нагреве приготовьте одну пробную заготовку примерно по 3 минуты с каждой стороны.",
+      "Разломите пробную заготовку: середина должна быть пропечённой без сырого теста. При необходимости уменьшите огонь и увеличьте время. Остальные жарьте небольшими партиями.",
+      "Переложите на бумажное полотенце и подавайте тёплыми."
+    ],
+    "prepTime": "PT25M",
+    "cookTime": "PT20M",
+    "totalTime": "PT45M",
+    "recipeYield": "18–22 небольших жгутика",
+    "recipeCategory": "Выпечка",
+    "coauthors": [],
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/apple-twists-v2-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/apple-twists-v2-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/apple-twists-v2-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/apple-twists-v2-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/yablochnye-zhgutiki-na-skovorode.html",
+    "publishedAt": "2026-10-02T10:10:00.000Z",
+    "updatedAt": "2026-10-02T10:10:00.000Z",
+    "tags": [
+      "Рецепты"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les",
     "headline": "Белые уже сдались, а эти держатся до снега: 5 грибов, за которыми в октябре грибники ещё прочёсывают лес",
     "description": "Октябрь не закрывает грибной сезон: опята, грузди, рядовки и другие поздние виды продолжают появляться даже после первых холодов.",
@@ -39,7 +97,7 @@
       "confirmed": true
     },
     "excludeRelated": false,
-    "featured": true,
+    "featured": false,
     "popular": true
   },
   {
@@ -809,7 +867,7 @@
       "confirmed": false
     },
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": [],
     "recipeIngredient": [
       "небольшой кусок курицы, индейки или нежирной свинины",
