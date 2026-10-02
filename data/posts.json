@@ -1,5 +1,48 @@
 [
   {
+    "slug": "belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les",
+    "headline": "Белые уже сдались, а эти держатся до снега: 5 грибов, за которыми в октябре грибники ещё прочёсывают лес",
+    "description": "Октябрь не закрывает грибной сезон: опята, грузди, рядовки и другие поздние виды продолжают появляться даже после первых холодов.",
+    "author": "Екатерина Рукопляс",
+    "category": "Безопасность еды",
+    "type": "NewsArticle",
+    "typeLabel": "Материал",
+    "image": "https://provkus-media.ru/assets/uploads/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les-1x1.jpg"
+    ],
+    "imageAlt": "Женщина собирает грибы в осеннем лесу",
+    "url": "https://provkus-media.ru/articles/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les.html",
+    "publishedAt": "2026-10-02T08:59:00.000Z",
+    "updatedAt": "2026-10-02T08:59:00.000Z",
+    "tags": [
+      "Грибы",
+      "Полезное",
+      "Еда",
+      "Интересное",
+      "Советы"
+    ],
+    "photoSource": "ProVkus",
+    "editorialCheck": {
+      "mode": "sources",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "https://ura.news/articles/1053131829",
+      "sourceNote": "Какие грибы действительно продолжают собирать в октябре.\nКак сроки плодоношения зависят от погоды и региона.\nОсновные правила безопасного сбора поздних грибов.",
+      "realPhoto": "",
+      "aiImage": false,
+      "confirmed": true
+    },
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true
+  },
+  {
     "slug": "slivovyy-pirog-smetannaya-zalivka",
     "headline": "Сливы заливаю сметаной прямо на тесте — из духовки достаю пирог с нежной серединой: к чаю уже режут второй кусок",
     "description": "Песочный сливовый пирог со сметанной заливкой: ингредиенты, предварительная выпечка основы и признаки готовности.",
@@ -325,7 +368,8 @@
       "Залейте чеснок горячим соевым маринадом до верха и плотно закройте банки.",
       "После остывания уберите банки в прохладное место, а для наиболее предсказуемого домашнего хранения — в холодильник.",
       "Выдержите чеснок ещё 2–3 недели: за это время зубчики пропитаются соевым маринадом, потемнеют и сохранят приятный хруст."
-    ]
+    ],
+    "featured": false
   },
   {
     "slug": "shampinony-na-protivne-tri-bystrykh-uzhina",
@@ -496,7 +540,7 @@
       "aiImage": false,
       "confirmed": false
     },
-    "featured": true,
+    "featured": false,
     "popular": true,
     "newsletter": false,
     "status": "published",
@@ -825,7 +869,7 @@
     },
     "excludeRelated": false,
     "featured": false,
-    "popular": true,
+    "popular": false,
     "coauthors": []
   },
   {
