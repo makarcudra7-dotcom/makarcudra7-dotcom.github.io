@@ -898,5 +898,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-02T12:39:26.530866Z"
+  },
+  "plov-pravilo-proportsiy-po-vesu": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-02T13:35:03.412841Z"
   }
 }
