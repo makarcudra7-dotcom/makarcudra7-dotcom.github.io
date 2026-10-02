@@ -416,7 +416,7 @@
       "imageAlt": "Куриная намазка в стеклянной банке и на хлебе",
       "photoSource": "ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -458,7 +458,7 @@
       "imageAlt": "Куриная намазка в стеклянной банке и на хлебе",
       "photoSource": "ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -501,7 +501,8 @@
       ],
       "status": "scheduled",
       "excludeRelated": false
-    }
+    },
+    "updatedAt": "2026-10-02T09:47:01.565Z"
   },
   {
     "slug": "yabloki-dva-sposoba-hraneniya-do-vesny",
