@@ -636,7 +636,7 @@
       "imageAlt": "Зрелые кабачки с сухими плодоножками на полке",
       "photoSource": "ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -657,7 +657,7 @@
       "imageAlt": "Зрелые кабачки с сухими плодоножками на полке",
       "photoSource": "ProVkus",
       "featured": false,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -679,6 +679,7 @@
       ],
       "status": "scheduled",
       "excludeRelated": false
-    }
+    },
+    "updatedAt": "2026-10-02T09:47:18.678Z"
   }
 ]
