@@ -1,5 +1,38 @@
 [
   {
+    "slug": "plov-pravilo-proportsiy-po-vesu",
+    "headline": "Не зира и не казан делают плов как в хорошей чайхане: всё решает одно правило пропорций",
+    "description": "Что означает пропорция 1:1:1 для плова, почему продукты считают по весу и как не перепутать её с количеством воды.",
+    "lead": "пропорции риса мяса и моркови для плова",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "imageAlt": "Рассыпчатый плов с мясом, морковью и чесноком",
+    "photoSource": "ProVkus",
+    "featured": true,
+    "popular": false,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "coauthors": [],
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/pilaf-ratio-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/pilaf-ratio-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/pilaf-ratio-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/pilaf-ratio-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/plov-pravilo-proportsiy-po-vesu.html",
+    "publishedAt": "2026-10-02T12:45:00.000Z",
+    "updatedAt": "2026-10-02T12:45:00.000Z",
+    "tags": [
+      "Продукты"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "zalivnoy-pirog-tri-yaytsa-luk-kefir",
     "headline": "Беру 3 варёных яйца и пучок лука: заливаю кефирным тестом — пирог выходит пышный, а возни меньше, чем с омлетом",
     "description": "Заливной пирог с начинкой из трёх варёных яиц и зелёного лука: тесто на кефире, размер формы и проверка готовности.",
@@ -96,7 +129,7 @@
       "aiImage": false,
       "confirmed": true
     },
-    "featured": true,
+    "featured": false,
     "popular": true,
     "newsletter": false,
     "status": "published",
