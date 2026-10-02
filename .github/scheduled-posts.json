@@ -355,7 +355,7 @@
       "category": "Продукты",
       "imageAlt": "Рассыпчатый плов с мясом, морковью и чесноком",
       "photoSource": "ProVkus",
-      "featured": false,
+      "featured": true,
       "popular": false,
       "newsletter": false,
       "editorialCheck": {
@@ -376,7 +376,7 @@
       "category": "Продукты",
       "imageAlt": "Рассыпчатый плов с мясом, морковью и чесноком",
       "photoSource": "ProVkus",
-      "featured": false,
+      "featured": true,
       "popular": false,
       "newsletter": false,
       "editorialCheck": {
@@ -399,7 +399,8 @@
       ],
       "status": "scheduled",
       "excludeRelated": false
-    }
+    },
+    "updatedAt": "2026-10-02T09:46:55.464Z"
   },
   {
     "slug": "kurinaya-namazka-luk-slivki",
