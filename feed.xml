@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Fri, 02 Oct 2026 11:05:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 11:30:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Беру 3 варёных яйца и пучок лука: заливаю кефирным тестом — пирог выходит пышный, а возни меньше, чем с омлетом</title>
+    <link>https://provkus-media.ru/articles/zalivnoy-pirog-tri-yaytsa-luk-kefir.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/zalivnoy-pirog-tri-yaytsa-luk-kefir.html</guid>
+    <pubDate>Fri, 02 Oct 2026 11:30:00 GMT</pubDate>
+    <description>Заливной пирог с начинкой из трёх варёных яиц и зелёного лука: тесто на кефире, размер формы и проверка готовности.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/egg-onion-pie-oct02-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Крем для тортов, который не течёт: готовлю французский «Муслин» — бархатный, как растаявшее мороженое</title>
     <link>https://provkus-media.ru/articles/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Продукты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/yaichnica-na-skovorode-proshlyy-vek-razbivayu-2-yayca-v-kruzhku-cherez-8-minut-nezhnyy-zavtrak-kak-sufle-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Дал из красной чечевицы варю до кремовой густоты, а специи прогреваю отдельно и вливаю в самом конце</title>
-    <link>https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/indiya-dal-iz-krasnoy-chechevicy.html</guid>
-    <pubDate>Fri, 25 Sep 2026 08:40:00 GMT</pubDate>
-    <description>Кремовый дал из красной чечевицы с томатами, куркумой, зирой и чесноком.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Рецепты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/indiya-dal-iz-krasnoy-chechevicy-16x9.webp" medium="image"/>
   </item>
 </channel>
 </rss>

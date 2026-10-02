@@ -1,5 +1,62 @@
 [
   {
+    "slug": "zalivnoy-pirog-tri-yaytsa-luk-kefir",
+    "headline": "Беру 3 варёных яйца и пучок лука: заливаю кефирным тестом — пирог выходит пышный, а возни меньше, чем с омлетом",
+    "description": "Заливной пирог с начинкой из трёх варёных яиц и зелёного лука: тесто на кефире, размер формы и проверка готовности.",
+    "lead": "заливной пирог с тремя яйцами и зелёным луком на кефире",
+    "author": "Эльвира Шайберт",
+    "category": "Рецепты",
+    "imageAlt": "Золотистый заливной пирог с яйцами и зелёным луком в разрезе",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "recipeIngredient": [
+      "Варёные яйца для начинки — 3 шт.",
+      "Зелёный лук — 60 г",
+      "Кефир — 250 мл",
+      "Сырые яйца для теста — 2 шт.",
+      "Мука — 180 г",
+      "Растительное масло — 30 мл и немного для формы",
+      "Разрыхлитель — 5 г",
+      "Соль — 0,5 ч. л. в тесто и по вкусу в начинку",
+      "Чёрный перец — по желанию"
+    ],
+    "recipeInstructions": [
+      "Разогрейте духовку до 180 °C. Подготовьте форму диаметром 20 см: смажьте, при необходимости застелите дно пергаментом.",
+      "Нарежьте три очищенных варёных яйца и вымытый обсушенный лук, слегка посолите.",
+      "Смешайте два сырых яйца, кефир, масло и соль. Введите муку, смешанную с разрыхлителем, до исчезновения сухих комков.",
+      "Вылейте половину теста в форму, распределите начинку, сверху налейте остальное тесто.",
+      "Выпекайте 40–50 минут при 180 °C. Проверьте шпажкой участок теста ближе к центру: не должно быть сырой вязкой массы. Если нужно, продолжите выпечку.",
+      "Оставьте в форме на 10–15 минут, затем нарежьте."
+    ],
+    "prepTime": "PT15M",
+    "cookTime": "PT50M",
+    "totalTime": "PT1H20M",
+    "recipeYield": "6 порций",
+    "recipeCategory": "Выпечка",
+    "coauthors": [],
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/egg-onion-pie-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/egg-onion-pie-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/egg-onion-pie-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/egg-onion-pie-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/zalivnoy-pirog-tri-yaytsa-luk-kefir.html",
+    "publishedAt": "2026-10-02T11:30:00.000Z",
+    "updatedAt": "2026-10-02T11:30:00.000Z",
+    "tags": [
+      "Рецепты"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe",
     "headline": "Крем для тортов, который не течёт: готовлю французский «Муслин» — бархатный, как растаявшее мороженое",
     "description": "«Муслин» соединяет заварную основу и взбитое сливочное масло: крем получается гладким, плотным и подходит для прослойки тортов.",
@@ -800,7 +857,7 @@
       "confirmed": false
     },
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "status": "published",
     "excludeRelated": false
