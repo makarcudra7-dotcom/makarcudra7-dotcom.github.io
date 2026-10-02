@@ -1,5 +1,51 @@
 [
   {
+    "slug": "krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe",
+    "headline": "Крем для тортов, который не течёт: готовлю французский «Муслин» — бархатный, как растаявшее мороженое",
+    "description": "«Муслин» соединяет заварную основу и взбитое сливочное масло: крем получается гладким, плотным и подходит для прослойки тортов.",
+    "author": "Эльвира Шайберт",
+    "coauthors": [],
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe-1x1.jpg"
+    ],
+    "imageAlt": "Густой французский крем «Муслин» в стеклянной миске, который держит форму на лопатке рядом с коржами для торта и ягодами",
+    "url": "https://provkus-media.ru/articles/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe.html",
+    "publishedAt": "2026-10-02T11:05:00.000Z",
+    "updatedAt": "2026-10-02T11:05:00.000Z",
+    "tags": [
+      "Десерт",
+      "Рецепты",
+      "Выпечка",
+      "Готовка",
+      "Кулинарный лайфхак"
+    ],
+    "photoSource": "ProVkus",
+    "editorialCheck": {
+      "mode": "",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "",
+      "sourceNote": "",
+      "realPhoto": "",
+      "aiImage": false,
+      "confirmed": true
+    },
+    "featured": true,
+    "popular": true,
+    "newsletter": false,
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "yablochnye-zhgutiki-na-skovorode",
     "headline": "Яблоки натираю прямо в тесто и жарю «Жгутики»: проще шарлотки, а со сковороды улетают быстрее пирожков",
     "description": "Мягкое тесто с тёртым яблоком, короткие жгутики и умеренный нагрев: подробный рецепт выпечки без духовки.",
@@ -8,7 +54,7 @@
     "category": "Рецепты",
     "imageAlt": "Румяные яблочные жгутики на тарелке",
     "photoSource": "ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "newsletter": false,
     "editorialCheck": {
@@ -800,7 +846,7 @@
       "confirmed": false
     },
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "status": "published",
     "excludeRelated": false,

@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Fri, 02 Oct 2026 10:10:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 11:05:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Крем для тортов, который не течёт: готовлю французский «Муслин» — бархатный, как растаявшее мороженое</title>
+    <link>https://provkus-media.ru/articles/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe.html</guid>
+    <pubDate>Fri, 02 Oct 2026 11:05:00 GMT</pubDate>
+    <description>«Муслин» соединяет заварную основу и взбитое сливочное масло: крем получается гладким, плотным и подходит для прослойки тортов.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Рецепты</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe-16x9.jpg" medium="image"/>
+  </item>
   <item>
     <title>Яблоки натираю прямо в тесто и жарю «Жгутики»: проще шарлотки, а со сковороды улетают быстрее пирожков</title>
     <link>https://provkus-media.ru/articles/yablochnye-zhgutiki-na-skovorode.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Екатерина Рукопляс</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/indiya-dal-iz-krasnoy-chechevicy-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Говяжью тушёнку больше не беру наугад: 10 марок, где внутри — мясо кусками, а не жир и жилы</title>
-    <link>https://provkus-media.ru/articles/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily.html</guid>
-    <pubDate>Fri, 25 Sep 2026 08:00:00 GMT</pubDate>
-    <description>Собрали 10 марок говяжьей тушёнки, на которые стоит обратить внимание, и простую проверку банки перед покупкой.</description>
-    <dc:creator>Илья Титюлькин</dc:creator>
-    <category>Продукты</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/govyazh-yu-tushenku-bol-she-ne-beru-naugad-10-marok-gde-vnutri-myaso-kuskami-a-ne-zhir-i-zhily-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>
