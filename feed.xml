@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Thu, 01 Oct 2026 16:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 08:59:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Белые уже сдались, а эти держатся до снега: 5 грибов, за которыми в октябре грибники ещё прочёсывают лес</title>
+    <link>https://provkus-media.ru/articles/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les.html</guid>
+    <pubDate>Fri, 02 Oct 2026 08:59:00 GMT</pubDate>
+    <description>Октябрь не закрывает грибной сезон: опята, грузди, рядовки и другие поздние виды продолжают появляться даже после первых холодов.</description>
+    <dc:creator>Екатерина Рукопляс</dc:creator>
+    <category>Безопасность еды</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/belye-uzhe-sdalis-a-eti-derzhatsya-do-snega-5-gribov-za-kotorymi-v-oktyabre-gribniki-esche-prochesyvayut-les-16x9.jpg" medium="image"/>
+  </item>
   <item>
     <title>Сливы заливаю сметаной прямо на тесте — из духовки достаю пирог с нежной серединой: к чаю уже режут второй кусок</title>
     <link>https://provkus-media.ru/articles/slivovyy-pirog-smetannaya-zalivka.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Эльвира Шайберт</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/indiya-chana-masala-16x9.webp" medium="image"/>
-  </item>
-  <item>
-    <title>Суп скисает раньше времени: 3 ошибки хранения — половник в кастрюле только одна из них</title>
-    <link>https://provkus-media.ru/articles/sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih.html</guid>
-    <pubDate>Fri, 25 Sep 2026 05:18:00 GMT</pubDate>
-    <description>Даже свежий суп может испортиться раньше времени. Разбираемся, почему нельзя долго держать кастрюлю в тепле и оставлять внутри половник.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Безопасность еды</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/sup-skisaet-ran-she-vremeni-3-oshibki-hraneniya-polovnik-v-kastryule-odna-iz-nih-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>
