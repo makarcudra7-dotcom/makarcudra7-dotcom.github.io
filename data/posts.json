@@ -1,5 +1,38 @@
 [
   {
+    "slug": "shest-osennih-ovoshchnyh-blyud",
+    "headline": "Готовлю овощи так, что дети облизывают тарелки: 6 рецептов осенних блюд — и никакой варёной морковки «через не хочу»",
+    "description": "Шесть разных способов приготовить осенние овощи: тыква, цветная капуста, кабачковые оладьи, свекольные котлеты, суп и морковные палочки.",
+    "lead": "осенние блюда из овощей для семейного ужина шесть рецептов",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "imageAlt": "Яркие осенние овощные блюда на семейном столе",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "coauthors": [],
+    "type": "Article",
+    "typeLabel": "Подборка",
+    "image": "https://provkus-media.ru/assets/uploads/autumn-vegetables-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/autumn-vegetables-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/autumn-vegetables-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/autumn-vegetables-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/shest-osennih-ovoshchnyh-blyud.html",
+    "publishedAt": "2026-10-02T16:30:00.000Z",
+    "updatedAt": "2026-10-02T16:30:00.000Z",
+    "tags": [
+      "Рецепты"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "yabloki-dva-sposoba-hraneniya-do-vesny",
     "headline": "Не мою и не тру яблоки перед хранением: 2 способа — и осенний урожай спокойно доживает до майских праздников",
     "description": "Два способа хранения яблок и условия, при которых позднезимние сорта способны долежать до мая: сортировка, холод и осмотры.",
