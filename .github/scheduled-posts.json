@@ -13,7 +13,7 @@
       "imageAlt": "Румяные яблочные жгутики на тарелке",
       "photoSource": "ProVkus",
       "featured": true,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -59,7 +59,7 @@
       "imageAlt": "Румяные яблочные жгутики на тарелке",
       "photoSource": "ProVkus",
       "featured": true,
-      "popular": false,
+      "popular": true,
       "newsletter": false,
       "editorialCheck": {
         "aiImage": true
@@ -107,7 +107,7 @@
       "status": "scheduled",
       "excludeRelated": false
     },
-    "updatedAt": "2026-10-02T09:46:21.165Z"
+    "updatedAt": "2026-10-02T09:46:38.721Z"
   },
   {
     "slug": "krem-dlya-tortov-kotoryy-ne-techet-gotovlyu-francuzskiy-muslin-barhatnyy-kak-rastayavshee-morozhenoe",
