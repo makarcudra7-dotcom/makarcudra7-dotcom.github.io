@@ -6,8 +6,18 @@
   <atom:link href="https://provkus-media.ru/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>
   <language>ru</language>
-  <lastBuildDate>Fri, 02 Oct 2026 14:00:00 GMT</lastBuildDate>
+  <lastBuildDate>Fri, 02 Oct 2026 15:15:00 GMT</lastBuildDate>
   <image><url>https://provkus-media.ru/favicon.png</url><title>ProVkus</title><link>https://provkus-media.ru/</link></image>
+  <item>
+    <title>Не мою и не тру яблоки перед хранением: 2 способа — и осенний урожай спокойно доживает до майских праздников</title>
+    <link>https://provkus-media.ru/articles/yabloki-dva-sposoba-hraneniya-do-vesny.html</link>
+    <guid isPermaLink="true">https://provkus-media.ru/articles/yabloki-dva-sposoba-hraneniya-do-vesny.html</guid>
+    <pubDate>Fri, 02 Oct 2026 15:15:00 GMT</pubDate>
+    <description>Два способа хранения яблок и условия, при которых позднезимние сорта способны долежать до мая: сортировка, холод и осмотры.</description>
+    <dc:creator>Эльвира Шайберт</dc:creator>
+    <category>Хранение</category>
+    <media:content url="https://provkus-media.ru/assets/uploads/apples-storage-oct02-cover.webp" medium="image"/>
+  </item>
   <item>
     <title>Колбасу на завтрак больше не покупаю: курица + лук + сливки — и в банке нежная намазка, как паштет из хорошего гастронома</title>
     <link>https://provkus-media.ru/articles/kurinaya-namazka-luk-slivki.html</link>
@@ -497,16 +507,6 @@
     <dc:creator>Илья Титюлькин</dc:creator>
     <category>Рецепты</category>
     <media:content url="https://provkus-media.ru/assets/uploads/varyu-celuyu-kastryulyu-a-supa-vse-ravno-malo-gotovlyu-nezhneyshiy-pol-skiy-ogurechnik-prosche-rassol-nika-a-vkus-bogache-16x9.jpg" medium="image"/>
-  </item>
-  <item>
-    <title>Тыква + лимон — и по банкам: зимой открываю «Золотой октябрь» — будто осеннее солнце налили в стакан</title>
-    <link>https://provkus-media.ru/articles/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr.html</link>
-    <guid isPermaLink="true">https://provkus-media.ru/articles/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr.html</guid>
-    <pubDate>Fri, 25 Sep 2026 12:26:00 GMT</pubDate>
-    <description>Тыква даёт напитку густой золотистый цвет, а лимон убирает приторность. Но с хранением такой заготовки есть важный нюанс.</description>
-    <dc:creator>Екатерина Рукопляс</dc:creator>
-    <category>Хранение</category>
-    <media:content url="https://provkus-media.ru/assets/uploads/kompot-iz-tykvy-s-limonom-zolotoy-oktyabr-16x9.jpg" medium="image"/>
   </item>
 </channel>
 </rss>

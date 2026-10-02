@@ -1,5 +1,38 @@
 [
   {
+    "slug": "yabloki-dva-sposoba-hraneniya-do-vesny",
+    "headline": "Не мою и не тру яблоки перед хранением: 2 способа — и осенний урожай спокойно доживает до майских праздников",
+    "description": "Два способа хранения яблок и условия, при которых позднезимние сорта способны долежать до мая: сортировка, холод и осмотры.",
+    "lead": "как хранить зимние яблоки до весны в бумаге и пакетах",
+    "author": "Эльвира Шайберт",
+    "category": "Хранение",
+    "imageAlt": "Зимние яблоки, разложенные в деревянном ящике",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "coauthors": [],
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/apples-storage-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/apples-storage-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/apples-storage-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/apples-storage-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/yabloki-dva-sposoba-hraneniya-do-vesny.html",
+    "publishedAt": "2026-10-02T15:15:00.000Z",
+    "updatedAt": "2026-10-02T15:15:00.000Z",
+    "tags": [
+      "Хранение"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "kurinaya-namazka-luk-slivki",
     "headline": "Колбасу на завтрак больше не покупаю: курица + лук + сливки — и в банке нежная намазка, как паштет из хорошего гастронома",
     "description": "Нежная намазка из готовой курицы, мягкого лука и сливок: как добиться гладкости и безопасно хранить в холодильнике.",
