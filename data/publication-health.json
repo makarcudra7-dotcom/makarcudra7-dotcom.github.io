@@ -883,5 +883,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-02T09:34:22.595658Z"
+  },
+  "yablochnye-zhgutiki-na-skovorode": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-02T10:32:20.210224Z"
   }
 }
