@@ -1,5 +1,59 @@
 [
   {
+    "slug": "kurinaya-namazka-luk-slivki",
+    "headline": "Колбасу на завтрак больше не покупаю: курица + лук + сливки — и в банке нежная намазка, как паштет из хорошего гастронома",
+    "description": "Нежная намазка из готовой курицы, мягкого лука и сливок: как добиться гладкости и безопасно хранить в холодильнике.",
+    "lead": "куриная намазка со сливками и луком без печени",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "imageAlt": "Куриная намазка в стеклянной банке и на хлебе",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": true
+    },
+    "recipeIngredient": [
+      "Полностью приготовленная курица без кожи и костей — 300 г",
+      "Репчатый лук — 100 г",
+      "Сливки 20% — 80–100 мл",
+      "Сливочное масло — 20 г",
+      "Кипячёная вода или свежий куриный бульон — до 30 мл по необходимости",
+      "Соль — по вкусу",
+      "Чёрный перец — по желанию"
+    ],
+    "recipeInstructions": [
+      "Мелко нарежьте лук. На сливочном масле готовьте на небольшом огне 8–10 минут до мягкости, без тёмной корочки.",
+      "Измельчите полностью приготовленную курицу. Добавьте к луку, влейте 80 мл сливок и прогрейте при тихом кипении 3–4 минуты.",
+      "Дайте смеси немного остыть, затем измельчите блендером до гладкости. Если масса слишком густая, добавляйте оставшиеся сливки или немного кипячёной воды.",
+      "Посолите, при желании добавьте перец. Переложите в чистую небольшую ёмкость.",
+      "Быстро охладите и уберите в холодильник не позже двух часов после приготовления. Держите при температуре не выше +4 °C и используйте за сутки."
+    ],
+    "prepTime": "PT10M",
+    "cookTime": "PT15M",
+    "totalTime": "PT25M",
+    "recipeYield": "около 450 г",
+    "recipeCategory": "Закуска",
+    "coauthors": [],
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/chicken-spread-v2-oct02-cover.webp",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/chicken-spread-v2-oct02-cover.webp",
+      "https://provkus-media.ru/assets/uploads/chicken-spread-v2-oct02-4x3.webp",
+      "https://provkus-media.ru/assets/uploads/chicken-spread-v2-oct02-1x1.webp"
+    ],
+    "url": "https://provkus-media.ru/articles/kurinaya-namazka-luk-slivki.html",
+    "publishedAt": "2026-10-02T14:00:00.000Z",
+    "updatedAt": "2026-10-02T14:00:00.000Z",
+    "tags": [
+      "Рецепты"
+    ],
+    "status": "published",
+    "excludeRelated": false
+  },
+  {
     "slug": "plov-pravilo-proportsiy-po-vesu",
     "headline": "Не зира и не казан делают плов как в хорошей чайхане: всё решает одно правило пропорций",
     "description": "Что означает пропорция 1:1:1 для плова, почему продукты считают по весу и как не перепутать её с количеством воды.",
@@ -850,7 +904,7 @@
       "confirmed": true
     },
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "status": "published",
     "excludeRelated": false
