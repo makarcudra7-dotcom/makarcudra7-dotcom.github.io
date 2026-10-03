@@ -1,0 +1,75 @@
+name: Reschedule October 3 publications
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/reschedule-oct03.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reschedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Restore queue with staggered times
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const { execFileSync } = require('child_process');
+          const oldCommit = '3aa153b84da549feb3d4830f0e02371ce6671879';
+          const raw = execFileSync('git', ['show', `${oldCommit}:.github/scheduled-posts.json`], {encoding:'utf8'});
+          const queue = JSON.parse(raw);
+          const schedule = {
+            'baton-povidlo-korolevskie-grenki-15-minut': '2026-10-03T10:00:00.000Z',
+            'dyrka-v-razdelochnoy-doske-kuhonnaya-problema': '2026-10-03T11:30:00.000Z',
+            'chernoplodka-yabloki-rubinovaya-pastila': '2026-10-03T13:00:00.000Z',
+            'sardiny-melkaya-ryba-vmesto-krasnoy': '2026-10-03T14:30:00.000Z',
+            '6-lozhek-marinad-belye-griby': '2026-10-03T16:00:00.000Z'
+          };
+          const pending = queue.filter(x => schedule[x.slug]).map(x => {
+            const publishAt = schedule[x.slug];
+            return {
+              ...x,
+              publishAt,
+              status: 'ready',
+              post: {...x.post, publishedAt: publishAt, updatedAt: publishAt, status: 'ready'}
+            };
+          });
+          fs.writeFileSync('.github/scheduled-posts.json', JSON.stringify(pending, null, 2) + '\n');
+          NODE
+
+      - name: Withhold future materials now
+        run: node scripts/publish-scheduled.js
+
+      - name: Rebuild public surfaces
+        run: |
+          python3 -m pip install --quiet pillow
+          python3 scripts/seo_hardening.py
+          python3 scripts/optimize_home_images.py
+          python3 scripts/build_indexes.py
+          python3 scripts/build_discovery_archives.py
+          python3 scripts/enhance_article_links.py
+          python3 scripts/build_calculators_integration.py
+          python3 scripts/optimize_home_markup.py
+          python3 scripts/quality_sync.py
+          python3 scripts/post_quality_hardening.py
+          python3 scripts/check_indexing_surfaces.py
+
+      - name: Commit corrected schedule
+        run: |
+          git config user.name "provkus-scheduler"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Spread October 3 publications through the day"
+          git pull --rebase origin main
+          git push origin HEAD:main
