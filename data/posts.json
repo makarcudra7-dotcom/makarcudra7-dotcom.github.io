@@ -1,5 +1,66 @@
 [
   {
+    "slug": "chernoplodka-yabloki-rubinovaya-pastila",
+    "headline": "Черноплодку с яблоками пускаю не в компот: сушу «Рубиновую» пастилу — кисло-сладкая, тянется как конфета",
+    "description": "Пастила из черноплодной рябины и яблок без лишнего сахара: яблоко смягчает терпкость, а медленная сушка даёт гибкий рубиновый пласт.",
+    "lead": "как сделать пастилу из черноплодной рябины с яблоками в сушилке",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/chernoplodka-pastila-oct03.png",
+    "imageAlt": "Рулетики тёмно-рубиновой фруктовой пастилы рядом с черноплодной рябиной и яблоками",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Рецепты",
+      "Черноплодка",
+      "Пастила",
+      "Яблоки"
+    ],
+    "publishedAt": "2026-10-03T13:00:00.000Z",
+    "updatedAt": "2026-10-03T13:00:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/chernoplodka-yabloki-rubinovaya-pastila.html"
+  },
+  {
+    "slug": "dyrka-v-razdelochnoy-doske-kuhonnaya-problema",
+    "headline": "Не для крючка и не для красоты: дырка в разделочной доске решает одну кухонную проблему, о которой многие не догадываются",
+    "description": "Отверстие в разделочной доске можно использовать как направляющее окно при пересыпании нарезки; главное — не забывать о раздельных досках и чистоте.",
+    "lead": "зачем отверстие в разделочной доске и как через него пересыпать нарезку",
+    "author": "Эльвира Шайберт",
+    "category": "Дом",
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/dyrka-doska-oct03.png",
+    "imageAlt": "Разделочная доска с крупным отверстием у края над мусорным ведром, на доске овощные очистки",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Дом",
+      "Кухня",
+      "Разделочная доска"
+    ],
+    "publishedAt": "2026-10-03T11:30:00.000Z",
+    "updatedAt": "2026-10-03T11:30:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/dyrka-v-razdelochnoy-doske-kuhonnaya-problema.html"
+  },
+  {
     "slug": "baton-povidlo-korolevskie-grenki-15-minut",
     "headline": "Батон да повидло — а на столе «Королевские гренки»: 15 минут, и со сковороды сметают горячими",
     "description": "Горячие гренки с повидлом внутри: батон, яично-молочная смесь и сковорода превращают простой завтрак в десерт за 15 минут.",
