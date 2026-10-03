@@ -1,0 +1,30 @@
+name: Fix October 3 evening queue helper
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-queue-oct03.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Fix Python booleans
+        run: |
+          sed -i 's/: false/: False/g; s/: true/: True/g' .github/workflows/queue-oct03-evening.yml
+      - name: Commit fix
+        run: |
+          git config user.name "provkus-scheduler"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/workflows/queue-oct03-evening.yml
+          git commit -m "Fix evening queue helper"
+          git pull --rebase origin main
+          git push origin HEAD:main
