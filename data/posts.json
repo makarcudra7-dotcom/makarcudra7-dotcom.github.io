@@ -1,5 +1,48 @@
 [
   {
+    "slug": "pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u",
+    "headline": "Пряники превращаю в торт за ночь: сметана + бананы — утром гости не верят, что духовку не включала",
+    "description": "Шоколадные пряники, густая сметана и бананы за ночь превращаются в мягкий слоёный торт — духовка для него вообще не нужна.",
+    "author": "Эльвира Шайберт",
+    "category": "Рецепты",
+    "type": "recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u-16x9.jpg",
+    "images": [
+      "https://provkus-media.ru/assets/uploads/pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u-16x9.jpg",
+      "https://provkus-media.ru/assets/uploads/pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u-4x3.jpg",
+      "https://provkus-media.ru/assets/uploads/pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u-1x1.jpg"
+    ],
+    "imageAlt": "Аппетитный шоколадно-банановый торт из круглых пряников, сметанного крема и ломтиков банана; рядом вырезан кусок, хорошо видны слои, сверху шоколадная стружка и банановые кружочки.",
+    "url": "https://provkus-media.ru/articles/pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u.html",
+    "publishedAt": "2026-10-03T06:02:00.000Z",
+    "updatedAt": "2026-10-03T06:02:00.000Z",
+    "tags": [
+      "Десерт",
+      "Рецепты",
+      "Еда",
+      "Готовка",
+      "Сладости"
+    ],
+    "photoSource": "ProVkus",
+    "editorialCheck": {
+      "mode": "",
+      "tester": "",
+      "testedAt": "",
+      "minutes": "",
+      "result": "",
+      "adjustment": "",
+      "sourceUrl": "",
+      "sourceNote": "",
+      "realPhoto": "",
+      "aiImage": false,
+      "confirmed": true
+    },
+    "excludeRelated": false,
+    "featured": true,
+    "popular": true
+  },
+  {
     "slug": "kabachki-hranenie-do-novogo-goda",
     "headline": "Осенью кабачки не раздаю соседям: храню по одному правилу — и на Новый год режу свежими в салат",
     "description": "Как выбрать кабачки для долгого хранения, разместить их отдельно и проверить перед использованием зимой.",
@@ -161,7 +204,7 @@
     "category": "Продукты",
     "imageAlt": "Рассыпчатый плов с мясом, морковью и чесноком",
     "photoSource": "ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "newsletter": false,
     "editorialCheck": {
@@ -888,7 +931,7 @@
       "confirmed": false
     },
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "status": "published",
     "recipeIngredient": [
