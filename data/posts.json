@@ -1,5 +1,97 @@
 [
   {
+    "slug": "kapustu-ne-mnu-20-g-soli-na-kilogramm",
+    "headline": "Капусту не мну до изнеможения: 20 г соли на килограмм — и квашеная выходит хрусткой, а не мягкой тряпкой",
+    "description": "Квашеная капуста в банке по весу: 20 г соли на 1 кг подготовленной капусты, короткое перемешивание и ферментация под рассолом.",
+    "lead": "как заквасить капусту с точной пропорцией соли и сохранить хруст",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "/assets/uploads/kvashenaya-kapusta-oct03.png",
+    "imageAlt": "Хрустящая квашеная капуста с морковью в стеклянной банке",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Рецепты",
+      "Капуста",
+      "Квашение",
+      "Заготовки"
+    ],
+    "publishedAt": "2026-10-03T17:15:00.000Z",
+    "updatedAt": "2026-10-03T17:15:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/kapustu-ne-mnu-20-g-soli-na-kilogramm.html"
+  },
+  {
+    "slug": "6-lozhek-marinad-belye-griby",
+    "headline": "6 ложек в маринад — и белые грибы зимой уходят как деликатес: вкус мягкий, без уксусной резкости",
+    "description": "Быстрые маринованные белые грибы с шестью ложками 5%-го уксуса: мягкий пряный вкус и безопасный формат хранения только в холодильнике.",
+    "lead": "как быстро замариновать белые грибы с мягким уксусным маринадом",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/belye-griby-marinad-oct03.png",
+    "imageAlt": "Белые грибы в стеклянных банках с лавровым листом, перцем и горчицей",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Рецепты",
+      "Грибы",
+      "Белые грибы",
+      "Маринад"
+    ],
+    "publishedAt": "2026-10-03T16:00:00.000Z",
+    "updatedAt": "2026-10-03T16:00:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/6-lozhek-marinad-belye-griby.html"
+  },
+  {
+    "slug": "sardiny-melkaya-ryba-vmesto-krasnoy",
+    "headline": "Красная рыба рядом не стояла: эта мелкая рыбёшка стоит копейки, а по вкусу и пользе уделывает дорогую",
+    "description": "Сардины — доступная мелкая рыба с насыщенным вкусом и низким содержанием ртути; разбираемся, чем она хороша и как её быстро приготовить.",
+    "lead": "сардины польза низкая ртуть и как вкусно запечь мелкую рыбу",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/sardiny-oct03.png",
+    "imageAlt": "Запечённые сардины с лимоном, зеленью и овощным салатом на большой тарелке",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Продукты",
+      "Рыба",
+      "Сардины"
+    ],
+    "publishedAt": "2026-10-03T14:30:00.000Z",
+    "updatedAt": "2026-10-03T14:30:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/sardiny-melkaya-ryba-vmesto-krasnoy.html"
+  },
+  {
     "slug": "chernoplodka-yabloki-rubinovaya-pastila",
     "headline": "Черноплодку с яблоками пускаю не в компот: сушу «Рубиновую» пастилу — кисло-сладкая, тянется как конфета",
     "description": "Пастила из черноплодной рябины и яблок без лишнего сахара: яблоко смягчает терпкость, а медленная сушка даёт гибкий рубиновый пласт.",
@@ -174,7 +266,7 @@
     "imageAlt": "Зрелые кабачки с сухими плодоножками на полке",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": true
