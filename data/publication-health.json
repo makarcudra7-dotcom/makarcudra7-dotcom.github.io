@@ -938,5 +938,15 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-03T10:34:16.096188Z"
+  },
+  "chernoplodka-yabloki-rubinovaya-pastila": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-03T14:40:24.911529Z"
+  },
+  "dyrka-v-razdelochnoy-doske-kuhonnaya-problema": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-03T14:40:24.881485Z"
   }
 }
