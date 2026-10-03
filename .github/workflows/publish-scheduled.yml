@@ -9,6 +9,7 @@ on:
       - '.github/scheduled-posts.json'
       - '.github/workflows/publish-scheduled.yml'
       - 'scripts/publish-scheduled.js'
+      - 'scripts/import_scheduled_images.py'
       - 'scripts/start-site-with-scheduler.sh'
       - 'scripts/sync-runtime-queue.js'
   workflow_dispatch:
@@ -27,13 +28,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Import scheduled source images
+        run: python3 scripts/import_scheduled_images.py
       - name: Publish or withhold scheduled materials
         run: node scripts/publish-scheduled.js
       - name: Detect publication changes
         id: publication_changes
         shell: bash
         run: |
-          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/; then
+          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No publication changes; skip generated-site rebuild"
           else
