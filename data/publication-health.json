@@ -948,5 +948,20 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-03T14:40:24.881485Z"
+  },
+  "kapustu-ne-mnu-20-g-soli-na-kilogramm": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-03T19:43:26.344968Z"
+  },
+  "6-lozhek-marinad-belye-griby": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-03T19:43:26.420116Z"
+  },
+  "sardiny-melkaya-ryba-vmesto-krasnoy": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-03T19:43:26.388135Z"
   }
 }
