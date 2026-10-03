@@ -78,7 +78,8 @@ const itemXml=(p,{manualId='',manualAt=''}={})=>{
   const meta=imageMeta(image);
   const body=extractArticleBody(p)||`<p>${esc(p.description||'')}</p>`;
   const cover=image&&!body.includes(image)?`<p><img src="${esc(image)}" alt="${esc(p.imageAlt||p.headline||'')}"/></p>`:'';
-  const full=`${cover}${body}`;
+  const sourceLink=`<p><strong>Оригинал материала:</strong> <a href="${esc(base)}">ProVkus</a></p>`;
+  const full=`${cover}${body}${sourceLink}`;
   return `  <item>\n    <title>${esc(p.headline)}</title>\n    <link>${esc(url)}</link>\n    <guid isPermaLink="${manualId?'true':'false'}">${manualId?esc(url):esc(`provkus-${p.slug}`)}</guid>\n    <pubDate>${esc(pub)}</pubDate>\n    <description>${esc(p.description||'')}</description>\n    <dc:creator>${esc(p.author||'Редакция ProVkus')}</dc:creator>${p.category?`\n    <category>${esc(p.category)}</category>`:''}${manualId?'\n    <category>Ручная рассылка</category>':`\n    <category>format-article</category>\n    <category>index</category>\n    <category>comment-all</category>\n    <contentType>blogs_only</contentType>`}${meta?`\n    <enclosure url="${esc(meta.url)}" length="${meta.length}" type="${meta.type}"/>\n    <media:content url="${esc(meta.url)}" medium="image" type="${meta.type}"/>`:''}\n    <media:rating scheme="urn:simple">nonadult</media:rating>\n    <content:encoded><![CDATA[${cdata(full)}]]></content:encoded>\n  </item>`;
 };
 
@@ -89,4 +90,4 @@ const items=[...manualItems,...regularItems].join('\n');
 const latest=Math.max(0,...posts.map(p=>new Date(p.updatedAt||p.publishedAt||0).getTime()||0),...pushes.map(p=>new Date(p.sentAt||0).getTime()||0));
 const xml=`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n<channel>\n  <title>ProVkus — новые материалы</title>\n  <link>${SITE}/</link>\n  <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>\n  <language>ru</language>\n  <lastBuildDate>${new Date(latest).toUTCString()}</lastBuildDate>\n  <image><url>${SITE}/favicon.png</url><title>ProVkus</title><link>${SITE}/</link></image>\n${items}\n</channel>\n</rss>\n`;
 fs.writeFileSync(OUT,xml,'utf8');
-console.log(`feed.xml: ${posts.length} published items, ${manualItems.length} manual pushes; Dzen full-content RSS enabled`);
+console.log(`feed.xml: ${posts.length} published items, ${manualItems.length} manual pushes; Dzen full-content RSS enabled with canonical source link`);
