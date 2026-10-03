@@ -1,5 +1,67 @@
 [
   {
+    "slug": "zolotoy-lenivets-tykva-sloyami-lavash",
+    "headline": "Ничего не леплю и не заворачиваю: тыкву складываю слоями — через 30 минут «Золотой ленивец» сметают до крошки",
+    "description": "Ленивый слоёный пирог из лаваша с тыквой и творожной заливкой: собирается прямо в форме и проводит в духовке около 30 минут.",
+    "lead": "ленивый тыквенный пирог из лаваша слоями без лепки и сворачивания",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "/assets/uploads/zolotoy-lenivets-oct03.png",
+    "imageAlt": "Золотистый слоёный пирог с тыквой, нарезанный квадратами",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Рецепты",
+      "Тыква",
+      "Лаваш",
+      "Выпечка"
+    ],
+    "publishedAt": "2026-10-03T19:45:00.000Z",
+    "updatedAt": "2026-10-03T19:45:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/zolotoy-lenivets-tykva-sloyami-lavash.html"
+  },
+  {
+    "slug": "zasaharilos-varenie-spasayu-za-odin-priem",
+    "headline": "Засахарилось варенье — спасаю за один приём: снова мягкое, гладкое и без сахарного хруста",
+    "description": "Что делать с засахарившимся вареньем: небольшую порцию можно мягко прогреть с водой или соком, растворив кристаллы, и затем хранить только в холодильнике.",
+    "lead": "как размягчить засахарившееся варенье и что важно знать о хранении после прогрева",
+    "author": "Эльвира Шайберт",
+    "category": "Дом",
+    "type": "Article",
+    "typeLabel": "Совет",
+    "image": "/assets/uploads/zasaharilos-varenie-oct03.png",
+    "imageAlt": "Густое ягодное варенье в стеклянной банке и ложка рядом",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": false,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Дом",
+      "Варенье",
+      "Хранение",
+      "Кухонные советы"
+    ],
+    "publishedAt": "2026-10-03T18:30:00.000Z",
+    "updatedAt": "2026-10-03T18:30:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/zasaharilos-varenie-spasayu-za-odin-priem.html"
+  },
+  {
     "slug": "kapustu-ne-mnu-20-g-soli-na-kilogramm",
     "headline": "Капусту не мну до изнеможения: 20 г соли на килограмм — и квашеная выходит хрусткой, а не мягкой тряпкой",
     "description": "Квашеная капуста в банке по весу: 20 г соли на 1 кг подготовленной капусты, короткое перемешивание и ферментация под рассолом.",
@@ -254,7 +316,7 @@
     },
     "excludeRelated": false,
     "featured": false,
-    "popular": true
+    "popular": false
   },
   {
     "slug": "kabachki-hranenie-do-novogo-goda",
