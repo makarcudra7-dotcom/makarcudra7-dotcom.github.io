@@ -8,6 +8,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'data/posts.json'
       - 'scripts/optimize_home_hero.py'
       - 'scripts/optimize_home_images.py'
       - 'scripts/optimize_home_markup.py'
