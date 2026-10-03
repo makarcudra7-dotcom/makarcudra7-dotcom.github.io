@@ -1,5 +1,35 @@
 [
   {
+    "slug": "baton-povidlo-korolevskie-grenki-15-minut",
+    "headline": "Батон да повидло — а на столе «Королевские гренки»: 15 минут, и со сковороды сметают горячими",
+    "description": "Горячие гренки с повидлом внутри: батон, яично-молочная смесь и сковорода превращают простой завтрак в десерт за 15 минут.",
+    "lead": "как приготовить гренки из батона с повидлом на сковороде",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/korolevskie-grenki-oct03.png",
+    "imageAlt": "Золотистые гренки из батона с густым красным повидлом внутри, присыпанные сахарной пудрой",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Рецепты",
+      "Завтрак",
+      "Гренки"
+    ],
+    "publishedAt": "2026-10-03T10:00:00.000Z",
+    "updatedAt": "2026-10-03T10:00:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/baton-povidlo-korolevskie-grenki-15-minut.html"
+  },
+  {
     "slug": "tykvu-tru-v-kroshku-keks-apelsin-koritsa",
     "headline": "Тыкву тру в крошку — и кекс выходит как пух: сочный внутри, с апельсином и корицей на всю кухню",
     "description": "Мягкий тыквенный кекс с апельсиновой цедрой и корицей: мелко тёртая тыква даёт сочный мякиш, а простая глазурь завершает выпечку.",
