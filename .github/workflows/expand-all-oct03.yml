@@ -1,0 +1,27 @@
+name: Expand all October 3 articles
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand all October 3 articles
+        run: python scripts/expand_all_oct03.py
+      - name: Commit expanded articles
+        run: |
+          git config user.name "provkus-scheduler"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/scheduled-posts.json data/posts.json articles/*.html
+          if git diff --cached --quiet; then
+            echo "No article changes"
+          else
+            git commit -m "Expand October 3 articles"
+            git push
+          fi
