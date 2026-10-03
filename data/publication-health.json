@@ -933,5 +933,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-03T08:32:30.577149Z"
+  },
+  "baton-povidlo-korolevskie-grenki-15-minut": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-03T10:34:16.096188Z"
   }
 }
