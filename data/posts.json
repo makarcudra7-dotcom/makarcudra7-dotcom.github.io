@@ -1,5 +1,36 @@
 [
   {
+    "slug": "amerikanskiy-tykvennyy-batter",
+    "headline": "Тыкву больше не пускаю в варенье: варю американский «Тыквенный баттер» — густой, пряный, на хлеб ложится как крем",
+    "description": "Тыквенный баттер из пюре с корицей, имбирём и яблочным соком: густая осенняя намазка для хлеба, каши и выпечки. Храним в холодильнике или замораживаем.",
+    "lead": "Американский «Тыквенный баттер» — густой пряный крем из тыквенного пюре: его уваривают с корицей и имбирём, а потом намазывают на хлеб почти как мягкий джем.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "Recipe",
+    "typeLabel": "Рецепт",
+    "image": "https://provkus-media.ru/assets/uploads/pumpkin-butter-oct04.png",
+    "imageAlt": "Банки густого оранжевого тыквенного баттера рядом с тыквой и хлебом, рука держит намазанный тост",
+    "photoSource": "ProVkus",
+    "featured": true,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Рецепты",
+      "Тыква",
+      "Заготовки",
+      "Американская кухня"
+    ],
+    "publishedAt": "2026-10-04T16:00:00.000Z",
+    "updatedAt": "2026-10-04T16:00:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/amerikanskiy-tykvennyy-batter.html"
+  },
+  {
     "slug": "chto-gotovyat-v-romskih-semyah",
     "headline": "Один котёл на всех, мяса — от души, хлеба — целая гора: что на самом деле готовят в цыганских семьях",
     "description": "У ромов нет одной кухни на всех: исследователи описывают тушёные блюда, хлеб, капусту, картофель, мясо на праздниках и сильное влияние региональных традиций.",
@@ -42,7 +73,7 @@
     "image": "https://provkus-media.ru/assets/uploads/yaichnyy-rulet-krasnaya-ryba-oct04.png",
     "imageAlt": "Нарезанный яичный рулет со сливочным сыром, укропом и красной рыбой на праздничном блюде",
     "photoSource": "ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "newsletter": false,
     "editorialCheck": {
@@ -260,7 +291,7 @@
     "imageAlt": "Белые грибы в стеклянных банках с лавровым листом, перцем и горчицей",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
