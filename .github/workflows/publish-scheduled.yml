@@ -12,6 +12,7 @@ on:
       - 'scripts/build-feed.js'
       - 'scripts/add_dzen_footer.py'
       - 'scripts/import_scheduled_images.py'
+      - 'scripts/editorial_source_guard.py'
       - 'scripts/start-site-with-scheduler.sh'
       - 'scripts/sync-runtime-queue.js'
   workflow_dispatch:
@@ -30,6 +31,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main
+      - name: Enforce Russian-only editorial sources and wording
+        run: python3 scripts/editorial_source_guard.py
       - name: Import scheduled source images
         run: python3 scripts/import_scheduled_images.py
       - name: Publish or withhold scheduled materials
