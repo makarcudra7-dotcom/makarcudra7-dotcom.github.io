@@ -1,5 +1,67 @@
 [
   {
+    "slug": "perlovka-poleznee-kasha-garnir",
+    "headline": "Не гречка и не овсянка: названа крупа, которая оказалась полезнее — хороша и в кашу, и на гарнир",
+    "description": "Перловка богата клетчаткой и бета-глюканом, подходит для каши и гарнира. Разбираемся, чем она интересна и почему «самой полезной крупы» всё же не бывает.",
+    "lead": "Недооценённая перловая крупа умеет больше, чем кажется: её можно сварить мягкой кашей или рассыпчатым гарниром, а Роскачество отдельно отмечает клетчатку и бета-глюкан.",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/perlovka-oct04.png",
+    "imageAlt": "Горячая рассыпчатая перловая крупа с морковью и зеленью в керамической миске",
+    "photoSource": "ProVkus",
+    "featured": true,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Продукты",
+      "Крупы",
+      "Перловка",
+      "Полезный выбор"
+    ],
+    "publishedAt": "2026-10-04T09:00:00.000Z",
+    "updatedAt": "2026-10-04T09:00:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/perlovka-poleznee-kasha-garnir.html"
+  },
+  {
+    "slug": "roskachestvo-pelmeni-nastoyashchee-myaso",
+    "headline": "Не соя и не «мясосодержащее»: Роскачество назвало пельмени, где начинка — настоящее мясо",
+    "description": "Что показало исследование Роскачества: где больше 55% фарша, где не нашли сою, крахмал и костную ткань и почему одного рейтинга недостаточно.",
+    "lead": "По данным исследования Роскачества 2023 года, у части пельменей действительно много мясного фарша без типичных страшилок про «одну сою» — но смотреть нужно сразу на несколько показателей.",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "Article",
+    "typeLabel": "Выбор",
+    "image": "https://provkus-media.ru/assets/uploads/pelmeni-roskachestvo-oct04.png",
+    "imageAlt": "Упаковка замороженных пельменей в руке покупателя у морозильной витрины магазина",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Продукты",
+      "Пельмени",
+      "Роскачество",
+      "Выбор продуктов"
+    ],
+    "publishedAt": "2026-10-04T07:30:00.000Z",
+    "updatedAt": "2026-10-04T07:30:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/roskachestvo-pelmeni-nastoyashchee-myaso.html"
+  },
+  {
     "slug": "yashchik-pod-duhovkoy-naznachenie",
     "headline": "Ящик под духовкой годами забивала крышками и сковородками — оказалось, у него совсем другое назначение",
     "description": "Нижний ящик под духовкой бывает для хранения, подогрева или даже запекания. Разбираемся, как понять назначение именно своей плиты и что туда нельзя класть.",
@@ -197,7 +259,7 @@
     "imageAlt": "Рулетики тёмно-рубиновой фруктовой пастилы рядом с черноплодной рябиной и яблоками",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
@@ -258,7 +320,7 @@
     "imageAlt": "Золотистые гренки из батона с густым красным повидлом внутри, присыпанные сахарной пудрой",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
@@ -287,7 +349,7 @@
     "image": "https://provkus-media.ru/assets/uploads/pumpkin-keks-oct03.png",
     "imageAlt": "Тыквенный кекс с апельсиновой глазурью, цедрой и корицей на деревянной доске",
     "photoSource": "ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": false,
     "newsletter": false,
     "editorialCheck": {
