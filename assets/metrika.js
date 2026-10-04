@@ -22,7 +22,19 @@
   window.pvCookieSettings=showConsent;
   window.__pvCookieAnalyticsAllowed=allowed;
   offerConsent();
-  if(!isAdmin){const addSettingsLink=()=>{const footer=document.querySelector('.site-footer');if(!footer||document.getElementById('pvCookieSettingsLink'))return;const link=document.createElement('a');link.id='pvCookieSettingsLink';link.href='#cookie-settings';link.textContent='Настройки аналитики';link.style.cssText='display:inline-block;margin:8px 12px;color:inherit;text-decoration:underline';link.addEventListener('click',e=>{e.preventDefault();showConsent()});footer.appendChild(link)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addSettingsLink,{once:true});else addSettingsLink()}
+  if(!isAdmin){
+    const addFooterLinks=()=>{
+      const footer=document.querySelector('.site-footer');
+      if(!footer)return;
+      if(!document.getElementById('pvCookieSettingsLink')){
+        const link=document.createElement('a');link.id='pvCookieSettingsLink';link.href='#cookie-settings';link.textContent='Настройки аналитики';link.style.cssText='display:inline-block;margin:8px 12px;color:inherit;text-decoration:underline';link.addEventListener('click',e=>{e.preventDefault();showConsent()});footer.appendChild(link);
+      }
+      if(!document.getElementById('pvDzenFooterLink')){
+        const dzen=document.createElement('a');dzen.id='pvDzenFooterLink';dzen.href='https://dzen.ru/provkusmedia?share_to=link';dzen.target='_blank';dzen.rel='noopener noreferrer';dzen.textContent='Мы в Дзене →';dzen.setAttribute('aria-label','ProVkus в Дзене');dzen.style.cssText='display:inline-flex;align-items:center;justify-content:center;min-height:42px;margin:8px 12px;padding:10px 18px;border-radius:999px;background:#f05a2a;color:#fff;text-decoration:none;font:700 14px/1.2 system-ui,sans-serif;box-shadow:0 4px 16px #0002;transition:transform .15s ease,opacity .15s ease';dzen.addEventListener('mouseenter',()=>{dzen.style.transform='translateY(-1px)'});dzen.addEventListener('mouseleave',()=>{dzen.style.transform='none'});dzen.addEventListener('focus',()=>{dzen.style.outline='2px solid #fff';dzen.style.outlineOffset='2px'});dzen.addEventListener('blur',()=>{dzen.style.outline='none'});dzen.addEventListener('click',()=>{window.pvGoal?.('dzen_channel_click',{path:location.pathname})});footer.appendChild(dzen);
+      }
+    };
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',addFooterLinks,{once:true});else addFooterLinks();
+  }
 
   const goalQueue = [];
   window.pvGoal = (name, params={}) => {
