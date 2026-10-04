@@ -1,0 +1,63 @@
+name: Load October 4 publication queue
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/load-oct04-queue.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Restore prepared queue payload
+        env:
+          PAYLOAD_URL: 'https://d2jqrm6oza8nb6.cloudfront.net/datasets/e95b861a-a969-430e-b00c-af334843b251.png?_jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJrZXlIYXNoIjoiOThkYjVmZWQ3MzE2ODk2MCIsImJ1Y2tldCI6InJ1bndheS1kYXRhc2V0cyIsInN0YWdlIjoicHJvZCIsImV4cCI6MTc5MTIzMzc3M30.kWsnXT7e2FRL1TmXYXxquajm4v5NE_HL3eVxMLE3X5Y'
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request
+          from pathlib import Path
+          raw = urllib.request.urlopen(os.environ['PAYLOAD_URL'], timeout=45).read()
+          marker = b'PVQUEUE\n'
+          if marker not in raw:
+              raise SystemExit('queue payload marker not found')
+          payload = raw.split(marker, 1)[1]
+          items = json.loads(payload.decode('utf-8'))
+          if len(items) != 6:
+              raise SystemExit(f'unexpected queue size: {len(items)}')
+          Path('.github/scheduled-posts.json').write_text(json.dumps(items, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('Loaded queue:', [(x['slug'], x['publishAt']) for x in items])
+          PY
+      - name: Import all six source images now
+        run: python3 scripts/import_scheduled_images.py
+      - name: Validate publication scripts
+        run: |
+          node --check scripts/publish-scheduled.js
+          node --check scripts/build-feed.js
+          python3 - <<'PY'
+          import json
+          q=json.load(open('.github/scheduled-posts.json',encoding='utf-8'))
+          assert len(q)==6
+          assert sum(1 for x in q if x['post'].get('featured'))==3
+          assert sum(1 for x in q if x['post'].get('popular'))==5
+          print('Queue validation OK')
+          PY
+      - name: Commit queue and images
+        run: |
+          git config user.name "provkus-scheduler"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/scheduled-posts.json assets/uploads/
+          if git diff --cached --quiet; then
+            echo 'Nothing to commit'
+            exit 0
+          fi
+          git commit -m "Queue October 4 publications"
+          git pull --rebase origin main
+          git push origin HEAD:main
