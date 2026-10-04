@@ -10,6 +10,8 @@ on:
       - '.github/workflows/publish-scheduled.yml'
       - 'scripts/publish-scheduled.js'
       - 'scripts/build-feed.js'
+      - 'scripts/add_site_link_to_articles.py'
+      - 'scripts/normalize_dzen_feed_links.py'
       - 'scripts/add_dzen_footer.py'
       - 'scripts/import_scheduled_images.py'
       - 'scripts/editorial_source_guard.py'
@@ -37,10 +39,14 @@ jobs:
         run: python3 scripts/import_scheduled_images.py
       - name: Publish or withhold scheduled materials
         run: node scripts/publish-scheduled.js
+      - name: Put ProVkus link into source article HTML
+        run: python3 scripts/add_site_link_to_articles.py
       - name: Ensure static Dzen footer button
         run: python3 scripts/add_dzen_footer.py
       - name: Rebuild RSS feed for Dzen and readers
         run: node scripts/build-feed.js
+      - name: Keep one source-backed ProVkus link in Dzen RSS
+        run: python3 scripts/normalize_dzen_feed_links.py
       - name: Detect publication changes
         id: publication_changes
         shell: bash
@@ -88,3 +94,4 @@ jobs:
           git push origin HEAD:main
 
 # scheduler-kick: 2026-10-04T13:24+04:00
+# dzen-site-link-fix: 2026-10-04
