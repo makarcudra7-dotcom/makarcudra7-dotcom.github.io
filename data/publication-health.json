@@ -963,5 +963,15 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-03T19:43:26.388135Z"
+  },
+  "zolotoy-lenivets-tykva-sloyami-lavash": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-04T02:41:28.402275Z"
+  },
+  "zasaharilos-varenie-spasayu-za-odin-priem": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-04T02:41:28.318428Z"
   }
 }
