@@ -10,6 +10,7 @@ on:
       - '.github/workflows/publish-scheduled.yml'
       - 'scripts/publish-scheduled.js'
       - 'scripts/build-feed.js'
+      - 'scripts/add_dzen_footer.py'
       - 'scripts/import_scheduled_images.py'
       - 'scripts/start-site-with-scheduler.sh'
       - 'scripts/sync-runtime-queue.js'
@@ -33,13 +34,15 @@ jobs:
         run: python3 scripts/import_scheduled_images.py
       - name: Publish or withhold scheduled materials
         run: node scripts/publish-scheduled.js
+      - name: Ensure static Dzen footer button
+        run: python3 scripts/add_dzen_footer.py
       - name: Rebuild RSS feed for Dzen and readers
         run: node scripts/build-feed.js
       - name: Detect publication changes
         id: publication_changes
         shell: bash
         run: |
-          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/ feed.xml; then
+          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/ feed.xml '*.html'; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No publication changes; skip generated-site rebuild"
           else
@@ -64,6 +67,7 @@ jobs:
           python3 scripts/quality_sync.py
           python3 scripts/post_quality_hardening.py
           python3 scripts/check_indexing_surfaces.py
+          python3 scripts/add_dzen_footer.py
           node --check assets/app.js
           node --check assets/community.js
       - name: Commit scheduler changes
