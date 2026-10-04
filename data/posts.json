@@ -1,5 +1,36 @@
 [
   {
+    "slug": "yashchik-pod-duhovkoy-naznachenie",
+    "headline": "Ящик под духовкой годами забивала крышками и сковородками — оказалось, у него совсем другое назначение",
+    "description": "Нижний ящик под духовкой бывает для хранения, подогрева или даже запекания. Разбираемся, как понять назначение именно своей плиты и что туда нельзя класть.",
+    "lead": "Ящик под духовкой не всегда является обычным местом для сковородок: у разных моделей он может хранить посуду, поддерживать еду тёплой или участвовать в приготовлении.",
+    "author": "Эльвира Шайберт",
+    "category": "Дом",
+    "type": "Article",
+    "typeLabel": "Разбор",
+    "image": "https://provkus-media.ru/assets/uploads/yashchik-pod-duhovkoy-oct04.png",
+    "imageAlt": "Открытый нижний ящик под белой духовкой с противнями, решёткой и стеклянной формой",
+    "photoSource": "ProVkus",
+    "featured": false,
+    "popular": true,
+    "newsletter": false,
+    "editorialCheck": {
+      "aiImage": false
+    },
+    "coauthors": [],
+    "tags": [
+      "Дом",
+      "Духовка",
+      "Кухонные советы",
+      "Бытовая техника"
+    ],
+    "publishedAt": "2026-10-04T06:00:00.000Z",
+    "updatedAt": "2026-10-04T06:00:00.000Z",
+    "status": "published",
+    "excludeRelated": false,
+    "url": "https://provkus-media.ru/articles/yashchik-pod-duhovkoy-naznachenie.html"
+  },
+  {
     "slug": "zolotoy-lenivets-tykva-sloyami-lavash",
     "headline": "Ничего не леплю и не заворачиваю: тыкву складываю слоями — через 30 минут «Золотой ленивец» сметают до крошки",
     "description": "Ленивый слоёный пирог из лаваша с тыквой и творожной заливкой: собирается прямо в форме и проводит в духовке около 30 минут.",
@@ -257,7 +288,7 @@
     "imageAlt": "Тыквенный кекс с апельсиновой глазурью, цедрой и корицей на деревянной доске",
     "photoSource": "ProVkus",
     "featured": true,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
