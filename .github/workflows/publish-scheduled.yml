@@ -79,6 +79,8 @@ jobs:
           python3 scripts/add_dzen_footer.py
           node --check assets/app.js
           node --check assets/community.js
+      - name: Normalize final Dzen RSS after quality rebuilds
+        run: python3 scripts/normalize_dzen_feed_links.py
       - name: Commit scheduler changes
         if: steps.publication_changes.outputs.changed == 'true'
         run: |
