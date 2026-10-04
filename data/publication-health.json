@@ -973,5 +973,20 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-04T02:41:28.318428Z"
+  },
+  "perlovka-poleznee-kasha-garnir": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-04T13:47:25.739395Z"
+  },
+  "roskachestvo-pelmeni-nastoyashchee-myaso": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-04T13:47:25.852926Z"
+  },
+  "yashchik-pod-duhovkoy-naznachenie": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-04T13:47:25.841397Z"
   }
 }
