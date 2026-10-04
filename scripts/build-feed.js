@@ -13,6 +13,11 @@ const articlePath=p=>path.join(ROOT,'articles',`${p.slug}.html`);
 const articleExists=p=>!!p?.slug&&fs.existsSync(articlePath(p));
 const mimeByExt={'.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.webp':'image/webp','.gif':'image/gif'};
 
+function absolutize(value,p){
+  if(!value||/^(?:https?:|mailto:|tel:|data:|#)/i.test(value))return value;
+  try{return new URL(value,`${SITE}/articles/${p.slug}.html`).href}catch{return value}
+}
+
 function extractArticleBody(p){
   try{
     const html=fs.readFileSync(articlePath(p),'utf8');
@@ -32,11 +37,13 @@ function extractArticleBody(p){
           .replace(/<style\b[\s\S]*?<\/style>/gi,'')
           .replace(/<img\b[^>]*src=["']data:image\/[^"']+["'][^>]*>/gi,'')
           .replace(/\s(?:class|id|style|data-[\w-]+|aria-[\w-]+)=("[^"]*"|'[^']*')/gi,'')
-          .replace(/<\/?div\b[^>]*>/gi,'');
+          .replace(/<\/?div\b[^>]*>/gi,'')
+          .replace(/<strong\b[^>]*>/gi,'<b>').replace(/<\/strong>/gi,'</b>')
+          .replace(/<em\b[^>]*>/gi,'<i>').replace(/<\/em>/gi,'</i>');
         body=body.replace(/\b(href|src)=("([^"]*)"|'([^']*)')/gi,(all,attr,_q,dq,sq)=>{
           const value=dq??sq??'';
-          if(!value||/^(?:https?:|mailto:|tel:|data:|#)/i.test(value))return all;
-          try{return `${attr}="${new URL(value,`${SITE}/articles/${p.slug}.html`).href}"`}catch{return all}
+          const absolute=absolutize(value,p);
+          return absolute===value?all:`${attr}="${absolute}"`;
         });
         return body.trim();
       }
@@ -61,6 +68,35 @@ function imageMeta(image){
   }catch{return null}
 }
 
+function makeInlineUrl(image){
+  if(!image)return '';
+  try{
+    const u=new URL(image,SITE);
+    u.searchParams.set('dzen_inline','1');
+    return u.href;
+  }catch{return image}
+}
+
+function injectInlineCover(body,p,image){
+  if(!image)return body;
+  const inline=makeInlineUrl(image);
+  const figure=`<figure><img src="${esc(inline)}" alt="${esc(p.imageAlt||p.headline||'')}"/><figcaption>Фото: ProVkus</figcaption></figure>`;
+  const firstParagraphEnd=body.search(/<\/p>/i);
+  if(firstParagraphEnd<0)return `${body}${figure}`;
+  const end=firstParagraphEnd+4;
+  return `${body.slice(0,end)}${figure}${body.slice(end)}`;
+}
+
+function collectImages(html){
+  const urls=[];
+  const re=/<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi;
+  let m;
+  while((m=re.exec(html))){
+    if(m[1]&&!urls.includes(m[1]))urls.push(m[1]);
+  }
+  return urls;
+}
+
 let allPosts=read(POSTS,[]);
 allPosts=allPosts.filter(p=>{
   if(!p||!p.slug||!p.headline||!articleExists(p))return false;
@@ -76,18 +112,27 @@ const itemXml=(p,{manualId='',manualAt=''}={})=>{
   const date=new Date(manualAt||p.publishedAt||Date.now());
   const pub=Number.isNaN(date.getTime())?new Date().toUTCString():date.toUTCString();
   const image=p.image||p.images?.[0]||'';
-  const meta=imageMeta(image);
-  const body=extractArticleBody(p)||`<p>${esc(p.description||'')}</p>`;
-  const cover=image&&!body.includes(image)?`<p><img src="${esc(image)}" alt="${esc(p.imageAlt||p.headline||'')}"/></p>`:'';
+  const rawBody=extractArticleBody(p)||`<p>${esc(p.description||'')}</p>`;
+  const body=injectInlineCover(rawBody,p,image);
 
-  // Keep the source URL in simple Dzen-safe markup. We intentionally duplicate the
-  // canonical link once near the start and once as the final paragraph: Dzen may
-  // sanitize or trim trailing promo blocks during blogs_only import, while normal
-  // paragraph links inside the article are preserved more reliably.
-  const sourceInline=`<p><strong>Источник и обновляемая версия материала — ProVkus:</strong><br><a href="${esc(base)}">${esc(base)}</a></p>`;
-  const sourceLink=`<p><strong>Читать материал на сайте ProVkus:</strong><br><a href="${esc(base)}">${esc(base)}</a></p>`;
-  const full=`${cover}${sourceInline}${body}${sourceLink}`;
-  return `  <item>\n    <title>${esc(p.headline)}</title>\n    <link>${esc(url)}</link>\n    <guid isPermaLink="${manualId?'true':'false'}">${manualId?esc(url):esc(`provkus-${p.slug}`)}</guid>\n    <pubDate>${esc(pub)}</pubDate>\n    <description>${esc(p.description||'')}</description>\n    <dc:creator>${esc(p.author||'Редакция ProVkus')}</dc:creator>${p.category?`\n    <category>${esc(p.category)}</category>`:''}${manualId?'\n    <category>Ручная рассылка</category>':`\n    <category>format-article</category>\n    <category>index</category>\n    <category>comment-all</category>\n    <contentType>blogs_only</contentType>`}${meta?`\n    <enclosure url="${esc(meta.url)}" length="${meta.length}" type="${meta.type}"/>\n    <media:content url="${esc(meta.url)}" medium="image" type="${meta.type}"/>`:''}\n    <media:rating scheme="urn:simple">nonadult</media:rating>\n    <content:encoded><![CDATA[${cdata(full)}]]></content:encoded>\n  </item>`;
+  const sourceInline=`<p><b>Источник и обновляемая версия материала — ProVkus:</b><br><a href="${esc(base)}">${esc(base)}</a></p>`;
+  const sourceLink=`<p><b>Читать материал на сайте ProVkus:</b><br><a href="${esc(base)}">${esc(base)}</a></p>`;
+  const full=`${sourceInline}${body}${sourceLink}`;
+
+  // Dzen expects media used in content:encoded to be represented in enclosure as well.
+  // Keep the original cover first for the feed card, then every inline image.
+  const mediaUrls=[];
+  if(image)mediaUrls.push(new URL(image,SITE).href);
+  for(const src of collectImages(full)){
+    try{
+      const absolute=new URL(src,SITE).href;
+      if(!mediaUrls.includes(absolute))mediaUrls.push(absolute);
+    }catch{}
+  }
+  const metas=mediaUrls.map(imageMeta).filter(Boolean);
+  const mediaXml=metas.map(meta=>`\n    <enclosure url="${esc(meta.url)}" length="${meta.length}" type="${meta.type}"/>\n    <media:content url="${esc(meta.url)}" medium="image" type="${meta.type}"/>`).join('');
+
+  return `  <item>\n    <title>${esc(p.headline)}</title>\n    <link>${esc(url)}</link>\n    <guid isPermaLink="${manualId?'true':'false'}">${manualId?esc(url):esc(`provkus-${p.slug}`)}</guid>\n    <pubDate>${esc(pub)}</pubDate>\n    <description>${esc(p.description||'')}</description>\n    <dc:creator>${esc(p.author||'Редакция ProVkus')}</dc:creator>${p.category?`\n    <category>${esc(p.category)}</category>`:''}${manualId?'\n    <category>Ручная рассылка</category>':`\n    <category>format-article</category>\n    <category>index</category>\n    <category>comment-all</category>\n    <contentType>blogs_only</contentType>`}${mediaXml}\n    <media:rating scheme="urn:simple">nonadult</media:rating>\n    <content:encoded><![CDATA[${cdata(full)}]]></content:encoded>\n  </item>`;
 };
 
 const pushes=read(PUSHES,[]).filter(x=>x&&x.slug&&x.id&&new Date(x.sentAt||0).getTime()>now-72*60*60*1000).sort((a,b)=>new Date(b.sentAt)-new Date(a.sentAt));
@@ -97,4 +142,4 @@ const items=[...manualItems,...regularItems].join('\n');
 const latest=Math.max(0,...posts.map(p=>new Date(p.updatedAt||p.publishedAt||0).getTime()||0),...pushes.map(p=>new Date(p.sentAt||0).getTime()||0));
 const xml=`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/">\n<channel>\n  <title>ProVkus — новые материалы</title>\n  <link>${SITE}/</link>\n  <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml"/>\n  <description>Новые материалы ProVkus о еде, продуктах, хранении, доме и безопасности.</description>\n  <language>ru</language>\n  <lastBuildDate>${new Date(latest).toUTCString()}</lastBuildDate>\n  <image><url>${SITE}/favicon.png</url><title>ProVkus</title><link>${SITE}/</link></image>\n${items}\n</channel>\n</rss>\n`;
 fs.writeFileSync(OUT,xml,'utf8');
-console.log(`feed.xml: ${posts.length} published items, ${manualItems.length} manual pushes; Dzen full-content RSS enabled with duplicated visible canonical source URL`);
+console.log(`feed.xml: ${posts.length} published items, ${manualItems.length} manual pushes; Dzen RSS includes guaranteed inline images and visible source links`);
