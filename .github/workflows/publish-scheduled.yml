@@ -83,3 +83,5 @@ jobs:
           git commit -m "Sync scheduled materials"
           git pull --rebase origin main
           git push origin HEAD:main
+
+# scheduler-kick: 2026-10-04T10:42+04:00
