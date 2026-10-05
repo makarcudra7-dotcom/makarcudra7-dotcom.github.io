@@ -1,5 +1,30 @@
 [
   {
+    "slug": "luk-bez-kolgotok-hranenie-do-vesny",
+    "headline": "Хранить лук в колготках — «колхоз» и прошлый век: складываю иначе — до весны головки сухие и без ростков",
+    "description": "Как хранить репчатый лук дома: хорошо просушить, убрать в проветриваемую тару, не держать рядом с картофелем и следить за температурой.",
+    "author": "Эльвира Шайберт",
+    "category": "Дом",
+    "type": "guide",
+    "image": "/assets/uploads/luk-hranenie-oct05.png",
+    "images": [
+      "/assets/uploads/luk-hranenie-oct05.png"
+    ],
+    "tags": [
+      "Дом",
+      "Хранение",
+      "Лук",
+      "Полезные советы"
+    ],
+    "popular": true,
+    "featured": false,
+    "publishedAt": "2026-10-05T16:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T16:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/luk-bez-kolgotok-hranenie-do-vesny.html"
+  },
+  {
     "slug": "shkolnaya-picca-kak-v-detstve",
     "headline": "Пеку ту самую школьную пиццу: мягкое тесто, колбаса, маринованные огурчики — и снова будто большая перемена",
     "description": "Домашняя школьная пицца порционными лепёшками: мягкое дрожжевое тесто, томатный соус, колбаса, маринованные огурчики и сыр.",
@@ -218,7 +243,7 @@
     "imageAlt": "Ромская семья готовит мясное рагу с картофелем в большом котле на открытом огне, рядом стопка лепёшек",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
