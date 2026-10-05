@@ -1,5 +1,30 @@
 [
   {
+    "slug": "lukovoe-schaste-pirog-s-lukom",
+    "headline": "Когда в холодильнике шаром покати, пеку «Луковое счастье»: продукты копеечные, а исчезает быстрее покупных пирогов",
+    "description": "Простой луковый пирог из доступных продуктов: мягкое тесто, много сладковатого томлёного лука и румяная сырная корочка.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "recipe",
+    "image": "/assets/uploads/lukovoe-schaste-oct05.png",
+    "images": [
+      "/assets/uploads/lukovoe-schaste-oct05.png"
+    ],
+    "tags": [
+      "Рецепты",
+      "Пирог",
+      "Лук",
+      "Выпечка"
+    ],
+    "popular": true,
+    "featured": false,
+    "publishedAt": "2026-10-05T09:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T09:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/lukovoe-schaste-pirog-s-lukom.html"
+  },
+  {
     "slug": "amerikanskiy-tykvennyy-batter",
     "headline": "Тыкву больше не пускаю в варенье: варю американский «Тыквенный баттер» — густой, пряный, на хлеб ложится как крем",
     "description": "Тыквенный баттер из пюре с корицей, имбирём и яблочным соком: густая осенняя намазка для хлеба, каши и выпечки. Храним в холодильнике или замораживаем.",
@@ -260,7 +285,7 @@
     "imageAlt": "Хрустящая квашеная капуста с морковью в стеклянной банке",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
