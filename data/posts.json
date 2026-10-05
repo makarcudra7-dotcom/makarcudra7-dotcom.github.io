@@ -1,5 +1,30 @@
 [
   {
+    "slug": "shkolnaya-picca-kak-v-detstve",
+    "headline": "Пеку ту самую школьную пиццу: мягкое тесто, колбаса, маринованные огурчики — и снова будто большая перемена",
+    "description": "Домашняя школьная пицца порционными лепёшками: мягкое дрожжевое тесто, томатный соус, колбаса, маринованные огурчики и сыр.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "recipe",
+    "image": "/assets/uploads/shkolnaya-picca-oct05.png",
+    "images": [
+      "/assets/uploads/shkolnaya-picca-oct05.png"
+    ],
+    "tags": [
+      "Рецепты",
+      "Пицца",
+      "Выпечка",
+      "Вкус детства"
+    ],
+    "popular": true,
+    "featured": true,
+    "publishedAt": "2026-10-05T15:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T15:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/shkolnaya-picca-kak-v-detstve.html"
+  },
+  {
     "slug": "ogurec-v-nezhnoj-shubke-zakuska",
     "headline": "Не бутерброд и не рулет: заворачиваю огурчик в нежную «шубку» — получается закуска, которую разбирают первой",
     "description": "Быстрая холодная закуска: свежий огурец, сливочный сыр, укроп и красная рыба. Порционные рулетики удобно собрать заранее.",
@@ -42,7 +67,7 @@
       "Десерты"
     ],
     "popular": true,
-    "featured": true,
+    "featured": false,
     "publishedAt": "2026-10-05T13:00:00.000Z",
     "status": "published",
     "newsletter": false,
@@ -255,7 +280,7 @@
     "imageAlt": "Горячая рассыпчатая перловая крупа с морковью и зеленью в керамической миске",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
