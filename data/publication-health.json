@@ -1008,5 +1008,10 @@
     "status": "ok",
     "errors": [],
     "checkedAt": "2026-10-05T09:37:32.898981Z"
+  },
+  "mikrofibra-vmesto-vafelnyh-polotenets": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-05T10:35:50.829653Z"
   }
 }
