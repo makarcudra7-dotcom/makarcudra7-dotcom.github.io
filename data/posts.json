@@ -1,5 +1,30 @@
 [
   {
+    "slug": "ogurec-v-nezhnoj-shubke-zakuska",
+    "headline": "Не бутерброд и не рулет: заворачиваю огурчик в нежную «шубку» — получается закуска, которую разбирают первой",
+    "description": "Быстрая холодная закуска: свежий огурец, сливочный сыр, укроп и красная рыба. Порционные рулетики удобно собрать заранее.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "recipe",
+    "image": "/assets/uploads/ogurec-v-shubke-oct05.png",
+    "images": [
+      "/assets/uploads/ogurec-v-shubke-oct05.png"
+    ],
+    "tags": [
+      "Рецепты",
+      "Закуски",
+      "Красная рыба",
+      "Огурцы"
+    ],
+    "popular": false,
+    "featured": false,
+    "publishedAt": "2026-10-05T14:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T14:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/ogurec-v-nezhnoj-shubke-zakuska.html"
+  },
+  {
     "slug": "chanki-manki-domashnee-morozhenoe",
     "headline": "Замораживаю по 3 кг «Чанки Манки» — и всё равно мало: домашнее мороженое по-американски — мягкое как суфле, а по вкусу от покупного не отличишь",
     "description": "Домашнее банановое мороженое с шоколадом и орехами: мягкая сливочная основа, яркий вкус и способ заморозки без крупных кристаллов.",
