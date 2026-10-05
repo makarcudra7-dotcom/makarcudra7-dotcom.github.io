@@ -1,5 +1,30 @@
 [
   {
+    "slug": "pomidory-svezhie-do-novogo-goda",
+    "headline": "Заготовки — прошлый век: храню помидоры свежими до Нового года — плотные, сочные, будто только с грядки",
+    "description": "Какие помидоры способны долежать до зимы, когда их снимать и почему важнее всего сорт, сухость, температура и регулярная проверка плодов.",
+    "author": "Эльвира Шайберт",
+    "category": "Дом",
+    "type": "guide",
+    "image": "/assets/uploads/pomidory-do-novogo-goda-oct05.png",
+    "images": [
+      "/assets/uploads/pomidory-do-novogo-goda-oct05.png"
+    ],
+    "tags": [
+      "Дом",
+      "Хранение",
+      "Помидоры",
+      "Осень"
+    ],
+    "popular": true,
+    "featured": false,
+    "publishedAt": "2026-10-05T12:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T12:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/pomidory-svezhie-do-novogo-goda.html"
+  },
+  {
     "slug": "yabloki-ili-grushi-chto-poleznee",
     "headline": "Яблоки или груши: какой фрукт полезнее для здоровья — эксперты наконец расставили всё по местам",
     "description": "Сравниваем яблоки и груши по клетчатке, витаминам и практической пользе. Победителя нет: у каждого фрукта свои сильные стороны.",
@@ -242,7 +267,7 @@
     "imageAlt": "Открытый нижний ящик под белой духовкой с противнями, решёткой и стеклянной формой",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
