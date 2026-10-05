@@ -1035,10 +1035,13 @@
     "checkedAt": "2026-10-05T14:38:11.162921Z"
   },
   "shkolnaya-picca-kak-v-detstve": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
-    ],
-    "checkedAt": "2026-10-05T15:37:02.940296Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-05T16:35:44.667828Z"
+  },
+  "luk-bez-kolgotok-hranenie-do-vesny": {
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-05T16:35:44.672430Z"
   }
 }
