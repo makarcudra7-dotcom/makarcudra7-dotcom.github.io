@@ -11,6 +11,7 @@ on:
       - 'data/dzen-headlines.json'
       - 'scripts/publish-scheduled.js'
       - 'scripts/build-feed.js'
+      - 'scripts/build-dzen-feed.py'
       - 'scripts/add_site_link_to_articles.py'
       - 'scripts/normalize_dzen_feed_links.py'
       - 'scripts/add_dzen_footer.py'
@@ -52,7 +53,7 @@ jobs:
         id: publication_changes
         shell: bash
         run: |
-          if [ -z "$(git status --porcelain -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/ feed.xml '*.html')" ]; then
+          if [ -z "$(git status --porcelain -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/ feed.xml dzen.xml '*.html')" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No publication changes; skip generated-site rebuild"
           else
