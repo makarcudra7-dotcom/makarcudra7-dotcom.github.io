@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# Runs in the scheduled publishing pipeline before RSS is rebuilt.
 import re
 from pathlib import Path
 
