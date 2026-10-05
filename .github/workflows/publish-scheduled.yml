@@ -8,6 +8,7 @@ on:
     paths:
       - '.github/scheduled-posts.json'
       - '.github/workflows/publish-scheduled.yml'
+      - 'data/dzen-headlines.json'
       - 'scripts/publish-scheduled.js'
       - 'scripts/build-feed.js'
       - 'scripts/add_site_link_to_articles.py'
