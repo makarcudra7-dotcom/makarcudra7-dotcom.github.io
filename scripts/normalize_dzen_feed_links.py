@@ -19,7 +19,8 @@ BOTTOM = re.compile(
 )
 ITEM = re.compile(r'<item>.*?</item>', re.I | re.S)
 GUID = re.compile(r'<guid\s+isPermaLink="false">provkus-([^<]+)</guid>', re.I)
-TITLE = re.compile(r'<title>.*?</title>', re.I | re.S)
+TITLE = re.compile(r'<title>(.*?)</title>', re.I | re.S)
+DESCRIPTION = re.compile(r'<description>(.*?)</description>', re.I | re.S)
 HTML_TITLE = re.compile(r'<title>(.*?)</title>', re.I | re.S)
 TAG = re.compile(r'<[^>]+>')
 
@@ -38,6 +39,10 @@ def load_overrides() -> dict[str, str]:
     }
 
 
+def plain(value: str) -> str:
+    return re.sub(r'\s+', ' ', html.unescape(TAG.sub('', value or ''))).strip()
+
+
 def seo_title(slug: str) -> str:
     path = ARTICLES / f"{slug}.html"
     if not path.exists():
@@ -47,9 +52,21 @@ def seo_title(slug: str) -> str:
     except Exception:
         return ""
     match = HTML_TITLE.search(source)
+    return plain(match.group(1)) if match else ""
+
+
+def neutral_from_description(block: str, limit: int = 96) -> str:
+    match = DESCRIPTION.search(block)
     if not match:
         return ""
-    return html.unescape(TAG.sub('', match.group(1))).strip()
+    value = plain(match.group(1))
+    if not value:
+        return ""
+    first = re.split(r'(?<=[.!?])\s+', value, maxsplit=1)[0].rstrip('.!? ')
+    if len(first) <= limit:
+        return first
+    cut = first[: limit + 1].rsplit(' ', 1)[0].rstrip(',:;—- ')
+    return cut if len(cut) >= 35 else first[:limit].rstrip(',:;—- ')
 
 
 def main() -> None:
@@ -60,8 +77,8 @@ def main() -> None:
     text = FEED.read_text(encoding="utf-8")
     before = text
 
-    # RSS imported by Dzen should not inherit the emotional H1 used on the site.
-    # Explicit Dzen-only overrides win; otherwise use the calmer SEO <title> of the article.
+    # Dzen gets a deliberately calmer title than the emotional H1 used on the site.
+    # 1) explicit Dzen-only override; 2) distinct SEO title; 3) neutral meta description.
     overrides = load_overrides()
     changed_titles = 0
 
@@ -69,12 +86,22 @@ def main() -> None:
         nonlocal changed_titles
         block = match.group(0)
         guid = GUID.search(block)
-        if not guid:
+        title_match = TITLE.search(block)
+        if not guid or not title_match:
             return block
+
         slug = html.unescape(guid.group(1)).strip()
-        dzen_title = overrides.get(slug) or seo_title(slug)
-        if not dzen_title:
-            return block
+        current_title = plain(title_match.group(1))
+        explicit = overrides.get(slug, '').strip()
+        seo = seo_title(slug)
+
+        if explicit:
+            dzen_title = explicit
+        elif seo and seo.casefold() != current_title.casefold():
+            dzen_title = seo
+        else:
+            dzen_title = neutral_from_description(block) or seo or current_title
+
         replacement = f"<title>{html.escape(dzen_title, quote=False)}</title>"
         updated, count = TITLE.subn(replacement, block, count=1)
         if count and updated != block:
