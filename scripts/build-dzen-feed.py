@@ -12,7 +12,20 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 SITE = 'https://provkus-media.ru'
 OUT = ROOT / 'dzen.xml'
+HEADLINES_FILE = ROOT / 'data' / 'dzen-headlines.json'
 VOID = {'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'}
+TRAILING = {'и', 'а', 'но', 'или', 'что', 'как', 'где', 'когда', 'для', 'без', 'с', 'со', 'в', 'на', 'по', 'из', 'от', 'до'}
+
+
+def load_headlines():
+    try:
+        raw = json.loads(HEADLINES_FILE.read_text('utf-8'))
+        return {str(k): str(v).strip() for k, v in raw.items() if str(v).strip()}
+    except Exception:
+        return {}
+
+
+DZEN_HEADLINES = load_headlines()
 
 
 class ArticleBody(HTMLParser):
@@ -73,6 +86,40 @@ def date(value):
         return None
 
 
+def tidy_title(value, limit=108):
+    value = re.sub(r'\s+', ' ', str(value or '')).strip(' .!?;:—-')
+    if len(value) <= limit:
+        return value
+    # Prefer a full clause before a colon or semicolon.
+    for sep in (':', ';'):
+        pos = value.find(sep)
+        if 30 <= pos <= limit:
+            return value[:pos].strip(' .!?;:—-')
+    cut = value[:limit + 1]
+    comma = cut.rfind(',')
+    if comma >= 55:
+        cut = cut[:comma]
+    else:
+        cut = cut.rsplit(' ', 1)[0]
+    words = cut.strip(' .!?;:—-').split()
+    while words and words[-1].casefold().strip('«»“”"\'') in TRAILING:
+        words.pop()
+    return ' '.join(words).strip(' .!?;:—-')
+
+
+def dzen_title(post):
+    slug = str(post.get('slug') or '')
+    explicit = DZEN_HEADLINES.get(slug)
+    if explicit:
+        return explicit
+    description = re.sub(r'\s+', ' ', str(post.get('description') or '')).strip()
+    if description:
+        first = re.split(r'(?<=[.!?])\s+', description, maxsplit=1)[0]
+        if first:
+            return tidy_title(first)
+    return tidy_title(post.get('headline') or 'Материал ProVkus')
+
+
 def item(post):
     slug = post.get('slug', '')
     if not re.fullmatch(r'[a-zA-Z0-9_-]+', slug):
@@ -101,7 +148,7 @@ def cdata(value):
     return '<![CDATA[' + value.replace(']]>', ']]]]><![CDATA[>') + ']]>'
 
 
-posts = json.loads((ROOT / 'data/posts.json').read_text('utf-8'))
+posts = json.loads((ROOT / 'data' / 'posts.json').read_text('utf-8'))
 selected = [row for p in posts if (row := item(p))]
 selected.sort(key=lambda row: row[2], reverse=True)
 selected = selected[:30]
@@ -115,14 +162,22 @@ for post, url, published, content in selected:
         mime = {'.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.gif': 'image/gif'}.get(file.suffix.lower())
         if mime and file.is_file():
             cover = f'<enclosure url="{xml(image)}" length="{file.stat().st_size}" type="{mime}"/>'
-    tags = ''.join(f'<category>{xml(tag)}</category>' for tag in [post.get('category', ''), *(post.get('tags') or [])] if tag)
+    seen = set()
+    cats = []
+    for tag in [post.get('category', ''), *(post.get('tags') or [])]:
+        key = str(tag or '').strip().casefold()
+        if key and key not in seen:
+            seen.add(key)
+            cats.append(str(tag).strip())
+    cats.extend(['format-article', 'index', 'comment-all'])
+    tags = ''.join(f'<category>{xml(tag)}</category>' for tag in cats)
     entries.append(f'''  <item>
-    <title>{xml(post.get('headline'))}</title>
+    <title>{xml(dzen_title(post))}</title>
     <link>{xml(url)}</link><guid isPermaLink="true">{xml(url)}</guid>
     <pubDate>{format_datetime(published)}</pubDate>
     <description>{xml(post.get('description'))}</description>
     <dc:creator>{xml(post.get('author') or 'Редакция ProVkus')}</dc:creator>
-    {tags}
+    {tags}<contentType>blogs_only</contentType>
     {f'<media:content url="{xml(image)}" medium="image"/>' if image else ''}
     {cover}
     <content:encoded>{cdata(content)}</content:encoded>
@@ -142,4 +197,4 @@ feed = f'''<?xml version="1.0" encoding="UTF-8"?>
 '''
 ElementTree.fromstring(feed)
 OUT.write_text(feed, 'utf-8')
-print(f'dzen.xml: {len(selected)} published full-text articles')
+print(f'dzen.xml: {len(selected)} published full-text articles; safe Dzen titles enabled')
