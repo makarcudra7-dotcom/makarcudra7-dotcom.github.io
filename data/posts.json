@@ -1,5 +1,30 @@
 [
   {
+    "slug": "yabloki-ili-grushi-chto-poleznee",
+    "headline": "Яблоки или груши: какой фрукт полезнее для здоровья — эксперты наконец расставили всё по местам",
+    "description": "Сравниваем яблоки и груши по клетчатке, витаминам и практической пользе. Победителя нет: у каждого фрукта свои сильные стороны.",
+    "author": "Илья Титюлькин",
+    "category": "Продукты",
+    "type": "explainer",
+    "image": "/assets/uploads/yabloki-grushi-oct05.png",
+    "images": [
+      "/assets/uploads/yabloki-grushi-oct05.png"
+    ],
+    "tags": [
+      "Продукты",
+      "Яблоки",
+      "Груши",
+      "Здоровое питание"
+    ],
+    "popular": true,
+    "featured": true,
+    "publishedAt": "2026-10-05T11:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T11:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/yabloki-ili-grushi-chto-poleznee.html"
+  },
+  {
     "slug": "mikrofibra-vmesto-vafelnyh-polotenets",
     "headline": "Вафельные полотенца — уже прошлый век: на кухне лучше работает другая ткань — впитывает быстрее и не размазывает воду",
     "description": "Разбираемся, чем микрофибра отличается от вафельного хлопка, почему быстро собирает воду и где обычное хлопковое полотенце всё ещё удобнее.",
@@ -61,7 +86,7 @@
     "image": "https://provkus-media.ru/assets/uploads/pumpkin-butter-oct04.png",
     "imageAlt": "Банки густого оранжевого тыквенного баттера рядом с тыквой и хлебом, рука держит намазанный тост",
     "photoSource": "ProVkus",
-    "featured": true,
+    "featured": false,
     "popular": true,
     "newsletter": false,
     "editorialCheck": {
@@ -248,7 +273,7 @@
     "imageAlt": "Золотистый слоёный пирог с тыквой, нарезанный квадратами",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
