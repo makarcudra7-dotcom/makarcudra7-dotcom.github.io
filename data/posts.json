@@ -1,5 +1,30 @@
 [
   {
+    "slug": "chanki-manki-domashnee-morozhenoe",
+    "headline": "Замораживаю по 3 кг «Чанки Манки» — и всё равно мало: домашнее мороженое по-американски — мягкое как суфле, а по вкусу от покупного не отличишь",
+    "description": "Домашнее банановое мороженое с шоколадом и орехами: мягкая сливочная основа, яркий вкус и способ заморозки без крупных кристаллов.",
+    "author": "Екатерина Рукопляс",
+    "category": "Рецепты",
+    "type": "recipe",
+    "image": "/assets/uploads/chanki-manki-oct05.png",
+    "images": [
+      "/assets/uploads/chanki-manki-oct05.png"
+    ],
+    "tags": [
+      "Рецепты",
+      "Мороженое",
+      "Бананы",
+      "Десерты"
+    ],
+    "popular": true,
+    "featured": true,
+    "publishedAt": "2026-10-05T13:00:00.000Z",
+    "status": "published",
+    "newsletter": false,
+    "updatedAt": "2026-10-05T13:00:00.000Z",
+    "url": "https://provkus-media.ru/articles/chanki-manki-domashnee-morozhenoe.html"
+  },
+  {
     "slug": "pomidory-svezhie-do-novogo-goda",
     "headline": "Заготовки — прошлый век: храню помидоры свежими до Нового года — плотные, сочные, будто только с грядки",
     "description": "Какие помидоры способны долежать до зимы, когда их снимать и почему важнее всего сорт, сухость, температура и регулярная проверка плодов.",
@@ -42,7 +67,7 @@
       "Здоровое питание"
     ],
     "popular": true,
-    "featured": true,
+    "featured": false,
     "publishedAt": "2026-10-05T11:00:00.000Z",
     "status": "published",
     "newsletter": false,
@@ -236,7 +261,7 @@
     "imageAlt": "Упаковка замороженных пельменей в руке покупателя у морозильной витрины магазина",
     "photoSource": "ProVkus",
     "featured": false,
-    "popular": true,
+    "popular": false,
     "newsletter": false,
     "editorialCheck": {
       "aiImage": false
