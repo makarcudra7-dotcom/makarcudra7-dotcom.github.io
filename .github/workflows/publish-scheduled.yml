@@ -51,7 +51,7 @@ jobs:
         id: publication_changes
         shell: bash
         run: |
-          if git diff --quiet -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/ feed.xml '*.html'; then
+          if [ -z "$(git status --porcelain -- .github/scheduled-posts.json data/posts.json articles/ assets/uploads/ feed.xml '*.html')" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No publication changes; skip generated-site rebuild"
           else
@@ -84,7 +84,7 @@ jobs:
       - name: Commit scheduler changes
         if: steps.publication_changes.outputs.changed == 'true'
         run: |
-          if git diff --quiet; then
+          if [ -z "$(git status --porcelain)" ]; then
             echo "Nothing to publish or withhold"
             exit 0
           fi
