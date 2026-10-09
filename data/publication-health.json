@@ -1015,18 +1015,14 @@
     "checkedAt": "2026-10-05T10:35:50.829653Z"
   },
   "yabloki-ili-grushi-chto-poleznee": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: RemoteDisconnected: Remote end closed connection without response"
-    ],
-    "checkedAt": "2026-10-09T19:33:32.828061Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-09T20:33:13.606727Z"
   },
   "pomidory-svezhie-do-novogo-goda": {
-    "status": "error",
-    "errors": [
-      "страница недоступна: RemoteDisconnected: Remote end closed connection without response"
-    ],
-    "checkedAt": "2026-10-09T19:33:32.830802Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-09T20:33:13.607475Z"
   },
   "chanki-manki-domashnee-morozhenoe": {
     "status": "ok",
