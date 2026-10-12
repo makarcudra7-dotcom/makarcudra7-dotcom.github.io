@@ -970,9 +970,11 @@
     "checkedAt": "2026-10-04T02:41:28.402275Z"
   },
   "zasaharilos-varenie-spasayu-za-odin-priem": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T02:41:28.318428Z"
+    "status": "error",
+    "errors": [
+      "фото недоступно: https://provkus-media.ru/assets/uploads/zasaharilos-varenie-oct03.png (TimeoutError)"
+    ],
+    "checkedAt": "2026-10-12T13:48:26.089704Z"
   },
   "perlovka-poleznee-kasha-garnir": {
     "status": "ok",
