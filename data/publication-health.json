@@ -900,11 +900,9 @@
     "checkedAt": "2026-10-02T12:39:26.530866Z"
   },
   "plov-pravilo-proportsiy-po-vesu": {
-    "status": "error",
-    "errors": [
-      "фото недоступно: https://provkus-media.ru/assets/uploads/pilaf-ratio-step-oct02-cover.webp (HTTPError)"
-    ],
-    "checkedAt": "2026-10-14T21:47:58.830507Z"
+    "status": "ok",
+    "errors": [],
+    "checkedAt": "2026-10-14T22:45:47.944301Z"
   },
   "kurinaya-namazka-luk-slivki": {
     "status": "ok",
