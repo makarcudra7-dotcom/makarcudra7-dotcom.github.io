@@ -895,153 +895,213 @@
     "checkedAt": "2026-10-02T11:31:48.567640Z"
   },
   "zalivnoy-pirog-tri-yaytsa-luk-kefir": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-02T12:39:26.530866Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.328460Z"
   },
   "plov-pravilo-proportsiy-po-vesu": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-14T22:45:47.944301Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.195800Z"
   },
   "kurinaya-namazka-luk-slivki": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-02T14:35:34.572597Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.219237Z"
   },
   "yabloki-dva-sposoba-hraneniya-do-vesny": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-02T15:35:02.999957Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.150354Z"
   },
   "shest-osennih-ovoshchnyh-blyud": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-02T17:32:31.344364Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.099255Z"
   },
   "kabachki-hranenie-do-novogo-goda": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-02T18:37:03.132413Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.342799Z"
   },
   "pryaniki-bol-she-ne-em-vprikusku-rezhu-promazyvayu-smetanoy-pryachu-banany-utrom-na-stole-vysokiy-shokoladnyy-tort-budto-vsyu-noch-koldovala-u": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T06:47:13.938287Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.121891Z"
   },
   "tykvu-tru-v-kroshku-keks-apelsin-koritsa": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T08:32:30.577149Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.084576Z"
   },
   "baton-povidlo-korolevskie-grenki-15-minut": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T10:34:16.096188Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:29.310414Z"
   },
   "chernoplodka-yabloki-rubinovaya-pastila": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T14:40:24.911529Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.941371Z"
   },
   "dyrka-v-razdelochnoy-doske-kuhonnaya-problema": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T14:40:24.881485Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.966132Z"
   },
   "kapustu-ne-mnu-20-g-soli-na-kilogramm": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T19:43:26.344968Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.828148Z"
   },
   "6-lozhek-marinad-belye-griby": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T19:43:26.420116Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.853703Z"
   },
   "sardiny-melkaya-ryba-vmesto-krasnoy": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-03T19:43:26.388135Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.971859Z"
   },
   "zolotoy-lenivets-tykva-sloyami-lavash": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T02:41:28.402275Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.859423Z"
   },
   "zasaharilos-varenie-spasayu-za-odin-priem": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-12T14:42:52.113743Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.718421Z"
   },
   "perlovka-poleznee-kasha-garnir": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T13:47:25.739395Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.733470Z"
   },
   "roskachestvo-pelmeni-nastoyashchee-myaso": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T13:47:25.852926Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.852591Z"
   },
   "yashchik-pod-duhovkoy-naznachenie": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T13:47:25.841397Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.860192Z"
   },
   "chto-gotovyat-v-romskih-semyah": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T20:28:55.099789Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.614956Z"
   },
   "3-yaytsa-rulet-krasnaya-ryba": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T20:28:55.172567Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.568685Z"
   },
   "amerikanskiy-tykvennyy-batter": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-04T21:42:28.234453Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.635472Z"
   },
   "lukovoe-schaste-pirog-s-lukom": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-05T09:37:32.898981Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.136756Z"
   },
   "mikrofibra-vmesto-vafelnyh-polotenets": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-05T10:35:50.829653Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.402297Z"
   },
   "yabloki-ili-grushi-chto-poleznee": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-09T20:33:13.606727Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.128368Z"
   },
   "pomidory-svezhie-do-novogo-goda": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-09T20:33:13.607475Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.365514Z"
   },
   "chanki-manki-domashnee-morozhenoe": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-05T13:38:48.222803Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.403530Z"
   },
   "ogurec-v-nezhnoj-shubke-zakuska": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-05T14:38:11.162921Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.364976Z"
   },
   "shkolnaya-picca-kak-v-detstve": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-05T16:35:44.667828Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.421467Z"
   },
   "luk-bez-kolgotok-hranenie-do-vesny": {
-    "status": "ok",
-    "errors": [],
-    "checkedAt": "2026-10-05T16:35:44.672430Z"
+    "status": "error",
+    "errors": [
+      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+    ],
+    "checkedAt": "2026-10-24T05:57:28.409496Z"
   }
 }
