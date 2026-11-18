@@ -247,9 +247,9 @@
   "tomatnoe-ragu-s-fasolyu": {
     "status": "error",
     "errors": [
-      "страница недоступна: HTTPError: HTTP Error 404: Not Found"
+      "страница недоступна: ConnectionResetError: [Errno 104] Connection reset by peer"
     ],
-    "checkedAt": "2026-11-12T03:51:02.156461Z"
+    "checkedAt": "2026-11-18T22:01:35.703309Z"
   },
   "yablochnyi-krambl-s-ovsyanoi-kroshkoi": {
     "status": "error",
